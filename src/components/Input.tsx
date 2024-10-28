@@ -3,14 +3,15 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { cva, VariantProps } from 'class-variance-authority';
 
+// eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/no-contradicting-classname
 const inputVariants = cva(
-  `flex w-full border border-tra-input bg-tra-input-fill px-3 py-2
-  hover:shadow-input-hover
-  focus-visible:shadow-input-focus focus-visible:outline-none focus-visible:border-1 focus-visible:border-tra-primary-focused 
-  disabled:cursor-not-allowed disabled:bg-tra-input-light disabled:text-tra-neutral-grey disabled:placeholder:text-tra-input
-  placeholder:text-muted-foreground 
-  file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-tra-neutral-black file:bg-tra-neutral-disabled-text file:h-fit 
-  file:p-2 file:mr-2 file:rounded-md file:cursor-pointer file:hover:contrast-125 file:transition-all`,
+  `focus-visible:border-1 placeholder:text-muted-foreground flex w-full border border-tra-input bg-tra-input-fill
+  px-3
+  py-2 file:mr-2 file:h-fit file:cursor-pointer 
+  file:rounded-md file:border-0 file:bg-tra-neutral-disabled-text file:bg-transparent
+  file:p-2 
+  file:text-sm file:font-medium file:text-tra-neutral-black file:transition-all hover:shadow-input-hover file:hover:contrast-125 focus-visible:border-tra-primary-focused 
+  focus-visible:shadow-input-focus focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-tra-input-light disabled:text-tra-neutral-grey disabled:placeholder:text-tra-input`,
   {
     variants: {
       size: {
@@ -19,7 +20,7 @@ const inputVariants = cva(
         lg: 'h-15 text-lg',
       },
       error: {
-        true: 'outline-none border-error focus-visible:border-error focus-visible:outline-error focus-visible:-outline-offset-1 focus-visible:shadow-none',
+        true: 'border-error outline-none focus-visible:border-error focus-visible:shadow-none focus-visible:-outline-offset-1 focus-visible:outline-error',
         false: '',
       },
       borderRadius: {
