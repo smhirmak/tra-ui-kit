@@ -157,11 +157,24 @@ module.exports = {
           '50%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(100%)' },
         },
+        bounceInRight: {
+          '0%': { opacity: '0', transform: 'translateX(100%)' },
+          '50%': { opacity: '1', transform: 'translateX(-5%)' },
+          '70%': { transform: 'translateX(5%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        bounceOutRight: {
+          '0%': { transform: 'translateX(0)' },
+          '20%': { transform: 'translateX(5%)' },
+          '100%': { opacity: '0', transform: 'translateX(100%)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'linear-loader': 'linear-loader 2s infinite',
+        'bounce-in-right': 'bounceInRight 0.5s forwards',
+        'bounce-out-right': 'bounceOutRight 0.5s forwards',
       },
       content: {
         required: "'*'",
