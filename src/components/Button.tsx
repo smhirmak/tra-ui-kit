@@ -6,14 +6,14 @@ import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  `relative btn-ripple overflow-hidden inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors select-none
+  `btn-ripple relative inline-flex select-none flex-wrap items-center justify-center overflow-hidden whitespace-nowrap text-sm font-medium ring-offset-background transition-colors
   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
   disabled:pointer-events-none `,
   {
     variants: {
       variant: {
         solid: 'bg-tra-primary text-tra-primary-foreground hover:bg-tra-primary/90 disabled:bg-tra-button-disabled disabled:text-tra-button-disabled-text',
-        outlined: 'border-2 bg-transparent border-tra-primary text-tra-primary-foreground hover:bg-tra-primary/10 disabled:border-tra-button-disabled-text disabled:text-tra-button-disabled-text',
+        outlined: 'border-2 border-tra-primary bg-transparent text-tra-primary-foreground hover:bg-tra-primary/10 disabled:border-tra-button-disabled-text disabled:text-tra-button-disabled-text',
         ghost: 'bg-transparent text-tra-primary hover:text-tra-primary/90 disabled:text-tra-button-disabled-text',
       },
       color: {
@@ -25,7 +25,7 @@ const buttonVariants = cva(
         default: 'h-14 px-7',
         sm: 'h-13 rounded-lg px-6',
         lg: 'h-15 rounded-lg px-8',
-        icon: 'h-10 w-10 min-h-10 min-w-10 rounded-full',
+        icon: 'size-10 min-h-10 min-w-10 rounded-full',
       },
       rounded: {
         default: 'rounded-lg',
@@ -36,17 +36,17 @@ const buttonVariants = cva(
       {
         variant: 'outlined',
         color: 'primary',
-        className: 'border-tra-primary text-tra-primary bg-transparent hover:bg-tra-primary/10',
+        className: 'border-tra-primary bg-transparent text-tra-primary hover:bg-tra-primary/10',
       },
       {
         variant: 'outlined',
         color: 'secondary',
-        className: 'border-tra-secondary text-tra-secondary bg-transparent hover:bg-tra-secondary/10',
+        className: 'border-tra-secondary bg-transparent text-tra-secondary hover:bg-tra-secondary/10',
       },
       {
         variant: 'outlined',
         color: 'tetriary',
-        className: 'border-tra-tetriary text-tra-tetriary bg-transparent hover:bg-tra-tetriary/10',
+        className: 'border-tra-tetriary bg-transparent text-tra-tetriary hover:bg-tra-tetriary/10',
       },
       {
         variant: 'solid',
@@ -89,14 +89,14 @@ const buttonVariants = cva(
 );
 
 const spinnerVariants = cva(
-  'border-2 border-t-2 border-t-tra-button-disabled text-tra-button-disabled-text mr-2',
+  'mr-2 border-2 border-t-tra-button-disabled text-tra-button-disabled-text',
   {
     variants: {
       size: {
-        default: 'w-4 h-4 min-w-4 min-h-4 max-w-4 max-h-4',
-        sm: 'w-3 h-3 min-w-3 min-h-3 max-w-3 max-h-3',
-        lg: 'w-5 h-5 min-w-5 min-h-5 max-w-5 max-h-5',
-        icon: 'w-3 h-3 min-w-3 min-h-3 max-w-3 max-h-3',
+        default: 'size-4 max-h-4 min-h-4 min-w-4 max-w-4',
+        sm: 'size-3 max-h-3 min-h-3 min-w-3 max-w-3',
+        lg: 'size-5 max-h-5 min-h-5 min-w-5 max-w-5',
+        icon: 'size-3 max-h-3 min-h-3 min-w-3 max-w-3',
       },
     },
     defaultVariants: {

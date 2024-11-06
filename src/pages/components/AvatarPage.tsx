@@ -1,0 +1,66 @@
+import { Plus } from '@/assets/Icons';
+import { Avatar, MultipleAvatarContainer } from '@/components/Avatar';
+import Badge from '@/components/Badge';
+
+const AvatarPage = () => (
+  <div className="mb-6 border-b-2 pb-6">
+    <p className="text-4xl underline">Avatar</p>
+    <p className="mt-2 text-xl">Small Circular:</p>
+    <div className="mt-2 flex space-x-2">
+      <Avatar size="sm" />
+      <Avatar size="sm" title="Muhammed Semih Irmak" />
+      <Avatar size="sm" src="/assets/logos/logo.png" />
+      <Avatar size="sm" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" />} />
+      <Avatar size="sm" src="/assets/logos/logo.png" badgePosition="bottom-right" badgeContent={<Badge size="sm" color="secondary" />} />
+      <Avatar size="sm" src="/assets/logos/logo.png" badgePosition="top-left" badgeContent={<Badge size="sm" color="secondary" />} />
+      <Avatar size="sm" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge size="sm" color="secondary" />} />
+    </div>
+    <p className="mt-2 text-xl">Small Rounded:</p>
+    <div className="mt-2 flex space-x-2">
+      <Avatar size="sm" variant="rounded" />
+      <Avatar size="sm" variant="rounded" title="Muhammed Semih Irmak" />
+      <Avatar size="sm" variant="rounded" src="/assets/logos/logo.png" />
+      <Avatar size="sm" variant="rounded" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" />} />
+      <Avatar size="sm" variant="rounded" badgePosition="bottom-right" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />
+      <Avatar size="sm" variant="rounded" badgePosition="top-left" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />
+      <Avatar size="sm" variant="rounded" badgePosition="bottom-left" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />
+    </div>
+    <p className="mt-2 text-xl">Multiple Avatar :</p>
+    <div className="mt-2">
+      <MultipleAvatarContainer lastElementSize="sm">
+        <Avatar size="sm" asChild="a" href="/asd" className="bg-tra-neutral-grey text-black" />
+        <Avatar size="sm" src="/assets/logos/logo.png" />
+        <Avatar size="sm" />
+        <Avatar size="sm" className="bg-tra-disabled-light-dark" />
+        <Avatar size="sm" src="/assets/logos/logo.png" />
+        <Avatar size="sm" />
+        <Avatar size="sm" className="bg-error" />
+        <Avatar size="sm" src="/assets/logos/logo.png" />
+        <Avatar size="sm" src="/assets/logos/logo.png" />
+      </MultipleAvatarContainer>
+    </div>
+    <p className="mt-2 text-xl">Large Circular:</p>
+    <div className="mt-2 flex flex-wrap space-x-2 space-y-2">
+      <Avatar />
+      <Avatar title="Muhammed Semih Irmak" />
+      <Avatar src="/assets/logos/logo.png" />
+      <Avatar src="/assets/logos/logo.png" badgeContent={<Badge />} />
+      <Avatar src="/assets/logos/logo.png" badgePosition="bottom-right" badgeContent={<Badge color="secondary" />} />
+      <Avatar src="/assets/logos/logo.png" badgePosition="top-left" badgeContent={<Badge />} />
+      <Avatar src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge color="secondary" />} />
+    </div>
+    <p className="mt-2 text-xl">Large Rounded:</p>
+    <div className="mt-2 flex flex-wrap space-x-2 space-y-2">
+      <Avatar variant="rounded" />
+      <Avatar variant="rounded" title="Muhammed Semih Irmak" />
+      <Avatar variant="rounded" src="/assets/logos/logo.png" />
+      <Avatar variant="rounded" src="/assets/logos/logo.png" badgeContent={<Badge icon={<Plus className="size-4" />} />} />
+      <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-right" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />
+      <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="top-left" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />
+      <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />
+    </div>
+  </div>
+
+);
+
+export default AvatarPage;

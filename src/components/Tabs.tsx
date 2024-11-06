@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useEffect, useRef, useContext, createContex
 import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-const TabsContext = createContext<{ activeTab: string; handleTabClick:(value: string) => void; variant: 'default' | 'solid' | 'outlined' | 'split' } | undefined>(undefined);
+const TabsContext = createContext<{ activeTab: string; handleTabClick: (value: string) => void; variant: 'default' | 'solid' | 'outlined' | 'split' } | undefined>(undefined);
 
 interface TabsProps {
   activeTab: string;
@@ -15,6 +15,8 @@ interface TabsProps {
   radius?: 'default' | 'none' | 'sm' | 'lg' | 'full';
   selectorClassName?: string;
   direction?: 'horizontal' | 'vertical';
+  contentPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  contentClasName?: string;
 }
 
 interface TabProps {
@@ -30,16 +32,21 @@ interface TabProps {
   radius?: 'default' | 'none' | 'sm' | 'lg' | 'full';
 }
 
-const tabsContainerVariants = cva('relative flex w-fit', {
+const tabsContainerVariants = cva('flex h-fit gap-2', {
   variants: {
-    direction: {
-      horizontal: 'flex-row',
-      vertical: 'flex-col',
+    contentPlacement: {
+      top: 'flex-col-reverse',
+      right: 'flex-row',
+      bottom: 'flex-col',
+      left: 'flex-row-reverse',
     },
+  },
+  defaultVariants: {
+    contentPlacement: 'bottom',
   },
 });
 
-const tabsVariants = cva('inline-flex items-center justify-center', {
+const tabsVariants = cva('inline-flex w-fit items-center justify-center', {
   variants: {
     variant: {
       default: 'bg-transparent shadow-md',
@@ -114,6 +121,16 @@ const tabVariants = cva(
         isActive: false,
         className: 'text-tra-neutral-black/90 hover:text-tra-neutral-grey/60',
       },
+      {
+        variant: 'split',
+        isActive: true,
+        className: 'text-tra-neutral-black hover:text-tra-neutral-black/80',
+      },
+      {
+        variant: 'split',
+        isActive: false,
+        className: 'text-tra-neutral-black/90 hover:text-tra-neutral-grey/60',
+      },
     ],
     defaultVariants: {
       variant: 'default',
@@ -128,8 +145,8 @@ const selectorVariants = cva('absolute transition-transform duration-200', {
     variant: {
       default: 'h-[2px] bg-tra-primary',
       solid: 'z-10 h-full bg-tra-neutral-white',
-      outlined: 'z-10 h-full bg-tra-neutral-white',
-      split: 'z-10 h-full bg-tra-neutral-white',
+      outlined: 'z-10 h-full bg-tra-neutral dark:bg-tra-neutral-white',
+      split: 'z-10 h-full bg-tra-neutral dark:bg-tra-neutral-white',
     },
     disabled: {
       true: 'pointer-events-none opacity-50',
@@ -156,9 +173,12 @@ const selectorVariants = cva('absolute transition-transform duration-200', {
   },
 });
 
-const Tabs: React.FC<TabsProps> = ({ activeTab, variant = 'default', onChange, className, selectorClassName, children, disabled, size = 'default', radius = 'default', direction = 'horizontal' }) => {
+const Tabs: React.FC<TabsProps> = ({ activeTab, variant = 'default', onChange, className, contentClasName,
+  selectorClassName, children, disabled, size = 'default', radius = 'default', direction = 'horizontal', contentPlacement = 'bottom' }) => {
   const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>({});
   const tabsRef = useRef<HTMLDivElement>(null);
+
+  const labels = React.Children.map(children, (child: React.ReactElement<TabProps>) => child.props.label);
 
   useEffect(() => {
     const activeTabElement = tabsRef.current?.querySelector('.active-tab') as HTMLButtonElement;
@@ -172,7 +192,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, variant = 'default', onChange, c
       };
       setIndicatorStyle(newIndicatorStyle);
     }
-  }, [activeTab, direction]);
+  }, [activeTab, direction, contentPlacement, labels]);
 
   const handleTabClick = (value: string) => {
     if (onChange) onChange(value);
@@ -182,7 +202,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, variant = 'default', onChange, c
 
   return (
     <TabsContext.Provider value={contextValue}>
-      <div className={cn()}>
+      <div className={cn(tabsContainerVariants({ contentPlacement }))}>
         <div className={cn(tabsVariants({ variant, radius }), className)}>
           <div className={cn(direction === 'horizontal' ? 'flex-row' : 'flex-col', 'relative flex')} ref={tabsRef}>
             <div
@@ -202,11 +222,11 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, variant = 'default', onChange, c
             })}
           </div>
         </div>
-        {/* İçerik alanı buraya gelecek */}
-        <div className="mt-4">
+        {/* Content */}
+        <div>
           {React.Children.map(children, child => {
             if (React.isValidElement<TabProps>(child) && child.props.value === activeTab) {
-              return <div>{child.props.children}</div>;
+              return <div className={contentClasName}>{child.props.children}</div>;
             }
             return null;
           })}
