@@ -208,3 +208,78 @@
 	background-color: #5F5D5C;
 }
 /* ScrollBar Design End */
+
+.code-block {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.string {
+  color: #ce9178;
+}
+
+.number {
+  color: #C3622C;
+}
+
+.keyword {
+  color: #569cd6;
+  font-weight: bold;
+}
+
+.jsx-tag {
+  color: #f00;
+  font-weight: bold;
+}
+.html-tag {
+  color: #0f0;
+  font-weight: bold;
+}
+
+.attribute {
+  color: #9cdcfe;
+}
+
+/* .notification-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.notification {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+.notification.info {
+  background-color: #2196F3;
+}
+
+.notification.success {
+  background-color: #4CAF50;
+
+.notification.warn {
+  background-color: #FF9800;
+}
+
+.notification.error {
+  background-color: #F44336;
+} */
+
+/* .notification {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 10px;
+  width: 300px;
+  position: relative;
+} */
