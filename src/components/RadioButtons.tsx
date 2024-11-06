@@ -21,7 +21,7 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 type RadioGroupItemProps = {
   className?: string;
   disabled?: boolean;
-  id?: string;
+  id: string;
   label?: string;
 } & React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>;
 
@@ -50,10 +50,10 @@ const RadioGroupItem = React.forwardRef<
       {...props}
     >
       <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-        <Circle className="h-2.5 w-2.5 fill-current text-current" />
+        <Circle className="size-2.5 fill-current text-current" />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
-    {label && <Label htmlFor={id} className="select-none" disabled={disabled}>{label}</Label>}
+    {label && <Label htmlFor={id} id={`id-${label}`} className="select-none" disabled={disabled}>{label}</Label>}
   </div>
 ));
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
