@@ -1,11 +1,12 @@
 import { X } from '@/assets/Icons';
 import { cn } from '@/lib/utils';
+import { IChip } from '@/types/types';
 import { cva } from 'class-variance-authority';
 import React from 'react';
 
 const chipVariants = cva(
-  `text-tra-disabled-dark  border border-tra-disabled-dark rounded-4xl select-none flex items-center w-fit transition-colors
-  hover:text-tra-disabled-dark  hover:bg-tra-disabled-dark/10`,
+  `flex  w-fit select-none items-center rounded-4xl border border-tra-disabled-dark text-tra-disabled-dark transition-colors
+  hover:bg-tra-disabled-dark/10  hover:text-tra-disabled-dark`,
   {
     variants: {
       size: {
@@ -18,11 +19,11 @@ const chipVariants = cva(
         false: 'cursor-default',
       },
       active: {
-        true: 'text-tra-primary border-tra-primary hover:text-tra-primary/70 hover:border-tra-primary/70',
+        true: 'border-tra-primary text-tra-primary hover:border-tra-primary/70 hover:text-tra-primary/70',
         false: '',
       },
       selected: {
-        true: 'bg-tra-primary hover:bg-tra-primary/90 border-tra-primary text-tra-neutral-white',
+        true: 'border-tra-primary bg-tra-primary text-tra-neutral-white hover:bg-tra-primary/90',
         false: '',
       },
     },
@@ -31,20 +32,6 @@ const chipVariants = cva(
     },
   },
 );
-
-interface IChip {
-  active?: boolean;
-  deleteIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
-  id?: string;
-  label?: string;
-  labelClassName?: string;
-  onClick?: (e: string | number | undefined | null) => void;
-  onDelete?: (e: string | number | undefined | null) => void;
-  selected?: boolean;
-  size?: 'default' | 'sm' | 'lg';
-  startIcon?: React.ReactNode;
-}
 
 const Chip = React.forwardRef<HTMLButtonElement, IChip>(
   ({

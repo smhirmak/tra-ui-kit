@@ -21,6 +21,9 @@ import SwitchPage from './pages/components/SwitchPage';
 import TabsPage from './pages/components/TabsPage';
 import BackgroundVideoPage from './pages/components/BackgroundVideoPage';
 import ImageHoverEffectPage from './pages/components/ImageHoverEffectPage';
+import { NotificationProvider } from './contexts/notification/NotificationProvider';
+import { useLocalizeContext } from './contexts/locale/LocalizeContext';
+import { useAppContext } from './contexts/app/AppProvider';
 
 const router = createBrowserRouter([
   {
@@ -101,12 +104,25 @@ const router = createBrowserRouter([
     ],
   }]);
 
-const App = () => (
-  <div>
-    {/* <ToastContainer newestOnTop toastClassName="rounded-lg" bodyStyle={{ fontSize: '.9rem' }} theme="colored" /> */}
-    <RouterProvider router={router} />
-    <BackToTopButton />
-  </div>
-);
+const App = () => {
+  const { t } = useLocalizeContext();
+  const { notificationTheme, notificationMode, notificationAnimateMode, notificationPosition } = useAppContext();
+  return (
+    <NotificationProvider
+      newestTop
+      closeIcon
+      translateFunction={t}
+      theme={notificationTheme}
+      mode={notificationMode}
+      animationMode={notificationAnimateMode}
+      position={notificationPosition}
+    >
+      <div>
+        <RouterProvider router={router} />
+        <BackToTopButton />
+      </div>
+    </NotificationProvider>
+  );
+};
 
 export default App;

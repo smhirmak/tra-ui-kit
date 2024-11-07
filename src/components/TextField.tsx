@@ -2,30 +2,9 @@ import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 import React, { useRef, useState } from 'react';
+import { ITextField } from '@/types/types';
 import Input from './Input';
 import Label from './Label';
-
-interface ITextField {
-  alwaysTop?: boolean;
-  borderRadius?: 'default' | 'lg';
-  disabled?: boolean;
-  endIcon?: React.ReactNode;
-  error?: boolean;
-  id?: string;
-  inputClassName?: string;
-  label?: string;
-  labelClassName?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onWheel?: (e: React.WheelEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-  showRequiredIcon?: boolean;
-  size?: 'default' | 'sm' | 'lg';
-  startIcon?: React.ReactNode;
-  tooltip?: string | string[];
-  type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
-  value: string | number;
-  variant?: 'filled' | 'outlined' | 'underlined';
-}
 
 const textFieldStyles = cva('flex flex-col', {
   variants: {
@@ -44,8 +23,8 @@ const labelStyles = cva('mb-1 transition-all duration-150 ease-cubic', {
   variants: {
     variant: {
       filled: '',
-      outlined: 'absolute left-3 transform top-1/2 -translate-y-1/2',
-      underlined: 'absolute left-0 transform top-1/2 -translate-y-1/2',
+      outlined: 'absolute left-3 top-1/2 -translate-y-1/2 transform',
+      underlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform',
     },
     borderRadius: {
       default: '',
@@ -63,7 +42,7 @@ const inputStyles = cva('p-2 transition-colors', {
     variant: {
       filled: '',
       outlined: '',
-      underlined: 'border-x-0 border-t-0 rounded-none bg-transparent disabled:bg-transparent hover:bg-transparent hover:shadow-none focus-visible:shadow-none',
+      underlined: 'rounded-none border-x-0 border-t-0 bg-transparent hover:bg-transparent hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
     },
   },
   defaultVariants: {

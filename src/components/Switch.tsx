@@ -3,6 +3,7 @@ import * as SwitchPrimitives from '@radix-ui/react-switch';
 
 import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
+import { SwitchProps } from '@/types/types';
 
 const switchVariants = cva(
   `peer inline-flex w-13 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors 
@@ -24,14 +25,14 @@ const switchVariants = cva(
 );
 
 const switchPrimitivesVariants = cva(
-  `pointer-events-none block h-6 w-6 rounded-full bg-tra-neutral-white shadow-lg transition-transform 
-  data-[state=checked]:translate-x-6 data-[state=unchecked]:translate-x-0
+  `pointer-events-none block size-6 rounded-full bg-tra-neutral-white shadow-lg transition-transform data-[state=checked]:translate-x-6 
+  data-[state=unchecked]:translate-x-0
   `,
   {
     variants: {
       variant: {
         apple: 'ring-0',
-        android: 'ring-2 data-[state=unchecked]:ring-tra-disabled-light data-[state=checked]:ring-tra-primary',
+        android: 'ring-2 data-[state=checked]:ring-tra-primary data-[state=unchecked]:ring-tra-disabled-light',
       },
     },
     defaultVariants: {
@@ -39,11 +40,6 @@ const switchPrimitivesVariants = cva(
     },
   },
 );
-
-type SwitchProps = {
-  className?: string;
-  variant?: 'apple' | 'android';
-} & React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>;
 
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,

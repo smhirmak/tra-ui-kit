@@ -157,6 +157,10 @@ module.exports = {
           '50%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(100%)' },
         },
+        'linear-progress': {
+          '0%': { width: '100%' },
+          '100%': { width: '0' },
+        },
         bounceInRight: {
           '0%': { opacity: '0', transform: 'translateX(100%)' },
           '50%': { opacity: '1', transform: 'translateX(-5%)' },
@@ -165,16 +169,66 @@ module.exports = {
         },
         bounceOutRight: {
           '0%': { transform: 'translateX(0)' },
-          '20%': { transform: 'translateX(5%)' },
+          '20%': { transform: 'translateX(-5%)' },
           '100%': { opacity: '0', transform: 'translateX(100%)' },
+        },
+        bounceInLeft: {
+          '0%': { opacity: '0', transform: 'translateX(0%)' },
+          '50%': { opacity: '1', transform: 'translateX(5%)' },
+          '70%': { transform: 'translateX(-5%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        bounceOutLeft: {
+          '0%': { transform: 'translateX(0%)' },
+          '20%': { transform: 'translateX(5%)' },
+          '100%': { opacity: '0', transform: 'translateX(-100%)' },
+        },
+        slideInRight: {
+          '0%': { opacity: 0, transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        slideOutRight: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { opacity: 0, transform: 'translateX(100%)' },
+        },
+        slideInLeft: {
+          '0%': { opacity: 0, transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        slideOutLeft: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { opacity: 0, transform: 'translateX(-100%)' },
+        },
+        flipIn: {
+          '0%': { transform: 'rotateX(-90deg)', opacity: '0' },
+          '40%': { transform: 'rotateX(45deg)', opacity: '1' },
+          '60%': { transform: 'rotateX(-20deg)' },
+          '80%': { transform: 'rotateX(20deg)' },
+          '100%': { transform: 'rotateX(0deg)' },
+        },
+        flipOut: {
+          '0%': { transform: 'rotateX(0deg)', opacity: '1' },
+          '20%': { transform: 'rotateX(-45deg)' },
+          '40%': { transform: 'rotateX(20deg)' },
+          '60%': { transform: 'rotateX(-20deg)' },
+          '100%': { transform: 'rotateX(90deg)', opacity: '0' },
         },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'linear-loader': 'linear-loader 2s infinite',
+        'linear-progress': 'linear-progress linear',
         'bounce-in-right': 'bounceInRight 0.5s forwards',
         'bounce-out-right': 'bounceOutRight 0.5s forwards',
+        'bounce-in-left': 'bounceInLeft 0.5s forwards',
+        'bounce-out-left': 'bounceOutLeft 0.5s forwards',
+        'slide-in-right': 'slideInRight 0.5s linear',
+        'slide-out-right': 'slideOutRight 0.5s linear',
+        'slide-in-left': 'slideInLeft 0.5s linear',
+        'slide-out-left': 'slideOutLeft 0.5s linear',
+        'flip-in': 'flipIn 0.7s forwards',
+        'flip-out': 'flipOut 0.7s forwards',
       },
       content: {
         required: "'*'",

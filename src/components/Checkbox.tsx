@@ -6,11 +6,12 @@ import * as React from 'react';
 import { Check, Minus } from '@/assets/Icons';
 import Label from '@/components/Label';
 import { cn } from '@/lib/utils';
+import { CheckboxProps } from '@/types/types';
 
 const checkboxVariants = cva(
-  `peer shrink-0 rounded-sm border border-tra-primary ring-offset-background flex items-center justify-center
+  `peer flex shrink-0 items-center justify-center rounded-sm border border-tra-primary ring-offset-background
   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-  disabled:cursor-not-allowed disabled:opacity-50 disabled:border-tra-input disabled:bg-tra-input disabled:text-white 
+  disabled:cursor-not-allowed disabled:border-tra-input disabled:bg-tra-input disabled:text-white disabled:opacity-50 
   data-[state=checked]:bg-tra-primary data-[state=checked]:text-tra-primary-foreground data-[state=checked]:disabled:bg-tra-input`,
   {
     variants: {
@@ -19,9 +20,9 @@ const checkboxVariants = cva(
         circular: 'rounded-full',
       },
       size: {
-        sm: 'h-3 w-3',
-        default: 'h-4 w-4',
-        lg: 'h-5 w-5',
+        sm: 'size-3',
+        default: 'size-4',
+        lg: 'size-5',
       },
     },
     defaultVariants: {
@@ -30,15 +31,6 @@ const checkboxVariants = cva(
     },
   },
 );
-
-type CheckboxProps = {
-  className?: string;
-  disabled?: boolean;
-  id?: string
-  label?: string;
-  size?: 'sm' | 'default' | 'lg';
-  variant?: 'rectangular' | 'circular';
-} & React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
 
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
@@ -62,12 +54,12 @@ const Checkbox = React.forwardRef<
       {...props}
     >
       {disabled
-        ? <Minus className={`${size === 'sm' ? 'h-2 w-2' : size === 'lg' ? 'h-4 w-4' : 'h-3 w-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-tra-input`} />
+        ? <Minus className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-tra-input`} />
         : (
           <CheckboxPrimitive.Indicator
             className={cn('flex items-center justify-center text-current')}
           >
-            <Check className={`${size === 'sm' ? 'h-2 w-2' : size === 'lg' ? 'h-4 w-4' : 'h-3 w-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} rounded-sm bg-tra-primary`} />
+            <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} rounded-sm bg-tra-primary`} />
           </CheckboxPrimitive.Indicator>
         )}
     </CheckboxPrimitive.Root>
