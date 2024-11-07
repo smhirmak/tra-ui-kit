@@ -1,44 +1,52 @@
 import { useNotification } from '@/contexts/notification/NotificationProvider';
+import { NotificationOptions } from '@/types/types';
 
 const Notification = () => {
-  const { invoke } = useNotification();
-
-  interface NotificationOptions {
-    message: string | string[];
-    autoClose?: boolean;
-    autoCloseTime?: number;
-  }
+  const { invoke, translateFunction } = useNotification();
 
   const info = (
     message: NotificationOptions['message'],
-    autoClose?: NotificationOptions['autoClose'],
-    autoCloseTime?: NotificationOptions['autoCloseTime'],
+    options?: NotificationOptions['options'],
   ) => {
-    invoke('info', Array.isArray(message) ? message[0] : message, autoClose, autoCloseTime);
+    // const { autoClose = true, autoCloseTime } = options || {};
+    invoke(
+      'info',
+      Array.isArray(message) ? message[0] : translateFunction ? translateFunction(message) : message,
+      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
+    );
   };
 
   const error = (
     message: NotificationOptions['message'],
-    autoClose?: NotificationOptions['autoClose'],
-    autoCloseTime?: NotificationOptions['autoCloseTime'],
+    options?: NotificationOptions['options'],
   ) => {
-    invoke('error', Array.isArray(message) ? message[0] : message, autoClose, autoCloseTime);
+    invoke(
+      'error',
+      Array.isArray(message) ? message[0] : translateFunction ? translateFunction(message) : message,
+      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
+    );
   };
 
   const success = (
     message: NotificationOptions['message'],
-    autoClose?: NotificationOptions['autoClose'],
-    autoCloseTime?: NotificationOptions['autoCloseTime'],
+    options?: NotificationOptions['options'],
   ) => {
-    invoke('success', Array.isArray(message) ? message[0] : message, autoClose, autoCloseTime);
+    invoke(
+      'success',
+      Array.isArray(message) ? message[0] : translateFunction ? translateFunction(message) : message,
+      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
+    );
   };
 
   const warn = (
     message: NotificationOptions['message'],
-    autoClose?: NotificationOptions['autoClose'],
-    autoCloseTime?: NotificationOptions['autoCloseTime'],
+    options?: NotificationOptions['options'],
   ) => {
-    invoke('warn', Array.isArray(message) ? message[0] : message, autoClose, autoCloseTime);
+    invoke(
+      'warn',
+      Array.isArray(message) ? message[0] : translateFunction ? translateFunction(message) : message,
+      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
+    );
   };
 
   return { info, error, success, warn };

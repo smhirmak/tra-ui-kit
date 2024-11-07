@@ -6,6 +6,10 @@ const tr = {
   'Invalid email address': 'Geçersiz e-posta adresi',
   'Sending...': 'Gönderiliyor...',
   Search: 'Ara',
+  Info: 'Bilgi',
+  Error: 'Hata',
+  Success: 'Başarılı',
+  Warning: 'Uyarı',
 };
 
 export default tr;

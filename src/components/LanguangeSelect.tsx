@@ -1,5 +1,6 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
+import { ILanguangeSelect } from '@/types/types';
 
 const countries = [
   {
@@ -14,10 +15,6 @@ const countries = [
   },
 ];
 
-interface ILanguangeSelect {
-  className?: string;
-}
-
 const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className }) => {
   const { setLocale } = useLocalizeContext();
   const { t } = useLocalizeContext();
@@ -29,8 +26,8 @@ const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className }) => {
   };
   return (
     <div className={className}>
-      <Select defaultValue={localStorage.getItem('lang')} onValueChange={handleChange}>
-        <SelectTrigger className="min-w-[7rem] bg-transparent border-none focus:ring-0 ring-0">
+      <Select defaultValue={localStorage.getItem('lang') || undefined} onValueChange={handleChange}>
+        <SelectTrigger className="min-w-28 border-none bg-transparent ring-0 focus:ring-0">
           <SelectValue placeholder={t('Choose Languange')} />
         </SelectTrigger>
         <SelectContent>

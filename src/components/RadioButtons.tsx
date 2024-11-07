@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Circle } from '@/assets/Icons';
 import Label from '@/components/Label';
 import { cn } from '@/lib/utils';
+import { RadioGroupItemProps } from '@/types/types';
 
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -17,13 +18,6 @@ const RadioGroup = React.forwardRef<
   />
 ));
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
-
-type RadioGroupItemProps = {
-  className?: string;
-  disabled?: boolean;
-  id: string;
-  label?: string;
-} & React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>;
 
 const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,

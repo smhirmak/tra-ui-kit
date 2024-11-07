@@ -2,6 +2,7 @@ import { MagnifyingGlass } from '@/assets/Icons';
 import TextField from '@/components/TextField';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
+import { ISearchBar } from '@/types/types';
 import { cva } from 'class-variance-authority';
 import React from 'react';
 
@@ -10,9 +11,9 @@ const iconVariants = cva(
   {
     variants: {
       size: {
-        default: 'h-5 w-5',
-        sm: 'h-4 w-4',
-        lg: 'h-6 w-6',
+        default: 'size-5',
+        sm: 'size-4',
+        lg: 'size-6',
       },
       disabled: {
         true: 'text-tra-input',
@@ -25,19 +26,6 @@ const iconVariants = cva(
     },
   },
 );
-
-interface ISearchBar {
-  borderRadius?: 'default' | 'lg';
-  disabled?: boolean;
-  iconClassName?: string;
-  label?: string;
-  placeholder?: string;
-  size?: 'default' | 'sm' | 'lg';
-  type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
-  value?: string | number | undefined;
-  variant?: 'filled' | 'outlined' | 'underlined';
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
 
 const SearchBar: React.FC<
   ISearchBar> = ({

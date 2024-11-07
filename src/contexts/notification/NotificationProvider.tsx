@@ -1,11 +1,8 @@
-import React, { createContext, useContext, useState, ReactNode, useRef, useEffect } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useRef, useMemo } from 'react';
+import { INotification, INotificationContext } from '@/types/types';
 import NotificationContainer from './NotificationContainer';
 
-interface NotificationContextType {
-  invoke: (type: string, message: string, autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode) => void;
-}
-
-const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
+const NotificationContext = createContext<INotificationContext | undefined>(undefined);
 
 export const useNotification = () => {
   const context = useContext(NotificationContext);
@@ -15,23 +12,37 @@ export const useNotification = () => {
   return context;
 };
 
-export const NotificationProvider: React.FC<{ children: ReactNode; newestTop?: boolean, closeIcon?: boolean }> = ({ children, newestTop, closeIcon }) => {
+export const NotificationProvider: React.FC<INotification> = (
+  { children,
+    newestTop,
+    closeIcon,
+    translateFunction,
+    theme, mode = 'light',
+    containerClassName,
+    notificationClassName,
+    closeButtonClassName,
+    progressBarClassName,
+    animationMode = 'bounce',
+    position = 'top-right' },
+) => {
   const [notifications, setNotifications] = useState<{ id: number; type: string; message: string; icon?: ReactNode; timeoutId?: NodeJS.Timeout, exiting?: boolean }[]>([]);
+  const [localAutoClose, setLocalAutoClose] = useState<{ state: boolean | undefined, time: number | undefined }>();
   const notificationIdRef = useRef(0);
 
-  const invoke = (type: string, message: string, autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode) => {
+  const invoke = (type: string, message: string, options: { autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode }) => {
+    setLocalAutoClose({ state: options.autoClose, time: options.autoCloseTime });
     const id = notificationIdRef.current++;
-    const newNotification = { id, type, message, icon, closeIcon };
+    const newNotification = { id, type, message, icon: options.icon, closeIcon, autoClose: options.autoClose, autoCloseTime: options.autoCloseTime };
 
     setNotifications(prev => [...prev, newNotification]);
 
-    if (autoClose) {
+    if (options.autoClose) {
       const timeoutId = setTimeout(() => {
         setNotifications(prev => prev.map(notification => (notification.id === id ? { ...notification, exiting: true } : notification)));
         setTimeout(() => {
           setNotifications(prev => prev.filter(notification => notification.id !== id));
-        }, 500); // Animasyon süresi kadar bekleyin
-      }, autoCloseTime ?? 3000);
+        }, 200); // Animasyon için bekleme süresi
+      }, options.autoCloseTime ?? 3000);
 
       setNotifications(prev => prev.map(notification => (notification.id === id ? { ...notification, timeoutId } : notification)));
     }
@@ -39,21 +50,39 @@ export const NotificationProvider: React.FC<{ children: ReactNode; newestTop?: b
 
   const clearNotification = (id: number) => {
     setNotifications(prev => {
-      const notification = prev.find(notification => notification.id === id);
+      const notification = prev.find(e => e.id === id);
       if (notification && notification.timeoutId) {
         clearTimeout(notification.timeoutId);
       }
-      return prev.map(notification => (notification.id === id ? { ...notification, exiting: true } : notification));
+      return prev.map(notification => (notification.id === id ? { ...notification, exiting: true, autoClose: false } : notification));
     });
     setTimeout(() => {
       setNotifications(prev => prev.filter(notification => notification.id !== id));
-    }, 500); // Animasyon süresi kadar bekleyin
+    }, 200); // Animasyon için bekleme süresi
   };
 
+  const values = useMemo(() => ({
+    invoke, translateFunction,
+  }), [invoke]);
+
   return (
-    <NotificationContext.Provider value={{ invoke }}>
+    <NotificationContext.Provider value={values}>
       {children}
-      <NotificationContainer notifications={notifications} onRemove={clearNotification} newestTop={newestTop} />
+      <NotificationContainer
+        notifications={notifications}
+        onRemove={clearNotification}
+        newestTop={newestTop}
+        theme={theme}
+        mode={mode}
+        autoClose={localAutoClose?.state}
+        autoCloseTime={localAutoClose?.time}
+        containerClassName={containerClassName}
+        notificationClassName={notificationClassName}
+        closeButtonClassName={closeButtonClassName}
+        progressBarClassName={progressBarClassName}
+        animationMode={animationMode}
+        position={position}
+      />
     </NotificationContext.Provider>
   );
 };
