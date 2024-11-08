@@ -2,30 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { CaretUp } from '@/assets/Icons';
 import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
+import { IBackToTopButton } from '@/types/types';
 import Button from './Button';
 
 const buttonVariants = cva(
-  `text-white/80 group-hover:text-white h-8 w-8 min-w-8 min-h-8
-  border rounded-full border-white/80 group-hover:border-white  
-  duration-300 transition-opacity`,
+  `size-8 min-h-8 min-w-8 rounded-full border border-white/80
+  text-white/80 transition-opacity duration-300 group-hover:border-white  
+  group-hover:text-white`,
   {
     variants: {
       isVisible: {
         true: 'opacity-100',
-        false: 'opacity-0 pointer-events-none',
+        false: 'pointer-events-none opacity-0',
       },
     },
   },
 );
 
-interface IBackToTopButtonProps {
-  buttonClassName?: string;
-  containerClassName?: string;
-  icon?: React.ReactNode;
-  iconClassName?: string;
-}
-
-const BackToTopButton: React.FC<IBackToTopButtonProps> = ({ buttonClassName, containerClassName, icon, iconClassName }) => {
+const BackToTopButton: React.FC<IBackToTopButton> = ({ buttonClassName, containerClassName, icon, iconClassName }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {

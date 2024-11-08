@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
-import { cva, VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
+import { IInput } from '@/types/types';
 
 // eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/no-contradicting-classname
-const inputVariants = cva(
+export const inputVariants = cva(
   `focus-visible:border-1 placeholder:text-muted-foreground flex w-full border border-tra-input bg-tra-input-fill
   px-3
   py-2 file:mr-2 file:h-fit file:cursor-pointer 
@@ -36,20 +37,7 @@ const inputVariants = cva(
   },
 );
 
-export interface InputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
-  VariantProps<typeof inputVariants> {
-  borderRadius?: 'default' | 'lg';
-  className?: string;
-  endIcon?: React.ReactNode;
-  error?: boolean | null | undefined;
-  size?: 'default' | 'sm' | 'lg' | undefined;
-  startIcon?: React.ReactNode;
-  type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
-  value: string | number;
-}
-
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<HTMLInputElement, IInput>(
   ({
     borderRadius,
     className = '',

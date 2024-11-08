@@ -1,17 +1,13 @@
 import { cn } from '@/lib/utils';
+import { ILoadingLinear } from '@/types/types';
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
-const linearContainerVariants = cva('relative w-full h-1 bg-gray-200 overflow-hidden');
+const linearContainerVariants = cva('relative h-1 w-full overflow-hidden bg-gray-200');
 
-const linearVariants = cva('absolute top-0 left-0 w-full h-full bg-tra-primary animate-linear-loader');
+const linearVariants = cva('absolute left-0 top-0 size-full animate-linear-loader bg-tra-primary');
 
-interface LoadingLinearProps extends React.HTMLAttributes<HTMLDivElement> {
-  linearContainerClassName?: string;
-  linearItemClassName?: string;
-}
-
-const LoadingLinear = React.forwardRef<HTMLDivElement, LoadingLinearProps>((props, ref) => {
+const LoadingLinear = React.forwardRef<HTMLDivElement, ILoadingLinear>((props, ref) => {
   const { linearContainerClassName, linearItemClassName, ...rest } = props;
   // eslint-disable-next-line react/jsx-props-no-spreading
   return (

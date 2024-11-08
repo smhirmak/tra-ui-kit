@@ -1,8 +1,9 @@
 import { cn } from '@/lib/utils';
-import { cva, VariantProps } from 'class-variance-authority';
-import React, { ReactNode } from 'react';
+import { IContainer } from '@/types/types';
+import { cva } from 'class-variance-authority';
+import React from 'react';
 
-const containerVariants = cva('container mx-auto w-full', {
+export const containerVariants = cva('container mx-auto w-full', {
   variants: {
     maxWidth: {
       xs: 'max-w-full',
@@ -18,7 +19,7 @@ const containerVariants = cva('container mx-auto w-full', {
       false: 'px-4 md:px-6',
     },
     centered: {
-      true: 'flex justify-center items-center',
+      true: 'flex items-center justify-center',
       false: '',
     },
   },
@@ -29,13 +30,7 @@ const containerVariants = cva('container mx-auto w-full', {
   },
 });
 
-interface ContainerProps extends VariantProps<typeof containerVariants> {
-  as?: React.ElementType;
-  children: ReactNode;
-  className?: string;
-}
-
-const Container: React.FC<ContainerProps> = ({
+const Container: React.FC<IContainer> = ({
   as = 'div',
   centered = false,
   children,

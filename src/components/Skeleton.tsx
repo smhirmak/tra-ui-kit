@@ -1,8 +1,9 @@
 import { cn } from '@/lib/utils';
+import { ISkeleton } from '@/types/types';
 import { cva } from 'class-variance-authority';
 import React from 'react';
 
-const skeletonVariants = cva('bg-gray-500 w-full h-4 rounded-md', {
+const skeletonVariants = cva('h-4 w-full rounded-md bg-gray-500', {
   variants: {
     animation: {
       true: 'animate-pulse',
@@ -12,12 +13,7 @@ const skeletonVariants = cva('bg-gray-500 w-full h-4 rounded-md', {
   },
 });
 
-interface SkeletonProps {
-  className?: string;
-  animation?: boolean;
-}
-
-const Skeleton: React.FC<SkeletonProps> = ({
+const Skeleton: React.FC<ISkeleton> = ({
   className = '',
   animation = true,
 }) => (

@@ -2,19 +2,12 @@
 /* eslint-disable no-nested-ternary */
 import { SealCheck, SealError, SealWarning } from '@/assets/Icons';
 import { cn } from '@/lib/utils';
+import { IInformationStatus } from '@/types/types';
 import { cva } from 'class-variance-authority';
 import React from 'react';
 
-interface IIInformationStatus {
-  className?: string;
-  icon?: React.ReactNode;
-  isHaveIcon?: boolean;
-  title: string;
-  type?: 'success' | 'error' | 'warning';
-}
-
 const informationStatusVariants = cva(
-  'flex gap-1 w-fit px-4 py-2 rounded-md text-sm font-medium break-normal text-ellipsis overflow-hidden whitespace-normal max-w-full',
+  'flex w-fit max-w-full gap-1 overflow-hidden text-ellipsis whitespace-normal break-normal rounded-md px-4 py-2 text-sm font-medium',
   {
     variants: {
       type: {
@@ -30,9 +23,9 @@ const informationStatusVariants = cva(
   },
 );
 
-const iconsStyle = cva('text-base min-w-fit');
+const iconsStyle = cva('min-w-fit text-base');
 
-const InformationStatus: React.FC<IIInformationStatus> = ({
+const InformationStatus: React.FC<IInformationStatus> = ({
   className,
   icon,
   isHaveIcon = false,

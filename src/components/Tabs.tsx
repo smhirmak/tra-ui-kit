@@ -1,36 +1,10 @@
-import React, { ReactNode, useState, useEffect, useRef, useContext, createContext } from 'react';
+import React, { useState, useEffect, useRef, useContext, createContext } from 'react';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
+import { ITab, ITabs } from '@/types/types';
 
+// eslint-disable-next-line no-spaced-func, func-call-spacing
 const TabsContext = createContext<{ activeTab: string; handleTabClick: (value: string) => void; variant: 'default' | 'solid' | 'outlined' | 'split' } | undefined>(undefined);
-
-interface TabsProps {
-  activeTab: string;
-  variant?: 'default' | 'solid' | 'outlined' | 'split';
-  onChange?: (value: string) => void;
-  className?: string;
-  children: ReactNode;
-  disabled?: boolean;
-  size?: 'default' | 'sm' | 'lg';
-  radius?: 'default' | 'none' | 'sm' | 'lg' | 'full';
-  selectorClassName?: string;
-  direction?: 'horizontal' | 'vertical';
-  contentPlacement?: 'top' | 'bottom' | 'left' | 'right';
-  contentClasName?: string;
-}
-
-interface TabProps {
-  label: string | ReactNode;
-  value: string;
-  isActive?: boolean;
-  onClick?: () => void;
-  className?: string;
-  children: ReactNode;
-  disabled?: boolean;
-  allDisabled?: boolean;
-  size?: 'default' | 'sm' | 'lg';
-  radius?: 'default' | 'none' | 'sm' | 'lg' | 'full';
-}
 
 const tabsContainerVariants = cva('flex h-fit gap-2', {
   variants: {
@@ -173,12 +147,14 @@ const selectorVariants = cva('absolute transition-transform duration-200', {
   },
 });
 
-const Tabs: React.FC<TabsProps> = ({ activeTab, variant = 'default', onChange, className, contentClasName,
+const Tabs: React.FC<ITabs> = ({ activeTab, variant = 'default', onChange, className, contentClasName,
   selectorClassName, children, disabled, size = 'default', radius = 'default', direction = 'horizontal', contentPlacement = 'bottom' }) => {
   const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>({});
   const tabsRef = useRef<HTMLDivElement>(null);
 
-  const labels = React.Children.map(children, (child: React.ReactElement<TabProps>) => child.props.label);
+  const labels = React.Children.toArray(children)
+    .filter((child): child is React.ReactElement<ITab> => React.isValidElement<ITab>(child))
+    .map(child => child.props.label);
 
   useEffect(() => {
     const activeTabElement = tabsRef.current?.querySelector('.active-tab') as HTMLButtonElement;
@@ -210,7 +186,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, variant = 'default', onChange, c
               style={indicatorStyle}
             />
             {React.Children.map(children, child => {
-              if (React.isValidElement<TabProps>(child)) {
+              if (React.isValidElement<ITab>(child)) {
                 return React.cloneElement(child, {
                   isActive: child.props.value === activeTab,
                   onClick: () => handleTabClick(child.props.value),
@@ -225,7 +201,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, variant = 'default', onChange, c
         {/* Content */}
         <div>
           {React.Children.map(children, child => {
-            if (React.isValidElement<TabProps>(child) && child.props.value === activeTab) {
+            if (React.isValidElement<ITab>(child) && child.props.value === activeTab) {
               return <div className={contentClasName}>{child.props.children}</div>;
             }
             return null;
@@ -236,7 +212,7 @@ const Tabs: React.FC<TabsProps> = ({ activeTab, variant = 'default', onChange, c
   );
 };
 
-const Tab: React.FC<TabProps> = ({ className, label, value, onClick, disabled, allDisabled, size }) => {
+const Tab: React.FC<ITab> = ({ className, label, value, onClick, disabled, allDisabled, size }) => {
   const context = useContext(TabsContext);
 
   // If Tab is used without a Tabs component, throw an error

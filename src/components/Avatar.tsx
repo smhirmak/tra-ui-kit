@@ -4,11 +4,12 @@
 /* eslint-disable no-nested-ternary */
 import { User, X } from '@/assets/Icons';
 import { cn } from '@/lib/utils';
+import { IAvatar, IMultipleAvatarContainer } from '@/types/types';
 import { cva } from 'class-variance-authority';
 import React, { HTMLAttributes, useState } from 'react';
 
 const avatarVariants = cva(
-  'relative transition bg-tra-primary-15 text-tra-primary flex items-center justify-center w-fit',
+  'relative flex w-fit items-center justify-center bg-tra-primary-15 text-tra-primary transition',
   {
     variants: {
       variant: {
@@ -16,8 +17,8 @@ const avatarVariants = cva(
         rounded: 'rounded-lg',
       },
       size: {
-        sm: 'text-lg w-12 h-12 aspect-square',
-        lg: 'text-6xl w-52 h-52 min-w-52 min-h-52 aspect-square',
+        sm: 'aspect-square size-12 text-lg',
+        lg: 'aspect-square size-52 min-h-52 min-w-52 text-6xl',
       },
     },
     defaultVariants: {
@@ -32,8 +33,8 @@ const avatarIconVariants = cva(
   {
     variants: {
       size: {
-        sm: 'w-5 h-5',
-        lg: 'w-20 h-20',
+        sm: 'size-5',
+        lg: 'size-20',
       },
     },
     defaultVariants: {
@@ -42,7 +43,7 @@ const avatarIconVariants = cva(
   },
 );
 const imageVariants = cva(
-  'object-fill w-full h-max-full',
+  'h-max-full w-full object-fill',
   {
     variants: {
       variant: {
@@ -61,8 +62,8 @@ const badgeVariants = cva(
   {
     variants: {
       badgePosition: {
-        'top-left': 'top-0 left-0',
-        'top-right': 'top-0 right-0',
+        'top-left': 'left-0 top-0',
+        'top-right': 'right-0 top-0',
         'bottom-left': 'bottom-0 left-0',
         'bottom-right': 'bottom-0 right-0',
       },
@@ -85,37 +86,37 @@ const badgeVariants = cva(
         badgePosition: 'top-left',
         variant: 'circular',
         size: 'lg',
-        className: 'top-8 left-8 transform -translate-x-full -translate-y-1/2',
+        className: 'left-8 top-8 -translate-x-full -translate-y-1/2 transform',
       },
       {
         badgePosition: 'top-right',
         variant: 'circular',
         size: 'lg',
-        className: 'top-8 right-8 transform translate-x-full -translate-y-1/2',
+        className: 'right-8 top-8 -translate-y-1/2 translate-x-full transform',
       },
       {
         badgePosition: 'bottom-left',
         variant: 'circular',
         size: 'lg',
-        className: 'bottom-8 left-8 transform -translate-x-full translate-y-1/2',
+        className: 'bottom-8 left-8 -translate-x-full translate-y-1/2 transform',
       },
       {
         badgePosition: 'bottom-right',
         variant: 'circular',
         size: 'lg',
-        className: 'bottom-8 right-8 transform translate-x-full translate-y-1/2',
+        className: 'bottom-8 right-8 translate-x-full translate-y-1/2 transform',
       },
       {
         badgePosition: 'top-left',
         variant: 'rounded',
         size: 'lg',
-        className: '-top-2 -left-2',
+        className: '-left-2 -top-2',
       },
       {
         badgePosition: 'top-right',
         variant: 'rounded',
         size: 'lg',
-        className: '-top-2 -right-2',
+        className: '-right-2 -top-2',
       },
       {
         badgePosition: 'bottom-left',
@@ -133,13 +134,13 @@ const badgeVariants = cva(
         badgePosition: 'top-left',
         variant: 'rounded',
         size: 'sm',
-        className: '-top-1 -left-1',
+        className: '-left-1 -top-1',
       },
       {
         badgePosition: 'top-right',
         variant: 'rounded',
         size: 'sm',
-        className: '-top-1 -right-1',
+        className: '-right-1 -top-1',
       },
       {
         badgePosition: 'bottom-left',
@@ -156,22 +157,6 @@ const badgeVariants = cva(
     ],
   },
 );
-
-interface IAvatar {
-  asChild?: React.ElementType;
-  badgeClassName?: string;
-  badgeContent?: React.ReactNode;
-  badgePosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-  className?: string;
-  href?: string;
-  icon?: React.ReactNode;
-  imageClassName?: string;
-  onClick?: () => void;
-  size?: 'sm' | 'lg';
-  src?: string;
-  title?: string;
-  variant?: 'circular' | 'rounded';
-}
 
 const Avatar = React.forwardRef<HTMLAttributes<HTMLDivElement>, IAvatar>(({
   asChild,
@@ -213,14 +198,7 @@ const showMoreAvatarVariants = cva('relative hover:brightness-125');
 
 const showLessAvatarVariants = cva('bg-tra-primary/50 text-white hover:brightness-125');
 
-interface MultipleAvatarContainerProps {
-  children: React.ReactNode[];
-  lastElementSize?: 'sm' | 'lg';
-  showLessAvatarClassName?: string;
-  showMoreAvatarClassName?: string;
-}
-
-const MultipleAvatarContainer: React.FC<MultipleAvatarContainerProps> = ({ children, lastElementSize = 'sm', showLessAvatarClassName, showMoreAvatarClassName }) => {
+const MultipleAvatarContainer: React.FC<IMultipleAvatarContainer> = ({ children, lastElementSize = 'sm', showLessAvatarClassName, showMoreAvatarClassName }) => {
   const [showAllAvatars, setShowAllAvatars] = useState(false);
   const maxVisibleAvatars = 4;
   const remainingAvatars = React.Children.count(children) - maxVisibleAvatars;

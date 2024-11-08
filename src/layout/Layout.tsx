@@ -1,89 +1,15 @@
-import { Link, Outlet, useLocation } from 'react-router-dom/dist';
+import { Outlet } from 'react-router-dom/dist';
 import Container from '@/components/Container';
 import Header from './Header';
-
-const sidebarList = [
-  // {
-  //   label: 'Home',
-  //   link: '/',
-  // },
-  {
-    label: 'Syntax Highlighter Block',
-    link: '/syntax-highlighter',
-  },
-  {
-    label: 'Avatar',
-    link: '/avatar',
-  },
-  {
-    label: 'Badge',
-    link: '/badge',
-  },
-  {
-    label: 'Button',
-    link: '/button',
-  },
-  {
-    label: 'Checkbox',
-    link: '/checkbox',
-  },
-  {
-    label: 'Chip',
-    link: '/chip',
-  },
-  {
-    label: 'Information Status',
-    link: '/information-status',
-  },
-  {
-    label: 'Loader',
-    link: '/loader',
-  },
-  {
-    label: 'Text Field',
-    link: '/text-field',
-  },
-  {
-    label: 'Notification',
-    link: '/notification',
-  },
-  {
-    label: 'Radio Button',
-    link: '/radio-button',
-  },
-  {
-    label: 'Search Bar',
-    link: '/search-bar',
-  },
-  {
-    label: 'Skeleton',
-    link: '/skeleton',
-  },
-  {
-    label: 'Switch',
-    link: '/switch',
-  },
-  {
-    label: 'Tabs',
-    link: '/tabs',
-  },
-  {
-    label: 'Background Video',
-    link: '/background-video',
-  },
-  {
-    label: 'Image Hover Effect',
-    link: '/image-hover-effect',
-  },
-];
+import SideBar from './SideBar';
 
 const Layout = () => (
   <div className="flex flex-row">
     <SideBar />
-    <div className="flex min-h-screen w-full flex-col">
+    <div className="ml-36 flex min-h-screen w-full flex-col">
       <Header />
       <div className="grow pl-2">
-        <Container maxWidth="full">
+        <Container maxWidth="xl">
           <Outlet />
         </Container>
       </div>

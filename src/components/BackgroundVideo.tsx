@@ -1,20 +1,15 @@
+import { IBackgroundVideo } from '@/types/types';
 import React from 'react';
 
-interface BackgroundVideoProps {
-  videoSrc: string;
-  posterImg?: string;
-  className?: string;
-  [key: string]: any; // Diğer props için
-}
-
-const BackgroundVideo: React.FC<BackgroundVideoProps> = ({ videoSrc, posterImg, className, ...props }) => (
+const BackgroundVideo: React.FC<IBackgroundVideo> = ({ videoSrc, posterImg, className, ...props }) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <div className={`relative overflow-hidden ${className}`} {...props}>
     <video
       autoPlay
       muted
       loop
       playsInline
-      className="absolute top-0 left-0 w-full h-full object-cover"
+      className="absolute left-0 top-0 size-full object-cover"
       poster={posterImg}
     >
       <source src={`${videoSrc}.webm`} type="video/webm" />
