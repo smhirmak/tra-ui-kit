@@ -233,6 +233,9 @@ module.exports = {
       content: {
         required: "'*'",
       },
+      transitionDuration: {
+        250: '250ms',
+      },
       zIndex: {
         1: '1',
         2: '2',

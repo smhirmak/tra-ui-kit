@@ -24,6 +24,7 @@ import ImageHoverEffectPage from './pages/components/ImageHoverEffectPage';
 import { NotificationProvider } from './contexts/notification/NotificationProvider';
 import { useLocalizeContext } from './contexts/locale/LocalizeContext';
 import { useAppContext } from './contexts/app/AppProvider';
+import AccordionPage from './pages/components/AccordionPage';
 
 const router = createBrowserRouter([
   {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: 'image-hover-effect',
         element: <ImageHoverEffectPage />,
+      },
+      {
+        path: 'accordion',
+        element: <AccordionPage />,
       },
     ],
   }]);

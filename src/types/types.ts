@@ -285,3 +285,29 @@ export interface INotificationContext {
   invoke: (type: string, message: string, autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode) => void;
   translateFunction: (e: string | string[]) => void;
 }
+
+export interface IAccordion {
+  children: ReactNode;
+  className?: string;
+}
+
+export interface IAccordionItem {
+  title: string;
+  children: ReactNode;
+  className?: string;
+  contentClassName?: string;
+  triggerClassName?: string;
+}
+
+export interface IAccordionTrigger {
+  onClick: () => void;
+  isOpen: boolean;
+  children: ReactNode;
+  className?: string;
+}
+
+export interface IAccordionContent {
+  isOpen: boolean;
+  children: ReactNode;
+  className?: string;
+}
