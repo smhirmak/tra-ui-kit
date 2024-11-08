@@ -28,6 +28,9 @@ const chipVariants = cva(
     },
     defaultVariants: {
       size: 'default',
+      clickable: false,
+      active: false,
+      selected: false,
     },
   },
 );
@@ -48,7 +51,7 @@ interface IChip {
 
 const Chip = React.forwardRef<HTMLButtonElement, IChip>(
   ({
-    active,
+    active = false,
     deleteIcon,
     endIcon,
     id,
@@ -56,7 +59,7 @@ const Chip = React.forwardRef<HTMLButtonElement, IChip>(
     labelClassName,
     onClick,
     onDelete,
-    selected,
+    selected = false,
     size = 'default',
     startIcon,
   }, ref) => (

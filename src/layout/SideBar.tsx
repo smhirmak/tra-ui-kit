@@ -1,6 +1,4 @@
-import { Link, Outlet, useLocation } from 'react-router-dom/dist';
-import Container from '@/components/Container';
-import Header from './Header';
+import { Link, useLocation } from 'react-router-dom';
 
 const sidebarList = [
   // {
@@ -77,18 +75,21 @@ const sidebarList = [
   },
 ];
 
-const Layout = () => (
-  <div className="flex flex-row">
-    <SideBar />
-    <div className="flex min-h-screen w-full flex-col">
-      <Header />
-      <div className="grow pl-2">
-        <Container maxWidth="full">
-          <Outlet />
-        </Container>
-      </div>
+const SideBar = () => {
+  const location = useLocation();
+  return (
+    <div className="sticky left-0 top-0 flex max-h-screen min-h-screen min-w-36 flex-col overflow-y-auto bg-tra-background p-4">
+      <p className="text-xl font-semibold underline underline-offset-auto">Components</p>
+      {sidebarList.sort((a, b) => a.label.localeCompare(b.label)).map(e => (
+        <>
+          <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === e.link && 'bg-tra-primary/10 text-tra-primary'}`}>
+            {e.label}
+          </Link>
+          <span className="h-1 w-full border-b-2 border-tra-primary-15 last:border-b-0" />
+        </>
+      ))}
     </div>
-  </div>
-);
+  );
+};
 
-export default Layout;
+export default SideBar;
