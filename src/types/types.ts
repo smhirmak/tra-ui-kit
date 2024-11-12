@@ -289,21 +289,40 @@ export interface INotificationContext {
 export interface IAccordion {
   children: ReactNode;
   className?: string;
+  multipleExpand?: boolean;
+  variant?: 'solid' | 'outlined' | 'splitted' | 'underlined';
 }
 
 export interface IAccordionItem {
   title: string;
+  subTitle?: string;
   children: ReactNode;
   className?: string;
   contentClassName?: string;
   triggerClassName?: string;
+  isOpen?: boolean;
+  onClick?: () => void | undefined;
+  variant?: 'solid' | 'outlined' | 'splitted' | 'underlined';
+  disabled?: boolean;
+  defaultOpen?: boolean;
+  startContent?: ReactNode;
+  icon?: ReactNode;
 }
 
 export interface IAccordionTrigger {
   onClick: () => void;
   isOpen: boolean;
+  title: string;
+  subTitle?: string;
   children: ReactNode;
   className?: string;
+  disabled?: boolean;
+  startContent?: ReactNode;
+  icon?: ReactNode;
+  iconContainerClassName?: string;
+  titleClassName?: string;
+  subTitleClassName?: string;
+  variant?: 'solid' | 'outlined' | 'splitted' | 'underlined';
 }
 
 export interface IAccordionContent {

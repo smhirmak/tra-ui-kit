@@ -84,8 +84,8 @@ const SideBar = () => {
   const location = useLocation();
   return (
     <div className="sticky left-0 top-0 flex max-h-screen min-h-screen min-w-36 flex-col overflow-y-auto bg-tra-background p-4">
-      <Accordion>
-        <AccordionItem title="Components" contentClassName="flex flex-col">
+      <Accordion multipleExpand>
+        <AccordionItem title="Components" defaultOpen contentClassName="flex flex-col">
           {sidebarList.sort((a, b) => a.label.localeCompare(b.label)).map(e => (
             <>
               <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === e.link && 'bg-tra-primary/10 text-tra-primary'}`}>
