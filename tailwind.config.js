@@ -132,6 +132,7 @@ module.exports = {
       },
       transitionProperty: {
         'font-size': 'font-size',
+        height: 'height',
       },
       transitionTimingFunction: {
         cubic: 'cubic-bezier(0, 0, 0.2, 1)',
@@ -232,6 +233,11 @@ module.exports = {
       },
       content: {
         required: "'*'",
+      },
+      transitionDuration: {
+        250: '250ms',
+        350: '350ms',
+        400: '400ms',
       },
       zIndex: {
         1: '1',

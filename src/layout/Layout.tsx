@@ -6,13 +6,13 @@ import SideBar from './SideBar';
 const Layout = () => (
   <div className="flex flex-row">
     <SideBar />
-    <div className="ml-36 flex min-h-screen w-full flex-col">
-      <Header />
-      <div className="grow pl-2">
-        <Container maxWidth="xl">
+    <div className="flex min-h-screen w-full flex-col">
+      <Container maxWidth="full" disableGutters className="px-0">
+        <Header />
+        <div className="grow px-2">
           <Outlet />
-        </Container>
-      </div>
+        </div>
+      </Container>
     </div>
   </div>
 );
