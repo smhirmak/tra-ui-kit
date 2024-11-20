@@ -1,6 +1,5 @@
 import { Plus } from '@/assets/Icons';
 import Chip from '@/components/Chip';
-import React from 'react';
 
 const ChipPage = () => (
   <div className="mb-6 border-b-2 pb-6">

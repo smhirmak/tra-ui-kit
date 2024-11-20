@@ -22,7 +22,7 @@ export const NotificationProvider: React.FC<INotification> = (
     notificationClassName,
     closeButtonClassName,
     progressBarClassName,
-    animationMode = 'bounce',
+    animationMode = 'bounce' as 'flip' | 'bounce' | 'slide' | null | undefined,
     position = 'top-right' },
 ) => {
   const [notifications, setNotifications] = useState<{ id: number; type: string; message: string; icon?: ReactNode; timeoutId?: NodeJS.Timeout, exiting?: boolean }[]>([]);
@@ -80,7 +80,7 @@ export const NotificationProvider: React.FC<INotification> = (
         notificationClassName={notificationClassName}
         closeButtonClassName={closeButtonClassName}
         progressBarClassName={progressBarClassName}
-        animationMode={animationMode}
+        animationMode={animationMode || undefined}
         position={position}
       />
     </NotificationContext.Provider>

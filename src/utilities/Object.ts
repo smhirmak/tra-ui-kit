@@ -1,5 +1,13 @@
-const Object = {
-  GetNestedValue: (obj, key) => {
+interface NestedObject {
+  [key: string]: any;
+}
+
+interface ObjectUtilities {
+  GetNestedValue: (obj: NestedObject, key: string) => any;
+}
+
+const Object: ObjectUtilities = {
+  GetNestedValue: (obj: NestedObject, key: string): any => {
     const properties = key.split('.');
     let value = obj;
     properties.forEach(prop => {

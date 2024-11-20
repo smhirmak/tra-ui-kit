@@ -1,13 +1,12 @@
-import { Error, Plus, Warning } from '@/assets/Icons'
+import { Error, Plus, Warning } from '@/assets/Icons';
 import Button from '@/components/Button';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
-import { Tab, Tabs } from '@/components/Tabs'
-import React, { useState } from 'react'
+import { Tab, Tabs } from '@/components/Tabs';
+import { useState } from 'react';
 
 const TabsPage = () => {
   const [activeTab, setActiveTab] = useState<string>('tab3');
   const [tabContentPlacement, setTabContentPlacement] = useState<'top' | 'right' | 'bottom' | 'left'>('bottom');
-
 
   const handleTabChange = (newValue: string) => {
     setActiveTab(newValue);
@@ -162,7 +161,7 @@ const TabsPage = () => {
         </div>
         <p className="my-2 text-xl">Solid Rounded:</p>
         <div className="flex flex-wrap space-x-2 pb-2">
-          {['none', 'sm', 'default', 'lg', 'full'].map((e: string) => (
+          {(['none', 'sm', 'default', 'lg', 'full'] as ('none' | 'sm' | 'default' | 'lg' | 'full')[]).map(e => (
             <Tabs variant="solid" radius={e} activeTab={activeTab} size="lg" onChange={handleTabChange}>
               <Tab label="Tab 1" value="tab1">
                 Content for Tab 1
@@ -178,7 +177,7 @@ const TabsPage = () => {
         </div>
         <p className="my-2 text-xl">Outlined Rounded:</p>
         <div className="flex flex-wrap space-x-2 pb-2">
-          {['none', 'sm', 'default', 'lg', 'full'].map((e: string) => (
+          {(['none', 'sm', 'default', 'lg', 'full'] as ('none' | 'sm' | 'default' | 'lg' | 'full')[]).map((e: 'none' | 'sm' | 'default' | 'lg' | 'full') => (
             <Tabs variant="outlined" radius={e} activeTab={activeTab} size="lg" onChange={handleTabChange}>
               <Tab label="Tab 1" value="tab1">
                 Content for Tab 1
@@ -203,7 +202,7 @@ const TabsPage = () => {
         </div>
         <p className="my-2 text-xl">Split Rounded:</p>
         <div className="flex flex-wrap space-x-2 pb-2">
-          {['none', 'sm', 'default', 'lg', 'full'].map((e: string) => (
+          {(['none', 'sm', 'default', 'lg', 'full'] as ('none' | 'sm' | 'default' | 'lg' | 'full')[]).map((e: 'none' | 'sm' | 'default' | 'lg' | 'full') => (
             <Tabs variant="split" radius={e} activeTab={activeTab} size="lg" onChange={handleTabChange}>
               <Tab label="Tab 1" value="tab1">
                 Content for Tab 1
@@ -220,7 +219,7 @@ const TabsPage = () => {
         <p className="my-2 text-xl">Vertical Direction:</p>
         <div className="flex flex-wrap space-x-2 pb-2">
           {['default', 'solid', 'outlined', 'split'].map((e: string) => (
-            <Tabs variant={e} direction="vertical" activeTab={activeTab} selectorClassName="bg-error/50" size="lg" onChange={handleTabChange}>
+            <Tabs variant={e as 'default' | 'split' | 'solid' | 'outlined'} direction="vertical" activeTab={activeTab} selectorClassName="bg-error/50" size="lg" onChange={handleTabChange}>
               <Tab label="Tab 1" value="tab1">
                 Content for Tab 1
               </Tab>
@@ -237,7 +236,7 @@ const TabsPage = () => {
           <div>
             <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Default</p>
             <div className="flex flex-wrap space-x-2 pb-2">
-              <RadioGroup onValueChange={(e: 'top' | 'right' | 'bottom' | 'left') => setTabContentPlacement(e)} className='w-full bg-tra-primary-15 flex items-center flex-col'>
+              <RadioGroup onValueChange={(e: 'top' | 'right' | 'bottom' | 'left') => setTabContentPlacement(e)} className="flex w-full flex-col items-center bg-tra-primary-15">
                 <RadioGroupItem id="top" label="Top" value="top" />
                 <RadioGroupItem id="right" label="Right" value="right" />
                 <RadioGroupItem id="bottom" label="Bottom" value="bottom" />
@@ -250,7 +249,8 @@ const TabsPage = () => {
                 direction="vertical"
                 activeTab={activeTab}
                 size="lg"
-                onChange={handleTabChange}>
+                onChange={handleTabChange}
+              >
                 <Tab label="Tab 1" value="tab1">
                   Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
@@ -276,7 +276,8 @@ const TabsPage = () => {
                 direction="vertical"
                 activeTab={activeTab}
                 size="lg"
-                onChange={handleTabChange}>
+                onChange={handleTabChange}
+              >
                 <Tab label="Tab 1" value="tab1">
                   Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
@@ -302,7 +303,8 @@ const TabsPage = () => {
                 direction="vertical"
                 activeTab={activeTab}
                 size="lg"
-                onChange={handleTabChange}>
+                onChange={handleTabChange}
+              >
                 <Tab label="Tab 1" value="tab1">
                   Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
@@ -328,7 +330,8 @@ const TabsPage = () => {
                 direction="vertical"
                 activeTab={activeTab}
                 size="lg"
-                onChange={handleTabChange}>
+                onChange={handleTabChange}
+              >
                 <Tab label="Tab 1" value="tab1">
                   Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
@@ -355,35 +358,49 @@ const TabsPage = () => {
               direction="vertical"
               activeTab={activeTab}
               size="lg"
-              onChange={handleTabChange}>
+              onChange={handleTabChange}
+            >
               <Tab
                 label={
-                  (<span className="flex gap-2 w-max">
-                    <Error className="size-6 text-error" />
-                    Tab 1
-                  </span>)}
-                value="tab1">
+                  (
+                    <span className="flex w-max gap-2">
+                      <Error className="size-6 text-error" />
+                      Tab 1
+                    </span>
+)
+}
+                value="tab1"
+              >
                 Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
               </Tab>
               <Tab
                 label={
-                  (<span className="flex gap-2 w-max">
-                    Tab 2
-                    <Warning className="size-6 text-tra-tetriary" />
-                  </span>)} value="tab2">
+                  (
+                    <span className="flex w-max gap-2">
+                      Tab 2
+                      <Warning className="size-6 text-tra-tetriary" />
+                    </span>
+)
+}
+                value="tab2"
+              >
                 Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, debitis.
               </Tab>
               <Tab
                 label={
-                  (<span className="flex gap-2 w-max">
-                    <Error className="size-6 text-error" />
-                    Tab 3
-                    <Error className="size-6 text-error" />
-                  </span>)}
-                value="tab3">
+                  (
+                    <span className="flex w-max gap-2">
+                      <Error className="size-6 text-error" />
+                      Tab 3
+                      <Error className="size-6 text-error" />
+                    </span>
+)
+}
+                value="tab3"
+              >
                 Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque ratione molestiae obcaecati quae dolor quis eaque facere voluptas corporis porro.
@@ -402,13 +419,17 @@ const TabsPage = () => {
             direction="vertical"
             activeTab={activeTab}
             size="lg"
-            onChange={handleTabChange}>
+            onChange={handleTabChange}
+          >
             <Tab
               label={
-                (<span className="flex gap-2 w-max">
-                  <Error className="size-6 text-error" />
-                  Tab 1
-                </span>)}
+                (
+                  <span className="flex w-max gap-2">
+                    <Error className="size-6 text-error" />
+                    Tab 1
+                  </span>
+)
+}
               value="tab1"
             >
               Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -416,10 +437,13 @@ const TabsPage = () => {
             </Tab>
             <Tab
               label={
-                (<span className="flex gap-2 w-max">
-                  Tab 2
-                  <Warning className="size-6 text-tra-tetriary" />
-                </span>)}
+                (
+                  <span className="flex w-max gap-2">
+                    Tab 2
+                    <Warning className="size-6 text-tra-tetriary" />
+                  </span>
+)
+}
               value="tab2"
             >
               Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -428,11 +452,14 @@ const TabsPage = () => {
             </Tab>
             <Tab
               label={
-                (<span className="flex gap-2 w-max">
-                  <Error className="size-6 text-error" />
-                  Tab 3
-                  <Error className="size-6 text-error" />
-                </span>)}
+                (
+                  <span className="flex w-max gap-2">
+                    <Error className="size-6 text-error" />
+                    Tab 3
+                    <Error className="size-6 text-error" />
+                  </span>
+)
+}
               value="tab3"
             >
               Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -452,13 +479,17 @@ const TabsPage = () => {
             direction="vertical"
             activeTab={activeTab}
             size="lg"
-            onChange={handleTabChange}>
+            onChange={handleTabChange}
+          >
             <Tab
               label={
-                (<span className="flex gap-2 w-max">
-                  <Error className="size-6 text-error" />
-                  Tab 1
-                </span>)}
+                (
+                  <span className="flex w-max gap-2">
+                    <Error className="size-6 text-error" />
+                    Tab 1
+                  </span>
+)
+}
               value="tab1"
             >
               Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -466,10 +497,13 @@ const TabsPage = () => {
             </Tab>
             <Tab
               label={
-                (<span className="flex gap-2 w-max">
-                  Tab 2
-                  <Warning className="size-6 text-tra-tetriary" />
-                </span>)}
+                (
+                  <span className="flex w-max gap-2">
+                    Tab 2
+                    <Warning className="size-6 text-tra-tetriary" />
+                  </span>
+)
+}
               value="tab2"
             >
               Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -478,11 +512,14 @@ const TabsPage = () => {
             </Tab>
             <Tab
               label={
-                (<span className="flex gap-2 w-max">
-                  <Error className="size-6 text-error" />
-                  Tab 3
-                  <Error className="size-6 text-error" />
-                </span>)}
+                (
+                  <span className="flex w-max gap-2">
+                    <Error className="size-6 text-error" />
+                    Tab 3
+                    <Error className="size-6 text-error" />
+                  </span>
+)
+}
               value="tab3"
             >
               Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -502,13 +539,17 @@ const TabsPage = () => {
             direction="vertical"
             activeTab={activeTab}
             size="lg"
-            onChange={handleTabChange}>
+            onChange={handleTabChange}
+          >
             <Tab
               label={
-                (<span className="flex gap-2 w-max">
-                  <Error className="size-6 text-error" />
-                  Tab 1
-                </span>)}
+                (
+                  <span className="flex w-max gap-2">
+                    <Error className="size-6 text-error" />
+                    Tab 1
+                  </span>
+)
+}
               value="tab1"
             >
               Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -516,10 +557,13 @@ const TabsPage = () => {
             </Tab>
             <Tab
               label={
-                (<span className="flex gap-2 w-max">
-                  Tab 2
-                  <Warning className="size-6 text-tra-tetriary" />
-                </span>)}
+                (
+                  <span className="flex w-max gap-2">
+                    Tab 2
+                    <Warning className="size-6 text-tra-tetriary" />
+                  </span>
+)
+}
               value="tab2"
             >
               Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -528,11 +572,14 @@ const TabsPage = () => {
             </Tab>
             <Tab
               label={
-                (<span className="flex gap-2 w-max">
-                  <Error className="size-6 text-error" />
-                  Tab 3
-                  <Error className="size-6 text-error" />
-                </span>)}
+                (
+                  <span className="flex w-max gap-2">
+                    <Error className="size-6 text-error" />
+                    Tab 3
+                    <Error className="size-6 text-error" />
+                  </span>
+)
+}
               value="tab3"
             >
               Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -544,10 +591,10 @@ const TabsPage = () => {
           </Tabs>
         </div>
       </div>
-      <Button onClick={() => setActiveTab(activeTab === 'tab1' ? 'tab2' : activeTab === 'tab2' ? 'tab3' : activeTab === 'tab3' ? 'tab1' : 'tab1')}> Change Tab</Button >
+      <Button onClick={() => setActiveTab(activeTab === 'tab1' ? 'tab2' : activeTab === 'tab2' ? 'tab3' : activeTab === 'tab3' ? 'tab1' : 'tab1')}> Change Tab</Button>
 
     </div>
-  )
-}
+  );
+};
 
-export default TabsPage
+export default TabsPage;

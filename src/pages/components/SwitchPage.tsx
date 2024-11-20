@@ -1,5 +1,4 @@
 import Switch from '@/components/Switch';
-import React from 'react';
 
 const SwitchPage = () => (
   <div className="mb-6 border-b-2 pb-6">

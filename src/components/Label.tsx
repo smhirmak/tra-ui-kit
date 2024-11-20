@@ -164,20 +164,20 @@ const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
         <div className={`relative ${disabled && 'cursor-not-allowed text-tra-neutral-grey'} ${(startIcon && !outlineFocused && !alwaysTop) && 'pl-7'}`}>
           <span className={cn(outlineLabelVariants({ size, outlineFocused, alwaysTop, showRequiredIcon }))}>{children}</span>
           <div
-            style={{ width: tooltip ? `${+(ref?.current?.offsetWidth ?? 0) + 25}px` : `${+(ref?.current?.offsetWidth ?? 0) + 6}px` }}
+            style={{ width: tooltip ? `${ref && 'current' in ref ? +(ref.current?.offsetWidth ?? 0) + 25 : 0}px` : `${ref && 'current' in ref ? +(ref.current?.offsetWidth ?? 0) + 6 : 0}px` }}
             className={cn(outlineLabelBoxVariants({ size, disabled, borderRadius }))}
           />
           {tooltip && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger className={cn(outlineTooltipVariants({ size }))}>
-                  <Info className="" />
-                </TooltipTrigger>
-                <TooltipContent side="bottom">
-                  <p>{tooltip}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger className={cn(outlineTooltipVariants({ size }))}>
+                <Info className="" />
+              </TooltipTrigger>
+              <TooltipContent side="bottom">
+                <p>{tooltip}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           )}
         </div>
       ) : (
