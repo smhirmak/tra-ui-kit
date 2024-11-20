@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { LocalizeContext } from './LocalizeContext';
 
-const LocalizeProvider = ({ children }) => {
+const LocalizeProvider:React.FC<{ children: ReactNode }> = ({ children }) => {
   const [locale, setLocale] = useState(localStorage.getItem('lang') || 'tr');
   const { t: Translate } = useTranslation();
 

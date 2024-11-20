@@ -1,15 +1,6 @@
 import CodeBlockv2 from '@/components/CodeBlockv2';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { coldarkDark, nightOwl, vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const SyntaxHighlighterBlock = () => {
-  const exampleCode = `
-    const greeting = "Hello, world!";
-    function greet() {
-        console.log(greeting);
-    }
-    greet();
-    `;
   const exampleCode2 = `
     <>
       <div>

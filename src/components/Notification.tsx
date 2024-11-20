@@ -11,7 +11,7 @@ const Notification = () => {
     // const { autoClose = true, autoCloseTime } = options || {};
     invoke(
       'info',
-      Array.isArray(message) ? message[0] : translateFunction ? translateFunction(message) : message,
+      Array.isArray(message) ? message[0] : (translateFunction ? translateFunction(message) : message) || '',
       { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
     );
   };
@@ -22,7 +22,7 @@ const Notification = () => {
   ) => {
     invoke(
       'error',
-      Array.isArray(message) ? message[0] : translateFunction ? translateFunction(message) : message,
+      Array.isArray(message) ? message[0] : (translateFunction ? translateFunction(message) : message) || '',
       { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
     );
   };
@@ -33,7 +33,7 @@ const Notification = () => {
   ) => {
     invoke(
       'success',
-      Array.isArray(message) ? message[0] : translateFunction ? translateFunction(message) : message,
+      Array.isArray(message) ? message[0] : (translateFunction ? translateFunction(message) : message) || '',
       { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
     );
   };
@@ -44,7 +44,7 @@ const Notification = () => {
   ) => {
     invoke(
       'warn',
-      Array.isArray(message) ? message[0] : translateFunction ? translateFunction(message) : message,
+      Array.isArray(message) ? message[0] : (translateFunction ? translateFunction(message) : message) || '',
       { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
     );
   };

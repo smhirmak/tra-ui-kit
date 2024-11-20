@@ -1,5 +1,4 @@
 import Skeleton from '@/components/Skeleton';
-import React from 'react';
 
 const SkeletonPage = () => (
   <div className="mb-6 border-b-2 pb-6">

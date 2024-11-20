@@ -1,6 +1,5 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import Layout from './layout/Layout';
 import Home from './pages/Home';
 import BackToTopButton from './components/BackToTopButton';
@@ -8,7 +7,7 @@ import SyntaxHighlighterBlock from './pages/components/SyntaxHighlighterBlock';
 import AvatarPage from './pages/components/AvatarPage';
 import BadgePage from './pages/components/BadgePage';
 import ButtonPage from './pages/components/ButtonPage';
-import CheckboxPage from './pages/components/CheckBoxPage';
+import CheckboxPage from './pages/components/CheckboxPage';
 import ChipPage from './pages/components/ChipPage';
 import InformationStatusPage from './pages/components/InformationStatusPage';
 import LoaderPage from './pages/components/LoaderPage';

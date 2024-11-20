@@ -21,13 +21,13 @@ const NotificationPage = () => {
         </RadioGroup>
         <RadioGroup
           defaultValue="bounce"
-          onValueChange={(e: 'bounce' | 'slide' | 'flip' | false) => setNotificationAnimateMode(e)}
+          onValueChange={e => setNotificationAnimateMode(e as 'bounce' | 'slide' | 'flip' | false)}
           className="mt-3 flex w-fit flex-col rounded-md bg-tra-primary-15 p-4"
         >
           <RadioGroupItem id="bounce" label="Bounce" value="bounce" />
           <RadioGroupItem id="slide" label="Slide" value="slide" />
           <RadioGroupItem id="flip" label="Flip" value="flip" />
-          <RadioGroupItem id="false" label="Disabled" value={false} />
+          <RadioGroupItem id="false" label="Disabled" value="false" />
         </RadioGroup>
         <RadioGroup defaultValue="top-right" onValueChange={(e: 'top-right' | 'bottom-right') => setNotificationPosition(e)} className="mt-3 flex w-fit flex-col rounded-md bg-tra-primary-15 p-4">
           <RadioGroupItem id="top-right" label="Top Right" value="top-right" />
@@ -37,7 +37,7 @@ const NotificationPage = () => {
         </RadioGroup>
       </div>
       <div className="mt-2 flex space-x-2 border-t-2 py-2">
-        <Button onClick={() => info('Info', { autoClose: false })}>Without Auto Close Info Notification</Button>
+        <Button onClick={() => info('Info', { })}>Without Auto Close Info Notification</Button>
         <Button onClick={() => error('Error', { autoClose: false })} className="bg-error hover:bg-error/75">Without Auto Close Error Notification</Button>
         <Button onClick={() => success('Success', { autoClose: false })} className="bg-success text-tra-neutral-white">Without Auto Close Success Notification</Button>
         <Button onClick={() => warn('Warning', { autoClose: false })} className="bg-warning text-tra-neutral-white">Without Auto Close Warning Notification</Button>

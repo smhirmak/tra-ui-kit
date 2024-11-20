@@ -280,14 +280,13 @@ const NotificationContainer: React.FC<{
   notificationClassName?: string;
   closeButtonClassName?: string;
   progressBarClassName?: string;
-  animationMode?: 'bounce' | 'slide' | 'flip' | false;
+  animationMode?: 'bounce' | 'slide' | 'flip' | null;
   position?: 'top-right' | 'bottom-right' | 'top-left' | 'bottom-left';
 }> = ({ notifications,
   onRemove,
   newestTop,
   theme = 'colored',
   mode = 'light',
-  autoClose,
   autoCloseTime,
   containerClassName,
   notificationClassName,

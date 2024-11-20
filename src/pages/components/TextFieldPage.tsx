@@ -160,8 +160,8 @@ const TextFieldPage = () => {
         </div>
         <p className="mb-4 mt-2 text-4xl underline">File Input</p>
         <div className="flex space-x-4">
-          <TextField id="123456" type="file" onChange={e => console.log(e.target.files && e.target?.files[0])} endIcon={<Plus />} />
-          <TextField type="file" id="123" onChange={e => console.log(e.target.files && e.target?.files[0])} />
+          <TextField id="123456" type="file" value="" onChange={e => console.log(e.target.files && e.target?.files[0])} endIcon={<Plus />} />
+          <TextField type="file" id="123" value="" onChange={e => console.log(e.target.files && e.target?.files[0])} />
         </div>
       </div>
     </div>

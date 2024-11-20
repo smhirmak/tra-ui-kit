@@ -282,8 +282,8 @@ export interface ILoadingSpinner extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface INotificationContext {
-  invoke: (type: string, message: string, autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode) => void;
-  translateFunction: (e: string | string[]) => void;
+  invoke: (type: string, message: string, options: { autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode }) => void;
+  translateFunction?: (e: string | string[]) => void;
 }
 
 export interface IAccordion {
@@ -310,11 +310,10 @@ export interface IAccordionItem {
 }
 
 export interface IAccordionTrigger {
-  onClick: () => void;
+  onClick?: () => void | undefined;
   isOpen: boolean;
   title: string;
   subTitle?: string;
-  children: ReactNode;
   className?: string;
   disabled?: boolean;
   startContent?: ReactNode;

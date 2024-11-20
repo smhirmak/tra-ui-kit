@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import i18n from 'i18next';
+import i18n, { InitOptions } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import en from '@/constants/languages/en';
 import tr from '@/constants/languages/tr';
@@ -21,14 +21,23 @@ i18n
       escapeValue: false,
     },
     returnObjects: true,
-    defaultValue: (lng, ns, key) => key,
-  });
+    defaultValue: (key: any) => key,
+  } as InitOptions);
 
-const LocalizeContext = createContext({
+  interface LocalizeContextType {
+    i18n: typeof i18n;
+    toggleLanguage: (lang: string) => void;
+    t: (key: any) => string;
+    setLocale: (lang: string) => void;
+    locale: string;
+  }
+
+const LocalizeContext = createContext<LocalizeContextType>({
   i18n,
   toggleLanguage: () => {},
   t: (key: any) => i18n.t(key, { defaultValue: key }),
-  setLocale: (lang: string) => {},
+  setLocale: () => {},
+  locale: savedLang,
 });
 
 const useLocalizeContext = () => useContext(LocalizeContext);

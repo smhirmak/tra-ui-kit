@@ -1,6 +1,28 @@
 import React, { createContext, ReactNode, useContext, useMemo, useState } from 'react';
 
-const AppContext = createContext({});
+interface AppContextType {
+  notificationTheme: 'colored' | 'lined' | 'default';
+  setNotificationTheme: (theme: 'colored' | 'lined' | 'default') => void;
+  notificationMode: 'dark' | 'light';
+  setNotificationMode: (mode: 'dark' | 'light') => void;
+  notificationAnimateMode: 'bounce' | 'slide' | 'flip' | false;
+  setNotificationAnimateMode: (mode: 'bounce' | 'slide' | 'flip' | false) => void;
+  notificationPosition: 'top-right' | 'bottom-right' | 'top-left' | 'bottom-left';
+  setNotificationPosition: (position: 'top-right' | 'bottom-right' | 'top-left' | 'bottom-left') => void;
+}
+
+const defaultAppContext: AppContextType = {
+  notificationTheme: 'default',
+  setNotificationTheme: () => {},
+  notificationMode: 'light',
+  setNotificationMode: () => {},
+  notificationAnimateMode: 'bounce',
+  setNotificationAnimateMode: () => {},
+  notificationPosition: 'top-right',
+  setNotificationPosition: () => {},
+};
+
+const AppContext = createContext<AppContextType>(defaultAppContext);
 
 export const useAppContext = () => useContext(AppContext);
 
