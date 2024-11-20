@@ -3,6 +3,8 @@ import * as React from 'react';
 import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 import { IInput } from '@/types/types';
+import { Eye, EyeSlash } from '@/assets/Icons';
+import Button from './Button';
 
 // eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/no-contradicting-classname
 export const inputVariants = cva(
@@ -48,32 +50,43 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
     type,
     value,
     ...props
-  }, ref) => (
-    <div className="flex items-center">
-      {startIcon && (
+  }, ref) => {
+    const [passwordVisible, setPasswordVisible] = React.useState(false);
+    return (
+      <div className="flex items-center">
+        {startIcon && (
         <span className="absolute left-3 text-current">
           {startIcon}
         </span>
-      )}
-      <input
-        type={type}
-        className={cn(inputVariants({ size, error, borderRadius }), className)}
-        ref={ref}
-        value={value}
-        style={{
-          paddingLeft: startIcon ? '2.5rem' : undefined,
-          paddingRight: endIcon ? '2.5rem' : undefined,
-        }}
+        )}
+        <input
+          type={passwordVisible ? 'text' : type}
+          className={cn(inputVariants({ size, error, borderRadius }), className)}
+          ref={ref}
+          value={value}
+          style={{
+            paddingLeft: startIcon ? '2.5rem' : undefined,
+            paddingRight: endIcon ? '2.5rem' : undefined,
+          }}
         // eslint-disable-next-line react/jsx-props-no-spreading
-        {...props}
-      />
-      {endIcon && (
+          {...props}
+        />
+        {endIcon && (
         <span className="absolute right-3 text-current">
           {endIcon}
         </span>
-      )}
-    </div>
-  ),
+        )}
+        {type === 'password'
+              && (
+                <Button className="absolute right-3 bg-transparent text-current hover:bg-transparent" size="icon" type="button" onClick={() => setPasswordVisible(prev => !prev)}>
+                  {passwordVisible
+                    ? <EyeSlash className=" dark:text-gray-400" />
+                    : <Eye className=" dark:text-white" />}
+                </Button>
+              )}
+      </div>
+    );
+  },
 );
 Input.displayName = 'Input';
 
