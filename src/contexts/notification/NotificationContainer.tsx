@@ -17,6 +17,10 @@ const containerVariants = cva(
         'top-left': 'left-5 top-5',
         'bottom-left': 'bottom-5 left-5',
       },
+      isHaveNotifications: {
+        true: '',
+        false: 'hidden',
+      },
     },
   },
 );
@@ -309,7 +313,7 @@ const NotificationContainer: React.FC<{
     };
 
     return (
-      <div className={cn(containerVariants({ position }), containerClassName)}>
+      <div className={cn(containerVariants({ position, isHaveNotifications: Boolean(notifications?.length) }), containerClassName)}>
         {visibleNotifications.map(notification => (
           <div
             key={notification.id}

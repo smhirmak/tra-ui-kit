@@ -25,7 +25,7 @@ const switchVariants = cva(
 );
 
 const switchPrimitivesVariants = cva(
-  `pointer-events-none block size-6 rounded-full bg-tra-neutral-white shadow-lg transition-transform data-[state=checked]:translate-x-6 
+  `pointer-events-none block size-6 rounded-full bg-tra-button-text shadow-lg transition-transform data-[state=checked]:translate-x-6 
   data-[state=unchecked]:translate-x-0
   `,
   {

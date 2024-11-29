@@ -78,6 +78,10 @@ const sidebarList = [
     label: 'Accordion',
     link: '/accordion',
   },
+  {
+    label: 'SelectBox',
+    link: '/select-box',
+  },
 ];
 
 const SideBar = () => {

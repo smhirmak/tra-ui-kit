@@ -209,7 +209,7 @@
 }
 /* ScrollBar Design End */
 
-.code-block {
+/* .code-block {
   background-color: #1e1e1e;
   color: #d4d4d4;
   padding: 16px;
@@ -241,45 +241,33 @@
 
 .attribute {
   color: #9cdcfe;
-}
-
-/* .notification-container {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1000;
-}
-
-.notification {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  color: #fff;
-}
-
-.notification.info {
-  background-color: #2196F3;
-}
-
-.notification.success {
-  background-color: #4CAF50;
-
-.notification.warn {
-  background-color: #FF9800;
-}
-
-.notification.error {
-  background-color: #F44336;
 } */
 
-/* .notification {
-  background-color: #fff;
-  border-radius: 4px;
-  padding: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-  margin-bottom: 10px;
-  width: 300px;
-  position: relative;
-} */
+::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/*Input Autofill Color Change Start*/
+
+input:-webkit-autofill{
+  -webkit-text-fill-color: black !important;
+}
+
+.dark input:-webkit-autofill{
+  -webkit-text-fill-color: white !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover, 
+.dark input:-webkit-autofill:focus, 
+.dark input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #171922 inset !important;
+}
+
+/*Input Autofill Color Change End*/

@@ -148,3 +148,21 @@ export const ArrowClockwise: React.FC<{ className?: string }> = ({ className }) 
     <path className="fill-current" d="M240,56v48a8,8,0,0,1-8,8H184a8,8,0,0,1,0-16H211.4L184.81,71.64l-.25-.24a80,80,0,1,0-1.67,114.78,8,8,0,0,1,11,11.63A95.44,95.44,0,0,1,128,224h-1.32A96,96,0,1,1,195.75,60L224,85.8V56a8,8,0,1,1,16,0Z" />
   </svg>
 );
+
+export const CalendarBlank: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={`${cn(className)} size-4 text-current`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+    <path className="fill-current" d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z" />
+  </svg>
+);
+
+export const CloudArrowUp: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={`${cn(className)} size-4 text-current`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+    <path className="fill-current" d="M178.34,165.66,160,147.31V208a8,8,0,0,1-16,0V147.31l-18.34,18.35a8,8,0,0,1-11.32-11.32l32-32a8,8,0,0,1,11.32,0l32,32a8,8,0,0,1-11.32,11.32ZM160,40A88.08,88.08,0,0,0,81.29,88.68,64,64,0,1,0,72,216h40a8,8,0,0,0,0-16H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.12A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,100.8,66,8,8,0,0,0,3.2,15.34,7.9,7.9,0,0,0,3.2-.68A88,88,0,0,0,160,40Z" />
+  </svg>
+);
+
+export const CloudCheck : React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={`${cn(className)} size-4 text-current`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+    <path className="fill-current" d="M160,40A88.09,88.09,0,0,0,81.29,88.67,64,64,0,1,0,72,216h88a88,88,0,0,0,0-176Zm0,160H72a48,48,0,0,1,0-96c1.1,0,2.2,0,3.29.11A88,88,0,0,0,72,128a8,8,0,0,0,16,0,72,72,0,1,1,72,72Zm37.66-93.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L144,148.69l42.34-42.35A8,8,0,0,1,197.66,106.34Z" />
+  </svg>
+);

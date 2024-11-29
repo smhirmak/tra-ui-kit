@@ -24,6 +24,7 @@ import { NotificationProvider } from './contexts/notification/NotificationProvid
 import { useLocalizeContext } from './contexts/locale/LocalizeContext';
 import { useAppContext } from './contexts/app/AppProvider';
 import AccordionPage from './pages/components/AccordionPage';
+import SelectBoxPage from './pages/components/SelectBoxPage';
 
 const router = createBrowserRouter([
   {
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
       {
         path: 'accordion',
         element: <AccordionPage />,
+      },
+      {
+        path: 'select-box',
+        element: <SelectBoxPage />,
       },
     ],
   }]);
