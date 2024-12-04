@@ -129,6 +129,7 @@ export interface IInformationStatus {
 export interface IInput
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
   VariantProps<typeof inputVariants> {
+  autoComplete?: string;
   borderRadius?: 'default' | 'lg';
   className?: string;
   disabled?: boolean;
@@ -237,6 +238,7 @@ export interface ITab {
 
 export interface ITextField {
   alwaysTop?: boolean;
+  autoComplete?: string;
   borderRadius?: 'default' | 'lg';
   disabled?: boolean;
   endIcon?: React.ReactNode;
@@ -310,6 +312,7 @@ export interface IAccordionItem {
   defaultOpen?: boolean;
   startContent?: ReactNode;
   icon?: ReactNode;
+  titleClassName?: string;
 }
 
 export interface IAccordionTrigger {

@@ -68,6 +68,7 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
     type,
     variant = 'filled',
     value,
+    autoComplete,
     ...props
   }, ref) => {
     const [passwordVisible, setPasswordVisible] = React.useState(false);
@@ -82,7 +83,7 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
           type={passwordVisible ? 'text' : type}
           className={cn(inputVariants({ variant, size, error, borderRadius }), className)}
           ref={ref}
-          autoComplete={type ?? 'off'}
+          autoComplete={autoComplete ?? 'off'}
           value={value}
           style={{
             paddingLeft: startIcon ? '2.5rem' : undefined,

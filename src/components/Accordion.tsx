@@ -138,12 +138,13 @@ export const AccordionItem: React.FC<IAccordionItem> = ({
   isOpen = false,
   onClick,
   children,
-  className,
-  triggerClassName,
-  contentClassName,
+  className = '',
+  triggerClassName = '',
+  contentClassName = '',
   variant,
   disabled,
   startContent,
+  titleClassName = '',
   icon,
 }) => (
   <div className={cn(accordionItemVariants({ variant }), className)} data-disabled={disabled}>
@@ -151,6 +152,7 @@ export const AccordionItem: React.FC<IAccordionItem> = ({
       title={title}
       subTitle={subTitle}
       className={triggerClassName}
+      titleClassName={titleClassName}
       onClick={disabled ? () => {} : onClick}
       isOpen={isOpen}
       variant={variant}

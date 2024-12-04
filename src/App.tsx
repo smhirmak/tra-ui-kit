@@ -11,7 +11,6 @@ import CheckboxPage from './pages/components/CheckboxPage';
 import ChipPage from './pages/components/ChipPage';
 import InformationStatusPage from './pages/components/InformationStatusPage';
 import LoaderPage from './pages/components/LoaderPage';
-import TextFieldPage from './pages/components/TextFieldPage';
 import NotificationPage from './pages/components/NotificationPage';
 import RadioButtonPage from './pages/components/RadioButtonPage';
 import SearchBarPage from './pages/components/SearchBarPage';
@@ -25,6 +24,9 @@ import { useLocalizeContext } from './contexts/locale/LocalizeContext';
 import { useAppContext } from './contexts/app/AppProvider';
 import AccordionPage from './pages/components/AccordionPage';
 import SelectBoxPage from './pages/components/SelectBoxPage';
+import TextFieldFilledPage from './pages/components/TextFieldFilledPage';
+import TextFieldOutlinedPage from './pages/components/TextFieldOutlinedPage';
+import TextFieldUnderlinedPage from './pages/components/TextFieldUnderlinedPage';
 
 const router = createBrowserRouter([
   {
@@ -68,7 +70,21 @@ const router = createBrowserRouter([
       },
       {
         path: 'text-field',
-        element: <TextFieldPage />,
+        // element: <TextFieldPage />,
+        children: [
+          {
+            path: 'filled',
+            element: <TextFieldFilledPage />,
+          },
+          {
+            path: 'outlined',
+            element: <TextFieldOutlinedPage />,
+          },
+          {
+            path: 'underlined',
+            element: <TextFieldUnderlinedPage />,
+          },
+        ],
       },
       {
         path: 'notification',

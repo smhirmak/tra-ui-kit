@@ -1,167 +1,43 @@
 import { Plus } from '@/assets/Icons';
+import FileUpload from '@/components/FileUpload';
+import Input from '@/components/Input';
+import Label from '@/components/Label';
 import TextField from '@/components/TextField';
 import { useState } from 'react';
 
 const TextFieldPage = () => {
   const [value, setValue] = useState('');
+  const [inputFocus, setInputFocus] = useState(false);
+  const label = 'Label';
+
   return (
     <div>
-      <div className="mb-6 border-b-2 pb-6">
-        <p className="text-4xl underline">Inputs Filled</p>
-        <div className="mt-2 border-t-2 py-2">
-          <p className="mt-2 text-xl">Small:</p>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} showRequiredIcon label="Label" size="sm" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Error" size="sm" error />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Error" size="sm" error borderRadius="lg" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Disabled" size="sm" disabled />
-          </div>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Tooltip" size="sm" tooltip={['Deneme1', 'Deneme2']} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" startIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" endIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" borderRadius="lg" />
-          </div>
-        </div>
-        <div className="mt-2 border-t-2 py-2">
-          <p className="mt-2 text-xl">Default:</p>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Error" error />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Error" error borderRadius="lg" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Disabled" disabled />
-          </div>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" tooltip="Tooltip" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" startIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" endIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" borderRadius="lg" />
-          </div>
-        </div>
-        <div className="mt-2 border-t-2 py-2">
-          <p className="mt-2 text-xl">Large:</p>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Error" error />
-            <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Error" error borderRadius="lg" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Disabled" disabled />
-          </div>
-          <div className="flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" tooltip="Tooltip" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" startIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" endIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" borderRadius="lg" />
-          </div>
-        </div>
+
+      <p className="mb-4 mt-2 text-4xl underline">File Input</p>
+      <div className="grid grid-cols-3 gap-2">
+        <TextField id="123456" type="file" value="" onChange={e => console.log(e.target.files && e.target?.files[0])} endIcon={<Plus />} />
+        <FileUpload
+          id="123"
+          label="File Upload"
+  // file={Object.GetNestedValue(formik.values, `${fileId}.file`)}
+          isDeletable
+        />
       </div>
-      <div className="mb-6 border-b-2 pb-6">
-        <p className="text-4xl underline">Inputs Outlined</p>
-        <div className="mt-2 border-t-2 py-2">
-          <p className="my-2 text-xl">Small:</p>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" showRequiredIcon />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Error" size="sm" error />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Error" size="sm" error borderRadius="lg" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Disabled" size="sm" disabled />
-          </div>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" tooltip="Tooltip" showRequiredIcon />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" startIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" endIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" borderRadius="lg" />
-          </div>
-        </div>
-        <div className="mt-2 border-t-2 py-2">
-          <p className="my-2 text-xl">Default:</p>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Error" error />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Error" error borderRadius="lg" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Disabled" disabled />
-          </div>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" tooltip="Tooltip" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" startIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" endIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" borderRadius="lg" />
-          </div>
-        </div>
-        <div className="mt-2 border-t-2 py-2">
-          <p className="mb-4 mt-2 text-xl">Large:</p>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Error" error />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Error" error borderRadius="lg" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Disabled" disabled />
-          </div>
-          <div className="flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" tooltip="Tooltip" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" startIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" endIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" borderRadius="lg" />
-          </div>
-        </div>
-      </div>
-      <div className="mb-6 border-b-2 pb-6">
-        <p className="text-4xl underline">Inputs Underlined</p>
-        <div className="mt-2 border-t-2 py-2">
-          <p className="my-2 text-xl">Small:</p>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Error" size="sm" error />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Error" size="sm" error borderRadius="lg" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Disabled" size="sm" disabled />
-          </div>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" tooltip="Tooltip" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" startIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" endIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" borderRadius="lg" />
-          </div>
-        </div>
-        <div className="mt-2 border-t-2 py-2">
-          <p className="mb-3 mt-2 text-xl">Default:</p>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Error" error />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Error" error borderRadius="lg" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Disabled" disabled />
-          </div>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" tooltip="Tooltip" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" startIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" endIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" borderRadius="lg" />
-          </div>
-        </div>
-        <div className="mt-2 space-y-2 border-t-2 py-2">
-          <p className="mb-4 mt-2 text-xl">Large:</p>
-          <div className="mb-2 flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Error" error />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Error" error borderRadius="lg" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Disabled" disabled />
-          </div>
-          <div className="flex space-x-4">
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" tooltip="Tooltip" />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" startIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" endIcon={<Plus />} />
-            <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" borderRadius="lg" />
-          </div>
-        </div>
-        <p className="mb-4 mt-2 text-4xl underline">File Input</p>
-        <div className="flex space-x-4">
-          <TextField id="123456" type="file" value="" onChange={e => console.log(e.target.files && e.target?.files[0])} endIcon={<Plus />} />
-          <TextField type="file" id="123" value="" onChange={e => console.log(e.target.files && e.target?.files[0])} />
+      <FileUpload
+        id="1234"
+        label="File Upload"
+        className="deneme"
+  // file={Object.GetNestedValue(formik.values, `${fileId}.file`)}
+        isDeletable
+      />
+      <div className="grid grid-cols-3">
+        <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" tooltip="Tooltip" showRequiredIcon />
+        <div className="relative col-span-2 box-border inline-flex cursor-text items-center">
+          <Input type="email" name="email" onFocus={() => setInputFocus(true)} onBlur={() => setInputFocus(false)} value={value} onChange={e => setValue(e.target.value)} className="z-2 border-none" />
+          <Label className={`absolute left-[18px] z-1 ${(value || inputFocus) && 'z-20 -translate-y-7'} top-1/4 text-lg text-tra-neutral-light-black transition-all`}>{label}</Label>
+          <fieldset className={`pointer-events-none absolute inset-0 z-10 m-0 h-14 min-w-0 overflow-hidden rounded border border-solid border-gray-300 p-3 transition-all ${inputFocus && 'border-tra-primary-focused'}`}>
+            <legend className={`float-[unset] invisible block h-0 w-auto overflow-hidden p-0 text-base ${(value || inputFocus) && 'px-2'}`}>{(value || inputFocus) ? label : ''}</legend>
+          </fieldset>
         </div>
       </div>
     </div>
