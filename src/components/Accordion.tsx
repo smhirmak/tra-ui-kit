@@ -45,7 +45,7 @@ const accordionTriggerVariants = cva(
 );
 
 const accoridonContentVariants = cva(`overflow-hidden px-4 py-0.5 transition-all duration-200
-  data-[open="false"]:max-h-0 data-[open="true"]:max-h-screen
+  data-[open="false"]:max-h-0 data-[open="true"]:max-h-full
   data-[open="false"]:opacity-0 data-[open="true"]:opacity-100`);
 
 export const Accordion: React.FC<IAccordion> = ({ children, className, multipleExpand = false, variant = 'underlined' }) => {

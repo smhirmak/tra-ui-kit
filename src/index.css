@@ -45,6 +45,7 @@
     --tra-tetriary: 54 97% 60%;
     --tra-tetriary-foreground: 0 0% 12%;
     --tra-error: 0 100% 50%;
+    --tra-error-foreground: 0 0% 100%;
     --tra-error-light: 0 100% 95%;
     --tra-success: 147 100% 40%;
     --tra-success-light: 146 72% 94%;
@@ -131,6 +132,7 @@
     --tra-tetriary: 54 97% 60%;
     --tra-tetriary-foreground: 0 0% 12%;
     --tra-error: 0 100% 50%;
+    --tra-error-foreground: 0 0% 100%;
     --tra-error-light: 352 48% 17%;
     --tra-success: 147 100% 40%;
     --tra-success-light: 159 54% 15%;

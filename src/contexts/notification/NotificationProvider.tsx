@@ -2,7 +2,12 @@ import React, { createContext, useContext, useState, ReactNode, useRef, useMemo 
 import { INotification, INotificationContext } from '@/types/types';
 import NotificationContainer from './NotificationContainer';
 
-const NotificationContext = createContext<INotificationContext | undefined>(undefined);
+const defaultNotificationContext: INotificationContext = {
+  invoke: () => {},
+  translateFunction: () => {},
+};
+
+const NotificationContext = createContext<INotificationContext>(defaultNotificationContext);
 
 export const useNotification = () => {
   const context = useContext(NotificationContext);

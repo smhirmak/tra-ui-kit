@@ -131,12 +131,14 @@ export interface IInput
   VariantProps<typeof inputVariants> {
   borderRadius?: 'default' | 'lg';
   className?: string;
+  disabled?: boolean;
   endIcon?: React.ReactNode;
   error?: boolean | null | undefined;
   size?: 'default' | 'sm' | 'lg' | undefined;
   startIcon?: React.ReactNode;
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
   value: string | number;
+  variant?: 'filled' | 'outlined' | 'underlined';
 }
 
 export interface ILabel
@@ -152,7 +154,7 @@ outlineFocused?: boolean;
 showRequiredIcon?: boolean;
 size?: 'sm' | 'default' | 'lg' | undefined;
 startIcon?: React.ReactNode;
-tooltip?: string | string[];
+tooltip?: string | string[] | null;
 variant?: 'filled' | 'outlined' | 'underlined';
 }
 
@@ -239,6 +241,7 @@ export interface ITextField {
   disabled?: boolean;
   endIcon?: React.ReactNode;
   error?: boolean;
+  name?: string;
   id?: string;
   inputClassName?: string;
   label?: string;

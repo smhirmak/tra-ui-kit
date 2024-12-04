@@ -8,22 +8,27 @@ import Button from './Button';
 
 // eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/no-contradicting-classname
 export const inputVariants = cva(
-  `focus-visible:border-1 placeholder:text-muted-foreground flex w-full border border-tra-input bg-tra-input-fill
-  px-3
-  py-2 file:mr-2 file:h-fit file:cursor-pointer 
-  file:rounded-md file:border-0 file:bg-tra-neutral-disabled-text file:bg-transparent
-  file:p-2 
-  file:text-sm file:font-medium file:text-tra-neutral-black file:transition-all hover:shadow-input-hover file:hover:contrast-125 focus-visible:border-tra-primary-focused 
-  focus-visible:shadow-input-focus focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-tra-input-light disabled:text-tra-neutral-grey disabled:placeholder:text-tra-input`,
+  `focus-visible:border-1 placeholder:text-muted-foreground flex w-full border border-tra-input bg-transparent px-3
+  py-2 
+  file:mr-2 file:h-fit file:cursor-pointer file:rounded-md 
+  file:border-0 file:bg-tra-neutral-disabled-text file:bg-transparent file:p-2
+  file:text-sm 
+  file:font-medium file:text-tra-neutral-black file:transition-all hover:shadow-input-hover file:hover:contrast-125 focus-visible:border-tra-primary-focused focus-visible:shadow-input-focus 
+  focus-visible:outline-none disabled:cursor-not-allowed disabled:text-tra-neutral-grey `,
   {
     variants: {
+      variant: {
+        filled: 'disabled:bg-tra-input-light disabled:placeholder:text-tra-input',
+        outlined: 'border-none outline-none focus-visible:border-none focus-visible:outline-none',
+        underlined: 'disabled:bg-tra-input-light disabled:placeholder:text-tra-input',
+      },
       size: {
         default: 'h-14 text-base',
         sm: 'h-13 text-sm',
         lg: 'h-15 text-lg',
       },
       error: {
-        true: 'border-error outline-none focus-visible:border-error focus-visible:shadow-none focus-visible:-outline-offset-1 focus-visible:outline-error',
+        true: 'focus-visible:shadow-none',
         false: '',
       },
       borderRadius: {
@@ -35,7 +40,20 @@ export const inputVariants = cva(
       size: 'default',
       error: false,
       borderRadius: 'default',
+      variant: 'filled',
     },
+    compoundVariants: [
+      {
+        error: true,
+        variant: 'filled',
+        className: 'border-error outline-none focus-visible:border-error focus-visible:shadow-none focus-visible:-outline-offset-1 focus-visible:outline-error',
+      },
+      {
+        error: true,
+        variant: 'underlined',
+        className: 'border-b-error outline-none focus-visible:border-b-error focus-visible:shadow-none focus-visible:-outline-offset-1',
+      },
+    ],
   },
 );
 
@@ -48,12 +66,13 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
     size,
     startIcon,
     type,
+    variant = 'filled',
     value,
     ...props
   }, ref) => {
     const [passwordVisible, setPasswordVisible] = React.useState(false);
     return (
-      <div className="flex items-center">
+      <div className="flex w-full items-center">
         {startIcon && (
         <span className="absolute left-3 text-current">
           {startIcon}
@@ -61,8 +80,9 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
         )}
         <input
           type={passwordVisible ? 'text' : type}
-          className={cn(inputVariants({ size, error, borderRadius }), className)}
+          className={cn(inputVariants({ variant, size, error, borderRadius }), className)}
           ref={ref}
+          autoComplete={type ?? 'off'}
           value={value}
           style={{
             paddingLeft: startIcon ? '2.5rem' : undefined,
@@ -78,7 +98,7 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
         )}
         {type === 'password'
               && (
-                <Button className="absolute right-3 bg-transparent text-current hover:bg-transparent" size="icon" type="button" onClick={() => setPasswordVisible(prev => !prev)}>
+                <Button className="absolute right-3 z-3 bg-transparent text-current hover:bg-transparent" size="icon" type="button" onClick={() => setPasswordVisible(prev => !prev)}>
                   {passwordVisible
                     ? <EyeSlash className=" dark:text-gray-400" />
                     : <Eye className=" dark:text-white" />}

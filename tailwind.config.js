@@ -44,6 +44,7 @@ module.exports = {
         },
         error: {
           DEFAULT: 'hsl(var(--tra-error))',
+          foreground: 'hsl(var(--tra-error-foreground))',
           light: 'hsl(var(--tra-error-light))',
         },
         success: {
@@ -242,6 +243,9 @@ module.exports = {
       zIndex: {
         1: '1',
         2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
         9998: '9998',
         9999: '9999',
       },
