@@ -7,7 +7,6 @@ import { containerVariants } from '@/components/Container';
 import { inputVariants } from '@/components/Input';
 import { labelVariants } from '@/components/Label';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import * as SwitchPrimitives from '@radix-ui/react-switch';
 
 export interface INotification {
   children: ReactNode;
@@ -138,7 +137,8 @@ export interface IInput
   size?: 'default' | 'sm' | 'lg' | undefined;
   startIcon?: React.ReactNode;
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
-  value: string | number;
+  value?: string | number;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   variant?: 'filled' | 'outlined' | 'underlined';
 }
 
@@ -203,10 +203,14 @@ export interface ISkeleton {
   animation?: boolean;
 }
 
-export type SwitchProps = {
-  className?: string;
+export interface ISwitch {
+  baseClassName?: string;
+  thumbClassName?: string;
+  containerClassName?: string;
+  id: string;
+  defaultChecked?: boolean;
   variant?: 'apple' | 'android';
-} & React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>;
+}
 
 export interface ITabs {
   activeTab: string;
@@ -256,7 +260,7 @@ export interface ITextField {
   startIcon?: React.ReactNode;
   tooltip?: string | string[];
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
-  value: string | number;
+  value?: string | number;
   variant?: 'filled' | 'outlined' | 'underlined';
 }
 
