@@ -41,6 +41,20 @@ const sidebarList = [
   {
     label: 'Text Field',
     link: '/text-field',
+    child: [
+      {
+        label: 'Filled',
+        link: '/text-field/filled',
+      },
+      {
+        label: 'Outlined',
+        link: '/text-field/outlined',
+      },
+      {
+        label: 'Underlined',
+        link: '/text-field/underlined',
+      },
+    ],
   },
   {
     label: 'Notification',
@@ -92,9 +106,22 @@ const SideBar = () => {
         <AccordionItem title="Components" defaultOpen contentClassName="flex flex-col">
           {sidebarList.sort((a, b) => a.label.localeCompare(b.label)).map(e => (
             <>
-              <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === e.link && 'bg-tra-primary/10 text-tra-primary'}`}>
-                {e.label}
-              </Link>
+              {e.child ? (
+                <Accordion multipleExpand>
+                  {/* <AccordionTrigger title={e.label} /> */}
+                  <AccordionItem triggerClassName="p-2" titleClassName="!text-base" title={e.label} contentClassName="flex flex-col">
+                    {e.child.map(c => (
+                      <Link to={c.link} className={`mt-1 rounded-t-md p-2 text-base transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === c.link && 'bg-tra-primary/10 text-tra-primary'}`}>
+                        {c.label}
+                      </Link>
+                    ))}
+                  </AccordionItem>
+                </Accordion>
+              ) : (
+                <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === e.link && 'bg-tra-primary/10 text-tra-primary'}`}>
+                  {e.label}
+                </Link>
+              )}
               <span className="h-1 w-full border-b-2 border-tra-primary-15 last:border-b-0" />
             </>
           ))}

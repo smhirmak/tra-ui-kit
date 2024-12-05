@@ -68,6 +68,7 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
     type,
     variant = 'filled',
     value,
+    onChange,
     autoComplete,
     ...props
   }, ref) => {
@@ -85,6 +86,7 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
           ref={ref}
           autoComplete={autoComplete ?? 'off'}
           value={value}
+          onChange={onChange}
           style={{
             paddingLeft: startIcon ? '2.5rem' : undefined,
             paddingRight: endIcon ? '2.5rem' : undefined,

@@ -26,6 +26,7 @@ const TextFieldOutlinedPage = () => {
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" id="error" label="Error" size="sm" error />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" id="error1" label="Error" size="sm" error borderRadius="lg" />
+          <TextField variant="outlined" label="Disabled" size="sm" disabled />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Disabled" size="sm" disabled />
         </div>
         <div className="mb-2 flex space-x-4">

@@ -6,7 +6,7 @@ import { ITextField } from '@/types/types';
 import Input from './Input';
 import Label from './Label';
 
-const textFieldStyles = cva('mb-2 mt-4 flex h-fit flex-col', {
+const textFieldStyles = cva('TextField-container mb-2 mt-4 flex h-fit flex-col', {
   variants: {
     variant: {
       filled: 'relative',
@@ -23,7 +23,7 @@ const labelStyles = cva('mb-1 transition-all duration-150 ease-cubic', {
   variants: {
     variant: {
       filled: 'absolute -top-1/2',
-      outlined: 'absolute left-[18px] top-1/4 z-20 text-lg text-tra-neutral-light-black',
+      outlined: 'absolute left-[18px] top-1/4 z-1 text-lg text-tra-neutral-light-black',
       underlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform',
     },
     borderRadius: {
@@ -74,11 +74,11 @@ const labelStyles = cva('mb-1 transition-all duration-150 ease-cubic', {
   ],
 });
 
-const inputStyles = cva('p-2 transition-colors', {
+const inputStyles = cva('p-2 transition-colors disabled:bg-tra-input-light', {
   variants: {
     variant: {
       filled: '',
-      outlined: 'z-2 border-none',
+      outlined: 'border-none',
       underlined: 'rounded-none border-x-0 border-t-0 bg-transparent hover:bg-transparent hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
     },
   },
@@ -88,8 +88,8 @@ const inputStyles = cva('p-2 transition-colors', {
 });
 
 const fieldsetStyles = cva(
-  `pointer-events-none absolute inset-0 z-10 m-0 h-14 min-w-0 overflow-hidden rounded border border-solid border-tra-input p-3 outline-none transition-all 
-  disabled:border-tra-input-light disabled:bg-tra-input-light disabled:placeholder:text-tra-input`,
+  `pointer-events-none absolute inset-0 m-0 h-14 min-w-0 overflow-hidden rounded border border-solid border-tra-input p-3 outline-none transition-all 
+  disabled:border-tra-input-light disabled:placeholder:text-tra-input`,
   {
     variants: {
       inputFocused: {
@@ -133,6 +133,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   tooltip = null,
   type,
   value,
+  autoComplete,
   variant = 'filled',
   ...otherProps
 }, ref) => {
@@ -167,6 +168,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         ref={inputRef}
         variant={variant}
         className={`${cn(inputStyles({ variant }))} ${inputClassName}`}
+        autoComplete={autoComplete}
         size={size}
         name={name}
         error={error}
