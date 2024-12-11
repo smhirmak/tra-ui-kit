@@ -62,22 +62,32 @@ const options = [
 const SelectBox = () => {
   const handleChangeSelect = (e: any) => {
     console.log(e);
-    // setOptions(e);
   };
   return (
     <div>
-      {/* <SelectBox
-        value={selectedValue}
-        optionsList={options}
-        onChange={handleChange}
-        placeholder="Select an option"
-      /> */}
       <div className="mb-4 flex flex-col gap-4">
         <p className="mb-2 text-3xl font-semibold">Default Select</p>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <p className="mb-2 text-2xl font-semibold">Small</p>
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Small"
             size="sm"
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Small - Complete Button"
+            size="sm"
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Small - Only Mobile Complete Button"
+            size="sm"
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -108,9 +118,25 @@ const SelectBox = () => {
             onChange={e => handleChangeSelect(e)}
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <p className="mb-2 text-2xl font-semibold">Default</p>
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
+
           <Select
             label="Default"
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Default - Complete Button"
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Default - Only Mobile Complete Button"
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -138,10 +164,27 @@ const SelectBox = () => {
             onChange={e => handleChangeSelect(e)}
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <p className="mb-2 text-2xl font-semibold">Large</p>
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Large"
             size="lg"
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Large - Complete Button"
+            size="lg"
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Large - Only Mobile Complete Button"
+            size="lg"
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -175,11 +218,30 @@ const SelectBox = () => {
       </div>
       <div className="mb-4 flex flex-col gap-4">
         <p className="mb-2 text-3xl font-semibold">Multi Select</p>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <p className="mb-2 text-2xl font-semibold">Small</p>
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Small"
             size="sm"
             isMulti
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Small - Complete Button"
+            size="sm"
+            isMulti
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Small - Only Mobile Complete Button"
+            size="sm"
+            isMulti
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -213,10 +275,27 @@ const SelectBox = () => {
             onChange={e => handleChangeSelect(e)}
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <p className="mb-2 text-2xl font-semibold">Default</p>
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Default"
             isMulti
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Default - Complete Button"
+            isMulti
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Default - Only Mobile Complete Button"
+            isMulti
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -247,11 +326,30 @@ const SelectBox = () => {
             onChange={e => handleChangeSelect(e)}
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <p className="mb-2 text-2xl font-semibold">Large</p>
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Large"
             size="lg"
             isMulti
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Large - Complete Button"
+            size="lg"
+            isMulti
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Large - Only Mobile Complete Button"
+            size="lg"
+            isMulti
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -288,11 +386,30 @@ const SelectBox = () => {
       </div>
       <div className="mb-4 flex flex-col gap-4">
         <p className="mb-2 text-3xl font-semibold">Searchable Single Select</p>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <p className="mb-2 text-2xl font-semibold">Small</p>
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Small"
             size="sm"
             isSearchable
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Small - Complete Button"
+            size="sm"
+            isSearchable
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Small - Only Mobile Complete Button"
+            size="sm"
+            isSearchable
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -326,10 +443,27 @@ const SelectBox = () => {
             onChange={e => handleChangeSelect(e)}
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <p className="mb-2 text-2xl font-semibold">Default</p>
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Default"
             isSearchable
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Default - Complete Button"
+            isSearchable
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Default - Only Mobile Complete Button"
+            isSearchable
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -360,11 +494,30 @@ const SelectBox = () => {
             onChange={e => handleChangeSelect(e)}
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <p className="mb-2 text-2xl font-semibold">Large</p>
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Large"
             size="lg"
             isSearchable
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Large - Complete Button"
+            size="lg"
+            isSearchable
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Large - Only Mobile Complete Button"
+            size="lg"
+            isSearchable
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -401,12 +554,32 @@ const SelectBox = () => {
       </div>
       <div className="mb-4 flex flex-col gap-4">
         <p className="mb-2 text-3xl font-semibold">Searchable Multi Select</p>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Small"
             size="sm"
             isMulti
             isSearchable
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Small - Complete Button"
+            size="sm"
+            isMulti
+            isSearchable
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Small - Only Mobile Complete Button"
+            size="sm"
+            isMulti
+            isSearchable
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -443,11 +616,29 @@ const SelectBox = () => {
             onChange={e => handleChangeSelect(e)}
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Default"
             isMulti
             isSearchable
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Default - Complete Button"
+            isMulti
+            isSearchable
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Default - Only Mobile Complete Button"
+            isMulti
+            isSearchable
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}
@@ -481,12 +672,32 @@ const SelectBox = () => {
             onChange={e => handleChangeSelect(e)}
           />
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
           <Select
             label="Large"
             size="lg"
             isMulti
             isSearchable
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Large - Complete Button"
+            size="lg"
+            isMulti
+            isSearchable
+            completeButton
+            options={options}
+            placeHolder="Please select..."
+            onChange={e => handleChangeSelect(e)}
+          />
+          <Select
+            label="Large - Only Mobile Complete Button"
+            size="lg"
+            isMulti
+            isSearchable
+            completeButton="mobile"
             options={options}
             placeHolder="Please select..."
             onChange={e => handleChangeSelect(e)}

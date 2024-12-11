@@ -22,11 +22,6 @@ export interface INotification {
   position?: 'top-right' | 'bottom-right' | 'top-left' | 'bottom-left',
 }
 
-export interface ISelect {
-  content: string;
-  value: string | number;
-}
-
 export interface IAvatar {
   asChild?: React.ElementType;
   badgeClassName?: string;
@@ -342,4 +337,37 @@ export interface IAccordionContent {
   isOpen: boolean;
   children: ReactNode;
   className?: string;
+}
+
+export interface IOptions {
+  content: string | JSX.Element;
+  value: string | number;
+}
+
+export interface ISelect {
+  placeHolder?: string;
+  size?: 'default' | 'sm' | 'lg';
+  options: IOptions[] | IOptions;
+  isMulti?: boolean;
+  isSearchable?: boolean;
+  onChange: (e: string | number | string[] | number[]) => void;
+  align?: string;
+  label?: string;
+  disabled?: boolean;
+  error?: boolean;
+  defaultValue?: string | number | string[] | number[];
+  completeButton?: boolean | 'mobile';
+  completeButtonText?: string;
+  searchInputClassName?: string;
+  dropdownTagClassName?: string;
+  dropdownTagCloseButtonClassName?: string;
+  className?: string;
+  labelClassName?: string;
+  containerClassName?: string;
+  selectTextClassName?: string;
+  iconClassName?: string;
+  dropdownMenuClassName?: string;
+  dropdownItemClassName?: string;
+  completeButtonContainerClassName?: string;
+  completeButtonClassName?: string;
 }

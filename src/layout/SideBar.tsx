@@ -1,5 +1,7 @@
+import { CaretRight, X } from '@/assets/Icons';
 import { Accordion, AccordionItem } from '@/components/Accordion';
-import React from 'react';
+import Button from '@/components/Button';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const sidebarList = [
@@ -101,40 +103,46 @@ const sidebarList = [
 
 const SideBar = () => {
   const location = useLocation();
+  const [open, setOpen] = useState(false);
   return (
-    <div className="sticky left-0 top-0 flex max-h-screen min-h-screen min-w-36 flex-col overflow-y-auto bg-tra-background p-4">
-      <Accordion multipleExpand>
-        <AccordionItem title="Components" defaultOpen contentClassName="flex flex-col">
-          {sidebarList.sort((a, b) => a.label.localeCompare(b.label)).map((e, index) => (
-            <React.Fragment key={index}>
-              {e.child ? (
-                <Accordion multipleExpand>
-                  {/* <AccordionTrigger title={e.label} /> */}
-                  <AccordionItem triggerClassName="p-2" titleClassName="!text-base" title={e.label} contentClassName="flex flex-col">
-                    {e.child.map(c => (
-                      <Link
-                        key={c.link}
-                        to={c.link}
-                        className={`mt-1 rounded-t-md p-2 text-base transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === c.link && 'bg-tra-primary/10 text-tra-primary'}`}
-                      >
-                        {c.label}
-                      </Link>
-                    ))}
-                  </AccordionItem>
-                </Accordion>
-              ) : (
-                <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === e.link && 'bg-tra-primary/10 text-tra-primary'}`}>
-                  {e.label}
-                </Link>
-              )}
-              <span className="h-1 w-full border-b-2 border-tra-primary-15 last:border-b-0" />
-            </React.Fragment>
-          ))}
-        </AccordionItem>
-        <AccordionItem title="Components Api">
-          Deneme
-        </AccordionItem>
-      </Accordion>
+    <div className={`sticky left-0 top-0 flex max-h-screen min-h-screen ${open ? 'min-w-36' : 'max-w-16'} flex-col overflow-y-auto bg-tra-background p-4`}>
+      <Button className="self-end overflow-visible bg-transparent text-white hover:bg-transparent" size="icon" disableEffect onClick={() => setOpen(prev => !prev)}>
+        <CaretRight className={`transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
+      </Button>
+      {open && (
+        <Accordion multipleExpand>
+          <AccordionItem title="Components" defaultOpen contentClassName="flex flex-col">
+            {sidebarList.sort((a, b) => a.label.localeCompare(b.label)).map((e, index) => (
+              <React.Fragment key={index}>
+                {e.child ? (
+                  <Accordion multipleExpand>
+                    {/* <AccordionTrigger title={e.label} /> */}
+                    <AccordionItem triggerClassName="p-2" titleClassName="!text-base" title={e.label} contentClassName="flex flex-col">
+                      {e.child.map(c => (
+                        <Link
+                          key={c.link}
+                          to={c.link}
+                          className={`mt-1 rounded-t-md p-2 text-base transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === c.link && 'bg-tra-primary/10 text-tra-primary'}`}
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </AccordionItem>
+                  </Accordion>
+                ) : (
+                  <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === e.link && 'bg-tra-primary/10 text-tra-primary'}`}>
+                    {e.label}
+                  </Link>
+                )}
+                <span className="h-1 w-full border-b-2 border-tra-primary-15 last:border-b-0" />
+              </React.Fragment>
+            ))}
+          </AccordionItem>
+          <AccordionItem title="Components Api">
+            Deneme
+          </AccordionItem>
+        </Accordion>
+      )}
     </div>
   );
 };
