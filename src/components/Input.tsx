@@ -13,7 +13,7 @@ export const inputVariants = cva(
   file:mr-2 file:h-fit file:cursor-pointer file:rounded-md 
   file:border-0 file:bg-tra-neutral-disabled-text file:bg-transparent file:p-2
   file:text-sm 
-  file:font-medium file:text-tra-neutral-black file:transition-all hover:shadow-input-hover file:hover:contrast-125 focus-visible:border-tra-primary-focused focus-visible:shadow-input-focus 
+  file:font-medium file:text-tra-neutral-black file:transition-all hover:shadow-soft-primary file:hover:contrast-125 focus-visible:border-tra-primary-focused focus-visible:shadow-hard-primary 
   focus-visible:outline-none disabled:cursor-not-allowed disabled:text-tra-neutral-grey `,
   {
     variants: {

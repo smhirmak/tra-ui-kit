@@ -23,7 +23,7 @@ import { NotificationProvider } from './contexts/notification/NotificationProvid
 import { useLocalizeContext } from './contexts/locale/LocalizeContext';
 import { useAppContext } from './contexts/app/AppProvider';
 import AccordionPage from './pages/components/AccordionPage';
-import SelectBoxPage from './pages/components/SelectBoxPage';
+import SelectPage from './pages/components/SelectPage';
 import TextFieldFilledPage from './pages/components/TextFieldFilledPage';
 import TextFieldOutlinedPage from './pages/components/TextFieldOutlinedPage';
 import TextFieldUnderlinedPage from './pages/components/TextFieldUnderlinedPage';
@@ -128,8 +128,8 @@ const router = createBrowserRouter([
         element: <AccordionPage />,
       },
       {
-        path: 'select-box',
-        element: <SelectBoxPage />,
+        path: 'select',
+        element: <SelectPage />,
       },
     ],
   }]);

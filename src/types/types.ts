@@ -6,7 +6,6 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { containerVariants } from '@/components/Container';
 import { inputVariants } from '@/components/Input';
 import { labelVariants } from '@/components/Label';
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
 export interface INotification {
   children: ReactNode;
@@ -178,12 +177,12 @@ export interface NotificationOptions {
   } | undefined;
 }
 
-export type RadioGroupItemProps = {
+export interface RadioGroupItemProps {
   className?: string;
   disabled?: boolean;
   id: string;
   label?: string;
-} & React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>;
+}
 
 export interface ISearchBar {
   borderRadius?: 'default' | 'lg';
@@ -338,4 +337,37 @@ export interface IAccordionContent {
   isOpen: boolean;
   children: ReactNode;
   className?: string;
+}
+
+export interface IOptions {
+  content: string | JSX.Element;
+  value: string | number;
+}
+
+export interface ISelect {
+  placeHolder?: string;
+  size?: 'default' | 'sm' | 'lg';
+  options: IOptions[] | IOptions;
+  isMulti?: boolean;
+  isSearchable?: boolean;
+  onChange: (e: string | number | string[] | number[]) => void;
+  align?: string;
+  label?: string;
+  disabled?: boolean;
+  error?: boolean;
+  defaultValue?: string | number | string[] | number[];
+  completeButton?: boolean | 'mobile';
+  completeButtonText?: string;
+  searchInputClassName?: string;
+  dropdownTagClassName?: string;
+  dropdownTagCloseButtonClassName?: string;
+  className?: string;
+  labelClassName?: string;
+  containerClassName?: string;
+  selectTextClassName?: string;
+  iconClassName?: string;
+  dropdownMenuClassName?: string;
+  dropdownItemClassName?: string;
+  completeButtonContainerClassName?: string;
+  completeButtonClassName?: string;
 }
