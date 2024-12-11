@@ -10,10 +10,6 @@ const sidebarList = [
   //   link: '/',
   // },
   {
-    label: 'Syntax Highlighter Block',
-    link: '/syntax-highlighter',
-  },
-  {
     label: 'Avatar',
     link: '/avatar',
   },

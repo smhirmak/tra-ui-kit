@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './layout/Layout';
 import Home from './pages/Home';
 import BackToTopButton from './components/BackToTopButton';
-import SyntaxHighlighterBlock from './pages/components/SyntaxHighlighterBlock';
 import AvatarPage from './pages/components/AvatarPage';
 import BadgePage from './pages/components/BadgePage';
 import ButtonPage from './pages/components/ButtonPage';
@@ -36,10 +35,6 @@ const router = createBrowserRouter([
       {
         path: '',
         element: <Home />,
-      },
-      {
-        path: 'syntax-highlighter',
-        element: <SyntaxHighlighterBlock />,
       },
       {
         path: 'avatar',
