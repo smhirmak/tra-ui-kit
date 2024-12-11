@@ -54,6 +54,10 @@ const sidebarList = [
         label: 'Underlined',
         link: '/text-field/underlined',
       },
+      {
+        label: 'Filled Underlined',
+        link: '/text-field/filled-underlined',
+      },
     ],
   },
   {

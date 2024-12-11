@@ -27,6 +27,7 @@ import SelectBoxPage from './pages/components/SelectBoxPage';
 import TextFieldFilledPage from './pages/components/TextFieldFilledPage';
 import TextFieldOutlinedPage from './pages/components/TextFieldOutlinedPage';
 import TextFieldUnderlinedPage from './pages/components/TextFieldUnderlinedPage';
+import TextFieldFilledUnderlinedPage from './pages/components/TextFieldFilledUnderlinedPage';
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
           {
             path: 'underlined',
             element: <TextFieldUnderlinedPage />,
+          },
+          {
+            path: 'filled-underlined',
+            element: <TextFieldFilledUnderlinedPage />,
           },
         ],
       },

@@ -21,6 +21,7 @@ export const inputVariants = cva(
         filled: 'disabled:bg-tra-input-light disabled:placeholder:text-tra-input',
         outlined: 'border-none outline-none focus-visible:border-none focus-visible:outline-none',
         underlined: 'disabled:bg-tra-input-light disabled:placeholder:text-tra-input',
+        filledUnderlined: 'disabled:bg-tra-input-light disabled:placeholder:text-tra-input',
       },
       size: {
         default: 'h-14 text-base',
@@ -51,6 +52,11 @@ export const inputVariants = cva(
       {
         error: true,
         variant: 'underlined',
+        className: 'border-b-error outline-none focus-visible:border-b-error focus-visible:shadow-none focus-visible:-outline-offset-1',
+      },
+      {
+        error: true,
+        variant: 'filledUnderlined',
         className: 'border-b-error outline-none focus-visible:border-b-error focus-visible:shadow-none focus-visible:-outline-offset-1',
       },
     ],

@@ -1,3 +1,5 @@
+/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable tailwindcss/enforces-negative-arbitrary-values */
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
@@ -12,6 +14,7 @@ const textFieldStyles = cva('TextField-container mb-2 mt-4 flex h-fit flex-col',
       filled: 'relative',
       outlined: 'relative',
       underlined: 'relative',
+      filledUnderlined: 'relative',
     },
   },
   defaultVariants: {
@@ -24,7 +27,8 @@ const labelStyles = cva('mb-1 transition-all duration-150 ease-cubic', {
     variant: {
       filled: 'absolute -top-1/2',
       outlined: 'absolute left-[18px] top-1/4 z-1 text-lg text-tra-neutral-light-black',
-      underlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform',
+      underlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform text-lg',
+      filledUnderlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform pl-5 text-lg',
     },
     borderRadius: {
       default: '',
@@ -57,9 +61,24 @@ const labelStyles = cva('mb-1 transition-all duration-150 ease-cubic', {
       className: 'left-4',
     },
     {
+      isHaveStartIcon: true,
+      variant: 'filledUnderlined',
+      className: 'left-8',
+    },
+    {
+      isHaveStartIcon: true,
+      variant: 'filledUnderlined',
+      className: 'left-4',
+    },
+    {
       outlineFocused: true,
       variant: 'underlined',
-      className: 'left-0 top-0 -translate-y-1/2 ',
+      className: 'left-0 top-0 -translate-y-1/2 text-base',
+    },
+    {
+      outlineFocused: true,
+      variant: 'filledUnderlined',
+      className: 'left-0 top-0 -translate-y-[20%] text-base',
     },
     {
       variant: 'outlined',
@@ -74,12 +93,13 @@ const labelStyles = cva('mb-1 transition-all duration-150 ease-cubic', {
   ],
 });
 
-const inputStyles = cva('p-2 transition-colors disabled:bg-tra-input-light', {
+const inputStyles = cva('p-2 pl-5 transition-colors disabled:bg-tra-input-light disabled:shadow-none', {
   variants: {
     variant: {
       filled: '',
       outlined: 'border-none',
       underlined: 'rounded-none border-x-0 border-t-0 bg-transparent hover:bg-transparent hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
+      filledUnderlined: 'rounded-none border-x-0 border-t-0 bg-tra-input-fill hover:bg-tra-input-fill hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
     },
   },
   defaultVariants: {
