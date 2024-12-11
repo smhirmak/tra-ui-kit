@@ -8,7 +8,7 @@ import { cva } from 'class-variance-authority';
 import { ReactNode, useEffect, useState } from 'react';
 
 const containerVariants = cva(
-  'fixed p-4',
+  'fixed z-9999 p-4',
   {
     variants: {
       position: {

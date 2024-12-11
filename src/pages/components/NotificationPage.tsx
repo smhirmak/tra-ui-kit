@@ -9,7 +9,7 @@ const NotificationPage = () => {
   return (
     <div className="mb-6 border-b-2 pb-6">
       <p className="text-4xl underline">Notification</p>
-      <div className="flex gap-6">
+      <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
         <RadioGroup defaultValue="default" onChange={e => setNotificationTheme(e as 'default' | 'lined' | 'colored')} className="mt-3 flex w-fit flex-col rounded-md bg-tra-primary-15 p-4">
           <RadioGroupItem id="default" label="Default" value="default" />
           <RadioGroupItem id="lined" label="Lined" value="lined" />
@@ -36,16 +36,16 @@ const NotificationPage = () => {
           <RadioGroupItem id="bottom-left" label="Bottom Left" value="bottom-left" />
         </RadioGroup>
       </div>
-      <div className="mt-2 flex space-x-2 border-t-2 py-2">
+      <div className="mt-2 grid grid-cols-2 gap-4 border-t-4 py-2 md:grid-cols-4 [&>button]:whitespace-pre-wrap">
         <Button onClick={() => info('Info', { autoClose: false })}>Without Auto Close Info Notification</Button>
         <Button onClick={() => error('Error', { autoClose: false })} className="bg-error hover:bg-error/75">Without Auto Close Error Notification</Button>
-        <Button onClick={() => success('Success', { autoClose: false })} className="bg-success text-tra-neutral-white">Without Auto Close Success Notification</Button>
+        <Button onClick={() => success('Success', { autoClose: false })} className="bg-success text-tra-neutral-black">Without Auto Close Success Notification</Button>
         <Button onClick={() => warn('Warning', { autoClose: false })} className="bg-warning text-tra-neutral-white">Without Auto Close Warning Notification</Button>
       </div>
-      <div className="mt-2 flex space-x-2 border-t-2 py-2">
+      <div className="mt-2 grid grid-cols-2 gap-4 border-t-4 py-2 md:grid-cols-4 [&>button]:whitespace-pre-wrap">
         <Button onClick={() => info('Info')}>With Auto Close Info Notification</Button>
         <Button onClick={() => error('Error')} className="bg-error hover:bg-error/75">With Auto Close Error Notification</Button>
-        <Button onClick={() => success('Success')} className="bg-success text-tra-neutral-white">With Auto Close Success Notification</Button>
+        <Button onClick={() => success('Success')} className="bg-success text-tra-neutral-black">With Auto Close Success Notification</Button>
         <Button onClick={() => warn('Warning')} className="bg-warning text-tra-neutral-white">With Auto Close Warning Notification</Button>
       </div>
     </div>
