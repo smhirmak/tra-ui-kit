@@ -2,6 +2,7 @@ import React, { ReactNode, useRef } from 'react';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import Object from '@/utilities/Object';
 import MethodHelper from '@/utilities/MethodHelper';
+import { ISelect } from '@/types/types';
 import Label from '../Label';
 import FormikErrorText from './FormikErrorText';
 import SelectBox from '../SelectBox';
@@ -12,7 +13,7 @@ React.FC<{
   id: string;
   formik: any;
   tooltip?: string | string[];
-  optionsList: { value: string | number, content: string }[];
+  optionsList: ISelect[];
   placeholder?: string,
   borderRadius?: 'default' | 'lg';
   showRequiredIcon?: boolean;
@@ -43,12 +44,13 @@ React.FC<{
         </Label>
         <SelectBox
           value={Object.GetNestedValue(formik.values, id) ?? ''}
-          onChange={value => formik.setFieldValue(id, value)}
+          onChange={value => { if (!disabled)formik.setFieldValue(id, value); }}
           placeholder={placeholder}
           optionsList={optionsList}
           translateFunction={t}
-          className={selectClassName}
           error={Boolean(MethodHelper.formikErrorCheck(formik, id))}
+          className={selectClassName}
+          disabled={disabled}
         />
         <FormikErrorText id={id} formik={formik} />
       </div>

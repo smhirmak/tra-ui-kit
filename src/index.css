@@ -8,6 +8,7 @@
     /* hsl formatının kullanım sebebi tailwind de renk opacity özelliğinin kullanılabilmesi için "bg-tra-primary/90" gibi */
     --tra-primary: 221 87% 52%;
     --tra-primary-soft: 221, 87%, 52%, 0.08;
+    --tra-primary-hard: 221, 87%, 52%, 0.15;
     --tra-primary-focused: 221 84% 43%;
     --tra-primary-foreground: 0 0% 100%;
     --tra-primary-5: 220 100% 98%;
@@ -34,6 +35,8 @@
     --tra-neutral-black: 0 0% 12%;
     --tra-neutral-light-black: 0 0% 25%;
     --tra-neutral-grey: 0 0% 60%;
+    --tra-neutral-soft-grey: 0, 0%, 0%, 0.08;
+    --tra-neutral-hard-grey: 0, 0%, 0%, 0.15;
     --tra-neutral-disabled-text: 223 12% 89%;
     --tra-neutral-white: 0 0% 100%;
     --tra-neutral-dark-white: 220 100% 99%;
@@ -61,6 +64,7 @@
   .dark {
     --tra-primary: 221 92% 69%;
     --tra-primary-soft: 221, 92%, 69%, 0.08;
+    --tra-primary-hard: 222, 92%, 70%, 0.15;
     --tra-primary-focused: 222 74% 62%;
     --tra-primary-foreground: 0 0% 100%;
     --tra-primary-5: 228 31% 19%;
@@ -87,6 +91,8 @@
     --tra-neutral-black: 0 0% 100%;
     --tra-neutral-light-black: 0 0% 93%;
     --tra-neutral-grey: 0 0% 60%;
+    --tra-neutral-soft-grey: 0, 0%, 100%, 0.08;
+    --tra-neutral-hard-grey: 0, 0%, 100%, 0.15;
     --tra-neutral-disabled-text: 220 14% 58%;
     --tra-neutral-white: 0 0% 12%;
     --tra-neutral-dark-white: 220 14% 58%;
@@ -170,3 +176,7 @@ input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px #171922 inset !important;
 }
 /*Input Autofill Color Change End*/
+
+.custom--dropdown-container .dropdown-menu::-webkit-scrollbar {
+  width: 8px;
+}

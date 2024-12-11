@@ -3,8 +3,19 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { ITab, ITabs } from '@/types/types';
 
-// eslint-disable-next-line no-spaced-func, func-call-spacing
-const TabsContext = createContext<{ activeTab: string; handleTabClick: (value: string) => void; variant: 'default' | 'solid' | 'outlined' | 'split' } | undefined>(undefined);
+interface ITabsContext {
+  activeTab: string;
+  handleTabClick: (value: string) => void;
+  variant: 'default' | 'solid' | 'outlined' | 'split';
+}
+
+const defaultTabsContext: ITabsContext = {
+  activeTab: '',
+  handleTabClick: () => {},
+  variant: 'default',
+};
+
+const TabsContext = createContext<ITabsContext>(defaultTabsContext);
 
 const tabsContainerVariants = cva('flex h-fit gap-2', {
   variants: {
@@ -42,7 +53,6 @@ const tabsVariants = cva('inline-flex w-fit items-center justify-center', {
   },
 });
 
-// Updated tabVariants with new solid variant
 // eslint-disable-next-line tailwindcss/no-custom-classname
 const tabVariants = cva(
   'select-none font-medium transition-all duration-300 disabled:pointer-events-none disabled:opacity-50',

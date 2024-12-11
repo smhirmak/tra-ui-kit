@@ -119,6 +119,10 @@ module.exports = {
         13: '3.25rem',
         15: '3.75rem',
       },
+      minHeight: {
+        13: '3.25rem',
+        15: '3.75rem',
+      },
       width: {
         13: '3.25rem',
         15: '3.75rem',
@@ -126,10 +130,10 @@ module.exports = {
       boxShadow: {
         'input-hover': '0 0 20px 0 hsl(var(--tra-primary-soft))',
         'input-focus': '0 0 20px 0 hsl(var(--tra-input-focused))',
-
-        // 'input-error': '0 0 0 3px hsl(var(--error))',
-        // 'input-success': '0 0 0 3px hsl(var(--success))',
-        // 'input-warning': '0 0 0 3px hsl(var(--warning))',
+        'soft-grey': '0px 0px 20px 0px hsl(var(--tra-neutral-soft-grey))',
+        'soft-primary': '0px 0px 20px 0px hsl(var(--tra-primary-soft))',
+        'hard-grey': '0px 0px 20px 0px hsl(var(--tra-neutral-hard-grey))',
+        'hard-primary': '0px 0px 20px 0px hsl(var(--tra-primary-hard))',
       },
       transitionProperty: {
         'font-size': 'font-size',
@@ -246,6 +250,7 @@ module.exports = {
         3: '3',
         4: '4',
         5: '5',
+        99: '99',
         9998: '9998',
         9999: '9999',
       },

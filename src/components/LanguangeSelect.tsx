@@ -1,54 +1,42 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { ILanguangeSelect } from '@/types/types';
+import Select from './Select';
 
 const countries = [
   {
-    label: 'TR',
-    src: '/assets/icons/flagOfTurkey.svg',
+    content:
+  <span className="flex gap-1">
+    <img src="/assets/icons/flagOfTurkey.svg" alt="TR" width="30px" height="20px" style={{ overflow: 'hidden' }} />
+    TR
+  </span>,
     value: 'tr',
   },
   {
-    label: 'EN',
-    src: '/assets/icons/flagOfUK.svg',
+    content:
+  <span className="flex gap-1">
+    <img src="/assets/icons/flagOfUK.svg" alt="EN" width="30px" height="20px" style={{ overflow: 'hidden' }} />
+    EN
+  </span>,
     value: 'en',
   },
 ];
 
 const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className }) => {
   const { setLocale } = useLocalizeContext();
-  const { t } = useLocalizeContext();
 
-  const handleChange = (event: string) => {
+  const handleChange = (event: string | string[] | number | number[]) => {
     const localeLang: string = countries?.find(f => f?.value === event)?.value ?? '';
     localStorage.setItem('lang', localeLang);
     setLocale(localeLang);
   };
+
   return (
     <div className={className}>
-      <Select defaultValue={localStorage.getItem('lang') || undefined} onValueChange={handleChange}>
-        <SelectTrigger className="min-w-28 border-none bg-transparent ring-0 focus:ring-0">
-          <SelectValue placeholder={t('Choose Languange')} />
-        </SelectTrigger>
-        <SelectContent>
-          {countries.map((option, key) => (
-            <SelectItem key={key} value={option.value}>
-              <div className="flex items-center gap-2">
-                <img
-                  src={option.src}
-                  alt={option.label}
-                  width="30px"
-                  height="20px"
-                  style={{
-                    overflow: 'hidden',
-                  }}
-                />
-                {option.label}
-              </div>
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
+      <Select
+        defaultValue={localStorage.getItem('lang') || undefined}
+        options={countries}
+        onChange={handleChange}
+      />
     </div>
   );
 };

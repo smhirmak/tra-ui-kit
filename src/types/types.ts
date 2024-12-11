@@ -6,7 +6,6 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { containerVariants } from '@/components/Container';
 import { inputVariants } from '@/components/Input';
 import { labelVariants } from '@/components/Label';
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 
 export interface INotification {
   children: ReactNode;
@@ -21,6 +20,11 @@ export interface INotification {
   progressBarClassName?: string,
   animationMode?: 'bounce' | 'slide' | 'flip' | false,
   position?: 'top-right' | 'bottom-right' | 'top-left' | 'bottom-left',
+}
+
+export interface ISelect {
+  content: string;
+  value: string | number;
 }
 
 export interface IAvatar {
@@ -178,12 +182,12 @@ export interface NotificationOptions {
   } | undefined;
 }
 
-export type RadioGroupItemProps = {
+export interface RadioGroupItemProps {
   className?: string;
   disabled?: boolean;
   id: string;
   label?: string;
-} & React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>;
+}
 
 export interface ISearchBar {
   borderRadius?: 'default' | 'lg';

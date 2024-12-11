@@ -25,7 +25,7 @@ const containerVariants = cva(
   },
 );
 
-const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md px-3 py-5 shadow-md transition-transform ease-in-out', {
+const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md px-3 py-5 shadow-soft-grey transition-transform ease-in-out', {
   variants: {
     theme: {
       colored: '',
