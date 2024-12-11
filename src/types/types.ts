@@ -139,7 +139,7 @@ export interface IInput
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
   value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  variant?: 'filled' | 'outlined' | 'underlined';
+  variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
 }
 
 export interface ILabel
@@ -156,7 +156,7 @@ showRequiredIcon?: boolean;
 size?: 'sm' | 'default' | 'lg' | undefined;
 startIcon?: React.ReactNode;
 tooltip?: string | string[] | null;
-variant?: 'filled' | 'outlined' | 'underlined';
+variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
 }
 
 export interface ILanguangeSelect {
@@ -261,7 +261,7 @@ export interface ITextField {
   tooltip?: string | string[];
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
   value?: string | number;
-  variant?: 'filled' | 'outlined' | 'underlined';
+  variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
 }
 
 export interface IFormikErrorText {

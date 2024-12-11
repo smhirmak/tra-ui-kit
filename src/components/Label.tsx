@@ -15,6 +15,7 @@ export const labelVariants = cva(
         filled: '',
         outlined: '',
         underlined: '',
+        filledUnderlined: '',
       },
       size: {
         sm: 'text-sm',
@@ -50,6 +51,7 @@ const tooltipVariants = cva('', {
       filled: '',
       outlined: '',
       underlined: '',
+      filledUnderlined: '',
     },
   },
   defaultVariants: {
