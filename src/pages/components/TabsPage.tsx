@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { Error, Plus, Warning } from '@/assets/Icons';
 import Button from '@/components/Button';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
@@ -236,7 +237,7 @@ const TabsPage = () => {
           <div>
             <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Default</p>
             <div className="flex flex-wrap space-x-2 pb-2">
-              <RadioGroup onValueChange={(e: 'top' | 'right' | 'bottom' | 'left') => setTabContentPlacement(e)} className="flex w-full flex-col items-center bg-tra-primary-15">
+              <RadioGroup onChange={e => setTabContentPlacement(e as 'top' | 'right' | 'bottom' | 'left')} className="flex w-full flex-col items-center bg-tra-primary-15">
                 <RadioGroupItem id="top" label="Top" value="top" />
                 <RadioGroupItem id="right" label="Right" value="right" />
                 <RadioGroupItem id="bottom" label="Bottom" value="bottom" />
