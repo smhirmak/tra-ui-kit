@@ -27,6 +27,7 @@ import TextFieldFilledPage from './pages/components/TextFieldFilledPage';
 import TextFieldOutlinedPage from './pages/components/TextFieldOutlinedPage';
 import TextFieldUnderlinedPage from './pages/components/TextFieldUnderlinedPage';
 import TextFieldFilledUnderlinedPage from './pages/components/TextFieldFilledUnderlinedPage';
+import TooltipPage from './pages/components/TooltipPage';
 
 const router = createBrowserRouter([
   {
@@ -125,6 +126,10 @@ const router = createBrowserRouter([
       {
         path: 'select',
         element: <SelectPage />,
+      },
+      {
+        path: 'tooltip',
+        element: <TooltipPage />,
       },
     ],
   }]);

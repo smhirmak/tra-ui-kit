@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-nested-ternary */
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
@@ -92,6 +91,5 @@ HTMLInputElement,
     </div>
   );
 });
-Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
 export default Checkbox;

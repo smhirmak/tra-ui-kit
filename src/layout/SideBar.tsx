@@ -99,6 +99,10 @@ const sidebarList = [
     label: 'Select',
     link: '/select',
   },
+  {
+    label: 'Tooltip',
+    link: '/tooltip',
+  },
 ];
 
 const SideBar = () => {

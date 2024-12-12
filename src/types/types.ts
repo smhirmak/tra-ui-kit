@@ -2,7 +2,6 @@
 import { buttonVariants } from '@/components/Button';
 import { VariantProps } from 'class-variance-authority';
 import { ReactNode } from 'react';
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { containerVariants } from '@/components/Container';
 import { inputVariants } from '@/components/Input';
 import { labelVariants } from '@/components/Label';
@@ -87,14 +86,15 @@ export interface IButton
   variant?: 'solid' | 'outlined' | 'ghost';
 }
 
-export type CheckboxProps = {
+export interface CheckboxProps {
   className?: string;
   disabled?: boolean;
   id?: string
   label?: string;
   size?: 'sm' | 'default' | 'lg';
   variant?: 'rectangular' | 'circular';
-} & React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>;
+  checked?: boolean;
+}
 
 export interface IChip {
   active?: boolean;

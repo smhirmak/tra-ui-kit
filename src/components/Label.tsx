@@ -2,9 +2,9 @@ import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
 import { Info } from '@/assets/Icons';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { ILabel } from '@/types/types';
+import Tooltip from './Tooltip';
 
 export const labelVariants = cva(
   `font-medium leading-none
@@ -88,20 +88,9 @@ const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
         {children}
       </span>
       {(tooltip) && (
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger>
-              <Info className={cn(tooltipVariants({ size, variant }))} />
-            </TooltipTrigger>
-            <TooltipContent side="bottom">
-              {Array.isArray(tooltip) ? (
-                tooltip.map((item, index) => <div key={index}>{item}</div>)
-              ) : (
-                <div>{tooltip}</div>
-              )}
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <Tooltip position="bottom" content={tooltip}>
+          <Info className={cn(tooltipVariants({ size, variant }))} />
+        </Tooltip>
       )}
     </span>
   </label>
