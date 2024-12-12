@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-nested-ternary */
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { cva } from 'class-variance-authority';
@@ -9,10 +10,10 @@ import { cn } from '@/lib/utils';
 import { CheckboxProps } from '@/types/types';
 
 const checkboxVariants = cva(
-  `peer flex shrink-0 items-center justify-center rounded-sm border border-tra-primary ring-offset-background
+  `peer flex shrink-0 select-none items-center justify-center rounded-sm border border-tra-primary ring-offset-background
   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-  disabled:cursor-not-allowed disabled:border-tra-input disabled:bg-tra-input disabled:text-white disabled:opacity-50 
-  data-[state=checked]:bg-tra-primary data-[state=checked]:text-tra-primary-foreground data-[state=checked]:disabled:bg-tra-input`,
+  data-[disabled=true]:cursor-not-allowed data-[disabled=true]:border-tra-input data-[checked=true]:bg-tra-primary data-[disabled=true]:bg-tra-input data-[checked=true]:text-tra-primary-foreground 
+  data-[disabled=true]:text-white data-[disabled=true]:opacity-50 data-[checked=true]:disabled:bg-tra-input`,
   {
     variants: {
       variant: {
@@ -33,39 +34,64 @@ const checkboxVariants = cva(
 );
 
 const Checkbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
+HTMLInputElement,
   CheckboxProps
 >(({
   className,
   disabled,
   id,
+  checked = false,
   label,
   size,
   variant,
   ...props
-}, ref) => (
-  <div className="flex items-center gap-2">
-    <CheckboxPrimitive.Root
-      ref={ref}
-      id={id}
-      disabled={disabled}
-      className={cn(checkboxVariants({ variant, size }), className)}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...props}
-    >
-      {disabled
-        ? <Minus className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-tra-input`} />
-        : (
-          <CheckboxPrimitive.Indicator
-            className={cn('flex items-center justify-center text-current')}
-          >
-            <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} rounded-sm bg-tra-primary`} />
-          </CheckboxPrimitive.Indicator>
-        )}
-    </CheckboxPrimitive.Root>
-    {label && <Label className="select-none" htmlFor={id} id={`${id}-label`} disabled={disabled} size={size}>{label}</Label>}
-  </div>
-));
+}, ref) => {
+  const [checkedValue, setCheckedValue] = React.useState<boolean | undefined>(checked);
+  return (
+    <div className="flex items-center gap-2">
+      <div>
+        <label
+          className={cn(checkboxVariants({ variant, size }), className)}
+          htmlFor={id}
+          data-disabled={disabled}
+          data-checked={checkedValue}
+        >
+          {(disabled && !checkedValue)
+            ? <Minus className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-tra-input`} />
+            : (disabled && checkedValue)
+              ? (
+                <>
+                  {console.log(123)}
+                  <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-tra-input`} />
+                </>
+              )
+              : (
+                <>
+                  {checkedValue && (
+                  <span
+                    className={cn('flex items-center justify-center text-current')}
+                  >
+                    <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} rounded-sm bg-tra-primary`} />
+                  </span>
+                  )}
+                </>
+              )}
+        </label>
+        <input
+          ref={ref}
+          type="checkbox"
+          checked={checkedValue}
+          disabled={disabled}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (!disabled) setCheckedValue(e.target.checked); }}
+          id={id}
+          className="peer hidden"
+          {...props}
+        />
+      </div>
+      {label && <Label className="select-none" htmlFor={id} id={`${id}-label`} disabled={disabled} size={size}>{label}</Label>}
+    </div>
+  );
+});
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
 export default Checkbox;
