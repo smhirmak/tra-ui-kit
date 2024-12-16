@@ -339,18 +339,18 @@ export interface IAccordionContent {
   className?: string;
 }
 
-export interface IOptions {
-  content: string | JSX.Element;
-  value: string | number;
+export interface ISelectOption{
+  content: string | React.ReactNode;
+  value: number | string | boolean;
 }
 
 export interface ISelect {
   placeHolder?: string;
   size?: 'default' | 'sm' | 'lg';
-  options: IOptions[] | IOptions;
+  options: ISelectOption[] | ISelectOption;
   isMulti?: boolean;
   isSearchable?: boolean;
-  onChange: (e: string | number | string[] | number[]) => void;
+  onChange: (e: string | number | string[] | number[] | boolean) => void;
   align?: string;
   label?: string;
   disabled?: boolean;
@@ -370,4 +370,6 @@ export interface ISelect {
   dropdownItemClassName?: string;
   completeButtonContainerClassName?: string;
   completeButtonClassName?: string;
+  translateFunction?: (e: string | string[]) => string;
+  value?: string | number | string[] | number[] | boolean;
 }

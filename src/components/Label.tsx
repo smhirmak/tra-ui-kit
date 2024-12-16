@@ -60,8 +60,6 @@ const tooltipVariants = cva('', {
 });
 
 const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
-  alwaysTop,
-  borderRadius,
   className = '',
   children,
   disabled,
@@ -70,7 +68,6 @@ const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
   outlineFocused,
   showRequiredIcon,
   size,
-  startIcon,
   tooltip,
   variant,
   ...props

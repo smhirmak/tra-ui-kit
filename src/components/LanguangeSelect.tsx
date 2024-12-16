@@ -24,7 +24,7 @@ const countries = [
 const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className }) => {
   const { setLocale } = useLocalizeContext();
 
-  const handleChange = (event: string | string[] | number | number[]) => {
+  const handleChange = (event: string | string[] | number | number[] | boolean) => {
     const localeLang: string = countries?.find(f => f?.value === event)?.value ?? '';
     localStorage.setItem('lang', localeLang);
     setLocale(localeLang);
