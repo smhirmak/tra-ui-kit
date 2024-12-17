@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable tailwindcss/enforces-negative-arbitrary-values */
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
@@ -8,7 +7,7 @@ import { ITextField } from '@/types/types';
 import Input from './Input';
 import Label from './Label';
 
-const textFieldStyles = cva('TextField-container mb-2 mt-4 flex h-fit flex-col', {
+const textFieldStyles = cva('TextField-container flex h-fit flex-col gap-1', {
   variants: {
     variant: {
       filled: 'relative',
@@ -22,10 +21,10 @@ const textFieldStyles = cva('TextField-container mb-2 mt-4 flex h-fit flex-col',
   },
 });
 
-const labelStyles = cva('mb-1 transition-all duration-150 ease-cubic', {
+const labelStyles = cva('transition-all duration-150 ease-cubic', {
   variants: {
     variant: {
-      filled: 'absolute -top-1/2',
+      filled: '',
       outlined: 'absolute left-[18px] top-1/4 z-1 text-lg text-tra-neutral-light-black',
       underlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform text-lg',
       filledUnderlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform pl-5 text-lg',
@@ -134,14 +133,13 @@ const fieldsetStyles = cva(
 );
 
 const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
-  alwaysTop,
   borderRadius,
   disabled = false,
   endIcon,
   error,
   id,
   name,
-  inputClassName,
+  inputClassName = '',
   label,
   labelClassName = '',
   onChange,
@@ -155,6 +153,9 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   value,
   autoComplete,
   variant = 'filled',
+  maxLength,
+  helperText,
+  textarea,
   ...otherProps
 }, ref) => {
   const { t } = useLocalizeContext();
@@ -176,7 +177,6 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         size={size}
         tooltip={tooltip}
         startIcon={startIcon}
-        alwaysTop={alwaysTop}
         disabled={disabled}
         borderRadius={borderRadius}
         showRequiredIcon={showRequiredIcon}
@@ -203,6 +203,8 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         endIcon={endIcon}
         startIcon={startIcon}
         borderRadius={borderRadius}
+        maxLength={maxLength}
+        textarea={textarea}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
       />
@@ -220,6 +222,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
           </legend>
         </fieldset>
       )}
+      {helperText && <p className="self-end text-sm text-tra-neutral-light-black">{helperText}</p>}
     </div>
   );
 });

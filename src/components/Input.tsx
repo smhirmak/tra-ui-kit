@@ -1,9 +1,8 @@
-import * as React from 'react';
-
 import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 import { IInput } from '@/types/types';
 import { Eye, EyeSlash } from '@/assets/Icons';
+import React from 'react';
 import Button from './Button';
 
 // eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/no-contradicting-classname
@@ -36,6 +35,10 @@ export const inputVariants = cva(
         default: 'rounded-md',
         lg: 'rounded-5xl',
       },
+      textarea: {
+        true: 'h-[calc(1.75rem*4)] w-full overflow-y-auto',
+        false: '',
+      },
     },
     defaultVariants: {
       size: 'default',
@@ -63,22 +66,25 @@ export const inputVariants = cva(
   },
 );
 
-const Input = React.forwardRef<HTMLInputElement, IInput>(
-  ({
-    borderRadius,
-    className = '',
-    endIcon,
-    error,
-    size,
-    startIcon,
-    type,
-    variant = 'filled',
-    value,
-    onChange,
-    autoComplete,
-    ...props
-  }, ref) => {
+const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
+  (props, ref) => {
+    const {
+      borderRadius,
+      className = '',
+      endIcon,
+      error,
+      size,
+      startIcon,
+      type,
+      variant = 'filled',
+      value,
+      onChange,
+      autoComplete,
+      textarea = false,
+      ...restProps
+    } = props;
     const [passwordVisible, setPasswordVisible] = React.useState(false);
+    const Comp = textarea ? 'textarea' : 'input';
     return (
       <div className="flex w-full items-center">
         {startIcon && (
@@ -86,19 +92,20 @@ const Input = React.forwardRef<HTMLInputElement, IInput>(
           {startIcon}
         </span>
         )}
-        <input
+        <Comp
           type={passwordVisible ? 'text' : type}
-          className={cn(inputVariants({ variant, size, error, borderRadius }), className)}
-          ref={ref}
+          className={cn(inputVariants({ variant, size, error, borderRadius, textarea }), className)}
+          ref={ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>}
           autoComplete={autoComplete ?? 'off'}
           value={value}
-          onChange={onChange}
+          onChange={e => onChange && onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)}
           style={{
             paddingLeft: startIcon ? '2.5rem' : undefined,
             paddingRight: endIcon ? '2.5rem' : undefined,
           }}
-        // eslint-disable-next-line react/jsx-props-no-spreading
-          {...props}
+          rows={textarea ? 4 : undefined}
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...(restProps as React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
         />
         {endIcon && (
         <span className="absolute right-3 text-current">
