@@ -137,8 +137,9 @@ export interface IInput
   startIcon?: React.ReactNode;
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
   value?: string | number;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
+  textarea?: boolean;
 }
 
 export interface ILabel
@@ -251,7 +252,7 @@ export interface ITextField {
   inputClassName?: string;
   label?: string;
   labelClassName?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onWheel?: (e: React.WheelEvent<HTMLInputElement>) => void;
   placeholder?: string;
   showRequiredIcon?: boolean;
@@ -261,6 +262,9 @@ export interface ITextField {
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
   value?: string | number;
   variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
+  maxLength?: number;
+  helperText?: string;
+  textarea?: boolean;
 }
 
 export interface IFormikErrorText {
@@ -339,18 +343,18 @@ export interface IAccordionContent {
   className?: string;
 }
 
-export interface IOptions {
-  content: string | JSX.Element;
-  value: string | number;
+export interface ISelectOption{
+  content: string | React.ReactNode;
+  value: number | string | boolean;
 }
 
 export interface ISelect {
   placeHolder?: string;
   size?: 'default' | 'sm' | 'lg';
-  options: IOptions[] | IOptions;
+  options: ISelectOption[] | ISelectOption;
   isMulti?: boolean;
   isSearchable?: boolean;
-  onChange: (e: string | number | string[] | number[]) => void;
+  onChange: (e: string | number | string[] | number[] | boolean) => void;
   align?: string;
   label?: string;
   disabled?: boolean;
@@ -370,4 +374,25 @@ export interface ISelect {
   dropdownItemClassName?: string;
   completeButtonContainerClassName?: string;
   completeButtonClassName?: string;
+  value?: string | number | string[] | number[] | boolean;
+  id?: string;
+  tooltip?: string | string[];
+  showRequiredIcon?: boolean;
+}
+
+export interface IDatePicker {
+  id: string;
+  onChange: (date: Date | null) => void;
+  value?: Date;
+  placeholder?: string;
+  disabled?: boolean;
+  error?: boolean;
+  className?: string;
+  maxDate?: Date;
+  minDate?: Date;
+  label?: string;
+  labelClassName?: string;
+  dropdownMenuClassName?: string;
+  showRequiredIcon?: boolean;
+  tooltip?: string | string[];
 }

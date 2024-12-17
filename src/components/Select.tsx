@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -6,8 +7,9 @@ import Label from '@/components/Label';
 import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef, useState } from 'react';
-import { IOptions, ISelect } from '@/types/types';
+import { ISelect, ISelectOption } from '@/types/types';
 import Button from './Button';
+import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 
 const selectVariants = cva(
   `custom--dropdown-container relative flex w-full cursor-pointer items-center rounded-md border border-tra-neutral 
@@ -24,7 +26,7 @@ const selectVariants = cva(
         lg: '',
       },
       isMulti: {
-        true: 'cursor-text',
+        true: '',
         false: '',
       },
       isSearchable: {
@@ -79,6 +81,7 @@ const Select: React.FC<ISelect> = ({
   placeHolder = '',
   label,
   size = 'default',
+  value,
   disabled = false,
   error = false,
   options,
@@ -88,21 +91,24 @@ const Select: React.FC<ISelect> = ({
   defaultValue,
   completeButton = false,
   completeButtonText,
-  searchInputClassName,
-  dropdownTagClassName,
-  dropdownTagCloseButtonClassName,
-  className,
-  labelClassName,
-  containerClassName,
-  selectTextClassName,
-  iconClassName,
-  dropdownMenuClassName,
-  dropdownItemClassName,
-  completeButtonContainerClassName,
-  completeButtonClassName,
+  searchInputClassName = '',
+  dropdownTagClassName = '',
+  dropdownTagCloseButtonClassName = '',
+  className = '',
+  labelClassName = '',
+  containerClassName = '',
+  selectTextClassName = '',
+  iconClassName = '',
+  dropdownMenuClassName = '',
+  dropdownItemClassName = '',
+  completeButtonContainerClassName = '',
+  completeButtonClassName = '',
+  id,
+  tooltip,
+  showRequiredIcon,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const [selectedValue, setSelectedValue] = useState<IOptions[] | IOptions | null>(isMulti ? [] : null);
+  const [selectedValue, setSelectedValue] = useState<ISelectOption[] | ISelectOption | null>(isMulti ? [] : null);
   const [searchValue, setSearchValue] = useState(isSearchable ? '' : null);
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
   const searchRef = useRef<HTMLInputElement>(null);
@@ -125,14 +131,26 @@ const Select: React.FC<ISelect> = ({
   useEffect(() => {
     if (defaultValue) {
       if (isMulti && Array.isArray(defaultValue)) {
-        const defaultOptions = (options as IOptions[]).filter(option => (defaultValue as (string | number)[]).includes(option.value));
+        const defaultOptions = (options as ISelectOption[]).filter(option => (defaultValue as (string | number | boolean)[]).includes(option.value));
         setSelectedValue(defaultOptions);
       } else if (!isMulti && !Array.isArray(defaultValue)) {
-        const defaultOption: IOptions | undefined = (options as IOptions[]).find((option: IOptions) => option.value === defaultValue);
+        const defaultOption: ISelectOption | undefined = (options as ISelectOption[]).find((option: ISelectOption) => option.value === defaultValue);
         setSelectedValue(defaultOption || null);
       }
     }
   }, [defaultValue, options, isMulti]);
+
+  useEffect(() => {
+    if (value) {
+      if (isMulti && Array.isArray(value)) {
+        const selectedOptions = (options as ISelectOption[]).filter(option => (value as (string | number | boolean)[]).includes(option.value));
+        setSelectedValue(selectedOptions);
+      } else if (!isMulti && !Array.isArray(value)) {
+        const selectedOption = (options as ISelectOption[]).find(option => option.value === value);
+        setSelectedValue(selectedOption || null);
+      }
+    }
+  }, [value, options, isMulti]);
 
   useEffect(() => {
     setSearchValue('');
@@ -194,14 +212,14 @@ const Select: React.FC<ISelect> = ({
     }
   }, [showMenu, selectedValue]);
 
-  const handleInputClick = () => {
-    setShowMenu(!showMenu);
-    if (isSearchable && searchRef.current) {
-      searchRef.current.focus();
-    } else if (dropdownRef.current) {
-      dropdownRef.current.focus();
-    }
-  };
+  // const handleInputClick = () => {
+  //   setShowMenu(!showMenu);
+  //   if (isSearchable && searchRef.current) {
+  //     searchRef.current.focus();
+  //   } else if (dropdownRef.current) {
+  //     dropdownRef.current.focus();
+  //   }
+  // };
 
   const scrollToHighlightedItem = (index: number) => {
     const dropdownMenu = dropdownRef.current;
@@ -211,23 +229,23 @@ const Select: React.FC<ISelect> = ({
     }
   };
 
-  const removeOption = (option: IOptions): IOptions[] | null => (
+  const removeOption = (option: ISelectOption): ISelectOption[] | null => (
     selectedValue && Array.isArray(selectedValue) ? selectedValue.filter(o => o.value !== option.value) : null
   );
 
-  const onTagRemove = (e: React.MouseEvent, option: IOptions): void => {
+  const onTagRemove = (e: React.MouseEvent, option: ISelectOption): void => {
     e.stopPropagation();
     const newValue = removeOption(option);
     setSelectedValue(newValue);
-    onChange(newValue ? newValue.map(o => (typeof o.value === 'string' ? o.value : o.value.toString())) : []);
+    onChange(newValue ? newValue.map((o: any) => o.value) : []);
   };
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
 
-  const onItemClick = (option: IOptions): void => {
-    let newValue: IOptions[] | IOptions | null;
+  const onItemClick = (option: ISelectOption): void => {
+    let newValue: ISelectOption[] | ISelectOption | null;
     if (isMulti) {
       if (selectedValue && Array.isArray(selectedValue) && selectedValue.findIndex(o => o.value === option.value) >= 0) {
         newValue = removeOption(option);
@@ -235,7 +253,7 @@ const Select: React.FC<ISelect> = ({
         newValue = selectedValue && Array.isArray(selectedValue) ? [...selectedValue, option] : [option];
       }
       setSelectedValue(newValue);
-      onChange(newValue ? newValue.map(o => (typeof o.value === 'string' ? o.value : o.value.toString())) : []);
+      onChange(newValue ? newValue.map((o: any) => o.value) : []);
     } else {
       newValue = option;
       setSelectedValue(newValue);
@@ -272,7 +290,7 @@ const Select: React.FC<ISelect> = ({
         break;
       case 'Enter':
         if (highlightedIndex >= 0 && Array.isArray(optionList) && highlightedIndex < optionList.length) {
-          onItemClick((optionList as IOptions[])[highlightedIndex]);
+          onItemClick((optionList as ISelectOption[])[highlightedIndex]);
         }
         break;
       case 'Escape':
@@ -289,7 +307,7 @@ const Select: React.FC<ISelect> = ({
         <>
           {!showMenu && <span data-disabled={disabled} className="data-[disabled=true]:text-tra-neutral-grey">{placeHolder}</span>}
           {isSearchable && (
-            <div className="MsiSelect-searchBox flex items-center">
+            <div className="MsiSelect-searchBox flex max-w-[80%] items-center">
               <input
                 className={`MsiSelectSearchInput ${searchInputClassName} h-unset focus-visible:ring-none m-0 bg-transparent p-0 font-medium 
                   text-tra-neutral-black focus-visible:border-none focus-visible:outline-none ${!showMenu && 'w-0'}`}
@@ -307,7 +325,7 @@ const Select: React.FC<ISelect> = ({
     }
     if (isMulti) {
       return (
-        <div className="MsiSelect-dropdownTags flex max-w-full flex-wrap gap-1.5">
+        <div className="MsiSelect-dropdownTags flex max-w-full cursor-default flex-wrap gap-1.5">
           {Array.isArray(selectedValue) && selectedValue.map((option, index) => (
             <div
               title={option.content as string}
@@ -345,10 +363,10 @@ const Select: React.FC<ISelect> = ({
       );
     }
     return (
-      <div className="flex items-center overflow-hidden">
-        <span className={`max-w-full truncate whitespace-nowrap ${(!isMulti && isSearchable && showMenu) && 'text-tra-neutral opacity-90'}`}>{(selectedValue as IOptions).content}</span>
+      <div className="flex max-w-full items-center overflow-hidden">
+        <span className={`max-w-full truncate whitespace-nowrap ${(!isMulti && isSearchable && showMenu) && 'text-tra-neutral opacity-90'}`}>{(selectedValue as ISelectOption).content}</span>
         {(isSearchable && showMenu) && (
-          <div className={`MsiSelect-searchBox flex items-center ${!isMulti && 'absolute z-2'}`}>
+          <div className={`MsiSelect-searchBox flex max-w-[80%] items-center ${!isMulti && 'absolute z-2'}`}>
             <input
               className={`MsiSelect-searchInput ${searchInputClassName} h-unset focus-visible:ring-none m-0 bg-transparent p-0 text-tra-neutral-black
                  opacity-100 focus-visible:border-none focus-visible:outline-none ${!showMenu && 'w-0'}`}
@@ -365,11 +383,11 @@ const Select: React.FC<ISelect> = ({
   };
   const selectedItem = getDisplay();
 
-  const isSelected = (option: IOptions): boolean => {
+  const isSelected = (option: ISelectOption): boolean => {
     if (isMulti) {
-      return (selectedValue as IOptions[])?.some(o => o.value === option.value);
+      return (selectedValue as ISelectOption[])?.some(o => o?.value === option?.value);
     }
-    return selectedValue ? (selectedValue as IOptions).value === option.value : false;
+    return selectedValue ? (selectedValue as ISelectOption)?.value === option?.value : false;
   };
 
   const getTextFromSelectedItem = (item: any): string => {
@@ -393,59 +411,76 @@ const Select: React.FC<ISelect> = ({
   const textContent = getTextFromSelectedItem(selectedItem);
 
   return (
-    <div className="MsiSelect-root  relative">
-      {label && <Label className={labelClassName} disabled={disabled}>{label}</Label>}
-      <div className={cn(selectVariants({ size, showMenu, isMulti, isSearchable, error }), className)} data-disabled={disabled}>
-        <div
-          ref={inputRef}
-          onClick={() => { if (!disabled) handleInputClick(); }}
-          className={`MsiSelect-container ${containerClassName} flex min-h-full w-full select-none items-center justify-between gap-2 px-3 py-2`}
+    <div className={`MsiSelect-root relative flex flex-col gap-1 ${className}`}>
+      {label
+      && (
+      <Label
+        className={`flex transition-all duration-150 ease-cubic ${labelClassName}`}
+        htmlFor={id}
+        id={`${id}-label`}
+        tooltip={tooltip}
+        disabled={disabled}
+        showRequiredIcon={showRequiredIcon}
+      >
+        {label}
+      </Label>
+      )}
+      <Popover open={showMenu} onOpenChange={setShowMenu} disabled={disabled}>
+        <PopoverTrigger className={cn(selectVariants({ size, isMulti, isSearchable, error }))}>
+          <div id={id} className={`MsiSelect-container ${containerClassName} flex max-h-32 min-h-full w-full select-none justify-between gap-2 overflow-y-auto px-3 py-2`}>
+            <div title={textContent} className={`MsiSelect-selectText ${selectTextClassName} flex h-full max-h-full max-w-full items-center ${!isMulti && 'self-center'} truncate font-medium`}>
+              {getDisplay()}
+            </div>
+            <div className="MsiSelect-iconContainer self-center">
+              <CaretDown className={`MsiSelect-icon ${iconClassName} stroke-tra-neutral-light-black transition-all`} />
+            </div>
+          </div>
+        </PopoverTrigger>
+
+        <PopoverContent
+          className={`MsiSelect-dropdownMenu ${dropdownMenuClassName} max-h-80 min-h-12 w-full overflow-auto rounded-md bg-tra-background shadow-soft-grey`}
         >
-          <div
-            className={`MsiSelect-selectText ${selectTextClassName} flex h-full max-h-full max-w-full items-center truncate font-medium
-              ${!selectedValue || (Array.isArray(selectedValue) && selectedValue.length === 0) ? 'text-tra-neutral-light-black' : ''}`}
-            title={textContent}
-          >
-            {selectedItem}
-          </div>
-          <div className="MsiSelect-iconContainer">
-            <CaretDown className={`MsiSelect-icon ${iconClassName} stroke-tra-neutral-light-black transition-all ${showMenu ? 'rotate-180 stroke-tra-primary-focused' : ''}`} />
-          </div>
-        </div>
-      </div>
-      {showMenu && (
-        <>
-          <div className="fixed inset-0 z-40" onClick={() => { if (!disabled) setShowMenu(false); }} />
-          <div
-            ref={dropdownRef}
-            style={dropdownStyles}
-            className={`MsiSelect-dropdownMenu ${dropdownMenuClassName} fixed z-50 mt-2 max-h-80 min-h-12 w-full overflow-auto
-             rounded-md bg-tra-background shadow-soft-grey ${dropdownPosition === 'top' ? 'mb-2' : 'mt-2'}`}
-            onKeyDown={handleKeyDown}
-          >
-            {Array.isArray(optionList) && optionList.map((option: IOptions, index) => (
+          <div onKeyDown={handleKeyDown} ref={dropdownRef}>
+            {Array.isArray(optionList) && optionList.map((option: ISelectOption, index) => (
               <div
-                onClick={() => { if (!disabled)onItemClick(option); }}
-                key={option.value}
+                onClick={() => { if (!disabled) onItemClick(option); }}
+                key={option.value as number}
                 className={`MsiSelect-dropdownItem ${dropdownItemClassName} flex cursor-pointer items-center justify-between rounded-md px-3 py-2 font-medium
-                  text-tra-neutral-black hover:bg-tra-primary-5 ${isSelected(option) ? 'bg-tra-primary-5 font-semibold text-tra-primary' : ''} ${highlightedIndex === index ? 'bg-tra-primary-5' : ''}`}
+                  text-tra-neutral-black hover:bg-tra-primary-5 ${isSelected(option) ? 'bg-tra-primary-5 font-semibold text-tra-primary' : ''} 
+                  ${highlightedIndex === index ? 'bg-tra-primary-5' : ''}`}
               >
+                {/* {option.common?.status !== undefined && (option.common?.status
+                  ? (
+                    <div className="flex flex-col items-center justify-center px-2">
+                      <SealCheck className="size-5 text-success" />
+                      <p className="text-sm text-success">Active</p>
+                    </div>
+                  )
+                  : (
+                    <div className="flex flex-col items-center justify-center px-2">
+                      <SealWarning className="size-5 text-error" />
+                      <p className="text-sm text-error">Passive</p>
+                    </div>
+                  )
+                )} */}
                 {option.content}
                 {isMulti && (
-                <span className={`mr-2 ${!isSelected(option) && 'opacity-0'}`}>
-                  <Check className="MsiSelect-checkIcon size-4 text-tra-primary" />
-                </span>
+                  <span className={`mr-2 ${!isSelected(option) && 'opacity-0'}`}>
+                    <Check className="MsiSelect-checkIcon size-4 text-tra-primary" />
+                  </span>
                 )}
               </div>
             ))}
             {completeButton && (
-            <div className={`MsiSelect-completeButtonContainer ${completeButtonContainerClassName} sticky bottom-0 bg-tra-background px-1 pb-1 ${completeButton === 'mobile' && 'md:hidden'}`}>
-              <Button size={size} onClick={() => setShowMenu(false)} className={`MsiSelect-completeButton ${completeButtonClassName} w-full`}>{completeButtonText ?? 'Complete Selection'}</Button>
-            </div>
+              <div className={`MsiSelect-completeButtonContainer ${completeButtonContainerClassName} sticky bottom-0 bg-tra-background px-1 pb-1`}>
+                <Button size={size} className={`MsiSelect-completeButton ${completeButtonClassName} w-full`} onClick={() => setShowMenu(false)}>
+                  {completeButtonText ?? 'Complete Selection'}
+                </Button>
+              </div>
             )}
           </div>
-        </>
-      )}
+        </PopoverContent>
+      </Popover>
     </div>
   );
 };

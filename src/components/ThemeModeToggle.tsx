@@ -11,8 +11,8 @@ const ThemeModeToggle = () => {
 
   return (
     <Button variant="outlined" className="relative" disableEffect size="icon" onClick={toggleTheme}>
-      <Sun className="size-[1.2rem] rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute top-1/2 size-[1.3rem] -translate-y-1/2 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />
+      <Moon className="size-[1.3rem] rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
+      <Sun className="absolute top-1/2 size-[1.2rem] -translate-y-1/2 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />
     </Button>
   );
 };

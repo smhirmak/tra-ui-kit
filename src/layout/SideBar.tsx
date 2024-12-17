@@ -103,6 +103,14 @@ const sidebarList = [
     label: 'Tooltip',
     link: '/tooltip',
   },
+  {
+    label: 'Date Picker',
+    link: '/date-picker',
+  },
+  {
+    label: 'Popover',
+    link: '/popover',
+  },
 ];
 
 const SideBar = () => {
