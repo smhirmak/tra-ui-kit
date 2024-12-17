@@ -200,7 +200,7 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(
           <LoadingSpinner className={cn(spinnerVariants({ size }), loadingSpinnerClassname)} />
         )}
         {/* eslint-disable-next-line no-nested-ternary */}
-        <div>{(loading && size !== 'icon') ? (loadingText ?? t('Sending...')) : (loading && size === 'icon') ? null : children}</div>
+        <>{(loading && size !== 'icon') ? (loadingText ?? t('Sending...')) : (loading && size === 'icon') ? null : children}</>
       </Comp>
     );
   },

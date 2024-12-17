@@ -88,7 +88,6 @@ const Select: React.FC<ISelect> = ({
   isMulti = false,
   isSearchable = false,
   onChange = () => { },
-  translateFunction,
   defaultValue,
   completeButton = false,
   completeButtonText,
@@ -306,7 +305,7 @@ const Select: React.FC<ISelect> = ({
     if (!selectedValue || (Array.isArray(selectedValue) && selectedValue.length === 0)) {
       return (
         <>
-          {!showMenu && <span data-disabled={disabled} className="data-[disabled=true]:text-tra-neutral-grey">{translateFunction ? translateFunction(placeHolder) : placeHolder}</span>}
+          {!showMenu && <span data-disabled={disabled} className="data-[disabled=true]:text-tra-neutral-grey">{placeHolder}</span>}
           {isSearchable && (
             <div className="MsiSelect-searchBox flex max-w-[80%] items-center">
               <input
@@ -386,9 +385,9 @@ const Select: React.FC<ISelect> = ({
 
   const isSelected = (option: ISelectOption): boolean => {
     if (isMulti) {
-      return (selectedValue as ISelectOption[])?.some(o => o.value === option.value);
+      return (selectedValue as ISelectOption[])?.some(o => o?.value === option?.value);
     }
-    return selectedValue ? (selectedValue as ISelectOption).value === option.value : false;
+    return selectedValue ? (selectedValue as ISelectOption)?.value === option?.value : false;
   };
 
   const getTextFromSelectedItem = (item: any): string => {
@@ -412,11 +411,11 @@ const Select: React.FC<ISelect> = ({
   const textContent = getTextFromSelectedItem(selectedItem);
 
   return (
-    <div className={`MsiSelect-root relative ${className}`}>
+    <div className={`MsiSelect-root relative flex flex-col gap-1 ${className}`}>
       {label
       && (
       <Label
-        className={`mb-1 flex transition-all duration-150 ease-cubic ${labelClassName}`}
+        className={`flex transition-all duration-150 ease-cubic ${labelClassName}`}
         htmlFor={id}
         id={`${id}-label`}
         tooltip={tooltip}
@@ -429,7 +428,7 @@ const Select: React.FC<ISelect> = ({
       <Popover open={showMenu} onOpenChange={setShowMenu} disabled={disabled}>
         <PopoverTrigger className={cn(selectVariants({ size, isMulti, isSearchable, error }))}>
           <div id={id} className={`MsiSelect-container ${containerClassName} flex max-h-32 min-h-full w-full select-none justify-between gap-2 overflow-y-auto px-3 py-2`}>
-            <div title={textContent} className={`MsiSelect-selectText ${selectTextClassName} flex h-full max-h-full max-w-full items-center self-center truncate font-medium`}>
+            <div title={textContent} className={`MsiSelect-selectText ${selectTextClassName} flex h-full max-h-full max-w-full items-center ${!isMulti && 'self-center'} truncate font-medium`}>
               {getDisplay()}
             </div>
             <div className="MsiSelect-iconContainer self-center">
@@ -450,6 +449,20 @@ const Select: React.FC<ISelect> = ({
                   text-tra-neutral-black hover:bg-tra-primary-5 ${isSelected(option) ? 'bg-tra-primary-5 font-semibold text-tra-primary' : ''} 
                   ${highlightedIndex === index ? 'bg-tra-primary-5' : ''}`}
               >
+                {/* {option.common?.status !== undefined && (option.common?.status
+                  ? (
+                    <div className="flex flex-col items-center justify-center px-2">
+                      <SealCheck className="size-5 text-success" />
+                      <p className="text-sm text-success">Active</p>
+                    </div>
+                  )
+                  : (
+                    <div className="flex flex-col items-center justify-center px-2">
+                      <SealWarning className="size-5 text-error" />
+                      <p className="text-sm text-error">Passive</p>
+                    </div>
+                  )
+                )} */}
                 {option.content}
                 {isMulti && (
                   <span className={`mr-2 ${!isSelected(option) && 'opacity-0'}`}>

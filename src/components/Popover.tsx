@@ -157,7 +157,6 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
 
     // Merge the refs
     const mergedRef = (node: HTMLDivElement) => {
-      // Update forwarded ref
       if (forwardedRef) {
         if (typeof forwardedRef === 'function') {
           forwardedRef(node);
@@ -165,7 +164,6 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
           (forwardedRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
         }
       }
-      // Update internal ref
       if (contentRef.current !== node) {
         contentRef.current = node;
       }

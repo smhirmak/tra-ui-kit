@@ -28,6 +28,8 @@ import TextFieldOutlinedPage from './pages/components/TextFieldOutlinedPage';
 import TextFieldUnderlinedPage from './pages/components/TextFieldUnderlinedPage';
 import TextFieldFilledUnderlinedPage from './pages/components/TextFieldFilledUnderlinedPage';
 import TooltipPage from './pages/components/TooltipPage';
+import DatePickerPage from './pages/components/DatePickerPage';
+import PopoverPage from './pages/components/PopoverPage';
 
 const router = createBrowserRouter([
   {
@@ -130,6 +132,14 @@ const router = createBrowserRouter([
       {
         path: 'tooltip',
         element: <TooltipPage />,
+      },
+      {
+        path: 'date-picker',
+        element: <DatePickerPage />,
+      },
+      {
+        path: 'popover',
+        element: <PopoverPage />,
       },
     ],
   }]);
