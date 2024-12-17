@@ -25,6 +25,7 @@ interface PopoverProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   disabled?: boolean;
+  dropdownAlign?: 'left' | 'right';
 }
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -32,6 +33,7 @@ export const Popover: React.FC<PopoverProps> = ({
   open: controlledOpen,
   onOpenChange,
   disabled = false,
+  dropdownAlign = 'left',
 }) => {
   const [open, setOpen] = useState(controlledOpen ?? false);
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -64,7 +66,8 @@ export const Popover: React.FC<PopoverProps> = ({
         position: 'fixed',
         top: spaceBelow > 320 ? `${rect.bottom}px` : 'auto',
         bottom: spaceBelow <= 320 ? `${window.innerHeight - rect.top}px` : 'auto',
-        left: `${rect.left}px`,
+        left: dropdownAlign === 'left' ? `${rect.left}px` : '',
+        right: dropdownAlign === 'right' ? `${window.innerWidth - rect.right}px` : '',
         width: `${rect.width}px`,
         maxHeight: '320px',
         zIndex: 50,

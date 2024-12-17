@@ -25,6 +25,7 @@ const DatePicker: React.FC<IDatePicker> = ({
   dropdownMenuClassName = '',
   showRequiredIcon = false,
   tooltip,
+  dropdownAlign,
 }) => {
   const dayRef = React.useRef<HTMLInputElement | null>(null);
   const monthRef = React.useRef<HTMLInputElement | null>(null);
@@ -172,7 +173,7 @@ const DatePicker: React.FC<IDatePicker> = ({
         {label}
       </Label>
       )}
-      <Popover open={popoverOpen} onOpenChange={handlePopoverOpenChange} disabled={disabled}>
+      <Popover open={popoverOpen} onOpenChange={handlePopoverOpenChange} disabled={disabled} dropdownAlign={dropdownAlign}>
         <PopoverTrigger>
           <Button
             variant="outlined"
