@@ -378,6 +378,7 @@ export interface ISelect {
   id?: string;
   tooltip?: string | string[];
   showRequiredIcon?: boolean;
+  dropdownAlign?: 'left' | 'right';
 }
 
 export interface IDatePicker {
@@ -395,4 +396,5 @@ export interface IDatePicker {
   dropdownMenuClassName?: string;
   showRequiredIcon?: boolean;
   tooltip?: string | string[];
+  dropdownAlign?: 'left' | 'right';
 }
