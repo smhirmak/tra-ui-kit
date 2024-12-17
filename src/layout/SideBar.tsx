@@ -1,4 +1,4 @@
-import { CaretRight, X } from '@/assets/Icons';
+import { CaretRight } from '@/assets/Icons';
 import { Accordion, AccordionItem } from '@/components/Accordion';
 import Button from '@/components/Button';
 import React, { useState } from 'react';

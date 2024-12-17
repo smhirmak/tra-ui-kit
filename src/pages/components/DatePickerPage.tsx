@@ -48,7 +48,6 @@ const DatePickerPage = () => (
         onChange={date => console.log(date)}
         placeholder="Tarih Seçiniz"
       />
-      {console.log(new Date('2024-12-20'))}
     </div>
   </div>
 );

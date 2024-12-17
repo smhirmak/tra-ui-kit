@@ -11,8 +11,8 @@ const LoaderPage = () => (
     <LoadingSpinner />
     <p className="mt-2 text-xl">Linear:</p>
     <LoadingLinear />
-    <Button onClick={() => loaderRef.current.incLoader()}>Show Loader</Button>
-    <Button onClick={() => loaderRef.current.decLoader()}>Show Loader</Button>
+    <Button onClick={() => loaderRef.current?.incLoader()}>Show Loader</Button>
+    <Button onClick={() => loaderRef.current?.decLoader()}>Show Loader</Button>
   </div>
 );
 

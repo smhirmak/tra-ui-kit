@@ -55,6 +55,9 @@ const TextFieldFilledPage = () => {
           <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" endIcon={<Plus />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" borderRadius="lg" />
         </div>
+        <div className="flex space-x-4">
+          <TextField helperText="123" textarea value={value} onChange={e => setValue(e.target.value)} size="lg" label="Text Area" tooltip="Tooltip" />
+        </div>
       </div>
     </div>
   );

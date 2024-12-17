@@ -3,7 +3,12 @@ import { createRef, useEffect, useImperativeHandle, useState } from 'react';
 import { ILoader } from '@/types/types';
 import LoadingLinear from './ui/loading-linear';
 
-export const loaderRef = createRef();
+export type LoaderRefType = {
+  incLoader: () => void;
+  decLoader: () => void;
+};
+
+export const loaderRef = createRef<LoaderRefType>();
 
 const Loader: React.FC<ILoader> = ({ className, enableScroll = false, linearItemClassName, variant = 'circular' }) => {
   const [counter, setCounter] = useState(0);

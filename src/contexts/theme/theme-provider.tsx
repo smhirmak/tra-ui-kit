@@ -4,12 +4,17 @@ type Theme = 'light' | 'dark';
 
 const ThemeProviderContext = createContext<{
   theme: Theme;
+  children: React.ReactNode;
   setTheme:(theme: Theme) => void;
     } | undefined>(undefined);
 
 const storageKey = 'theme';
 
-export const ThemeProvider: React.FC = ({ children }) => {
+interface ThemeProviderProps {
+  children: React.ReactNode;
+}
+
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
     const storedTheme = localStorage.getItem(storageKey);
     return storedTheme === 'dark' ? 'dark' : 'light';
@@ -36,7 +41,8 @@ export const ThemeProvider: React.FC = ({ children }) => {
   const value = useMemo(() => ({
     theme,
     setTheme,
-  }), [theme]);
+    children,
+  }), [theme, children]);
 
   return (
     <ThemeProviderContext.Provider value={value}>
