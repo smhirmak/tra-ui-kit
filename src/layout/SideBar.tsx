@@ -111,6 +111,10 @@ const sidebarList = [
     label: 'Popover',
     link: '/popover',
   },
+  {
+    label: 'Dialog',
+    link: '/dialog',
+  },
 ];
 
 const SideBar = () => {
