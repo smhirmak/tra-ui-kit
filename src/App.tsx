@@ -30,6 +30,7 @@ import TextFieldFilledUnderlinedPage from './pages/components/TextFieldFilledUnd
 import TooltipPage from './pages/components/TooltipPage';
 import DatePickerPage from './pages/components/DatePickerPage';
 import PopoverPage from './pages/components/PopoverPage';
+import DialogPage from './pages/components/DialogPage';
 
 const router = createBrowserRouter([
   {
@@ -140,6 +141,10 @@ const router = createBrowserRouter([
       {
         path: 'popover',
         element: <PopoverPage />,
+      },
+      {
+        path: 'dialog',
+        element: <DialogPage />,
       },
     ],
   }]);
