@@ -381,9 +381,14 @@ export interface ISelect {
   dropdownAlign?: 'left' | 'right';
 }
 
+export interface ISelectedDate {
+  from: Date | undefined;
+  to: Date | undefined;
+}
+
 export interface IDatePicker {
   id: string;
-  onChange: (date: Date | null) => void;
+  onChange: (date: Date | null | { from: Date | null | undefined, to: Date | null | undefined }) => void;
   value?: Date;
   placeholder?: string;
   disabled?: boolean;
@@ -397,4 +402,17 @@ export interface IDatePicker {
   showRequiredIcon?: boolean;
   tooltip?: string | string[];
   dropdownAlign?: 'left' | 'right';
+  mode?: 'single' | 'range';
+}
+
+export interface IDateInput {
+  ref: React.RefObject<HTMLInputElement | null>;
+  value: string;
+  max?: number;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
+  placeholder: string;
+  disabled: boolean;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  style: React.CSSProperties;
 }

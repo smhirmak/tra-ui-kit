@@ -118,7 +118,7 @@ const SideBar = () => {
   const [open, setOpen] = useState(false);
   return (
     <div className={`sticky left-0 top-0 flex max-h-screen min-h-screen ${open ? 'min-w-36' : 'max-w-16'} flex-col overflow-y-auto bg-tra-background p-4`}>
-      <Button className="self-end overflow-visible bg-transparent text-white hover:bg-transparent" size="icon" disableEffect onClick={() => setOpen(prev => !prev)}>
+      <Button className="self-end overflow-visible bg-transparent text-tra-neutral-black hover:bg-transparent" size="icon" disableEffect onClick={() => setOpen(prev => !prev)}>
         <CaretRight className={`transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
       </Button>
       {open && (

@@ -4,11 +4,12 @@ const DatePickerPage = () => (
   <div>
     <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
       <DatePicker
-        label="Date Picker"
+        label="Range Date Picker"
         id="date-picker"
         value={new Date()}
         onChange={date => console.log(date)}
         placeholder="Tarih Seçiniz"
+        mode="range"
       />
       <DatePicker
         label="Disabled"
