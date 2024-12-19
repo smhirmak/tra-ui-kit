@@ -265,6 +265,7 @@ export interface ITextField {
   maxLength?: number;
   helperText?: string;
   textarea?: boolean;
+  className?: string;
 }
 
 export interface IFormikErrorText {

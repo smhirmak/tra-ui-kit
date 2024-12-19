@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 import Button from './Button';
 
-const dialogContainerVariants = cva('MsiDialog-container items fixed inset-0 z-50 flex justify-center overflow-y-auto bg-black bg-opacity-50', {
+const dialogContainerVariants = cva('MsiDialog-container items fixed inset-0 z-50 flex justify-center overflow-y-auto bg-tra-neutral-black/50', {
   variants: {
     position: {
       center: 'items-center',
