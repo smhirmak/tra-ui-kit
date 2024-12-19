@@ -31,6 +31,7 @@ import TooltipPage from './pages/components/TooltipPage';
 import DatePickerPage from './pages/components/DatePickerPage';
 import PopoverPage from './pages/components/PopoverPage';
 import DialogPage from './pages/components/DialogPage';
+import DrawerPage from './pages/components/DrawerPage';
 
 const router = createBrowserRouter([
   {
@@ -145,6 +146,10 @@ const router = createBrowserRouter([
       {
         path: 'dialog',
         element: <DialogPage />,
+      },
+      {
+        path: 'drawer',
+        element: <DrawerPage />,
       },
     ],
   }]);

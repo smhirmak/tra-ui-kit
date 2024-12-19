@@ -140,6 +140,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   id,
   name,
   inputClassName = '',
+  className = '',
   label,
   labelClassName = '',
   onChange,
@@ -164,7 +165,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div ref={ref} className={cn(textFieldStyles({ variant }))}>
+    <div ref={ref} className={cn(textFieldStyles({ variant }), className)}>
       <Label
         ref={labelRef}
         className={` 

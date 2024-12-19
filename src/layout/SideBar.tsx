@@ -115,6 +115,10 @@ const sidebarList = [
     label: 'Dialog',
     link: '/dialog',
   },
+  {
+    label: 'Drawer',
+    link: '/drawer',
+  },
 ];
 
 const SideBar = () => {
