@@ -32,6 +32,7 @@ import DatePickerPage from './pages/components/DatePickerPage';
 import PopoverPage from './pages/components/PopoverPage';
 import DialogPage from './pages/components/DialogPage';
 import DrawerPage from './pages/components/DrawerPage';
+import PaginationPage from './pages/components/PaginationPage';
 
 const router = createBrowserRouter([
   {
@@ -150,6 +151,10 @@ const router = createBrowserRouter([
       {
         path: 'drawer',
         element: <DrawerPage />,
+      },
+      {
+        path: 'pagination',
+        element: <PaginationPage />,
       },
     ],
   }]);

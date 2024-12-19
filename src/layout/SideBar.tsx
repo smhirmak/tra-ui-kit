@@ -119,6 +119,10 @@ const sidebarList = [
     label: 'Drawer',
     link: '/drawer',
   },
+  {
+    label: 'Pagination',
+    link: '/pagination',
+  },
 ];
 
 const SideBar = () => {
