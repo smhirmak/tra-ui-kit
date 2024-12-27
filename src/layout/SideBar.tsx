@@ -123,6 +123,14 @@ const sidebarList = [
     label: 'Pagination',
     link: '/pagination',
   },
+  {
+    label: 'Table',
+    link: '/table',
+  },
+  {
+    label: 'Progress Bar',
+    link: '/progress-bar',
+  },
 ];
 
 const SideBar = () => {
