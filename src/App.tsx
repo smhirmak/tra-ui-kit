@@ -33,6 +33,8 @@ import PopoverPage from './pages/components/PopoverPage';
 import DialogPage from './pages/components/DialogPage';
 import DrawerPage from './pages/components/DrawerPage';
 import PaginationPage from './pages/components/PaginationPage';
+import TablePage from './pages/components/TablePage';
+import ProgressBarPage from './pages/components/ProgressBarPage';
 
 const router = createBrowserRouter([
   {
@@ -155,6 +157,14 @@ const router = createBrowserRouter([
       {
         path: 'pagination',
         element: <PaginationPage />,
+      },
+      {
+        path: 'table',
+        element: <TablePage />,
+      },
+      {
+        path: 'progress-bar',
+        element: <ProgressBarPage />,
       },
     ],
   }]);
