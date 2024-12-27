@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable max-len */
 import { cn } from '@/lib/utils';
 
@@ -94,6 +95,36 @@ export const Circle: React.FC<{ className?: string }> = ({ className }) => (
 export const CaretRight: React.FC<{ className?: string }> = ({ className }) => (
   <svg className={`${cn(className)} size-4 text-current`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
     <path className="fill-current" d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z" />
+  </svg>
+);
+
+export const CaretLineRight: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={`${cn(className)} size-4 text-current`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+    <path className="fill-current" d="M149.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32-11.32L132.69,128,58.34,53.66A8,8,0,0,1,69.66,42.34ZM184,40a8,8,0,0,0-8,8V208a8,8,0,0,0,16,0V48A8,8,0,0,0,184,40Z" />
+  </svg>
+);
+
+export const CaretDoubleRight: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={`${cn(className)} size-4 text-current`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+    <path className="fill-current" d="M141.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L124.69,128,50.34,53.66A8,8,0,0,1,61.66,42.34l80,80A8,8,0,0,1,141.66,133.66Zm80-11.32-80-80a8,8,0,0,0-11.32,11.32L204.69,128l-74.35,74.34a8,8,0,0,0,11.32,11.32l80-80A8,8,0,0,0,221.66,122.34Z" />
+  </svg>
+);
+
+export const CaretLeft: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={`${cn(className)} size-4 text-current`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+    <path className="fill-current" d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z" />
+  </svg>
+);
+
+export const CaretLineLeft: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={`${cn(className)} size-4 text-current`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+    <path className="fill-current" d="M197.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L123.31,128ZM72,40a8,8,0,0,0-8,8V208a8,8,0,0,0,16,0V48A8,8,0,0,0,72,40Z" />
+  </svg>
+);
+
+export const CaretDoubleLeft: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={`${cn(className)} size-4 text-current`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+    <path className="fill-current" d="M205.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L131.31,128ZM51.31,128l74.35-74.34a8,8,0,0,0-11.32-11.32l-80,80a8,8,0,0,0,0,11.32l80,80a8,8,0,0,0,11.32-11.32Z" />
   </svg>
 );
 

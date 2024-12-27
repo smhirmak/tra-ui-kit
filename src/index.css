@@ -186,8 +186,15 @@ input:-webkit-autofill:active{
     -webkit-appearance: none;
     margin: 0;
 }
-
-/* Hide spin buttons in Firefox */
 .MsiDatePicker-root input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.MsiPagination-container input::-webkit-outer-spin-button,
+.MsiPagination-container input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.MsiPagination-container input[type="number"] {
     -moz-appearance: textfield;
 }
