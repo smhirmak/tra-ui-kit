@@ -6,8 +6,8 @@ import React, { createContext, useContext, useRef, useEffect, useState, useMemo 
 type PopoverContextType = {
   open: boolean;
   setOpen: (open: boolean) => void;
-  triggerRef: React.RefObject<HTMLDivElement | null>;
-  contentRef: React.RefObject<HTMLDivElement | null>;
+  triggerRef: React.RefObject<HTMLDivElement>;
+  contentRef: React.RefObject<HTMLDivElement>;
   styles: React.CSSProperties;
   disabled: boolean;
 };
@@ -36,8 +36,8 @@ export const Popover: React.FC<PopoverProps> = ({
   dropdownAlign = 'left',
 }) => {
   const [open, setOpen] = useState(controlledOpen ?? false);
-  const triggerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
+  const contentRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
   const [styles, setStyles] = useState<React.CSSProperties>({});
 
   useEffect(() => {
@@ -168,7 +168,9 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
         }
       }
       if (contentRef.current !== node) {
-        contentRef.current = node;
+        if (contentRef.current !== node) {
+          (contentRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
+        }
       }
     };
 
