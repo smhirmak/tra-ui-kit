@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { containerVariants } from '@/components/Container';
 import { inputVariants } from '@/components/Input';
 import { labelVariants } from '@/components/Label';
+import { paginationVariants } from '@/components/Pagination';
 
 export interface INotification {
   children: ReactNode;
@@ -380,6 +381,32 @@ export interface ISelect {
   tooltip?: string | string[];
   showRequiredIcon?: boolean;
   dropdownAlign?: 'left' | 'right';
+  noOptionsMessage?: string;
+}
+
+export interface PaginationProps extends VariantProps<typeof paginationVariants> {
+  mode?: 'default' | 'simple';
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+  maxVisiblePages?: number;
+  color?: IButton['color'];
+  variant?: IButton['variant'];
+  rounded?: IButton['rounded'];
+  hideFirstLastArrows?: boolean;
+  hideNavigationArrows?: boolean;
+  arrowsClassName?: string;
+  size?: 'xs' | 'sm' | 'default' | 'lg' | 'xl';
+  disabled?: boolean;
+  simpleWithoutInput?: boolean;
+  firstPageIconClassName?: string;
+  lastPageIconClassName?: string;
+  nextPageIconClassName?: string;
+  previousPageIconClassName?: string;
+  firstPageIcon?: React.ReactNode;
+  lastPageIcon?: React.ReactNode;
+  nextPageIcon?: React.ReactNode;
+  previousPageIcon?: React.ReactNode;
 }
 
 export interface ISelectedDate {

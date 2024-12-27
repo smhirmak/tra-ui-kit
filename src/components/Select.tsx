@@ -130,6 +130,7 @@ const Select: React.FC<ISelect> = ({
   tooltip,
   showRequiredIcon,
   dropdownAlign,
+  noOptionsMessage,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState<ISelectOption[] | ISelectOption | null>(isMulti ? [] : null);
@@ -417,7 +418,7 @@ const Select: React.FC<ISelect> = ({
           className={`MsiSelect-dropdownMenu ${dropdownMenuClassName} max-h-80 min-h-12 w-full max-w-fit overflow-auto rounded-md bg-tra-background shadow-soft-grey`}
         >
           <div onKeyDown={handleKeyDown} ref={dropdownRef}>
-            {Array.isArray(optionList) && optionList.map((option: ISelectOption, index) => (
+            {Array.isArray(optionList) ? optionList.map((option: ISelectOption, index) => (
               <div
                 onClick={() => { if (!disabled) onItemClick(option); }}
                 key={option.value as number}
@@ -432,7 +433,7 @@ const Select: React.FC<ISelect> = ({
                   </span>
                 )}
               </div>
-            ))}
+            )) : <p className="text-lg">{noOptionsMessage ?? 'No Options'}</p>}
             {completeButton && (
               <div className={`MsiSelect-completeButtonContainer ${completeButtonContainerClassName} sticky bottom-0 bg-tra-background px-1 pb-1`}>
                 <Button size={size} className={`MsiSelect-completeButton ${completeButtonClassName} w-full`} onClick={() => setShowMenu(false)}>

@@ -1,14 +1,14 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-plusplus */
 import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import { CaretLeft, CaretLineLeft, CaretLineRight, CaretRight } from '@/assets/Icons';
-import { IButton } from '@/types/types';
+import { PaginationProps } from '@/types/types';
 import Button from './Button';
 import Input from './Input';
 
-const paginationVariants = cva(
+export const paginationVariants = cva(
   '',
   {
     variants: {
@@ -18,11 +18,11 @@ const paginationVariants = cva(
         disabled: 'cursor-not-allowed border-tra-neutral-disabled-text bg-tra-neutral-disabled-text text-tra-neutral-disabled-text hover:bg-transparent',
       },
       size: {
-        xs: 'size-6 min-h-6 min-w-6 rounded-full',
-        sm: 'size-8 min-h-8 min-w-8 rounded-full',
-        default: 'size-10 min-h-10 min-w-10 rounded-full',
-        lg: 'size-12 min-h-12 min-w-12 rounded-full',
-        xl: 'size-14 min-h-14 min-w-14 rounded-full',
+        xs: 'size-6 min-h-6 min-w-6',
+        sm: 'size-8 min-h-8 min-w-8',
+        default: 'size-10 min-h-10 min-w-10',
+        lg: 'size-12 min-h-12 min-w-12',
+        xl: 'size-14 min-h-14 min-w-14',
       },
     },
     defaultVariants: {
@@ -30,23 +30,6 @@ const paginationVariants = cva(
     },
   },
 );
-
-interface PaginationProps extends VariantProps<typeof paginationVariants> {
-  mode?: 'default' | 'simple';
-  totalPages: number;
-  currentPage: number;
-  onPageChange: (page: number) => void;
-  maxVisiblePages?: number;
-  color?: IButton['color'];
-  variant?: IButton['variant'];
-  rounded?: IButton['rounded'];
-  hideFirstLastArrows?: boolean;
-  hideNavigationArrows?: boolean;
-  arrowsClassName?: string;
-  size?: 'xs' | 'sm' | 'default' | 'lg' | 'xl';
-  disabled?: boolean;
-  simpleWithoutInput?: boolean;
-}
 
 const Pagination: React.FC<PaginationProps> = ({
   mode = 'default',
@@ -58,11 +41,19 @@ const Pagination: React.FC<PaginationProps> = ({
   variant,
   hideFirstLastArrows = false,
   hideNavigationArrows = false,
-  rounded,
+  rounded = 'lg',
   arrowsClassName = '',
   size = 'default',
   disabled = false,
   simpleWithoutInput = false,
+  firstPageIconClassName,
+  lastPageIconClassName,
+  nextPageIconClassName,
+  previousPageIconClassName,
+  firstPageIcon,
+  lastPageIcon,
+  nextPageIcon,
+  previousPageIcon,
 }) => {
   const getPageNumbers = () => {
     const pageNumbers: (number | string)[] = [];
@@ -117,7 +108,7 @@ const Pagination: React.FC<PaginationProps> = ({
         aria-label="Go to first page"
         title="Go to first page"
       >
-        <CaretLineLeft className="size-5" />
+        {firstPageIcon ?? <CaretLineLeft className={cn(firstPageIconClassName, 'size-5')} />}
       </Button>
       )}
       {!hideNavigationArrows && (
@@ -132,7 +123,7 @@ const Pagination: React.FC<PaginationProps> = ({
         aria-label="Previous page"
         title="Previous page"
       >
-        <CaretLeft className="size-5" />
+        {previousPageIcon ?? <CaretLeft className={cn(previousPageIconClassName, 'size-5')} />}
       </Button>
       )}
       {(mode === 'simple' && simpleWithoutInput) ? <div className="MsiPagination-simpleWithoutInput text-lg">{`${currentPage} / ${totalPages}`}</div>
@@ -199,7 +190,7 @@ const Pagination: React.FC<PaginationProps> = ({
         aria-label="Next page"
         title="Next page"
       >
-        <CaretRight className="size-5" />
+        {nextPageIcon ?? <CaretRight className={cn(nextPageIconClassName, 'size-5')} />}
       </Button>
       )}
       {!hideFirstLastArrows && (
@@ -214,7 +205,7 @@ const Pagination: React.FC<PaginationProps> = ({
         aria-label="Go to last page"
         title="Go to last page"
       >
-        <CaretLineRight className="size-5" />
+        {lastPageIcon ?? <CaretLineRight className={cn(lastPageIconClassName, 'size-5')} />}
       </Button>
       ) }
     </nav>

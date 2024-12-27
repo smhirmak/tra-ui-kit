@@ -1,4 +1,4 @@
-import { Minus, Plus } from '@/assets/Icons';
+import { CaretDoubleLeft, CaretDoubleRight, Minus, Plus } from '@/assets/Icons';
 import Button from '@/components/Button';
 import Pagination from '@/components/Pagination';
 import { useState } from 'react';
@@ -162,6 +162,27 @@ const PaginationPage = () => {
             rounded="lg"
             hideNavigationArrows
             hideFirstLastArrows
+          />
+          <Pagination
+            variant="ghost"
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+            maxVisiblePages={visiblePages}
+            color="secondary"
+            nextPageIcon={<Plus />}
+            previousPageIcon={<Minus />}
+          />
+          <Pagination
+            variant="ghost"
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+            maxVisiblePages={visiblePages}
+            color="secondary"
+            rounded="lg"
+            lastPageIcon={<CaretDoubleRight />}
+            firstPageIcon={<CaretDoubleLeft />}
           />
         </div>
       </div>
