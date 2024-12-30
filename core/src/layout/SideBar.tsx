@@ -131,6 +131,10 @@ const sidebarList = [
     label: 'Progress Bar',
     link: '/progress-bar',
   },
+  {
+    label: 'Sidebar',
+    link: '/sidebar',
+  },
 ];
 
 const SideBar = () => {

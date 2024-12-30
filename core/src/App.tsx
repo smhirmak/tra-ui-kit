@@ -35,6 +35,7 @@ import DrawerPage from './pages/components/DrawerPage';
 import PaginationPage from './pages/components/PaginationPage';
 import TablePage from './pages/components/TablePage';
 import ProgressBarPage from './pages/components/ProgressBarPage';
+import SidebarPage from './pages/components/SidebarPage';
 
 const router = createBrowserRouter([
   {
@@ -165,6 +166,10 @@ const router = createBrowserRouter([
       {
         path: 'progress-bar',
         element: <ProgressBarPage />,
+      },
+      {
+        path: 'sidebar',
+        element: <SidebarPage />,
       },
     ],
   }]);
