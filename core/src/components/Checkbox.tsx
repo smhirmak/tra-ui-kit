@@ -10,10 +10,10 @@ import { cn } from '@/lib/utils';
 import { CheckboxProps } from '@/types/types';
 
 const checkboxVariants = cva(
-  `peer flex shrink-0 select-none items-center justify-center rounded-sm border border-tra-primary ring-offset-background
+  `peer flex shrink-0 select-none items-center justify-center rounded-sm border border-primary ring-offset-background
   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-  data-[disabled=true]:cursor-not-allowed data-[disabled=true]:border-tra-input data-[checked=true]:bg-tra-primary data-[disabled=true]:bg-tra-input data-[checked=true]:text-tra-primary-foreground 
-  data-[disabled=true]:text-white data-[disabled=true]:opacity-50 data-[checked=true]:disabled:bg-tra-input`,
+  data-[disabled=true]:cursor-not-allowed data-[disabled=true]:border-input data-[checked=true]:bg-primary data-[disabled=true]:bg-input data-[checked=true]:text-primary-foreground 
+  data-[disabled=true]:text-white data-[disabled=true]:opacity-50 data-[checked=true]:disabled:bg-input`,
   {
     variants: {
       variant: {
@@ -57,10 +57,10 @@ HTMLInputElement,
           data-checked={checkedValue}
         >
           {(disabled && !checkedValue)
-            ? <Minus className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-tra-input`} />
+            ? <Minus className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`} />
             : (disabled && checkedValue)
               ? (
-                <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-tra-input`} />
+                <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`} />
               )
               : (
                 <>
@@ -68,7 +68,7 @@ HTMLInputElement,
                   <span
                     className={cn('flex items-center justify-center text-current')}
                   >
-                    <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} rounded-sm bg-tra-primary`} />
+                    <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} rounded-sm bg-primary`} />
                   </span>
                   )}
                 </>

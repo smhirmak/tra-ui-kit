@@ -16,7 +16,7 @@ const iconVariants = cva(
         lg: 'size-6',
       },
       disabled: {
-        true: 'text-tra-input',
+        true: 'text-input',
         false: '',
       },
     },

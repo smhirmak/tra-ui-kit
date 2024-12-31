@@ -16,9 +16,9 @@ const TextFieldPage = () => {
         <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" tooltip="Tooltip" showRequiredIcon />
         <div className="relative col-span-2 box-border inline-flex cursor-text items-center">
           <Input type="email" name="email" onFocus={() => setInputFocus(true)} onBlur={() => setInputFocus(false)} value={value} onChange={e => setValue(e.target.value)} className="z-2 border-none" />
-          <Label className={`absolute left-[18px] z-1 ${(value || inputFocus) && 'z-20 -translate-y-7'} top-1/4 text-lg text-tra-neutral-light-black transition-all`}>{label}</Label>
+          <Label className={`absolute left-[18px] z-1 ${(value || inputFocus) && 'z-20 -translate-y-7'} top-1/4 text-lg text-neutral-light-black transition-all`}>{label}</Label>
           <fieldset className={`pointer-events-none absolute inset-0 z-10 m-0 h-14 min-w-0 overflow-hidden rounded border border-solid border-gray-300 p-3 
-            transition-all ${inputFocus && 'border-tra-primary-focused'}`}
+            transition-all ${inputFocus && 'border-primary-focused'}`}
           >
             <legend className={`float-[unset] invisible block h-0 w-auto overflow-hidden p-0 text-base ${(value || inputFocus) && 'px-2'}`}>{(value || inputFocus) ? label : ''}</legend>
           </fieldset>

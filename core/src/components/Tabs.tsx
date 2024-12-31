@@ -35,7 +35,7 @@ const tabsVariants = cva('inline-flex w-fit items-center justify-center', {
   variants: {
     variant: {
       default: 'bg-transparent shadow-md',
-      solid: 'bg-tra-neutral-light p-1',
+      solid: 'bg-neutral-light p-1',
       outlined: 'border-2 bg-transparent p-1',
       split: 'bg-transparent',
     },
@@ -78,42 +78,42 @@ const tabVariants = cva(
       {
         variant: 'default',
         isActive: true,
-        className: 'border-tra-primary text-tra-primary',
+        className: 'border-primary text-primary',
       },
       {
         variant: 'default',
         isActive: false,
-        className: 'border-tra-neutral text-tra-neutral-grey hover:brightness-75',
+        className: 'border-neutral text-neutral-grey hover:brightness-75',
       },
       {
         variant: 'solid',
         isActive: true,
-        className: 'text-tra-neutral-black hover:text-tra-neutral-black/80',
+        className: 'text-neutral-black hover:text-neutral-black/80',
       },
       {
         variant: 'solid',
         isActive: false,
-        className: 'text-tra-neutral-black/90 hover:text-tra-neutral-grey/60',
+        className: 'text-neutral-black/90 hover:text-neutral-grey/60',
       },
       {
         variant: 'outlined',
         isActive: true,
-        className: 'text-tra-neutral-black hover:text-tra-neutral-black/80',
+        className: 'text-neutral-black hover:text-neutral-black/80',
       },
       {
         variant: 'outlined',
         isActive: false,
-        className: 'text-tra-neutral-black/90 hover:text-tra-neutral-grey/60',
+        className: 'text-neutral-black/90 hover:text-neutral-grey/60',
       },
       {
         variant: 'split',
         isActive: true,
-        className: 'text-tra-neutral-black hover:text-tra-neutral-black/80',
+        className: 'text-neutral-black hover:text-neutral-black/80',
       },
       {
         variant: 'split',
         isActive: false,
-        className: 'text-tra-neutral-black/90 hover:text-tra-neutral-grey/60',
+        className: 'text-neutral-black/90 hover:text-neutral-grey/60',
       },
     ],
     defaultVariants: {
@@ -127,10 +127,10 @@ const tabVariants = cva(
 const selectorVariants = cva('absolute transition-transform duration-200', {
   variants: {
     variant: {
-      default: 'h-[2px] bg-tra-primary',
-      solid: 'z-10 h-full bg-tra-neutral-white',
-      outlined: 'z-10 h-full bg-tra-neutral dark:bg-tra-neutral-white',
-      split: 'z-10 h-full bg-tra-neutral dark:bg-tra-neutral-white',
+      default: 'h-[2px] bg-primary',
+      solid: 'z-10 h-full bg-neutral-white',
+      outlined: 'z-10 h-full bg-neutral dark:bg-neutral-white',
+      split: 'z-10 h-full bg-neutral dark:bg-neutral-white',
     },
     disabled: {
       true: 'pointer-events-none opacity-50',

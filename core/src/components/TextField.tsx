@@ -25,7 +25,7 @@ const labelStyles = cva('transition-all duration-150 ease-cubic', {
   variants: {
     variant: {
       filled: '',
-      outlined: 'absolute left-[18px] top-1/4 z-1 text-lg text-tra-neutral-light-black',
+      outlined: 'absolute left-[18px] top-1/4 z-1 text-lg text-neutral-light-black',
       underlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform text-lg',
       filledUnderlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform pl-5 text-lg',
     },
@@ -92,13 +92,13 @@ const labelStyles = cva('transition-all duration-150 ease-cubic', {
   ],
 });
 
-const inputStyles = cva('p-2 pl-5 transition-colors disabled:bg-tra-input-light disabled:shadow-none', {
+const inputStyles = cva('p-2 pl-5 transition-colors disabled:bg-input-light disabled:shadow-none', {
   variants: {
     variant: {
       filled: '',
       outlined: 'border-none',
       underlined: 'rounded-none border-x-0 border-t-0 bg-transparent hover:bg-transparent hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
-      filledUnderlined: 'rounded-none border-x-0 border-t-0 bg-tra-input-fill hover:bg-tra-input-fill hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
+      filledUnderlined: 'rounded-none border-x-0 border-t-0 bg-input-fill hover:bg-input-fill hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
     },
   },
   defaultVariants: {
@@ -107,12 +107,12 @@ const inputStyles = cva('p-2 pl-5 transition-colors disabled:bg-tra-input-light 
 });
 
 const fieldsetStyles = cva(
-  `pointer-events-none absolute inset-0 m-0 h-14 min-w-0 overflow-hidden rounded border border-solid border-tra-input p-3 outline-none transition-all 
-  disabled:border-tra-input-light disabled:placeholder:text-tra-input`,
+  `pointer-events-none absolute inset-0 m-0 h-14 min-w-0 overflow-hidden rounded border border-solid border-input p-3 outline-none transition-all 
+  disabled:border-input-light disabled:placeholder:text-input`,
   {
     variants: {
       inputFocused: {
-        true: 'border-tra-primary-focused',
+        true: 'border-primary-focused',
         false: '',
       },
       error: {
@@ -223,7 +223,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
           </legend>
         </fieldset>
       )}
-      {helperText && <p className="self-end text-sm text-tra-neutral-light-black">{helperText}</p>}
+      {helperText && <p className="self-end text-sm text-neutral-light-black">{helperText}</p>}
     </div>
   );
 });

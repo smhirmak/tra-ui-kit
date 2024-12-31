@@ -13,14 +13,14 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        solid: 'bg-tra-primary text-tra-primary-foreground hover:bg-tra-primary/90 disabled:bg-tra-button-disabled disabled:text-tra-button-disabled-text',
-        outlined: 'border-2 border-tra-primary bg-transparent text-tra-primary-foreground hover:bg-tra-primary/10 disabled:border-tra-button-disabled-text disabled:text-tra-button-disabled-text',
-        ghost: 'bg-transparent text-tra-primary hover:text-tra-primary/90 disabled:text-tra-button-disabled-text',
+        solid: 'bg-primary text-primary-foreground hover:bg-primary/90 disabled:bg-button-disabled disabled:text-button-disabled-text',
+        outlined: 'border-2 border-primary bg-transparent text-primary-foreground hover:bg-primary/10 disabled:border-button-disabled-text disabled:text-button-disabled-text',
+        ghost: 'bg-transparent text-primary hover:text-primary/90 disabled:text-button-disabled-text',
       },
       color: {
-        primary: 'bg-tra-primary text-tra-primary-foreground',
-        secondary: 'bg-tra-secondary text-tra-secondary-foreground',
-        tetriary: 'bg-tra-tetriary text-tra-tetriary-foreground',
+        primary: 'bg-primary text-primary-foreground',
+        secondary: 'bg-secondary text-secondary-foreground',
+        tetriary: 'bg-tetriary text-tetriary-foreground',
       },
       size: {
         default: 'h-14 px-7',
@@ -37,47 +37,47 @@ export const buttonVariants = cva(
       {
         variant: 'outlined',
         color: 'primary',
-        className: 'border-tra-primary bg-transparent text-tra-primary hover:bg-tra-primary/10',
+        className: 'border-primary bg-transparent text-primary hover:bg-primary/10',
       },
       {
         variant: 'outlined',
         color: 'secondary',
-        className: 'border-tra-secondary bg-transparent text-tra-secondary hover:bg-tra-secondary/10',
+        className: 'border-secondary bg-transparent text-secondary hover:bg-secondary/10',
       },
       {
         variant: 'outlined',
         color: 'tetriary',
-        className: 'border-tra-tetriary bg-transparent text-tra-tetriary hover:bg-tra-tetriary/10',
+        className: 'border-tetriary bg-transparent text-tetriary hover:bg-tetriary/10',
       },
       {
         variant: 'solid',
         color: 'primary',
-        className: 'bg-tra-primary text-tra-primary-foreground hover:bg-tra-primary/90',
+        className: 'bg-primary text-primary-foreground hover:bg-primary/90',
       },
       {
         variant: 'solid',
         color: 'secondary',
-        className: 'bg-tra-secondary text-tra-secondary-foreground hover:bg-tra-secondary/90',
+        className: 'bg-secondary text-secondary-foreground hover:bg-secondary/90',
       },
       {
         variant: 'solid',
         color: 'tetriary',
-        className: 'bg-tra-tetriary text-tra-tetriary-foreground hover:bg-tra-tetriary/90',
+        className: 'bg-tetriary text-tetriary-foreground hover:bg-tetriary/90',
       },
       {
         variant: 'ghost',
         color: 'primary',
-        className: 'bg-transparent text-tra-primary hover:text-tra-primary/80',
+        className: 'bg-transparent text-primary hover:text-primary/80',
       },
       {
         variant: 'ghost',
         color: 'secondary',
-        className: 'bg-transparent text-tra-secondary hover:text-tra-secondary/80',
+        className: 'bg-transparent text-secondary hover:text-secondary/80',
       },
       {
         variant: 'ghost',
         color: 'tetriary',
-        className: 'bg-transparent text-tra-tetriary hover:text-tra-tetriary/80',
+        className: 'bg-transparent text-tetriary hover:text-tetriary/80',
       },
     ],
     defaultVariants: {
@@ -90,7 +90,7 @@ export const buttonVariants = cva(
 );
 
 const spinnerVariants = cva(
-  'mr-2 border-2 border-t-tra-button-disabled text-tra-button-disabled-text',
+  'mr-2 border-2 border-t-button-disabled text-button-disabled-text',
   {
     variants: {
       size: {

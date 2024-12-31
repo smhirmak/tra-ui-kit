@@ -53,13 +53,13 @@ export const RadioGroupItem: React.FC<RadioGroupItemProps> = ({
         htmlFor={id}
         data-checked={checked || selectedValue === value}
         data-disabled={disabled}
-        className={`group relative aspect-square size-5 select-none rounded-full border-[1.5px] border-tra-primary-30 bg-tra-disabled-light-dark
-      text-tra-primary ring-offset-8 ring-offset-error focus:outline-none focus-visible:ring-2 focus-visible:ring-tra-primary focus-visible:ring-offset-2
-        peer-checked:border-tra-primary peer-checked:bg-transparent data-[disabled=true]:cursor-not-allowed data-[disabled=true]:!border-tra-primary-15 data-[disabled=true]:opacity-50
+        className={`group relative aspect-square size-5 select-none rounded-full border-[1.5px] border-primary-30 bg-disabled-light-dark
+      text-primary ring-offset-8 ring-offset-error focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
+        peer-checked:border-primary peer-checked:bg-transparent data-[disabled=true]:cursor-not-allowed data-[disabled=true]:!border-primary-15 data-[disabled=true]:opacity-50
         dark:bg-transparent ${className}`}
       >
         <span className="absolute left-1/2 top-1/2 hidden aspect-square size-3 -translate-x-1/2 -translate-y-1/2 select-none
-      rounded-full group-data-[checked=true]:block group-data-[checked=true]:bg-tra-primary group-data-[disabled=true]:bg-tra-primary-15"
+      rounded-full group-data-[checked=true]:block group-data-[checked=true]:bg-primary group-data-[disabled=true]:bg-primary-15"
         />
       </label>
       {label && (

@@ -35,7 +35,7 @@ const Calendar = ({
         vhidden: 'hidden',
         caption_dropdowns: 'flex justify-between items-center w-full',
         dropdown: 'bg-transparent',
-        dropdown_year: '[&>select]:border [&>select]:border-tra-input [&>select]:rounded-lg [&>select]:px-5 [&>select]:py-2 [&>div]:hidden [&>select>option]:bg-background',
+        dropdown_year: '[&>select]:border [&>select]:border-input [&>select]:rounded-lg [&>select]:px-5 [&>select]:py-2 [&>div]:hidden [&>select>option]:bg-background',
         dropdown_month: '[&>div]:hidden [&>select>option]:bg-background',
         months: 'flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0',
         month: 'space-y-4',
@@ -55,22 +55,22 @@ const Calendar = ({
         row: 'flex w-full mt-2',
         // eslint-disable-next-line max-len
         cell: `h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-range-end)]:rounded-l-none 
-      [&:has([aria-selected].day-range-start)]:rounded-l-md [&:has([aria-selected].day-range-start)]:rounded-r-none [&:has([aria-selected].day-outside)]:bg-tra-primary/50
-      [&:has([aria-selected])]:rounded-md [&:has([aria-selected])]:bg-tra-primary first:[&:has([aria-selected])]:rounded-l-md 
+      [&:has([aria-selected].day-range-start)]:rounded-l-md [&:has([aria-selected].day-range-start)]:rounded-r-none [&:has([aria-selected].day-outside)]:bg-primary/50
+      [&:has([aria-selected])]:rounded-md [&:has([aria-selected])]:bg-primary first:[&:has([aria-selected])]:rounded-l-md 
       last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20`,
         day: cn(
           buttonVariants({ variant: 'ghost' }),
-          'h-9 w-9 p-0 font-medium aria-selected:opacity-100 text-tra-neutral-black aria-[selected=true]:text-tra-neutral-white',
+          'h-9 w-9 p-0 font-medium aria-selected:opacity-100 text-neutral-black aria-[selected=true]:text-neutral-white',
         ),
         day_selected:
       'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
-        // day_today: 'bg-tra-primary text-accent-foreground',
+        // day_today: 'bg-primary text-accent-foreground',
         day_outside:
-      'day-outside text-muted-foreground aria-selected:bg-tra-primary/50 aria-selected:text-muted-foreground',
+      'day-outside text-muted-foreground aria-selected:bg-primary/50 aria-selected:text-muted-foreground',
         day_disabled: 'text-muted-foreground opacity-50',
         day_range_start: 'day-range-start',
         day_range_middle:
-      'aria-selected:bg-tra-primary aria-selected:text-accent-foreground rounded-none',
+      'aria-selected:bg-primary aria-selected:text-accent-foreground rounded-none',
         day_range_end: 'day-range-end',
         day_hidden: 'invisible',
         ...classNames,

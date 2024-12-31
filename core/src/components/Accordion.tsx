@@ -11,8 +11,8 @@ const accordionItemVariants = cva('border-b border-border', {
     variant: {
       underlined: '',
       outlined: '',
-      solid: 'data-[disabled="true"]:bg-tra-disabled-light-dark',
-      splitted: 'rounded-md bg-tra-neutral data-[disabled="true"]:bg-tra-disabled-light-dark',
+      solid: 'data-[disabled="true"]:bg-disabled-light-dark',
+      splitted: 'rounded-md bg-neutral data-[disabled="true"]:bg-disabled-light-dark',
     },
   },
 });
@@ -22,7 +22,7 @@ const accordionVariants = cva('w-fit rounded-md ', {
     variant: {
       underlined: '',
       outlined: 'border border-border',
-      solid: 'bg-tra-neutral',
+      solid: 'bg-neutral',
       splitted: 'flex flex-col gap-1',
     },
   },
@@ -31,7 +31,7 @@ const accordionVariants = cva('w-fit rounded-md ', {
 const accordionTriggerVariants = cva(
   `flex cursor-pointer select-none items-center justify-between rounded-md p-4 
   text-lg font-medium transition-all duration-300 
-  data-[disabled="true"]:cursor-default data-[disabled="true"]:text-tra-disabled`,
+  data-[disabled="true"]:cursor-default data-[disabled="true"]:text-disabled`,
   {
     variants: {
       variant: {
@@ -116,7 +116,7 @@ export const AccordionTrigger: React.FC<IAccordionTrigger> = ({ title, subTitle,
         {startContent}
         <div>
           <p className={`text-lg ${titleClassName}`}>{title}</p>
-          {subTitle && <p className={`text-sm text-tra-neutral-grey ${subTitleClassName}`}>{subTitle}</p>}
+          {subTitle && <p className={`text-sm text-neutral-grey ${subTitleClassName}`}>{subTitle}</p>}
         </div>
       </div>
       <span className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'} ${iconContainerClassName}`}>{icon ?? <CaretDown />}</span>

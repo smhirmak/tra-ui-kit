@@ -81,7 +81,7 @@ const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
     {...props}
   >
     <span className="flex items-center gap-1">
-      <span className={`${showRequiredIcon ? 'after:ml-0.5 after:text-error after:content-required' : ''} ${disabled ? 'cursor-not-allowed text-tra-input' : ''}`}>
+      <span className={`${showRequiredIcon ? 'after:ml-0.5 after:text-error after:content-required' : ''} ${disabled ? 'cursor-not-allowed text-input' : ''}`}>
         {children}
       </span>
       {(tooltip) && (

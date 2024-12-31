@@ -37,7 +37,7 @@ export const Table = ({ children, className, ...otherProps }: TableProps) => (
 );
 
 export const THead = ({ children, className, ...otherProps }: TheadProps) => (
-  <thead className={cn(className, 'MsiTable-thead bg-tra-primary-15')} {...otherProps}>{children}</thead>
+  <thead className={cn(className, 'MsiTable-thead bg-primary-15')} {...otherProps}>{children}</thead>
 );
 
 export const TBody = ({ children, className, ...otherProps }: TbodyProps) => (
@@ -45,7 +45,7 @@ export const TBody = ({ children, className, ...otherProps }: TbodyProps) => (
 );
 
 export const TR = ({ children, className, ...otherProps }: TrProps) => (
-  <tr className={cn(className, 'MsiTable-tr transition-all hover:bg-tra-primary-5')} {...otherProps}>{children}</tr>
+  <tr className={cn(className, 'MsiTable-tr transition-all hover:bg-primary-5')} {...otherProps}>{children}</tr>
 );
 
 export const TH = ({ children, className, ...otherProps }: ThProps) => (

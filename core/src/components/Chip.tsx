@@ -5,8 +5,8 @@ import { cva } from 'class-variance-authority';
 import React from 'react';
 
 const chipVariants = cva(
-  `flex  w-fit select-none items-center rounded-4xl border border-tra-disabled-dark text-tra-disabled-dark transition-colors
-  hover:bg-tra-disabled-dark/10  hover:text-tra-disabled-dark`,
+  `flex  w-fit select-none items-center rounded-4xl border border-disabled-dark text-disabled-dark transition-colors
+  hover:bg-disabled-dark/10  hover:text-disabled-dark`,
   {
     variants: {
       size: {
@@ -19,11 +19,11 @@ const chipVariants = cva(
         false: 'cursor-default',
       },
       active: {
-        true: 'border-tra-primary text-tra-primary hover:border-tra-primary/70 hover:text-tra-primary/70',
+        true: 'border-primary text-primary hover:border-primary/70 hover:text-primary/70',
         false: '',
       },
       selected: {
-        true: 'border-tra-primary bg-tra-primary text-tra-neutral-white hover:bg-tra-primary/90',
+        true: 'border-primary bg-primary text-neutral-white hover:bg-primary/90',
         false: '',
       },
     },
@@ -62,7 +62,7 @@ const Chip = React.forwardRef<HTMLButtonElement, IChip>(
           tabIndex={0}
           onClick={e => { e.stopPropagation(); onDelete(id); }}
           onKeyPress={e => { if (e.key === 'Enter') { e.stopPropagation(); onDelete(id); } }}
-          className="ml-1 rounded-full p-0.5 hover:bg-tra-primary/50 hover:text-tra-primary-5"
+          className="ml-1 rounded-full p-0.5 hover:bg-primary/50 hover:text-primary-5"
         >
           {deleteIcon ?? <X />}
         </div>

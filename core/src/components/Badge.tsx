@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority';
 import React from 'react';
 
 const badgeVariants = cva(
-  'flex w-fit items-center justify-center rounded-full bg-tra-primary text-tra-neutral-white',
+  'flex w-fit items-center justify-center rounded-full bg-primary text-neutral-white',
   {
     variants: {
       variant: {
@@ -17,12 +17,12 @@ const badgeVariants = cva(
         sm: 'h-2.5 min-w-2.5 text-sm',
       },
       color: {
-        primary: 'bg-tra-primary text-tra-neutral-white',
-        secondary: 'bg-tra-secondary text-tra-neutral-white',
-        tetriary: 'bg-tra-tetriary text-tra-neutral-white',
-        error: 'bg-error text-tra-neutral-white',
-        success: 'bg-success text-tra-neutral-white',
-        warning: 'bg-warning text-tra-neutral-white',
+        primary: 'bg-primary text-neutral-white',
+        secondary: 'bg-secondary text-neutral-white',
+        tetriary: 'bg-tetriary text-neutral-white',
+        error: 'bg-error text-neutral-white',
+        success: 'bg-success text-neutral-white',
+        warning: 'bg-warning text-neutral-white',
       },
     },
     defaultVariants: {

@@ -29,12 +29,12 @@ const DialogPage = () => {
         scroll={scroll}
         position={position}
       >
-        <div className="overflow-hidden rounded-lg bg-tra-neutral-light">
+        <div className="overflow-hidden rounded-lg bg-neutral-light">
           <div className="border-b border-gray-200 px-4 py-3">
             <h2 className="text-lg font-semibold">Dialog Header</h2>
           </div>
           <div className="p-4">
-            <div className="w-fit rounded-md bg-tra-neutral-light p-4">
+            <div className="w-fit rounded-md bg-neutral-light p-4">
               <p className="text-lg font-semibold">Size:</p>
               <RadioGroup defaultValue={size} onChange={setSize}>
                 <RadioGroupItem id="sm" value="sm" label="Sm" />
@@ -44,7 +44,7 @@ const DialogPage = () => {
                 <RadioGroupItem id="2xl" value="2xl" label="2xl" />
               </RadioGroup>
             </div>
-            <div className="w-fit rounded-md bg-tra-neutral-light p-4">
+            <div className="w-fit rounded-md bg-neutral-light p-4">
               <p className="text-lg font-semibold">Position:</p>
               <RadioGroup defaultValue={position} onChange={setPosition}>
                 <RadioGroupItem id="center" value="center" label="Center" />
@@ -53,14 +53,14 @@ const DialogPage = () => {
                 <RadioGroupItem id="onlyMobileBottom" value="onlyMobileBottom" label="Only Mobile Bottom" />
               </RadioGroup>
             </div>
-            <div className="w-fit rounded-md bg-tra-neutral-light p-4">
+            <div className="w-fit rounded-md bg-neutral-light p-4">
               <p className="text-lg font-semibold">Full Screen:</p>
               <RadioGroup defaultValue={fullScreen} onChange={setFullScreen}>
                 <RadioGroupItem id="fullScreenTrue" value label="True" />
                 <RadioGroupItem id="fullScreenFalse" value={false} label="False" />
               </RadioGroup>
             </div>
-            <div className="w-fit rounded-md bg-tra-neutral-light p-4">
+            <div className="w-fit rounded-md bg-neutral-light p-4">
               <p className="text-lg font-semibold">Scroll:</p>
               <RadioGroup defaultValue={scroll} onChange={setScroll}>
                 <RadioGroupItem id="body" value label="True" />
