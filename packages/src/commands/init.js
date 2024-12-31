@@ -16,7 +16,8 @@ async function initializeTailwindConfig() {
 
   // Create Tailwind configuration
   const tailwindConfig = `
-module.exports = {
+ /** @type {import('tailwindcss').Config} */
+export default {
   darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',

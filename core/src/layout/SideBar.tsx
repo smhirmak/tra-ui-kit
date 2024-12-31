@@ -146,38 +146,46 @@ const SideBar = () => {
         <CaretRight className={`transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
       </Button>
       {open && (
-        <Accordion multipleExpand>
-          <AccordionItem title="Components" defaultOpen contentClassName="flex flex-col">
-            {sidebarList.sort((a, b) => a.label.localeCompare(b.label)).map((e, index) => (
-              <React.Fragment key={index}>
-                {e.child ? (
-                  <Accordion multipleExpand>
-                    {/* <AccordionTrigger title={e.label} /> */}
-                    <AccordionItem triggerClassName="p-2" titleClassName="!text-base" title={e.label} contentClassName="flex flex-col">
-                      {e.child.map(c => (
-                        <Link
-                          key={c.link}
-                          to={c.link}
-                          className={`mt-1 rounded-t-md p-2 text-base transition-colors duration-100  hover:bg-primary-5 ${location.pathname === c.link && 'bg-primary/10 text-primary'}`}
-                        >
-                          {c.label}
-                        </Link>
-                      ))}
-                    </AccordionItem>
-                  </Accordion>
-                ) : (
-                  <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-primary-5 ${location.pathname === e.link && 'bg-primary/10 text-primary'}`}>
-                    {e.label}
-                  </Link>
-                )}
-                <span className="h-1 w-full border-b-2 border-primary-15 last:border-b-0" />
-              </React.Fragment>
-            ))}
-          </AccordionItem>
-          <AccordionItem title="Components Api">
-            Deneme
-          </AccordionItem>
-        </Accordion>
+        <>
+          <Link
+            to="/installation"
+            className={`mt-1 rounded-md px-4 text-lg font-medium transition-colors duration-100 hover:bg-primary-5 ${location.pathname === '/installation' && 'bg-primary/10 text-primary'}`}
+          >
+            Installation
+          </Link>
+          <Accordion multipleExpand>
+            <AccordionItem title="Components" defaultOpen contentClassName="flex flex-col">
+              {sidebarList.sort((a, b) => a.label.localeCompare(b.label)).map((e, index) => (
+                <React.Fragment key={index}>
+                  {e.child ? (
+                    <Accordion multipleExpand>
+                      {/* <AccordionTrigger title={e.label} /> */}
+                      <AccordionItem triggerClassName="p-2" titleClassName="!text-base" title={e.label} contentClassName="flex flex-col">
+                        {e.child.map(c => (
+                          <Link
+                            key={c.link}
+                            to={c.link}
+                            className={`mt-1 rounded-t-md p-2 text-base transition-colors duration-100  hover:bg-primary-5 ${location.pathname === c.link && 'bg-primary/10 text-primary'}`}
+                          >
+                            {c.label}
+                          </Link>
+                        ))}
+                      </AccordionItem>
+                    </Accordion>
+                  ) : (
+                    <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-primary-5 ${location.pathname === e.link && 'bg-primary/10 text-primary'}`}>
+                      {e.label}
+                    </Link>
+                  )}
+                  <span className="h-1 w-full border-b-2 border-primary-15 last:border-b-0" />
+                </React.Fragment>
+              ))}
+            </AccordionItem>
+            <AccordionItem title="Components Api">
+              Deneme
+            </AccordionItem>
+          </Accordion>
+        </>
       )}
     </div>
   );
