@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef } from 'react';
 
@@ -7,20 +8,21 @@ import { cn } from '@/lib/utils';
 import { IButton } from '@/types/types';
 
 export const buttonVariants = cva(
-  `btn-ripple relative inline-flex select-none flex-wrap items-center justify-center overflow-hidden whitespace-nowrap text-sm font-medium ring-offset-background transition-all
-  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
+  `btn-ripple ring-offset-background focus-visible:ring-ring relative inline-flex select-none flex-wrap items-center justify-center overflow-hidden whitespace-nowrap text-sm font-medium
+  transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
   disabled:pointer-events-none `,
   {
     variants: {
       variant: {
         solid: 'bg-primary text-primary-foreground hover:bg-primary/90 disabled:bg-button-disabled disabled:text-button-disabled-text',
-        outlined: 'border-2 border-primary bg-transparent text-primary-foreground hover:bg-primary/10 disabled:border-button-disabled-text disabled:text-button-disabled-text',
-        ghost: 'bg-transparent text-primary hover:text-primary/90 disabled:text-button-disabled-text',
+        outlined: 'border-primary text-primary-foreground hover:bg-primary/10 disabled:border-button-disabled-text disabled:text-button-disabled-text border-2 bg-transparent',
+        ghost: 'text-primary hover:text-primary/90 disabled:text-button-disabled-text bg-transparent',
       },
       color: {
         primary: 'bg-primary text-primary-foreground',
         secondary: 'bg-secondary text-secondary-foreground',
         tetriary: 'bg-tetriary text-tetriary-foreground',
+        error: 'bg-error text-error-foreground',
       },
       size: {
         default: 'h-14 px-7',
@@ -37,17 +39,22 @@ export const buttonVariants = cva(
       {
         variant: 'outlined',
         color: 'primary',
-        className: 'border-primary bg-transparent text-primary hover:bg-primary/10',
+        className: 'border-primary text-primary hover:bg-primary/10 bg-transparent',
       },
       {
         variant: 'outlined',
         color: 'secondary',
-        className: 'border-secondary bg-transparent text-secondary hover:bg-secondary/10',
+        className: 'border-secondary text-secondary hover:bg-secondary/10 bg-transparent',
       },
       {
         variant: 'outlined',
         color: 'tetriary',
-        className: 'border-tetriary bg-transparent text-tetriary hover:bg-tetriary/10',
+        className: 'border-tetriary text-tetriary hover:bg-tetriary/10 bg-transparent',
+      },
+      {
+        variant: 'outlined',
+        color: 'error',
+        className: 'border-error text-error hover:bg-error/10 hover:text-error/80 bg-transparent',
       },
       {
         variant: 'solid',
@@ -65,19 +72,29 @@ export const buttonVariants = cva(
         className: 'bg-tetriary text-tetriary-foreground hover:bg-tetriary/90',
       },
       {
+        variant: 'solid',
+        color: 'error',
+        className: 'bg-error text-error-foreground hover:bg-error/80',
+      },
+      {
         variant: 'ghost',
         color: 'primary',
-        className: 'bg-transparent text-primary hover:text-primary/80',
+        className: 'text-primary hover:text-primary/80 bg-transparent',
       },
       {
         variant: 'ghost',
         color: 'secondary',
-        className: 'bg-transparent text-secondary hover:text-secondary/80',
+        className: 'text-secondary hover:text-secondary/80 bg-transparent',
       },
       {
         variant: 'ghost',
         color: 'tetriary',
-        className: 'bg-transparent text-tetriary hover:text-tetriary/80',
+        className: 'text-tetriary hover:text-tetriary/80 bg-transparent',
+      },
+      {
+        variant: 'ghost',
+        color: 'error',
+        className: 'text-error hover:text-error/80 bg-transparent',
       },
     ],
     defaultVariants: {
@@ -90,7 +107,7 @@ export const buttonVariants = cva(
 );
 
 const spinnerVariants = cva(
-  'mr-2 border-2 border-t-button-disabled text-button-disabled-text',
+  'border-t-button-disabled text-button-disabled-text mr-2 border-2',
   {
     variants: {
       size: {
@@ -122,6 +139,7 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(
     rounded = 'default',
     size,
     variant,
+    type,
     ...props
   }, ref) => {
     const Comp = asChild ?? 'button';
@@ -193,6 +211,7 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(
         className={cn(buttonVariants({ variant, size, color, className, rounded }))}
         ref={ref || buttonRef}
         disabled={loading || disabled}
+        type={type ?? 'button'}
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       >

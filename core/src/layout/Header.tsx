@@ -2,7 +2,7 @@ import LanguangeSelect from '@/components/LanguangeSelect';
 import ThemeModeToggle from '@/components/ThemeModeToggle';
 
 const Header = () => (
-  <div className="flex justify-between items-center bg-slate-300 w-full">
+  <div className="flex w-full items-center justify-between bg-slate-300">
     Header
     <ThemeModeToggle />
     <LanguangeSelect />

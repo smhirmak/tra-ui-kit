@@ -450,19 +450,3 @@ export interface IDateInput {
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   style: React.CSSProperties;
 }
-
-export type DialogSize = 'sm' | 'default' | 'lg' | 'xl' | '2xl';
-
-export interface IDialog {
-  children: React.ReactNode;
-  open: boolean;
-  onClose: () => void;
-  size?: DialogSize;
-  center?: boolean;
-  disableBackdropClick?: boolean;
-  disableEscapeKeyDown?: boolean;
-  fullScreen?: boolean;
-  fullWidth?: boolean;
-  scroll?: boolean;
-  position?: 'center' | 'top' | 'bottom' | 'onlyMobileBottom';
-}

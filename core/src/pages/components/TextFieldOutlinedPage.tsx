@@ -50,6 +50,8 @@ const TextFieldOutlinedPage = () => {
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" startIcon={<Plus />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" endIcon={<Plus />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" borderRadius="lg" />
+          <TextField value={value} type='password' onChange={e => setValue(e.target.value)} variant="outlined" label="Label" borderRadius="lg" />
+          <TextField value={value} type='password' onChange={e => setValue(e.target.value)} variant="outlined" label="Label" />
         </div>
       </div>
       <div className="mt-2 border-t-2 py-2">
@@ -66,6 +68,7 @@ const TextFieldOutlinedPage = () => {
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" startIcon={<Plus />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" endIcon={<Plus />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" borderRadius="lg" />
+          <TextField value={value} type='password' onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" borderRadius="lg" />
         </div>
       </div>
     </div>

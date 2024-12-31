@@ -36,6 +36,7 @@ import PaginationPage from './pages/components/PaginationPage';
 import TablePage from './pages/components/TablePage';
 import ProgressBarPage from './pages/components/ProgressBarPage';
 import SidebarPage from './pages/components/SidebarPage';
+import Installation from './pages/installation';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: '',
         element: <Home />,
+      },
+      {
+        path: 'installation',
+        element: <Installation />,
       },
       {
         path: 'avatar',

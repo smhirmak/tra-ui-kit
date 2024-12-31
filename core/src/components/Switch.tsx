@@ -28,7 +28,7 @@ const switchThumbVariants = cva(
     variants: {
       variant: {
         apple: 'ring-0',
-        android: 'ring-disabled-light group-data-[checked=true]:ring-primary ring-2',
+        android: 'ring-2 ring-disabled-light group-data-[checked=true]:ring-primary',
       },
     },
     defaultVariants: {

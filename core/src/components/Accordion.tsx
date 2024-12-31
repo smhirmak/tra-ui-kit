@@ -108,7 +108,7 @@ export const Accordion: React.FC<IAccordion> = ({ children, className, multipleE
 export const AccordionTrigger: React.FC<IAccordionTrigger> = ({ title, subTitle, onClick, isOpen, className, variant, disabled, startContent, icon, iconContainerClassName,
   titleClassName, subTitleClassName }) => (
     <div
-      onClick={disabled ? () => {} : onClick}
+      onClick={disabled ? () => { } : onClick}
       data-disabled={disabled}
       className={cn(accordionTriggerVariants({ variant }), className)}
     >
@@ -153,7 +153,7 @@ export const AccordionItem: React.FC<IAccordionItem> = ({
       subTitle={subTitle}
       className={triggerClassName}
       titleClassName={titleClassName}
-      onClick={disabled ? () => {} : onClick}
+      onClick={disabled ? () => { } : onClick}
       isOpen={isOpen}
       variant={variant}
       disabled={disabled}
