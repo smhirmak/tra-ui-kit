@@ -1,16 +1,29 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
 async function initializeTailwindConfig() {
   const currentDir = process.cwd();
-  const tailwindConfigPath = path.join(currentDir, 'tailwind.config.js');
-  const indexCSSPath = path.join(currentDir, 'index.css');
+  const tailwindConfigJsPath = path.join(currentDir, 'tailwind.config.js');
+  const tailwindConfigTsPath = path.join(currentDir, 'tailwind.config.ts');
+  const indexCSSPath = path.join(currentDir, 'src/index.css');
+  const msiKitDir = path.join(currentDir, 'src/components/msi-kit');
+
+  // Tailwind CSS'in kurulu olup olmadığını kontrol et
+  if (!fs.existsSync(tailwindConfigJsPath) && !fs.existsSync(tailwindConfigTsPath)) {
+    console.error('Tailwind CSS is not installed in this project. Please install Tailwind CSS before running this command.');
+    process.exit(1);
+  }
 
   // Create Tailwind configuration
   const tailwindConfig = `
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: ['class'],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -19,18 +32,20 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 };
 `;
 
-  fs.writeFileSync(tailwindConfigPath, tailwindConfig.trim());
-  console.log('Tailwind configuration initialized at:', tailwindConfigPath);
+  // tailwind.config.js veya tailwind.config.ts dosyasını güncelle
+  if (fs.existsSync(tailwindConfigJsPath)) {
+    fs.writeFileSync(tailwindConfigJsPath, tailwindConfig.trim());
+  } else if (fs.existsSync(tailwindConfigTsPath)) {
+    fs.writeFileSync(tailwindConfigTsPath, tailwindConfig.trim());
+  }
 
-  // Create index.css content
+  // Create index.css content if it doesn't exist, otherwise append Tailwind directives
   const indexCSSContent = `
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -40,8 +55,15 @@ body {
 }
 `;
 
-  fs.writeFileSync(indexCSSPath, indexCSSContent.trim());
-  console.log('index.css initialized with Tailwind directives at:', indexCSSPath);
+  if (fs.existsSync(indexCSSPath)) {
+    fs.appendFileSync(indexCSSPath, indexCSSContent.trim());
+  } else {
+    fs.writeFileSync(indexCSSPath, indexCSSContent.trim());
+  }
+
+  // Create msi-kit directory
+  await fs.ensureDir(msiKitDir);
+  console.log('MSI UI Kit initialized successfully.');
 }
 
 module.exports = initializeTailwindConfig;

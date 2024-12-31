@@ -12,22 +12,6 @@ const TextFieldPage = () => {
     <div>
 
       <p className="mb-4 mt-2 text-4xl underline">File Input</p>
-      {/* <div className="grid grid-cols-3 gap-2">
-        <TextField id="123456" type="file" value="" onChange={e => console.log(e.target.files && e.target?.files[0])} endIcon={<Plus />} />
-        <FileUpload
-          id="123"
-          label="File Upload"
-  // file={Object.GetNestedValue(formik.values, `${fileId}.file`)}
-          isDeletable
-        />
-      </div>
-      <FileUpload
-        id="1234"
-        label="File Upload"
-        className="deneme"
-  // file={Object.GetNestedValue(formik.values, `${fileId}.file`)}
-        isDeletable
-      /> */}
       <div className="grid grid-cols-3">
         <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" tooltip="Tooltip" showRequiredIcon />
         <div className="relative col-span-2 box-border inline-flex cursor-text items-center">

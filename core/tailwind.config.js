@@ -84,36 +84,6 @@ module.exports = {
           text: 'hsl(var(--tra-button-text))',
         },
         'tra-background': 'hsl(var(--tra-background))',
-        /* Custom Color End */
-
-        // primary: {
-        //   DEFAULT: 'hsl(var(--primary))',
-        //   foreground: 'hsl(var(--primary-foreground))',
-        // },
-        // secondary: {
-        //   DEFAULT: 'hsl(var(--secondary))',
-        //   foreground: 'hsl(var(--secondary-foreground))',
-        // },
-        // destructive: {
-        //   DEFAULT: 'hsl(var(--destructive))',
-        //   foreground: 'hsl(var(--destructive-foreground))',
-        // },
-        // muted: {
-        //   DEFAULT: 'hsl(var(--muted))',
-        //   foreground: 'hsl(var(--muted-foreground))',
-        // },
-        // accent: {
-        //   DEFAULT: 'hsl(var(--accent))',
-        //   foreground: 'hsl(var(--accent-foreground))',
-        // },
-        // popover: {
-        //   DEFAULT: 'hsl(var(--popover))',
-        //   foreground: 'hsl(var(--popover-foreground))',
-        // },
-        // card: {
-        //   DEFAULT: 'hsl(var(--card))',
-        //   foreground: 'hsl(var(--card-foreground))',
-        // },
       },
       height: {
         13: '3.25rem',

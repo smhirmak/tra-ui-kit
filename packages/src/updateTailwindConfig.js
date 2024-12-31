@@ -4,10 +4,8 @@ const { pathToFileURL } = require('url');
 
 async function updateTailwindConfig() {
   const currentDir = process.cwd();
-  console.log('Current working directory:', currentDir);
 
   const configPath = path.join(currentDir, 'tailwind.config.js');
-  console.log('Config path:', configPath);
 
   if (!fs.existsSync(configPath)) {
     console.error('tailwind.config.js dosyası bulunamadı.');
