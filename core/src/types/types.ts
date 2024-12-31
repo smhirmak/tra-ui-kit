@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { buttonVariants } from '@/components/Button';
 import { VariantProps } from 'class-variance-authority';
 import { ReactNode } from 'react';
+import { buttonVariants } from '@/components/Button';
 import { containerVariants } from '@/components/Container';
 import { inputVariants } from '@/components/Input';
 import { labelVariants } from '@/components/Label';
@@ -205,12 +205,18 @@ export interface ISkeleton {
 }
 
 export interface ISwitch {
-  baseClassName?: string;
+  className?: string;
   thumbClassName?: string;
   containerClassName?: string;
   id: string;
   defaultChecked?: boolean;
   variant?: 'apple' | 'android';
+  label?: string;
+  showRequiredIcon?: boolean;
+  labelClassName?: string;
+  disabled?: boolean;
+  checked: boolean
+  onChange: (e: boolean) => void;
 }
 
 export interface ITabs {
