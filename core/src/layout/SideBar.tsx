@@ -141,8 +141,8 @@ const SideBar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   return (
-    <div className={`sticky left-0 top-0 flex max-h-screen min-h-screen ${open ? 'min-w-36' : 'max-w-16'} flex-col overflow-y-auto bg-tra-background p-4`}>
-      <Button className="self-end overflow-visible bg-transparent text-tra-neutral-black hover:bg-transparent" size="icon" disableEffect onClick={() => setOpen(prev => !prev)}>
+    <div className={`sticky left-0 top-0 flex max-h-screen min-h-screen ${open ? 'min-w-36' : 'max-w-16'} flex-col overflow-y-auto bg-background p-4`}>
+      <Button className="self-end overflow-visible bg-transparent text-neutral-black hover:bg-transparent" size="icon" disableEffect onClick={() => setOpen(prev => !prev)}>
         <CaretRight className={`transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
       </Button>
       {open && (
@@ -158,7 +158,7 @@ const SideBar = () => {
                         <Link
                           key={c.link}
                           to={c.link}
-                          className={`mt-1 rounded-t-md p-2 text-base transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === c.link && 'bg-tra-primary/10 text-tra-primary'}`}
+                          className={`mt-1 rounded-t-md p-2 text-base transition-colors duration-100  hover:bg-primary-5 ${location.pathname === c.link && 'bg-primary/10 text-primary'}`}
                         >
                           {c.label}
                         </Link>
@@ -166,11 +166,11 @@ const SideBar = () => {
                     </AccordionItem>
                   </Accordion>
                 ) : (
-                  <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-tra-primary-5 ${location.pathname === e.link && 'bg-tra-primary/10 text-tra-primary'}`}>
+                  <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-primary-5 ${location.pathname === e.link && 'bg-primary/10 text-primary'}`}>
                     {e.label}
                   </Link>
                 )}
-                <span className="h-1 w-full border-b-2 border-tra-primary-15 last:border-b-0" />
+                <span className="h-1 w-full border-b-2 border-primary-15 last:border-b-0" />
               </React.Fragment>
             ))}
           </AccordionItem>

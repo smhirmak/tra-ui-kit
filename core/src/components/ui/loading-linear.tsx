@@ -5,7 +5,7 @@ import * as React from 'react';
 
 const linearContainerVariants = cva('relative h-1 w-full overflow-hidden bg-gray-200');
 
-const linearVariants = cva('absolute left-0 top-0 size-full animate-linear-loader bg-tra-primary');
+const linearVariants = cva('absolute left-0 top-0 size-full animate-linear-loader bg-primary');
 
 const LoadingLinear = React.forwardRef<HTMLDivElement, ILoadingLinear>((props, ref) => {
   const { linearContainerClassName, linearItemClassName, ...rest } = props;

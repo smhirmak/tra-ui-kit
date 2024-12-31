@@ -7,20 +7,20 @@ import Button from './Button';
 
 // eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/no-contradicting-classname
 export const inputVariants = cva(
-  `focus-visible:border-1 placeholder:text-muted-foreground flex w-full border border-tra-input bg-transparent px-3
+  `focus-visible:border-1 placeholder:text-muted-foreground flex w-full border border-input bg-transparent px-3
   py-2 
   file:mr-2 file:h-fit file:cursor-pointer file:rounded-md 
-  file:border-0 file:bg-tra-neutral-disabled-text file:bg-transparent file:p-2
+  file:border-0 file:bg-neutral-disabled-text file:bg-transparent file:p-2
   file:text-sm 
-  file:font-medium file:text-tra-neutral-black file:transition-all hover:shadow-soft-primary file:hover:contrast-125 focus-visible:border-tra-primary-focused focus-visible:shadow-hard-primary 
-  focus-visible:outline-none disabled:cursor-not-allowed disabled:text-tra-neutral-grey `,
+  file:font-medium file:text-neutral-black file:transition-all hover:shadow-soft-primary file:hover:contrast-125 focus-visible:border-primary-focused focus-visible:shadow-hard-primary 
+  focus-visible:outline-none disabled:cursor-not-allowed disabled:text-neutral-grey `,
   {
     variants: {
       variant: {
-        filled: 'disabled:bg-tra-input-light disabled:placeholder:text-tra-input',
+        filled: 'disabled:bg-input-light disabled:placeholder:text-input',
         outlined: 'border-none outline-none focus-visible:border-none focus-visible:outline-none',
-        underlined: 'disabled:bg-tra-input-light disabled:placeholder:text-tra-input',
-        filledUnderlined: 'disabled:bg-tra-input-light disabled:placeholder:text-tra-input',
+        underlined: 'disabled:bg-input-light disabled:placeholder:text-input',
+        filledUnderlined: 'disabled:bg-input-light disabled:placeholder:text-input',
       },
       size: {
         default: 'h-14 text-base',

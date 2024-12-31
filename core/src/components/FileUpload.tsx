@@ -25,7 +25,7 @@
 //   error?: boolean | null;
 // }
 
-// const fileUploadStyles = cva('flex w-full cursor-pointer items-center rounded-md border border-tra-input bg-tra-input-fill px-3 py-2 hover:shadow-input-hover disabled:cursor-not-allowed disabled:bg-tra-input-light disabled:text-tra-neutral-grey', {
+// const fileUploadStyles = cva('flex w-full cursor-pointer items-center rounded-md border border-input bg-input-fill px-3 py-2 hover:shadow-input-hover disabled:cursor-not-allowed disabled:bg-input-light disabled:text-neutral-grey', {
 //   variants: {
 //     size: {
 //       default: 'h-14 text-lg',

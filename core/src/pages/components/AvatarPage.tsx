@@ -28,10 +28,10 @@ const AvatarPage = () => (
     <p className="mt-2 text-xl">Multiple Avatar :</p>
     <div className="mt-2">
       <MultipleAvatarContainer lastElementSize="sm">
-        <Avatar size="sm" asChild="a" href="/asd" className="bg-tra-neutral-grey text-black" />
+        <Avatar size="sm" asChild="a" href="/asd" className="bg-neutral-grey text-black" />
         <Avatar size="sm" src="/assets/logos/logo.png" />
         <Avatar size="sm" />
-        <Avatar size="sm" className="bg-tra-disabled-light-dark" />
+        <Avatar size="sm" className="bg-disabled-light-dark" />
         <Avatar size="sm" src="/assets/logos/logo.png" />
         <Avatar size="sm" />
         <Avatar size="sm" className="bg-error" />

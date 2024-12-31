@@ -23,7 +23,7 @@ interface SearchInputProps {
 
 const SearchInput: React.FC<SearchInputProps> = ({ searchValue, onSearch, searchRef, searchInputClassName, handleKeyDown, disabled, showMenu }) => (
   <input
-    className={`MsiSelect-searchInput ${searchInputClassName} h-unset focus-visible:ring-none m-0 bg-transparent p-0 text-tra-neutral-black
+    className={`MsiSelect-searchInput ${searchInputClassName} h-unset focus-visible:ring-none m-0 bg-transparent p-0 text-neutral-black
      opacity-100 focus-visible:border-none focus-visible:outline-none ${!showMenu && 'w-0'}`}
     value={searchValue ?? ''}
     disabled={disabled}
@@ -35,12 +35,12 @@ const SearchInput: React.FC<SearchInputProps> = ({ searchValue, onSearch, search
 );
 
 const selectVariants = cva(
-  `custom--dropdown-container relative flex w-full cursor-pointer items-center rounded-md border border-tra-neutral 
-  text-left data-[disabled=true]:cursor-not-allowed data-[disabled=true]:border-tra-input-light data-[disabled=true]:bg-tra-input-light data-[disabled=true]:text-tra-neutral-grey`,
+  `custom--dropdown-container relative flex w-full cursor-pointer items-center rounded-md border border-neutral 
+  text-left data-[disabled=true]:cursor-not-allowed data-[disabled=true]:border-input-light data-[disabled=true]:bg-input-light data-[disabled=true]:text-neutral-grey`,
   {
     variants: {
       showMenu: {
-        true: 'border-tra-primary-focused',
+        true: 'border-primary-focused',
         false: '',
       },
       size: {
@@ -283,7 +283,7 @@ const Select: React.FC<ISelect> = ({
     if (!selectedValue || (Array.isArray(selectedValue) && selectedValue.length === 0)) {
       return (
         <>
-          {!showMenu && <span data-disabled={disabled} className="data-[disabled=true]:text-tra-neutral-grey">{placeHolder}</span>}
+          {!showMenu && <span data-disabled={disabled} className="data-[disabled=true]:text-neutral-grey">{placeHolder}</span>}
           {isSearchable && (
             <div className="MsiSelect-searchBox flex max-w-[80%] items-center">
               <SearchInput
@@ -308,8 +308,8 @@ const Select: React.FC<ISelect> = ({
               title={option.content as string}
               key={`${option.value}-${index}`}
               data-disabled={disabled}
-              className={`MsiSelect-dropdownTagItem ${dropdownTagClassName} group flex max-h-full items-center overflow-hidden whitespace-nowrap rounded bg-tra-primary-15
-               px-1 py-0.5 text-sm font-medium text-tra-primary data-[disabled=true]:bg-tra-disabled-dark data-[disabled=true]:text-tra-neutral-disabled-text`}
+              className={`MsiSelect-dropdownTagItem ${dropdownTagClassName} group flex max-h-full items-center overflow-hidden whitespace-nowrap rounded bg-primary-15
+               px-1 py-0.5 text-sm font-medium text-primary data-[disabled=true]:bg-disabled-dark data-[disabled=true]:text-neutral-disabled-text`}
             >
               <span className="truncate">
                 {option.content}
@@ -317,7 +317,7 @@ const Select: React.FC<ISelect> = ({
               <span
                 onClick={e => { if (!disabled)onTagRemove(e, option); }}
                 className={`MsiSelect-dropdownTagCloseButton ${dropdownTagCloseButtonClassName} group-data-[disabled=true]:hover: ml-1.5 flex cursor-pointer items-center rounded-full p-0.5 
-                hover:bg-tra-neutral-light group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=false]:text-tra-neutral-black group-data-[disabled=true]:hover:bg-transparent`}
+                hover:bg-neutral-light group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=false]:text-neutral-black group-data-[disabled=true]:hover:bg-transparent`}
               >
                 <X />
               </span>
@@ -341,7 +341,7 @@ const Select: React.FC<ISelect> = ({
     }
     return (
       <div className="flex max-w-full items-center overflow-hidden">
-        <span className={`max-w-full truncate whitespace-nowrap ${(!isMulti && isSearchable && showMenu) && 'text-tra-neutral opacity-90'}`}>{(selectedValue as ISelectOption).content}</span>
+        <span className={`max-w-full truncate whitespace-nowrap ${(!isMulti && isSearchable && showMenu) && 'text-neutral opacity-90'}`}>{(selectedValue as ISelectOption).content}</span>
         {(isSearchable && showMenu) && (
           <div className={`MsiSelect-searchBox flex max-w-[80%] items-center ${!isMulti && 'absolute z-2'}`}>
             <SearchInput
@@ -409,13 +409,13 @@ const Select: React.FC<ISelect> = ({
               {getDisplay()}
             </div>
             <div className="MsiSelect-iconContainer self-center">
-              <CaretDown className={`MsiSelect-icon ${iconClassName} stroke-tra-neutral-light-black transition-all`} />
+              <CaretDown className={`MsiSelect-icon ${iconClassName} stroke-neutral-light-black transition-all`} />
             </div>
           </div>
         </PopoverTrigger>
 
         <PopoverContent
-          className={`MsiSelect-dropdownMenu ${dropdownMenuClassName} max-h-80 min-h-12 w-full max-w-fit overflow-auto rounded-md bg-tra-background shadow-soft-grey`}
+          className={`MsiSelect-dropdownMenu ${dropdownMenuClassName} max-h-80 min-h-12 w-full max-w-full overflow-auto rounded-md bg-background shadow-soft-grey`}
         >
           <div onKeyDown={handleKeyDown} ref={dropdownRef}>
             {Array.isArray(optionList) ? optionList.map((option: ISelectOption, index) => (
@@ -423,19 +423,19 @@ const Select: React.FC<ISelect> = ({
                 onClick={() => { if (!disabled) onItemClick(option); }}
                 key={option.value as number}
                 className={`MsiSelect-dropdownItem ${dropdownItemClassName} flex cursor-pointer items-center justify-between rounded-md px-3 py-2 font-medium
-                  text-tra-neutral-black hover:bg-tra-primary-5 ${isSelected(option) ? 'bg-tra-primary-5 font-semibold text-tra-primary' : ''} 
-                  ${highlightedIndex === index ? 'bg-tra-primary-5' : ''}`}
+                  text-neutral-black hover:bg-primary-5 ${isSelected(option) ? 'bg-primary-5 font-semibold text-primary' : ''} 
+                  ${highlightedIndex === index ? 'bg-primary-5' : ''}`}
               >
                 {option.content}
                 {isMulti && (
                   <span className={`mr-2 ${!isSelected(option) && 'opacity-0'}`}>
-                    <Check className="MsiSelect-checkIcon size-4 text-tra-primary" />
+                    <Check className="MsiSelect-checkIcon size-4 text-primary" />
                   </span>
                 )}
               </div>
             )) : <p className="text-lg">{noOptionsMessage ?? 'No Options'}</p>}
             {completeButton && (
-              <div className={`MsiSelect-completeButtonContainer ${completeButtonContainerClassName} sticky bottom-0 bg-tra-background px-1 pb-1`}>
+              <div className={`MsiSelect-completeButtonContainer ${completeButtonContainerClassName} sticky bottom-0 bg-background px-1 pb-1`}>
                 <Button size={size} className={`MsiSelect-completeButton ${completeButtonClassName} w-full`} onClick={() => setShowMenu(false)}>
                   {completeButtonText ?? 'Complete Selection'}
                 </Button>

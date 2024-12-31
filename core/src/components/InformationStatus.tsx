@@ -13,7 +13,7 @@ const informationStatusVariants = cva(
       type: {
         success: 'bg-success-light text-success',
         error: 'bg-error-light text-error',
-        warning: 'bg-tra-secondary-light text-tra-secondary',
+        warning: 'bg-secondary-light text-secondary',
 
       },
     },

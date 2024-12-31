@@ -237,7 +237,7 @@ const TabsPage = () => {
           <div>
             <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Default</p>
             <div className="flex flex-wrap space-x-2 pb-2">
-              <RadioGroup onChange={e => setTabContentPlacement(e as 'top' | 'right' | 'bottom' | 'left')} className="flex w-full flex-col items-center bg-tra-primary-15">
+              <RadioGroup onChange={e => setTabContentPlacement(e as 'top' | 'right' | 'bottom' | 'left')} className="flex w-full flex-col items-center bg-primary-15">
                 <RadioGroupItem id="top" label="Top" value="top" />
                 <RadioGroupItem id="right" label="Right" value="right" />
                 <RadioGroupItem id="bottom" label="Bottom" value="bottom" />
@@ -245,7 +245,7 @@ const TabsPage = () => {
               </RadioGroup>
               <Tabs
                 contentPlacement={tabContentPlacement}
-                contentClasName="p-4 bg-tra-disabled-dark/40 rounded-lg"
+                contentClasName="p-4 bg-disabled-dark/40 rounded-lg"
                 variant="default"
                 direction="vertical"
                 activeTab={activeTab}
@@ -272,7 +272,7 @@ const TabsPage = () => {
             <div className="flex flex-wrap space-x-2 pb-2">
               <Tabs
                 contentPlacement={tabContentPlacement}
-                contentClasName="p-4 bg-tra-disabled-dark/40 rounded-lg"
+                contentClasName="p-4 bg-disabled-dark/40 rounded-lg"
                 variant="outlined"
                 direction="vertical"
                 activeTab={activeTab}
@@ -299,7 +299,7 @@ const TabsPage = () => {
             <div className="flex flex-wrap space-x-2 pb-2">
               <Tabs
                 contentPlacement={tabContentPlacement}
-                contentClasName="p-4 bg-tra-disabled-dark/40 rounded-lg"
+                contentClasName="p-4 bg-disabled-dark/40 rounded-lg"
                 variant="solid"
                 direction="vertical"
                 activeTab={activeTab}
@@ -326,7 +326,7 @@ const TabsPage = () => {
             <div className="flex flex-wrap space-x-2 pb-2">
               <Tabs
                 contentPlacement={tabContentPlacement}
-                contentClasName="p-4 bg-tra-disabled-dark/40 rounded-lg text-justify"
+                contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
                 variant="split"
                 direction="vertical"
                 activeTab={activeTab}
@@ -354,7 +354,7 @@ const TabsPage = () => {
           <div className="flex flex-wrap space-x-2 pb-2">
             <Tabs
               contentPlacement={tabContentPlacement}
-              contentClasName="p-4 bg-tra-disabled-dark/40 rounded-lg text-justify"
+              contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
               variant="default"
               direction="vertical"
               activeTab={activeTab}
@@ -380,7 +380,7 @@ const TabsPage = () => {
                   (
                     <span className="flex w-max gap-2">
                       Tab 2
-                      <Warning className="size-6 text-tra-tetriary" />
+                      <Warning className="size-6 text-tetriary" />
                     </span>
 )
 }
@@ -415,7 +415,7 @@ const TabsPage = () => {
         <div className="flex flex-wrap space-x-2 pb-2">
           <Tabs
             contentPlacement={tabContentPlacement}
-            contentClasName="p-4 bg-tra-disabled-dark/40 rounded-lg text-justify"
+            contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
             variant="outlined"
             direction="vertical"
             activeTab={activeTab}
@@ -441,7 +441,7 @@ const TabsPage = () => {
                 (
                   <span className="flex w-max gap-2">
                     Tab 2
-                    <Warning className="size-6 text-tra-tetriary" />
+                    <Warning className="size-6 text-tetriary" />
                   </span>
 )
 }
@@ -475,7 +475,7 @@ const TabsPage = () => {
         <div className="flex flex-wrap space-x-2 pb-2">
           <Tabs
             contentPlacement={tabContentPlacement}
-            contentClasName="p-4 bg-tra-disabled-dark/40 rounded-lg text-justify"
+            contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
             variant="solid"
             direction="vertical"
             activeTab={activeTab}
@@ -501,7 +501,7 @@ const TabsPage = () => {
                 (
                   <span className="flex w-max gap-2">
                     Tab 2
-                    <Warning className="size-6 text-tra-tetriary" />
+                    <Warning className="size-6 text-tetriary" />
                   </span>
 )
 }
@@ -535,7 +535,7 @@ const TabsPage = () => {
         <div className="flex flex-wrap space-x-2 pb-2">
           <Tabs
             contentPlacement={tabContentPlacement}
-            contentClasName="p-4 bg-tra-disabled-dark/40 rounded-lg text-justify"
+            contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
             variant="split"
             direction="vertical"
             activeTab={activeTab}
@@ -561,7 +561,7 @@ const TabsPage = () => {
                 (
                   <span className="flex w-max gap-2">
                     Tab 2
-                    <Warning className="size-6 text-tra-tetriary" />
+                    <Warning className="size-6 text-tetriary" />
                   </span>
 )
 }

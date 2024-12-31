@@ -25,7 +25,7 @@ interface DrawerProps {
   footerClassName?: string;
 }
 
-const drawerVariants = cva('MsiDialog-container flex flex-col bg-tra-neutral-white px-6 py-2 shadow-lg transition-all duration-350 ease-in-out', {
+const drawerVariants = cva('MsiDialog-container flex flex-col bg-neutral-white px-6 py-2 shadow-lg transition-all duration-350 ease-in-out', {
   variants: {
     mode: {
       overlay: 'fixed z-50',
@@ -145,7 +145,7 @@ const Drawer: React.FC<DrawerProps> = ({
       {(internalIsOpen || alwaysOpen) && mode === 'overlay' && (
         <div
           className={cn(
-            'MsiDialog-backdrop fixed inset-0 bg-tra-neutral-black/70 dark:bg-tra-neutral-black/10 transition-opacity duration-350',
+            'MsiDialog-backdrop fixed inset-0 bg-neutral-black/70 dark:bg-neutral-black/10 transition-opacity duration-350',
             { [internalIsOpen ? 'opacity-100' : 'opacity-0']: true },
             backdropClassName,
           )}
@@ -164,7 +164,7 @@ const Drawer: React.FC<DrawerProps> = ({
             variant="ghost"
             rounded="lg"
             onClick={onClose}
-            className={cn('MsiDialog-closeButton bg-tra-neutral hover:bg-tra-neutral/80', closeButtonClassName)}
+            className={cn('MsiDialog-closeButton bg-neutral hover:bg-neutral/80', closeButtonClassName)}
           >
             <X />
           </Button>

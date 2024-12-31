@@ -13,9 +13,9 @@ export const paginationVariants = cva(
   {
     variants: {
       status: {
-        default: 'border-tra-neutral-black/75 bg-transparent text-tra-neutral-black/75',
+        default: 'border-neutral-black/75 bg-transparent text-neutral-black/75',
         active: '',
-        disabled: 'cursor-not-allowed border-tra-neutral-disabled-text bg-tra-neutral-disabled-text text-tra-neutral-disabled-text hover:bg-transparent',
+        disabled: 'cursor-not-allowed border-neutral-disabled-text bg-neutral-disabled-text text-neutral-disabled-text hover:bg-transparent',
       },
       size: {
         xs: 'size-6 min-h-6 min-w-6',

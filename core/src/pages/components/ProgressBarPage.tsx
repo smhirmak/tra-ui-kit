@@ -14,19 +14,19 @@ const ProgressBarPage = () => {
         <p className="text-2xl">{currentStep}</p>
         <Button size="icon" onClick={() => setCurrentStep(prev => (prev < totalStepSize ? prev + 1 : prev))}><Plus className="size-6" /></Button>
       </div>
-      <div className="mt-10 border-b border-tra-neutral-grey pb-10">
+      <div className="mt-10 border-b border-neutral-grey pb-10">
         <ProgressBar totalStepSize={totalStepSize} currentStep={currentStep} />
       </div>
-      <div className="mt-10 border-b border-tra-neutral-grey pb-10">
+      <div className="mt-10 border-b border-neutral-grey pb-10">
         <ProgressBar progressTitle="ProgressBar Title" totalStepSize={totalStepSize} currentStep={currentStep} />
       </div>
-      <div className="mt-10 border-b border-tra-neutral-grey pb-10">
+      <div className="mt-10 border-b border-neutral-grey pb-10">
         <ProgressBar stepTextPosition="bottom" progressTitle="ProgressBar Title" totalStepSize={totalStepSize} currentStep={currentStep} />
       </div>
-      <div className="mt-10 border-b border-tra-neutral-grey pb-10">
+      <div className="mt-10 border-b border-neutral-grey pb-10">
         <ProgressBar valueType="percentage" totalStepSize={totalStepSize} currentStep={currentStep} />
       </div>
-      <div className="mt-10 border-b border-tra-neutral-grey pb-10">
+      <div className="mt-10 border-b border-neutral-grey pb-10">
         <ProgressBar valueType="percentage" progressTitle="ProgressBar Title" totalStepSize={totalStepSize} currentStep={currentStep} />
       </div>
       <div className="my-10">

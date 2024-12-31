@@ -6,8 +6,8 @@ import { cva } from 'class-variance-authority';
 import { ISwitch } from '@/types/types';
 
 const switchBaseVariants = cva(
-  `group inline-flex h-7 w-12 shrink-0 cursor-pointer select-none items-center rounded-full border-2 border-transparent bg-tra-disabled-light transition-colors  focus-visible:outline-none
-  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 peer-checked:bg-tra-primary-focused`,
+  `group inline-flex h-7 w-12 shrink-0 cursor-pointer select-none items-center rounded-full border-2 border-transparent bg-disabled-light transition-colors  focus-visible:outline-none
+  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 peer-checked:bg-primary-focused`,
   {
     variants: {
       variant: {
@@ -22,12 +22,12 @@ const switchBaseVariants = cva(
 );
 
 const switchThumbVariants = cva(
-  'pointer-events-none block size-6 translate-x-0 rounded-full bg-tra-button-text transition-transform group-data-[checked=true]:translate-x-5',
+  'pointer-events-none block size-6 translate-x-0 rounded-full bg-button-text transition-transform group-data-[checked=true]:translate-x-5',
   {
     variants: {
       variant: {
         apple: 'ring-0',
-        android: 'ring-2 ring-tra-disabled-light group-data-[checked=true]:ring-tra-primary',
+        android: 'ring-2 ring-disabled-light group-data-[checked=true]:ring-primary',
       },
     },
     defaultVariants: {

@@ -37,7 +37,7 @@ const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md
       dark: 'bg-black',
     },
     type: {
-      info: 'text-tra-primary',
+      info: 'text-primary',
       error: 'text-error',
       success: 'text-success',
       warn: 'text-warning',
@@ -171,7 +171,7 @@ const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md
     {
       theme: 'colored',
       type: 'info',
-      className: 'bg-tra-primary-15',
+      className: 'bg-primary-15',
     },
     {
       theme: 'default',
@@ -181,7 +181,7 @@ const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md
     {
       theme: 'lined',
       type: 'info',
-      className: 'border-l-8 border-tra-primary dark:border-tra-primary-15',
+      className: 'border-l-8 border-primary dark:border-primary-15',
     },
     {
       theme: 'colored',
@@ -241,7 +241,7 @@ const notificationProgressBar = cva(
         lined: 'rounded-l-none',
       },
       type: {
-        info: 'bg-tra-primary dark:bg-tra-primary-15',
+        info: 'bg-primary dark:bg-primary-15',
         error: 'bg-error dark:bg-error-light',
         success: 'bg-success dark:bg-success-light',
         warn: 'bg-warning dark:bg-warning-light',
@@ -251,7 +251,7 @@ const notificationProgressBar = cva(
       {
         theme: 'colored',
         type: 'info',
-        className: '!bg-tra-primary',
+        className: '!bg-primary',
       },
       {
         theme: 'colored',

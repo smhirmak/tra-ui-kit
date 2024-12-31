@@ -9,7 +9,7 @@ import { cva } from 'class-variance-authority';
 import React, { HTMLAttributes, useState } from 'react';
 
 const avatarVariants = cva(
-  'relative flex w-fit items-center justify-center bg-tra-primary-15 text-tra-primary transition',
+  'relative flex w-fit items-center justify-center bg-primary-15 text-primary transition',
   {
     variants: {
       variant: {
@@ -196,7 +196,7 @@ const Avatar = React.forwardRef<HTMLAttributes<HTMLDivElement>, IAvatar>(({
 
 const showMoreAvatarVariants = cva('relative hover:brightness-125');
 
-const showLessAvatarVariants = cva('bg-tra-primary/50 text-white hover:brightness-125');
+const showLessAvatarVariants = cva('bg-primary/50 text-white hover:brightness-125');
 
 const MultipleAvatarContainer: React.FC<IMultipleAvatarContainer> = ({ children, lastElementSize = 'sm', showLessAvatarClassName, showMoreAvatarClassName }) => {
   const [showAllAvatars, setShowAllAvatars] = useState(false);

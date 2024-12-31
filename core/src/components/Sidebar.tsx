@@ -26,10 +26,10 @@ const Sidebar: React.FC<SidebarProps> = ({ children, headerLogo }) => {
   const contextValue = useMemo(() => ({ expanded }), [expanded]);
   return (
     <aside className="sticky top-0 z-2 max-h-screen overflow-y-auto overflow-x-hidden">
-      <nav className="flex h-full flex-col bg-tra-background shadow-sm">
+      <nav className="flex h-full flex-col bg-background shadow-sm">
         <div className={`flex items-center ${(expanded && headerLogo) ? 'justify-between' : 'justify-end'} p-4 pb-2`}>
           {headerLogo && <img src={headerLogo} alt="logo" className={`overflow-hidden transition-all ease-out ${expanded ? 'w-16' : 'w-0'}`} />}
-          <button type="button" onClick={() => setExpanded(curr => !curr)} className="self-end bg-tra-background p-1.5 hover:bg-gray-300 dark:hover:bg-blue-950">
+          <button type="button" onClick={() => setExpanded(curr => !curr)} className="self-end bg-background p-1.5 hover:bg-gray-300 dark:hover:bg-blue-950">
             {expanded ? <CaretLeft /> : <CaretRight />}
           </button>
         </div>
