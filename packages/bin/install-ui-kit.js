@@ -2,7 +2,7 @@
 
 const { Command } = require('commander');
 const initConfig = require('../src/commands/init');
-const addComponent = require('../src/commands/addComponent');
+const add = require('../src/commands/add');
 
 const program = new Command();
 
@@ -19,6 +19,6 @@ program
 program
   .command('add <component>')
   .description('Add a specified component to the project')
-  .action(addComponent);
+  .action(add);
 
 program.parse(process.argv);

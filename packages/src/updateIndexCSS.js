@@ -3,10 +3,8 @@ const path = require('path');
 
 function updateIndexCSS() {
   const currentDir = process.cwd();
-  console.log('Current working directory:', currentDir);
 
   const cssPath = path.join(currentDir, 'src', 'index.css');
-  console.log('CSS path:', cssPath);
 
   let cssContent;
 
