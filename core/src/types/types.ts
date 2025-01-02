@@ -196,7 +196,7 @@ export interface ISearchBar {
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
   value: string | number ;
   variant?: 'filled' | 'outlined' | 'underlined';
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 export interface ISkeleton {
@@ -449,4 +449,24 @@ export interface IDateInput {
   disabled: boolean;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   style: React.CSSProperties;
+}
+
+export interface IFormikSwitch {
+  id: string;
+  formik: any;
+  disabled?: boolean;
+  showRequiredIcon?: boolean;
+  label: string;
+  labelClassName?: string;
+  className?: string;
+}
+
+export interface IMenuItem {
+  id: number;
+  title: string;
+  path: string;
+  icon: ReactNode;
+  component: string;
+  competenceId?: number;
+  groupTitle: string;
 }

@@ -26,7 +26,7 @@ const FormikSwitch: React.FC<IFormikSwitch> = ({
         showRequiredIcon={showRequiredIcon}
         label={t(label)}
         labelClassName={labelClassName}
-                // eslint-disable-next-line react/jsx-props-no-spreading
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
         checked={Object.GetNestedValue(formik.values, id) as boolean}
       />

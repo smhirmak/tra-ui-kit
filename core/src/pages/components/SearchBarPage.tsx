@@ -1,9 +1,9 @@
-import SearchBar from '@/components/SearchBar';
 import React from 'react';
+import SearchBar from '@/components/SearchBar';
 
 const SearchBarPage = () => {
   const [value, setValue] = React.useState('');
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setValue(e.target.value);
   };
   return (

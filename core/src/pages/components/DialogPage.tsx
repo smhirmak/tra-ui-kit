@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import Button from '@/components/Button';
 import Dialog from '@/components/Dialog';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
-import { useState } from 'react';
 
 const DialogPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,14 +29,14 @@ const DialogPage = () => {
         scroll={scroll}
         position={position}
       >
-        <div className="overflow-hidden rounded-lg bg-neutral-light">
+        <div className="bg-neutral-light overflow-hidden rounded-lg">
           <div className="border-b border-gray-200 px-4 py-3">
             <h2 className="text-lg font-semibold">Dialog Header</h2>
           </div>
           <div className="p-4">
-            <div className="w-fit rounded-md bg-neutral-light p-4">
+            <div className="bg-neutral-light w-fit rounded-md p-4">
               <p className="text-lg font-semibold">Size:</p>
-              <RadioGroup defaultValue={size} onChange={setSize}>
+              <RadioGroup defaultValue={size} onChange={value => setSize(value as 'default' | 'sm' | 'lg' | 'xl' | '2xl')}>
                 <RadioGroupItem id="sm" value="sm" label="Sm" />
                 <RadioGroupItem id="default" value="default" label="Default" />
                 <RadioGroupItem id="lg" value="lg" label="Lg" />
@@ -44,27 +44,27 @@ const DialogPage = () => {
                 <RadioGroupItem id="2xl" value="2xl" label="2xl" />
               </RadioGroup>
             </div>
-            <div className="w-fit rounded-md bg-neutral-light p-4">
+            <div className="bg-neutral-light w-fit rounded-md p-4">
               <p className="text-lg font-semibold">Position:</p>
-              <RadioGroup defaultValue={position} onChange={setPosition}>
+              <RadioGroup defaultValue={position} onChange={value => setPosition(value as 'center' | 'top' | 'bottom' | 'onlyMobileBottom')}>
                 <RadioGroupItem id="center" value="center" label="Center" />
                 <RadioGroupItem id="top" value="top" label="Top" />
                 <RadioGroupItem id="bottom" value="bottom" label="Bottom" />
                 <RadioGroupItem id="onlyMobileBottom" value="onlyMobileBottom" label="Only Mobile Bottom" />
               </RadioGroup>
             </div>
-            <div className="w-fit rounded-md bg-neutral-light p-4">
+            <div className="bg-neutral-light w-fit rounded-md p-4">
               <p className="text-lg font-semibold">Full Screen:</p>
-              <RadioGroup defaultValue={fullScreen} onChange={setFullScreen}>
-                <RadioGroupItem id="fullScreenTrue" value label="True" />
-                <RadioGroupItem id="fullScreenFalse" value={false} label="False" />
+              <RadioGroup defaultValue={fullScreen.toString()} onChange={value => setFullScreen(value === 'true')}>
+                <RadioGroupItem id="fullScreenTrue" value="true" label="True" />
+                <RadioGroupItem id="fullScreenFalse" value="false" label="False" />
               </RadioGroup>
             </div>
-            <div className="w-fit rounded-md bg-neutral-light p-4">
+            <div className="bg-neutral-light w-fit rounded-md p-4">
               <p className="text-lg font-semibold">Scroll:</p>
-              <RadioGroup defaultValue={scroll} onChange={setScroll}>
-                <RadioGroupItem id="body" value label="True" />
-                <RadioGroupItem id="false" value={false} label="False" />
+              <RadioGroup defaultValue={scroll.toString()} onChange={value => setScroll(value === 'true')}>
+                <RadioGroupItem id="body" value="true" label="True" />
+                <RadioGroupItem id="false" value="false" label="False" />
               </RadioGroup>
             </div>
             <p className="mb-4">

@@ -50,7 +50,7 @@ const NavigationBar = () => {
 
   return (
     <div className="flex gap-10">
-      <div className="h-full w-fit max-w-64 border-r bg-background">
+      <div className="bg-background h-full w-fit max-w-64 border-r">
         <Sidebar headerLogo="/assets/logos/logo.png">
           {Object.keys(Menu).map(group => (
             <div key={group}>
@@ -74,7 +74,7 @@ const NavigationBar = () => {
           ))}
         </Sidebar>
       </div>
-      <div className="h-full w-fit max-w-64 border-r bg-background">
+      <div className="bg-background h-full w-fit max-w-64 border-r">
         <Sidebar>
           <p className="text-sm">Deneme Başlık</p>
           <SidebarItem icon={<Plus />} text="Deneme" />
