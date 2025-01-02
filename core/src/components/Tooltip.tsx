@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
 
-interface TooltipProps {
+interface ITooltip {
   content: string | string[];
   position?: TooltipPosition;
   children: React.ReactNode;
@@ -27,7 +27,7 @@ const arrowVariants = cva(
   },
 );
 
-const Tooltip: React.FC<TooltipProps> = ({
+const Tooltip: React.FC<ITooltip> = ({
   content,
   position = 'top',
   children,

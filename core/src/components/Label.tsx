@@ -1,9 +1,8 @@
-import { cva } from 'class-variance-authority';
+import { cva, VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 
-import { Info } from '@/assets/Icons';
+import { Info } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
-import { ILabel } from '@/types/types';
 import Tooltip from './Tooltip';
 
 export const labelVariants = cva(
@@ -59,6 +58,23 @@ const tooltipVariants = cva('', {
   },
 });
 
+interface ILabel
+  extends VariantProps<typeof labelVariants> {
+  alwaysTop?: boolean;
+  borderRadius?: 'default' | 'lg';
+  className?: string;
+  children?: React.ReactNode;
+  disabled?: boolean;
+  htmlFor?: string;
+  id?: string;
+  outlineFocused?: boolean;
+  showRequiredIcon?: boolean;
+  size?: 'sm' | 'default' | 'lg' | undefined;
+  startIcon?: React.ReactNode;
+  tooltip?: string | string[] | null;
+  variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
+}
+
 const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
   className = '',
   children,
@@ -77,11 +93,11 @@ const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
     className={cn(labelVariants({ size, variant, outlineFocused }), className)}
     htmlFor={htmlFor}
     id={id}
-      // eslint-disable-next-line react/jsx-props-no-spreading
+    // eslint-disable-next-line react/jsx-props-no-spreading
     {...props}
   >
     <span className="flex items-center gap-1">
-      <span className={`${showRequiredIcon ? 'after:ml-0.5 after:text-error after:content-required' : ''} ${disabled ? 'cursor-not-allowed text-input' : ''}`}>
+      <span className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-0.5' : ''} ${disabled ? 'text-input cursor-not-allowed' : ''}`}>
         {children}
       </span>
       {(tooltip) && (

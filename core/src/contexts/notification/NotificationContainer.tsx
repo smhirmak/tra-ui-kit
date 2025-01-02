@@ -1,14 +1,14 @@
 /* eslint-disable indent */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { X } from '@/assets/Icons';
-import Button from '@/components/Button';
-import { cn } from '@/lib/utils';
+import { X } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import { ReactNode, useEffect, useState } from 'react';
+import Button from '@/components/Button';
+import { cn } from '@/lib/utils';
 
 const containerVariants = cva(
-  'fixed z-9999 p-4',
+  'z-9999 fixed p-4',
   {
     variants: {
       position: {
@@ -25,7 +25,7 @@ const containerVariants = cva(
   },
 );
 
-const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md px-3 py-5 shadow-soft-grey transition-transform ease-in-out', {
+const notificationVariants = cva('shadow-soft-grey relative mb-2.5 w-72 cursor-pointer rounded-md px-3 py-5 transition-transform ease-in-out', {
   variants: {
     theme: {
       colored: '',
@@ -181,7 +181,7 @@ const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md
     {
       theme: 'lined',
       type: 'info',
-      className: 'border-l-8 border-primary dark:border-primary-15',
+      className: 'border-primary dark:border-primary-15 border-l-8',
     },
     {
       theme: 'colored',
@@ -196,7 +196,7 @@ const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md
     {
       theme: 'lined',
       type: 'error',
-      className: 'border-l-8 border-error dark:border-error-light',
+      className: 'border-error dark:border-error-light border-l-8',
     },
     {
       theme: 'colored',
@@ -211,7 +211,7 @@ const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md
     {
       theme: 'lined',
       type: 'success',
-      className: 'border-l-8 border-success dark:border-success-light',
+      className: 'border-success dark:border-success-light border-l-8',
     },
     {
       theme: 'colored',
@@ -226,13 +226,13 @@ const notificationVariants = cva('relative mb-2.5 w-72 cursor-pointer rounded-md
     {
       theme: 'lined',
       type: 'warn',
-      className: 'border-l-8 border-warning dark:border-warning-light',
+      className: 'border-warning dark:border-warning-light border-l-8',
     },
   ],
 });
 
 const notificationProgressBar = cva(
-  'absolute bottom-0 left-0 h-1.5 w-0 animate-linear-progress rounded-md',
+  'animate-linear-progress absolute bottom-0 left-0 h-1.5 w-0 rounded-md',
   {
     variants: {
       theme: {

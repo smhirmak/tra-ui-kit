@@ -1,70 +1,65 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-async function initializeTailwindConfig() {
+async function add(componentName) {
   const currentDir = process.cwd();
-  const tailwindConfigJsPath = path.join(currentDir, 'tailwind.config.js');
-  const tailwindConfigTsPath = path.join(currentDir, 'tailwind.config.ts');
-  const indexCSSPath = path.join(currentDir, 'src/index.css');
-  const msiKitDir = path.join(currentDir, 'src/components/msi-kit');
+  const componentDir = path.join(currentDir, 'src/components/msi-kit');
+  const typesDir = path.join(currentDir, 'src/types');
+  const templateDir = path.join(__dirname, '..', 'components');
+  const typeTemplateDir = path.join(__dirname, '..', 'types');
 
-  // Tailwind CSS'in kurulu olup olmadığını kontrol et
-  if (!fs.existsSync(tailwindConfigJsPath) && !fs.existsSync(tailwindConfigTsPath)) {
-    console.error('Tailwind CSS is not installed in this project. Please install Tailwind CSS before running this command.');
+  // Check for component template
+  const templateFilePathTsx = path.join(templateDir, `${componentName}.tsx`);
+  const templateFilePathJsx = path.join(templateDir, `${componentName}.jsx`);
+  
+  // Check for type definition template
+  const typeFilePath = path.join(typeTemplateDir, `${componentName}.ts`);
+
+  // Find correct component template
+  let templateFilePath;
+  if (fs.existsSync(templateFilePathTsx)) {
+    templateFilePath = templateFilePathTsx;
+  } else if (fs.existsSync(templateFilePathJsx)) {
+    templateFilePath = templateFilePathJsx;
+  } else {
+    console.error(`Component template for ${componentName} not found.`);
     process.exit(1);
   }
 
-  // Create Tailwind configuration
-  const tailwindConfig = `
- /** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: ['class'],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-  ],
-  theme: {
-    extend: {
-      colors: {
-        primary: '#1DA1F2',
-        secondary: '#14171A',
-      },
-    },
-  },
-  plugins: [require('tailwindcss-animate')],
-};
-`;
-
-  // tailwind.config.js veya tailwind.config.ts dosyasını güncelle
-  if (fs.existsSync(tailwindConfigJsPath)) {
-    fs.writeFileSync(tailwindConfigJsPath, tailwindConfig.trim());
-  } else if (fs.existsSync(tailwindConfigTsPath)) {
-    fs.writeFileSync(tailwindConfigTsPath, tailwindConfig.trim());
+  // Create component directory if it doesn't exist
+  if (!fs.existsSync(componentDir)) {
+    await fs.ensureDir(componentDir);
   }
 
-  // Create index.css content if it doesn't exist, otherwise append Tailwind directives
-  const indexCSSContent = `
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-  font-family: 'Arial', sans-serif;
-}
-`;
-
-  if (fs.existsSync(indexCSSPath)) {
-    fs.appendFileSync(indexCSSPath, indexCSSContent.trim());
-  } else {
-    fs.writeFileSync(indexCSSPath, indexCSSContent.trim());
+  // Create types directory if it doesn't exist 
+  if (!fs.existsSync(typesDir)) {
+    await fs.ensureDir(typesDir);
   }
 
-  // Create msi-kit directory
-  await fs.ensureDir(msiKitDir);
-  console.log('MSI UI Kit initialized successfully.');
+  // Copy component
+  const componentContent = fs.readFileSync(templateFilePath, 'utf8');
+  const componentFilePath = path.join(componentDir, `${componentName}${path.extname(templateFilePath)}`);
+  fs.writeFileSync(componentFilePath, componentContent.trim());
+  console.log(`${componentName} component added successfully at src/components/msi-kit`);
+
+  // Copy type definition if exists
+  if (fs.existsSync(typeFilePath)) {
+    const typesContent = fs.readFileSync(typeFilePath, 'utf8');
+    const typesDestPath = path.join(typesDir, 'types.ts');
+    
+    // If types.ts exists, append the new type
+    if (fs.existsSync(typesDestPath)) {
+      const existingTypes = fs.readFileSync(typesDestPath, 'utf8');
+      // Append new type while avoiding duplicates
+      if (!existingTypes.includes(typesContent.trim())) {
+        fs.appendFileSync(typesDestPath, `\n${typesContent.trim()}\n`);
+      }
+    } else {
+      // Create new types.ts with the type definition
+      fs.writeFileSync(typesDestPath, typesContent.trim());
+    }
+    console.log(`${componentName} types added successfully to src/types/types.ts`);
+  }
 }
 
-module.exports = initializeTailwindConfig;
+module.exports = add;

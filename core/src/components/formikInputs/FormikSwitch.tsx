@@ -1,9 +1,18 @@
 import FormikErrorText from '@/components/formikInputs/FormikErrorText';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
-import { IFormikSwitch } from '@/types/types';
 import Object from '@/utilities/Object';
 import Switch from '../Switch';
+
+interface IFormikSwitch {
+  id: string;
+  formik: any;
+  disabled?: boolean;
+  showRequiredIcon?: boolean;
+  label: string;
+  labelClassName?: string;
+  className?: string;
+}
 
 const FormikSwitch: React.FC<IFormikSwitch> = ({
   id,

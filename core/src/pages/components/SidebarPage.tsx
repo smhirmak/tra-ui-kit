@@ -1,9 +1,19 @@
-import { IMenuItem } from '@/types/types';
+import { House, Minus, Plus } from '@phosphor-icons/react';
+import { ReactNode } from 'react';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import Sidebar, { SidebarItem } from '@/components/Sidebar';
-import { Home, Minus, Plus } from '@/assets/Icons';
 
 const formatGroupTitle = (title: string) => title.replace(/([a-z])([A-Z])/g, '$1 $2');
+
+interface IMenuItem {
+  id: number;
+  title: string;
+  path: string;
+  icon: ReactNode;
+  component: string;
+  competenceId?: number;
+  groupTitle: string;
+}
 
 const Menu: { [key: string]: IMenuItem[] } = {
   Main: [
@@ -11,7 +21,7 @@ const Menu: { [key: string]: IMenuItem[] } = {
       id: 1,
       title: 'Home',
       path: '/',
-      icon: <Home className="size-10" />,
+      icon: <House className="size-10" />,
       component: 'Home',
       groupTitle: 'Main',
     },

@@ -1,6 +1,5 @@
-import LoadingSpinner from '@/components/ui/loading-spinner';
 import { createRef, useEffect, useImperativeHandle, useState } from 'react';
-import { ILoader } from '@/types/types';
+import LoadingSpinner from '@/components/ui/loading-spinner';
 import LoadingLinear from './ui/loading-linear';
 
 export type LoaderRefType = {
@@ -9,6 +8,13 @@ export type LoaderRefType = {
 };
 
 export const loaderRef = createRef<LoaderRefType>();
+
+interface ILoader {
+  className?: string;
+  enableScroll?: boolean;
+  linearItemClassName?: string;
+  variant?: 'circular' | 'linear';
+}
 
 const Loader: React.FC<ILoader> = ({ className, enableScroll = false, linearItemClassName, variant = 'circular' }) => {
   const [counter, setCounter] = useState(0);
@@ -44,12 +50,12 @@ const Loader: React.FC<ILoader> = ({ className, enableScroll = false, linearItem
       <>
         {variant === 'circular'
           ? (
-            <div className="fixed left-0 top-0 z-9999 flex h-screen w-screen items-center justify-center backdrop-brightness-50 dark:backdrop-brightness-75">
+            <div className="z-9999 fixed left-0 top-0 flex h-screen w-screen items-center justify-center backdrop-brightness-50 dark:backdrop-brightness-75">
               <LoadingSpinner className={className} />
             </div>
           )
           : (
-            <div className="fixed left-0 top-0 z-9999 h-screen w-screen backdrop-brightness-50 dark:backdrop-brightness-75">
+            <div className="z-9999 fixed left-0 top-0 h-screen w-screen backdrop-brightness-50 dark:backdrop-brightness-75">
               <LoadingLinear linearContainerClassName={className} linearItemClassName={linearItemClassName} />
             </div>
           )}

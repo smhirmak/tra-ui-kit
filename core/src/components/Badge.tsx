@@ -1,10 +1,9 @@
-import { cn } from '@/lib/utils';
-import { IBadge } from '@/types/types';
 import { cva } from 'class-variance-authority';
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 const badgeVariants = cva(
-  'flex w-fit items-center justify-center rounded-full bg-primary text-neutral-white',
+  'bg-primary text-neutral-white flex w-fit items-center justify-center rounded-full',
   {
     variants: {
       variant: {
@@ -32,6 +31,15 @@ const badgeVariants = cva(
     },
   },
 );
+
+interface IBadge {
+  className?: string;
+  color?: 'primary' | 'secondary' | 'tetriary' | 'error' | 'success' | 'warning';
+  icon?: React.ReactNode;
+  size?: 'default' | 'sm' | 'lg';
+  text?: string;
+  variant?: 'circular' | 'rectangular';
+}
 
 const Badge: React.FC<IBadge> = ({ className, color, icon, size, text, variant = 'circular' }) => (
   <div className={cn(badgeVariants({ variant, size, color }), className)}>

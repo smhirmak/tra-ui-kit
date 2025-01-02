@@ -2,11 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DayPicker, DayPickerSingleProps, DayPickerMultipleProps, DayPickerRangeProps, DayPickerDefaultProps } from 'react-day-picker';
 
-import { cn } from '@/lib/utils';
-import { CaretRight } from '@/assets/Icons';
-import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { enUS, tr } from 'date-fns/locale';
-import { buttonVariants } from '../Button';
+import { CaretRight } from '@phosphor-icons/react';
+import { cn } from '@/lib/utils';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
+import { buttonVariants } from './Button';
 
 export type CalendarProps = (DayPickerSingleProps | DayPickerMultipleProps | DayPickerRangeProps | DayPickerDefaultProps) & {
   className?: string;
@@ -63,14 +63,14 @@ const Calendar = ({
           'h-9 w-9 p-0 font-medium aria-selected:opacity-100 text-neutral-black aria-[selected=true]:text-neutral-white',
         ),
         day_selected:
-      'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
+          'bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
         // day_today: 'bg-primary text-accent-foreground',
         day_outside:
-      'day-outside text-muted-foreground aria-selected:bg-primary/50 aria-selected:text-muted-foreground',
+          'day-outside text-muted-foreground aria-selected:bg-primary/50 aria-selected:text-muted-foreground',
         day_disabled: 'text-muted-foreground opacity-50',
         day_range_start: 'day-range-start',
         day_range_middle:
-      'aria-selected:bg-primary aria-selected:text-accent-foreground rounded-none',
+          'aria-selected:bg-primary aria-selected:text-accent-foreground rounded-none',
         day_range_end: 'day-range-end',
         day_hidden: 'invisible',
         ...classNames,

@@ -2,9 +2,8 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
 import { cva } from 'class-variance-authority';
+import { CaretLeft, CaretLineLeft, CaretLineRight, CaretRight } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
-import { CaretLeft, CaretLineLeft, CaretLineRight, CaretRight } from '@/assets/Icons';
-import { PaginationProps } from '@/types/types';
 import Button from './Button';
 import Input from './Input';
 
@@ -13,9 +12,9 @@ export const paginationVariants = cva(
   {
     variants: {
       status: {
-        default: 'border-neutral-black/75 bg-transparent text-neutral-black/75',
+        default: 'border-neutral-black/75 text-neutral-black/75 bg-transparent',
         active: '',
-        disabled: 'cursor-not-allowed border-neutral-disabled-text bg-neutral-disabled-text text-neutral-disabled-text hover:bg-transparent',
+        disabled: 'border-neutral-disabled-text bg-neutral-disabled-text text-neutral-disabled-text cursor-not-allowed hover:bg-transparent',
       },
       size: {
         xs: 'size-6 min-h-6 min-w-6',
@@ -31,7 +30,32 @@ export const paginationVariants = cva(
   },
 );
 
-const Pagination: React.FC<PaginationProps> = ({
+interface IPagination extends VariantProps<typeof paginationVariants> {
+  mode?: 'default' | 'simple';
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+  maxVisiblePages?: number;
+  color?: IButton['color'];
+  variant?: IButton['variant'];
+  rounded?: IButton['rounded'];
+  hideFirstLastArrows?: boolean;
+  hideNavigationArrows?: boolean;
+  arrowsClassName?: string;
+  size?: 'xs' | 'sm' | 'default' | 'lg' | 'xl';
+  disabled?: boolean;
+  simpleWithoutInput?: boolean;
+  firstPageIconClassName?: string;
+  lastPageIconClassName?: string;
+  nextPageIconClassName?: string;
+  previousPageIconClassName?: string;
+  firstPageIcon?: React.ReactNode;
+  lastPageIcon?: React.ReactNode;
+  nextPageIcon?: React.ReactNode;
+  previousPageIcon?: React.ReactNode;
+}
+
+const Pagination: React.FC<IPagination> = ({
   mode = 'default',
   totalPages,
   currentPage,
@@ -97,41 +121,41 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <nav className="MsiPagination-container flex items-center space-x-2" aria-label="Pagination">
       {!hideFirstLastArrows && (
-      <Button
-        size="icon"
-        variant={variant}
-        rounded={rounded}
-        onClick={() => onPageChange(1)}
-        disabled={disabled ?? currentPage === 1}
-        className={cn(paginationVariants({ size, status: currentPage === 1 ? 'disabled' : 'default' }), 'MsiPagination-doubleLeft bg-transparent', arrowsClassName)}
-        color={color}
-        aria-label="Go to first page"
-        title="Go to first page"
-      >
-        {firstPageIcon ?? <CaretLineLeft className={cn(firstPageIconClassName, 'size-5')} />}
-      </Button>
+        <Button
+          size="icon"
+          variant={variant}
+          rounded={rounded}
+          onClick={() => onPageChange(1)}
+          disabled={disabled ?? currentPage === 1}
+          className={cn(paginationVariants({ size, status: currentPage === 1 ? 'disabled' : 'default' }), 'MsiPagination-doubleLeft bg-transparent', arrowsClassName)}
+          color={color}
+          aria-label="Go to first page"
+          title="Go to first page"
+        >
+          {firstPageIcon ?? <CaretLineLeft className={cn(firstPageIconClassName, 'size-5')} />}
+        </Button>
       )}
       {!hideNavigationArrows && (
-      <Button
-        size="icon"
-        variant={variant}
-        rounded={rounded}
-        onClick={() => { if (currentPage > 1)onPageChange(currentPage - 1); }}
-        disabled={disabled ?? currentPage === 1}
-        className={cn(paginationVariants({ size, status: currentPage === 1 ? 'disabled' : 'default' }), 'MsiPagination-left bg-transparent', arrowsClassName)}
-        color={color}
-        aria-label="Previous page"
-        title="Previous page"
-      >
-        {previousPageIcon ?? <CaretLeft className={cn(previousPageIconClassName, 'size-5')} />}
-      </Button>
+        <Button
+          size="icon"
+          variant={variant}
+          rounded={rounded}
+          onClick={() => { if (currentPage > 1) onPageChange(currentPage - 1); }}
+          disabled={disabled ?? currentPage === 1}
+          className={cn(paginationVariants({ size, status: currentPage === 1 ? 'disabled' : 'default' }), 'MsiPagination-left bg-transparent', arrowsClassName)}
+          color={color}
+          aria-label="Previous page"
+          title="Previous page"
+        >
+          {previousPageIcon ?? <CaretLeft className={cn(previousPageIconClassName, 'size-5')} />}
+        </Button>
       )}
       {(mode === 'simple' && simpleWithoutInput) ? <div className="MsiPagination-simpleWithoutInput text-lg">{`${currentPage} / ${totalPages}`}</div>
         : (mode === 'simple' && !simpleWithoutInput)
           ? (
             <div className="MsiPagination-simpleWithInput flex items-center gap-2">
               <Input
-                className="h-8 w-13 text-center"
+                className="w-13 h-8 text-center"
                 type="number"
                 value={currentPage}
                 onChange={e => {
@@ -179,35 +203,35 @@ const Pagination: React.FC<PaginationProps> = ({
             </>
           )}
       {!hideNavigationArrows && (
-      <Button
-        size="icon"
-        variant={variant}
-        rounded={rounded}
-        onClick={() => { if (currentPage < totalPages)onPageChange(currentPage + 1); }}
-        disabled={disabled ?? currentPage === totalPages}
-        className={cn(paginationVariants({ size, status: currentPage === totalPages ? 'disabled' : 'default' }), 'bg-transparent', arrowsClassName)}
-        color={color}
-        aria-label="Next page"
-        title="Next page"
-      >
-        {nextPageIcon ?? <CaretRight className={cn(nextPageIconClassName, 'size-5')} />}
-      </Button>
+        <Button
+          size="icon"
+          variant={variant}
+          rounded={rounded}
+          onClick={() => { if (currentPage < totalPages) onPageChange(currentPage + 1); }}
+          disabled={disabled ?? currentPage === totalPages}
+          className={cn(paginationVariants({ size, status: currentPage === totalPages ? 'disabled' : 'default' }), 'bg-transparent', arrowsClassName)}
+          color={color}
+          aria-label="Next page"
+          title="Next page"
+        >
+          {nextPageIcon ?? <CaretRight className={cn(nextPageIconClassName, 'size-5')} />}
+        </Button>
       )}
       {!hideFirstLastArrows && (
-      <Button
-        size="icon"
-        variant={variant}
-        rounded={rounded}
-        onClick={() => onPageChange(totalPages)}
-        disabled={disabled ?? currentPage === totalPages}
-        className={cn(paginationVariants({ size, status: currentPage === totalPages ? 'disabled' : 'default' }), 'bg-transparent', arrowsClassName)}
-        color={color}
-        aria-label="Go to last page"
-        title="Go to last page"
-      >
-        {lastPageIcon ?? <CaretLineRight className={cn(lastPageIconClassName, 'size-5')} />}
-      </Button>
-      ) }
+        <Button
+          size="icon"
+          variant={variant}
+          rounded={rounded}
+          onClick={() => onPageChange(totalPages)}
+          disabled={disabled ?? currentPage === totalPages}
+          className={cn(paginationVariants({ size, status: currentPage === totalPages ? 'disabled' : 'default' }), 'bg-transparent', arrowsClassName)}
+          color={color}
+          aria-label="Go to last page"
+          title="Go to last page"
+        >
+          {lastPageIcon ?? <CaretLineRight className={cn(lastPageIconClassName, 'size-5')} />}
+        </Button>
+      )}
     </nav>
   );
 };

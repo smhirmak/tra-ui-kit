@@ -1,13 +1,13 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { X } from '@/assets/Icons';
-import { cn } from '@/lib/utils';
+import { X } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React, { useState, useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
 import Button from './Button';
 
-interface DrawerProps {
+interface IDrawer {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
@@ -25,7 +25,7 @@ interface DrawerProps {
   footerClassName?: string;
 }
 
-const drawerVariants = cva('MsiDialog-container flex flex-col bg-neutral-white px-6 py-2 shadow-lg transition-all duration-350 ease-in-out', {
+const drawerVariants = cva('MsiDialog-container bg-neutral-white duration-350 flex flex-col px-6 py-2 shadow-lg transition-all ease-in-out', {
   variants: {
     mode: {
       overlay: 'fixed z-50',
@@ -89,7 +89,7 @@ const drawerVariants = cva('MsiDialog-container flex flex-col bg-neutral-white p
   ],
 });
 
-const Drawer: React.FC<DrawerProps> = ({
+const Drawer: React.FC<IDrawer> = ({
   isOpen,
   onClose,
   children,
@@ -159,15 +159,15 @@ const Drawer: React.FC<DrawerProps> = ({
         <div className={cn('MsiDialog-header my-2 flex items-center justify-between gap-2 border-b pb-2', { [position === 'right' ? 'flex-row-reverse' : 'flex-row']: true }, headerClassName)}>
           <p className={cn('MsiDialog-headerTitle text-2xl font-semibold', titleClassName)}>{title}</p>
           {!alwaysOpen && (
-          <Button
-            size="icon"
-            variant="ghost"
-            rounded="lg"
-            onClick={onClose}
-            className={cn('MsiDialog-closeButton bg-neutral hover:bg-neutral/80', closeButtonClassName)}
-          >
-            <X />
-          </Button>
+            <Button
+              size="icon"
+              variant="ghost"
+              rounded="lg"
+              onClick={onClose}
+              className={cn('MsiDialog-closeButton bg-neutral hover:bg-neutral/80', closeButtonClassName)}
+            >
+              <X className="size-5" />
+            </Button>
           )}
         </div>
         <div className={cn('MsiDialog-body h-full overflow-y-auto', bodyClassName)}>{children}</div>

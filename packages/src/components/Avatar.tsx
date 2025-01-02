@@ -157,7 +157,7 @@ const badgeVariants = cva(
   },
 );
 
-interface IAvatar {
+export interface IAvatar {
   asChild?: React.ElementType;
   badgeClassName?: string;
   badgeContent?: React.ReactNode;
@@ -173,7 +173,7 @@ interface IAvatar {
   variant?: 'circular' | 'rounded';
 }
 
-interface IMultipleAvatarContainer {
+export interface IMultipleAvatarContainer {
   children: React.ReactNode[];
   lastElementSize?: 'sm' | 'lg';
   showLessAvatarClassName?: string;

@@ -1,5 +1,11 @@
-import { IBackgroundVideo } from '@/types/types';
 import React from 'react';
+
+interface IBackgroundVideo {
+  videoSrc: string;
+  posterImg?: string;
+  className?: string;
+  [key: string]: any;
+}
 
 const BackgroundVideo: React.FC<IBackgroundVideo> = ({ videoSrc, posterImg, className, ...props }) => (
   // eslint-disable-next-line react/jsx-props-no-spreading

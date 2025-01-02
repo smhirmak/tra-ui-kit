@@ -1,9 +1,8 @@
 /* eslint-disable tailwindcss/enforces-negative-arbitrary-values */
-import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
-import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 import React, { useRef, useState } from 'react';
-import { ITextField } from '@/types/types';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
+import { cn } from '@/lib/utils';
 import Input from './Input';
 import Label from './Label';
 
@@ -21,11 +20,11 @@ const textFieldStyles = cva('TextField-container flex h-fit flex-col gap-1', {
   },
 });
 
-const labelStyles = cva('transition-all duration-150 ease-cubic', {
+const labelStyles = cva('ease-cubic transition-all duration-150', {
   variants: {
     variant: {
       filled: '',
-      outlined: 'absolute left-[18px] top-1/4 z-1 text-lg text-neutral-light-black',
+      outlined: 'z-1 text-neutral-light-black absolute left-[18px] top-1/4 text-lg',
       underlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform text-lg',
       filledUnderlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform pl-5 text-lg',
     },
@@ -92,13 +91,13 @@ const labelStyles = cva('transition-all duration-150 ease-cubic', {
   ],
 });
 
-const inputStyles = cva('p-2 pl-5 transition-colors disabled:bg-input-light disabled:shadow-none', {
+const inputStyles = cva('disabled:bg-input-light p-2 pl-5 transition-colors disabled:shadow-none', {
   variants: {
     variant: {
       filled: '',
       outlined: 'border-none',
       underlined: 'rounded-none border-x-0 border-t-0 bg-transparent hover:bg-transparent hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
-      filledUnderlined: 'rounded-none border-x-0 border-t-0 bg-input-fill hover:bg-input-fill hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
+      filledUnderlined: 'bg-input-fill hover:bg-input-fill rounded-none border-x-0 border-t-0 hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
     },
   },
   defaultVariants: {
@@ -107,8 +106,8 @@ const inputStyles = cva('p-2 pl-5 transition-colors disabled:bg-input-light disa
 });
 
 const fieldsetStyles = cva(
-  `pointer-events-none absolute inset-0 m-0 h-14 min-w-0 overflow-hidden rounded border border-solid border-input p-3 outline-none transition-all 
-  disabled:border-input-light disabled:placeholder:text-input`,
+  `border-input disabled:border-input-light disabled:placeholder:text-input pointer-events-none absolute inset-0 m-0 h-14 min-w-0 overflow-hidden rounded border border-solid p-3 
+  outline-none transition-all`,
   {
     variants: {
       inputFocused: {
@@ -116,7 +115,7 @@ const fieldsetStyles = cva(
         false: '',
       },
       error: {
-        true: 'border-error focus-visible:shadow-none focus-visible:-outline-offset-1 focus-visible:outline-error',
+        true: 'border-error focus-visible:outline-error focus-visible:shadow-none focus-visible:-outline-offset-1',
         false: '',
       },
       borderRadius: {
@@ -131,6 +130,34 @@ const fieldsetStyles = cva(
     },
   },
 );
+
+interface ITextField {
+  alwaysTop?: boolean;
+  autoComplete?: string;
+  borderRadius?: 'default' | 'lg';
+  disabled?: boolean;
+  endIcon?: React.ReactNode;
+  error?: boolean;
+  name?: string;
+  id?: string;
+  inputClassName?: string;
+  label?: string;
+  labelClassName?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onWheel?: (e: React.WheelEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  showRequiredIcon?: boolean;
+  size?: 'default' | 'sm' | 'lg';
+  startIcon?: React.ReactNode;
+  tooltip?: string | string[];
+  type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
+  value?: string | number;
+  variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
+  maxLength?: number;
+  helperText?: string;
+  textarea?: boolean;
+  className?: string;
+}
 
 const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   borderRadius,
@@ -214,16 +241,16 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
           <legend className={`float-[unset] invisible block h-0 w-fit overflow-hidden p-0 text-base ${(inputFocused || !!value || Boolean(inputRef?.current?.value)) && 'px-2'}`}>
             {(inputFocused || !!value || Boolean(inputRef?.current?.value)) ? (
               <span>
-                <span className={`${showRequiredIcon ? 'after:ml-0.5 after:text-error after:content-required' : ''}`}>{label}</span>
+                <span className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-0.5' : ''}`}>{label}</span>
                 {(tooltip) && (
-                <span className="inline-block size-5" />
+                  <span className="inline-block size-5" />
                 )}
               </span>
             ) : ''}
           </legend>
         </fieldset>
       )}
-      {helperText && <p className="self-end text-sm text-neutral-light-black">{helperText}</p>}
+      {helperText && <p className="text-neutral-light-black self-end text-sm">{helperText}</p>}
     </div>
   );
 });
