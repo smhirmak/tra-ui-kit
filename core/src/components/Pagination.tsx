@@ -1,10 +1,10 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-plusplus */
 import React from 'react';
-import { cva } from 'class-variance-authority';
+import { cva, VariantProps } from 'class-variance-authority';
 import { CaretLeft, CaretLineLeft, CaretLineRight, CaretRight } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
-import Button from './Button';
+import Button, { IButton } from './Button';
 import Input from './Input';
 
 export const paginationVariants = cva(

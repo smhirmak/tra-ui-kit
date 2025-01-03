@@ -122,7 +122,7 @@ const spinnerVariants = cva(
   },
 );
 
-interface IButton
+export interface IButton
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
   VariantProps<typeof buttonVariants> {
   asChild?: React.ElementType;
