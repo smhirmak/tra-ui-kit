@@ -1,5 +1,12 @@
 import { useNotification } from '@/contexts/notification/NotificationProvider';
-import { NotificationOptions } from '@/types/types';
+
+interface NotificationOptions {
+  message: string | string[];
+  options: {
+    autoClose?: boolean | undefined;
+    autoCloseTime?: number | undefined;
+  } | undefined;
+}
 
 const Notification = () => {
   const { invoke, translateFunction } = useNotification();

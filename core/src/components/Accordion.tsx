@@ -1,18 +1,18 @@
+/* eslint-disable react/jsx-indent */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { CaretDown } from '@/assets/Icons';
-import { cn } from '@/lib/utils';
-import { IAccordion, IAccordionContent, IAccordionItem, IAccordionTrigger } from '@/types/types';
+import { CaretDown } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
-const accordionItemVariants = cva('border-b border-border', {
+const accordionItemVariants = cva('border-border border-b', {
   variants: {
     variant: {
       underlined: '',
       outlined: '',
       solid: 'data-[disabled="true"]:bg-disabled-light-dark',
-      splitted: 'rounded-md bg-neutral data-[disabled="true"]:bg-disabled-light-dark',
+      splitted: 'bg-neutral data-[disabled="true"]:bg-disabled-light-dark rounded-md',
     },
   },
 });
@@ -21,7 +21,7 @@ const accordionVariants = cva('w-fit rounded-md ', {
   variants: {
     variant: {
       underlined: '',
-      outlined: 'border border-border',
+      outlined: 'border-border border',
       solid: 'bg-neutral',
       splitted: 'flex flex-col gap-1',
     },
@@ -29,9 +29,9 @@ const accordionVariants = cva('w-fit rounded-md ', {
 });
 
 const accordionTriggerVariants = cva(
-  `flex cursor-pointer select-none items-center justify-between rounded-md p-4 
-  text-lg font-medium transition-all duration-300 
-  data-[disabled="true"]:cursor-default data-[disabled="true"]:text-disabled`,
+  `data-[disabled="true"]:text-disabled flex cursor-pointer select-none items-center justify-between rounded-md 
+  p-4 text-lg font-medium transition-all 
+  duration-300 data-[disabled="true"]:cursor-default`,
   {
     variants: {
       variant: {
@@ -47,6 +47,51 @@ const accordionTriggerVariants = cva(
 const accoridonContentVariants = cva(`overflow-hidden px-4 py-0.5 transition-all duration-200
   data-[open="false"]:max-h-0 data-[open="true"]:max-h-full
   data-[open="false"]:opacity-0 data-[open="true"]:opacity-100`);
+
+interface IAccordion {
+  children: ReactNode;
+  className?: string;
+  multipleExpand?: boolean;
+  variant?: 'solid' | 'outlined' | 'splitted' | 'underlined';
+}
+
+interface IAccordionItem {
+  title: string;
+  subTitle?: string;
+  children: ReactNode;
+  className?: string;
+  contentClassName?: string;
+  triggerClassName?: string;
+  isOpen?: boolean;
+  onClick?: () => void | undefined;
+  variant?: 'solid' | 'outlined' | 'splitted' | 'underlined';
+  disabled?: boolean;
+  defaultOpen?: boolean;
+  startContent?: ReactNode;
+  icon?: ReactNode;
+  titleClassName?: string;
+}
+
+interface IAccordionTrigger {
+  onClick?: () => void | undefined;
+  isOpen: boolean;
+  title: string;
+  subTitle?: string;
+  className?: string;
+  disabled?: boolean;
+  startContent?: ReactNode;
+  icon?: ReactNode;
+  iconContainerClassName?: string;
+  titleClassName?: string;
+  subTitleClassName?: string;
+  variant?: 'solid' | 'outlined' | 'splitted' | 'underlined';
+}
+
+interface IAccordionContent {
+  isOpen: boolean;
+  children: ReactNode;
+  className?: string;
+}
 
 export const Accordion: React.FC<IAccordion> = ({ children, className, multipleExpand = false, variant = 'underlined' }) => {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
@@ -107,20 +152,20 @@ export const Accordion: React.FC<IAccordion> = ({ children, className, multipleE
 
 export const AccordionTrigger: React.FC<IAccordionTrigger> = ({ title, subTitle, onClick, isOpen, className, variant, disabled, startContent, icon, iconContainerClassName,
   titleClassName, subTitleClassName }) => (
-    <div
-      onClick={disabled ? () => { } : onClick}
-      data-disabled={disabled}
-      className={cn(accordionTriggerVariants({ variant }), className)}
-    >
-      <div className="flex items-center gap-2">
-        {startContent}
-        <div>
-          <p className={`text-lg ${titleClassName}`}>{title}</p>
-          {subTitle && <p className={`text-sm text-neutral-grey ${subTitleClassName}`}>{subTitle}</p>}
-        </div>
+  <div
+    onClick={disabled ? () => { } : onClick}
+    data-disabled={disabled}
+    className={cn(accordionTriggerVariants({ variant }), className)}
+  >
+    <div className="flex items-center gap-2">
+      {startContent}
+      <div>
+        <p className={`text-lg ${titleClassName}`}>{title}</p>
+        {subTitle && <p className={`text-neutral-grey text-sm ${subTitleClassName}`}>{subTitle}</p>}
       </div>
-      <span className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'} ${iconContainerClassName}`}>{icon ?? <CaretDown />}</span>
     </div>
+    <span className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'} ${iconContainerClassName}`}>{icon ?? <CaretDown />}</span>
+  </div>
 );
 
 export const AccordionContent: React.FC<IAccordionContent> = ({ isOpen, children, className }) => (

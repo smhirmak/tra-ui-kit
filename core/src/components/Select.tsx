@@ -2,16 +2,15 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { CaretDown, Check, X } from '@/assets/Icons';
-import Label from '@/components/Label';
-import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef, useState } from 'react';
-import { ISelect, ISelectOption } from '@/types/types';
+import { CaretDown, Check, X } from '@phosphor-icons/react';
+import Label from '@/components/Label';
+import { cn } from '@/lib/utils';
 import Button from './Button';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 
-interface SearchInputProps {
+interface ISearchInput {
   searchValue: string;
   onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchRef: React.RefObject<HTMLInputElement | null>;
@@ -21,9 +20,9 @@ interface SearchInputProps {
   showMenu: boolean;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ searchValue, onSearch, searchRef, searchInputClassName, handleKeyDown, disabled, showMenu }) => (
+const SearchInput: React.FC<ISearchInput> = ({ searchValue, onSearch, searchRef, searchInputClassName, handleKeyDown, disabled, showMenu }) => (
   <input
-    className={`MsiSelect-searchInput ${searchInputClassName} h-unset focus-visible:ring-none m-0 bg-transparent p-0 text-neutral-black
+    className={`MsiSelect-searchInput ${searchInputClassName} h-unset focus-visible:ring-none text-neutral-black m-0 bg-transparent p-0
      opacity-100 focus-visible:border-none focus-visible:outline-none ${!showMenu && 'w-0'}`}
     value={searchValue ?? ''}
     disabled={disabled}
@@ -35,8 +34,8 @@ const SearchInput: React.FC<SearchInputProps> = ({ searchValue, onSearch, search
 );
 
 const selectVariants = cva(
-  `custom--dropdown-container relative flex w-full cursor-pointer items-center rounded-md border border-neutral 
-  text-left data-[disabled=true]:cursor-not-allowed data-[disabled=true]:border-input-light data-[disabled=true]:bg-input-light data-[disabled=true]:text-neutral-grey`,
+  `custom--dropdown-container border-neutral data-[disabled=true]:border-input-light data-[disabled=true]:bg-input-light data-[disabled=true]:text-neutral-grey relative flex w-full cursor-pointer 
+  items-center rounded-md border text-left data-[disabled=true]:cursor-not-allowed`,
   {
     variants: {
       showMenu: {
@@ -57,7 +56,7 @@ const selectVariants = cva(
         false: '',
       },
       error: {
-        true: 'border-error focus-visible:shadow-none focus-visible:-outline-offset-1 focus-visible:outline-error',
+        true: 'border-error focus-visible:outline-error focus-visible:shadow-none focus-visible:-outline-offset-1',
         false: '',
       },
     },
@@ -100,6 +99,46 @@ const selectVariants = cva(
   },
 );
 
+interface ISelectOption {
+  content: string | React.ReactNode;
+  value: number | string | boolean;
+}
+
+interface ISelect {
+  placeHolder?: string;
+  size?: 'default' | 'sm' | 'lg';
+  options: ISelectOption[] | ISelectOption;
+  isMulti?: boolean;
+  isSearchable?: boolean;
+  onChange: (e: string | number | string[] | number[] | boolean) => void;
+  align?: string;
+  label?: string;
+  disabled?: boolean;
+  error?: boolean;
+  defaultValue?: string | number | string[] | number[];
+  completeButton?: boolean | 'mobile';
+  completeButtonText?: string;
+  searchInputClassName?: string;
+  dropdownTriggerClassName?: string;
+  dropdownTagClassName?: string;
+  dropdownTagCloseButtonClassName?: string;
+  className?: string;
+  labelClassName?: string;
+  containerClassName?: string;
+  selectTextClassName?: string;
+  iconClassName?: string;
+  dropdownMenuClassName?: string;
+  dropdownItemClassName?: string;
+  completeButtonContainerClassName?: string;
+  completeButtonClassName?: string;
+  value?: string | number | string[] | number[] | boolean;
+  id?: string;
+  tooltip?: string | string[];
+  showRequiredIcon?: boolean;
+  dropdownAlign?: 'left' | 'right';
+  noOptionsMessage?: string;
+}
+
 const Select: React.FC<ISelect> = ({
   placeHolder = '',
   label,
@@ -122,6 +161,7 @@ const Select: React.FC<ISelect> = ({
   containerClassName = '',
   selectTextClassName = '',
   iconClassName = '',
+  dropdownTriggerClassName,
   dropdownMenuClassName = '',
   dropdownItemClassName = '',
   completeButtonContainerClassName = '',
@@ -308,16 +348,16 @@ const Select: React.FC<ISelect> = ({
               title={option.content as string}
               key={`${option.value}-${index}`}
               data-disabled={disabled}
-              className={`MsiSelect-dropdownTagItem ${dropdownTagClassName} group flex max-h-full items-center overflow-hidden whitespace-nowrap rounded bg-primary-15
-               px-1 py-0.5 text-sm font-medium text-primary data-[disabled=true]:bg-disabled-dark data-[disabled=true]:text-neutral-disabled-text`}
+              className={`MsiSelect-dropdownTagItem ${dropdownTagClassName} bg-primary-15 text-primary data-[disabled=true]:bg-disabled-dark data-[disabled=true]:text-neutral-disabled-text group flex max-h-full items-center
+               overflow-hidden whitespace-nowrap rounded px-1 py-0.5 text-sm font-medium`}
             >
               <span className="truncate">
                 {option.content}
               </span>
               <span
-                onClick={e => { if (!disabled)onTagRemove(e, option); }}
-                className={`MsiSelect-dropdownTagCloseButton ${dropdownTagCloseButtonClassName} group-data-[disabled=true]:hover: ml-1.5 flex cursor-pointer items-center rounded-full p-0.5 
-                hover:bg-neutral-light group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=false]:text-neutral-black group-data-[disabled=true]:hover:bg-transparent`}
+                onClick={e => { if (!disabled) onTagRemove(e, option); }}
+                className={`MsiSelect-dropdownTagCloseButton ${dropdownTagCloseButtonClassName} group-data-[disabled=true]:hover: hover:bg-neutral-light group-data-[disabled=false]:text-neutral-black ml-1.5 flex cursor-pointer items-center 
+                rounded-full p-0.5 group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=true]:hover:bg-transparent`}
               >
                 <X />
               </span>
@@ -343,7 +383,7 @@ const Select: React.FC<ISelect> = ({
       <div className="flex max-w-full items-center overflow-hidden">
         <span className={`max-w-full truncate whitespace-nowrap ${(!isMulti && isSearchable && showMenu) && 'text-neutral opacity-90'}`}>{(selectedValue as ISelectOption).content}</span>
         {(isSearchable && showMenu) && (
-          <div className={`MsiSelect-searchBox flex max-w-[80%] items-center ${!isMulti && 'absolute z-2'}`}>
+          <div className={`MsiSelect-searchBox flex max-w-[80%] items-center ${!isMulti && 'z-2 absolute'}`}>
             <SearchInput
               disabled={disabled}
               handleKeyDown={handleKeyDown}
@@ -390,20 +430,20 @@ const Select: React.FC<ISelect> = ({
   return (
     <div className={`MsiSelect-root relative flex flex-col gap-1 ${className}`}>
       {label
-      && (
-      <Label
-        className={`flex transition-all duration-150 ease-cubic ${labelClassName}`}
-        htmlFor={id}
-        id={`${id}-label`}
-        tooltip={tooltip}
-        disabled={disabled}
-        showRequiredIcon={showRequiredIcon}
-      >
-        {label}
-      </Label>
-      )}
+        && (
+          <Label
+            className={`ease-cubic flex transition-all duration-150 ${labelClassName}`}
+            htmlFor={id}
+            id={`${id}-label`}
+            tooltip={tooltip}
+            disabled={disabled}
+            showRequiredIcon={showRequiredIcon}
+          >
+            {label}
+          </Label>
+        )}
       <Popover open={showMenu} onOpenChange={setShowMenu} disabled={disabled} dropdownAlign={dropdownAlign}>
-        <PopoverTrigger className={cn(selectVariants({ size, isMulti, isSearchable, error }))}>
+        <PopoverTrigger className={cn(selectVariants({ size, isMulti, isSearchable, error }), dropdownTriggerClassName)}>
           <div id={id} className={`MsiSelect-container ${containerClassName} flex max-h-32 min-h-full w-full select-none justify-between gap-2 overflow-y-auto px-3 py-2`}>
             <div title={textContent} className={`MsiSelect-selectText ${selectTextClassName} flex h-full max-h-full max-w-full items-center ${!isMulti && 'self-center'} truncate font-medium`}>
               {getDisplay()}
@@ -415,27 +455,27 @@ const Select: React.FC<ISelect> = ({
         </PopoverTrigger>
 
         <PopoverContent
-          className={`MsiSelect-dropdownMenu ${dropdownMenuClassName} max-h-80 min-h-12 w-full max-w-full overflow-auto rounded-md bg-background shadow-soft-grey`}
+          className={`MsiSelect-dropdownMenu ${dropdownMenuClassName} bg-background shadow-soft-grey max-h-80 min-h-12 w-full max-w-full overflow-auto rounded-md`}
         >
           <div onKeyDown={handleKeyDown} ref={dropdownRef}>
             {Array.isArray(optionList) ? optionList.map((option: ISelectOption, index) => (
               <div
                 onClick={() => { if (!disabled) onItemClick(option); }}
                 key={option.value as number}
-                className={`MsiSelect-dropdownItem ${dropdownItemClassName} flex cursor-pointer items-center justify-between rounded-md px-3 py-2 font-medium
-                  text-neutral-black hover:bg-primary-5 ${isSelected(option) ? 'bg-primary-5 font-semibold text-primary' : ''} 
+                className={`MsiSelect-dropdownItem ${dropdownItemClassName} text-neutral-black hover:bg-primary-5 flex cursor-pointer items-center justify-between rounded-md px-3
+                  py-2 font-medium ${isSelected(option) ? 'bg-primary-5 text-primary font-semibold' : ''} 
                   ${highlightedIndex === index ? 'bg-primary-5' : ''}`}
               >
                 {option.content}
                 {isMulti && (
                   <span className={`mr-2 ${!isSelected(option) && 'opacity-0'}`}>
-                    <Check className="MsiSelect-checkIcon size-4 text-primary" />
+                    <Check className="MsiSelect-checkIcon text-primary size-4" />
                   </span>
                 )}
               </div>
             )) : <p className="text-lg">{noOptionsMessage ?? 'No Options'}</p>}
             {completeButton && (
-              <div className={`MsiSelect-completeButtonContainer ${completeButtonContainerClassName} sticky bottom-0 bg-background px-1 pb-1`}>
+              <div className={`MsiSelect-completeButtonContainer ${completeButtonContainerClassName} bg-background sticky bottom-0 px-1 pb-1`}>
                 <Button size={size} className={`MsiSelect-completeButton ${completeButtonClassName} w-full`} onClick={() => setShowMenu(false)}>
                   {completeButtonText ?? 'Complete Selection'}
                 </Button>

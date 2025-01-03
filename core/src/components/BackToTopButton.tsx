@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { CaretUp } from '@/assets/Icons';
-import { cn } from '@/lib/utils';
+import { CaretUp } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
-import { IBackToTopButton } from '@/types/types';
+import { cn } from '@/lib/utils';
 import Button from './Button';
 
 const buttonVariants = cva(
@@ -18,6 +17,13 @@ const buttonVariants = cva(
     },
   },
 );
+
+interface IBackToTopButton {
+  buttonClassName?: string;
+  containerClassName?: string;
+  icon?: React.ReactNode;
+  iconClassName?: string;
+}
 
 const BackToTopButton: React.FC<IBackToTopButton> = ({ buttonClassName, containerClassName, icon, iconClassName }) => {
   const [isVisible, setIsVisible] = useState(false);

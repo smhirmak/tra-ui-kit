@@ -1,8 +1,8 @@
-import { CaretRight } from '@/assets/Icons';
-import { Accordion, AccordionItem } from '@/components/Accordion';
-import Button from '@/components/Button';
+import { CaretRight } from '@phosphor-icons/react';
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Accordion, AccordionItem } from '@/components/Accordion';
+import Button from '@/components/Button';
 
 const sidebarList = [
   // {
@@ -141,15 +141,15 @@ const SideBar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   return (
-    <div className={`sticky left-0 top-0 flex max-h-screen min-h-screen ${open ? 'min-w-36' : 'max-w-16'} flex-col overflow-y-auto bg-background p-4`}>
-      <Button className="self-end overflow-visible bg-transparent text-neutral-black hover:bg-transparent" size="icon" disableEffect onClick={() => setOpen(prev => !prev)}>
+    <div className={`sticky left-0 top-0 flex max-h-screen min-h-screen ${open ? 'min-w-36' : 'max-w-16'} bg-background flex-col overflow-y-auto p-4`}>
+      <Button className="text-neutral-black self-end overflow-visible bg-transparent hover:bg-transparent" size="icon" disableEffect onClick={() => setOpen(prev => !prev)}>
         <CaretRight className={`transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
       </Button>
       {open && (
         <>
           <Link
             to="/installation"
-            className={`mt-1 rounded-md px-4 text-lg font-medium transition-colors duration-100 hover:bg-primary-5 ${location.pathname === '/installation' && 'bg-primary/10 text-primary'}`}
+            className={`hover:bg-primary-5 mt-1 rounded-md px-4 text-lg font-medium transition-colors duration-100 ${location.pathname === '/installation' && 'bg-primary/10 text-primary'}`}
           >
             Installation
           </Link>
@@ -165,7 +165,7 @@ const SideBar = () => {
                           <Link
                             key={c.link}
                             to={c.link}
-                            className={`mt-1 rounded-t-md p-2 text-base transition-colors duration-100  hover:bg-primary-5 ${location.pathname === c.link && 'bg-primary/10 text-primary'}`}
+                            className={`hover:bg-primary-5 mt-1 rounded-t-md p-2 text-base transition-colors  duration-100 ${location.pathname === c.link && 'bg-primary/10 text-primary'}`}
                           >
                             {c.label}
                           </Link>
@@ -173,11 +173,11 @@ const SideBar = () => {
                       </AccordionItem>
                     </Accordion>
                   ) : (
-                    <Link to={e.link} className={`mt-1 rounded-t-md p-2 transition-colors duration-100  hover:bg-primary-5 ${location.pathname === e.link && 'bg-primary/10 text-primary'}`}>
+                    <Link to={e.link} className={`hover:bg-primary-5 mt-1 rounded-t-md p-2 transition-colors  duration-100 ${location.pathname === e.link && 'bg-primary/10 text-primary'}`}>
                       {e.label}
                     </Link>
                   )}
-                  <span className="h-1 w-full border-b-2 border-primary-15 last:border-b-0" />
+                  <span className="border-primary-15 h-1 w-full border-b-2 last:border-b-0" />
                 </React.Fragment>
               ))}
             </AccordionItem>

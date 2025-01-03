@@ -1,4 +1,4 @@
-import { Plus } from '@/assets/Icons';
+import { Plus } from '@phosphor-icons/react';
 import Chip from '@/components/Chip';
 
 const ChipPage = () => (

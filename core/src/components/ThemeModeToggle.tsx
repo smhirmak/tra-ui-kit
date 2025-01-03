@@ -1,4 +1,4 @@
-import { Moon, Sun } from '@/assets/Icons';
+import { Moon, Sun } from '@phosphor-icons/react';
 import Button from '@/components/Button';
 import { useTheme } from '@/contexts/theme/theme-provider';
 

@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 import { memo } from 'react';
+import { cn } from '@/lib/utils';
 
-interface ProgressBarProps {
+interface IProgressBar {
   currentStep: number;
   totalStepSize: number;
   progressTitle?: string;
@@ -17,9 +17,9 @@ interface ProgressBarProps {
   valueType?: 'percentage' | 'number';
 }
 
-const linearContainerVariants = cva('MsiProgressBar-linearContainer relative h-1 w-full overflow-hidden rounded-2xl bg-primary-15');
+const linearContainerVariants = cva('MsiProgressBar-linearContainer bg-primary-15 relative h-1 w-full overflow-hidden rounded-2xl');
 
-const linearVariants = cva('MsiProgressBar-linearProgress absolute left-0 top-0 size-full bg-primary transition-transform duration-300');
+const linearVariants = cva('MsiProgressBar-linearProgress bg-primary absolute left-0 top-0 size-full transition-transform duration-300');
 
 interface StepTextProps {
   className?: string;
@@ -41,7 +41,7 @@ const ProgressBar = memo(({ progressTitle,
   linearProgressClassName,
   valueType = 'number',
   stepTextPosition = 'top',
-  ...otherProps }: ProgressBarProps) => {
+  ...otherProps }: IProgressBar) => {
   if (currentStep > totalStepSize) {
     throw new Error('Current step cannot be greater than total step size');
   }

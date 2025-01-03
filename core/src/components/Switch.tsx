@@ -2,13 +2,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 
-import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
-import { ISwitch } from '@/types/types';
+import { cn } from '@/lib/utils';
 import Label from './Label';
 
 const switchBaseVariants = cva(
-  'group inline-flex h-7 w-12 shrink-0 cursor-pointer select-none items-center rounded-full border-2 border-transparent bg-disabled-light transition-colors  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 peer-checked:bg-primary-focused',
+  'bg-disabled-light focus-visible:ring-ring focus-visible:ring-offset-background peer-checked:bg-primary-focused group inline-flex h-7 w-12 shrink-0 cursor-pointer select-none items-center rounded-full  border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -23,12 +22,12 @@ const switchBaseVariants = cva(
 );
 
 const switchThumbVariants = cva(
-  'pointer-events-none block size-6 translate-x-0 rounded-full bg-button-text transition-transform group-data-[checked=true]:translate-x-5',
+  'bg-button-text pointer-events-none block size-6 translate-x-0 rounded-full transition-transform group-data-[checked=true]:translate-x-5',
   {
     variants: {
       variant: {
         apple: 'ring-0',
-        android: 'ring-2 ring-disabled-light group-data-[checked=true]:ring-primary',
+        android: 'ring-disabled-light group-data-[checked=true]:ring-primary ring-2',
       },
     },
     defaultVariants: {
@@ -36,6 +35,21 @@ const switchThumbVariants = cva(
     },
   },
 );
+
+interface ISwitch {
+  className?: string;
+  thumbClassName?: string;
+  containerClassName?: string;
+  id: string;
+  defaultChecked?: boolean;
+  variant?: 'apple' | 'android';
+  label?: string;
+  showRequiredIcon?: boolean;
+  labelClassName?: string;
+  disabled?: boolean;
+  checked: boolean
+  onChange: (e: boolean) => void;
+}
 
 const Switch = React.forwardRef<HTMLInputElement, ISwitch>(
   (

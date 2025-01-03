@@ -1,6 +1,10 @@
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
-import { IFormikErrorText } from '@/types/types';
 import MethodHelper from '@/utilities/MethodHelper';
+
+interface IFormikErrorText {
+  id: string;
+  formik: object;
+}
 
 const FormikErrorText: React.FC<IFormikErrorText> = ({ id, formik }) => {
   const { t } = useLocalizeContext();

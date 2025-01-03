@@ -1,9 +1,20 @@
 import TextField from '@/components/TextField';
 import FormikErrorText from '@/components/formikInputs/FormikErrorText';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
-import { IFormikInput } from '@/types/types';
 import MethodHelper from '@/utilities/MethodHelper';
 import Object from '@/utilities/Object';
+
+interface IFormikInput {
+  id: string;
+  formik: any;
+  label: string;
+  disabled?: boolean;
+  type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
+  placeholder: string;
+  tooltip?: string;
+  size?: 'default' | 'sm' | 'lg';
+  variant?: 'filled' | 'outlined' | 'underlined';
+}
 
 const FormikInput: React.FC<IFormikInput> = ({ id, formik, variant, size, label, disabled = false, type = 'text', placeholder = '', tooltip, ...otherProps }) => {
   const { t } = useLocalizeContext();

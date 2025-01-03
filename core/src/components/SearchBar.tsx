@@ -1,10 +1,9 @@
-import { MagnifyingGlass } from '@/assets/Icons';
+import { MagnifyingGlass } from '@phosphor-icons/react';
+import { cva } from 'class-variance-authority';
+import React from 'react';
 import TextField from '@/components/TextField';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
-import { ISearchBar } from '@/types/types';
-import { cva } from 'class-variance-authority';
-import React from 'react';
 
 const iconVariants = cva(
   '',
@@ -26,6 +25,19 @@ const iconVariants = cva(
     },
   },
 );
+
+interface ISearchBar {
+  borderRadius?: 'default' | 'lg';
+  disabled?: boolean;
+  iconClassName?: string;
+  label?: string;
+  placeholder?: string;
+  size?: 'default' | 'sm' | 'lg';
+  type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
+  value: string | number;
+  variant?: 'filled' | 'outlined' | 'underlined';
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
 
 const SearchBar: React.FC<
   ISearchBar> = ({

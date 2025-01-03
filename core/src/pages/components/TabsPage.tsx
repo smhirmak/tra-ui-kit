@@ -1,9 +1,9 @@
 /* eslint-disable no-nested-ternary */
-import { Error, Plus, Warning } from '@/assets/Icons';
+import { Plus, Warning } from '@phosphor-icons/react';
+import { useState } from 'react';
 import Button from '@/components/Button';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
 import { Tab, Tabs } from '@/components/Tabs';
-import { useState } from 'react';
 
 const TabsPage = () => {
   const [activeTab, setActiveTab] = useState<string>('tab3');
@@ -237,7 +237,7 @@ const TabsPage = () => {
           <div>
             <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Default</p>
             <div className="flex flex-wrap space-x-2 pb-2">
-              <RadioGroup onChange={e => setTabContentPlacement(e as 'top' | 'right' | 'bottom' | 'left')} className="flex w-full flex-col items-center bg-primary-15">
+              <RadioGroup onChange={e => setTabContentPlacement(e as 'top' | 'right' | 'bottom' | 'left')} className="bg-primary-15 flex w-full flex-col items-center">
                 <RadioGroupItem id="top" label="Top" value="top" />
                 <RadioGroupItem id="right" label="Right" value="right" />
                 <RadioGroupItem id="bottom" label="Bottom" value="bottom" />
@@ -365,11 +365,11 @@ const TabsPage = () => {
                 label={
                   (
                     <span className="flex w-max gap-2">
-                      <Error className="size-6 text-error" />
+                      <Warning className="text-error size-6" />
                       Tab 1
                     </span>
-)
-}
+                  )
+                }
                 value="tab1"
               >
                 Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -380,10 +380,10 @@ const TabsPage = () => {
                   (
                     <span className="flex w-max gap-2">
                       Tab 2
-                      <Warning className="size-6 text-tetriary" />
+                      <Warning className="text-tetriary size-6" />
                     </span>
-)
-}
+                  )
+                }
                 value="tab2"
               >
                 Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -394,12 +394,12 @@ const TabsPage = () => {
                 label={
                   (
                     <span className="flex w-max gap-2">
-                      <Error className="size-6 text-error" />
+                      <Warning className="text-error size-6" />
                       Tab 3
-                      <Error className="size-6 text-error" />
+                      <Warning className="text-error size-6" />
                     </span>
-)
-}
+                  )
+                }
                 value="tab3"
               >
                 Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -426,11 +426,11 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Error className="size-6 text-error" />
+                    <Warning className="text-error size-6" />
                     Tab 1
                   </span>
-)
-}
+                )
+              }
               value="tab1"
             >
               Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -441,10 +441,10 @@ const TabsPage = () => {
                 (
                   <span className="flex w-max gap-2">
                     Tab 2
-                    <Warning className="size-6 text-tetriary" />
+                    <Warning className="text-tetriary size-6" />
                   </span>
-)
-}
+                )
+              }
               value="tab2"
             >
               Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -455,12 +455,12 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Error className="size-6 text-error" />
+                    <Warning className="text-error size-6" />
                     Tab 3
-                    <Error className="size-6 text-error" />
+                    <Warning className="text-error size-6" />
                   </span>
-)
-}
+                )
+              }
               value="tab3"
             >
               Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -486,11 +486,11 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Error className="size-6 text-error" />
+                    <Warning className="text-error size-6" />
                     Tab 1
                   </span>
-)
-}
+                )
+              }
               value="tab1"
             >
               Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -501,10 +501,10 @@ const TabsPage = () => {
                 (
                   <span className="flex w-max gap-2">
                     Tab 2
-                    <Warning className="size-6 text-tetriary" />
+                    <Warning className="text-tetriary size-6" />
                   </span>
-)
-}
+                )
+              }
               value="tab2"
             >
               Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -515,12 +515,12 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Error className="size-6 text-error" />
+                    <Warning className="text-error size-6" />
                     Tab 3
-                    <Error className="size-6 text-error" />
+                    <Warning className="text-error size-6" />
                   </span>
-)
-}
+                )
+              }
               value="tab3"
             >
               Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -546,11 +546,11 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Error className="size-6 text-error" />
+                    <Warning className="text-error size-6" />
                     Tab 1
                   </span>
-)
-}
+                )
+              }
               value="tab1"
             >
               Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -561,10 +561,10 @@ const TabsPage = () => {
                 (
                   <span className="flex w-max gap-2">
                     Tab 2
-                    <Warning className="size-6 text-tetriary" />
+                    <Warning className="text-tetriary size-6" />
                   </span>
-)
-}
+                )
+              }
               value="tab2"
             >
               Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
@@ -575,12 +575,12 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Error className="size-6 text-error" />
+                    <Warning className="text-error size-6" />
                     Tab 3
-                    <Error className="size-6 text-error" />
+                    <Warning className="text-error size-6" />
                   </span>
-)
-}
+                )
+              }
               value="tab3"
             >
               Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!

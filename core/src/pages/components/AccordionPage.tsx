@@ -1,4 +1,4 @@
-import { Plus } from '@/assets/Icons';
+import { Plus } from '@phosphor-icons/react';
 import { Accordion, AccordionItem } from '@/components/Accordion';
 
 const AccordionPage = () => (

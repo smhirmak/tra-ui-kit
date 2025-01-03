@@ -1,4 +1,4 @@
-import { CaretDoubleLeft, CaretDoubleRight, Minus, Plus } from '@/assets/Icons';
+import { CaretDoubleLeft, CaretDoubleRight, Minus, Plus } from '@phosphor-icons/react';
 import Button from '@/components/Button';
 import Pagination from '@/components/Pagination';
 import { useState } from 'react';

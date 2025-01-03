@@ -5,11 +5,9 @@ const path = require('path');
 const inquirer = require('inquirer');
 const fs = require('fs-extra');
 
-// Doğru yolu kullanarak init ve add komutlarını import edelim
 const initializeTailwindConfig = require(path.resolve(__dirname, '../src/commands/init'));
 const addComponent = require(path.resolve(__dirname, '../src/commands/add'));
 
-// Mevcut bileşenleri almak için yardımcı fonksiyon
 const getAvailableComponents = async () => {
   const componentsDir = path.resolve(__dirname, '../src/components');
   const files = await fs.readdir(componentsDir);

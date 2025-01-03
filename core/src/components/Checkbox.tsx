@@ -4,16 +4,15 @@
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
-import { Check, Minus } from '@/assets/Icons';
+import { Check, Minus } from '@phosphor-icons/react';
 import Label from '@/components/Label';
 import { cn } from '@/lib/utils';
-import { CheckboxProps } from '@/types/types';
 
 const checkboxVariants = cva(
-  `peer flex shrink-0 select-none items-center justify-center rounded-sm border border-primary ring-offset-background
-  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-  data-[disabled=true]:cursor-not-allowed data-[disabled=true]:border-input data-[checked=true]:bg-primary data-[disabled=true]:bg-input data-[checked=true]:text-primary-foreground 
-  data-[disabled=true]:text-white data-[disabled=true]:opacity-50 data-[checked=true]:disabled:bg-input`,
+  `border-primary ring-offset-background focus-visible:ring-ring data-[disabled=true]:border-input data-[checked=true]:bg-primary data-[disabled=true]:bg-input data-[checked=true]:text-primary-foreground data-[checked=true]:disabled:bg-input peer flex
+  shrink-0 select-none items-center justify-center 
+  rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
+  data-[disabled=true]:cursor-not-allowed data-[disabled=true]:text-white data-[disabled=true]:opacity-50`,
   {
     variants: {
       variant: {
@@ -33,9 +32,19 @@ const checkboxVariants = cva(
   },
 );
 
+interface ICheckbox {
+  className?: string;
+  disabled?: boolean;
+  id?: string
+  label?: string;
+  size?: 'sm' | 'default' | 'lg';
+  variant?: 'rectangular' | 'circular';
+  checked?: boolean;
+}
+
 const Checkbox = React.forwardRef<
-HTMLInputElement,
-  CheckboxProps
+  HTMLInputElement,
+  ICheckbox
 >(({
   className,
   disabled,
@@ -65,11 +74,11 @@ HTMLInputElement,
               : (
                 <>
                   {checkedValue && (
-                  <span
-                    className={cn('flex items-center justify-center text-current')}
-                  >
-                    <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} rounded-sm bg-primary`} />
-                  </span>
+                    <span
+                      className={cn('flex items-center justify-center text-current')}
+                    >
+                      <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-primary rounded-sm`} />
+                    </span>
                   )}
                 </>
               )}

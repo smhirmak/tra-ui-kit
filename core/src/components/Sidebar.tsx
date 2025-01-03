@@ -3,15 +3,15 @@
 /* eslint-disable max-len */
 import { createContext, useContext, useState, ReactNode, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
-import { CaretLeft, CaretRight } from '@/assets/Icons';
 
-interface SidebarProps {
+interface ISidebar {
   children: ReactNode;
   headerLogo?: string;
 }
 
-interface SidebarItemProps {
+interface ISidebarItem {
   icon: ReactNode;
   text: string;
   active?: boolean;
@@ -21,15 +21,15 @@ interface SidebarItemProps {
 
 const SidebarContext = createContext<{ expanded: boolean } | undefined>(undefined);
 
-const Sidebar: React.FC<SidebarProps> = ({ children, headerLogo }) => {
+const Sidebar: React.FC<ISidebar> = ({ children, headerLogo }) => {
   const [expanded, setExpanded] = useState(true);
   const contextValue = useMemo(() => ({ expanded }), [expanded]);
   return (
-    <aside className="sticky top-0 z-2 max-h-screen overflow-y-auto overflow-x-hidden">
-      <nav className="flex h-full flex-col bg-background shadow-sm">
+    <aside className="z-2 sticky top-0 max-h-screen overflow-y-auto overflow-x-hidden">
+      <nav className="bg-background flex h-full flex-col shadow-sm">
         <div className={`flex items-center ${(expanded && headerLogo) ? 'justify-between' : 'justify-end'} p-4 pb-2`}>
           {headerLogo && <img src={headerLogo} alt="logo" className={`overflow-hidden transition-all ease-out ${expanded ? 'w-16' : 'w-0'}`} />}
-          <button type="button" onClick={() => setExpanded(curr => !curr)} className="self-end bg-background p-1.5 hover:bg-gray-300 dark:hover:bg-blue-950">
+          <button type="button" onClick={() => setExpanded(curr => !curr)} className="bg-background self-end p-1.5 hover:bg-gray-300 dark:hover:bg-blue-950">
             {expanded ? <CaretLeft /> : <CaretRight />}
           </button>
         </div>
@@ -53,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children, headerLogo }) => {
   );
 };
 
-export const SidebarItem = ({ icon, text, active, alert, url }: SidebarItemProps) => {
+export const SidebarItem = ({ icon, text, active, alert, url }: ISidebarItem) => {
   const context = useContext(SidebarContext);
   const { t } = useLocalizeContext();
   if (!context) {
@@ -73,7 +73,7 @@ export const SidebarItem = ({ icon, text, active, alert, url }: SidebarItemProps
       )}
 
       {!expanded && (
-        <div className="invisible absolute left-full z-2 ml-6 -translate-x-3 text-nowrap rounded-md bg-indigo-100 px-2 py-1 text-sm text-indigo-800 opacity-20 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
+        <div className="z-2 invisible absolute left-full ml-6 -translate-x-3 text-nowrap rounded-md bg-indigo-100 px-2 py-1 text-sm text-indigo-800 opacity-20 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
           {t(text)}
         </div>
       )}

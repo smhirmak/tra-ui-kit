@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef, useContext, createContext } from 'react';
+import React, { useState, useEffect, useRef, useContext, createContext, ReactNode } from 'react';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import { ITab, ITabs } from '@/types/types';
 
 interface ITabsContext {
   activeTab: string;
@@ -11,7 +10,7 @@ interface ITabsContext {
 
 const defaultTabsContext: ITabsContext = {
   activeTab: '',
-  handleTabClick: () => {},
+  handleTabClick: () => { },
   variant: 'default',
 };
 
@@ -127,10 +126,10 @@ const tabVariants = cva(
 const selectorVariants = cva('absolute transition-transform duration-200', {
   variants: {
     variant: {
-      default: 'h-[2px] bg-primary',
-      solid: 'z-10 h-full bg-neutral-white',
-      outlined: 'z-10 h-full bg-neutral dark:bg-neutral-white',
-      split: 'z-10 h-full bg-neutral dark:bg-neutral-white',
+      default: 'bg-primary h-[2px]',
+      solid: 'bg-neutral-white z-10 h-full',
+      outlined: 'bg-neutral dark:bg-neutral-white z-10 h-full',
+      split: 'bg-neutral dark:bg-neutral-white z-10 h-full',
     },
     disabled: {
       true: 'pointer-events-none opacity-50',
@@ -156,6 +155,34 @@ const selectorVariants = cva('absolute transition-transform duration-200', {
     direction: 'horizontal',
   },
 });
+
+interface ITabs {
+  activeTab: string;
+  variant?: 'default' | 'solid' | 'outlined' | 'split';
+  onChange?: (value: string) => void;
+  className?: string;
+  children: ReactNode;
+  disabled?: boolean;
+  size?: 'default' | 'sm' | 'lg';
+  radius?: 'default' | 'none' | 'sm' | 'lg' | 'full';
+  selectorClassName?: string;
+  direction?: 'horizontal' | 'vertical';
+  contentPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  contentClasName?: string;
+}
+
+interface ITab {
+  label: string | ReactNode;
+  value: string;
+  isActive?: boolean;
+  onClick?: () => void;
+  className?: string;
+  children: ReactNode;
+  disabled?: boolean;
+  allDisabled?: boolean;
+  size?: 'default' | 'sm' | 'lg';
+  radius?: 'default' | 'none' | 'sm' | 'lg' | 'full';
+}
 
 const Tabs: React.FC<ITabs> = ({ activeTab, variant = 'default', onChange, className, contentClasName,
   selectorClassName, children, disabled, size = 'default', radius = 'default', direction = 'horizontal', contentPlacement = 'bottom' }) => {

@@ -2,17 +2,52 @@
 /* eslint-disable no-nested-ternary */
 import * as React from 'react';
 
+import { format, parse } from 'date-fns';
+import { DateRange } from 'react-day-picker';
+import { CalendarBlank } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import Button from '@/components/Button';
-import { CalendarBlank } from '@/assets/Icons';
-import { Calendar } from '@/components/ui/calendar';
-import { format, parse } from 'date-fns';
-import { IDateInput, IDatePicker, ISelectedDate } from '@/types/types';
-import { DateRange } from 'react-day-picker';
+import { Calendar } from '@/components/Calendar';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 import Label from './Label';
 
-const DateInput:React.FC<IDateInput> = ({ ref, value, max, onChange, onBlur, placeholder, disabled, onKeyDown, style }) => (
+interface IDateInput {
+  ref: React.RefObject<HTMLInputElement | null>;
+  value: string;
+  max?: number;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
+  placeholder: string;
+  disabled: boolean;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  style: React.CSSProperties;
+}
+
+interface IDatePicker {
+  id: string;
+  onChange: (date: Date | null | { from: Date | null | undefined, to: Date | null | undefined }) => void;
+  value?: Date;
+  placeholder?: string;
+  disabled?: boolean;
+  error?: boolean;
+  className?: string;
+  maxDate?: Date;
+  minDate?: Date;
+  label?: string;
+  labelClassName?: string;
+  dropdownMenuClassName?: string;
+  showRequiredIcon?: boolean;
+  tooltip?: string | string[];
+  dropdownAlign?: 'left' | 'right';
+  mode?: 'single' | 'range';
+}
+
+interface ISelectedDate {
+  from: Date | undefined;
+  to: Date | undefined;
+}
+
+const DateInput: React.FC<IDateInput> = ({ ref, value, max, onChange, onBlur, placeholder, disabled, onKeyDown, style }) => (
   <input
     ref={ref}
     type="number"
@@ -352,7 +387,7 @@ const DatePicker: React.FC<IDatePicker> = ({
     if (popoverOpen) {
       if (mode === 'single') {
         return (
-          <div className="flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 [&>input]:text-neutral-black [&>input]:focus-visible:border-none">
+          <div className="[&>input]:text-neutral-black flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 [&>input]:focus-visible:border-none">
             <DateInput
               ref={singleDayRef}
               value={day}
@@ -392,7 +427,7 @@ const DatePicker: React.FC<IDatePicker> = ({
       if (mode === 'range') {
         return (
           <div className="flex gap-4">
-            <div className="flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 [&>input]:text-neutral-black [&>input]:focus-visible:border-none">
+            <div className="[&>input]:text-neutral-black flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 [&>input]:focus-visible:border-none">
               <DateInput
                 ref={rangeDayRef1}
                 value={startDay}
@@ -428,7 +463,7 @@ const DatePicker: React.FC<IDatePicker> = ({
               />
             </div>
             -
-            <div className="flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 [&>input]:text-neutral-black [&>input]:focus-visible:border-none">
+            <div className="[&>input]:text-neutral-black flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 [&>input]:focus-visible:border-none">
               <DateInput
                 ref={rangeDayRef2}
                 value={endDay}
@@ -474,24 +509,24 @@ const DatePicker: React.FC<IDatePicker> = ({
     if (selectedRange && mode === 'range') {
       return `${selectedRange.from ? format(selectedRange.from, 'dd/MM/yyyy') : 'DD/MM/YYYY'} - ${selectedRange.to ? format(selectedRange.to, 'dd/MM/yyyy') : 'DD/MM/YYYY'}`;
     }
-    return <span className="text-base text-neutral-grey dark:text-input">{placeholder}</span>;
+    return <span className="text-neutral-grey dark:text-input text-base">{placeholder}</span>;
   };
 
   return (
     <div className={`MsiDatePicker-root relative ${className}`}>
       {label
-      && (
-      <Label
-        className={`mb-1 flex transition-all duration-150 ease-cubic ${labelClassName}`}
-        htmlFor={id}
-        id={`${id}-label`}
-        tooltip={tooltip}
-        disabled={disabled}
-        showRequiredIcon={showRequiredIcon}
-      >
-        {label}
-      </Label>
-      )}
+        && (
+          <Label
+            className={`ease-cubic mb-1 flex transition-all duration-150 ${labelClassName}`}
+            htmlFor={id}
+            id={`${id}-label`}
+            tooltip={tooltip}
+            disabled={disabled}
+            showRequiredIcon={showRequiredIcon}
+          >
+            {label}
+          </Label>
+        )}
       <Popover open={popoverOpen} onOpenChange={handlePopoverOpenChange} disabled={disabled} dropdownAlign={dropdownAlign}>
         <PopoverTrigger>
           <Button
@@ -515,7 +550,7 @@ const DatePicker: React.FC<IDatePicker> = ({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className={`MsiDatePicker-dropdownMenu ${dropdownMenuClassName} max-h-80 min-h-12 w-full max-w-fit overflow-auto rounded-md bg-background shadow-soft-grey`}
+          className={`MsiDatePicker-dropdownMenu ${dropdownMenuClassName} bg-background shadow-soft-grey max-h-80 min-h-12 w-full max-w-fit overflow-auto rounded-md`}
         >
           <Calendar
             id={id}

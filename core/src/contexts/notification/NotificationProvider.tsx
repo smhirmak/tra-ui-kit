@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useState, ReactNode, useRef, useMemo } from 'react';
-import { INotification, INotificationContext } from '@/types/types';
 import NotificationContainer from './NotificationContainer';
 
 const defaultNotificationContext: INotificationContext = {
-  invoke: () => {},
-  translateFunction: () => {},
+  invoke: () => { },
+  translateFunction: () => { },
 };
 
 const NotificationContext = createContext<INotificationContext>(defaultNotificationContext);
@@ -16,6 +15,26 @@ export const useNotification = () => {
   }
   return context;
 };
+
+interface INotification {
+  children: ReactNode;
+  newestTop?: boolean,
+  closeIcon?: boolean,
+  translateFunction?: (e: string | string[]) => void,
+  theme?: 'colored' | 'default' | 'lined',
+  mode?: 'light' | 'dark',
+  containerClassName?: string,
+  notificationClassName?: string,
+  closeButtonClassName?: string,
+  progressBarClassName?: string,
+  animationMode?: 'bounce' | 'slide' | 'flip' | false,
+  position?: 'top-right' | 'bottom-right' | 'top-left' | 'bottom-left',
+}
+
+interface INotificationContext {
+  invoke: (type: string, message: string, options: { autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode }) => void;
+  translateFunction?: (e: string | string[]) => void;
+}
 
 export const NotificationProvider: React.FC<INotification> = (
   { children,

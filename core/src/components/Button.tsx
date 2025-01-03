@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import { cva } from 'class-variance-authority';
+import { cva, VariantProps } from 'class-variance-authority';
 import React, { useEffect, useRef } from 'react';
 
 import LoadingSpinner from '@/components/ui/loading-spinner';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
-import { IButton } from '@/types/types';
 
 export const buttonVariants = cva(
   `btn-ripple ring-offset-background focus-visible:ring-ring relative inline-flex select-none flex-wrap items-center justify-center overflow-hidden whitespace-nowrap text-sm font-medium
@@ -122,6 +121,25 @@ const spinnerVariants = cva(
     },
   },
 );
+
+interface IButton
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+  VariantProps<typeof buttonVariants> {
+  asChild?: React.ElementType;
+  children: React.ReactNode;
+  className?: string;
+  color?: 'primary' | 'secondary' | 'tetriary';
+  disabled?: boolean;
+  disableEffect?: boolean;
+  effectColor?: string;
+  effectOpacity?: string;
+  loading?: boolean;
+  loadingSpinnerClassname?: string;
+  loadingText?: string;
+  rounded?: 'default' | 'lg';
+  size?: 'default' | 'sm' | 'lg' | 'icon';
+  variant?: 'solid' | 'outlined' | 'ghost';
+}
 
 const Button = React.forwardRef<HTMLButtonElement, IButton>(
   ({

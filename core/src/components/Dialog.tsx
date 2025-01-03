@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useRef } from 'react';
 import { cva } from 'class-variance-authority';
-import { X } from '@/assets/Icons';
+import { X } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import Button from './Button';
 
@@ -20,9 +20,12 @@ interface IDialog {
   fullWidth?: boolean;
   scroll?: boolean;
   position?: 'center' | 'top' | 'bottom' | 'onlyMobileBottom';
+  dialogContainerClassName?: string;
+  dialogContentClassName?: string;
+  dialogCloseButtonClassName?: string;
 }
 
-const dialogContainerVariants = cva('MsiDialog-container items bg-neutral-black/50 fixed inset-0 z-50 flex justify-center overflow-y-auto', {
+const dialogContainerVariants = cva('MsiDialog-container items dark:bg-neutral-white/80 bg-neutral-black/80 fixed inset-0 z-50 flex justify-center overflow-y-auto', {
   variants: {
     position: {
       center: 'items-center',
@@ -106,6 +109,9 @@ const Dialog: React.FC<IDialog> = ({
   fullWidth = false,
   scroll = true,
   position = 'center',
+  dialogContainerClassName,
+  dialogContentClassName,
+  dialogCloseButtonClassName,
 }) => {
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -136,7 +142,7 @@ const Dialog: React.FC<IDialog> = ({
   };
   return (
     <div
-      className={cn(dialogContainerVariants({ position }))}
+      className={cn(dialogContainerVariants({ position }), dialogContainerClassName)}
       aria-labelledby="dialog-title"
       role="dialog"
       aria-modal="true"
@@ -144,7 +150,7 @@ const Dialog: React.FC<IDialog> = ({
     >
       <div
         ref={dialogRef}
-        className={cn(dialogContentVariants({ fullScreen, fullWidth, open, size, scroll }))}
+        className={cn(dialogContentVariants({ fullScreen, fullWidth, open, size, scroll }), dialogContentClassName)}
         style={{ minWidth: '300px' }}
       >
         <div className="absolute right-2 top-2">
@@ -152,7 +158,7 @@ const Dialog: React.FC<IDialog> = ({
             type="button"
             size="icon"
             variant="ghost"
-            className="text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className={cn(dialogCloseButtonClassName, 'text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2')}
             onClick={onClose}
           >
             <span className="sr-only">Kapat</span>

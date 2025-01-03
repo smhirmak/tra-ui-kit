@@ -1,12 +1,11 @@
-import { X } from '@/assets/Icons';
-import { cn } from '@/lib/utils';
-import { IChip } from '@/types/types';
+import { X } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 const chipVariants = cva(
-  `flex  w-fit select-none items-center rounded-4xl border border-disabled-dark text-disabled-dark transition-colors
-  hover:bg-disabled-dark/10  hover:text-disabled-dark`,
+  `rounded-4xl  border-disabled-dark text-disabled-dark hover:bg-disabled-dark/10 hover:text-disabled-dark flex w-fit select-none items-center
+  border  transition-colors`,
   {
     variants: {
       size: {
@@ -36,6 +35,20 @@ const chipVariants = cva(
   },
 );
 
+interface IChip {
+  active?: boolean;
+  deleteIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
+  id?: string;
+  label?: string;
+  labelClassName?: string;
+  onClick?: (e: string | number | undefined | null) => void;
+  onDelete?: (e: string | number | undefined | null) => void;
+  selected?: boolean;
+  size?: 'default' | 'sm' | 'lg';
+  startIcon?: React.ReactNode;
+}
+
 const Chip = React.forwardRef<HTMLButtonElement, IChip>(
   ({
     active = false,
@@ -62,7 +75,7 @@ const Chip = React.forwardRef<HTMLButtonElement, IChip>(
           tabIndex={0}
           onClick={e => { e.stopPropagation(); onDelete(id); }}
           onKeyPress={e => { if (e.key === 'Enter') { e.stopPropagation(); onDelete(id); } }}
-          className="ml-1 rounded-full p-0.5 hover:bg-primary/50 hover:text-primary-5"
+          className="hover:bg-primary/50 hover:text-primary-5 ml-1 rounded-full p-0.5"
         >
           {deleteIcon ?? <X />}
         </div>

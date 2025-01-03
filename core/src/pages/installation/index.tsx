@@ -3,7 +3,7 @@ import { githubGist, hybrid } from 'react-syntax-highlighter/dist/esm/styles/hlj
 import Container from '@/components/Container';
 import { useTheme } from '@/contexts/theme/theme-provider';
 import Button from '@/components/Button';
-import { Clipboard } from '@/assets/Icons';
+import { Clipboard } from '@phosphor-icons/react';
 import Notification from '@/components/Notification';
 
 const installVite = 'npm create vite@latest';
