@@ -40,9 +40,6 @@ const TooltipPage = () => (
             Hover (Left, Custom Style, No Arrow)
           </Button>
         </Tooltip>
-        <Tooltip content="Denemeakdsf lkashfk jlahsdfkj haskj adfhs ahf Text" contentClassName="w-max">
-          <p>Deneme Text</p>
-        </Tooltip>
       </div>
     </div>
   </>

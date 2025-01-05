@@ -114,6 +114,7 @@ const Dialog: React.FC<IDialog> = ({
   dialogCloseButtonClassName,
 }) => {
   const dialogRef = useRef<HTMLDivElement>(null);
+  const mouseDownTarget = useRef<EventTarget | null>(null);
 
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
@@ -135,18 +136,30 @@ const Dialog: React.FC<IDialog> = ({
 
   if (!open) return null;
 
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (dialogRef.current && !dialogRef.current.contains(e.target as Node) && !disableBackdropClick) {
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    mouseDownTarget.current = e.target;
+  };
+
+  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (
+      mouseDownTarget.current === e.target
+      && dialogRef.current
+      && !dialogRef.current.contains(e.target as Node)
+      && !disableBackdropClick
+    ) {
       onClose();
     }
+    mouseDownTarget.current = null;
   };
+
   return (
     <div
       className={cn(dialogContainerVariants({ position }), dialogContainerClassName)}
       aria-labelledby="dialog-title"
       role="dialog"
       aria-modal="true"
-      onClick={handleBackdropClick}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
     >
       <div
         ref={dialogRef}

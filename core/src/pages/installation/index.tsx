@@ -1,9 +1,9 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist, hybrid } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { Clipboard } from '@phosphor-icons/react';
 import Container from '@/components/Container';
 import { useTheme } from '@/contexts/theme/theme-provider';
 import Button from '@/components/Button';
-import { Clipboard } from '@phosphor-icons/react';
 import Notification from '@/components/Notification';
 
 const installVite = 'npm create vite@latest';
@@ -51,24 +51,26 @@ or
 npx msi-ui-kit add <component-name>
 `;
 
-const CustomSyntaxHighlighter = ({ content }: { content: string }) => {
+export const CustomSyntaxHighlighter = ({ content, hideCopyButton = false }: { content: string; hideCopyButton?: boolean }) => {
   const { success } = Notification();
   const { theme } = useTheme();
   return (
     <div className="relative">
-      <SyntaxHighlighter language="jsx" style={theme === 'dark' ? hybrid : githubGist}>
+      <SyntaxHighlighter wrapLongLines language="jsx" style={theme === 'dark' ? hybrid : githubGist}>
         {content}
       </SyntaxHighlighter>
-      <Button
-        size="icon"
-        onClick={() => {
-          window.navigator.clipboard.writeText(content);
-          success('Copied to clipboard');
-        }}
-        className="absolute right-0 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent"
-      >
-        <Clipboard />
-      </Button>
+      {!hideCopyButton && (
+        <Button
+          size="icon"
+          onClick={() => {
+            window.navigator.clipboard.writeText(content);
+            success('Copied to clipboard');
+          }}
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent"
+        >
+          <Clipboard />
+        </Button>
+      )}
     </div>
   );
 };

@@ -1,12 +1,13 @@
 import { Plus } from '@phosphor-icons/react';
 import { Avatar, MultipleAvatarContainer } from '@/components/Avatar';
 import Badge from '@/components/Badge';
+import { CustomSyntaxHighlighter } from '../installation';
 
 const AvatarPage = () => (
   <div className="mb-6 border-b-2 pb-6">
     <p className="text-4xl underline">Avatar</p>
     <p className="mt-2 text-xl">Small Circular:</p>
-    <div className="mt-2 flex space-x-2">
+    <div className="mb-4 mt-2 flex space-x-2">
       <Avatar size="sm" />
       <Avatar size="sm" title="Muhammed Semih Irmak" />
       <Avatar size="sm" src="/assets/logos/logo.png" />
@@ -15,8 +16,11 @@ const AvatarPage = () => (
       <Avatar size="sm" src="/assets/logos/logo.png" badgePosition="top-left" badgeContent={<Badge size="sm" color="secondary" />} />
       <Avatar size="sm" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge size="sm" color="secondary" />} />
     </div>
+    <CustomSyntaxHighlighter content={`
+      <Avatar size="sm" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge size="sm" color="secondary" />} />`}
+    />
     <p className="mt-2 text-xl">Small Rounded:</p>
-    <div className="mt-2 flex space-x-2">
+    <div className="mb-4 mt-2 flex space-x-2">
       <Avatar size="sm" variant="rounded" />
       <Avatar size="sm" variant="rounded" title="Muhammed Semih Irmak" />
       <Avatar size="sm" variant="rounded" src="/assets/logos/logo.png" />
@@ -25,6 +29,9 @@ const AvatarPage = () => (
       <Avatar size="sm" variant="rounded" badgePosition="top-left" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />
       <Avatar size="sm" variant="rounded" badgePosition="bottom-left" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />
     </div>
+    <CustomSyntaxHighlighter content={`
+<Avatar size="sm" variant="rounded" badgePosition="bottom-left" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />`}
+    />
     <p className="mt-2 text-xl">Multiple Avatar :</p>
     <div className="mt-2">
       <MultipleAvatarContainer lastElementSize="sm">
@@ -38,6 +45,19 @@ const AvatarPage = () => (
         <Avatar size="sm" src="/assets/logos/logo.png" />
         <Avatar size="sm" src="/assets/logos/logo.png" />
       </MultipleAvatarContainer>
+      <CustomSyntaxHighlighter content={`
+<MultipleAvatarContainer lastElementSize="sm">
+  <Avatar size="sm" asChild="a" href="/asd" className="bg-neutral-grey text-black" />
+  <Avatar size="sm" src="/assets/logos/logo.png" />
+  <Avatar size="sm" />
+  <Avatar size="sm" className="bg-disabled-light-dark" />
+  <Avatar size="sm" src="/assets/logos/logo.png" />
+  <Avatar size="sm" />
+  <Avatar size="sm" className="bg-error" />
+  <Avatar size="sm" src="/assets/logos/logo.png" />
+  <Avatar size="sm" src="/assets/logos/logo.png" />
+</MultipleAvatarContainer>`}
+      />
     </div>
     <p className="mt-2 text-xl">Large Circular:</p>
     <div className="mt-2 flex flex-wrap space-x-2 space-y-2">

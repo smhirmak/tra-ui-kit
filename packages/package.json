@@ -1,6 +1,6 @@
 {
   "name": "msi-ui-kit",
-  "version": "0.0.66",
+  "version": "0.0.1",
   "description": "A CLI tool for initializing and managing UI components with Tailwind CSS.",
   "main": "bin/msi-ui-kit.js",
   "bin": {
@@ -24,6 +24,12 @@
     "src/commands/"
   ],
   "keywords": [
+    "msi",
+    "react",
+    "react-ui-kit",
+    "msi-ui-kit",
+    "typescript",
+    "ui-kit",
     "cli",
     "tailwind",
     "ui",
