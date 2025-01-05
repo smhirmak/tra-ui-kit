@@ -1,11 +1,9 @@
 import { Plus } from '@phosphor-icons/react';
 import { useState } from 'react';
-import Button from '@/components/Button';
 import TextField from '@/components/TextField';
 
 const TextFieldOutlinedPage = () => {
   const [value, setValue] = useState('');
-  const [value1, setValue1] = useState('');
 
   return (
     <div className="mb-6 border-b-2 pb-6">
