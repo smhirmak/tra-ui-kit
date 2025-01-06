@@ -36,7 +36,7 @@ const dialogContainerVariants = cva('MsiDialog-container items dark:bg-neutral-w
   },
 });
 
-const dialogContentVariants = cva('MsiDialog-content bg-background relative rounded-lg p-10 shadow-xl transition-all duration-300 ease-in-out', {
+const dialogContentVariants = cva('MsiDialog-content bg-background relative mx-2 w-full rounded-lg p-10 shadow-xl transition-all duration-300 ease-in-out', {
   variants: {
     fullScreen: {
       true: 'h-screen !max-h-screen w-screen',
