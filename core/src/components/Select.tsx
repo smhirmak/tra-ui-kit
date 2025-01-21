@@ -111,7 +111,6 @@ interface ISelect {
   isMulti?: boolean;
   isSearchable?: boolean;
   onChange: (e: string | number | string[] | number[] | boolean) => void;
-  align?: string;
   label?: string;
   disabled?: boolean;
   error?: boolean;
@@ -204,7 +203,7 @@ const Select: React.FC<ISelect> = ({
   }, [defaultValue, options, isMulti]);
 
   useEffect(() => {
-    if (value) {
+    if (value !== null && value !== undefined) {
       if (isMulti && Array.isArray(value)) {
         const selectedOptions = (options as ISelectOption[]).filter(option => (value as (string | number | boolean)[]).includes(option.value));
         setSelectedValue(selectedOptions);
@@ -212,6 +211,8 @@ const Select: React.FC<ISelect> = ({
         const selectedOption = (options as ISelectOption[]).find(option => option.value === value);
         setSelectedValue(selectedOption || null);
       }
+    } else {
+      setSelectedValue(null);
     }
   }, [value, options, isMulti]);
 
@@ -323,7 +324,7 @@ const Select: React.FC<ISelect> = ({
     if (!selectedValue || (Array.isArray(selectedValue) && selectedValue.length === 0)) {
       return (
         <>
-          {!showMenu && <span data-disabled={disabled} className="data-[disabled=true]:text-neutral-grey">{placeHolder}</span>}
+          {!showMenu && <span data-disabled={disabled} className="text-neutral-grey">{placeHolder}</span>}
           {isSearchable && (
             <div className="MsiSelect-searchBox flex max-w-[80%] items-center">
               <SearchInput
@@ -348,16 +349,16 @@ const Select: React.FC<ISelect> = ({
               title={option.content as string}
               key={`${option.value}-${index}`}
               data-disabled={disabled}
-              className={`MsiSelect-dropdownTagItem ${dropdownTagClassName} bg-primary-15 text-primary data-[disabled=true]:bg-disabled-dark data-[disabled=true]:text-neutral-disabled-text group flex max-h-full items-center
-               overflow-hidden whitespace-nowrap rounded px-1 py-0.5 text-sm font-medium`}
+              className={`MsiSelect-dropdownTagItem ${dropdownTagClassName} bg-primary-15 text-primary data-[disabled=true]:bg-disabled-dark data-[disabled=true]:text-neutral-disabled-text
+               group flex max-h-full items-center overflow-hidden whitespace-nowrap rounded px-1 py-0.5 text-sm font-medium`}
             >
               <span className="truncate">
                 {option.content}
               </span>
               <span
                 onClick={e => { if (!disabled) onTagRemove(e, option); }}
-                className={`MsiSelect-dropdownTagCloseButton ${dropdownTagCloseButtonClassName} group-data-[disabled=true]:hover: hover:bg-neutral-light group-data-[disabled=false]:text-neutral-black ml-1.5 flex cursor-pointer items-center 
-                rounded-full p-0.5 group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=true]:hover:bg-transparent`}
+                className={`MsiSelect-dropdownTagCloseButton ${dropdownTagCloseButtonClassName} group-data-[disabled=true]:hover: hover:bg-neutral-light group-data-[disabled=false]:text-neutral-black
+                 ml-1.5 flex cursor-pointer items-center rounded-full p-0.5 group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=true]:hover:bg-transparent`}
               >
                 <X />
               </span>

@@ -204,9 +204,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         id={`${id}-label`}
         size={size}
         tooltip={tooltip}
-        startIcon={startIcon}
         disabled={disabled}
-        borderRadius={borderRadius}
         showRequiredIcon={showRequiredIcon}
       >
         {label}

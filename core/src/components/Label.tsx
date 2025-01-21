@@ -61,7 +61,6 @@ const tooltipVariants = cva('', {
 interface ILabel
   extends VariantProps<typeof labelVariants> {
   alwaysTop?: boolean;
-  borderRadius?: 'default' | 'lg';
   className?: string;
   children?: React.ReactNode;
   disabled?: boolean;
@@ -70,7 +69,6 @@ interface ILabel
   outlineFocused?: boolean;
   showRequiredIcon?: boolean;
   size?: 'sm' | 'default' | 'lg' | undefined;
-  startIcon?: React.ReactNode;
   tooltip?: string | string[] | null;
   variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
 }
