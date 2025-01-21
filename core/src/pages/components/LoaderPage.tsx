@@ -1,7 +1,7 @@
 import Button from '@/components/Button';
 import Loader, { loaderRef } from '@/components/Loader';
-import LoadingLinear from '@/components/ui/loading-linear';
-import LoadingSpinner from '@/components/ui/loading-spinner';
+import LoadingLinear from '@/components/LoadingLinear';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 const LoaderPage = () => (
   <div>

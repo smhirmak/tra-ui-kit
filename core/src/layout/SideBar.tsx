@@ -83,10 +83,10 @@ const sidebarList = [
     label: 'Tabs',
     link: '/tabs',
   },
-  {
-    label: 'Background Video',
-    link: '/background-video',
-  },
+  // {
+  //   label: 'Background Video',
+  //   link: '/background-video',
+  // },
   {
     label: 'Image Hover Effect',
     link: '/image-hover-effect',

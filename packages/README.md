@@ -21,3 +21,5 @@ or specify the component name:
 ```bash
 npx msi-ui-kit add <component-name>
 ```
+
+After selecting or specifying a component, you will be prompted to choose between JavaScript and TypeScript.

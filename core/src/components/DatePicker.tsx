@@ -2,12 +2,12 @@
 /* eslint-disable no-nested-ternary */
 import * as React from 'react';
 
-import { format, parse } from 'date-fns';
+import { format, Locale, parse } from 'date-fns';
 import { DateRange } from 'react-day-picker';
 import { CalendarBlank } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import Button from '@/components/Button';
-import { Calendar } from '@/components/Calendar';
+import Calendar from '@/components/Calendar';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 import Label from './Label';
 
@@ -40,6 +40,7 @@ interface IDatePicker {
   tooltip?: string | string[];
   dropdownAlign?: 'left' | 'right';
   mode?: 'single' | 'range';
+  locale?: Locale;
 }
 
 interface ISelectedDate {
@@ -82,6 +83,7 @@ const DatePicker: React.FC<IDatePicker> = ({
   tooltip,
   dropdownAlign,
   mode = 'single',
+  locale,
 }) => {
   const singleDayRef = React.useRef<HTMLInputElement | null>(null);
   const singleMonthRef = React.useRef<HTMLInputElement | null>(null);
@@ -493,7 +495,7 @@ const DatePicker: React.FC<IDatePicker> = ({
                 value={endYear}
                 max={12}
                 onChange={handleEndYearChange}
-                placeholder="MM"
+                placeholder="YYYY"
                 disabled={disabled}
                 onKeyDown={e => handleKeyDown(e, rangeDayRef1, rangeMonthRef2)}
                 style={{ width: getInputWidth(endYear, 'YYYY') }}
@@ -550,19 +552,18 @@ const DatePicker: React.FC<IDatePicker> = ({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className={`MsiDatePicker-dropdownMenu ${dropdownMenuClassName} bg-background shadow-soft-grey max-h-80 min-h-12 w-full max-w-fit overflow-auto rounded-md`}
+          className={`MsiDatePicker-dropdownMenu ${dropdownMenuClassName} bg-background shadow-soft-grey !max-h-[unset] min-h-12 w-full max-w-fit overflow-auto rounded-md`}
         >
           <Calendar
             id={id}
+            locale={locale}
             className="bg-background"
             {...(mode === 'single'
               ? { mode: 'single', selected: selectedDate ?? undefined }
               : { mode: 'range', selected: selectedRange })}
             onSelect={(e: Date | DateRange | undefined) => handleCalendarSelect(e, false)}
             onMonthChange={e => handleCalendarSelect(e, true)}
-            toDate={maxDate}
-            fromDate={minDate}
-            disabled={disabled}
+            disabled={{ after: maxDate, before: minDate }}
             month={mode === 'single' ? (selectedDate ?? new Date()) : currentMonth}
           />
         </PopoverContent>

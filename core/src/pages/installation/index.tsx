@@ -5,6 +5,7 @@ import Container from '@/components/Container';
 import { useTheme } from '@/contexts/theme/theme-provider';
 import Button from '@/components/Button';
 import Notification from '@/components/Notification';
+import { cn } from '@/lib/utils';
 
 const installVite = 'npm create vite@latest';
 const installTailwind = 'npm install -D tailwindcss postcss autoprefixer';
@@ -51,11 +52,11 @@ or
 npx msi-ui-kit add <component-name>
 `;
 
-export const CustomSyntaxHighlighter = ({ content, hideCopyButton = false }: { content: string; hideCopyButton?: boolean }) => {
+export const CustomSyntaxHighlighter = ({ className, content, hideCopyButton = false }: { className?: string; content: string; hideCopyButton?: boolean }) => {
   const { success } = Notification();
   const { theme } = useTheme();
   return (
-    <div className="relative">
+    <div className={cn(className, 'relative')}>
       <SyntaxHighlighter wrapLongLines language="jsx" style={theme === 'dark' ? hybrid : githubGist}>
         {content}
       </SyntaxHighlighter>
@@ -66,9 +67,9 @@ export const CustomSyntaxHighlighter = ({ content, hideCopyButton = false }: { c
             window.navigator.clipboard.writeText(content);
             success('Copied to clipboard');
           }}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent"
+          className="absolute right-0 top-0 bg-transparent hover:bg-transparent hover:brightness-75"
         >
-          <Clipboard />
+          <Clipboard className="size-5" />
         </Button>
       )}
     </div>

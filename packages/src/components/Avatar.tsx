@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable max-len */
-/* eslint-disable no-nested-ternary */
 import { cva } from 'class-variance-authority';
 import React, { HTMLAttributes, useState } from 'react';
 import { User, X } from '@phosphor-icons/react';
@@ -157,7 +153,7 @@ const badgeVariants = cva(
   },
 );
 
-export interface IAvatar {
+interface IAvatar {
   asChild?: React.ElementType;
   badgeClassName?: string;
   badgeContent?: React.ReactNode;
@@ -173,7 +169,7 @@ export interface IAvatar {
   variant?: 'circular' | 'rounded';
 }
 
-export interface IMultipleAvatarContainer {
+interface IMultipleAvatarContainer {
   children: React.ReactNode[];
   lastElementSize?: 'sm' | 'lg';
   showLessAvatarClassName?: string;
@@ -198,7 +194,6 @@ const Avatar = React.forwardRef<HTMLAttributes<HTMLDivElement>, IAvatar>(({
 }, ref) => {
   const Comp = asChild ?? 'div';
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <Comp className={cn(avatarVariants({ variant, size }), className)} ref={ref} onClick={onClick} href={href} {...otherProps}>
       {
         src ? <img className={cn(imageVariants({ variant }), imageClassName)} src={src} alt="" />

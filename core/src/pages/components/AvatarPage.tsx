@@ -4,7 +4,7 @@ import Badge from '@/components/Badge';
 import { CustomSyntaxHighlighter } from '../installation';
 
 const AvatarPage = () => (
-  <div className="mb-6 border-b-2 pb-6">
+  <div>
     <p className="text-4xl underline">Avatar</p>
     <p className="mt-2 text-xl">Small Circular:</p>
     <div className="mb-4 mt-2 flex space-x-2">
@@ -16,9 +16,7 @@ const AvatarPage = () => (
       <Avatar size="sm" src="/assets/logos/logo.png" badgePosition="top-left" badgeContent={<Badge size="sm" color="secondary" />} />
       <Avatar size="sm" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge size="sm" color="secondary" />} />
     </div>
-    <CustomSyntaxHighlighter content={`
-      <Avatar size="sm" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge size="sm" color="secondary" />} />`}
-    />
+    <CustomSyntaxHighlighter content='<Avatar size="sm" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge size="sm" color="secondary" />} />' />
     <p className="mt-2 text-xl">Small Rounded:</p>
     <div className="mb-4 mt-2 flex space-x-2">
       <Avatar size="sm" variant="rounded" />
@@ -29,9 +27,7 @@ const AvatarPage = () => (
       <Avatar size="sm" variant="rounded" badgePosition="top-left" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />
       <Avatar size="sm" variant="rounded" badgePosition="bottom-left" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />
     </div>
-    <CustomSyntaxHighlighter content={`
-<Avatar size="sm" variant="rounded" badgePosition="bottom-left" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />`}
-    />
+    <CustomSyntaxHighlighter content='<Avatar size="sm" variant="rounded" badgePosition="bottom-left" src="/assets/logos/logo.png" badgeContent={<Badge size="sm" color="secondary" />} />' />
     <p className="mt-2 text-xl">Multiple Avatar :</p>
     <div className="mt-2">
       <MultipleAvatarContainer lastElementSize="sm">
@@ -60,7 +56,7 @@ const AvatarPage = () => (
       />
     </div>
     <p className="mt-2 text-xl">Large Circular:</p>
-    <div className="mt-2 flex flex-wrap space-x-2 space-y-2">
+    <div className="my-4 flex flex-wrap space-x-2 space-y-2">
       <Avatar />
       <Avatar title="Muhammed Semih Irmak" />
       <Avatar src="/assets/logos/logo.png" />
@@ -69,8 +65,9 @@ const AvatarPage = () => (
       <Avatar src="/assets/logos/logo.png" badgePosition="top-left" badgeContent={<Badge />} />
       <Avatar src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge color="secondary" />} />
     </div>
+    <CustomSyntaxHighlighter content='<Avatar src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge color="secondary" />} />' />
     <p className="mt-2 text-xl">Large Rounded:</p>
-    <div className="mt-2 flex flex-wrap space-x-2 space-y-2">
+    <div className="my-2 flex flex-wrap space-x-2 space-y-2">
       <Avatar variant="rounded" />
       <Avatar variant="rounded" title="Muhammed Semih Irmak" />
       <Avatar variant="rounded" src="/assets/logos/logo.png" />
@@ -79,6 +76,7 @@ const AvatarPage = () => (
       <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="top-left" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />
       <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />
     </div>
+    <CustomSyntaxHighlighter content='<Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />' />
   </div>
 
 );

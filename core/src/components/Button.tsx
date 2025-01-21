@@ -2,8 +2,7 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import React, { useEffect, useRef } from 'react';
 
-import LoadingSpinner from '@/components/ui/loading-spinner';
-import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
+import LoadingSpinner from '@/components/LoadingSpinner';
 import { cn } from '@/lib/utils';
 
 export const buttonVariants = cva(
@@ -161,7 +160,6 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(
     ...props
   }, ref) => {
     const Comp = asChild ?? 'button';
-    const { t } = useLocalizeContext();
     const buttonRef = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
@@ -237,7 +235,7 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(
           <LoadingSpinner className={cn(spinnerVariants({ size }), loadingSpinnerClassname)} />
         )}
         {/* eslint-disable-next-line no-nested-ternary */}
-        <>{(loading && size !== 'icon') ? (loadingText ?? t('Sending...')) : (loading && size === 'icon') ? null : children}</>
+        <>{(loading && size !== 'icon') ? (loadingText ?? 'Sending...') : (loading && size === 'icon') ? null : children}</>
       </Comp>
     );
   },

@@ -16,7 +16,7 @@ import SearchBarPage from './pages/components/SearchBarPage';
 import SkeletonPage from './pages/components/SkeletonPage';
 import SwitchPage from './pages/components/SwitchPage';
 import TabsPage from './pages/components/TabsPage';
-import BackgroundVideoPage from './pages/components/BackgroundVideoPage';
+// import BackgroundVideoPage from './pages/components/BackgroundVideoPage';
 import ImageHoverEffectPage from './pages/components/ImageHoverEffectPage';
 import { NotificationProvider } from './contexts/notification/NotificationProvider';
 import { useLocalizeContext } from './contexts/locale/LocalizeContext';
@@ -124,10 +124,10 @@ const router = createBrowserRouter([
         path: 'tabs',
         element: <TabsPage />,
       },
-      {
-        path: 'background-video',
-        element: <BackgroundVideoPage />,
-      },
+      // {
+      //   path: 'background-video',
+      //   element: <BackgroundVideoPage />,
+      // },
       {
         path: 'image-hover-effect',
         element: <ImageHoverEffectPage />,

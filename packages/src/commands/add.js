@@ -1,21 +1,17 @@
 const fs = require('fs-extra');
 const path = require('path');
+const inquirer = require('inquirer');
 
-async function add(componentName) {
+async function add(componentName, language) {
   const currentDir = process.cwd();
   const componentDir = path.join(currentDir, 'src/components/msi-kit');
   const templateDir = path.join(__dirname, '..', 'components');
 
-  // .jsx ve .tsx dosyalarını kontrol et
-  const templateFilePathJsx = path.join(templateDir, `${componentName}.jsx`);
-  const templateFilePathTsx = path.join(templateDir, `${componentName}.tsx`);
+  // Determine the correct file extension based on user preference
+  const fileExtension = language === 'JavaScript' ? 'jsx' : 'tsx';
+  const templateFilePath = path.join(templateDir, `${componentName}.${fileExtension}`);
 
-  let templateFilePath;
-  if (fs.existsSync(templateFilePathJsx)) {
-    templateFilePath = templateFilePathJsx;
-  } else if (fs.existsSync(templateFilePathTsx)) {
-    templateFilePath = templateFilePathTsx;
-  } else {
+  if (!fs.existsSync(templateFilePath)) {
     console.error(`Component template for ${componentName} not found.`);
     process.exit(1);
   }
@@ -25,9 +21,9 @@ async function add(componentName) {
   }
 
   const componentContent = fs.readFileSync(templateFilePath, 'utf8');
-  const componentFilePath = path.join(componentDir, `${componentName}${path.extname(templateFilePath)}`);
+  const componentFilePath = path.join(componentDir, `${componentName}.${fileExtension}`);
   fs.writeFileSync(componentFilePath, componentContent.trim());
-  console.log(`${componentName} component added successfully at src/msi-kit`,);
+  console.log(`${componentName} component added successfully at src/components/msi-kit`);
 }
 
 module.exports = add;
