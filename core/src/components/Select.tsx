@@ -325,7 +325,7 @@ const Select: React.FC<ISelect> = ({
       return (
         <>
           {!showMenu && <span data-disabled={disabled} className="text-neutral-grey">{placeHolder}</span>}
-          {isSearchable && (
+          {(isSearchable && showMenu) && (
             <div className="MsiSelect-searchBox flex max-w-[80%] items-center">
               <SearchInput
                 disabled={disabled}
