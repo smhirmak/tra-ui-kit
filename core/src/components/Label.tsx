@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { Info } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
-import Tooltip from './Tooltip';
+import Tooltip from '@/components/Tooltip';
 
 export const labelVariants = cva(
   `font-medium leading-none
@@ -29,13 +29,6 @@ export const labelVariants = cva(
     defaultVariants: {
       size: 'default',
     },
-    compoundVariants: [
-      {
-        outlineFocused: true,
-        variant: 'outlined',
-        className: 'z-20 -translate-y-7',
-      },
-    ],
   },
 );
 
@@ -94,7 +87,7 @@ const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
     // eslint-disable-next-line react/jsx-props-no-spreading
     {...props}
   >
-    <span className="flex items-center gap-1">
+    <span className={cn(tooltip && 'flex items-center gap-1')}>
       <span className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-0.5' : ''} ${disabled ? 'text-input cursor-not-allowed' : ''}`}>
         {children}
       </span>

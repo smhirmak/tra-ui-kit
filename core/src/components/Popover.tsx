@@ -56,22 +56,65 @@ export const Popover: React.FC<PopoverProps> = ({
     }
   };
 
+  const isInDialog = (element: HTMLElement | null): { isInDialog: boolean, dialogElement: HTMLElement | null } => {
+    if (!element) return { isInDialog: false, dialogElement: null };
+
+    let currentElement: HTMLElement | null = element;
+    let level = 0;
+    console.log(currentElement.classList);
+
+    while (currentElement && level < 10) {
+      const style = window.getComputedStyle(currentElement);
+      console.log(currentElement.classList.contains('MsiDialog-content'));
+      if (
+        currentElement.classList.contains('MsiDialog-content')
+        || style.position === 'fixed'
+        || (style.zIndex && parseInt(style.zIndex, 10) > 10)
+        || currentElement.getAttribute('role') === 'dialog'
+        || currentElement.getAttribute('aria-modal') === 'true'
+      ) {
+        return { isInDialog: true, dialogElement: currentElement };
+      }
+
+      currentElement = currentElement.parentElement;
+      level += 1;
+    }
+
+    return { isInDialog: false, dialogElement: null };
+  };
+
   const updatePosition = () => {
     if (open && triggerRef.current) {
       const rect = triggerRef.current.getBoundingClientRect();
       const spaceBelow = window.innerHeight - rect.bottom;
-      // const spaceAbove = rect.top;
 
-      setStyles({
-        position: 'fixed',
-        top: spaceBelow > 320 ? `${rect.bottom}px` : 'auto',
-        bottom: spaceBelow <= 320 ? `${window.innerHeight - rect.top}px` : 'auto',
-        left: dropdownAlign === 'left' ? `${rect.left}px` : '',
-        right: dropdownAlign === 'right' ? `${window.innerWidth - rect.right}px` : '',
-        width: `${rect.width}px`,
-        maxHeight: '320px',
-        zIndex: 50,
-      });
+      const { isInDialog: inDialog, dialogElement } = isInDialog(triggerRef.current);
+      if (inDialog && dialogElement) {
+        const dialogRect = dialogElement.getBoundingClientRect();
+        const dialogScrollTop = dialogElement.scrollTop;
+
+        setStyles({
+          position: 'fixed',
+          top: spaceBelow > 320 ? `${rect.top - dialogRect.top - 20}px` : 'auto',
+          bottom: spaceBelow <= 320 ? `${dialogRect.bottom - rect.top - dialogScrollTop}px` : 'auto',
+          left: dropdownAlign === 'left' ? '0px' : '',
+          right: dropdownAlign === 'right' ? `${dialogRect.right - rect.right}px` : '',
+          width: `${rect.width}px`,
+          maxHeight: '320px',
+          zIndex: 50,
+        });
+      } else {
+        setStyles({
+          position: 'fixed',
+          top: spaceBelow > 320 ? `${rect.bottom}px` : 'auto',
+          bottom: spaceBelow <= 320 ? `${window.innerHeight - rect.top}px` : 'auto',
+          left: dropdownAlign === 'left' ? `${rect.left}px` : '',
+          right: dropdownAlign === 'right' ? `${window.innerWidth - rect.right}px` : '',
+          width: `${rect.width}px`,
+          maxHeight: '320px',
+          zIndex: 50,
+        });
+      }
     }
   };
 
@@ -89,8 +132,8 @@ export const Popover: React.FC<PopoverProps> = ({
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (contentRef.current
-          && !contentRef.current.contains(event.target as Node)
-          && !triggerRef.current?.contains(event.target as Node)) {
+        && !contentRef.current.contains(event.target as Node)
+        && !triggerRef.current?.contains(event.target as Node)) {
         handleOpenChange(false);
       }
     };
@@ -176,18 +219,20 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
 
     if (!open) return null;
 
+    // Check if we're inside a dialog
+    const isInDialog = contentRef.current?.closest('.MsiDialog-content') !== null;
+
     return (
       <>
         <div
-          className="fixed inset-0 z-40 overflow-hidden bg-transparent"
-          style={{ height: '100vh' }}
+          className="fixed inset-0 z-40 h-screen overflow-hidden bg-transparent"
           onClick={() => setOpen(false)}
         />
         <div
           ref={mergedRef}
           style={{
             ...styles,
-            position: 'fixed',
+            position: isInDialog ? 'absolute' : 'fixed',
             zIndex: 50,
           }}
           className={className}

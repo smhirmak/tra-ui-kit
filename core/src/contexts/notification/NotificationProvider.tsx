@@ -1,6 +1,11 @@
 import React, { createContext, useContext, useState, ReactNode, useRef, useMemo } from 'react';
 import NotificationContainer from './NotificationContainer';
 
+interface INotificationContext {
+  invoke: (type: string, message: string, options: { autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode, messageType?: string }) => void;
+  translateFunction?: (e: string | string[]) => void;
+}
+
 const defaultNotificationContext: INotificationContext = {
   invoke: () => { },
   translateFunction: () => { },
@@ -31,11 +36,6 @@ interface INotification {
   position?: 'top-right' | 'bottom-right' | 'top-left' | 'bottom-left',
 }
 
-interface INotificationContext {
-  invoke: (type: string, message: string, options: { autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode }) => void;
-  translateFunction?: (e: string | string[]) => void;
-}
-
 export const NotificationProvider: React.FC<INotification> = (
   { children,
     newestTop,
@@ -49,14 +49,26 @@ export const NotificationProvider: React.FC<INotification> = (
     animationMode = 'bounce' as 'flip' | 'bounce' | 'slide' | null | undefined,
     position = 'top-right' },
 ) => {
-  const [notifications, setNotifications] = useState<{ id: number; type: string; message: string; icon?: ReactNode; timeoutId?: NodeJS.Timeout, exiting?: boolean }[]>([]);
+  const [notifications, setNotifications] = useState<{
+    id: number; type: string; message: string; icon?: ReactNode;
+    timeoutId?: NodeJS.Timeout, exiting?: boolean, messageType: 'html' | 'string' | undefined
+  }[]>([]);
   const [localAutoClose, setLocalAutoClose] = useState<{ state: boolean | undefined, time: number | undefined }>();
   const notificationIdRef = useRef(0);
 
-  const invoke = (type: string, message: string, options: { autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode }) => {
+  const invoke = (type: string, message: string, options: { autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode, messageType?: string }) => {
     setLocalAutoClose({ state: options.autoClose, time: options.autoCloseTime });
     const id = notificationIdRef.current++;
-    const newNotification = { id, type, message, icon: options.icon, closeIcon, autoClose: options.autoClose, autoCloseTime: options.autoCloseTime };
+    const newNotification = {
+      id,
+      type,
+      message,
+      icon: options.icon,
+      closeIcon,
+      autoClose: options.autoClose,
+      autoCloseTime: options.autoCloseTime,
+      messageType: options.messageType as 'string' | 'html' | undefined,
+    };
 
     setNotifications(prev => [...prev, newNotification]);
 

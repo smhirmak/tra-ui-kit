@@ -157,7 +157,7 @@ const Drawer: React.FC<IDrawer> = ({
         className={cn(drawerVariants({ mode, position, internalIsOpen }), containerClassName)}
       >
         <div className={cn('MsiDialog-header my-2 flex items-center justify-between gap-2 border-b pb-2', { [position === 'right' ? 'flex-row-reverse' : 'flex-row']: true }, headerClassName)}>
-          <p className={cn('MsiDialog-headerTitle text-2xl font-semibold', titleClassName)}>{title}</p>
+          {title && <p className={cn('MsiDialog-headerTitle text-2xl font-semibold', titleClassName)}>{title}</p>}
           {!alwaysOpen && (
             <Button
               size="icon"

@@ -273,7 +273,10 @@ const notificationProgressBar = cva(
 );
 
 const NotificationContainer: React.FC<{
-  notifications: { id: number; type: string; message: string; icon?: ReactNode; closeIcon?: boolean; autoClose?: boolean; autoCloseTime?: number; exiting?: boolean }[];
+  notifications: {
+    id: number; type: string; message: string; icon?: ReactNode; closeIcon?: boolean;
+    autoClose?: boolean; autoCloseTime?: number; exiting?: boolean, messageType?: 'string' | 'html' | undefined
+  }[];
   onRemove: (id: number) => void;
   newestTop?: boolean;
   theme?: 'colored' | 'default' | 'lined';
@@ -335,8 +338,10 @@ const NotificationContainer: React.FC<{
               }
             }}
           >
-            {notification.icon}
-            <span>{notification.message}</span>
+            <div className="flex gap-1">
+              {notification.icon}
+              {notification.messageType === 'html' ? <span className="text-sm" dangerouslySetInnerHTML={{ __html: notification.message }} /> : notification.message}
+            </div>
             {notification.closeIcon && (
               <Button
                 size="icon"

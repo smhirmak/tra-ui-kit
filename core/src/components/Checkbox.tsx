@@ -10,8 +10,8 @@ import { cn } from '@/lib/utils';
 
 const checkboxVariants = cva(
   `border-primary ring-offset-background focus-visible:ring-ring data-[disabled=true]:border-input data-[checked=true]:bg-primary data-[disabled=true]:bg-input data-[checked=true]:text-primary-foreground data-[checked=true]:disabled:bg-input peer flex
-  shrink-0 select-none items-center justify-center 
-  rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
+  shrink-0 select-none items-center justify-center rounded-sm
+  border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
   data-[disabled=true]:cursor-not-allowed data-[disabled=true]:text-white data-[disabled=true]:opacity-50`,
   {
     variants: {
@@ -40,6 +40,7 @@ interface ICheckbox {
   size?: 'sm' | 'default' | 'lg';
   variant?: 'rectangular' | 'circular';
   checked?: boolean;
+  onChange: (checked: boolean) => void;
 }
 
 const Checkbox = React.forwardRef<
@@ -53,11 +54,12 @@ const Checkbox = React.forwardRef<
   label,
   size,
   variant,
+  onChange,
   ...props
 }, ref) => {
   const [checkedValue, setCheckedValue] = React.useState<boolean | undefined>(checked);
   return (
-    <div className="flex items-center gap-2">
+    <div className="relative flex items-center gap-2">
       <div>
         <label
           className={cn(checkboxVariants({ variant, size }), className)}
@@ -88,9 +90,9 @@ const Checkbox = React.forwardRef<
           type="checkbox"
           checked={checkedValue}
           disabled={disabled}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (!disabled) setCheckedValue(e.target.checked); }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (!disabled) { setCheckedValue(e.target.checked); onChange(e.target.checked); } }}
           id={id}
-          className="peer hidden"
+          className="peer absolute left-0 top-0 opacity-0"
           {...props}
         />
       </div>
