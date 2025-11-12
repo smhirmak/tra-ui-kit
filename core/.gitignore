@@ -22,13 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Ignore specific directories in core
-core/node_modules
-core/dist
-core/dist-ssr
-
-# Ignore specific directories in packages
-packages/node_modules
-packages/dist
-packages/dist-ssr
