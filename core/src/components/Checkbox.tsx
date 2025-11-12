@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable no-nested-ternary */
@@ -40,7 +41,7 @@ interface ICheckbox {
   size?: 'sm' | 'default' | 'lg';
   variant?: 'rectangular' | 'circular';
   checked?: boolean;
-  onChange: (checked: boolean) => void;
+  onChange?: (checked: boolean) => void;
 }
 
 const Checkbox = React.forwardRef<
@@ -90,7 +91,7 @@ const Checkbox = React.forwardRef<
           type="checkbox"
           checked={checkedValue}
           disabled={disabled}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (!disabled) { setCheckedValue(e.target.checked); onChange(e.target.checked); } }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (!disabled) { setCheckedValue(e.target.checked); onChange?.(e.target.checked); } }}
           id={id}
           className="peer absolute left-0 top-0 opacity-0"
           {...props}
