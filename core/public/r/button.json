@@ -5,7 +5,6 @@
   "title": "Button",
   "description": "A button component that can be used to trigger an action.",
   "dependencies": [
-    "is-even@3.0.0",
     "motion"
   ],
   "registryDependencies": [
