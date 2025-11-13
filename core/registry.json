@@ -15,7 +15,7 @@
         }
       ],
       "registryDependencies": [
-        "loading-spinner"
+        "@msi/loading-spinner"
       ]
     },
     {

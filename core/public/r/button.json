@@ -5,7 +5,7 @@
   "title": "Button",
   "description": "A button component that can be used to trigger an action.",
   "registryDependencies": [
-    "loading-spinner"
+    "@msi/loading-spinner"
   ],
   "files": [
     {
