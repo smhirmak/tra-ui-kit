@@ -14,12 +14,19 @@
           "type": "registry:component"
         }
       ],
+      "dependencies": [
+        "is-even@3.0.0",
+        "motion"
+      ],
       "registryDependencies": [
         "@msi/loading-spinner"
       ],
       "cssVars": {
         "theme": {
           "font-sans": "Inter, sans-serif"
+        },
+        "root": {
+          "brand": "20 14.3% 4.1%"
         },
         "light": {
           "brand": "20 14.3% 4.1%"
