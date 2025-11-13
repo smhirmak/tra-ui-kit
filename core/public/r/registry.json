@@ -16,7 +16,18 @@
       ],
       "registryDependencies": [
         "@msi/loading-spinner"
-      ]
+      ],
+      "cssVars": {
+        "theme": {
+          "font-sans": "Inter, sans-serif"
+        },
+        "light": {
+          "brand": "20 14.3% 4.1%"
+        },
+        "dark": {
+          "brand": "20 14.3% 4.1%"
+        }
+      }
     },
     {
       "name": "loading-spinner",
