@@ -3,7 +3,10 @@
   "name": "button",
   "type": "registry:ui",
   "title": "Button",
-  "description": "Bir buton bileşeni.",
+  "description": "A button component that can be used to trigger an action.",
+  "registryDependencies": [
+    "loading-spinner"
+  ],
   "files": [
     {
       "path": "registry/msi-kit/button/button.tsx",

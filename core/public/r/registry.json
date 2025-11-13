@@ -7,10 +7,25 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "description": "Bir buton bileşeni.",
+      "description": "A button component that can be used to trigger an action.",
       "files": [
         {
           "path": "registry/msi-kit/button/button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "loading-spinner"
+      ]
+    },
+    {
+      "name": "loading-spinner",
+      "type": "registry:ui",
+      "title": "Loading Spinner",
+      "description": "A loading spinner component that can be used to indicate loading state.",
+      "files": [
+        {
+          "path": "registry/msi-kit/loading-spinner/loading-spinner.tsx",
           "type": "registry:component"
         }
       ]
