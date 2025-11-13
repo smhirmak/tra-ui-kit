@@ -21,6 +21,9 @@
         "theme": {
           "font-sans": "Inter, sans-serif"
         },
+        "root": {
+          "brand": "20 14.3% 4.1%"
+        },
         "light": {
           "brand": "20 14.3% 4.1%"
         },
