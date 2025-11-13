@@ -14,6 +14,10 @@
           "type": "registry:component"
         }
       ],
+      "dependencies": [
+        "is-even@3.0.0",
+        "motion"
+      ],
       "registryDependencies": [
         "@msi/loading-spinner"
       ],
