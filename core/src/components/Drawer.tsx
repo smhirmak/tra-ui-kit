@@ -5,7 +5,7 @@ import { X } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import Button from './Button';
+import Button from './button';
 
 interface IDrawer {
   isOpen: boolean;

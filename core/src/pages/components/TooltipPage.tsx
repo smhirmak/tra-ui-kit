@@ -1,4 +1,4 @@
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import Tooltip from '@/components/Tooltip';
 
 const TooltipPage = () => (

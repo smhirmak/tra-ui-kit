@@ -1,4 +1,4 @@
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import Notification from '@/components/Notification';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
 import { useAppContext } from '@/contexts/app/AppProvider';

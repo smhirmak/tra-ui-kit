@@ -3,8 +3,8 @@ import { cva } from 'class-variance-authority';
 import React, { useRef, useState } from 'react';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
-import Input from './Input';
-import Label from './Label';
+import Input from './input';
+import Label from './label';
 
 const textFieldStyles = cva('TextField-container flex h-fit flex-col gap-1', {
   variants: {

@@ -4,7 +4,7 @@
 import { X } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import { ReactNode, useEffect, useState } from 'react';
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import { cn } from '@/lib/utils';
 
 const containerVariants = cva(

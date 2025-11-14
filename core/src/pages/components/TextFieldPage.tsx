@@ -1,5 +1,5 @@
-import Input from '@/components/Input';
-import Label from '@/components/Label';
+import Input from '@/components/input';
+import Label from '@/components/label';
 import TextField from '@/components/TextField';
 import { useState } from 'react';
 

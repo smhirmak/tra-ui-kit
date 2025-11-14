@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DayPicker, DayPickerProps } from 'react-day-picker';
 import { cn } from '@/lib/utils';
-import { buttonVariants } from './Button';
+import { buttonVariants } from './button';
 
 export type CalendarProps = DayPickerProps & {
   className?: string;

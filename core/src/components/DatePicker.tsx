@@ -6,10 +6,10 @@ import { format, Locale, parse } from 'date-fns';
 import { DateRange } from 'react-day-picker';
 import { CalendarBlank } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import Calendar from '@/components/Calendar';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
-import Label from './Label';
+import Label from './label';
 
 interface IDateInput {
   ref: React.RefObject<HTMLInputElement | null>;

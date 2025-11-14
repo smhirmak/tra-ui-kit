@@ -1,4 +1,4 @@
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import Drawer from '@/components/Drawer';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
 import { useState } from 'react';

@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from 'react';
 import { cva } from 'class-variance-authority';
 import { X } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
-import Button from './Button';
+import Button from './button';
 
 type DialogSize = 'sm' | 'default' | 'lg' | 'xl' | '2xl';
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import Dialog from '@/components/Dialog';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
 
