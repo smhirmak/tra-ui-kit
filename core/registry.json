@@ -184,7 +184,7 @@
         }
       ],
       "dependencies": [
-        "class-variance-authority'"
+        "class-variance-authority"
       ]
     },
     {

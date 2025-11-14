@@ -5,7 +5,7 @@
   "title": "Tooltip",
   "description": "A tooltip component that can be used to display additional information.",
   "dependencies": [
-    "class-variance-authority'"
+    "class-variance-authority"
   ],
   "files": [
     {
