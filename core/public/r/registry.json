@@ -13,11 +13,11 @@
           "font-sans": "Inter, sans-serif"
         },
         "light": {
-          "--border": "0 0% 89%",
+          "border": "0 0% 89%",
           "--ring": "222.2 84% 4.9%",
           "--background": "0 0% 100%",
           "--foreground": "222.2 84% 4.9%",
-          "--primary": "221.2 83.2% 53.3%",
+          "primary": "221.2 83.2% 53.3%",
           "--primary-soft": "217.2 91.2% 59.8%",
           "--primary-focused": "224.3 76.3% 48%",
           "--primary-foreground": "210 40% 98%",
@@ -62,7 +62,7 @@
           "--ring": "210 40% 98%",
           "--background": "222.2 84% 4.9%",
           "--foreground": "210 40% 98%",
-          "--primary": "217.2 91.2% 59.8%",
+          "primary": "217.2 91.2% 59.8%",
           "--primary-soft": "224.3 76.3% 48%",
           "--primary-focused": "213 96.9% 87.1%",
           "--primary-foreground": "222.2 84% 4.9%",
