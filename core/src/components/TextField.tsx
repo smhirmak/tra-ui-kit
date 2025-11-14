@@ -24,7 +24,7 @@ const labelStyles = cva('ease-cubic transition-all duration-150', {
   variants: {
     variant: {
       filled: '',
-      outlined: 'z-1 text-neutral-light-black absolute left-[18px] top-1/4 text-lg',
+      outlined: 'absolute left-[18px] top-1/4 z-1 text-neutral-light-black',
       underlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform text-lg',
       filledUnderlined: 'absolute left-0 top-1/2 -translate-y-1/2 transform pl-5 text-lg',
     },
@@ -40,6 +40,10 @@ const labelStyles = cva('ease-cubic transition-all duration-150', {
       true: '',
       false: '',
     },
+    textarea: {
+      true: '',
+      false: '',
+    },
   },
   defaultVariants: {
     variant: 'filled',
@@ -47,16 +51,37 @@ const labelStyles = cva('ease-cubic transition-all duration-150', {
   },
   compoundVariants: [
     {
+      outlineFocused: true,
+      variant: 'outlined',
+      className: 'top-0 z-20 -translate-y-1/2',
+    },
+    {
       isHaveStartIcon: true,
       outlineFocused: false,
       variant: 'outlined',
+      textarea: false,
       className: 'left-8',
     },
     {
       isHaveStartIcon: true,
       outlineFocused: true,
       variant: 'outlined',
+      textarea: false,
       className: 'left-4',
+    },
+    {
+      isHaveStartIcon: false,
+      outlineFocused: true,
+      variant: 'outlined',
+      textarea: true,
+      className: 'top-0 -translate-y-2/3',
+    },
+    {
+      isHaveStartIcon: false,
+      outlineFocused: false,
+      variant: 'outlined',
+      textarea: true,
+      className: 'top-1/4 -translate-y-1/2',
     },
     {
       isHaveStartIcon: true,
@@ -87,6 +112,16 @@ const labelStyles = cva('ease-cubic transition-all duration-150', {
       variant: 'filled',
       borderRadius: 'lg',
       className: 'left-6',
+    },
+    {
+      outlineFocused: false,
+      variant: 'outlined',
+      className: 'text-lg',
+    },
+    {
+      outlineFocused: true,
+      variant: 'outlined',
+      className: 'text-sm',
     },
   ],
 });
@@ -126,6 +161,10 @@ const fieldsetStyles = cva(
         default: 'h-14',
         sm: 'h-13',
         lg: 'h-15',
+      },
+      textarea: {
+        true: 'h-[calc(1.75rem*4)] w-full overflow-y-auto',
+        false: '',
       },
     },
   },
@@ -196,7 +235,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
       <Label
         ref={labelRef}
         className={` 
-          ${cn(labelStyles({ variant, borderRadius, isHaveStartIcon: Boolean(startIcon), outlineFocused: inputFocused || !!value || Boolean(inputRef?.current?.value) }))}
+          ${cn(labelStyles({ variant, borderRadius, isHaveStartIcon: Boolean(startIcon), outlineFocused: inputFocused || !!value || Boolean(inputRef?.current?.value), textarea }))}
           ${labelClassName}`}
         variant={variant}
         outlineFocused={inputFocused || !!value || Boolean(inputRef?.current?.value)}
@@ -225,7 +264,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         onBlur={() => setInputFocused(false)}
         disabled={disabled}
         type={type}
-        placeholder={variant !== 'outlined' ? t(placeholder) : ''}
+        placeholder={variant !== 'outlined' ? t(placeholder ?? '') : ''}
         endIcon={endIcon}
         startIcon={startIcon}
         borderRadius={borderRadius}
@@ -235,8 +274,8 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         {...otherProps}
       />
       {variant === 'outlined' && (
-        <fieldset disabled={disabled} className={cn(fieldsetStyles({ inputFocused, error, borderRadius, size }))}>
-          <legend className={`float-[unset] invisible block h-0 w-fit overflow-hidden p-0 text-base ${(inputFocused || !!value || Boolean(inputRef?.current?.value)) && 'px-2'}`}>
+        <fieldset disabled={disabled} className={cn(fieldsetStyles({ inputFocused, error, borderRadius, size, textarea }))}>
+          <legend className={`float-[unset] invisible block h-0 w-fit overflow-hidden p-0 text-sm ${(inputFocused || !!value || Boolean(inputRef?.current?.value)) && 'px-2'}`}>
             {(inputFocused || !!value || Boolean(inputRef?.current?.value)) ? (
               <span>
                 <span className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-0.5' : ''}`}>{label}</span>
@@ -248,7 +287,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
           </legend>
         </fieldset>
       )}
-      {helperText && <p className="text-neutral-light-black self-end text-sm">{helperText}</p>}
+      {helperText && <p className="self-end text-sm text-neutral-light-black">{helperText}</p>}
     </div>
   );
 });

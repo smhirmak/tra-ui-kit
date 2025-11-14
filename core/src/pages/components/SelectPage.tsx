@@ -1,4 +1,7 @@
+import { useState } from 'react';
+import Dialog from '@/components/Dialog';
 import Select from '../../components/Select';
+import Button from '../../components/Button';
 
 const options = [
   {
@@ -60,12 +63,45 @@ const options = [
 ];
 
 const SelectBox = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
   const handleChangeSelect = (e: any) => {
     console.log(e);
   };
   return (
     <div>
       <div className="mb-4 flex flex-col gap-4">
+        <Button className="mt-5 w-fit" onClick={() => setDialogOpen(prev => !prev)}>Select in Dialog</Button>
+        <Dialog
+          open={dialogOpen}
+          size="xl"
+          dialogContentClassName="h-[80vh]"
+          onClose={() => setDialogOpen(false)}
+        >
+          <div className="grid h-full grid-cols-2 grid-rows-6">
+            <Select
+              label="Small"
+              size="sm"
+              options={options}
+              placeHolder="Please select..."
+              onChange={e => handleChangeSelect(e)}
+            />
+            <Select
+              label="Small"
+              size="sm"
+              options={options}
+              placeHolder="Please select..."
+              onChange={e => handleChangeSelect(e)}
+            />
+            <Select
+              label="Small"
+              size="sm"
+              options={options}
+              className="row-start-6"
+              placeHolder="Please select..."
+              onChange={e => handleChangeSelect(e)}
+            />
+          </div>
+        </Dialog>
         <p className="mb-2 text-3xl font-semibold">Default Select</p>
         <p className="mb-2 text-2xl font-semibold">Small</p>
         <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">

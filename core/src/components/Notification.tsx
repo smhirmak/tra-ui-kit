@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { useNotification } from '@/contexts/notification/NotificationProvider';
 
 interface NotificationOptions {
@@ -5,6 +6,8 @@ interface NotificationOptions {
   options: {
     autoClose?: boolean | undefined;
     autoCloseTime?: number | undefined;
+    messageType?: 'string' | 'html';
+    icon?: ReactNode
   } | undefined;
 }
 
@@ -19,7 +22,7 @@ const Notification = () => {
     invoke(
       'info',
       Array.isArray(message) ? message[0] : (translateFunction ? translateFunction(message) : message) || '',
-      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
+      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000, messageType: options?.messageType ?? 'string', icon: options?.icon },
     );
   };
 
@@ -30,7 +33,7 @@ const Notification = () => {
     invoke(
       'error',
       Array.isArray(message) ? message[0] : (translateFunction ? translateFunction(message) : message) || '',
-      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
+      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000, messageType: options?.messageType ?? 'string', icon: options?.icon },
     );
   };
 
@@ -41,7 +44,7 @@ const Notification = () => {
     invoke(
       'success',
       Array.isArray(message) ? message[0] : (translateFunction ? translateFunction(message) : message) || '',
-      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
+      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000, messageType: options?.messageType ?? 'string', icon: options?.icon },
     );
   };
 
@@ -52,7 +55,7 @@ const Notification = () => {
     invoke(
       'warn',
       Array.isArray(message) ? message[0] : (translateFunction ? translateFunction(message) : message) || '',
-      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000 },
+      { autoClose: options?.autoClose ?? true, autoCloseTime: options?.autoCloseTime ?? 3000, messageType: options?.messageType ?? 'string', icon: options?.icon },
     );
   };
 

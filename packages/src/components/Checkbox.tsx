@@ -54,7 +54,7 @@ const Checkbox = React.forwardRef<
 }, ref) => {
   const [checkedValue, setCheckedValue] = React.useState<boolean | undefined>(checked);
   return (
-    <div className="flex items-center gap-2">
+    <div className="relative flex items-center gap-2">
       <div>
         <label
           className={cn(checkboxVariants({ variant, size }), className)}
@@ -87,7 +87,7 @@ const Checkbox = React.forwardRef<
           disabled={disabled}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (!disabled) setCheckedValue(e.target.checked); }}
           id={id}
-          className="peer hidden"
+          className="peer absolute left-0 top-0 opacity-0"
           {...props}
         />
       </div>
