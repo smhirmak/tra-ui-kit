@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Button",
   "description": "A button component that can be used to trigger an action.",
+  "dependencies": [
+    "tailwindcss"
+  ],
   "registryDependencies": [
-    "@msi/loading-spinner"
+    "@msi/loading-spinner",
+    "@msi/theme"
   ],
   "files": [
     {
