@@ -15,7 +15,7 @@
         "inline": {
           "test123": "test123"
         },
-        "root": {
+        ":root": {
           "--border": "0 0% 89%",
           "--ring": "222.2 84% 4.9%",
           "--background": "0 0% 100%",
