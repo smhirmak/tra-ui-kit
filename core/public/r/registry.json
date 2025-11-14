@@ -83,6 +83,23 @@
       }
     },
     {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "Utility functions including cn for class name merging",
+      "files": [
+        {
+          "path": "registry/msi-kit/utils/utils.ts",
+          "type": "registry:lib",
+          "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n \nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}"
+        }
+      ],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
@@ -98,7 +115,8 @@
       ],
       "registryDependencies": [
         "@msi/loading-spinner",
-        "@msi/theme"
+        "@msi/theme",
+        "@msi/utils"
       ]
     },
     {
@@ -113,7 +131,8 @@
         }
       ],
       "registryDependencies": [
-        "@msi/theme"
+        "@msi/theme",
+        "@msi/utils"
       ]
     }
   ]

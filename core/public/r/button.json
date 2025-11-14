@@ -9,7 +9,8 @@
   ],
   "registryDependencies": [
     "@msi/loading-spinner",
-    "@msi/theme"
+    "@msi/theme",
+    "@msi/utils"
   ],
   "files": [
     {

@@ -5,7 +5,8 @@
   "title": "Loading Spinner",
   "description": "A loading spinner component that can be used to indicate loading state.",
   "registryDependencies": [
-    "@msi/theme"
+    "@msi/theme",
+    "@msi/utils"
   ],
   "files": [
     {
