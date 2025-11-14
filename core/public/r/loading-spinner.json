@@ -4,9 +4,6 @@
   "type": "registry:ui",
   "title": "Loading Spinner",
   "description": "A loading spinner component that can be used to indicate loading state.",
-  "registryDependencies": [
-    "@msi/theme"
-  ],
   "files": [
     {
       "path": "registry/msi-kit/loading-spinner/loading-spinner.tsx",
