@@ -186,6 +186,22 @@
       "dependencies": [
         "class-variance-authority'"
       ]
+    },
+    {
+      "name": "text-field",
+      "type": "registry:ui",
+      "title": "Text Field",
+      "description": "A text field component that can be used to enter text.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/text-field.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/input",
+        "@msi/label"
+      ]
     }
   ]
 }

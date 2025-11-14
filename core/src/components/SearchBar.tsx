@@ -1,7 +1,7 @@
 import { MagnifyingGlass } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React from 'react';
-import TextField from '@/components/TextField';
+import TextField from '@/components/text-field';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
 

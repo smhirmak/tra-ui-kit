@@ -1,6 +1,6 @@
 import { Plus } from '@phosphor-icons/react';
 import { useState } from 'react';
-import TextField from '@/components/TextField';
+import TextField from '@/components/text-field';
 
 const TextFieldOutlinedPage = () => {
   const [value, setValue] = useState('');
