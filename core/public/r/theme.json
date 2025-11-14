@@ -5,9 +5,6 @@
   "title": "MSI UI Theme",
   "description": "Complete theme configuration for MSI UI Kit including colors and design tokens",
   "cssVars": {
-    "theme": {
-      "font-sans": "Inter, sans-serif"
-    },
     "light": {
       "border": "0 0% 89%",
       "ring": "222.2 84% 4.9%",
@@ -76,5 +73,9 @@
       "disabled-dark": "0 0% 20%",
       "disabled-light-dark": "0 0% 17%"
     }
+  },
+  "css": {
+    "@import \"tailwindcss\"": {},
+    "@plugin \"tw-animate-css\"": {}
   }
 }
