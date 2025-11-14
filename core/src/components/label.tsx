@@ -1,7 +1,7 @@
-import { cva, VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import * as React from 'react';
-
 import { Info } from '@phosphor-icons/react';
+import type { VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import Tooltip from '@/components/tooltip';
 
@@ -69,7 +69,7 @@ interface ILabel
   outlineFocused?: boolean;
   showRequiredIcon?: boolean;
   size?: 'sm' | 'default' | 'lg' | undefined;
-  tooltip?: string | string[] | null;
+  tooltip?: string | Array<string> | null;
   variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
 }
 
@@ -95,7 +95,7 @@ const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
     {...props}
   >
     <span className="flex items-center gap-1">
-      <span className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-0.5' : ''} ${disabled ? 'text-input cursor-not-allowed' : ''}`}>
+      <span className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-0.5' : ''} ${disabled ? 'text-neutral-200 cursor-not-allowed dark:text-neutral-800' : ''}`}>
         {children}
       </span>
       {(tooltip) && (
