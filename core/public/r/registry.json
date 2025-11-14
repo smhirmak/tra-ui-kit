@@ -106,7 +106,7 @@
       "description": "A button component that can be used to trigger an action.",
       "files": [
         {
-          "path": "registry/msi-kit/button/button.tsx",
+          "path": "registry/msi-kit/components/button.tsx",
           "type": "registry:component"
         }
       ],
@@ -126,13 +126,62 @@
       "description": "A loading spinner component that can be used to indicate loading state.",
       "files": [
         {
-          "path": "registry/msi-kit/loading-spinner/loading-spinner.tsx",
+          "path": "registry/msi-kit/components/loading-spinner.tsx",
           "type": "registry:component"
         }
       ],
       "registryDependencies": [
         "@msi/theme",
         "@msi/utils"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "An input component that can be used to enter text.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/input.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/button",
+        "@msi/theme",
+        "@msi/utils"
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "A label component that can be used to describe form elements.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/label.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/tooltip",
+        "@msi/theme",
+        "@msi/utils"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A tooltip component that can be used to display additional information.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/tooltip.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority'"
       ]
     }
   ]
