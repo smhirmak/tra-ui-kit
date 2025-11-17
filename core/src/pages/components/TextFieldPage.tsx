@@ -1,6 +1,6 @@
-import Input from '@/components/Input';
-import Label from '@/components/Label';
-import TextField from '@/components/TextField';
+import Input from '@/components/input';
+import Label from '@/components/label';
+import TextField from '@/components/text-field';
 import { useState } from 'react';
 
 const TextFieldPage = () => {

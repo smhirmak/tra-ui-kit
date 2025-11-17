@@ -2,7 +2,7 @@ import { CaretRight } from '@phosphor-icons/react';
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Accordion, AccordionItem } from '@/components/Accordion';
-import Button from '@/components/Button';
+import Button from '@/components/button';
 
 const sidebarList = [
   // {

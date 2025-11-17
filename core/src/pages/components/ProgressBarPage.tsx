@@ -1,5 +1,5 @@
 import { Minus, Plus } from '@phosphor-icons/react';
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import ProgressBar from '@/components/ProgressBar';
 import { useState } from 'react';
 

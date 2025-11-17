@@ -1,5 +1,5 @@
 import { Plus } from '@phosphor-icons/react';
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import { CustomSyntaxHighlighter } from '../installation';
 
 const ButtonPage = () => (

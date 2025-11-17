@@ -2,7 +2,7 @@
 import { cva, VariantProps } from 'class-variance-authority';
 import React, { useEffect, useRef } from 'react';
 
-import LoadingSpinner from '@/components/LoadingSpinner';
+import LoadingSpinner from '@/components/loading-spinner';
 import { cn } from '@/lib/utils';
 
 export const buttonVariants = cva(

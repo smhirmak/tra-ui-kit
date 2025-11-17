@@ -3,7 +3,7 @@ import { githubGist, hybrid } from 'react-syntax-highlighter/dist/esm/styles/hlj
 import { Clipboard } from '@phosphor-icons/react';
 import Container from '@/components/Container';
 import { useTheme } from '@/contexts/theme/theme-provider';
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import Notification from '@/components/Notification';
 import { cn } from '@/lib/utils';
 

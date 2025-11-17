@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { Plus, Warning } from '@phosphor-icons/react';
 import { useState } from 'react';
-import Button from '@/components/Button';
+import Button from '@/components/button';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
 import { Tab, Tabs } from '@/components/Tabs';
 

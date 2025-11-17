@@ -1,10 +1,10 @@
-import { cva, VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { Eye, EyeSlash } from '@phosphor-icons/react';
 import React from 'react';
+import type { VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import Button from './Button';
+import Button from '@/components/button';
 
-// eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/no-contradicting-classname
 export const inputVariants = cva(
   `focus-visible:border-1 placeholder:text-muted-foreground border-input file:bg-neutral-disabled-text file:text-neutral-black hover:shadow-soft-primary focus-visible:border-primary-focused focus-visible:shadow-hard-primary
   disabled:text-neutral-grey 
@@ -16,10 +16,10 @@ export const inputVariants = cva(
   {
     variants: {
       variant: {
-        filled: 'disabled:bg-input-light disabled:placeholder:text-input',
+        filled: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
         outlined: 'border-none outline-none focus-visible:border-none focus-visible:outline-none',
-        underlined: 'disabled:bg-input-light disabled:placeholder:text-input',
-        filledUnderlined: 'disabled:bg-input-light disabled:placeholder:text-input',
+        underlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
+        filledUnderlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
       },
       size: {
         default: 'h-14 text-base',
@@ -121,7 +121,6 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
             paddingRight: endIcon ? '2.5rem' : undefined,
           }}
           rows={textarea ? 4 : undefined}
-          // eslint-disable-next-line react/jsx-props-no-spreading
           {...(restProps as React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
         />
         {endIcon && (

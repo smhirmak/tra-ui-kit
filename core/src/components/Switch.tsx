@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import Label from './Label';
+import Label from './label';
 
 const switchBaseVariants = cva(
   'bg-disabled-light focus-visible:ring-ring focus-visible:ring-offset-background peer-checked:bg-primary-focused group inline-flex h-7 w-12 shrink-0 cursor-pointer select-none items-center rounded-full  border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',

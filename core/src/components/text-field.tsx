@@ -1,10 +1,9 @@
 /* eslint-disable tailwindcss/enforces-negative-arbitrary-values */
 import { cva } from 'class-variance-authority';
 import React, { useRef, useState } from 'react';
-import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
-import Input from './Input';
-import Label from './Label';
+import Input from '@/components/input';
+import Label from '@/components/label';
 
 const textFieldStyles = cva('TextField-container flex h-fit flex-col gap-1', {
   variants: {
@@ -186,7 +185,6 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   textarea,
   ...otherProps
 }, ref) => {
-  const { t } = useLocalizeContext();
   const [inputFocused, setInputFocused] = useState(false);
   const labelRef = useRef<HTMLLabelElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -225,7 +223,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         onBlur={() => setInputFocused(false)}
         disabled={disabled}
         type={type}
-        placeholder={variant !== 'outlined' ? t(placeholder) : ''}
+        placeholder={variant !== 'outlined' ? placeholder : ''}
         endIcon={endIcon}
         startIcon={startIcon}
         borderRadius={borderRadius}

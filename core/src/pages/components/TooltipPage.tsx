@@ -1,5 +1,5 @@
-import Button from '@/components/Button';
-import Tooltip from '@/components/Tooltip';
+import Button from '@/components/button';
+import Tooltip from '@/components/tooltip';
 
 const TooltipPage = () => (
   <>

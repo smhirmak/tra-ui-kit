@@ -1,4 +1,4 @@
-import TextField from '@/components/TextField';
+import TextField from '@/components/text-field';
 import FormikErrorText from '@/components/formikInputs/FormikErrorText';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import MethodHelper from '@/utilities/MethodHelper';

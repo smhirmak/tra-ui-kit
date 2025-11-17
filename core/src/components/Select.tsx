@@ -5,9 +5,9 @@
 import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef, useState } from 'react';
 import { CaretDown, Check, X } from '@phosphor-icons/react';
-import Label from '@/components/Label';
+import Label from '@/components/label';
 import { cn } from '@/lib/utils';
-import Button from './Button';
+import Button from './button';
 import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 
 interface ISearchInput {
