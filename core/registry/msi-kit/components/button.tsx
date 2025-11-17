@@ -1,6 +1,6 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-import { cva, VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef } from 'react';
+import type { VariantProps } from 'class-variance-authority';
 
 import LoadingSpinner from '@/components/loading-spinner';
 import { cn } from '@/lib/utils';
