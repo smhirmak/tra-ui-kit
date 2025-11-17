@@ -9,7 +9,10 @@
   ],
   "cssVars": {
     "theme": {
-      "font-sans": "Inter, sans-serif"
+      "font-sans": "Inter, sans-serif",
+      "text-h1": "3.625rem",
+      "text-h1--line-height": "5.425rem",
+      "text-h1--font-weight": "500"
     },
     "light": {
       "primary": "221 87% 52%",
