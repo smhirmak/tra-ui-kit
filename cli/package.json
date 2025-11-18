@@ -1,0 +1,40 @@
+{
+  "name": "msi-ui-cli",
+  "version": "0.0.46",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "type": "module",
+  "bin": {
+    "msi-ui-cli": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "cli",
+    "ui",
+    "components",
+    "msi",
+    "kit"
+  ],
+  "author": "MSI UI Kit Contributors",
+  "license": "MIT",
+  "description": "MSI UI Kit CLI - Complete UI solution with single init command",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.2",
+    "execa": "^9.6.0",
+    "fs-extra": "^11.3.2",
+    "ora": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^24.10.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}
