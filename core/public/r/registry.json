@@ -321,6 +321,33 @@
       "registryDependencies": [
         "@msi/text-field"
       ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A popover component that can be used to display additional information.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/popover.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "dropdown",
+      "type": "registry:ui",
+      "title": "Dropdown",
+      "description": "A dropdown component that can be used to display a list of options.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/dropdown.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/popover"
+      ]
     }
   ]
 }
