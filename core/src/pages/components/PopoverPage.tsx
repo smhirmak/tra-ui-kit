@@ -1,4 +1,4 @@
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/Popover-1';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
 
 const PopoverPage = () => (
   <Popover>

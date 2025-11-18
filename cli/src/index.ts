@@ -7,6 +7,7 @@ import { execa } from 'execa';
 import { fileURLToPath } from 'url';
 import chalk from 'chalk';
 import ora from 'ora';
+import inquirer from 'inquirer';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -49,7 +50,7 @@ const program = new Command();
 program
   .name('msi-ui-cli')
   .description('MSI UI Kit CLI - Complete UI solution with single init command')
-  .version('0.0.26');
+  .version('0.0.49');
 
 // INIT komutu
 program
@@ -60,9 +61,9 @@ program
     await initCompleteSetup(options);
   });
 
-// ADD komutu
+// ADD komutu - components parametresini optional yap
 program
-  .command('add <components...>')
+  .command('add [components...]')
   .description('Add components to your project')
   .action(async (components: string[]) => {
     await addComponents(components);
@@ -239,6 +240,12 @@ async function ensureMsiRegistry(): Promise<boolean> {
 }
 
 async function addComponents(components: string[]) {
+  // Eğer component belirtilmemişse, interaktif seçim göster
+  if (components.length === 0) {
+    await showInteractiveComponentSelector();
+    return;
+  }
+
   console.log(`\nAdding ${components.length} component(s)...\n`);
 
   const spinner = ora();
@@ -284,6 +291,63 @@ async function addComponents(components: string[]) {
   console.log(`  Total: ${components.length}\n`);
 }
 
+// Interaktif component seçici
+async function showInteractiveComponentSelector() {
+  console.log('\n🌿 MSI UI Kit - Component Selector\n');
+  
+  try {
+    const components = await fetchComponentsFromRegistry();
+    
+    if (components.length === 0) {
+      console.log(chalk.yellow('No components available.'));
+      return;
+    }
+
+    const { selectedComponents } = await inquirer.prompt([
+      {
+        type: 'checkbox',
+        name: 'selectedComponents',
+        message: 'Select components to add:',
+        choices: components.map(comp => ({
+          name: `${chalk.cyan(comp.name.padEnd(18))} - ${comp.description}`,
+          value: comp.name,
+          short: comp.name
+        })),
+        pageSize: Math.min(components.length, 10)
+      }
+    ]);
+
+    if (selectedComponents.length === 0) {
+      console.log(chalk.yellow('No components selected.'));
+      return;
+    }
+
+    console.log(`\nSelected ${selectedComponents.length} component(s):`);
+    selectedComponents.forEach((comp: string) => {
+      console.log(`  • ${chalk.cyan(comp)}`);
+    });
+
+    const { confirm } = await inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'confirm',
+        message: 'Proceed with installation?',
+        default: true
+      }
+    ]);
+
+    if (confirm) {
+      await addComponents(selectedComponents);
+    } else {
+      console.log(chalk.yellow('Installation cancelled.'));
+    }
+
+  } catch (error) {
+    console.log(chalk.red('Failed to load components list'));
+    console.log(chalk.cyan('  Please check your internet connection and try again.'));
+  }
+}
+
 async function listComponents() {
   console.log('\nAvailable MSI UI Kit Components:\n');
   
@@ -296,7 +360,8 @@ async function listComponents() {
 
     console.log('\nUsage:');
     console.log('  Add components:');
-    console.log(chalk.yellowBright('  npx msi-ui-cli add button') + ' or ' + chalk.yellowBright('msi add button'));
+    console.log(chalk.yellowBright('  npx msi-ui-cli add') + ' (interactive selection)');
+    console.log(chalk.yellowBright('  npx msi-ui-cli add button loading-spinner') + ' (specific components)');
   } catch (error) {
     console.log(chalk.red('Failed to load components list'));
     console.log(chalk.cyan('  Please check your internet connection and try again.'));
@@ -308,7 +373,8 @@ function showSuccessMessage() {
 
   console.log('Next steps:');
   console.log('  Add components:');
-  console.log(chalk.yellowBright('  npx msi-ui-cli add button') + ' or ' + chalk.yellowBright('msi add button'));
+  console.log(chalk.yellowBright('  npx msi-ui-cli add') + ' (interactive selection)');
+  console.log(chalk.yellowBright('  npx msi-ui-cli add button') + ' (specific component)');
   
   console.log('\n  See all components:');
   console.log(chalk.yellowBright('  npx msi-ui-cli list') + ' or ' + chalk.yellowBright('msi list\n'));
