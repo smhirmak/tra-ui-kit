@@ -8,7 +8,7 @@ import { CaretDown, Check, X } from '@phosphor-icons/react';
 import Label from '@/components/label';
 import { cn } from '@/lib/utils';
 import Button from './button';
-import { Popover, PopoverContent, PopoverTrigger } from './Popover';
+import { Popover, PopoverContent, PopoverTrigger } from './Popover-1';
 
 interface ISearchInput {
   searchValue: string;

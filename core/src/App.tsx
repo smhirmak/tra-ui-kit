@@ -37,6 +37,7 @@ import TablePage from './pages/components/TablePage';
 import ProgressBarPage from './pages/components/ProgressBarPage';
 import SidebarPage from './pages/components/SidebarPage';
 import Installation from './pages/installation';
+import DropdownPage from './pages/components/DropdownPage';
 
 const router = createBrowserRouter([
   {
@@ -175,6 +176,10 @@ const router = createBrowserRouter([
       {
         path: 'sidebar',
         element: <SidebarPage />,
+      },
+      {
+        path: 'dropdown',
+        element: <DropdownPage />,
       },
     ],
   }]);
