@@ -141,10 +141,8 @@
             "-moz-appearance": "textfield"
           }
         },
-        "@layer utilities": {
-          ".content-required": {
-            "content": "*"
-          }
+        "@utility content-required": {
+          "content": "'*'"
         }
       }
     },
