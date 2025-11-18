@@ -180,9 +180,7 @@
         "tailwindcss"
       ],
       "registryDependencies": [
-        "@msi/loading-spinner",
-        "@msi/theme",
-        "@msi/utils"
+        "@msi/loading-spinner"
       ]
     },
     {
@@ -195,10 +193,6 @@
           "path": "registry/msi-kit/components/loading-spinner.tsx",
           "type": "registry:component"
         }
-      ],
-      "registryDependencies": [
-        "@msi/theme",
-        "@msi/utils"
       ]
     },
     {
@@ -213,9 +207,7 @@
         }
       ],
       "registryDependencies": [
-        "@msi/button",
-        "@msi/theme",
-        "@msi/utils"
+        "@msi/button"
       ]
     },
     {
@@ -230,9 +222,7 @@
         }
       ],
       "registryDependencies": [
-        "@msi/tooltip",
-        "@msi/theme",
-        "@msi/utils"
+        "@msi/tooltip"
       ]
     },
     {
