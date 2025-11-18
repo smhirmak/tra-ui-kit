@@ -69,7 +69,7 @@ const sidebarList = [
   },
   {
     label: 'Search Bar',
-    link: '/search-bar',
+    link: '/search-field',
   },
   {
     label: 'Skeleton',

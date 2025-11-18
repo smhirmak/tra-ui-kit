@@ -1,6 +1,7 @@
 import { MagnifyingGlass } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React from 'react';
+import type { ITextField } from '@/components/text-field';
 import TextField from '@/components/text-field';
 import { cn } from '@/lib/utils';
 
@@ -25,7 +26,7 @@ const iconVariants = cva(
   },
 );
 
-interface ISearchBar {
+type ISearchField = {
   borderRadius?: 'default' | 'lg';
   disabled?: boolean;
   iconClassName?: string;
@@ -36,10 +37,10 @@ interface ISearchBar {
   value: string | number;
   variant?: 'filled' | 'outlined' | 'underlined';
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-}
+} & Omit<ITextField, 'children'>
 
-const SearchBar: React.FC<
-  ISearchBar> = ({
+const SearchField: React.FC<
+  ISearchField> = ({
     borderRadius,
     disabled,
     iconClassName,
@@ -56,7 +57,6 @@ const SearchBar: React.FC<
       <TextField
         variant={variant}
         label={label ?? 'Search'}
-        labelClassName="-top-[2px] "
         size={size}
         value={value}
         onChange={onChange}
@@ -66,10 +66,9 @@ const SearchBar: React.FC<
         startIcon={<MagnifyingGlass className={cn(iconVariants({ size, disabled }), iconClassName)} />}
         borderRadius={borderRadius}
         alwaysTop
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
       />
     );
   };
 
-export default SearchBar;
+export default SearchField;

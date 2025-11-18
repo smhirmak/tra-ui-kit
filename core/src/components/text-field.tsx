@@ -1,4 +1,4 @@
-/* eslint-disable tailwindcss/enforces-negative-arbitrary-values */
+/* eslint-disable @typescript-eslint/array-type */
 import { cva } from 'class-variance-authority';
 import React, { useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -130,7 +130,7 @@ const fieldsetStyles = cva(
   },
 );
 
-interface ITextField {
+export interface ITextField {
   alwaysTop?: boolean;
   autoComplete?: string;
   borderRadius?: 'default' | 'lg';
@@ -143,6 +143,7 @@ interface ITextField {
   label?: string;
   labelClassName?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onWheel?: (e: React.WheelEvent<HTMLInputElement>) => void;
   placeholder?: string;
   showRequiredIcon?: boolean;
@@ -170,6 +171,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   label,
   labelClassName = '',
   onChange,
+  onBlur,
   onWheel,
   placeholder,
   showRequiredIcon,
@@ -189,15 +191,17 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   const labelRef = useRef<HTMLLabelElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  console.log({ size })
+
   return (
     <div ref={ref} className={cn(textFieldStyles({ variant }), className)}>
       <Label
         ref={labelRef}
         className={` 
-          ${cn(labelStyles({ variant, borderRadius, isHaveStartIcon: Boolean(startIcon), outlineFocused: inputFocused || !!value || Boolean(inputRef?.current?.value) }))}
+          ${cn(labelStyles({ variant, borderRadius, isHaveStartIcon: Boolean(startIcon), outlineFocused: inputFocused || !!value || Boolean(inputRef.current?.value) }))}
           ${labelClassName}`}
         variant={variant}
-        outlineFocused={inputFocused || !!value || Boolean(inputRef?.current?.value)}
+        outlineFocused={inputFocused || !!value || Boolean(inputRef.current?.value)}
         htmlFor={id}
         id={`${id}-label`}
         size={size}
@@ -220,7 +224,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         onWheel={onWheel}
         onChange={onChange}
         onFocus={() => setInputFocused(true)}
-        onBlur={() => setInputFocused(false)}
+        onBlur={(e) => { setInputFocused(false); onBlur && onBlur(e) }}
         disabled={disabled}
         type={type}
         placeholder={variant !== 'outlined' ? placeholder : ''}
@@ -229,13 +233,12 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         borderRadius={borderRadius}
         maxLength={maxLength}
         textarea={textarea}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
       />
       {variant === 'outlined' && (
         <fieldset disabled={disabled} className={cn(fieldsetStyles({ inputFocused, error, borderRadius, size }))}>
-          <legend className={`float-[unset] invisible block h-0 w-fit overflow-hidden p-0 text-base ${(inputFocused || !!value || Boolean(inputRef?.current?.value)) && 'px-2'}`}>
-            {(inputFocused || !!value || Boolean(inputRef?.current?.value)) ? (
+          <legend className={`float-[unset] invisible block h-0 w-fit overflow-hidden p-0 text-base ${(inputFocused || !!value || Boolean(inputRef.current?.value)) && 'px-2'}`}>
+            {(inputFocused || !!value || Boolean(inputRef.current?.value)) ? (
               <span>
                 <span className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-0.5' : ''}`}>{label}</span>
                 {(tooltip) && (

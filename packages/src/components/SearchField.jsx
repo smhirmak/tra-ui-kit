@@ -26,7 +26,7 @@ const iconVariants = cva(
   },
 );
 
-const SearchBar = ({
+const SearchField = ({
   borderRadius,
   disabled,
   iconClassName,
@@ -59,4 +59,4 @@ const SearchBar = ({
   );
 };
 
-export default SearchBar;
+export default SearchField;

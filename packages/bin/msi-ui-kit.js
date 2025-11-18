@@ -27,7 +27,7 @@ const componentDependencies = {
   Label: ['Tooltip'],
   Loader: ['LoadingSpinner', 'LoadingLinear'],
   Pagination: ['Button', 'LoadingSpinner', 'Input'],
-  SearchBar: ['TextField', 'Input', 'Label', 'Tooltip', 'Button', 'LoadingSpinner'],
+  SearchField: ['TextField', 'Input', 'Label', 'Tooltip', 'Button', 'LoadingSpinner'],
   Select: ['Button', 'LoadingSpinner', 'Label', 'Tooltip', 'Popover'],
   Switch: ['Label', 'Tooltip'],
   TextField: ['Input', 'Label', 'Tooltip'],

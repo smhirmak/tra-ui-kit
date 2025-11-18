@@ -12,7 +12,7 @@ import InformationStatusPage from './pages/components/InformationStatusPage';
 import LoaderPage from './pages/components/LoaderPage';
 import NotificationPage from './pages/components/NotificationPage';
 import RadioButtonPage from './pages/components/RadioButtonPage';
-import SearchBarPage from './pages/components/SearchBarPage';
+import SearchFieldPage from './pages/components/SearchFieldPage';
 import SkeletonPage from './pages/components/SkeletonPage';
 import SwitchPage from './pages/components/SwitchPage';
 import TabsPage from './pages/components/TabsPage';
@@ -109,8 +109,8 @@ const router = createBrowserRouter([
         element: <RadioButtonPage />,
       },
       {
-        path: 'search-bar',
-        element: <SearchBarPage />,
+        path: 'search-field',
+        element: <SearchFieldPage />,
       },
       {
         path: 'skeleton',

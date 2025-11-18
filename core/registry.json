@@ -308,13 +308,13 @@
       ]
     },
     {
-      "name": "search-bar",
+      "name": "search-field",
       "type": "registry:ui",
-      "title": "Search Bar",
-      "description": "A search bar component that can be used to enter search queries.",
+      "title": "Search Field",
+      "description": "A search field component that can be used to enter search queries.",
       "files": [
         {
-          "path": "registry/msi-kit/components/search-bar.tsx",
+          "path": "registry/msi-kit/components/search-field.tsx",
           "type": "registry:component"
         }
       ],
