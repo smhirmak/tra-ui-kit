@@ -8,7 +8,7 @@ import { CalendarBlank } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import Button from '@/components/button';
 import Calendar from '@/components/Calendar';
-import { Popover, PopoverContent, PopoverTrigger } from './Popover-1';
+import { Popover, PopoverContent, PopoverTrigger } from './popover';
 import Label from './label';
 
 interface IDateInput {

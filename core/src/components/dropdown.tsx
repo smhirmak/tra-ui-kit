@@ -4,7 +4,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { CaretDown, Check } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
-import { Popover, PopoverTrigger, PopoverContent } from './Popover-1';
+import { Popover, PopoverTrigger, PopoverContent } from './popover';
 
 interface IDropdownItem {
     label: string | React.ReactNode;
