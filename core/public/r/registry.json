@@ -140,6 +140,11 @@
           ".MsiPagination-container input[type=\"number\"]": {
             "-moz-appearance": "textfield"
           }
+        },
+        "@layer utilities": {
+          ".content-required": {
+            "content": "*"
+          }
         }
       }
     },
