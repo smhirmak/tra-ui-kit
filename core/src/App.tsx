@@ -2,7 +2,7 @@ import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './layout/Layout';
 import Home from './pages/Home';
-import BackToTopButton from './components/BackToTopButton';
+import BackToTopButton from './components/back-to-top-button';
 import AvatarPage from './pages/components/AvatarPage';
 import BadgePage from './pages/components/BadgePage';
 import ButtonPage from './pages/components/ButtonPage';

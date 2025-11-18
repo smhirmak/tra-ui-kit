@@ -1,5 +1,5 @@
 import { Plus } from '@phosphor-icons/react';
-import { Accordion, AccordionItem } from '@/components/Accordion';
+import { Accordion, AccordionItem } from '@/components/accordion';
 import { CustomSyntaxHighlighter } from '../installation';
 
 const AccordionPage = () => (
