@@ -1,5 +1,5 @@
 import { PlusIcon } from '@phosphor-icons/react';
-import Chip from '@/components/Chip';
+import Chip from '@/components/chip';
 
 const ChipPage = () => (
   <div className="mb-6 border-b-2 pb-6">

@@ -1,7 +1,7 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist, hybrid } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { ClipboardIcon } from '@phosphor-icons/react';
-import Container from '@/components/Container';
+import Container from '@/components/container';
 import { useTheme } from '@/contexts/theme/theme-provider';
 import Button from '@/components/button';
 import Notification from '@/components/Notification';

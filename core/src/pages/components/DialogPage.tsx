@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Button from '@/components/button';
-import Dialog from '@/components/Dialog';
+import Dialog from '@/components/dialog';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
 
 const DialogPage = () => {

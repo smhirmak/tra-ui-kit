@@ -1,6 +1,6 @@
 import { PlusIcon } from '@phosphor-icons/react';
 import { Avatar, MultipleAvatarContainer } from '@/components/avatar';
-import Badge from '@/components/Badge';
+import Badge from '@/components/badge';
 import { CustomSyntaxHighlighter } from '../installation';
 
 const AvatarPage = () => (
