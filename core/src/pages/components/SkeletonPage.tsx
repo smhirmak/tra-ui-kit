@@ -1,4 +1,4 @@
-import Skeleton from '@/components/skeleton-1';
+import Skeleton from '@/components/skeleton';
 
 const SkeletonPage = () => (
   <div className="mb-6 border-b-2 pb-6">

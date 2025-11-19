@@ -1,5 +1,5 @@
 import Button from '@/components/button';
-import Loader, { loaderRef } from '@/components/loader-';
+import Loader, { loaderRef } from '@/components/loader';
 import LoadingLinear from '@/components/loading-linear';
 import LoadingSpinner from '@/components/loading-spinner';
 

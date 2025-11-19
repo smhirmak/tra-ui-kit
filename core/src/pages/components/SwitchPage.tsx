@@ -1,5 +1,5 @@
-import Switch from '@/components/switch-1';
 import { useState } from 'react';
+import Switch from '@/components/switch';
 
 const SwitchPage = () => {
   const [checkedApple, setCheckedApple] = useState<boolean>(false);

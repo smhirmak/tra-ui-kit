@@ -1,5 +1,5 @@
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
-import Select from './select-1';
+import Select from './select';
 
 const countries = [
   {
