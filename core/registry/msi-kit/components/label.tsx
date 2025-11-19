@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
-import { Info } from '@phosphor-icons/react';
+import { InfoIcon } from '@phosphor-icons/react';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import Tooltip from '@/components/tooltip';
@@ -100,7 +100,7 @@ const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
       </span>
       {(tooltip) && (
         <Tooltip position="bottom" content={tooltip}>
-          <Info className={cn(tooltipVariants({ size, variant }))} />
+          <InfoIcon className={cn(tooltipVariants({ size, variant }))} />
         </Tooltip>
       )}
     </span>

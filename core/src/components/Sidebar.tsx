@@ -3,7 +3,7 @@
 /* eslint-disable max-len */
 import { createContext, useContext, useState, ReactNode, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CaretLeft, CaretRight } from '@phosphor-icons/react';
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 interface ISidebar {
@@ -30,7 +30,7 @@ const Sidebar: React.FC<ISidebar> = ({ children, headerLogo }) => {
         <div className={`flex items-center ${(expanded && headerLogo) ? 'justify-between' : 'justify-end'} p-4 pb-2`}>
           {headerLogo && <img src={headerLogo} alt="logo" className={`overflow-hidden transition-all ease-out ${expanded ? 'w-16' : 'w-0'}`} />}
           <button type="button" onClick={() => setExpanded(curr => !curr)} className="bg-background self-end p-1.5 hover:bg-gray-300 dark:hover:bg-blue-950">
-            {expanded ? <CaretLeft /> : <CaretRight />}
+            {expanded ? <CaretLeftIcon /> : <CaretRightIcon />}
           </button>
         </div>
 

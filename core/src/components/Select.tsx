@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef, useState } from 'react';
-import { CaretDown, Check, X } from '@phosphor-icons/react';
+import { CaretDownIcon, CheckIcon, XIcon } from '@phosphor-icons/react';
 import Label from '@/components/label';
 import { cn } from '@/lib/utils';
 import Button from './button';
@@ -360,7 +360,7 @@ const Select: React.FC<ISelect> = ({
                 className={`MsiSelect-dropdownTagCloseButton ${dropdownTagCloseButtonClassName} group-data-[disabled=true]:hover: hover:bg-neutral-light group-data-[disabled=false]:text-neutral-black
                  ml-1.5 flex cursor-pointer items-center rounded-full p-0.5 group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=true]:hover:bg-transparent`}
               >
-                <X />
+                <XIcon />
               </span>
             </div>
           ))}
@@ -450,7 +450,7 @@ const Select: React.FC<ISelect> = ({
               {getDisplay()}
             </div>
             <div className="MsiSelect-iconContainer self-center">
-              <CaretDown className={`MsiSelect-icon ${iconClassName} stroke-neutral-light-black transition-all`} />
+              <CaretDownIcon className={`MsiSelect-icon ${iconClassName} stroke-neutral-light-black transition-all`} />
             </div>
           </div>
         </PopoverTrigger>
@@ -470,7 +470,7 @@ const Select: React.FC<ISelect> = ({
                 {option.content}
                 {isMulti && (
                   <span className={`mr-2 ${!isSelected(option) && 'opacity-0'}`}>
-                    <Check className="MsiSelect-checkIcon text-primary size-4" />
+                    <CheckIcon className="MsiSelect-checkIcon text-primary size-4" />
                   </span>
                 )}
               </div>

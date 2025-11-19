@@ -1,6 +1,6 @@
-import { Plus } from '@phosphor-icons/react';
-import TextField from '@/components/text-field';
+import { PlusIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
+import TextField from '@/components/text-field';
 
 const TextFieldUnderlinedPage = () => {
   const [value, setValue] = useState('');
@@ -19,8 +19,8 @@ const TextFieldUnderlinedPage = () => {
         </div>
         <div className="mb-2 flex space-x-4">
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" tooltip="Tooltip" />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" startIcon={<Plus />} />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" endIcon={<Plus />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" startIcon={<PlusIcon />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" endIcon={<PlusIcon />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" size="sm" borderRadius="lg" />
         </div>
       </div>
@@ -35,8 +35,8 @@ const TextFieldUnderlinedPage = () => {
         </div>
         <div className="mb-2 flex space-x-4">
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" tooltip="Tooltip" />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" startIcon={<Plus />} />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" endIcon={<Plus />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" startIcon={<PlusIcon />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" endIcon={<PlusIcon />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" label="Label" borderRadius="lg" />
         </div>
       </div>
@@ -51,8 +51,8 @@ const TextFieldUnderlinedPage = () => {
         </div>
         <div className="flex space-x-4">
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" tooltip="Tooltip" />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" startIcon={<Plus />} />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" endIcon={<Plus />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" startIcon={<PlusIcon />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" endIcon={<PlusIcon />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="underlined" size="lg" label="Label" borderRadius="lg" />
         </div>
       </div>

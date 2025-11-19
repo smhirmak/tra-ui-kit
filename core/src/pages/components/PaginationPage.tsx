@@ -1,7 +1,7 @@
-import { CaretDoubleLeft, CaretDoubleRight, Minus, Plus } from '@phosphor-icons/react';
+import { CaretDoubleLeftIcon, CaretDoubleRightIcon, MinusIcon, PlusIcon } from '@phosphor-icons/react';
+import { useState } from 'react';
 import Button from '@/components/button';
 import Pagination from '@/components/Pagination';
-import { useState } from 'react';
 
 const PaginationPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,17 +13,17 @@ const PaginationPage = () => {
       <div>
         Total Page Number
         <span className="flex items-center gap-2 text-2xl font-semibold">
-          <Button size="icon" rounded="lg" onClick={() => setTotalPages(prev => prev - 1)}><Minus /></Button>
+          <Button size="icon" rounded="lg" onClick={() => setTotalPages(prev => prev - 1)}><MinusIcon /></Button>
           {totalPages}
-          <Button size="icon" rounded="lg" onClick={() => setTotalPages(prev => prev + 1)}><Plus /></Button>
+          <Button size="icon" rounded="lg" onClick={() => setTotalPages(prev => prev + 1)}><PlusIcon /></Button>
         </span>
       </div>
       <div>
         Visible Page Number
         <span className="flex items-center gap-2 text-2xl font-semibold">
-          <Button size="icon" rounded="lg" onClick={() => setVisiblePages(prev => prev - 1)}><Minus /></Button>
+          <Button size="icon" rounded="lg" onClick={() => setVisiblePages(prev => prev - 1)}><MinusIcon /></Button>
           {visiblePages}
-          <Button size="icon" rounded="lg" onClick={() => setVisiblePages(prev => prev + 1)}><Plus /></Button>
+          <Button size="icon" rounded="lg" onClick={() => setVisiblePages(prev => prev + 1)}><PlusIcon /></Button>
         </span>
       </div>
       <div className="flex flex-col gap-8">
@@ -170,8 +170,8 @@ const PaginationPage = () => {
             onPageChange={setCurrentPage}
             maxVisiblePages={visiblePages}
             color="secondary"
-            nextPageIcon={<Plus />}
-            previousPageIcon={<Minus />}
+            nextPageIcon={<PlusIcon />}
+            previousPageIcon={<MinusIcon />}
           />
           <Pagination
             variant="ghost"
@@ -181,8 +181,8 @@ const PaginationPage = () => {
             maxVisiblePages={visiblePages}
             color="secondary"
             rounded="lg"
-            lastPageIcon={<CaretDoubleRight />}
-            firstPageIcon={<CaretDoubleLeft />}
+            lastPageIcon={<CaretDoubleRightIcon />}
+            firstPageIcon={<CaretDoubleLeftIcon />}
           />
         </div>
       </div>

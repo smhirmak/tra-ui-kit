@@ -4,7 +4,7 @@
 /* eslint-disable no-nested-ternary */
 import { cva } from 'class-variance-authority';
 import React, { HTMLAttributes, useState } from 'react';
-import { User, X } from '@phosphor-icons/react';
+import { UserIcon, XIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 
 const avatarVariants = cva(
@@ -204,7 +204,7 @@ const Avatar = React.forwardRef<HTMLAttributes<HTMLDivElement>, IAvatar>(({
         src ? <img className={cn(imageVariants({ variant }), imageClassName)} src={src} alt="" />
           : (!src && title && !icon)
             ? <p>{title.split(' ').map(item => item[0]).join('')}</p>
-            : (!src && !title && icon) ? <span>{icon}</span> : <User className={cn(avatarIconVariants({ size }))} />
+            : (!src && !title && icon) ? <span>{icon}</span> : <UserIcon className={cn(avatarIconVariants({ size }))} />
       }
       {badgeContent && (
         <div className={cn(badgeVariants({ badgePosition, variant, size }), badgeClassName)}>
@@ -264,7 +264,7 @@ const MultipleAvatarContainer: React.FC<IMultipleAvatarContainer> = ({ children,
           style={{ transform: `translateX(${React.Children.count(children) * 5}px)`, zIndex: React.Children.count(children) }}
           onClick={handleHideAllAvatars}
         >
-          <Avatar size={lastElementSize} className={cn(showLessAvatarVariants(), showLessAvatarClassName)} icon={<X />} />
+          <Avatar size={lastElementSize} className={cn(showLessAvatarVariants(), showLessAvatarClassName)} icon={<XIcon />} />
         </div>
       )}
     </div>

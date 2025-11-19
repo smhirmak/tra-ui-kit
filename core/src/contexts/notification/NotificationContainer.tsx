@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { X } from '@phosphor-icons/react';
+import { XIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import { ReactNode, useEffect, useState } from 'react';
 import Button from '@/components/button';
@@ -343,7 +343,7 @@ const NotificationContainer: React.FC<{
                 className={cn('absolute right-2.5 top-2.5 m-0 size-fit max-h-fit min-h-fit min-w-fit max-w-fit rounded-full bg-black/30 p-px hover:bg-black/50', closeButtonClassName)}
                 onClick={() => handleRemove(notification.id)}
               >
-                <X className="size-4" />
+                <XIcon className="size-4" />
               </Button>
             )}
             {notification.autoClose && (

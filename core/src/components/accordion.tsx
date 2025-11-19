@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { CaretDown } from '@phosphor-icons/react';
+import { CaretDownIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React, { ReactNode, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -164,7 +164,7 @@ export const AccordionTrigger: React.FC<IAccordionTrigger> = ({ title, subTitle,
         {subTitle && <p className={`text-neutral-grey text-sm ${subTitleClassName}`}>{subTitle}</p>}
       </div>
     </div>
-    <span className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'} ${iconContainerClassName}`}>{icon ?? <CaretDown />}</span>
+    <span className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'} ${iconContainerClassName}`}>{icon ?? <CaretDownIcon />}</span>
   </div>
 );
 

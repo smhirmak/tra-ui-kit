@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useRef } from 'react';
 import { cva } from 'class-variance-authority';
-import { X } from '@phosphor-icons/react';
+import { XIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import Button from './button';
 
@@ -175,7 +175,7 @@ const Dialog: React.FC<IDialog> = ({
             onClick={onClose}
           >
             <span className="sr-only">Kapat</span>
-            <X className="size-6" aria-hidden="true" />
+            <XIcon className="size-6" aria-hidden="true" />
           </Button>
         </div>
         <div className="mt-3">

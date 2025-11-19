@@ -1,7 +1,7 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { X } from '@phosphor-icons/react';
+import { XIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
@@ -166,7 +166,7 @@ const Drawer: React.FC<IDrawer> = ({
               onClick={onClose}
               className={cn('MsiDialog-closeButton bg-neutral hover:bg-neutral/80', closeButtonClassName)}
             >
-              <X className="size-5" />
+              <XIcon className="size-5" />
             </Button>
           )}
         </div>

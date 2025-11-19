@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { Eye, EyeSlash } from '@phosphor-icons/react';
+import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
 import React from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
@@ -132,8 +132,8 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
           && (
             <Button className="z-3 absolute right-3 bg-transparent text-current hover:bg-transparent" size="icon" type="button" onClick={() => setPasswordVisible(prev => !prev)}>
               {passwordVisible
-                ? <EyeSlash className="size-4 dark:text-gray-400" />
-                : <Eye className="size-4 dark:text-white" />}
+                ? <EyeSlashIcon className="size-4 dark:text-gray-400" />
+                : <EyeIcon className="size-4 dark:text-white" />}
             </Button>
           )}
       </div>

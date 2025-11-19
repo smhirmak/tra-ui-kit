@@ -1,4 +1,4 @@
-import { Plus } from '@phosphor-icons/react';
+import { PlusIcon } from '@phosphor-icons/react';
 import InformationStatus from '@/components/InformationStatus';
 
 const InformationStatusPage = () => (
@@ -18,9 +18,9 @@ const InformationStatusPage = () => (
     </div>
     <p className="mt-2 text-xl">With Custom Icon:</p>
     <div className="mt-2 flex space-x-2">
-      <InformationStatus isHaveIcon icon={<Plus />} title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci impedit." />
-      <InformationStatus type="warning" isHaveIcon icon={<Plus />} title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci impedit." />
-      <InformationStatus type="error" isHaveIcon icon={<Plus />} title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci impedit." />
+      <InformationStatus isHaveIcon icon={<PlusIcon />} title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci impedit." />
+      <InformationStatus type="warning" isHaveIcon icon={<PlusIcon />} title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci impedit." />
+      <InformationStatus type="error" isHaveIcon icon={<PlusIcon />} title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci impedit." />
     </div>
   </div>
 );

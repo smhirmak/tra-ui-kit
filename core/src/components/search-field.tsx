@@ -1,4 +1,4 @@
-import { MagnifyingGlass } from '@phosphor-icons/react';
+import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React from 'react';
 import type { ITextField } from '@/components/text-field';
@@ -52,23 +52,21 @@ const SearchField: React.FC<
     value,
     variant = 'filled',
     ...otherProps
-  }) => {
-    return (
-      <TextField
-        variant={variant}
-        label={label ?? 'Search'}
-        size={size}
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-        type={type}
-        placeholder={placeholder}
-        startIcon={<MagnifyingGlass className={cn(iconVariants({ size, disabled }), iconClassName)} />}
-        borderRadius={borderRadius}
-        alwaysTop
-        {...otherProps}
-      />
-    );
-  };
+  }) => (
+    <TextField
+      variant={variant}
+      label={label ?? 'Search'}
+      size={size}
+      value={value}
+      onChange={onChange}
+      disabled={disabled}
+      type={type}
+      placeholder={placeholder}
+      startIcon={<MagnifyingGlassIcon className={cn(iconVariants({ size, disabled }), iconClassName)} />}
+      borderRadius={borderRadius}
+      alwaysTop
+      {...otherProps}
+    />
+  );
 
 export default SearchField;

@@ -1,4 +1,4 @@
-// import { Check, CloudArrowUp, CloudCheck, X } from '@phosphor-icons/react';
+// import { CheckIcon, CloudArrowUpIcon, CloudCheckIcon, XIcon } from '@phosphor-icons/react';
 // import { useRef, useState, useEffect } from 'react';
 // import { cn } from '@/lib/utils';
 // import { cva } from 'class-variance-authority';

@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { format, Locale, parse } from 'date-fns';
 import { DateRange } from 'react-day-picker';
-import { CalendarBlank } from '@phosphor-icons/react';
+import { CalendarBlankIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import Button from '@/components/button';
 import Calendar from '@/components/Calendar';
@@ -547,7 +547,7 @@ const DatePicker: React.FC<IDatePicker> = ({
           >
             <div className="flex w-full items-center justify-between">
               {getDisplay()}
-              <CalendarBlank className="mx-2 size-5" />
+              <CalendarBlankIcon className="mx-2 size-5" />
             </div>
           </Button>
         </PopoverTrigger>

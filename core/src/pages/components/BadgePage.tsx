@@ -1,4 +1,4 @@
-import { Plus } from '@phosphor-icons/react';
+import { PlusIcon } from '@phosphor-icons/react';
 import Badge from '@/components/Badge';
 import { CustomSyntaxHighlighter } from '../installation';
 
@@ -13,7 +13,7 @@ const BadgePage = () => (
       <Badge color="success" size="sm" />
       <Badge color="tetriary" size="sm" />
       <Badge color="warning" size="sm" />
-      <Badge icon={<Plus className="size-2" />} size="sm" />
+      <Badge icon={<PlusIcon className="size-2" />} size="sm" />
       <Badge text="S" size="sm" className="text-xs" />
     </div>
     <CustomSyntaxHighlighter content='<Badge color="primary" size="sm" />' />
@@ -25,7 +25,7 @@ const BadgePage = () => (
       <Badge color="success" />
       <Badge color="tetriary" />
       <Badge color="warning" />
-      <Badge icon={<Plus />} />
+      <Badge icon={<PlusIcon />} />
       <Badge text="S" />
     </div>
     <CustomSyntaxHighlighter content='<Badge color="primary" />' />
@@ -37,7 +37,7 @@ const BadgePage = () => (
       <Badge color="success" size="lg" />
       <Badge color="tetriary" size="lg" />
       <Badge color="warning" size="lg" />
-      <Badge icon={<Plus />} size="lg" />
+      <Badge icon={<PlusIcon />} size="lg" />
       <Badge text="S" size="lg" />
     </div>
     <CustomSyntaxHighlighter content='<Badge color="primary" size="lg" />' />
@@ -49,7 +49,7 @@ const BadgePage = () => (
       <Badge color="success" text="Text" />
       <Badge color="tetriary" text="Text" />
       <Badge color="warning" text="Text" />
-      <Badge icon={<Plus />} text="Text" />
+      <Badge icon={<PlusIcon />} text="Text" />
     </div>
     <CustomSyntaxHighlighter content='<Badge color="primary" text="Text" />' />
   </div>

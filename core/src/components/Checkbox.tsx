@@ -4,7 +4,7 @@
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
-import { Check, Minus } from '@phosphor-icons/react';
+import { CheckIcon, MinusIcon } from '@phosphor-icons/react';
 import Label from '@/components/label';
 import { cn } from '@/lib/utils';
 
@@ -66,10 +66,10 @@ const Checkbox = React.forwardRef<
           data-checked={checkedValue}
         >
           {(disabled && !checkedValue)
-            ? <Minus className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`} />
+            ? <MinusIcon className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`} />
             : (disabled && checkedValue)
               ? (
-                <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`} />
+                <CheckIcon className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`} />
               )
               : (
                 <>
@@ -77,7 +77,7 @@ const Checkbox = React.forwardRef<
                     <span
                       className={cn('flex items-center justify-center text-current')}
                     >
-                      <Check className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-primary rounded-sm`} />
+                      <CheckIcon className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-primary rounded-sm`} />
                     </span>
                   )}
                 </>

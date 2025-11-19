@@ -1,4 +1,4 @@
-import { Plus } from '@phosphor-icons/react';
+import { PlusIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
 import TextField from '@/components/text-field';
 
@@ -29,8 +29,8 @@ const TextFieldOutlinedPage = () => {
         </div>
         <div className="mb-2 flex space-x-4">
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" tooltip="Tooltip" showRequiredIcon />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" startIcon={<Plus />} />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" endIcon={<Plus />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" startIcon={<PlusIcon />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" endIcon={<PlusIcon />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" size="sm" borderRadius="lg" />
         </div>
       </div>
@@ -45,8 +45,8 @@ const TextFieldOutlinedPage = () => {
         </div>
         <div className="mb-2 flex space-x-4">
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" tooltip="Tooltip" />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" startIcon={<Plus />} />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" endIcon={<Plus />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" startIcon={<PlusIcon />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" endIcon={<PlusIcon />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" label="Label" borderRadius="lg" />
           <TextField value={value} type="password" onChange={e => setValue(e.target.value)} variant="outlined" label="Label" borderRadius="lg" />
           <TextField value={value} type="password" onChange={e => setValue(e.target.value)} variant="outlined" label="Label" />
@@ -63,8 +63,8 @@ const TextFieldOutlinedPage = () => {
         </div>
         <div className="flex space-x-4">
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" tooltip="Tooltip" />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" startIcon={<Plus />} />
-          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" endIcon={<Plus />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" startIcon={<PlusIcon />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" endIcon={<PlusIcon />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" borderRadius="lg" />
           <TextField value={value} type="password" onChange={e => setValue(e.target.value)} variant="outlined" size="lg" label="Label" borderRadius="lg" />
         </div>

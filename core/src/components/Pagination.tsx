@@ -2,7 +2,7 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
-import { CaretLeft, CaretLineLeft, CaretLineRight, CaretRight } from '@phosphor-icons/react';
+import { CaretLeftIcon, CaretLineLeftIcon, CaretLineRightIcon, CaretRightIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import Button, { IButton } from './button';
 import Input from './input';
@@ -132,7 +132,7 @@ const Pagination: React.FC<IPagination> = ({
           aria-label="Go to first page"
           title="Go to first page"
         >
-          {firstPageIcon ?? <CaretLineLeft className={cn(firstPageIconClassName, 'size-5')} />}
+          {firstPageIcon ?? <CaretLineLeftIcon className={cn(firstPageIconClassName, 'size-5')} />}
         </Button>
       )}
       {!hideNavigationArrows && (
@@ -147,7 +147,7 @@ const Pagination: React.FC<IPagination> = ({
           aria-label="Previous page"
           title="Previous page"
         >
-          {previousPageIcon ?? <CaretLeft className={cn(previousPageIconClassName, 'size-5')} />}
+          {previousPageIcon ?? <CaretLeftIcon className={cn(previousPageIconClassName, 'size-5')} />}
         </Button>
       )}
       {(mode === 'simple' && simpleWithoutInput) ? <div className="MsiPagination-simpleWithoutInput text-lg">{`${currentPage} / ${totalPages}`}</div>
@@ -214,7 +214,7 @@ const Pagination: React.FC<IPagination> = ({
           aria-label="Next page"
           title="Next page"
         >
-          {nextPageIcon ?? <CaretRight className={cn(nextPageIconClassName, 'size-5')} />}
+          {nextPageIcon ?? <CaretRightIcon className={cn(nextPageIconClassName, 'size-5')} />}
         </Button>
       )}
       {!hideFirstLastArrows && (
@@ -229,7 +229,7 @@ const Pagination: React.FC<IPagination> = ({
           aria-label="Go to last page"
           title="Go to last page"
         >
-          {lastPageIcon ?? <CaretLineRight className={cn(lastPageIconClassName, 'size-5')} />}
+          {lastPageIcon ?? <CaretLineRightIcon className={cn(lastPageIconClassName, 'size-5')} />}
         </Button>
       )}
     </nav>

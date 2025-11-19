@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CaretUp } from '@phosphor-icons/react';
+import { CaretUpIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 import Button from '@/components/button';
@@ -44,7 +44,7 @@ const BackToTopButton: React.FC<IBackToTopButton> = ({ buttonClassName, containe
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
-  const IconComponent = icon ?? <CaretUp className={cn('w-6 h-6', iconClassName)} />;
+  const IconComponent = icon ?? <CaretUpIcon className={cn('w-6 h-6', iconClassName)} />;
 
   return (
     <div className={cn('fixed bottom-16 right-5 z-50 group hover:animate-bounce', containerClassName)}>

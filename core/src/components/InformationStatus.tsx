@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable no-nested-ternary */
-import { SealCheck, SealWarning } from '@phosphor-icons/react';
+import { SealCheckIcon, SealWarningIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -62,8 +62,8 @@ const InformationStatus: React.FC<IInformationStatus> = ({
     <span className="mt-1">
       {(isHaveIcon || icon) && (
         type === 'success'
-          ? (icon ?? <SealCheck className={cn(iconsStyle())} />) : type === 'warning'
-            ? (icon ?? <SealWarning className={cn(iconsStyle())} />) : type === 'error'
+          ? (icon ?? <SealCheckIcon className={cn(iconsStyle())} />) : type === 'warning'
+            ? (icon ?? <SealWarningIcon className={cn(iconsStyle())} />) : type === 'error'
               ? (icon ?? <SealError className={cn(iconsStyle())} />) : null
       )}
     </span>

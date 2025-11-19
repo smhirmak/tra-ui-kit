@@ -1,6 +1,6 @@
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { githubGist, hybrid } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { Clipboard } from '@phosphor-icons/react';
+import { ClipboardIcon } from '@phosphor-icons/react';
 import Container from '@/components/Container';
 import { useTheme } from '@/contexts/theme/theme-provider';
 import Button from '@/components/button';
@@ -69,7 +69,7 @@ export const CustomSyntaxHighlighter = ({ className, content, hideCopyButton = f
           }}
           className="absolute right-0 top-0 bg-transparent hover:bg-transparent hover:brightness-75"
         >
-          <Clipboard className="size-5" />
+          <ClipboardIcon className="size-5" />
         </Button>
       )}
     </div>

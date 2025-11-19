@@ -1,4 +1,4 @@
-import { Plus } from '@phosphor-icons/react';
+import { PlusIcon } from '@phosphor-icons/react';
 import { Avatar, MultipleAvatarContainer } from '@/components/avatar';
 import Badge from '@/components/Badge';
 import { CustomSyntaxHighlighter } from '../installation';
@@ -71,12 +71,12 @@ const AvatarPage = () => (
       <Avatar variant="rounded" />
       <Avatar variant="rounded" title="Muhammed Semih Irmak" />
       <Avatar variant="rounded" src="/assets/logos/logo.png" />
-      <Avatar variant="rounded" src="/assets/logos/logo.png" badgeContent={<Badge icon={<Plus className="size-4" />} />} />
-      <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-right" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />
-      <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="top-left" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />
-      <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />
+      <Avatar variant="rounded" src="/assets/logos/logo.png" badgeContent={<Badge icon={<PlusIcon className="size-4" />} />} />
+      <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-right" badgeContent={<Badge icon={<PlusIcon className="size-4" />} color="primary" />} />
+      <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="top-left" badgeContent={<Badge icon={<PlusIcon className="size-4" />} color="primary" />} />
+      <Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge icon={<PlusIcon className="size-4" />} color="primary" />} />
     </div>
-    <CustomSyntaxHighlighter content='<Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge icon={<Plus className="size-4" />} color="primary" />} />' />
+    <CustomSyntaxHighlighter content='<Avatar variant="rounded" src="/assets/logos/logo.png" badgePosition="bottom-left" badgeContent={<Badge icon={<PlusIcon className="size-4" />} color="primary" />} />' />
   </div>
 
 );

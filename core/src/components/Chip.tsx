@@ -1,4 +1,4 @@
-import { X } from '@phosphor-icons/react';
+import { XIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -77,7 +77,7 @@ const Chip = React.forwardRef<HTMLButtonElement, IChip>(
           onKeyPress={e => { if (e.key === 'Enter') { e.stopPropagation(); onDelete(id); } }}
           className="hover:bg-primary/50 hover:text-primary-5 ml-1 rounded-full p-0.5"
         >
-          {deleteIcon ?? <X />}
+          {deleteIcon ?? <XIcon />}
         </div>
       )}
     </button>

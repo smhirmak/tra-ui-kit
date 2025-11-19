@@ -1,6 +1,6 @@
-import { Plus } from '@phosphor-icons/react';
-import TextField from '@/components/text-field';
+import { PlusIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
+import TextField from '@/components/text-field';
 
 const TextFieldFilledUnderlinedPage = () => {
   const [value, setValue] = useState('');
@@ -19,8 +19,8 @@ const TextFieldFilledUnderlinedPage = () => {
         </div>
         <div className="mb-2 flex space-x-4">
           <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Tooltip" size="sm" tooltip={['Deneme1', 'Deneme2']} />
-          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" startIcon={<Plus />} />
-          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" endIcon={<Plus />} />
+          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" startIcon={<PlusIcon />} />
+          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" endIcon={<PlusIcon />} />
           <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" borderRadius="lg" />
         </div>
       </div>
@@ -35,8 +35,8 @@ const TextFieldFilledUnderlinedPage = () => {
         </div>
         <div className="mb-2 flex space-x-4">
           <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" tooltip="Tooltip" />
-          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" startIcon={<Plus />} />
-          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" endIcon={<Plus />} />
+          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" startIcon={<PlusIcon />} />
+          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" endIcon={<PlusIcon />} />
           <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} label="Label" borderRadius="lg" />
         </div>
       </div>
@@ -51,8 +51,8 @@ const TextFieldFilledUnderlinedPage = () => {
         </div>
         <div className="flex space-x-4">
           <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" tooltip="Tooltip" />
-          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" startIcon={<Plus />} />
-          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" endIcon={<Plus />} />
+          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" startIcon={<PlusIcon />} />
+          <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" endIcon={<PlusIcon />} />
           <TextField variant="filledUnderlined" value={value} onChange={e => setValue(e.target.value)} size="lg" label="Label" borderRadius="lg" />
         </div>
       </div>

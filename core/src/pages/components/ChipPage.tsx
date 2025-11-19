@@ -1,4 +1,4 @@
-import { Plus } from '@phosphor-icons/react';
+import { PlusIcon } from '@phosphor-icons/react';
 import Chip from '@/components/Chip';
 
 const ChipPage = () => (
@@ -13,14 +13,14 @@ const ChipPage = () => (
         <Chip size="sm" label="TRA" />
         <Chip size="sm" label="TRA" active />
         <Chip size="sm" label="TRA" selected />
-        <Chip size="sm" label="TRA" startIcon={<Plus />} />
-        <Chip size="sm" label="TRA" active startIcon={<Plus />} />
-        <Chip size="sm" label="TRA" selected startIcon={<Plus />} />
+        <Chip size="sm" label="TRA" startIcon={<PlusIcon />} />
+        <Chip size="sm" label="TRA" active startIcon={<PlusIcon />} />
+        <Chip size="sm" label="TRA" selected startIcon={<PlusIcon />} />
       </div>
       <div className="mt-2 flex space-x-2">
-        <Chip size="sm" label="TRA" endIcon={<Plus />} />
-        <Chip size="sm" label="TRA" active endIcon={<Plus />} />
-        <Chip size="sm" label="TRA" selected endIcon={<Plus />} />
+        <Chip size="sm" label="TRA" endIcon={<PlusIcon />} />
+        <Chip size="sm" label="TRA" active endIcon={<PlusIcon />} />
+        <Chip size="sm" label="TRA" selected endIcon={<PlusIcon />} />
         <Chip size="sm" label="TRA" onDelete={() => { }} />
         <Chip size="sm" label="TRA" active onDelete={() => { }} />
         <Chip size="sm" label="TRA" selected onDelete={() => { }} />
@@ -38,14 +38,14 @@ const ChipPage = () => (
         <Chip label="TRA" />
         <Chip label="TRA" active />
         <Chip label="TRA" selected />
-        <Chip label="TRA" startIcon={<Plus />} />
-        <Chip label="TRA" active startIcon={<Plus />} />
-        <Chip label="TRA" selected startIcon={<Plus />} />
-        <Chip label="TRA" endIcon={<Plus />} />
+        <Chip label="TRA" startIcon={<PlusIcon />} />
+        <Chip label="TRA" active startIcon={<PlusIcon />} />
+        <Chip label="TRA" selected startIcon={<PlusIcon />} />
+        <Chip label="TRA" endIcon={<PlusIcon />} />
       </div>
       <div className="mt-2 flex space-x-2">
-        <Chip label="TRA" active endIcon={<Plus />} />
-        <Chip label="TRA" selected endIcon={<Plus />} />
+        <Chip label="TRA" active endIcon={<PlusIcon />} />
+        <Chip label="TRA" selected endIcon={<PlusIcon />} />
         <Chip label="TRA" onDelete={() => { }} />
         <Chip label="TRA" active onDelete={() => { }} />
         <Chip label="TRA" selected onDelete={() => { }} />
@@ -63,14 +63,14 @@ const ChipPage = () => (
         <Chip size="lg" label="TRA" />
         <Chip size="lg" label="TRA" active />
         <Chip size="lg" label="TRA" selected />
-        <Chip size="lg" label="TRA" startIcon={<Plus />} />
-        <Chip size="lg" label="TRA" active startIcon={<Plus />} />
-        <Chip size="lg" label="TRA" selected startIcon={<Plus />} />
-        <Chip size="lg" label="TRA" endIcon={<Plus />} />
+        <Chip size="lg" label="TRA" startIcon={<PlusIcon />} />
+        <Chip size="lg" label="TRA" active startIcon={<PlusIcon />} />
+        <Chip size="lg" label="TRA" selected startIcon={<PlusIcon />} />
+        <Chip size="lg" label="TRA" endIcon={<PlusIcon />} />
       </div>
       <div className="mt-2 flex space-x-2">
-        <Chip size="lg" label="TRA" active endIcon={<Plus />} />
-        <Chip size="lg" label="TRA" selected endIcon={<Plus />} />
+        <Chip size="lg" label="TRA" active endIcon={<PlusIcon />} />
+        <Chip size="lg" label="TRA" selected endIcon={<PlusIcon />} />
         <Chip size="lg" label="TRA" onDelete={() => { }} />
         <Chip size="lg" label="TRA" active onDelete={() => { }} />
         <Chip size="lg" label="TRA" selected onDelete={() => { }} />

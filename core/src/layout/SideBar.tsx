@@ -1,4 +1,4 @@
-import { CaretRight } from '@phosphor-icons/react';
+import { CaretRightIcon } from '@phosphor-icons/react';
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Accordion, AccordionItem } from '@/components/accordion';
@@ -143,7 +143,7 @@ const SideBar = () => {
   return (
     <div className={`sticky left-0 top-0 flex max-h-screen min-h-screen ${open ? 'min-w-36' : 'max-w-16'} bg-background flex-col overflow-y-auto p-4`}>
       <Button className="text-neutral-black self-end overflow-visible bg-transparent hover:bg-transparent" size="icon" disableEffect onClick={() => setOpen(prev => !prev)}>
-        <CaretRight className={`transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
+        <CaretRightIcon className={`transition-transform ${open ? 'rotate-180' : 'rotate-0'}`} />
       </Button>
       {open && (
         <>

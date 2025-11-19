@@ -1,4 +1,4 @@
-import { Plus } from '@phosphor-icons/react';
+import { PlusIcon } from '@phosphor-icons/react';
 import Button from '@/components/button';
 import { CustomSyntaxHighlighter } from '../installation';
 
@@ -8,7 +8,7 @@ const ButtonPage = () => (
     <p className="mt-2 text-xl">Solid - Rounded Default:</p>
     <div className="mt-2 flex flex-col space-y-2">
       <div className="flex space-x-4">
-        <Button size="icon" variant="solid"><Plus /></Button>
+        <Button size="icon" variant="solid"><PlusIcon /></Button>
         <Button size="sm" variant="solid">TRA</Button>
         <Button size="default" variant="solid">TRA</Button>
         <Button size="lg" variant="solid">TRA</Button>
@@ -40,7 +40,7 @@ const ButtonPage = () => (
     <p className="mt-2 text-xl">Solid - Rounded Large:</p>
     <div className="mt-2 flex flex-col space-y-2">
       <div className="flex space-x-4">
-        <Button rounded="lg" size="icon" variant="solid"><Plus /></Button>
+        <Button rounded="lg" size="icon" variant="solid"><PlusIcon /></Button>
         <Button rounded="lg" size="sm" variant="solid">TRA</Button>
         <Button rounded="lg" size="default" variant="solid">TRA</Button>
         <Button rounded="lg" size="lg" variant="solid">TRA</Button>

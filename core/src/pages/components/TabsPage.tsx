@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { Plus, Warning } from '@phosphor-icons/react';
+import { PlusIcon, WarningIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
 import Button from '@/components/button';
 import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
@@ -186,7 +186,7 @@ const TabsPage = () => {
               <Tab
                 label={(
                   <span className="flex items-center">
-                    <Plus />
+                    <PlusIcon />
                     &nbsp;
                     Tab 2
                   </span>
@@ -365,7 +365,7 @@ const TabsPage = () => {
                 label={
                   (
                     <span className="flex w-max gap-2">
-                      <Warning className="text-error size-6" />
+                      <WarningIcon className="text-error size-6" />
                       Tab 1
                     </span>
                   )
@@ -380,7 +380,7 @@ const TabsPage = () => {
                   (
                     <span className="flex w-max gap-2">
                       Tab 2
-                      <Warning className="text-tetriary size-6" />
+                      <WarningIcon className="text-tetriary size-6" />
                     </span>
                   )
                 }
@@ -394,9 +394,9 @@ const TabsPage = () => {
                 label={
                   (
                     <span className="flex w-max gap-2">
-                      <Warning className="text-error size-6" />
+                      <WarningIcon className="text-error size-6" />
                       Tab 3
-                      <Warning className="text-error size-6" />
+                      <WarningIcon className="text-error size-6" />
                     </span>
                   )
                 }
@@ -426,7 +426,7 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Warning className="text-error size-6" />
+                    <WarningIcon className="text-error size-6" />
                     Tab 1
                   </span>
                 )
@@ -441,7 +441,7 @@ const TabsPage = () => {
                 (
                   <span className="flex w-max gap-2">
                     Tab 2
-                    <Warning className="text-tetriary size-6" />
+                    <WarningIcon className="text-tetriary size-6" />
                   </span>
                 )
               }
@@ -455,9 +455,9 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Warning className="text-error size-6" />
+                    <WarningIcon className="text-error size-6" />
                     Tab 3
-                    <Warning className="text-error size-6" />
+                    <WarningIcon className="text-error size-6" />
                   </span>
                 )
               }
@@ -486,7 +486,7 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Warning className="text-error size-6" />
+                    <WarningIcon className="text-error size-6" />
                     Tab 1
                   </span>
                 )
@@ -501,7 +501,7 @@ const TabsPage = () => {
                 (
                   <span className="flex w-max gap-2">
                     Tab 2
-                    <Warning className="text-tetriary size-6" />
+                    <WarningIcon className="text-tetriary size-6" />
                   </span>
                 )
               }
@@ -515,9 +515,9 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Warning className="text-error size-6" />
+                    <WarningIcon className="text-error size-6" />
                     Tab 3
-                    <Warning className="text-error size-6" />
+                    <WarningIcon className="text-error size-6" />
                   </span>
                 )
               }
@@ -546,7 +546,7 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Warning className="text-error size-6" />
+                    <WarningIcon className="text-error size-6" />
                     Tab 1
                   </span>
                 )
@@ -561,7 +561,7 @@ const TabsPage = () => {
                 (
                   <span className="flex w-max gap-2">
                     Tab 2
-                    <Warning className="text-tetriary size-6" />
+                    <WarningIcon className="text-tetriary size-6" />
                   </span>
                 )
               }
@@ -575,9 +575,9 @@ const TabsPage = () => {
               label={
                 (
                   <span className="flex w-max gap-2">
-                    <Warning className="text-error size-6" />
+                    <WarningIcon className="text-error size-6" />
                     Tab 3
-                    <Warning className="text-error size-6" />
+                    <WarningIcon className="text-error size-6" />
                   </span>
                 )
               }
