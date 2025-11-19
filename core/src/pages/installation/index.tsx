@@ -4,7 +4,7 @@ import { ClipboardIcon } from '@phosphor-icons/react';
 import Container from '@/components/container';
 import { useTheme } from '@/contexts/theme/theme-provider';
 import Button from '@/components/button';
-import Notification from '@/components/Notification';
+import Notification from '@/components/notification-1';
 import { cn } from '@/lib/utils';
 
 const installVite = 'npm create vite@latest';

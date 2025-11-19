@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '@/components/button';
 import Dialog from '@/components/dialog';
-import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
+import { RadioGroup, RadioGroupItem } from '@/components/radio-buttons';
 
 const DialogPage = () => {
   const [isOpen, setIsOpen] = useState(false);

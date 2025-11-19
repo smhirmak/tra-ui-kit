@@ -1,4 +1,4 @@
-import Switch from '@/components/Switch';
+import Switch from '@/components/switch-1';
 import { useState } from 'react';
 
 const SwitchPage = () => {

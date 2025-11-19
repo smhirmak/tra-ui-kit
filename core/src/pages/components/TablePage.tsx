@@ -1,4 +1,4 @@
-import { Table, TBody, TD, TH, THead, TR } from '@/components/Table';
+import { Table, TBody, TD, TH, THead, TR } from '@/components/table-1';
 
 const TablePage = () => (
   <Table>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '@/components/button';
 import Drawer from '@/components/drawer';
-import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
+import { RadioGroup, RadioGroupItem } from '@/components/radio-buttons';
 
 const DrawerPage = () => {
   const [isOpen, setIsOpen] = useState(true);

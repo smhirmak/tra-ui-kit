@@ -1,6 +1,6 @@
 import Button from '@/components/button';
-import Notification from '@/components/Notification';
-import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
+import Notification from '@/components/notification-1';
+import { RadioGroup, RadioGroupItem } from '@/components/radio-buttons';
 import { useAppContext } from '@/contexts/app/AppProvider';
 
 const NotificationPage = () => {
