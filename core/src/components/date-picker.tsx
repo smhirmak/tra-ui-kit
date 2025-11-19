@@ -7,7 +7,7 @@ import { DateRange } from 'react-day-picker';
 import { CalendarBlankIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import Button from '@/components/button';
-import Calendar from '@/components/Calendar-1';
+import Calendar from '@/components/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 import Label from './label';
 
