@@ -1,7 +1,7 @@
 import { CaretDoubleLeftIcon, CaretDoubleRightIcon, MinusIcon, PlusIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
 import Button from '@/components/button';
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/pagination';
 
 const PaginationPage = () => {
   const [currentPage, setCurrentPage] = useState(1);

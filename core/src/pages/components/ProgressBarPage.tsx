@@ -1,7 +1,7 @@
 import { MinusIcon, PlusIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
 import Button from '@/components/button';
-import ProgressBar from '@/components/ProgressBar';
+import ProgressBar from '@/components/progress-bar';
 
 const ProgressBarPage = () => {
   const [currentStep, setCurrentStep] = useState(0);

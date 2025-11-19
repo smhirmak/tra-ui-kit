@@ -1,5 +1,5 @@
-import LanguangeSelect from '@/components/LanguangeSelect';
-import ThemeModeToggle from '@/components/ThemeModeToggle';
+import LanguangeSelect from '@/components/languange-select';
+import ThemeModeToggle from '@/components/theme-mode-toggle';
 
 const Header = () => (
   <div className="flex w-full items-center justify-between bg-slate-300">

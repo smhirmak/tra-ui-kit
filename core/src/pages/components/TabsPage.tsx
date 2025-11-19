@@ -2,8 +2,8 @@
 import { PlusIcon, WarningIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
 import Button from '@/components/button';
-import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
-import { Tab, Tabs } from '@/components/Tabs';
+import { RadioGroup, RadioGroupItem } from '@/components/radio-buttons';
+import { Tab, Tabs } from '@/components/tabs';
 
 const TabsPage = () => {
   const [activeTab, setActiveTab] = useState<string>('tab3');

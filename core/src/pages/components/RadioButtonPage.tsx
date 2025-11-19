@@ -1,4 +1,4 @@
-import { RadioGroup, RadioGroupItem } from '@/components/RadioButtons';
+import { RadioGroup, RadioGroupItem } from '@/components/radio-buttons';
 
 const RadioButtonPage = () => (
   <div className="mb-6 border-b-2 pb-6">

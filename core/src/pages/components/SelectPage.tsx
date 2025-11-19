@@ -1,4 +1,4 @@
-import Select from '../../components/Select';
+import Select from '../../components/select';
 
 const options = [
   {

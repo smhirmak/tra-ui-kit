@@ -1,5 +1,5 @@
 import { PlusIcon } from '@phosphor-icons/react';
-import InformationStatus from '@/components/InformationStatus';
+import InformationStatus from '@/components/information-status';
 
 const InformationStatusPage = () => (
   <div className="mb-6 border-b-2 pb-6">

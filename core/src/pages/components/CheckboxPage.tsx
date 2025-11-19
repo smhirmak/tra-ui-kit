@@ -1,4 +1,4 @@
-import Checkbox from '@/components/Checkbox';
+import Checkbox from '@/components/checkbox';
 
 const CheckboxPage = () => (
   <div className="mb-6 border-b-2 pb-6">

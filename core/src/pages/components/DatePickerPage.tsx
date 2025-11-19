@@ -1,5 +1,5 @@
 import { enUS, tr } from 'date-fns/locale';
-import DatePicker from '@/components/DatePicker';
+import DatePicker from '@/components/date-picker';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const DatePickerPage = () => {

@@ -1,7 +1,7 @@
 import { HouseIcon, MinusIcon, PlusIcon } from '@phosphor-icons/react';
 import { ReactNode } from 'react';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
-import Sidebar, { SidebarItem } from '@/components/Sidebar';
+import Sidebar, { SidebarItem } from '@/components/sidebar';
 
 const formatGroupTitle = (title: string) => title.replace(/([a-z])([A-Z])/g, '$1 $2');
 
