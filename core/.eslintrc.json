@@ -65,7 +65,7 @@
       ],
       "implicit-arrow-linebreak": 2, // Biz bu kuralı beside olarak kullanıyoruz. Yani arrowdan sonra gelecek expression arrow un yanında olmalı şeklinde. https://eslint.org/docs/rules/implicit-arrow-linebreak
       "operator-linebreak": 2, // Satır sonlarında operatör olmaması ile ilgili kural
-      "linebreak-style": 0, // Satır sonları stili ile alaklı bir kural. Buna sanırım kendimiz müdahale edemiyoruz. İşletim sistemi ile alakalı bir durum. -- O
+      "linebreak-style": ["error", "unix"], // Satır sonları stili ile alaklı bir kural. Buna sanırım kendimiz müdahale edemiyoruz. İşletim sistemi ile alakalı bir durum. -- O
       "import/no-extraneous-dependencies": 2, // Dependency olarak eklenmemiş bir paket import edilemez. -- 
       "import/prefer-default-export": 2, // Tek bir export olduğunda default kullanılmasını zorunlu tutan kural. https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/prefer-default-export.md
       "react/forbid-prop-types": [
