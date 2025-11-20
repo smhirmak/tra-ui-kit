@@ -143,6 +143,10 @@
         },
         "@utility content-required": {
           "content": "'*'"
+        },
+        "@utility container": {
+          "margin-inline": "auto",
+          "padding": "2rem"
         }
       }
     },

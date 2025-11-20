@@ -9,11 +9,11 @@ export default {
   ],
   theme: {
     container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
+      // center: true,
+      // padding: '2rem',
+      // screens: {
+      //   '2xl': '1400px',
+      // },
     },
     extend: {
       colors: {
@@ -85,10 +85,10 @@ export default {
         },
         background: 'hsl(var(--background))',
       },
-      height: {
-        13: '3.25rem',
-        15: '3.75rem',
-      },
+      // height: {
+      //   13: '3.25rem',
+      //   15: '3.75rem',
+      // },
       minHeight: {
         13: '3.25rem',
         15: '3.75rem',
