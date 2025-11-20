@@ -143,6 +143,10 @@
         },
         "@utility content-required": {
           "content": "'*'"
+        },
+        "@utility container": {
+          "margin-inline": "auto",
+          "padding": "2rem"
         }
       }
     },
@@ -347,6 +351,18 @@
       ],
       "registryDependencies": [
         "@msi/popover"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A dialog component that can be used to display a modal window.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/dialog.tsx",
+          "type": "registry:component"
+        }
       ]
     }
   ]
