@@ -13,7 +13,6 @@ import { XIcon } from '@phosphor-icons/react';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-// --- Context ---
 interface DialogContextProps {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -29,7 +28,6 @@ const useDialog = () => {
   return context;
 };
 
-// --- Root ---
 interface DialogProps {
   children: React.ReactNode;
   open?: boolean;
@@ -64,7 +62,6 @@ const Dialog: React.FC<DialogProps> = ({
   );
 };
 
-// --- Trigger ---
 interface DialogTriggerProps {
   children: React.ReactElement<any>;
   asChild?: boolean;
@@ -81,18 +78,12 @@ const DialogTrigger: React.FC<DialogTriggerProps> = ({ children }) => {
   });
 };
 
-// --- Variants (DÜZELTİLDİ) ---
-// transition-all KALDIRILDI. Artık sadece animate-* sınıfları süreyi yönetiyor.
-
 const overlayVariants = cva(
-  // duration-200 eklendi, transition-all kaldırıldı.
   'fixed inset-0 z-50 bg-black/50 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0'
 );
 
 const contentVariants = cva(
-  // transition-all kaldırıldı. duration-200 eklendi.
-  // slide-out-to-top-[48%] eklendi (Hafif yukarı kayarak kapanma efekti, "zıplama" hissini yok eder)
-  `fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 
+  `fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-4 border-none bg-background p-6 shadow-soft-grey duration-200 
     data-[state=open]:animate-in 
     data-[state=closed]:animate-out 
     data-[state=closed]:fade-out-0 
@@ -120,7 +111,6 @@ const contentVariants = cva(
   }
 );
 
-// --- Content ---
 interface DialogContentProps
   extends React.HTMLAttributes<HTMLDivElement>,
   VariantProps<typeof contentVariants> {
@@ -146,7 +136,6 @@ const DialogContent: React.FC<DialogContentProps> = ({
     if (open) {
       setIsRendered(true);
     } else {
-      // 100ms animasyon süresi
       timeoutId = setTimeout(() => {
         setIsRendered(false);
       }, 150);
@@ -167,7 +156,6 @@ const DialogContent: React.FC<DialogContentProps> = ({
     document.addEventListener('keydown', handleEscape);
 
     return () => {
-      // Sadece render tamamen bittiğinde scroll'u aç
       if (!open) {
         document.body.style.overflow = '';
       }
@@ -208,7 +196,6 @@ const DialogContent: React.FC<DialogContentProps> = ({
   );
 };
 
-// --- Helpers ---
 const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)} {...props} />
 );
