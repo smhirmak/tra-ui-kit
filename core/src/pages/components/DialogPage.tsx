@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Button from '@/components/button';
 import { RadioGroup, RadioGroupItem } from '@/components/radio-buttons';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/dialog';
-import TextField from '@/components/text-field';
 
 const DialogPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,18 +10,11 @@ const DialogPage = () => {
   const [fullScreen, setFullScreen] = useState(false);
   const [scroll, setScroll] = useState<boolean>(true);
 
-  const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
   return (
     <div className="p-4">
-      <Button
-        type="button"
-        onClick={handleOpen}
-      >
-        Open Dialog
-      </Button>
 
-      <Dialog>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
         {/* Trigger: İçine ne koyarsan ona tıklayınca açılır */}
         <DialogTrigger>
           <Button variant="outlined">Profili Düzenle</Button>
