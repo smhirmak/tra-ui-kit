@@ -10,7 +10,6 @@ interface ILoadingSpinner extends React.HTMLAttributes<HTMLDivElement> {
 
 const LoadingSpinner = React.forwardRef<HTMLDivElement, ILoadingSpinner>((props, ref) => {
   const { className, ...rest } = props;
-  // eslint-disable-next-line react/jsx-props-no-spreading
   return <div ref={ref} className={cn(spinnerVariants(), className)} {...rest} />;
 });
 

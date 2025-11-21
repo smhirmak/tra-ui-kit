@@ -90,7 +90,7 @@ const labelStyles = cva('ease-cubic transition-all duration-150', {
   ],
 });
 
-const inputStyles = cva('disabled:bg-input-light p-2 pl-5 transition-colors disabled:shadow-none', {
+const inputStyles = cva('disabled:bg-input-light p-2 pl-5 disabled:shadow-none', {
   variants: {
     variant: {
       filled: '',
@@ -149,7 +149,7 @@ export interface ITextField {
   showRequiredIcon?: boolean;
   size?: 'default' | 'sm' | 'lg';
   startIcon?: React.ReactNode;
-  tooltip?: string | string[];
+  tooltip?: string | Array<string>;
   type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
   value?: string | number;
   variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';

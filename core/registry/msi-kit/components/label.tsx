@@ -91,7 +91,6 @@ const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
     className={cn(labelVariants({ size, variant, outlineFocused }), className)}
     htmlFor={htmlFor}
     id={id}
-    // eslint-disable-next-line react/jsx-props-no-spreading
     {...props}
   >
     <span className="flex items-center gap-1">

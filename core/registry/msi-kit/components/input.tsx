@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import Button from '@/components/button';
 
 export const inputVariants = cva(
-  `focus-visible:border-1 placeholder:text-muted-foreground border-input file:bg-neutral-disabled-text file:text-neutral-black hover:shadow-soft-primary focus-visible:border-primary-focused focus-visible:shadow-hard-primary
+  `focus-visible:border-1 placeholder:text-muted-foreground border-input transition-all file:bg-neutral-disabled-text file:text-neutral-black hover:shadow-soft-primary focus-visible:border-primary-focused focus-visible:shadow-hard-primary
   disabled:text-neutral-grey 
   flex w-full border bg-transparent 
   px-3 py-2 file:mr-2 file:h-fit

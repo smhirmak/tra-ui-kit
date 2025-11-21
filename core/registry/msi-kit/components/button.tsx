@@ -228,13 +228,11 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(
         ref={ref || buttonRef}
         disabled={loading || disabled}
         type={type ?? 'button'}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       >
         {loading && (
           <LoadingSpinner className={cn(spinnerVariants({ size }), loadingSpinnerClassname)} />
         )}
-        {/* eslint-disable-next-line no-nested-ternary */}
         <>{(loading && size !== 'icon') ? (loadingText ?? 'Sending...') : (loading && size === 'icon') ? null : children}</>
       </Comp>
     );

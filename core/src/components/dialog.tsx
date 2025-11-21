@@ -12,6 +12,7 @@ import { cva } from 'class-variance-authority';
 import { XIcon } from '@phosphor-icons/react';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
+import Button from '@/components/button';
 
 interface DialogContextProps {
   open: boolean;
@@ -63,19 +64,31 @@ const Dialog: React.FC<DialogProps> = ({
 };
 
 interface DialogTriggerProps {
-  children: React.ReactElement<any>;
+  children?: React.ReactNode;
   asChild?: boolean;
 }
 
-const DialogTrigger: React.FC<DialogTriggerProps> = ({ children }) => {
+const DialogTrigger: React.FC<DialogTriggerProps> = ({ children, asChild = false }) => {
   const { setOpen } = useDialog();
 
-  return React.cloneElement(children, {
-    onClick: (e: React.MouseEvent) => {
-      children.props.onClick?.(e);
-      setOpen(true);
-    },
-  });
+  if (asChild) {
+    if (!React.isValidElement(children)) {
+      throw new Error('DialogTrigger: when using asChild, children must be a single React element');
+    }
+
+    return React.cloneElement(children as React.ReactElement<any>, {
+      onClick: (e: React.MouseEvent) => {
+        (children as React.ReactElement<any>).props.onClick?.(e);
+        setOpen(true);
+      },
+    });
+  }
+
+  return (
+    <Button onClick={() => setOpen(true)}>
+      {children}
+    </Button>
+  );
 };
 
 const overlayVariants = cva(

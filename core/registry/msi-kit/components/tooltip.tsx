@@ -1,10 +1,10 @@
 import { cva } from 'class-variance-authority';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
 
 interface ITooltip {
-  content: string | string[];
+  content: string | Array<string>
   position?: TooltipPosition;
   children: React.ReactNode;
   delay?: number;
@@ -129,7 +129,7 @@ const Tooltip: React.FC<ITooltip> = ({
       {children}
       {isVisible && (
         <div
-          className={`absolute z-50 max-w-[200px] break-words rounded-md bg-gray-800 px-3 py-2 text-sm text-white shadow-md ${contentClassName}`}
+          className={`absolute z-50 max-w-[200px] wrap-break-word rounded-md bg-gray-800 px-3 py-2 text-sm text-white shadow-md ${contentClassName}`}
           ref={tooltipRef}
           style={tooltipStyle}
         >
