@@ -8,6 +8,15 @@
     "@phosphor-icons/react"
   ],
   "cssVars": {
+    "theme": {
+      "font-sans": "Inter, sans-serif",
+      "shadow-input-hover": "0 0 20px 0 var(--primary-soft)",
+      "shadow-input-focus": "0 0 20px 0 var(--input-focused)",
+      "shadow-soft-grey": "0 0 20px 0 var(--neutral-soft-grey)",
+      "shadow-soft-primary": "0 0 20px 0 var(--primary-soft)",
+      "shadow-hard-grey": "0 0 20px 0 var(--neutral-hard-grey)",
+      "shadow-hard-primary": "0 0 20px 0 var(--primary-hard)"
+    },
     "light": {
       "primary": "221 87% 52%",
       "disabled": "221 40% 76%",
@@ -19,7 +28,7 @@
       "primary-5": "220 100% 98%",
       "background": "0 0% 100%",
       "primary-focused": "221 84% 43%",
-      "primary-soft": "hsla(221, 87%, 52%, 0.08)",
+      "primary-soft": "hsla(221, 87%, 52%, 0.1)",
       "primary-hard": "hsl(221, 87%, 52%, 0.15)",
       "secondary": "15 97% 60%",
       "secondary-light": "15 100% 96%",
@@ -33,6 +42,8 @@
       "neutral-black": "0 0% 12%",
       "neutral-light-black": "0 0% 25%",
       "neutral-grey": "0 0% 60%",
+      "neutral-grey-soft": "hsla(0, 0%, 60%, 0.08)",
+      "neutral-grey-hard": "hsl(0, 0%, 60%, 0.15)",
       "neutral": "0 0% 87%",
       "neutral-disabled-text": "223 12% 89%",
       "neutral-light": "225 14% 95%",
@@ -43,7 +54,8 @@
       "button-text": "0 0% 100%",
       "input": "0 0% 87%",
       "input-light": "225 14% 95%",
-      "input-fill": "0 0% 99%"
+      "input-fill": "0 0% 99%",
+      "input-focused": "221 87% 52%, 0.3"
     },
     "dark": {
       "primary": "221 92% 69%",
@@ -80,7 +92,8 @@
       "button-text": "0 0% 100%",
       "input": "0 0% 46%",
       "input-light": "227 18% 21%",
-      "input-fill": "229 19% 14%"
+      "input-fill": "229 19% 14%",
+      "input-focused": "221 92% 69%, 0.3"
     }
   },
   "css": {
