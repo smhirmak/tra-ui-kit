@@ -377,6 +377,23 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A select component that can be used to display a dropdown list of options.",
+      "registryDependencies": [
+        "@msi/popover",
+        "@msi/label",
+        "@msi/button"
+      ],
+      "files": [
+        {
+          "path": "registry/msi-kit/components/select.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
