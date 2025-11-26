@@ -1,14 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef, useState } from 'react';
 import { CaretDownIcon, CheckIcon, XIcon } from '@phosphor-icons/react';
 import Label from '@/components/label';
 import { cn } from '@/lib/utils';
-import Button from './button';
-import { Popover, PopoverContent, PopoverTrigger } from './popover';
+import Button from '@/components/button';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
 
 interface ISearchInput {
   searchValue: string;
@@ -107,14 +103,14 @@ interface ISelectOption {
 interface ISelect {
   placeHolder?: string;
   size?: 'default' | 'sm' | 'lg';
-  options: ISelectOption[] | ISelectOption;
+  options: Array<ISelectOption> | ISelectOption;
   isMulti?: boolean;
   isSearchable?: boolean;
-  onChange: (e: string | number | string[] | number[] | boolean) => void;
+  onChange: (e: string | number | Array<string> | Array<number> | boolean) => void;
   label?: string;
   disabled?: boolean;
   error?: boolean;
-  defaultValue?: string | number | string[] | number[];
+  defaultValue?: string | number | Array<string> | Array<number>;
   completeButton?: boolean | 'mobile';
   completeButtonText?: string;
   searchInputClassName?: string;
@@ -130,9 +126,9 @@ interface ISelect {
   dropdownItemClassName?: string;
   completeButtonContainerClassName?: string;
   completeButtonClassName?: string;
-  value?: string | number | string[] | number[] | boolean;
+  value?: string | number | Array<string> | Array<number> | boolean;
   id?: string;
-  tooltip?: string | string[];
+  tooltip?: string | Array<string>;
   showRequiredIcon?: boolean;
   dropdownAlign?: 'left' | 'right';
   noOptionsMessage?: string;
@@ -172,7 +168,7 @@ const Select: React.FC<ISelect> = ({
   noOptionsMessage,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
-  const [selectedValue, setSelectedValue] = useState<ISelectOption[] | ISelectOption | null>(isMulti ? [] : null);
+  const [selectedValue, setSelectedValue] = useState<ISelectOption | Array<ISelectOption> | null>(isMulti ? [] : null);
   const [searchValue, setSearchValue] = useState(isSearchable ? '' : null);
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
   const searchRef = useRef<HTMLInputElement>(null);
@@ -193,10 +189,10 @@ const Select: React.FC<ISelect> = ({
   useEffect(() => {
     if (defaultValue) {
       if (isMulti && Array.isArray(defaultValue)) {
-        const defaultOptions = (options as ISelectOption[]).filter(option => (defaultValue as (string | number | boolean)[]).includes(option.value));
+        const defaultOptions = (options as Array<ISelectOption>).filter(option => (defaultValue as Array<string | number | boolean>).includes(option.value));
         setSelectedValue(defaultOptions);
       } else if (!isMulti && !Array.isArray(defaultValue)) {
-        const defaultOption: ISelectOption | undefined = (options as ISelectOption[]).find((option: ISelectOption) => option.value === defaultValue);
+        const defaultOption: ISelectOption | undefined = (options as Array<ISelectOption>).find((option: ISelectOption) => option.value === defaultValue);
         setSelectedValue(defaultOption || null);
       }
     }
@@ -205,10 +201,10 @@ const Select: React.FC<ISelect> = ({
   useEffect(() => {
     if (value !== null && value !== undefined) {
       if (isMulti && Array.isArray(value)) {
-        const selectedOptions = (options as ISelectOption[]).filter(option => (value as (string | number | boolean)[]).includes(option.value));
+        const selectedOptions = (options as Array<ISelectOption>).filter(option => (value as Array<string | number | boolean>).includes(option.value));
         setSelectedValue(selectedOptions);
       } else if (!isMulti && !Array.isArray(value)) {
-        const selectedOption = (options as ISelectOption[]).find(option => option.value === value);
+        const selectedOption = (options as Array<ISelectOption>).find(option => option.value === value);
         setSelectedValue(selectedOption || null);
       }
     } else {
@@ -248,7 +244,7 @@ const Select: React.FC<ISelect> = ({
     }
   };
 
-  const removeOption = (option: ISelectOption): ISelectOption[] | null => (
+  const removeOption = (option: ISelectOption): Array<ISelectOption> | null => (
     selectedValue && Array.isArray(selectedValue) ? selectedValue.filter(o => o.value !== option.value) : null
   );
 
@@ -264,7 +260,7 @@ const Select: React.FC<ISelect> = ({
   };
 
   const onItemClick = (option: ISelectOption): void => {
-    let newValue: ISelectOption[] | ISelectOption | null;
+    let newValue: Array<ISelectOption> | ISelectOption | null;
     if (isMulti) {
       if (selectedValue && Array.isArray(selectedValue) && selectedValue.findIndex(o => o.value === option.value) >= 0) {
         newValue = removeOption(option);
@@ -309,7 +305,7 @@ const Select: React.FC<ISelect> = ({
         break;
       case 'Enter':
         if (highlightedIndex >= 0 && Array.isArray(optionList) && highlightedIndex < optionList.length) {
-          onItemClick((optionList as ISelectOption[])[highlightedIndex]);
+          onItemClick(optionList[highlightedIndex]);
         }
         break;
       case 'Escape':
@@ -403,9 +399,9 @@ const Select: React.FC<ISelect> = ({
 
   const isSelected = (option: ISelectOption): boolean => {
     if (isMulti) {
-      return (selectedValue as ISelectOption[])?.some(o => o?.value === option?.value);
+      return (selectedValue as Array<ISelectOption>).some(o => o.value === option.value);
     }
-    return selectedValue ? (selectedValue as ISelectOption)?.value === option?.value : false;
+    return selectedValue ? (selectedValue as ISelectOption).value === option.value : false;
   };
 
   const getTextFromSelectedItem = (item: any): string => {
