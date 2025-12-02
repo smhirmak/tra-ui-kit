@@ -157,6 +157,7 @@ export interface ITextField {
   helperText?: string;
   textarea?: boolean;
   className?: string;
+  fieldClassName?: string;
 }
 
 const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
@@ -185,6 +186,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   maxLength,
   helperText,
   textarea,
+  fieldClassName,
   ...otherProps
 }, ref) => {
   const [inputFocused, setInputFocused] = useState(false);
@@ -236,7 +238,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         {...otherProps}
       />
       {variant === 'outlined' && (
-        <fieldset disabled={disabled} className={cn(fieldsetStyles({ inputFocused, error, borderRadius, size }))}>
+        <fieldset disabled={disabled} className={cn(fieldsetStyles({ inputFocused, error, borderRadius, size }), fieldClassName)}>
           <legend className={`float-[unset] invisible block h-0 w-fit overflow-hidden p-0 text-base ${(inputFocused || !!value || Boolean(inputRef.current?.value)) && 'px-2'}`}>
             {(inputFocused || !!value || Boolean(inputRef.current?.value)) ? (
               <span>

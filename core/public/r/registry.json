@@ -394,6 +394,18 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "title": "Progress Bar",
+      "description": "A progress bar component that can be used to display the progress of a task.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/progress-bar.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
