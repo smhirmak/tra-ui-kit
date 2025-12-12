@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/msi-kit/utils/utils.ts",
-      "content": "import {  clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\nimport type {ClassValue} from 'clsx';\n\nexport function cn(...inputs: Array<ClassValue>) {\n  return twMerge(clsx(inputs));\n}\n",
+      "content": "import {  clsx } from 'clsx';\r\nimport { twMerge } from 'tailwind-merge';\r\nimport type {ClassValue} from 'clsx';\r\n\r\nexport function cn(...inputs: Array<ClassValue>) {\r\n  return twMerge(clsx(inputs));\r\n}\r\n",
       "type": "registry:lib"
     }
   ]

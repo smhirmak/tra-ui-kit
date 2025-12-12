@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar",
+  "type": "registry:ui",
+  "title": "Calendar",
+  "description": "A calendar component that can be used to select dates.",
+  "registryDependencies": [
+    "@msi/button"
+  ],
+  "files": [
+    {
+      "path": "registry/msi-kit/components/calendar.tsx",
+      "content": "/* eslint-disable react/jsx-props-no-spreading */\r\n/* eslint-disable @typescript-eslint/no-explicit-any */\r\nimport { DayPicker, DayPickerProps } from 'react-day-picker';\r\nimport { cn } from '@/lib/utils';\r\nimport { buttonVariants } from './button';\r\n\r\nexport type CalendarProps = DayPickerProps & {\r\n  className?: string;\r\n};\r\n\r\nconst Calendar = ({\r\n  className,\r\n  classNames,\r\n  showOutsideDays = true,\r\n  id,\r\n  locale,\r\n  ...props\r\n}: CalendarProps) => (\r\n  <DayPicker\r\n    locale={locale}\r\n    id={id}\r\n    showOutsideDays={showOutsideDays}\r\n    captionLayout=\"dropdown\"\r\n    className={cn('p-3', className)}\r\n    classNames={{\r\n      nav: 'flex items-start justify-between dark:fill-neutral-black mb-3',\r\n      chevron: 'hover:opacity-100 opacity-60 transition-opacity',\r\n      hidden: 'hidden',\r\n      caption_dropdowns: 'flex justify-between items-center w-full',\r\n      dropdown: 'bg-transparent',\r\n      years_dropdown: 'border border border-input rounded-lg px-5 py-2 [&>option]:bg-background',\r\n      months_dropdown: '[&>option]:bg-background',\r\n      dropdowns: 'flex justify-between items-center w-full px-1',\r\n      weekdays: 'flex justify-between px-2.5',\r\n      weekday: 'font-medium text-sm',\r\n      months: 'flex flex-col space-y-4 sm:space-x-4 sm:space-y-0',\r\n      month: 'space-y-4',\r\n      caption_label: 'hidden',\r\n      row: 'flex w-full mt-2',\r\n      day_button: 'h-9 w-9',\r\n      day: cn(\r\n        buttonVariants({ variant: 'ghost', size: 'sm' }),\r\n        `h-9 w-9 text-center text-neutral-black text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-range-end)]:rounded-l-none\r\n           [&:has([aria-selected].day-range-start)]:rounded-r-md [&:has([aria-selected].day-range-start)]:rounded-r-none [&:has([aria-selected].day-outside)]:bg-primary/50\r\n           [&:has([aria-selected])]:rounded-md [&:has([aria-selected])]:bg-primary first:[&:has([aria-selected])]:rounded-l-md\r\n           last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20`,\r\n      ),\r\n      selected:\r\n        '!bg-primary !text-neutral-white hover:brightness-110 hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',\r\n      today: 'bg-primary text-accent-foreground',\r\n\r\n      outside:\r\n        'day-outside text-neutral-grey aria-selected:bg-primary/50 aria-selected:text-muted-foreground',\r\n      disabled: '!text-neutral',\r\n      range_start: 'day-range-start rounded-l-md rounded-r-none',\r\n      range_middle:\r\n        'rounded-none',\r\n      range_end: 'day-range-end rounded-r-md rounded-l-none',\r\n      day_hidden: 'invisible',\r\n      ...classNames,\r\n    }}\r\n    {...props}\r\n  />\r\n);\r\n\r\nexport default Calendar;\r\n",
+      "type": "registry:component"
+    }
+  ]
+}

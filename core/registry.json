@@ -234,6 +234,57 @@
       ]
     },
     {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "An accordion component that can be used to display collapsible content.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/accordion.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "An avatar component that can be used to display user profile pictures.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/avatar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "back-to-top-button",
+      "type": "registry:ui",
+      "title": "Back to Top Button",
+      "description": "A back to top button component that can be used to quickly scroll to the top of the page.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/back-to-top-button.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/button"
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Back to Top Button",
+      "description": "A back to top button component that can be used to quickly scroll to the top of the page.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/back-to-top-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
@@ -249,6 +300,60 @@
       ],
       "registryDependencies": [
         "@msi/loading-spinner"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A calendar component that can be used to select dates.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/calendar.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/button"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A checkbox component that can be used to select options.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/checkbox.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/label"
+      ]
+    },
+    {
+      "name": "chip",
+      "type": "registry:ui",
+      "title": "Chip",
+      "description": "A chip component that can be used to display small blocks of information.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/chip.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "container",
+      "type": "registry:ui",
+      "title": "Container",
+      "description": "A container component that can be used to contain and center content.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/container.tsx",
+          "type": "registry:component"
+        }
       ]
     },
     {
