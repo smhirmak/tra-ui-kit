@@ -518,34 +518,55 @@
       ]
     },
     {
-      "name": "tooltip",
+      "name": "pagination",
       "type": "registry:ui",
-      "title": "Tooltip",
-      "description": "A tooltip component that can be used to display additional information.",
+      "title": "Pagination",
+      "description": "A pagination component that can be used to navigate through pages.",
       "files": [
         {
-          "path": "registry/msi-kit/components/tooltip.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
-    },
-    {
-      "name": "text-field",
-      "type": "registry:ui",
-      "title": "Text Field",
-      "description": "A text field component that can be used to enter text.",
-      "files": [
-        {
-          "path": "registry/msi-kit/components/text-field.tsx",
+          "path": "registry/msi-kit/components/pagination.tsx",
           "type": "registry:component"
         }
       ],
       "registryDependencies": [
-        "@msi/input",
+        "@msi/button",
         "@msi/label"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "A popover component that can be used to display additional information.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/popover.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "title": "Progress Bar",
+      "description": "A progress bar component that can be used to display the progress of a task.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/progress-bar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "radio-buttons",
+      "type": "registry:ui",
+      "title": "Radio Buttons",
+      "description": "A radio buttons component that can be used to select one option from a set.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/radio-buttons.tsx",
+          "type": "registry:component"
+        }
       ]
     },
     {
@@ -561,18 +582,6 @@
       ],
       "registryDependencies": [
         "@msi/text-field"
-      ]
-    },
-    {
-      "name": "popover",
-      "type": "registry:ui",
-      "title": "Popover",
-      "description": "A popover component that can be used to display additional information.",
-      "files": [
-        {
-          "path": "registry/msi-kit/components/popover.tsx",
-          "type": "registry:component"
-        }
       ]
     },
     {
@@ -593,15 +602,112 @@
       ]
     },
     {
-      "name": "progress-bar",
+      "name": "sidebar",
       "type": "registry:ui",
-      "title": "Progress Bar",
-      "description": "A progress bar component that can be used to display the progress of a task.",
+      "title": "Sidebar",
+      "description": "A sidebar component that can be used to display a navigation menu.",
       "files": [
         {
-          "path": "registry/msi-kit/components/progress-bar.tsx",
+          "path": "registry/msi-kit/components/sidebar.tsx",
           "type": "registry:component"
         }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "A skeleton component that can be used to display loading placeholders.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/skeleton.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A switch component that can be used to toggle between two states.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/switch.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/label"
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "A table component that can be used to display data in a tabular format.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/table.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A tabs component that can be used to switch between different views or sections.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/tabs.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "text-field",
+      "type": "registry:ui",
+      "title": "Text Field",
+      "description": "A text field component that can be used to enter text.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/text-field.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/input",
+        "@msi/label"
+      ]
+    },
+    {
+      "name": "theme-mode-toggle",
+      "type": "registry:ui",
+      "title": "Theme Mode Toggle",
+      "description": "A theme mode toggle component that can be used to switch between light and dark modes.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/theme-mode-toggle.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/button"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A tooltip component that can be used to display additional information.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/tooltip.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ]
     }
   ]

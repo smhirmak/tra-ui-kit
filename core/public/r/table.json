@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "type": "registry:ui",
+  "title": "Table",
+  "description": "A table component that can be used to display data in a tabular format.",
+  "files": [
+    {
+      "path": "registry/msi-kit/components/table.tsx",
+      "content": "/* eslint-disable react/jsx-props-no-spreading */\nimport { HTMLProps, ReactNode } from 'react';\nimport { cn } from '@/lib/utils';\n\ntype ITable = HTMLProps<HTMLTableElement> & {\n  children: ReactNode;\n  className?: string;\n};\n\ntype IThead = HTMLProps<HTMLTableSectionElement> & {\n  children: ReactNode;\n  className?: string;\n};\n\ntype ITbody = HTMLProps<HTMLTableSectionElement> & {\n  children: ReactNode;\n  className?: string;\n};\n\ntype ITr = HTMLProps<HTMLTableRowElement> & {\n  children: ReactNode;\n  className?: string;\n};\n\ntype ITh = HTMLProps<HTMLTableCellElement> & {\n  children: ReactNode;\n  className?: string;\n};\n\ntype ITd = HTMLProps<HTMLTableCellElement> & {\n  children: ReactNode;\n  className?: string;\n};\n\nexport const Table = ({ children, className, ...otherProps }: ITable) => (\n  <table className={cn(className, 'MsiTable-table shadow-soft-primary')} {...otherProps}>{children}</table>\n);\n\nexport const THead = ({ children, className, ...otherProps }: IThead) => (\n  <thead className={cn(className, 'MsiTable-thead bg-primary-15')} {...otherProps}>{children}</thead>\n);\n\nexport const TBody = ({ children, className, ...otherProps }: ITbody) => (\n  <tbody className={cn(className, 'MsiTable-tbody')} {...otherProps}>{children}</tbody>\n);\n\nexport const TR = ({ children, className, ...otherProps }: ITr) => (\n  <tr className={cn(className, 'MsiTable-tr transition-all hover:bg-primary-5')} {...otherProps}>{children}</tr>\n);\n\nexport const TH = ({ children, className, ...otherProps }: ITh) => (\n  <th className={cn(className, 'MsiTable-th p-4 text-sm')} {...otherProps}>{children}</th>\n);\n\nexport const TD = ({ children, className, ...otherProps }: ITd) => (\n  <td className={cn(className, 'MsiTable-td p-4 text-sm')} {...otherProps}>{children}</td>\n);\n",
+      "type": "registry:component"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "A skeleton component that can be used to display loading placeholders.",
+  "files": [
+    {
+      "path": "registry/msi-kit/components/skeleton.tsx",
+      "content": "import { cva } from 'class-variance-authority';\nimport React from 'react';\nimport { cn } from '@/lib/utils';\n\nconst skeletonVariants = cva('h-4 w-full rounded-md bg-gray-500', {\n  variants: {\n    animation: {\n      true: 'animate-pulse',\n      false: '',\n\n    },\n  },\n});\n\ninterface ISkeleton {\n  className?: string;\n  animation?: boolean;\n}\n\nconst Skeleton: React.FC<ISkeleton> = ({\n  className = '',\n  animation = true,\n}) => (\n  <div\n    className={cn(skeletonVariants({ animation }), className)}\n  />\n);\n\nexport default Skeleton;\n",
+      "type": "registry:component"
+    }
+  ]
+}
