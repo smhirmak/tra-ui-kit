@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loader",
+  "type": "registry:ui",
+  "title": "Loader",
+  "description": "A loader component that can be used to indicate loading state.",
+  "registryDependencies": [
+    "@msi/loading-spinner",
+    "@msi/loading-linear"
+  ],
+  "files": [
+    {
+      "path": "registry/msi-kit/components/loader.tsx",
+      "content": "import { createRef, useEffect, useImperativeHandle, useState } from 'react';\nimport LoadingSpinner from '@/components/loading-spinner';\nimport LoadingLinear from '@/components/loading-linear';\n\nexport type LoaderRefType = {\n  incLoader: () => void;\n  decLoader: () => void;\n};\n\nexport const loaderRef = createRef<LoaderRefType>();\n\ninterface ILoader {\n  className?: string;\n  enableScroll?: boolean;\n  linearItemClassName?: string;\n  variant?: 'circular' | 'linear';\n}\n\nconst Loader: React.FC<ILoader> = ({ className, enableScroll = false, linearItemClassName, variant = 'circular' }) => {\n  const [counter, setCounter] = useState(0);\n  const incLoader = () => {\n    setCounter(x => x + 1);\n  };\n\n  const decLoader = () => {\n    setCounter(x => x - 1);\n  };\n\n  useImperativeHandle(loaderRef, () => ({\n    incLoader,\n    decLoader,\n  }), []);\n\n  // loader çıktığı zaman kullanıcı ekranda gezinememesi için scroll iptal edildi tercihe göre değiştirilebilir.\n  useEffect(() => {\n    if (!enableScroll) {\n      if (counter > 0) {\n        document.body.classList.add('overflow-hidden');\n      } else {\n        document.body.classList.remove('overflow-auto');\n      }\n    } else {\n      document.body.classList.remove('overflow-hidden');\n    }\n  }, [counter, enableScroll]);\n\n  return (\n    counter > 0 && (\n      // eslint-disable-next-line react/jsx-no-useless-fragment\n      <>\n        {variant === 'circular'\n          ? (\n            <div className=\"z-9999 fixed left-0 top-0 flex h-screen w-screen items-center justify-center backdrop-brightness-50 dark:backdrop-brightness-75\">\n              <LoadingSpinner className={className} />\n            </div>\n          )\n          : (\n            <div className=\"z-9999 fixed left-0 top-0 h-screen w-screen backdrop-brightness-50 dark:backdrop-brightness-75\">\n              <LoadingLinear linearContainerClassName={className} linearItemClassName={linearItemClassName} />\n            </div>\n          )}\n      </>\n    )\n  );\n};\n\nexport default Loader;\n",
+      "type": "registry:component"
+    }
+  ]
+}

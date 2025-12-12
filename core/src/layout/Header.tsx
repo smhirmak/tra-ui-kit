@@ -1,4 +1,4 @@
-import LanguangeSelect from '@/components/languange-select';
+import LanguangeSelect from '@/components/language-select';
 import ThemeModeToggle from '@/components/theme-mode-toggle';
 
 const Header = () => (

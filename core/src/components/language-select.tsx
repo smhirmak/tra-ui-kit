@@ -1,4 +1,3 @@
-import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import Select from './select';
 
 const countries = [
@@ -22,11 +21,10 @@ const countries = [
 
 interface ILanguangeSelect {
   className?: string;
+  setLocale: (locale: string) => void;
 }
 
-const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className }) => {
-  const { setLocale } = useLocalizeContext();
-
+const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className, setLocale }) => {
   const handleChange = (event: string | string[] | number | number[] | boolean) => {
     const localeLang: string = countries?.find(f => f?.value === event)?.value ?? '';
     localStorage.setItem('lang', localeLang);

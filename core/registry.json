@@ -357,13 +357,77 @@
       ]
     },
     {
-      "name": "loading-spinner",
+      "name": "date-picker",
       "type": "registry:ui",
-      "title": "Loading Spinner",
-      "description": "A loading spinner component that can be used to indicate loading state.",
+      "title": "Date Picker",
+      "description": "A date picker component that can be used to select dates.",
       "files": [
         {
-          "path": "registry/msi-kit/components/loading-spinner.tsx",
+          "path": "registry/msi-kit/components/date-picker.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "dependencies": [
+        "date-fns",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "@msi/button",
+        "@msi/calendar",
+        "@msi/label",
+        "@msi/popover"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A dialog component that can be used to display a modal window.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/dialog.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A drawer component that can be used to display a modal window.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/drawer.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/button"
+      ]
+    },
+    {
+      "name": "dropdown",
+      "type": "registry:ui",
+      "title": "Dropdown",
+      "description": "A dropdown component that can be used to display a list of options.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/dropdown.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/popover"
+      ]
+    },
+    {
+      "name": "information-status",
+      "type": "registry:ui",
+      "title": "Information Status",
+      "description": "An information status component that can be used to display status messages.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/information-status.tsx",
           "type": "registry:component"
         }
       ]
@@ -396,6 +460,61 @@
       ],
       "registryDependencies": [
         "@msi/tooltip"
+      ]
+    },
+    {
+      "name": "language-select",
+      "type": "registry:ui",
+      "title": "Language Select",
+      "description": "A language select component that can be used to select a language.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/language-select.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/select"
+      ]
+    },
+    {
+      "name": "loader",
+      "type": "registry:ui",
+      "title": "Loader",
+      "description": "A loader component that can be used to indicate loading state.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/loader.tsx",
+          "type": "registry:component"
+        }
+      ],
+      "registryDependencies": [
+        "@msi/loading-spinner",
+        "@msi/loading-linear"
+      ]
+    },
+    {
+      "name": "loading-linear",
+      "type": "registry:ui",
+      "title": "Loading Linear",
+      "description": "A loading linear component that can be used to indicate loading state.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/loading-linear.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "loading-spinner",
+      "type": "registry:ui",
+      "title": "Loading Spinner",
+      "description": "A loading spinner component that can be used to indicate loading state.",
+      "files": [
+        {
+          "path": "registry/msi-kit/components/loading-spinner.tsx",
+          "type": "registry:component"
+        }
       ]
     },
     {
@@ -452,33 +571,6 @@
       "files": [
         {
           "path": "registry/msi-kit/components/popover.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "dropdown",
-      "type": "registry:ui",
-      "title": "Dropdown",
-      "description": "A dropdown component that can be used to display a list of options.",
-      "files": [
-        {
-          "path": "registry/msi-kit/components/dropdown.tsx",
-          "type": "registry:component"
-        }
-      ],
-      "registryDependencies": [
-        "@msi/popover"
-      ]
-    },
-    {
-      "name": "dialog",
-      "type": "registry:ui",
-      "title": "Dialog",
-      "description": "A dialog component that can be used to display a modal window.",
-      "files": [
-        {
-          "path": "registry/msi-kit/components/dialog.tsx",
           "type": "registry:component"
         }
       ]

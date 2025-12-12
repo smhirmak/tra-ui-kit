@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import LanguangeSelect from '../languange-select';
+import LanguangeSelect from '../language-select';
 
 // Mock LocalizeContext
 const mockSetLocale = vi.fn();
