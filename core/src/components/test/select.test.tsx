@@ -29,9 +29,9 @@ describe('Select Component', () => {
   describe('Options Display', () => {
     it('should show options when clicked', async () => {
       render(<Select options={mockOptions} />);
-      
+
       fireEvent.click(screen.getByText('Select...'));
-      
+
       await waitFor(() => {
         expect(screen.getByText('Option 1')).toBeInTheDocument();
       });
@@ -42,13 +42,13 @@ describe('Select Component', () => {
     it('should call onChange when option is selected', async () => {
       const onChange = vi.fn();
       render(<Select options={mockOptions} onChange={onChange} />);
-      
+
       fireEvent.click(screen.getByText('Select...'));
-      
+
       await waitFor(() => {
         expect(screen.getByText('Option 1')).toBeInTheDocument();
       });
-      
+
       fireEvent.click(screen.getByText('Option 1'));
       expect(onChange).toHaveBeenCalledWith('1');
     });
@@ -68,9 +68,9 @@ describe('Select Component', () => {
 
     it('should not open when disabled', () => {
       render(<Select options={mockOptions} disabled />);
-      
+
       fireEvent.click(screen.getByText('Select...'));
-      
+
       expect(screen.queryByText('Option 1')).not.toBeInTheDocument();
     });
   });

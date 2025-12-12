@@ -33,7 +33,7 @@ describe('SearchField Component', () => {
     it('should update value when typing', () => {
       const { rerender } = render(<SearchField value="" onChange={vi.fn()} />);
       const input = screen.getByRole('textbox') as HTMLInputElement;
-      
+
       rerender(<SearchField value="query" onChange={vi.fn()} />);
       expect(input.value).toBe('query');
     });

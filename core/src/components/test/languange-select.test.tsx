@@ -48,7 +48,7 @@ describe('LanguangeSelect Component', () => {
   describe('Language Selection', () => {
     it('should call setLocale when selecting TR', async () => {
       render(<LanguangeSelect />);
-      
+
       const trButton = screen.getByText('TR');
       fireEvent.click(trButton);
 
@@ -59,7 +59,7 @@ describe('LanguangeSelect Component', () => {
 
     it('should call setLocale when selecting EN', async () => {
       render(<LanguangeSelect />);
-      
+
       const enButton = screen.getByText('EN');
       fireEvent.click(enButton);
 
@@ -70,7 +70,7 @@ describe('LanguangeSelect Component', () => {
 
     it('should save selected language to localStorage', async () => {
       render(<LanguangeSelect />);
-      
+
       const trButton = screen.getByText('TR');
       fireEvent.click(trButton);
 
@@ -84,13 +84,13 @@ describe('LanguangeSelect Component', () => {
     it('should use localStorage value as default if available', () => {
       localStorage.setItem('lang', 'en');
       render(<LanguangeSelect />);
-      
+
       expect(screen.getByTestId('default-value')).toHaveTextContent('en');
     });
 
     it('should use undefined as default if localStorage is empty', () => {
       render(<LanguangeSelect />);
-      
+
       const defaultValue = screen.getByTestId('default-value');
       expect(defaultValue.textContent).toBe('');
     });

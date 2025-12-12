@@ -46,9 +46,9 @@ describe('ThemeModeToggle Component', () => {
     it('should call setTheme when clicked', () => {
       const { container } = render(<ThemeModeToggle />);
       const button = container.querySelector('button') as HTMLElement;
-      
+
       fireEvent.click(button);
-      
+
       expect(mockSetTheme).toHaveBeenCalledTimes(1);
     });
 
@@ -56,9 +56,9 @@ describe('ThemeModeToggle Component', () => {
       currentTheme = 'light';
       const { container } = render(<ThemeModeToggle />);
       const button = container.querySelector('button') as HTMLElement;
-      
+
       fireEvent.click(button);
-      
+
       expect(mockSetTheme).toHaveBeenCalledWith('dark');
     });
 
@@ -66,9 +66,9 @@ describe('ThemeModeToggle Component', () => {
       currentTheme = 'dark';
       const { container } = render(<ThemeModeToggle />);
       const button = container.querySelector('button') as HTMLElement;
-      
+
       fireEvent.click(button);
-      
+
       expect(mockSetTheme).toHaveBeenCalledWith('light');
     });
   });
