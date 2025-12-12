@@ -189,10 +189,6 @@ const Tabs: React.FC<ITabs> = ({ activeTab, variant = 'default', onChange, class
   const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>({});
   const tabsRef = useRef<HTMLDivElement>(null);
 
-  const labels = React.Children.toArray(children)
-    .filter((child): child is React.ReactElement<ITab> => React.isValidElement<ITab>(child))
-    .map(child => child.props.label);
-
   useEffect(() => {
     const activeTabElement = tabsRef.current?.querySelector('.active-tab') as HTMLButtonElement;
 
@@ -205,7 +201,7 @@ const Tabs: React.FC<ITabs> = ({ activeTab, variant = 'default', onChange, class
       };
       setIndicatorStyle(newIndicatorStyle);
     }
-  }, [activeTab, direction, contentPlacement, labels]);
+  }, [activeTab, direction, variant]);
 
   const handleTabClick = (value: string) => {
     if (onChange) onChange(value);
