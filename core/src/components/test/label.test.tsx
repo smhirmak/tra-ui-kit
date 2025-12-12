@@ -30,14 +30,14 @@ describe('Label Component', () => {
   });
 
   describe('Required Indicator', () => {
-    it('should show required asterisk when required is true', () => {
-      render(<Label required>Required Field</Label>);
+    it('should show required icon when showRequiredIcon is true', () => {
+      render(<Label showRequiredIcon>Required Field</Label>);
       expect(screen.getByText('Required Field')).toBeInTheDocument();
       // Component should render required indicator
     });
 
-    it('should not show asterisk when required is false', () => {
-      render(<Label required={false}>Optional Field</Label>);
+    it('should not show icon when showRequiredIcon is false', () => {
+      render(<Label showRequiredIcon={false}>Optional Field</Label>);
       expect(screen.getByText('Optional Field')).toBeInTheDocument();
     });
   });

@@ -1,19 +1,31 @@
 /* eslint-disable react/button-has-type */
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import Popover from '../popover';
+import { Popover, PopoverTrigger, PopoverContent } from '../popover';
 
 describe('Popover Component', () => {
   describe('Basic Rendering', () => {
     it('should render trigger element', () => {
-      render(<Popover trigger={<button>Open Popover</button>}>Content</Popover>);
+      render(
+        <Popover>
+          <PopoverTrigger>
+            <button>Open Popover</button>
+          </PopoverTrigger>
+          <PopoverContent>Content</PopoverContent>
+        </Popover>,
+      );
       expect(screen.getByText('Open Popover')).toBeInTheDocument();
     });
 
     it('should render without crashing', () => {
       const { container } = render(
-        <Popover trigger={<button>Trigger</button>}>
-          <div>Popover content</div>
+        <Popover>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <div>Popover content</div>
+          </PopoverContent>
         </Popover>,
       );
       expect(container.firstChild).toBeInTheDocument();
@@ -23,8 +35,13 @@ describe('Popover Component', () => {
   describe('Content Display', () => {
     it('should show content when trigger is clicked', async () => {
       render(
-        <Popover trigger={<button>Click me</button>}>
-          <div>Popover content</div>
+        <Popover>
+          <PopoverTrigger>
+            <button>Click me</button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <div>Popover content</div>
+          </PopoverContent>
         </Popover>,
       );
 
@@ -37,19 +54,25 @@ describe('Popover Component', () => {
   });
 
   describe('Alignment', () => {
-    it('should accept align prop', () => {
+    it('should accept dropdownAlign prop', () => {
       render(
-        <Popover trigger={<button>Trigger</button>} align="start">
-          Content
+        <Popover dropdownAlign="right">
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverContent>Content</PopoverContent>
         </Popover>,
       );
       expect(screen.getByText('Trigger')).toBeInTheDocument();
     });
 
-    it('should accept side prop', () => {
+    it('should render with left alignment', () => {
       render(
-        <Popover trigger={<button>Trigger</button>} side="top">
-          Content
+        <Popover dropdownAlign="left">
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverContent>Content</PopoverContent>
         </Popover>,
       );
       expect(screen.getByText('Trigger')).toBeInTheDocument();
@@ -59,18 +82,24 @@ describe('Popover Component', () => {
   describe('Custom Styling', () => {
     it('should apply custom className to trigger', () => {
       render(
-        <Popover trigger={<button className="custom-trigger">Trigger</button>}>
-          Content
+        <Popover>
+          <PopoverTrigger className="custom-trigger">
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverContent>Content</PopoverContent>
         </Popover>,
       );
-      const button = screen.getByText('Trigger');
-      expect(button).toHaveClass('custom-trigger');
+      const triggerDiv = screen.getByText('Trigger').closest('div[data-state]');
+      expect(triggerDiv).toHaveClass('custom-trigger');
     });
 
     it('should apply custom contentClassName', () => {
       const { container } = render(
-        <Popover trigger={<button>Trigger</button>} contentClassName="custom-content">
-          Content
+        <Popover>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverContent className="custom-content">Content</PopoverContent>
         </Popover>,
       );
       expect(container.firstChild).toBeInTheDocument();
@@ -81,8 +110,11 @@ describe('Popover Component', () => {
     it('should close when clicking outside', async () => {
       render(
         <div>
-          <Popover trigger={<button>Open</button>}>
-            Content
+          <Popover>
+            <PopoverTrigger>
+              <button>Open</button>
+            </PopoverTrigger>
+            <PopoverContent>Content</PopoverContent>
           </Popover>
           <div>Outside</div>
         </div>,

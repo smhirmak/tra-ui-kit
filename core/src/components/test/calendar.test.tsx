@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import Calendar from '../calendar';
 
@@ -73,9 +73,9 @@ describe('Calendar Component', () => {
       expect(dayButtons.length).toBeGreaterThan(0);
     });
 
-    it('should apply selected day styling', () => {
+    it('should apply selected day styling with single date', () => {
       const selectedDate = new Date();
-      render(<Calendar selected={selectedDate} />);
+      render(<Calendar mode="single" selected={selectedDate} />);
       // Selected styling should be applied
     });
   });

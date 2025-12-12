@@ -5,18 +5,18 @@ import SearchField from '../search-field';
 describe('SearchField Component', () => {
   describe('Basic Rendering', () => {
     it('should render search input', () => {
-      render(<SearchField />);
+      render(<SearchField value="" />);
       const input = screen.getByRole('textbox');
       expect(input).toBeInTheDocument();
     });
 
     it('should render with placeholder', () => {
-      render(<SearchField placeholder="Search..." />);
+      render(<SearchField value="" placeholder="Search..." />);
       expect(screen.getByPlaceholderText('Search...')).toBeInTheDocument();
     });
 
     it('should render with label', () => {
-      render(<SearchField label="Search Items" />);
+      render(<SearchField value="" label="Search Items" />);
       expect(screen.getByText('Search Items')).toBeInTheDocument();
     });
   });
@@ -41,7 +41,7 @@ describe('SearchField Component', () => {
 
   describe('Search Icon', () => {
     it('should render search icon by default', () => {
-      const { container } = render(<SearchField />);
+      const { container } = render(<SearchField value="" />);
       const icon = container.querySelector('svg');
       expect(icon).toBeInTheDocument();
     });
@@ -49,7 +49,7 @@ describe('SearchField Component', () => {
 
   describe('Disabled State', () => {
     it('should be disabled when disabled prop is true', () => {
-      render(<SearchField disabled />);
+      render(<SearchField value="" disabled />);
       const input = screen.getByRole('textbox');
       expect(input).toBeDisabled();
     });
@@ -57,7 +57,7 @@ describe('SearchField Component', () => {
 
   describe('Custom Styling', () => {
     it('should apply custom className', () => {
-      const { container } = render(<SearchField className="custom-search" />);
+      const { container } = render(<SearchField value="" className="custom-search" />);
       expect(container.querySelector('.custom-search')).toBeInTheDocument();
     });
   });

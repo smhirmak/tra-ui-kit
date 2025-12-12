@@ -12,7 +12,7 @@ vi.mock('@/contexts/locale/LocalizeContext', () => ({
 
 // Mock Select component
 vi.mock('../select', () => ({
-  default: ({ options, onChange, defaultValue, dropdownTriggerClassName }: any) => (
+  default: ({ onChange, defaultValue, dropdownTriggerClassName }: any) => (
     <div data-testid="select-mock">
       <button onClick={() => onChange && onChange('tr')}>TR</button>
       <button onClick={() => onChange && onChange('en')}>EN</button>

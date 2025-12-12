@@ -85,8 +85,8 @@ describe('TextField Component', () => {
   });
 
   describe('Error State', () => {
-    it('should display error message', () => {
-      render(<TextField error errorMessage="Required field" />);
+    it('should display error with helper text', () => {
+      render(<TextField error helperText="Required field" />);
       expect(screen.getByText('Required field')).toBeInTheDocument();
     });
 
@@ -105,7 +105,7 @@ describe('TextField Component', () => {
 
   describe('Required Field', () => {
     it('should show required indicator', () => {
-      render(<TextField required label="Email" />);
+      render(<TextField showRequiredIcon label="Email" />);
       expect(screen.getByText('Email')).toBeInTheDocument();
     });
   });

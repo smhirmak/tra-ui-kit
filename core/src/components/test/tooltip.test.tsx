@@ -34,9 +34,9 @@ describe('Tooltip Component', () => {
       expect(screen.getByText('Info')).toBeInTheDocument();
     });
 
-    it('should accept ReactNode content', () => {
+    it('should accept array content', () => {
       render(
-        <Tooltip content={<div>Custom content</div>}>
+        <Tooltip content={['Line 1', 'Line 2']}>
           <button>Button</button>
         </Tooltip>
       );
@@ -44,37 +44,37 @@ describe('Tooltip Component', () => {
     });
   });
 
-  describe('Placement', () => {
-    it('should accept top placement', () => {
+  describe('Position', () => {
+    it('should accept top position', () => {
       render(
-        <Tooltip content="Top" placement="top">
+        <Tooltip content="Top" position="top">
           <button>Button</button>
         </Tooltip>
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });
 
-    it('should accept bottom placement', () => {
+    it('should accept bottom position', () => {
       render(
-        <Tooltip content="Bottom" placement="bottom">
+        <Tooltip content="Bottom" position="bottom">
           <button>Button</button>
         </Tooltip>
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });
 
-    it('should accept left placement', () => {
+    it('should accept left position', () => {
       render(
-        <Tooltip content="Left" placement="left">
+        <Tooltip content="Left" position="left">
           <button>Button</button>
         </Tooltip>
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });
 
-    it('should accept right placement', () => {
+    it('should accept right position', () => {
       render(
-        <Tooltip content="Right" placement="right">
+        <Tooltip content="Right" position="right">
           <button>Button</button>
         </Tooltip>
       );
@@ -104,10 +104,10 @@ describe('Tooltip Component', () => {
     });
   });
 
-  describe('Disabled State', () => {
-    it('should accept disabled prop', () => {
+  describe('Arrow', () => {
+    it('should accept arrow prop', () => {
       render(
-        <Tooltip content="Text" disabled>
+        <Tooltip content="Text" arrow>
           <button>Button</button>
         </Tooltip>
       );

@@ -202,7 +202,7 @@ describe('Pagination', () => {
 
   describe('Custom Icons', () => {
     it('should render custom first page icon', () => {
-      const { container } = render(
+      render(
         <Pagination
           totalPages={10}
           currentPage={5}
@@ -214,7 +214,7 @@ describe('Pagination', () => {
     });
 
     it('should render custom last page icon', () => {
-      const { container } = render(
+      render(
         <Pagination
           totalPages={10}
           currentPage={5}
@@ -226,7 +226,7 @@ describe('Pagination', () => {
     });
 
     it('should render custom next page icon', () => {
-      const { container } = render(
+      render(
         <Pagination
           totalPages={10}
           currentPage={5}
@@ -238,7 +238,7 @@ describe('Pagination', () => {
     });
 
     it('should render custom previous page icon', () => {
-      const { container } = render(
+      render(
         <Pagination
           totalPages={10}
           currentPage={5}

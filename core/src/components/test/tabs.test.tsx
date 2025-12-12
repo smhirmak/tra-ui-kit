@@ -46,7 +46,7 @@ describe('Tabs', () => {
 
   describe('Variants', () => {
     it('should render default variant', () => {
-      const { container } = render(
+      render(
         <Tabs activeTab="tab1" variant="default" onChange={mockOnChange}>
           <Tab label="Tab 1" value="tab1">Content 1</Tab>
         </Tabs>,
@@ -79,7 +79,7 @@ describe('Tabs', () => {
     });
 
     it('should render split variant', () => {
-      const { container } = render(
+      render(
         <Tabs activeTab="tab1" variant="split" onChange={mockOnChange}>
           <Tab label="Tab 1" value="tab1">Content 1</Tab>
         </Tabs>,

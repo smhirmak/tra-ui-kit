@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import ProgressBar from '../progress-bar';
 
 describe('ProgressBar', () => {
@@ -40,8 +40,8 @@ describe('ProgressBar', () => {
       const { container } = render(
         <ProgressBar currentStep={5} totalStepSize={10} />,
       );
-      const headerContainer = container.querySelector('.MsiProgressBar-headerContainer');
-      const stepText = container.querySelector('.MsiProgressBar-stepText');
+      const headerContainer = container.querySelector('.MsiProgressBar-headerContainer') as HTMLElement;
+      const stepText = container.querySelector('.MsiProgressBar-stepText') as HTMLElement;
       expect(headerContainer).toContainElement(stepText);
     });
 
@@ -49,9 +49,9 @@ describe('ProgressBar', () => {
       const { container } = render(
         <ProgressBar currentStep={5} totalStepSize={10} stepTextPosition="bottom" />,
       );
-      const headerContainer = container.querySelector('.MsiProgressBar-headerContainer');
-      const mainContainer = container.querySelector('.MsiProgressBar-container');
-      const stepText = container.querySelector('.MsiProgressBar-stepText');
+      const headerContainer = container.querySelector('.MsiProgressBar-headerContainer') as HTMLElement;
+      const mainContainer = container.querySelector('.MsiProgressBar-container') as HTMLElement;
+      const stepText = container.querySelector('.MsiProgressBar-stepText') as HTMLElement;
 
       expect(headerContainer).not.toContainElement(stepText);
       expect(mainContainer).toContainElement(stepText);

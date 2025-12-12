@@ -263,7 +263,7 @@ describe('Sidebar', () => {
     });
 
     it('should not show tooltip when sidebar is expanded', () => {
-      const { container } = render(
+      render(
         <BrowserRouter>
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Settings" />

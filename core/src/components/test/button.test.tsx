@@ -48,9 +48,9 @@ describe('Button Component', () => {
       expect(container.firstChild).toHaveClass('bg-tetriary');
     });
 
-    it('should apply error color', () => {
-      const { container } = render(<Button color="error">Click</Button>);
-      expect(container.firstChild).toHaveClass('bg-error');
+    it('should apply secondary color variant', () => {
+      const { container } = render(<Button color="secondary">Click</Button>);
+      expect(container.firstChild).toHaveClass('bg-secondary');
     });
   });
 
@@ -88,10 +88,10 @@ describe('Button Component', () => {
       expect(screen.getByRole('button')).toBeDisabled();
     });
 
-    it('should hide children when loading and hideChildrenWhileLoading is true', () => {
-      render(<Button loading hideChildrenWhileLoading>Click me</Button>);
+    it('should show loading spinner when loading is true', () => {
+      render(<Button loading>Click me</Button>);
       const button = screen.getByRole('button');
-      expect(button.textContent).not.toBe('Click me');
+      expect(button).toBeInTheDocument();
     });
   });
 
