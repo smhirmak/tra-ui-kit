@@ -6,13 +6,12 @@ import { cn } from '@/lib/utils';
 import Button from '@/components/button';
 
 export const inputVariants = cva(
-  `focus-visible:border-1 placeholder:text-muted-foreground border-input transition-all file:bg-neutral-disabled-text file:text-neutral-black hover:shadow-soft-primary focus-visible:border-primary-focused focus-visible:shadow-hard-primary
-  disabled:text-neutral-grey 
-  flex w-full border bg-transparent 
-  px-3 py-2 file:mr-2 file:h-fit
-  file:cursor-pointer 
-  file:rounded-md file:border-0 file:bg-transparent file:p-2 file:text-sm file:font-medium file:transition-all 
-  file:hover:contrast-125 focus-visible:outline-none disabled:cursor-not-allowed `,
+  `border-input file:bg-neutral-disabled-text file:text-neutral-black hover:shadow-soft-primary focus-visible:border-primary-focused 
+  focus-visible:shadow-hard-primary disabled:text-neutral-grey flex w-full border bg-transparent px-3 py-2 
+  transition-all file:mr-2 file:h-fit file:cursor-pointer
+  file:rounded-md 
+  file:border-0 file:bg-transparent file:p-2 file:text-sm file:font-medium file:transition-all file:hover:contrast-125 
+  focus-visible:border focus-visible:outline-none disabled:cursor-not-allowed `,
   {
     variants: {
       variant: {
@@ -81,6 +80,7 @@ interface IInput
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
   textarea?: boolean;
+  noWrapper?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
@@ -98,12 +98,32 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
       onChange,
       autoComplete,
       textarea = false,
+      noWrapper = false,
       ...restProps
     } = props;
     const [passwordVisible, setPasswordVisible] = React.useState(false);
     const Comp = textarea ? 'textarea' : 'input';
+    const hasIconsOrToggle = Boolean(startIcon || endIcon || type === 'password');
+
+    const renderWithoutWrapper = noWrapper && !hasIconsOrToggle;
+
+    if (renderWithoutWrapper) {
+      return (
+        <Comp
+          type={passwordVisible ? 'text' : type}
+          className={cn(inputVariants({ variant, size, error, borderRadius, textarea }), className)}
+          ref={ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>}
+          autoComplete={autoComplete ?? 'off'}
+          value={value}
+          onChange={e => onChange && onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)}
+          rows={textarea ? 4 : undefined}
+          {...(restProps as React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+        />
+      );
+    }
+
     return (
-      <div className="flex w-full items-center">
+      <div className="relative flex w-full items-center">
         {startIcon && (
           <span className="absolute left-3 text-current">
             {startIcon}
@@ -118,7 +138,7 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
           onChange={e => onChange && onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)}
           style={{
             paddingLeft: startIcon ? '2.5rem' : undefined,
-            paddingRight: endIcon ? '2.5rem' : undefined,
+            paddingRight: (endIcon || type === 'password') ? '2.5rem' : undefined,
           }}
           rows={textarea ? 4 : undefined}
           {...(restProps as React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
@@ -130,7 +150,12 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
         )}
         {type === 'password'
           && (
-            <Button className="z-3 absolute right-3 bg-transparent text-current hover:bg-transparent" size="icon" type="button" onClick={() => setPasswordVisible(prev => !prev)}>
+            <Button
+              className="z-3 absolute right-3 size-6 min-h-[unset] min-w-[unset] bg-transparent text-current hover:bg-transparent"
+              size="icon"
+              type="button"
+              onClick={() => setPasswordVisible(prev => !prev)}
+            >
               {passwordVisible
                 ? <EyeSlashIcon className="size-4 dark:text-gray-400" />
                 : <EyeIcon className="size-4 dark:text-white" />}

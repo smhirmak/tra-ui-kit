@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/array-type */
 import { cva } from 'class-variance-authority';
 import React, { useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import Input from '@/components/input';
 import Label from '@/components/label';
 
-const textFieldStyles = cva('TextField-container flex h-fit flex-col gap-1', {
+const textFieldStyles = cva('TextField-container relative flex h-fit flex-col gap-1', {
   variants: {
     variant: {
-      filled: 'relative',
-      outlined: 'relative',
-      underlined: 'relative',
-      filledUnderlined: 'relative',
+      filled: '',
+      outlined: '',
+      underlined: '',
+      filledUnderlined: '',
     },
   },
   defaultVariants: {
@@ -157,6 +156,7 @@ export interface ITextField {
   helperText?: string;
   textarea?: boolean;
   className?: string;
+  fieldClassName?: string;
 }
 
 const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
@@ -185,13 +185,12 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   maxLength,
   helperText,
   textarea,
+  fieldClassName,
   ...otherProps
 }, ref) => {
   const [inputFocused, setInputFocused] = useState(false);
   const labelRef = useRef<HTMLLabelElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  console.log({ size })
 
   return (
     <div ref={ref} className={cn(textFieldStyles({ variant }), className)}>
@@ -224,7 +223,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         onWheel={onWheel}
         onChange={onChange}
         onFocus={() => setInputFocused(true)}
-        onBlur={(e) => { setInputFocused(false); onBlur && onBlur(e) }}
+        onBlur={e => { setInputFocused(false); onBlur && onBlur(e); }}
         disabled={disabled}
         type={type}
         placeholder={variant !== 'outlined' ? placeholder : ''}
@@ -236,7 +235,7 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         {...otherProps}
       />
       {variant === 'outlined' && (
-        <fieldset disabled={disabled} className={cn(fieldsetStyles({ inputFocused, error, borderRadius, size }))}>
+        <fieldset disabled={disabled} className={cn(fieldsetStyles({ inputFocused, error, borderRadius, size }), fieldClassName)}>
           <legend className={`float-[unset] invisible block h-0 w-fit overflow-hidden p-0 text-base ${(inputFocused || !!value || Boolean(inputRef.current?.value)) && 'px-2'}`}>
             {(inputFocused || !!value || Boolean(inputRef.current?.value)) ? (
               <span>
