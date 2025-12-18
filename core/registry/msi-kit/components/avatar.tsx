@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import React, { HTMLAttributes, useState } from 'react';
+import React, { useState } from 'react';
 import { UserIcon, XIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 
@@ -169,32 +169,41 @@ interface IAvatar {
   variant?: 'circular' | 'rounded';
 }
 
+type PolymorphicAvatarProps<C extends React.ElementType> = IAvatar & {
+  asChild?: C;
+} & Omit<React.ComponentPropsWithoutRef<C>, keyof IAvatar>;
+
 interface IMultipleAvatarContainer {
   children: React.ReactNode[];
   lastElementSize?: 'sm' | 'lg';
   showLessAvatarClassName?: string;
   showMoreAvatarClassName?: string;
+  childrenClassName?: string;
 }
 
-const Avatar = React.forwardRef<HTMLAttributes<HTMLDivElement>, IAvatar>(({
-  asChild,
-  badgeClassName,
-  badgeContent,
-  badgePosition = 'top-right',
-  className,
-  href,
-  icon,
-  imageClassName,
-  onClick,
-  size,
-  src,
-  title,
-  variant,
-  ...otherProps
-}, ref) => {
-  const Comp = asChild ?? 'div';
+const Avatar = React.forwardRef((
+  props: PolymorphicAvatarProps<C>,
+  ref: React.Ref<any>,
+) => {
+  const {
+    asChild,
+    badgeClassName,
+    badgeContent,
+    badgePosition = 'top-right',
+    className,
+    href,
+    icon,
+    imageClassName,
+    onClick,
+    size,
+    src,
+    title,
+    variant,
+    ...otherProps
+  } = props as PolymorphicAvatarProps<C>;
+
+  const Comp = (asChild ?? 'div') as React.ElementType;
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <Comp className={cn(avatarVariants({ variant, size }), className)} ref={ref} onClick={onClick} href={href} {...otherProps}>
       {
         src ? <img className={cn(imageVariants({ variant }), imageClassName)} src={src} alt="" />
@@ -210,13 +219,13 @@ const Avatar = React.forwardRef<HTMLAttributes<HTMLDivElement>, IAvatar>(({
 
     </Comp>
   );
-});
+}) as unknown as <C extends React.ElementType = 'div'>(props: PolymorphicAvatarProps<C> & { ref?: React.Ref<any> }) => React.ReactElement;
 
-const showMoreAvatarVariants = cva('relative hover:brightness-125');
+const showMoreAvatarVariants = cva('border-neutral-black relative');
 
 const showLessAvatarVariants = cva('bg-primary/50 text-white hover:brightness-125');
 
-const MultipleAvatarContainer: React.FC<IMultipleAvatarContainer> = ({ children, lastElementSize = 'sm', showLessAvatarClassName, showMoreAvatarClassName }) => {
+const MultipleAvatarContainer: React.FC<IMultipleAvatarContainer> = ({ children, lastElementSize = 'sm', showLessAvatarClassName, showMoreAvatarClassName, childrenClassName }) => {
   const [showAllAvatars, setShowAllAvatars] = useState(false);
   const maxVisibleAvatars = 4;
   const remainingAvatars = React.Children.count(children) - maxVisibleAvatars;
@@ -229,20 +238,32 @@ const MultipleAvatarContainer: React.FC<IMultipleAvatarContainer> = ({ children,
     setShowAllAvatars(false);
   };
 
+  const enhanceChild = (child: React.ReactNode, extraClass?: string) => {
+    if (!extraClass) return child;
+    if (React.isValidElement(child)) {
+      const existing = (child.props && (child.props as { className?: string }).className) || '';
+      return React.cloneElement(child, { className: cn(existing, extraClass, childrenClassName) } as Partial<typeof child.props>);
+    }
+    return child;
+  };
+
   return (
     <div className="flex items-center transition-transform duration-1000">
-      {React.Children.toArray(children).slice(0, showAllAvatars ? undefined : maxVisibleAvatars).map((child, index) => (
-        <div
-          key={index}
-          className="relative transition-transform duration-500"
-          style={{
-            transform: showAllAvatars ? `translateX(${index * 5}px)` : `translateX(-${index * 10}px)`,
-            zIndex: index,
-          }}
-        >
-          {child}
-        </div>
-      ))}
+      {React.Children.toArray(children).slice(0, showAllAvatars ? undefined : maxVisibleAvatars).map((child, index) => {
+        const enhanced = enhanceChild(child, 'border border-2 border-neutral-black/75');
+        return (
+          <div
+            key={index}
+            className="relative transition-transform duration-500"
+            style={{
+              transform: showAllAvatars ? `translateX(${index * 5}px)` : `translateX(-${index * 10}px)`,
+              zIndex: index,
+            }}
+          >
+            {enhanced}
+          </div>
+        );
+      })}
       {!showAllAvatars && remainingAvatars > 0 && (
         <div
           className="relative cursor-pointer transition-transform duration-500"
