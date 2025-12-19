@@ -160,7 +160,7 @@ const SideBar = () => {
                   {e.child ? (
                     <Accordion multipleExpand>
                       {/* <AccordionTrigger title={e.label} /> */}
-                      <AccordionItem triggerClassName="p-2" titleClassName="!text-base" title={e.label} contentClassName="flex flex-col">
+                      <AccordionItem triggerClassName="p-2" titleClassName="text-base!" title={e.label} contentClassName="flex flex-col">
                         {e.child.map(c => (
                           <Link
                             key={c.link}

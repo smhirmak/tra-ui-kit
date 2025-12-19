@@ -19,7 +19,7 @@ interface ISearchInput {
 const SearchInput: React.FC<ISearchInput> = ({ searchValue, onSearch, searchRef, searchInputClassName, handleKeyDown, disabled, showMenu }) => (
   <input
     className={`MsiSelect-searchInput ${searchInputClassName} h-unset focus-visible:ring-none text-neutral-black m-0 bg-transparent p-0
-     opacity-100 focus-visible:border-none focus-visible:outline-none ${!showMenu && 'w-0'}`}
+     opacity-100 focus-visible:border-none focus-visible:outline-hidden ${!showMenu && 'w-0'}`}
     value={searchValue ?? ''}
     disabled={disabled}
     onChange={onSearch}
@@ -354,7 +354,7 @@ const Select: React.FC<ISelect> = ({
               <span
                 onClick={e => { if (!disabled) onTagRemove(e, option); }}
                 className={`MsiSelect-dropdownTagCloseButton ${dropdownTagCloseButtonClassName} group-data-[disabled=true]:hover: hover:bg-neutral-light group-data-[disabled=false]:text-neutral-black
-                 ml-1.5 flex cursor-pointer items-center rounded-full p-0.5 group-data-[disabled=true]:cursor-not-allowed group-data-[disabled=true]:hover:bg-transparent`}
+                 ml-1.5 flex cursor-pointer items-center rounded-full p-0.5 group-data-[disabled=true]:cursor-not-allowed hover:group-data-[disabled=true]:bg-transparent`}
               >
                 <XIcon />
               </span>

@@ -46,12 +46,12 @@ const Calendar = ({
            last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20`,
       ),
       selected:
-        '!bg-primary !text-neutral-white hover:brightness-110 hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
+        'bg-primary! text-neutral-white! hover:brightness-110 hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground',
       today: 'bg-primary text-accent-foreground',
 
       outside:
         'day-outside text-neutral-grey aria-selected:bg-primary/50 aria-selected:text-muted-foreground',
-      disabled: '!text-neutral',
+      disabled: 'text-neutral!',
       range_start: 'day-range-start rounded-l-md rounded-r-none',
       range_middle:
         'rounded-none',

@@ -53,8 +53,8 @@ export const RadioGroupItem: React.FC<IRadioGroupItem> = ({
         htmlFor={id}
         data-checked={checked || selectedValue === value}
         data-disabled={disabled}
-        className={`border-primary-30 bg-disabled-light-dark text-primary ring-offset-error focus-visible:ring-primary peer-checked:border-primary data-[disabled=true]:!border-primary-15 group 
-        relative aspect-square size-5 select-none rounded-full border-[1.5px] ring-offset-8 focus:outline-none
+        className={`border-primary-30 bg-disabled-light-dark text-primary ring-offset-error focus-visible:ring-primary peer-checked:border-primary data-[disabled=true]:border-primary-15! group 
+        relative aspect-square size-5 select-none rounded-full border-[1.5px] ring-offset-8 focus:outline-hidden
         focus-visible:ring-2 focus-visible:ring-offset-2 peer-checked:bg-transparent data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50
         dark:bg-transparent ${className}`}
       >

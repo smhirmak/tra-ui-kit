@@ -25,7 +25,7 @@ const Sidebar: React.FC<ISidebar> = ({ children, headerLogo }) => {
   const contextValue = useMemo(() => ({ expanded }), [expanded]);
   return (
     <aside className="z-2 sticky top-0 max-h-screen overflow-y-auto overflow-x-hidden">
-      <nav className="bg-background flex h-full flex-col shadow-sm">
+      <nav className="bg-background flex h-full flex-col shadow-xs">
         <div className={`flex items-center ${(expanded && headerLogo) ? 'justify-between' : 'justify-end'} p-4 pb-2`}>
           {headerLogo && <img src={headerLogo} alt="logo" className={`overflow-hidden transition-all ease-out ${expanded ? 'w-16' : 'w-0'}`} />}
           <button type="button" onClick={() => setExpanded(curr => !curr)} className="bg-background self-end p-1.5 hover:bg-gray-300 dark:hover:bg-blue-950">
@@ -62,7 +62,7 @@ export const SidebarItem = ({ icon, text, active, alert, url }: ISidebarItem) =>
   return (
     <li
       onClick={() => url && navigate(url)}
-      className={`group relative my-1 flex cursor-pointer items-center rounded-md px-3 py-2 font-medium transition-colors ${active ? 'bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800' : 'justify-center hover:bg-gray-300 dark:hover:bg-blue-950'}`}
+      className={`group relative my-1 flex cursor-pointer items-center rounded-md px-3 py-2 font-medium transition-colors ${active ? 'bg-linear-to-tr from-indigo-200 to-indigo-100 text-indigo-800' : 'justify-center hover:bg-gray-300 dark:hover:bg-blue-950'}`}
     >
       {icon}
       <span className={`overflow-hidden transition-all ease-out ${expanded ? 'ml-3 w-40' : 'size-0'}`}>{text}</span>

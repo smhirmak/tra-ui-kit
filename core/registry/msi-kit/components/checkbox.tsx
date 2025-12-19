@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 const checkboxVariants = cva(
   `border-primary ring-offset-background focus-visible:ring-ring data-[disabled=true]:border-input data-[checked=true]:bg-primary data-[disabled=true]:bg-input data-[checked=true]:text-primary-foreground data-[checked=true]:disabled:bg-input peer flex
   shrink-0 select-none items-center justify-center 
-  rounded-sm border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
+  rounded-sm border focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 
   data-[disabled=true]:cursor-not-allowed data-[disabled=true]:text-white data-[disabled=true]:opacity-50`,
   {
     variants: {

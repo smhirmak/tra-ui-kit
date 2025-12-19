@@ -54,7 +54,7 @@ const DateInput: React.FC<IDateInput> = ({ ref, value, max, onChange, onBlur, pl
     type="number"
     max={max}
     value={value}
-    className="placeholder:text-xs focus-visible:outline-none"
+    className="placeholder:text-xs focus-visible:outline-hidden"
     onChange={onChange}
     onBlur={onBlur ?? undefined}
     placeholder={placeholder}
@@ -389,7 +389,7 @@ const DatePicker: React.FC<IDatePicker> = ({
     if (popoverOpen) {
       if (mode === 'single') {
         return (
-          <div className="[&>input]:text-neutral-black flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 [&>input]:focus-visible:border-none">
+          <div className="[&>input]:text-neutral-black flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 focus-visible:[&>input]:border-none">
             <DateInput
               ref={singleDayRef}
               value={day}
@@ -429,7 +429,7 @@ const DatePicker: React.FC<IDatePicker> = ({
       if (mode === 'range') {
         return (
           <div className="flex gap-4">
-            <div className="[&>input]:text-neutral-black flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 [&>input]:focus-visible:border-none">
+            <div className="[&>input]:text-neutral-black flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 focus-visible:[&>input]:border-none">
               <DateInput
                 ref={rangeDayRef1}
                 value={startDay}
@@ -465,7 +465,7 @@ const DatePicker: React.FC<IDatePicker> = ({
               />
             </div>
             -
-            <div className="[&>input]:text-neutral-black flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 [&>input]:focus-visible:border-none">
+            <div className="[&>input]:text-neutral-black flex [&>input]:appearance-none [&>input]:rounded [&>input]:bg-transparent [&>input]:p-0 focus-visible:[&>input]:border-none">
               <DateInput
                 ref={rangeDayRef2}
                 value={endDay}
@@ -539,9 +539,9 @@ const DatePicker: React.FC<IDatePicker> = ({
             disabled={disabled}
             data-error={error}
             className={cn(
-              `w-full ${className ?? ''} pl-4 data-[error=true]:!border-error disabled:bg-input-light text-neutral-black justify-start
-              text-left font-normal h-14 border data-[state=closed]:border-input bg-input-fill data-[state=open]:!border-primary-focused 
-              data-[state=open]:shadow-input-focus data-[state=open]:outline-none`,
+              `w-full ${className ?? ''} pl-4 data-[error=true]:border-error! disabled:bg-input-light text-neutral-black justify-start
+              text-left font-normal h-14 border data-[state=closed]:border-input bg-input-fill data-[state=open]:border-primary-focused! 
+              data-[state=open]:shadow-input-focus data-[state=open]:outline-hidden`,
             )}
             onClick={() => setPopoverOpen(true)}
           >
@@ -552,7 +552,7 @@ const DatePicker: React.FC<IDatePicker> = ({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className={`MsiDatePicker-dropdownMenu ${dropdownMenuClassName} bg-background shadow-soft-grey !max-h-[unset] min-h-12 w-full max-w-fit overflow-auto rounded-md`}
+          className={`MsiDatePicker-dropdownMenu ${dropdownMenuClassName} bg-background shadow-soft-grey max-h-[unset]! min-h-12 w-full max-w-fit overflow-auto rounded-md`}
         >
           <Calendar
             id={id}

@@ -251,22 +251,22 @@ const notificationProgressBar = cva(
       {
         theme: 'colored',
         type: 'info',
-        className: '!bg-primary',
+        className: 'bg-primary!',
       },
       {
         theme: 'colored',
         type: 'error',
-        className: '!bg-error',
+        className: 'bg-error!',
       },
       {
         theme: 'colored',
         type: 'success',
-        className: '!bg-success',
+        className: 'bg-success!',
       },
       {
         theme: 'colored',
         type: 'warn',
-        className: '!bg-warning',
+        className: 'bg-warning!',
       },
     ],
   },
