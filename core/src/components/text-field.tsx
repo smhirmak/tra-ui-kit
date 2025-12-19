@@ -105,7 +105,7 @@ const inputStyles = cva('disabled:bg-input-light p-2 pl-5 disabled:shadow-none',
 
 const fieldsetStyles = cva(
   `border-input disabled:border-input-light disabled:placeholder:text-input pointer-events-none absolute inset-0 m-0 h-14 min-w-0 overflow-hidden rounded border border-solid p-3 
-  outline-none transition-all`,
+  outline-hidden transition-all`,
   {
     variants: {
       inputFocused: {

@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 export const buttonVariants = cva(
   `btn-ripple  active:scale-[0.97] ring-offset-background focus-visible:ring-ring relative inline-flex select-none flex-wrap items-center justify-center overflow-hidden whitespace-nowrap text-sm font-medium
-  transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 
+  transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 
   disabled:pointer-events-none `,
   {
     variants: {

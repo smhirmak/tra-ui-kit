@@ -37,16 +37,7 @@
           "code": 200
         }
       ], // Maks satır karakter sayısı dafultta 80 olarak ayarlanıyor.
-      "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-          "ts": "never",
-          "tsx": "never",
-          "js": "never",
-          "jsx": "never"
-        }
-      ],
+      "import/extensions": "off",
       "arrow-parens": [ // Arrow functionlarda gereksiz parentez kullanımını önlerken gerektiğinde kullanılmasını sağlayan kural.
         "error",
         "as-needed"

@@ -11,12 +11,12 @@ export const inputVariants = cva(
   transition-all file:mr-2 file:h-fit file:cursor-pointer
   file:rounded-md 
   file:border-0 file:bg-transparent file:p-2 file:text-sm file:font-medium file:transition-all file:hover:contrast-125 
-  focus-visible:border focus-visible:outline-none disabled:cursor-not-allowed `,
+  focus-visible:border focus-visible:outline-hidden disabled:cursor-not-allowed `,
   {
     variants: {
       variant: {
         filled: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
-        outlined: 'border-none outline-none focus-visible:border-none focus-visible:outline-none',
+        outlined: 'border-none outline-hidden focus-visible:border-none focus-visible:outline-hidden',
         underlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
         filledUnderlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
       },
@@ -34,7 +34,7 @@ export const inputVariants = cva(
         lg: 'rounded-5xl',
       },
       textarea: {
-        true: 'h-[calc(1.75rem*4)] w-full overflow-y-auto',
+        true: 'h-28 w-full overflow-y-auto',
         false: '',
       },
     },
@@ -48,17 +48,17 @@ export const inputVariants = cva(
       {
         error: true,
         variant: 'filled',
-        className: 'border-error focus-visible:border-error focus-visible:outline-error outline-none focus-visible:shadow-none focus-visible:-outline-offset-1',
+        className: 'border-error focus-visible:border-error focus-visible:outline-error outline-hidden focus-visible:shadow-none focus-visible:-outline-offset-1',
       },
       {
         error: true,
         variant: 'underlined',
-        className: 'border-b-error focus-visible:border-b-error outline-none focus-visible:shadow-none focus-visible:-outline-offset-1',
+        className: 'border-b-error focus-visible:border-b-error outline-hidden focus-visible:shadow-none focus-visible:-outline-offset-1',
       },
       {
         error: true,
         variant: 'filledUnderlined',
-        className: 'border-b-error focus-visible:border-b-error outline-none focus-visible:shadow-none focus-visible:-outline-offset-1',
+        className: 'border-b-error focus-visible:border-b-error outline-hidden focus-visible:shadow-none focus-visible:-outline-offset-1',
       },
     ],
   },

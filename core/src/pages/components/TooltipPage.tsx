@@ -6,7 +6,7 @@ const TooltipPage = () => (
     <h1 className="mb-4 text-2xl font-bold">Tooltip Örnekleri</h1>
     <div className="container mx-auto flex items-center justify-center p-4">
 
-      <div className="flex flex-col space-y-20 [&_*_button]:w-[300px]">
+      <div className="flex flex-col space-y-20 [&*button]:w-[300px]">
         <Tooltip content="Bu bir basit tooltip örneğidir." position="top">
           <Button className="rounded px-4 py-2 text-white">
             Hover (Top)

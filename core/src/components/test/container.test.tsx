@@ -23,7 +23,7 @@ describe('Container Component', () => {
   describe('Max Width Variants', () => {
     it('should apply xl max-width by default', () => {
       const { container } = render(<Container>Test</Container>);
-      expect(container.firstChild).toHaveClass('max-w-screen-xl');
+      expect(container.firstChild).toHaveClass('max-w-(--breakpoint-xl)');
     });
 
     it('should apply xs max-width', () => {
@@ -33,22 +33,22 @@ describe('Container Component', () => {
 
     it('should apply sm max-width', () => {
       const { container } = render(<Container maxWidth="sm">Test</Container>);
-      expect(container.firstChild).toHaveClass('max-w-screen-sm');
+      expect(container.firstChild).toHaveClass('max-w-(--breakpoint-sm)');
     });
 
     it('should apply md max-width', () => {
       const { container } = render(<Container maxWidth="md">Test</Container>);
-      expect(container.firstChild).toHaveClass('max-w-screen-md');
+      expect(container.firstChild).toHaveClass('max-w-(--breakpoint-md)');
     });
 
     it('should apply lg max-width', () => {
       const { container } = render(<Container maxWidth="lg">Test</Container>);
-      expect(container.firstChild).toHaveClass('max-w-screen-lg');
+      expect(container.firstChild).toHaveClass('max-w-(--breakpoint-lg)');
     });
 
     it('should apply 2xl max-width', () => {
       const { container } = render(<Container maxWidth="2xl">Test</Container>);
-      expect(container.firstChild).toHaveClass('max-w-screen-2xl');
+      expect(container.firstChild).toHaveClass('max-w-(--breakpoint-2xl)');
     });
 
     it('should apply full max-width', () => {
@@ -110,7 +110,7 @@ describe('Container Component', () => {
           Test
         </Container>,
       );
-      expect(container.firstChild).toHaveClass('max-w-screen-md');
+      expect(container.firstChild).toHaveClass('max-w-(--breakpoint-md)');
       expect(container.firstChild).toHaveClass('px-0');
       expect(container.firstChild).toHaveClass('flex');
       expect(container.firstChild).toHaveClass('items-center');

@@ -160,7 +160,7 @@ describe('Sidebar', () => {
       );
 
       const item = container.querySelector('li');
-      expect(item).toHaveClass('bg-gradient-to-tr', 'from-indigo-200', 'to-indigo-100', 'text-indigo-800');
+      expect(item).toHaveClass('bg-linear-to-tr', 'from-indigo-200', 'to-indigo-100', 'text-indigo-800');
     });
 
     it('should apply hover styling when not active', () => {
@@ -394,7 +394,7 @@ describe('Sidebar', () => {
       expect(items).toHaveLength(3);
 
       // First item should be active
-      expect(items[0]).toHaveClass('bg-gradient-to-tr');
+      expect(items[0]).toHaveClass('bg-linear-to-tr');
 
       // Second item should have alert
       const alertDot = items[1].querySelector('.size-2.rounded.bg-indigo-400');
