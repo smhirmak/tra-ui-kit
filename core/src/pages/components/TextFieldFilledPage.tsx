@@ -21,6 +21,7 @@ const TextFieldFilledPage = () => {
           <TextField value={value} onChange={e => setValue(e.target.value)} label="Tooltip" size="sm" tooltip={['Deneme1', 'Deneme2']} />
           <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" startIcon={<PlusIcon />} />
           <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" endIcon={<PlusIcon />} />
+          <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" type="password" />
           <TextField value={value} onChange={e => setValue(e.target.value)} label="Label" size="sm" borderRadius="lg" />
         </div>
       </div>
