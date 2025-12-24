@@ -152,7 +152,7 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(
     effectOpacity = '0.3',
     loading = false,
     loadingSpinnerClassname,
-    loadingText,
+    loadingText = 'Sending...',
     rounded = 'default',
     size,
     variant,
@@ -233,7 +233,7 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(
         {loading && (
           <LoadingSpinner className={cn(spinnerVariants({ size }), loadingSpinnerClassname)} />
         )}
-        <>{(loading && size !== 'icon') ? (loadingText ?? 'Sending...') : (loading && size === 'icon') ? null : children}</>
+        <>{(loading && size !== 'icon') ? (loadingText) : (loading && size === 'icon') ? null : children}</>
       </Comp>
     );
   },

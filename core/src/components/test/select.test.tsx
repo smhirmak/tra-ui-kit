@@ -11,7 +11,7 @@ describe('Select Component', () => {
 
   describe('Basic Rendering', () => {
     it('should render with placeholder', () => {
-      render(<Select options={mockOptions} placeHolder="Choose..." onChange={vi.fn()} />);
+      render(<Select options={mockOptions} placeholder="Choose..." onChange={vi.fn()} />);
       expect(screen.getByText('Choose...')).toBeInTheDocument();
     });
 

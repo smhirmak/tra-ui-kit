@@ -1,0 +1,227 @@
+import {
+  CircleDashedIcon, PencilSimpleIcon, ListIcon, CheckSquareIcon, ToggleLeftIcon, RadioButtonIcon,
+  TableIcon, FilesIcon, ChatCircleIcon, SidebarSimpleIcon, TabsIcon, FolderOpenIcon,
+  LightbulbIcon, BalloonIcon, TagIcon, BookmarkIcon, UserIcon, HourglassIcon,
+  GearIcon, TrendUpIcon, CalendarIcon, MagnifyingGlassIcon, BellIcon, PushPinIcon,
+  CaretCircleDownIcon,
+  AtomIcon,
+  ImageIcon,
+  SpinnerGapIcon,
+} from '@phosphor-icons/react';
+
+const Constants = {
+  componentList:[
+    {
+      name: 'Accordion',
+      description: 'Collapsible content sections with smooth animations',
+      Icon: FolderOpenIcon,
+      path: '/components/accordion',
+      category: 'Layout',
+    },
+    {
+      name: 'Avatar',
+      description: 'User profile pictures and placeholder images',
+      Icon: UserIcon,
+      path: '/components/avatar',
+      category: 'Display',
+    },
+    {
+      name: 'Badge',
+      description: 'Small status indicators and notification counters',
+      Icon: TagIcon,
+      path: '/components/badge',
+      category: 'Display',
+    },
+    {
+      name: 'Button',
+      description: 'Versatile button component with multiple variants',
+      Icon: CircleDashedIcon,
+      path: '/components/button',
+      category: 'Input',
+      isShowHome: true
+    },
+    {
+      name: 'Checkbox',
+      description: 'Customizable checkbox with labels and states',
+      Icon: CheckSquareIcon,
+      path: '/components/checkbox',
+      category: 'Input',
+      isShowHome: true
+    },
+    {
+      name: 'Chip',
+      description: 'Compact elements for tags, filters and selections',
+      Icon: BookmarkIcon,
+      path: '/components/chip',
+      category: 'Display',
+    },
+    {
+      name: 'Date Picker',
+      description: 'Calendar-based date selection component',
+      Icon: CalendarIcon,
+      path: '/components/date-picker',
+      category: 'Input',
+      isShowHome: true
+    },
+    {
+      name: 'Dialog',
+      description: 'Modal dialog for important user interactions',
+      Icon: ChatCircleIcon,
+      path: '/components/dialog',
+      category: 'Overlay',
+    },
+    {
+      name: 'Drawer',
+      description: 'Sliding panel from screen edges',
+      Icon: SidebarSimpleIcon,
+      path: '/components/drawer',
+      category: 'Overlay',
+    },
+    {
+      name: 'Dropdown',
+      description: 'Dropdown menu with actions and options',
+      Icon: CaretCircleDownIcon,
+      path: '/components/dropdown',
+      category: 'Overlay',
+    },
+    {
+      name: 'Information Status',
+      description: 'Status messages and alerts for users',
+      Icon: AtomIcon,
+      path: '/components/information-status',
+      category: 'Feedback',
+    },
+    {
+      name: 'Loader',
+      description: 'Loading indicators and progress spinners',
+      Icon: GearIcon,
+      path: '/components/loader',
+      category: 'Feedback',
+    },
+    {
+      name: 'Loading Linear',
+      description: 'Loading indicators and progress spinners',
+      Icon: HourglassIcon,
+      path: '/components/loading-linear',
+      category: 'Feedback',
+    },
+    {
+      name: 'Loading Spinner',
+      description: 'Loading indicators and progress spinners',
+      Icon: SpinnerGapIcon,
+      path: '/components/loading-spinner',
+      category: 'Feedback',
+    },
+    {
+      name: 'Notification',
+      description: 'Toast notifications and system alerts',
+      Icon: BellIcon,
+      path: '/components/notification',
+      category: 'Feedback',
+      isShowHome: true
+    },
+    {
+      name: 'Pagination',
+      description: 'Navigate through data pages efficiently',
+      Icon: FilesIcon,
+      path: '/components/pagination',
+      category: 'Navigation',
+    },
+    {
+      name: 'Popover',
+      description: 'Floating content containers with positioning',
+      Icon: BalloonIcon,
+      path: '/components/popover',
+      category: 'Overlay',
+    },
+    {
+      name: 'Progress Bar',
+      description: 'Visual progress indicators and loaders',
+      Icon: TrendUpIcon,
+      path: '/components/progress-bar',
+      category: 'Feedback',
+    },
+    {
+      name: 'Radio Button',
+      description: 'Radio button groups for single selection',
+      Icon: RadioButtonIcon,
+      path: '/components/radio-button',
+      category: 'Input',
+    },
+    {
+      name: 'Search Field',
+      description: 'Search input with suggestions and filtering',
+      Icon: MagnifyingGlassIcon,
+      path: '/components/search-field',
+      category: 'Input',
+    },
+    {
+      name: 'Select',
+      description: 'Dropdown selection with search capability',
+      Icon: ListIcon,
+      path: '/components/select',
+      category: 'Input',
+    },
+    {
+      name: 'Sidebar',
+      description: 'Collapsible navigation sidebar component',
+      Icon: PushPinIcon,
+      path: '/components/sidebar',
+      category: 'Navigation',
+    },
+    {
+      name: 'Skeleton',
+      description: 'Loading placeholders for content',
+      Icon: HourglassIcon,
+      path: '/components/skeleton',
+      category: 'Feedback',
+      isShowHome: true
+    },
+    {
+      name: 'Switch',
+      description: 'Toggle switch for binary choices',
+      Icon: ToggleLeftIcon,
+      path: '/components/switch',
+      category: 'Input',
+      isShowHome: true
+    },
+    {
+      name: 'Table',
+      description: 'Feature-rich data table with sorting',
+      Icon: TableIcon,
+      path: '/components/table',
+      category: 'Display',
+    },
+    {
+      name: 'Tabs',
+      description: 'Organize content in tabbed interface',
+      Icon: TabsIcon,
+      path: '/components/tabs',
+      category: 'Navigation',
+    },
+    {
+      name: 'Text Field',
+      description: 'Text input with validation and styles',
+      Icon: PencilSimpleIcon,
+      path: '/components/text-field/outlined',
+      category: 'Input',
+      isShowHome: true
+    },
+    {
+      name: 'Tooltip',
+      description: 'Contextual information on hover',
+      Icon: LightbulbIcon,
+      path: '/components/tooltip',
+      category: 'Overlay',
+    },
+    {
+      name: 'Image Hover Effect',
+      description: 'Animated image hover effects',
+      Icon: ImageIcon,
+      path: '/components/image-hover-effect',
+      category: 'Display',
+    },
+  ]
+}
+
+export default Constants;

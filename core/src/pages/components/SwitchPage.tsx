@@ -1,24 +1,190 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Switch from '@/components/switch';
+import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
+import { useTOC } from '@/contexts/toc/TOCContext';
+import { TOCItem } from '@/components/table-of-contents';
+import ApiTable from '@/components/api-table';
+
+const tocItems: TOCItem[] = [
+  { id: 'overview', title: 'Overview', level: 1 },
+  { id: 'installation', title: 'Installation', level: 1 },
+  { id: 'usage', title: 'Usage', level: 1 },
+  { id: 'variants', title: 'Variants', level: 1 },
+  { id: 'apple', title: 'Apple', level: 2 },
+  { id: 'android', title: 'Android', level: 2 },
+  { id: 'with-label', title: 'With Label', level: 1 },
+  { id: 'disabled-state', title: 'Disabled State', level: 1 },
+  { id: 'api', title: 'API Reference', level: 1 },
+];
+
+const apiTableData = [
+  { prop: 'id', type: 'string', default: '-', description: 'Unique identifier' },
+  { prop: 'checked', type: 'boolean', default: '-', description: 'Checked state' },
+  { prop: 'onChange', type: '(checked: boolean) => void', default: '-', description: 'Change handler' },
+  { prop: 'variant', type: '"apple" | "android"', default: '"apple"', description: 'Visual style variant' },
+  { prop: 'label', type: 'string', default: '-', description: 'Label text' },
+  { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the switch' },
+  { prop: 'showRequiredIcon', type: 'boolean', default: 'false', description: 'Show required indicator' },
+  { prop: 'className', type: 'string', default: '-', description: 'Custom CSS class' },
+];
 
 const SwitchPage = () => {
-  const [checkedApple, setCheckedApple] = useState<boolean>(false);
-  const [checkedAndroid, setCheckedAndroid] = useState<boolean>(false);
+  const { setTocItems } = useTOC();
+  const [appleChecked, setAppleChecked] = useState(false);
+  const [androidChecked, setAndroidChecked] = useState(false);
+
+  useEffect(() => {
+    setTocItems(tocItems);
+  }, [setTocItems]);
+
   return (
-    <div className="mb-6 border-b-2 pb-6">
-      <p className="text-4xl">Switch</p>
-      <div className="mt-2 flex flex-col space-y-2 border-t-2 py-2">
-        <p className="my-2 text-xl">Apple:</p>
-        <div className="flex items-center gap-4">
-          <Switch checked={checkedApple} onChange={e => setCheckedApple(e)} id="2" label="Apple" />
+    <div className="space-y-12">
+      {/* Overview */}
+      <section id="overview">
+        <h1 className="mb-4 text-4xl font-bold">Switch</h1>
+        <p className="text-lg text-neutral-grey">
+          Toggle switch component with Apple and Android style variants.
+        </p>
+      </section>
+
+      {/* Installation */}
+      <section id="installation">
+        <h2 className="mb-4 text-2xl font-bold">Installation</h2>
+        <CustomSyntaxHighlighter content='npx msi-ui-cli add switch' />
+      </section>
+
+      {/* Usage */}
+      <section id="usage">
+        <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <div className="space-y-4">
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Switch
+              id="switch-1"
+              checked={appleChecked}
+              onChange={setAppleChecked}
+            />
+          </div>
+          <CustomSyntaxHighlighter
+            content={`<Switch
+  id="switch-1"
+  checked={checked}
+  onChange={setChecked}
+/>`}
+          />
         </div>
-        <p className="my-2 text-xl">Android:</p>
-        <div className="flex items-center gap-4">
-          <Switch checked={checkedAndroid} onChange={e => setCheckedAndroid(e)} variant="android" id="4" label="Android" />
+      </section>
+
+      {/* Variants */}
+      <section id="variants">
+        <h2 className="mb-4 text-2xl font-bold">Variants</h2>
+
+        {/* Apple */}
+        <div id="apple" className="mb-8 space-y-4">
+          <h3 className="text-xl font-semibold">Apple</h3>
+          <p className="text-neutral-grey">iOS-style switch with smooth toggle animation.</p>
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Switch
+              id="apple-switch"
+              variant="apple"
+              checked={appleChecked}
+              onChange={setAppleChecked}
+              label="Apple Style"
+            />
+          </div>
+          <CustomSyntaxHighlighter
+            content={`<Switch
+  variant="apple"
+  checked={checked}
+  onChange={setChecked}
+  label="Apple Style"
+/>`}
+          />
         </div>
-      </div>
+
+        {/* Android */}
+        <div id="android" className="mb-8 space-y-4">
+          <h3 className="text-xl font-semibold">Android</h3>
+          <p className="text-neutral-grey">Material Design-style switch.</p>
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Switch
+              id="android-switch"
+              variant="android"
+              checked={androidChecked}
+              onChange={setAndroidChecked}
+              label="Android Style"
+            />
+          </div>
+          <CustomSyntaxHighlighter
+            content={`<Switch
+  variant="android"
+  checked={checked}
+  onChange={setChecked}
+  label="Android Style"
+/>`}
+          />
+        </div>
+      </section>
+
+      {/* With Label */}
+      <section id="with-label">
+        <h2 className="mb-4 text-2xl font-bold">With Label</h2>
+        <p className="mb-4 text-neutral-grey">Add descriptive labels to switches.</p>
+        <div className="rounded-lg border border-border bg-background p-6">
+          <div className="flex flex-col gap-4">
+            <Switch
+              id="label-1"
+              checked={appleChecked}
+              onChange={setAppleChecked}
+              label="Enable notifications"
+            />
+            <Switch
+              id="label-2"
+              variant="android"
+              checked={androidChecked}
+              onChange={setAndroidChecked}
+              label="Dark mode"
+            />
+          </div>
+        </div>
+        <CustomSyntaxHighlighter
+          content={`<Switch
+  checked={checked}
+  onChange={setChecked}
+  label="Enable notifications"
+/>`}
+        />
+      </section>
+
+      {/* Disabled State */}
+      <section id="disabled-state">
+        <h2 className="mb-4 text-2xl font-bold">Disabled State</h2>
+        <p className="mb-4 text-neutral-grey">Disabled switches are non-interactive.</p>
+        <div className="rounded-lg border border-border bg-background p-6">
+          <div className="flex flex-col gap-4">
+            <Switch
+              id="disabled-1"
+              checked={false}
+              onChange={() => { }}
+              label="Disabled (Off)"
+              disabled
+            />
+            <Switch
+              id="disabled-2"
+              checked={true}
+              onChange={() => { }}
+              label="Disabled (On)"
+              disabled
+            />
+          </div>
+        </div>
+        <CustomSyntaxHighlighter content='<Switch disabled checked={false} />' />
+      </section>
+
+      {/* API Reference */}
+      <ApiTable tableData={apiTableData} />
     </div>
   );
 };
 
 export default SwitchPage;
+

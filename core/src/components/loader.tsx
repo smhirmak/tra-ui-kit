@@ -1,6 +1,7 @@
 import { createRef, useEffect, useImperativeHandle, useState } from 'react';
 import LoadingSpinner from '@/components/loading-spinner';
 import LoadingLinear from '@/components/loading-linear';
+import { preventScrollShift } from '@/lib/utils';
 
 export type LoaderRefType = {
   incLoader: () => void;
@@ -35,12 +36,15 @@ const Loader: React.FC<ILoader> = ({ className, enableScroll = false, linearItem
   useEffect(() => {
     if (!enableScroll) {
       if (counter > 0) {
-        document.body.classList.add('overflow-hidden');
+        preventScrollShift.lock();
+        document.body.style.overflow = 'hidden';
       } else {
-        document.body.classList.remove('overflow-auto');
+        preventScrollShift.unlock();
+        document.body.style.overflow = 'auto';
       }
     } else {
-      document.body.classList.remove('overflow-hidden');
+      preventScrollShift.unlock();
+      document.body.style.overflow = 'auto';
     }
   }, [counter, enableScroll]);
 
