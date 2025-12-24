@@ -59,7 +59,8 @@ const tooltipVariants = cva('', {
 });
 
 interface ILabel
-  extends VariantProps<typeof labelVariants> {
+  extends Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'size'>,
+  VariantProps<typeof labelVariants> {
   alwaysTop?: boolean;
   className?: string;
   children?: React.ReactNode;

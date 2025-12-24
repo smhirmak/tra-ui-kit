@@ -26,7 +26,7 @@ interface ILanguangeSelect {
 }
 
 const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className, setLocale: setLocaleProp }) => {
-  const { setLocale: setLocaleContext } = useLocalizeContext();
+  const { locale, setLocale: setLocaleContext } = useLocalizeContext();
   const setLocale = setLocaleProp || setLocaleContext;
   const handleChange = (event: string | string[] | number | number[] | boolean) => {
     const localeLang: string = countries?.find(f => f?.value === event)?.value ?? '';
@@ -38,8 +38,8 @@ const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className, setLocale: set
     <div className={className}>
       <Select
         dropdownTriggerClassName="border-none"
-        defaultValue={localStorage.getItem('lang') || undefined}
         options={countries}
+        value={(locale as string || localStorage.getItem('lang')) ?? 'en'}
         onChange={handleChange}
       />
     </div>

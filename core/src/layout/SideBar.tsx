@@ -3,139 +3,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Accordion, AccordionItem } from '@/components/accordion';
 import Button from '@/components/button';
-
-const sidebarList = [
-  // {
-  //   label: 'Home',
-  //   link: '/',
-  // },
-  {
-    label: 'Avatar',
-    link: '/avatar',
-  },
-  {
-    label: 'Badge',
-    link: '/badge',
-  },
-  {
-    label: 'Button',
-    link: '/button',
-  },
-  {
-    label: 'Checkbox',
-    link: '/checkbox',
-  },
-  {
-    label: 'Chip',
-    link: '/chip',
-  },
-  {
-    label: 'Information Status',
-    link: '/information-status',
-  },
-  {
-    label: 'Loader',
-    link: '/loader',
-  },
-  {
-    label: 'Text Field',
-    link: '/text-field',
-    child: [
-      {
-        label: 'Filled',
-        link: '/text-field/filled',
-      },
-      {
-        label: 'Outlined',
-        link: '/text-field/outlined',
-      },
-      {
-        label: 'Underlined',
-        link: '/text-field/underlined',
-      },
-      {
-        label: 'Filled Underlined',
-        link: '/text-field/filled-underlined',
-      },
-    ],
-  },
-  {
-    label: 'Notification',
-    link: '/notification',
-  },
-  {
-    label: 'Radio Button',
-    link: '/radio-button',
-  },
-  {
-    label: 'Search Bar',
-    link: '/search-field',
-  },
-  {
-    label: 'Skeleton',
-    link: '/skeleton',
-  },
-  {
-    label: 'Switch',
-    link: '/switch',
-  },
-  {
-    label: 'Tabs',
-    link: '/tabs',
-  },
-  // {
-  //   label: 'Background Video',
-  //   link: '/background-video',
-  // },
-  {
-    label: 'Image Hover Effect',
-    link: '/image-hover-effect',
-  },
-  {
-    label: 'Accordion',
-    link: '/accordion',
-  },
-  {
-    label: 'Select',
-    link: '/select',
-  },
-  {
-    label: 'Tooltip',
-    link: '/tooltip',
-  },
-  {
-    label: 'Date Picker',
-    link: '/date-picker',
-  },
-  {
-    label: 'Popover',
-    link: '/popover',
-  },
-  {
-    label: 'Dialog',
-    link: '/dialog',
-  },
-  {
-    label: 'Drawer',
-    link: '/drawer',
-  },
-  {
-    label: 'Pagination',
-    link: '/pagination',
-  },
-  {
-    label: 'Table',
-    link: '/table',
-  },
-  {
-    label: 'Progress Bar',
-    link: '/progress-bar',
-  },
-  {
-    label: 'Sidebar',
-    link: '/sidebar',
-  },
-];
+import Constants from '@/constants/Constants';
 
 const SideBar = () => {
   const location = useLocation();
@@ -155,26 +23,26 @@ const SideBar = () => {
           </Link>
           <Accordion multipleExpand>
             <AccordionItem title="Components" defaultOpen contentClassName="flex flex-col">
-              {sidebarList.sort((a, b) => a.label.localeCompare(b.label)).map((e, index) => (
+              {Constants.componentList.sort((a, b) => a.name.localeCompare(b.name)).map((e, index) => (
                 <React.Fragment key={index}>
-                  {e.child ? (
+                  {('child' in e && Array.isArray((e as any).child)) ? (
                     <Accordion multipleExpand>
                       {/* <AccordionTrigger title={e.label} /> */}
-                      <AccordionItem triggerClassName="p-2" titleClassName="text-base!" title={e.label} contentClassName="flex flex-col">
-                        {e.child.map(c => (
+                      <AccordionItem triggerClassName="p-2" titleClassName="text-base!" title={e.name} contentClassName="flex flex-col">
+                        {(e.child as any[]).map(c => (
                           <Link
-                            key={c.link}
-                            to={c.link}
-                            className={`hover:bg-primary-5 mt-1 rounded-t-md p-2 text-base transition-colors  duration-100 ${location.pathname === c.link && 'bg-primary/10 text-primary'}`}
+                            key={c.path}
+                            to={c.path}
+                            className={`hover:bg-primary-5 mt-1 rounded-t-md p-2 text-base transition-colors  duration-100 ${location.pathname === c.path && 'bg-primary/10 text-primary'}`}
                           >
-                            {c.label}
+                            {c.name}
                           </Link>
                         ))}
                       </AccordionItem>
                     </Accordion>
                   ) : (
-                    <Link to={e.link} className={`hover:bg-primary-5 mt-1 rounded-t-md p-2 transition-colors  duration-100 ${location.pathname === e.link && 'bg-primary/10 text-primary'}`}>
-                      {e.label}
+                    <Link to={e.path} className={`hover:bg-primary-5 mt-1 rounded-t-md p-2 transition-colors  duration-100 ${location.pathname === e.path && 'bg-primary/10 text-primary'}`}>
+                      {e.name}
                     </Link>
                   )}
                   <span className="border-primary-15 h-1 w-full border-b-2 last:border-b-0" />

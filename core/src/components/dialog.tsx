@@ -11,7 +11,7 @@ import { createPortal } from 'react-dom';
 import { cva } from 'class-variance-authority';
 import { XIcon } from '@phosphor-icons/react';
 import type { VariantProps } from 'class-variance-authority';
-import { cn } from '@/lib/utils';
+import { cn, preventScrollShift } from '@/lib/utils';
 import Button from '@/components/button';
 
 interface DialogContextProps {
@@ -158,7 +158,7 @@ const DialogContent: React.FC<DialogContentProps> = ({
 
   useEffect(() => {
     if (isRendered) {
-      document.body.style.overflow = 'hidden';
+      preventScrollShift.lock();
     }
 
     const handleEscape = (e: KeyboardEvent) => {
@@ -170,7 +170,7 @@ const DialogContent: React.FC<DialogContentProps> = ({
 
     return () => {
       if (!open) {
-        document.body.style.overflow = '';
+        preventScrollShift.unlock();
       }
       document.removeEventListener('keydown', handleEscape);
     };

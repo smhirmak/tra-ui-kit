@@ -1,99 +1,122 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@/components/button';
-import { RadioGroup, RadioGroupItem } from '@/components/radio-buttons';
+import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
+import { useTOC } from '@/contexts/toc/TOCContext';
+import { TOCItem } from '@/components/table-of-contents';
+import ApiTable from '@/components/api-table';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/dialog';
 
+const tocItems: TOCItem[] = [
+  { id: 'overview', title: 'Overview', level: 1 },
+  { id: 'installation', title: 'Installation', level: 1 },
+  { id: 'usage', title: 'Usage', level: 1 },
+  { id: 'sizes', title: 'Sizes', level: 1 },
+  { id: 'positions', title: 'Positions', level: 1 },
+  { id: 'api', title: 'API Reference', level: 1 },
+];
+
+const apiTableData = [
+  { prop: 'open', type: 'boolean', default: 'false', description: 'Controls the open state' },
+  { prop: 'onOpenChange', type: '(open: boolean) => void', default: '-', description: 'Callback when open state changes' },
+  { prop: 'size', type: '"sm" | "default" | "lg" | "xl" | "2xl"', default: '"default"', description: 'Dialog size' },
+  { prop: 'position', type: '"center" | "top" | "bottom" | "onlyMobileBottom"', default: '"center"', description: 'Dialog position' },
+  { prop: 'fullScreen', type: 'boolean', default: 'false', description: 'Full screen mode' },
+];
+
 const DialogPage = () => {
+  const { setTocItems } = useTOC();
   const [isOpen, setIsOpen] = useState(false);
-  const [size, setSize] = useState<'sm' | 'default' | 'lg' | 'xl' | '2xl'>('default');
-  const [position, setPosition] = useState<'center' | 'top' | 'bottom' | 'onlyMobileBottom'>('center');
-  const [fullScreen, setFullScreen] = useState(false);
-  const [scroll, setScroll] = useState<boolean>(true);
 
-  const handleClose = () => setIsOpen(false);
+  useEffect(() => {
+    setTocItems(tocItems);
+  }, [setTocItems]);
+
   return (
-    <div className="p-4">
+    <div className="space-y-12">
+      {/* Overview */}
+      <section id="overview">
+        <h1 className="mb-4 text-4xl font-bold">Dialog</h1>
+        <p className="text-lg text-neutral-grey">
+          A modal dialog component for displaying important content and actions that require user attention.
+        </p>
+      </section>
 
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        {/* Trigger: İçine ne koyarsan ona tıklayınca açılır */}
-        <DialogTrigger>
-          <Button variant="outlined">Profili Düzenle</Button>
-        </DialogTrigger>
+      {/* Installation */}
+      <section id="installation">
+        <h2 className="mb-4 text-2xl font-bold">Installation</h2>
+        <CustomSyntaxHighlighter content='npx msi-ui-cli add dialog' />
+      </section>
 
-        {/* Content: Portal ile body'ye taşınır */}
-        <DialogContent size="sm">
-          <DialogHeader>
-            <DialogTitle>Dialog Header</DialogTitle>
-            <DialogDescription>
-              Değişiklikleri yaptıktan sonra kaydet butonuna basınız.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="bg-neutral-light overflow-hidden rounded-lg">
-            <div className="p-4">
-              <div className="bg-neutral-light w-fit rounded-md p-4">
-                <p className="text-lg font-semibold">Size:</p>
-                <RadioGroup defaultValue={size} onChange={value => setSize(value as 'default' | 'sm' | 'lg' | 'xl' | '2xl')}>
-                  <RadioGroupItem id="sm" value="sm" label="Sm" />
-                  <RadioGroupItem id="default" value="default" label="Default" />
-                  <RadioGroupItem id="lg" value="lg" label="Lg" />
-                  <RadioGroupItem id="xl" value="xl" label="Xl" />
-                  <RadioGroupItem id="2xl" value="2xl" label="2xl" />
-                </RadioGroup>
-              </div>
-              <div className="bg-neutral-light w-fit rounded-md p-4">
-                <p className="text-lg font-semibold">Position:</p>
-                <RadioGroup defaultValue={position} onChange={value => setPosition(value as 'center' | 'top' | 'bottom' | 'onlyMobileBottom')}>
-                  <RadioGroupItem id="center" value="center" label="Center" />
-                  <RadioGroupItem id="top" value="top" label="Top" />
-                  <RadioGroupItem id="bottom" value="bottom" label="Bottom" />
-                  <RadioGroupItem id="onlyMobileBottom" value="onlyMobileBottom" label="Only Mobile Bottom" />
-                </RadioGroup>
-              </div>
-              <div className="bg-neutral-light w-fit rounded-md p-4">
-                <p className="text-lg font-semibold">Full Screen:</p>
-                <RadioGroup defaultValue={fullScreen.toString()} onChange={value => setFullScreen(value === 'true')}>
-                  <RadioGroupItem id="fullScreenTrue" value="true" label="True" />
-                  <RadioGroupItem id="fullScreenFalse" value="false" label="False" />
-                </RadioGroup>
-              </div>
-              <div className="bg-neutral-light w-fit rounded-md p-4">
-                <p className="text-lg font-semibold">Scroll:</p>
-                <RadioGroup defaultValue={scroll.toString()} onChange={value => setScroll(value === 'true')}>
-                  <RadioGroupItem id="body" value="true" label="True" />
-                  <RadioGroupItem id="false" value="false" label="False" />
-                </RadioGroup>
-              </div>
-              <p className="mb-4">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus illum eligendi nam accusantium aperiam qui adipisci eum asperiores velit quis?
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus illum eligendi nam accusantium aperiam qui adipisci eum asperiores velit quis?
-              </p>
-            </div>
-            <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-              <button
-                type="button"
-                className={`inline-flex w-full justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-base font-medium text-white 
-                shadow-xs hover:bg-blue-600 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm`}
-                onClick={handleClose}
-              >
-                Kapat
-              </button>
-              <button
-                type="button"
-                className={`mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700
-                 shadow-xs hover:bg-gray-50 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm`}
-                onClick={handleClose}
-              >
-                İptal
-              </button>
-            </div>
+      {/* Usage */}
+      <section id="usage">
+        <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <div className="space-y-4">
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+              <DialogTrigger>
+                <Button variant="outlined">Open Dialog</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Dialog Title</DialogTitle>
+                  <DialogDescription>
+                    This is a dialog description. You can put any content here.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="py-4">
+                  <p>Dialog content goes here.</p>
+                </div>
+                <DialogFooter>
+                  <Button onClick={() => setIsOpen(false)}>Close</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </div>
+          <CustomSyntaxHighlighter content={`<Dialog open={isOpen} onOpenChange={setIsOpen}>
+  <DialogTrigger>
+    <Button variant="outlined">Open Dialog</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Dialog Title</DialogTitle>
+      <DialogDescription>
+        This is a dialog description.
+      </DialogDescription>
+    </DialogHeader>
+    <div className="py-4">
+      <p>Dialog content goes here.</p>
+    </div>
+    <DialogFooter>
+      <Button onClick={() => setIsOpen(false)}>Close</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>`} />
+        </div>
+      </section>
 
-          <DialogFooter>
-            <Button>Kaydet</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      {/* Sizes */}
+      <section id="sizes">
+        <h2 className="mb-4 text-2xl font-bold">Sizes</h2>
+        <p className="mb-4 text-neutral-grey">Dialog comes in multiple sizes to fit different content needs.</p>
+        <CustomSyntaxHighlighter className="mb-2" content='<DialogContent size="sm">...</DialogContent>' />
+        <CustomSyntaxHighlighter className="mb-2" content='<DialogContent size="default">...</DialogContent>' />
+        <CustomSyntaxHighlighter className="mb-2" content='<DialogContent size="lg">...</DialogContent>' />
+        <CustomSyntaxHighlighter className="mb-2" content='<DialogContent size="xl">...</DialogContent>' />
+        <CustomSyntaxHighlighter content='<DialogContent size="2xl">...</DialogContent>' />
+      </section>
+
+      {/* Positions */}
+      <section id="positions">
+        <h2 className="mb-4 text-2xl font-bold">Positions</h2>
+        <p className="mb-4 text-neutral-grey">Control the position of the dialog on the screen.</p>
+        <CustomSyntaxHighlighter className="mb-2" content='<DialogContent position="center">...</DialogContent>' />
+        <CustomSyntaxHighlighter className="mb-2" content='<DialogContent position="top">...</DialogContent>' />
+        <CustomSyntaxHighlighter className="mb-2" content='<DialogContent position="bottom">...</DialogContent>' />
+        <CustomSyntaxHighlighter content='<DialogContent position="onlyMobileBottom">...</DialogContent>' />
+      </section>
+
+      {/* API Reference */}
+      <ApiTable tableData={apiTableData} />
     </div>
   );
 };

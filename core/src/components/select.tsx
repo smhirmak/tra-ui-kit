@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef, useState } from 'react';
 import { CaretDownIcon, CheckIcon, XIcon } from '@phosphor-icons/react';
 import Label from '@/components/label';
-import { cn } from '@/lib/utils';
+import { cn, preventScrollShift } from '@/lib/utils';
 import Button from '@/components/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
 
@@ -101,7 +101,7 @@ interface ISelectOption {
 }
 
 interface ISelect {
-  placeHolder?: string;
+  placeholder?: string;
   size?: 'default' | 'sm' | 'lg';
   options: Array<ISelectOption> | ISelectOption;
   isMulti?: boolean;
@@ -135,7 +135,7 @@ interface ISelect {
 }
 
 const Select: React.FC<ISelect> = ({
-  placeHolder = '',
+  placeholder = '',
   label,
   size = 'default',
   value,
@@ -217,7 +217,11 @@ const Select: React.FC<ISelect> = ({
     if (showMenu && searchRef.current) {
       searchRef.current.focus();
     }
-    document.body.style.overflow = showMenu ? 'hidden' : 'auto';
+    if (showMenu) {
+      preventScrollShift.lock();
+    } else {
+      preventScrollShift.unlock();
+    }
   }, [showMenu]);
 
   useEffect(() => {
@@ -320,7 +324,7 @@ const Select: React.FC<ISelect> = ({
     if (!selectedValue || (Array.isArray(selectedValue) && selectedValue.length === 0)) {
       return (
         <>
-          {!showMenu && <span data-disabled={disabled} className="text-neutral-grey">{placeHolder}</span>}
+          {!showMenu && <span data-disabled={disabled} className="text-neutral-grey">{placeholder}</span>}
           {(isSearchable && showMenu) && (
             <div className="MsiSelect-searchBox flex max-w-[80%] items-center">
               <SearchInput

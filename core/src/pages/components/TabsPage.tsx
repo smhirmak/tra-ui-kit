@@ -1,601 +1,221 @@
-/* eslint-disable no-nested-ternary */
-import { PlusIcon, WarningIcon } from '@phosphor-icons/react';
-import { useState } from 'react';
-import Button from '@/components/button';
-import { RadioGroup, RadioGroupItem } from '@/components/radio-buttons';
+import { useEffect, useState } from 'react';
 import { Tab, Tabs } from '@/components/tabs';
+import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
+import { useTOC } from '@/contexts/toc/TOCContext';
+import { TOCItem } from '@/components/table-of-contents';
+import ApiTable from '@/components/api-table';
+
+const tocItems: TOCItem[] = [
+  { id: 'overview', title: 'Overview', level: 1 },
+  { id: 'installation', title: 'Installation', level: 1 },
+  { id: 'usage', title: 'Usage', level: 1 },
+  { id: 'variants', title: 'Variants', level: 1 },
+  { id: 'default', title: 'Default', level: 2 },
+  { id: 'solid', title: 'Solid', level: 2 },
+  { id: 'outlined', title: 'Outlined', level: 2 },
+  { id: 'sizes', title: 'Sizes', level: 1 },
+  { id: 'content-placement', title: 'Content Placement', level: 1 },
+  { id: 'api', title: 'API Reference', level: 1 },
+];
+
+const apiTableData = [
+  { prop: 'activeTab', type: 'string', default: '-', description: 'Currently active tab value' },
+  { prop: 'onChange', type: '(value: string) => void', default: '-', description: 'Tab change handler' },
+  { prop: 'variant', type: '"default" | "solid" | "outlined" | "split"', default: '"default"', description: 'Visual style variant' },
+  { prop: 'size', type: '"sm" | "default" | "lg"', default: '"default"', description: 'Tab size' },
+  { prop: 'contentPlacement', type: '"top" | "right" | "bottom" | "left"', default: '"bottom"', description: 'Position of tab content' },
+  { prop: 'radius', type: '"none" | "sm" | "default" | "lg" | "full"', default: '"default"', description: 'Border radius' },
+];
+
+const tabApiData = [
+  { prop: 'label', type: 'string | ReactNode', default: '-', description: 'Tab label text or element' },
+  { prop: 'value', type: 'string', default: '-', description: 'Unique tab identifier' },
+  { prop: 'children', type: 'ReactNode', default: '-', description: 'Tab content' },
+  { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the tab' },
+];
 
 const TabsPage = () => {
-  const [activeTab, setActiveTab] = useState<string>('tab3');
-  const [tabContentPlacement, setTabContentPlacement] = useState<'top' | 'right' | 'bottom' | 'left'>('bottom');
+  const { setTocItems } = useTOC();
+  const [activeTab, setActiveTab] = useState('tab1');
 
-  const handleTabChange = (newValue: string) => {
-    setActiveTab(newValue);
-  };
+  useEffect(() => {
+    setTocItems(tocItems);
+  }, [setTocItems]);
+
   return (
-    <div className="mb-6 border-b-2 pb-6">
-      <p className="text-4xl underline">Tabs</p>
-      <div className="mt-2 space-y-2 border-t-2 py-2">
-        <p className="my-2 text-xl">Default:</p>
-        <div className="flex space-x-2 pb-2">
-          <Tabs activeTab={activeTab} size="sm" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-          <Tabs activeTab={activeTab} size="default" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-          <Tabs activeTab={activeTab} size="lg" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-        </div>
-        <p className="my-2 text-xl">Solid:</p>
-        <div className="flex space-x-2 pb-2">
-          <Tabs variant="solid" activeTab={activeTab} size="sm" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-          <Tabs variant="solid" activeTab={activeTab} size="default" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-          <Tabs variant="solid" activeTab={activeTab} size="lg" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-        </div>
-        <p className="my-2 text-xl">Outlined:</p>
-        <div className="flex space-x-2 pb-2">
-          <Tabs variant="outlined" activeTab={activeTab} size="sm" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-          <Tabs variant="outlined" activeTab={activeTab} size="default" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-          <Tabs variant="outlined" activeTab={activeTab} size="lg" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-        </div>
-        <p className="my-2 text-xl">Split:</p>
-        <div className="flex space-x-2 pb-2">
-          <Tabs variant="split" activeTab={activeTab} size="sm" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-          <Tabs variant="split" activeTab={activeTab} size="default" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-          <Tabs variant="split" activeTab={activeTab} size="lg" onChange={handleTabChange}>
-            <Tab label="Tab 1" value="tab1">
-              Content for Tab 1
-            </Tab>
-            <Tab label="Tab 2" value="tab2">
-              Content for Tab 2
-            </Tab>
-            <Tab label="Tab 3" value="tab3">
-              Content for Tab 3
-            </Tab>
-          </Tabs>
-        </div>
-        <p className="my-2 text-xl">Solid Rounded:</p>
-        <div className="flex flex-wrap space-x-2 pb-2">
-          {(['none', 'sm', 'default', 'lg', 'full'] as ('none' | 'sm' | 'default' | 'lg' | 'full')[]).map(e => (
-            <Tabs variant="solid" radius={e} activeTab={activeTab} size="lg" onChange={handleTabChange}>
-              <Tab label="Tab 1" value="tab1">
-                Content for Tab 1
-              </Tab>
-              <Tab label="Tab 2" value="tab2">
-                Content for Tab 2
-              </Tab>
-              <Tab label="Tab 3" value="tab3">
-                Content for Tab 3
-              </Tab>
-            </Tabs>
-          ))}
-        </div>
-        <p className="my-2 text-xl">Outlined Rounded:</p>
-        <div className="flex flex-wrap space-x-2 pb-2">
-          {(['none', 'sm', 'default', 'lg', 'full'] as ('none' | 'sm' | 'default' | 'lg' | 'full')[]).map((e: 'none' | 'sm' | 'default' | 'lg' | 'full') => (
-            <Tabs variant="outlined" radius={e} activeTab={activeTab} size="lg" onChange={handleTabChange}>
-              <Tab label="Tab 1" value="tab1">
-                Content for Tab 1
-              </Tab>
-              <Tab
-                label={(
-                  <span className="flex items-center">
-                    <PlusIcon />
-                    &nbsp;
-                    Tab 2
-                  </span>
-                )}
-                value="tab2"
-              >
-                Content for Tab 2
-              </Tab>
-              <Tab label="Tab 3" value="tab3">
-                Content for Tab 3
-              </Tab>
-            </Tabs>
-          ))}
-        </div>
-        <p className="my-2 text-xl">Split Rounded:</p>
-        <div className="flex flex-wrap space-x-2 pb-2">
-          {(['none', 'sm', 'default', 'lg', 'full'] as ('none' | 'sm' | 'default' | 'lg' | 'full')[]).map((e: 'none' | 'sm' | 'default' | 'lg' | 'full') => (
-            <Tabs variant="split" radius={e} activeTab={activeTab} size="lg" onChange={handleTabChange}>
-              <Tab label="Tab 1" value="tab1">
-                Content for Tab 1
-              </Tab>
-              <Tab label="Tab 2" value="tab2">
-                Content for Tab 2
-              </Tab>
-              <Tab label="Tab 3" value="tab3">
-                Content for Tab 3
-              </Tab>
-            </Tabs>
-          ))}
-        </div>
-        <p className="my-2 text-xl">Vertical Direction:</p>
-        <div className="flex flex-wrap space-x-2 pb-2">
-          {['default', 'solid', 'outlined', 'split'].map((e: string) => (
-            <Tabs variant={e as 'default' | 'split' | 'solid' | 'outlined'} direction="vertical" activeTab={activeTab} selectorClassName="bg-error/50" size="lg" onChange={handleTabChange}>
-              <Tab label="Tab 1" value="tab1">
-                Content for Tab 1
-              </Tab>
-              <Tab label="Tab 2" value="tab2">
-                Content for Tab 2
-              </Tab>
-              <Tab label="Tab 3" value="tab3">
-                Content for Tab 3
-              </Tab>
-            </Tabs>
-          ))}
-        </div>
-        <div className="flex flex-wrap space-x-6">
-          <div>
-            <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Default</p>
-            <div className="flex flex-wrap space-x-2 pb-2">
-              <RadioGroup onChange={e => setTabContentPlacement(e as 'top' | 'right' | 'bottom' | 'left')} className="bg-primary-15 flex w-full flex-col items-center">
-                <RadioGroupItem id="top" label="Top" value="top" />
-                <RadioGroupItem id="right" label="Right" value="right" />
-                <RadioGroupItem id="bottom" label="Bottom" value="bottom" />
-                <RadioGroupItem id="left" label="Left" value="left" />
-              </RadioGroup>
-              <Tabs
-                contentPlacement={tabContentPlacement}
-                contentClasName="p-4 bg-disabled-dark/40 rounded-lg"
-                variant="default"
-                direction="vertical"
-                activeTab={activeTab}
-                size="lg"
-                onChange={handleTabChange}
-              >
-                <Tab label="Tab 1" value="tab1">
-                  Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-                <Tab label="Tab 2" value="tab2">
-                  Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-                <Tab label="Tab 3" value="tab3">
-                  Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-              </Tabs>
-            </div>
-          </div>
-          <div>
-            <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Outlined</p>
-            <div className="flex flex-wrap space-x-2 pb-2">
-              <Tabs
-                contentPlacement={tabContentPlacement}
-                contentClasName="p-4 bg-disabled-dark/40 rounded-lg"
-                variant="outlined"
-                direction="vertical"
-                activeTab={activeTab}
-                size="lg"
-                onChange={handleTabChange}
-              >
-                <Tab label="Tab 1" value="tab1">
-                  Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-                <Tab label="Tab 2" value="tab2">
-                  Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-                <Tab label="Tab 3" value="tab3">
-                  Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-              </Tabs>
-            </div>
-          </div>
-          <div>
-            <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Solid</p>
-            <div className="flex flex-wrap space-x-2 pb-2">
-              <Tabs
-                contentPlacement={tabContentPlacement}
-                contentClasName="p-4 bg-disabled-dark/40 rounded-lg"
-                variant="solid"
-                direction="vertical"
-                activeTab={activeTab}
-                size="lg"
-                onChange={handleTabChange}
-              >
-                <Tab label="Tab 1" value="tab1">
-                  Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-                <Tab label="Tab 2" value="tab2">
-                  Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-                <Tab label="Tab 3" value="tab3">
-                  Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-              </Tabs>
-            </div>
-          </div>
-          <div>
-            <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Split</p>
-            <div className="flex flex-wrap space-x-2 pb-2">
-              <Tabs
-                contentPlacement={tabContentPlacement}
-                contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
-                variant="split"
-                direction="vertical"
-                activeTab={activeTab}
-                size="lg"
-                onChange={handleTabChange}
-              >
-                <Tab label="Tab 1" value="tab1">
-                  Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-                <Tab label="Tab 2" value="tab2">
-                  Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-                <Tab label="Tab 3" value="tab3">
-                  Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                </Tab>
-              </Tabs>
-            </div>
-          </div>
-        </div>
-        <div>
-          <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Default</p>
-          <div className="flex flex-wrap space-x-2 pb-2">
-            <Tabs
-              contentPlacement={tabContentPlacement}
-              contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
-              variant="default"
-              direction="vertical"
-              activeTab={activeTab}
-              size="lg"
-              onChange={handleTabChange}
-            >
-              <Tab
-                label={
-                  (
-                    <span className="flex w-max gap-2">
-                      <WarningIcon className="text-error size-6" />
-                      Tab 1
-                    </span>
-                  )
-                }
-                value="tab1"
-              >
-                Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-              </Tab>
-              <Tab
-                label={
-                  (
-                    <span className="flex w-max gap-2">
-                      Tab 2
-                      <WarningIcon className="text-tetriary size-6" />
-                    </span>
-                  )
-                }
-                value="tab2"
-              >
-                Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, debitis.
-              </Tab>
-              <Tab
-                label={
-                  (
-                    <span className="flex w-max gap-2">
-                      <WarningIcon className="text-error size-6" />
-                      Tab 3
-                      <WarningIcon className="text-error size-6" />
-                    </span>
-                  )
-                }
-                value="tab3"
-              >
-                Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque ratione molestiae obcaecati quae dolor quis eaque facere voluptas corporis porro.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, dolore. Blanditiis aliquid, architecto dolores cum quisquam necessitatibus similique maiores omnis est,
-                fugiat beatae aliquam earum quasi tenetur quidem! Perferendis, voluptates.
-              </Tab>
-            </Tabs>
-          </div>
-        </div>
-        <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Outlined</p>
-        <div className="flex flex-wrap space-x-2 pb-2">
-          <Tabs
-            contentPlacement={tabContentPlacement}
-            contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
-            variant="outlined"
-            direction="vertical"
-            activeTab={activeTab}
-            size="lg"
-            onChange={handleTabChange}
-          >
-            <Tab
-              label={
-                (
-                  <span className="flex w-max gap-2">
-                    <WarningIcon className="text-error size-6" />
-                    Tab 1
-                  </span>
-                )
-              }
-              value="tab1"
-            >
-              Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-            </Tab>
-            <Tab
-              label={
-                (
-                  <span className="flex w-max gap-2">
-                    Tab 2
-                    <WarningIcon className="text-tetriary size-6" />
-                  </span>
-                )
-              }
-              value="tab2"
-            >
-              Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, debitis.
-            </Tab>
-            <Tab
-              label={
-                (
-                  <span className="flex w-max gap-2">
-                    <WarningIcon className="text-error size-6" />
-                    Tab 3
-                    <WarningIcon className="text-error size-6" />
-                  </span>
-                )
-              }
-              value="tab3"
-            >
-              Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque ratione molestiae obcaecati quae dolor quis eaque facere voluptas corporis porro.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, dolore. Blanditiis aliquid, architecto dolores cum quisquam necessitatibus similique maiores omnis est,
-              fugiat beatae aliquam earum quasi tenetur quidem! Perferendis, voluptates.
-            </Tab>
-          </Tabs>
-        </div>
-        <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Solid</p>
-        <div className="flex flex-wrap space-x-2 pb-2">
-          <Tabs
-            contentPlacement={tabContentPlacement}
-            contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
-            variant="solid"
-            direction="vertical"
-            activeTab={activeTab}
-            size="lg"
-            onChange={handleTabChange}
-          >
-            <Tab
-              label={
-                (
-                  <span className="flex w-max gap-2">
-                    <WarningIcon className="text-error size-6" />
-                    Tab 1
-                  </span>
-                )
-              }
-              value="tab1"
-            >
-              Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-            </Tab>
-            <Tab
-              label={
-                (
-                  <span className="flex w-max gap-2">
-                    Tab 2
-                    <WarningIcon className="text-tetriary size-6" />
-                  </span>
-                )
-              }
-              value="tab2"
-            >
-              Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, debitis.
-            </Tab>
-            <Tab
-              label={
-                (
-                  <span className="flex w-max gap-2">
-                    <WarningIcon className="text-error size-6" />
-                    Tab 3
-                    <WarningIcon className="text-error size-6" />
-                  </span>
-                )
-              }
-              value="tab3"
-            >
-              Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque ratione molestiae obcaecati quae dolor quis eaque facere voluptas corporis porro.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, dolore. Blanditiis aliquid, architecto dolores cum quisquam necessitatibus similique maiores omnis est,
-              fugiat beatae aliquam earum quasi tenetur quidem! Perferendis, voluptates.
-            </Tab>
-          </Tabs>
-        </div>
-        <p className="my-2 text-xl">Vertival Direction and Dynamic Content Placement and Split</p>
-        <div className="flex flex-wrap space-x-2 pb-2">
-          <Tabs
-            contentPlacement={tabContentPlacement}
-            contentClasName="p-4 bg-disabled-dark/40 rounded-lg text-justify"
-            variant="split"
-            direction="vertical"
-            activeTab={activeTab}
-            size="lg"
-            onChange={handleTabChange}
-          >
-            <Tab
-              label={
-                (
-                  <span className="flex w-max gap-2">
-                    <WarningIcon className="text-error size-6" />
-                    Tab 1
-                  </span>
-                )
-              }
-              value="tab1"
-            >
-              Content for Tab 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-            </Tab>
-            <Tab
-              label={
-                (
-                  <span className="flex w-max gap-2">
-                    Tab 2
-                    <WarningIcon className="text-tetriary size-6" />
-                  </span>
-                )
-              }
-              value="tab2"
-            >
-              Content for Tab 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, debitis.
-            </Tab>
-            <Tab
-              label={
-                (
-                  <span className="flex w-max gap-2">
-                    <WarningIcon className="text-error size-6" />
-                    Tab 3
-                    <WarningIcon className="text-error size-6" />
-                  </span>
-                )
-              }
-              value="tab3"
-            >
-              Content for Tab 3 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quas quos iste architecto impedit est non excepturi aperiam recusandae cum!
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugiat! Perspiciatis omnis consequatur mollitia eligendi quibusdam eius explicabo, nemo tempore?
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque ratione molestiae obcaecati quae dolor quis eaque facere voluptas corporis porro.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, dolore. Blanditiis aliquid, architecto dolores cum quisquam necessitatibus similique maiores omnis est,
-              fugiat beatae aliquam earum quasi tenetur quidem! Perferendis, voluptates.
-            </Tab>
-          </Tabs>
-        </div>
-      </div>
-      <Button onClick={() => setActiveTab(activeTab === 'tab1' ? 'tab2' : activeTab === 'tab2' ? 'tab3' : activeTab === 'tab3' ? 'tab1' : 'tab1')}> Change Tab</Button>
+    <div className="space-y-12">
+      {/* Overview */}
+      <section id="overview">
+        <h1 className="mb-4 text-4xl font-bold">Tabs</h1>
+        <p className="text-lg text-neutral-grey">
+          A tabbed interface component for organizing content into separate views.
+        </p>
+      </section>
 
+      {/* Installation */}
+      <section id="installation">
+        <h2 className="mb-4 text-2xl font-bold">Installation</h2>
+        <CustomSyntaxHighlighter content='npx msi-ui-cli add tabs' />
+      </section>
+
+      {/* Usage */}
+      <section id="usage">
+        <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <div className="space-y-4">
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Tabs activeTab={activeTab} onChange={setActiveTab}>
+              <Tab label="Tab 1" value="tab1">
+                Content for Tab 1
+              </Tab>
+              <Tab label="Tab 2" value="tab2">
+                Content for Tab 2
+              </Tab>
+              <Tab label="Tab 3" value="tab3">
+                Content for Tab 3
+              </Tab>
+            </Tabs>
+          </div>
+          <CustomSyntaxHighlighter
+            content={`<Tabs activeTab={activeTab} onChange={setActiveTab}>
+  <Tab label="Tab 1" value="tab1">
+    Content for Tab 1
+  </Tab>
+  <Tab label="Tab 2" value="tab2">
+    Content for Tab 2
+  </Tab>
+  <Tab label="Tab 3" value="tab3">
+    Content for Tab 3
+  </Tab>
+</Tabs>`}
+          />
+        </div>
+      </section>
+
+      {/* Variants */}
+      <section id="variants">
+        <h2 className="mb-4 text-2xl font-bold">Variants</h2>
+
+        {/* Default */}
+        <div id="default" className="mb-8 space-y-4">
+          <h3 className="text-xl font-semibold">Default</h3>
+          <p className="text-neutral-grey">Default tabs with underline indicator.</p>
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Tabs activeTab={activeTab} variant="default" onChange={setActiveTab}>
+              <Tab label="Profile" value="tab1">
+                Profile content
+              </Tab>
+              <Tab label="Settings" value="tab2">
+                Settings content
+              </Tab>
+              <Tab label="Messages" value="tab3">
+                Messages content
+              </Tab>
+            </Tabs>
+          </div>
+          <CustomSyntaxHighlighter content='<Tabs variant="default" activeTab={activeTab} onChange={setActiveTab}>...</Tabs>' />
+        </div>
+
+        {/* Solid */}
+        <div id="solid" className="mb-8 space-y-4">
+          <h3 className="text-xl font-semibold">Solid</h3>
+          <p className="text-neutral-grey">Solid filled background for active tab.</p>
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Tabs activeTab={activeTab} variant="solid" onChange={setActiveTab}>
+              <Tab label="Overview" value="tab1">
+                Overview content
+              </Tab>
+              <Tab label="Details" value="tab2">
+                Details content
+              </Tab>
+              <Tab label="Reviews" value="tab3">
+                Reviews content
+              </Tab>
+            </Tabs>
+          </div>
+          <CustomSyntaxHighlighter content='<Tabs variant="solid" activeTab={activeTab} onChange={setActiveTab}>...</Tabs>' />
+        </div>
+
+        {/* Outlined */}
+        <div id="outlined" className="mb-8 space-y-4">
+          <h3 className="text-xl font-semibold">Outlined</h3>
+          <p className="text-neutral-grey">Tabs with outlined border.</p>
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Tabs activeTab={activeTab} variant="outlined" onChange={setActiveTab}>
+              <Tab label="Home" value="tab1">
+                Home content
+              </Tab>
+              <Tab label="About" value="tab2">
+                About content
+              </Tab>
+              <Tab label="Contact" value="tab3">
+                Contact content
+              </Tab>
+            </Tabs>
+          </div>
+          <CustomSyntaxHighlighter content='<Tabs variant="outlined" activeTab={activeTab} onChange={setActiveTab}>...</Tabs>' />
+        </div>
+      </section>
+
+      {/* Sizes */}
+      <section id="sizes">
+        <h2 className="mb-4 text-2xl font-bold">Sizes</h2>
+        <p className="mb-4 text-neutral-grey">Different size options for tabs.</p>
+        <div className="space-y-6">
+          <div>
+            <p className="mb-2 text-sm font-semibold">Small</p>
+            <div className="rounded-lg border border-border bg-background p-6">
+              <Tabs size="sm" activeTab={activeTab} onChange={setActiveTab}>
+                <Tab label="Tab 1" value="tab1">Small content</Tab>
+                <Tab label="Tab 2" value="tab2">Small content</Tab>
+              </Tabs>
+            </div>
+          </div>
+          <div>
+            <p className="mb-2 text-sm font-semibold">Default</p>
+            <div className="rounded-lg border border-border bg-background p-6">
+              <Tabs size="default" activeTab={activeTab} onChange={setActiveTab}>
+                <Tab label="Tab 1" value="tab1">Default content</Tab>
+                <Tab label="Tab 2" value="tab2">Default content</Tab>
+              </Tabs>
+            </div>
+          </div>
+          <div>
+            <p className="mb-2 text-sm font-semibold">Large</p>
+            <div className="rounded-lg border border-border bg-background p-6">
+              <Tabs size="lg" activeTab={activeTab} onChange={setActiveTab}>
+                <Tab label="Tab 1" value="tab1">Large content</Tab>
+                <Tab label="Tab 2" value="tab2">Large content</Tab>
+              </Tabs>
+            </div>
+          </div>
+          <CustomSyntaxHighlighter className="mb-2" content='<Tabs size="sm" ... />' />
+          <CustomSyntaxHighlighter className="mb-2" content='<Tabs size="default" ... />' />
+          <CustomSyntaxHighlighter content='<Tabs size="lg" ... />' />
+        </div>
+      </section>
+
+      {/* Content Placement */}
+      <section id="content-placement">
+        <h2 className="mb-4 text-2xl font-bold">Content Placement</h2>
+        <p className="mb-4 text-neutral-grey">Position tab content relative to tab headers.</p>
+        <div className="rounded-lg border border-border bg-background p-6">
+          <Tabs activeTab={activeTab} contentPlacement="top" onChange={setActiveTab}>
+            <Tab label="Tab 1" value="tab1">Content positioned at top</Tab>
+            <Tab label="Tab 2" value="tab2">Content positioned at top</Tab>
+          </Tabs>
+        </div>
+        <CustomSyntaxHighlighter content='<Tabs contentPlacement="top" ... />' />
+      </section>
+
+      {/* API Reference */}
+      <section id="api">
+        <h2 className="mb-4 text-2xl font-bold">API Reference</h2>
+        <ApiTable tableData={apiTableData} title='Tabs' titleClassName='text-xl font-semibold' />
+        <ApiTable tableData={tabApiData} title='Tab' titleClassName='text-xl font-semibold mt-3' />
+      </section>
     </div>
   );
 };
 
 export default TabsPage;
+

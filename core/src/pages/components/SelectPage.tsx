@@ -1,742 +1,180 @@
-import Select from '../../components/select';
+import { useEffect, useState } from 'react';
+import Select from '@/components/select';
+import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
+import { useTOC } from '@/contexts/toc/TOCContext';
+import { TOCItem } from '@/components/table-of-contents';
+import ApiTable from '@/components/api-table';
 
-const options = [
-  {
-    content: 'İnternet sitemizde ürün',
-    value: 1,
-  },
-  {
-    content: 'hizmet ve kampanyalarımız.',
-    value: 2,
-  },
-  {
-    content: 'eksik/hatalı bilgi olup ',
-    value: 3,
-  },
-  {
-    content: 'Finansal tüketicilere imzalattığımız sözleşme ve formların bir örneğinin internet sitemizde olup olmadığını kontrol ediniz.',
-    value: 121,
-  },
-  {
-    content: 'Engelli müşterilere yönelik yükümlülüklerin yerine getirilip getirilmediğini kontrol ediniz.',
-    value: 122,
-  },
-  {
-    content: 'Bilgi toplumu hizmetleri kapsamındaki yükümlülüklerimizin yerine getirilip getirilmediğini kontrol ediniz.',
-    value: 123,
-  },
-  {
-    content: 'Veri metriklerini kontrol ediniz.',
-    value: 124,
-  },
-  {
-    content: 'Veri metriklerini kontrol ediniz.',
-    value: 150,
-  },
-  {
-    content: 'Acenteliğini yaptığımız sigorta şirketleri ile mutabakat yapılıp yapılmadığını kontrol ediniz.',
-    value: 125,
-  },
-  {
-    content: 'Bağlantısı olmayan poliçe olup olmadığını kontrol ediniz.',
-    value: 126,
-  },
-  {
-    content: 'TSPB müşteri uyuşmazlıkları hakem heyeti yönergesine ilişkin yükümlülüklerin yerine getirilip getirilmediğini kontrol ediniz.',
-    value: 127,
-  },
-  {
-    content: 'Özel güvenlik konusuna ilişkin yasal gerekliliklerin yerine getirilip getirilmediğini kontrol ediniz.',
-    value: 128,
-  },
-  {
-    content: 'Kuruluş tipi ve türü hatalı tanımlanan müşteri olup olmadığını kontrol ediniz.',
-    value: 129,
-  },
-  {
-    content: 'Personelin, web servisleri, API veya benzeri yöntemler kullanarak diğer kurum veya kuruluşlar nezdinde tutulan verilere yönelik yaptığı sorguları kontrol ediniz.',
-    value: 131,
-  },
+const tocItems: TOCItem[] = [
+  { id: 'overview', title: 'Overview', level: 1 },
+  { id: 'installation', title: 'Installation', level: 1 },
+  { id: 'usage', title: 'Usage', level: 1 },
+  { id: 'searchable', title: 'Searchable', level: 1 },
+  { id: 'multi-select', title: 'Multi Select', level: 1 },
+  { id: 'sizes', title: 'Sizes', level: 1 },
+  { id: 'disabled-state', title: 'Disabled State', level: 1 },
+  { id: 'api', title: 'API Reference', level: 1 },
 ];
 
-const SelectBox = () => {
-  const handleChangeSelect = (e: any) => {
-    console.log(e);
-  };
-  return (
-    <div>
-      <div className="mb-4 flex flex-col gap-4">
-        <p className="mb-2 text-3xl font-semibold">Default Select</p>
-        <p className="mb-2 text-2xl font-semibold">Small</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
-          <Select
-            label="Small"
-            size="sm"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Complete Button"
-            size="sm"
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Only Mobile Complete Button"
-            size="sm"
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Error"
-            size="sm"
-            options={options}
-            error
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Disabled"
-            size="sm"
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Disabled - Default Value"
-            size="sm"
-            disabled
-            options={options}
-            defaultValue={3}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-        </div>
-        <p className="mb-2 text-2xl font-semibold">Default</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
+const apiTableData = [
+  { prop: 'options', type: 'Array<{value: any, content: string}>', default: '-', description: 'Array of selectable options' },
+  { prop: 'value', type: 'any', default: '-', description: 'Selected value(s)' },
+  { prop: 'onChange', type: '(value: any) => void', default: '-', description: 'Change handler' },
+  { prop: 'isMulti', type: 'boolean', default: 'false', description: 'Enable multi-selection' },
+  { prop: 'isSearchable', type: 'boolean', default: 'false', description: 'Enable search functionality' },
+  { prop: 'size', type: '"sm" | "default" | "lg"', default: '"default"', description: 'Select field size' },
+  { prop: 'label', type: 'string', default: '-', description: 'Label text' },
+  { prop: 'placeholder', type: 'string', default: '"Select..."', description: 'Placeholder text' },
+  { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the select' },
+  { prop: 'error', type: 'boolean', default: 'false', description: 'Shows error state' },
+];
 
-          <Select
-            label="Default"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Complete Button"
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Only Mobile Complete Button"
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Error"
-            options={options}
-            error
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Disabled"
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Disabled - Default Value"
-            disabled
-            options={options}
-            defaultValue={3}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-        </div>
-        <p className="mb-2 text-2xl font-semibold">Large</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
-          <Select
-            label="Large"
-            size="lg"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Complete Button"
-            size="lg"
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Only Mobile Complete Button"
-            size="lg"
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Error"
-            size="lg"
-            options={options}
-            error
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Disabled"
-            size="lg"
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Disabled - Default Value"
-            size="lg"
-            disabled
-            options={options}
-            defaultValue={3}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
+const options = [
+  { content: 'React', value: 'react' },
+  { content: 'Vue.js', value: 'vue' },
+  { content: 'Angular', value: 'angular' },
+  { content: 'Svelte', value: 'svelte' },
+  { content: 'Next.js', value: 'nextjs' },
+];
+
+const SelectPage = () => {
+  const { setTocItems } = useTOC();
+  const [selectedValue, setSelectedValue] = useState<any>(null);
+  const [multiValue, setMultiValue] = useState<string[]>([]);
+  const handleMultiChange = (value: string | number | boolean | string[] | number[]) => {
+    if (Array.isArray(value)) {
+      setMultiValue(value as string[]);
+    } else {
+      setMultiValue([String(value)]);
+    }
+  };
+
+  useEffect(() => {
+    setTocItems(tocItems);
+  }, [setTocItems]);
+
+  return (
+    <div className="space-y-12">
+      {/* Overview */}
+      <section id="overview">
+        <h1 className="mb-4 text-4xl font-bold">Select</h1>
+        <p className="text-lg text-neutral-grey">
+          A versatile dropdown select component with support for single/multi selection and search functionality.
+        </p>
+      </section>
+
+      {/* Installation */}
+      <section id="installation">
+        <h2 className="mb-4 text-2xl font-bold">Installation</h2>
+        <CustomSyntaxHighlighter content='npx msi-ui-cli add select' />
+      </section>
+
+      {/* Usage */}
+      <section id="usage">
+        <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <div className="space-y-4">
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Select
+              options={options}
+              value={selectedValue}
+              onChange={setSelectedValue}
+              placeholder="Select a framework"
+            />
+          </div>
+          <CustomSyntaxHighlighter
+            content={`<Select
+  options={options}
+  value={selectedValue}
+  onChange={setSelectedValue}
+  placeholder="Select a framework"
+/>`}
           />
         </div>
-      </div>
-      <div className="mb-4 flex flex-col gap-4">
-        <p className="mb-2 text-3xl font-semibold">Multi Select</p>
-        <p className="mb-2 text-2xl font-semibold">Small</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
+      </section>
+
+      {/* Searchable */}
+      <section id="searchable">
+        <h2 className="mb-4 text-2xl font-bold">Searchable</h2>
+        <p className="mb-4 text-neutral-grey">Enable search to filter through options.</p>
+        <div className="rounded-lg border border-border bg-background p-6">
           <Select
-            label="Small"
-            size="sm"
-            isMulti
+            isSearchable
             options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Complete Button"
-            size="sm"
-            isMulti
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Only Mobile Complete Button"
-            size="sm"
-            isMulti
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Error"
-            size="sm"
-            options={options}
-            error
-            isMulti
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Disabled"
-            size="sm"
-            isMulti
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Disabled - Default Value"
-            size="sm"
-            isMulti
-            disabled
-            defaultValue={[2, 3]}
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
+            value={selectedValue}
+            onChange={setSelectedValue}
+            placeholder="Search framework..."
           />
         </div>
-        <p className="mb-2 text-2xl font-semibold">Default</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
+        <CustomSyntaxHighlighter
+          content={`<Select
+  isSearchable
+  options={options}
+  value={selectedValue}
+  onChange={setSelectedValue}
+/>`}
+        />
+      </section>
+
+      {/* Multi Select */}
+      <section id="multi-select">
+        <h2 className="mb-4 text-2xl font-bold">Multi Select</h2>
+        <p className="mb-4 text-neutral-grey">Allow multiple selections with multi mode.</p>
+        <div className="rounded-lg border border-border bg-background p-6">
           <Select
-            label="Default"
             isMulti
             options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Complete Button"
-            isMulti
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Only Mobile Complete Button"
-            isMulti
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Error"
-            options={options}
-            error
-            isMulti
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Disabled"
-            isMulti
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Disabled - Default Value"
-            isMulti
-            disabled
-            defaultValue={[2, 3]}
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
+            value={multiValue}
+            onChange={handleMultiChange}
+            placeholder="Select multiple frameworks"
           />
         </div>
-        <p className="mb-2 text-2xl font-semibold">Large</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
+        <CustomSyntaxHighlighter
+          content={`<Select
+  isMulti
+  options={options}
+  value={multiValue}
+  onChange={setMultiValue}
+/>`}
+        />
+      </section>
+
+      {/* Sizes */}
+      <section id="sizes">
+        <h2 className="mb-4 text-2xl font-bold">Sizes</h2>
+        <p className="mb-4 text-neutral-grey">Different size options for select field.</p>
+        <div className="rounded-lg border border-border bg-background p-6">
+          <div className="flex flex-col gap-4">
+            <Select size="sm" options={options} value={selectedValue} onChange={setSelectedValue} placeholder="Small" />
+            <Select size="default" options={options} value={selectedValue} onChange={setSelectedValue} placeholder="Default" />
+            <Select size="lg" options={options} value={selectedValue} onChange={setSelectedValue} placeholder="Large" />
+          </div>
+        </div>
+        <CustomSyntaxHighlighter className="mb-2" content='<Select size="sm" ... />' />
+        <CustomSyntaxHighlighter className="mb-2" content='<Select size="default" ... />' />
+        <CustomSyntaxHighlighter content='<Select size="lg" ... />' />
+      </section>
+
+      {/* Disabled State */}
+      <section id="disabled-state">
+        <h2 className="mb-4 text-2xl font-bold">Disabled State</h2>
+        <p className="mb-4 text-neutral-grey">Disabled select fields are non-interactive.</p>
+        <div className="rounded-lg border border-border bg-background p-6">
           <Select
-            label="Large"
-            size="lg"
-            isMulti
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Complete Button"
-            size="lg"
-            isMulti
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Only Mobile Complete Button"
-            size="lg"
-            isMulti
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Error"
-            size="lg"
-            options={options}
-            error
-            isMulti
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Disabled"
-            size="lg"
-            isMulti
             disabled
             options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Disabled - Default Value"
-            size="lg"
-            isMulti
-            disabled
-            defaultValue={[2, 3]}
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
+            value={selectedValue}
+            onChange={setSelectedValue}
+            placeholder="Disabled"
           />
         </div>
-      </div>
-      <div className="mb-4 flex flex-col gap-4">
-        <p className="mb-2 text-3xl font-semibold">Searchable Single Select</p>
-        <p className="mb-2 text-2xl font-semibold">Small</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
-          <Select
-            label="Small"
-            size="sm"
-            isSearchable
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Complete Button"
-            size="sm"
-            isSearchable
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Only Mobile Complete Button"
-            size="sm"
-            isSearchable
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Error"
-            size="sm"
-            options={options}
-            error
-            isSearchable
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Disabled"
-            size="sm"
-            isSearchable
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Disabled - Default Value"
-            size="sm"
-            isSearchable
-            disabled
-            defaultValue={3}
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-        </div>
-        <p className="mb-2 text-2xl font-semibold">Default</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
-          <Select
-            label="Default"
-            isSearchable
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Complete Button"
-            isSearchable
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Only Mobile Complete Button"
-            isSearchable
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Error"
-            options={options}
-            error
-            isSearchable
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Disabled"
-            isSearchable
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Disabled - Default Value"
-            isSearchable
-            disabled
-            defaultValue={3}
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-        </div>
-        <p className="mb-2 text-2xl font-semibold">Large</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
-          <Select
-            label="Large"
-            size="lg"
-            isSearchable
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Complete Button"
-            size="lg"
-            isSearchable
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Only Mobile Complete Button"
-            size="lg"
-            isSearchable
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Error"
-            size="lg"
-            options={options}
-            error
-            isSearchable
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Disabled"
-            size="lg"
-            isSearchable
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Disabled - Default Value"
-            size="lg"
-            isSearchable
-            disabled
-            defaultValue={3}
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-        </div>
-      </div>
-      <div className="mb-4 flex flex-col gap-4">
-        <p className="mb-2 text-3xl font-semibold">Searchable Multi Select</p>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
-          <Select
-            label="Small"
-            size="sm"
-            isMulti
-            isSearchable
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Complete Button"
-            size="sm"
-            isMulti
-            isSearchable
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Only Mobile Complete Button"
-            size="sm"
-            isMulti
-            isSearchable
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Error"
-            size="sm"
-            options={options}
-            error
-            isMulti
-            isSearchable
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Disabled"
-            size="sm"
-            isMulti
-            isSearchable
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Small - Disabled - Default Value"
-            size="sm"
-            isMulti
-            isSearchable
-            disabled
-            defaultValue={[2, 3]}
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-        </div>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
-          <Select
-            label="Default"
-            isMulti
-            isSearchable
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Complete Button"
-            isMulti
-            isSearchable
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Only Mobile Complete Button"
-            isMulti
-            isSearchable
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Error"
-            options={options}
-            error
-            isMulti
-            isSearchable
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Disabled"
-            isMulti
-            isSearchable
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Default - Disabled"
-            isMulti
-            isSearchable
-            disabled
-            defaultValue={[2, 3]}
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-        </div>
-        <div className="mb-4 grid grid-cols-1 gap-4 border-b pb-8 md:grid-cols-4">
-          <Select
-            label="Large"
-            size="lg"
-            isMulti
-            isSearchable
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Complete Button"
-            size="lg"
-            isMulti
-            isSearchable
-            completeButton
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Only Mobile Complete Button"
-            size="lg"
-            isMulti
-            isSearchable
-            completeButton="mobile"
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Error"
-            size="lg"
-            options={options}
-            error
-            isMulti
-            isSearchable
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Disabled"
-            size="lg"
-            isMulti
-            isSearchable
-            disabled
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-          <Select
-            label="Large - Disabled"
-            size="lg"
-            isMulti
-            isSearchable
-            disabled
-            defaultValue={[2, 3]}
-            options={options}
-            placeHolder="Please select..."
-            onChange={e => handleChangeSelect(e)}
-          />
-        </div>
-      </div>
+        <CustomSyntaxHighlighter content='<Select disabled ... />' />
+      </section>
+
+      {/* API Reference */}
+      <ApiTable tableData={apiTableData} />
     </div>
   );
 };
 
-export default SelectBox;
+export default SelectPage;
+
