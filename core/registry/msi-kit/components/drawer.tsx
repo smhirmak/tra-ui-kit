@@ -4,6 +4,7 @@
 import { XIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { cn } from '@/lib/utils';
 import Button from './button';
 
@@ -37,8 +38,8 @@ const drawerVariants = cva('MsiDialog-container bg-neutral-white duration-350 fl
       bottom: 'inset-x-0 bottom-0 h-auto max-h-full w-full rounded-t-2xl md:rounded-t-none',
     },
     internalIsOpen: {
-      true: '',
-      false: '',
+      true: 'animate-in',
+      false: 'animate-out',
     },
   },
   defaultVariants: {
@@ -49,42 +50,42 @@ const drawerVariants = cva('MsiDialog-container bg-neutral-white duration-350 fl
     {
       position: 'left',
       internalIsOpen: true,
-      className: 'translate-x-0',
+      className: 'translate-x-0 slide-in-from-left',
     },
     {
       position: 'left',
       internalIsOpen: false,
-      className: '-translate-x-full',
+      className: '-translate-x-full slide-out-to-left',
     },
     {
       position: 'right',
       internalIsOpen: true,
-      className: 'translate-x-0',
+      className: 'translate-x-0 slide-in-from-right',
     },
     {
       position: 'right',
       internalIsOpen: false,
-      className: 'translate-x-full',
+      className: 'translate-x-full slide-out-to-right',
     },
     {
       position: 'top',
       internalIsOpen: true,
-      className: 'translate-y-0',
+      className: 'translate-y-0 slide-in-from-top',
     },
     {
       position: 'top',
       internalIsOpen: false,
-      className: '-translate-y-full',
+      className: '-translate-y-full slide-out-to-top',
     },
     {
       position: 'bottom',
       internalIsOpen: true,
-      className: 'translate-y-0',
+      className: 'translate-y-0 slide-in-from-bottom',
     },
     {
       position: 'bottom',
       internalIsOpen: false,
-      className: 'translate-y-full',
+      className: 'translate-y-full slide-out-to-bottom',
     },
   ],
 });
@@ -115,14 +116,17 @@ const Drawer: React.FC<IDrawer> = ({
 
     if (isOpen && !alwaysOpen) {
       const { scrollY } = window;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
       document.body.style.width = '100%';
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
       const scrollY = document.body.style.top;
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
+      document.body.style.paddingRight = '';
       window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
     }
   }, [isOpen, alwaysOpen]);
@@ -140,7 +144,11 @@ const Drawer: React.FC<IDrawer> = ({
     };
   }, [onClose, alwaysOpen]);
 
-  return (
+  if (!internalIsOpen && !alwaysOpen) {
+    return null;
+  }
+
+  const content = (
     <>
       {(internalIsOpen || alwaysOpen) && mode === 'overlay' && (
         <div
@@ -175,6 +183,8 @@ const Drawer: React.FC<IDrawer> = ({
       </div>
     </>
   );
+
+  return createPortal(content, document.body);
 };
 
 export default Drawer;

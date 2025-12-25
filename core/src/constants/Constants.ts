@@ -7,6 +7,9 @@ import {
   AtomIcon,
   ImageIcon,
   SpinnerGapIcon,
+  TextboxIcon,
+  TextAaIcon,
+  ArrowUpIcon,
 } from '@phosphor-icons/react';
 
 const Constants = {
@@ -203,7 +206,7 @@ const Constants = {
       name: 'Text Field',
       description: 'Text input with validation and styles',
       Icon: PencilSimpleIcon,
-      path: '/components/text-field/outlined',
+      path: '/components/text-field',
       category: 'Input',
       isShowHome: true
     },
@@ -214,12 +217,54 @@ const Constants = {
       path: '/components/tooltip',
       category: 'Overlay',
     },
+    // {
+    //   name: 'Image Hover Effect',
+    //   description: 'Animated image hover effects',
+    //   Icon: ImageIcon,
+    //   path: '/components/image-hover-effect',
+    //   category: 'Display',
+    // },
     {
-      name: 'Image Hover Effect',
-      description: 'Animated image hover effects',
+      name: 'Theme Mode Toggle',
+      description: 'Toggle between light and dark themes',
       Icon: ImageIcon,
-      path: '/components/image-hover-effect',
+      path: '/components/theme-mode-toggle',
       category: 'Display',
+    },
+    {
+      name: 'Calendar',
+      description: 'Interactive calendar component for date selection',
+      Icon: CalendarIcon,
+      path: '/components/calendar',
+      category: 'Display',
+    },
+    {
+      name: 'Container',
+      description: 'A responsive container component for layout',
+      Icon: PencilSimpleIcon,
+      path: '/components/container',
+      category: 'Layout',
+    },
+    {
+      name: 'Input',
+      description: 'A flexible input component with multiple variants, sizes, and icon support',
+      Icon: TextboxIcon,
+      path: '/components/input',
+      category: 'Layout',
+    },
+    {
+      name: 'Label',
+      description: 'A versatile label component for form elements and UI',
+      Icon: TextAaIcon,
+      path: '/components/label',
+      category: 'Layout',
+    },
+    {
+      name: 'Back to Top Button',
+      description: 'A button that allows users to quickly scroll back to the top of the page',
+      Icon: ArrowUpIcon,
+      path: '/components/back-to-top-button',
+      category: 'Navigation',
     },
   ]
 }

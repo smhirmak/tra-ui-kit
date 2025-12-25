@@ -1,0 +1,19 @@
+{
+  "versions": [
+    {
+      "version": "1",
+      "label": "v1",
+      "releaseDate": "2024-12-20T00:00:00.000Z",
+      "isLatest": true,
+      "isDeprecated": false
+    },
+    {
+      "version": "0",
+      "label": "v0",
+      "releaseDate": "2024-11-01T00:00:00.000Z",
+      "isLatest": false,
+      "isDeprecated": false
+    }
+  ],
+  "defaultVersion": "1"
+}

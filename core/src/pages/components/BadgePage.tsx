@@ -5,6 +5,9 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTOC } from '@/contexts/toc/TOCContext';
+import { Tab, Tabs } from '@/components/tabs';
+import ComponentSourceViewer from '@/components/component-source-viewer';
+import { useTranslation } from 'react-i18next';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -21,11 +24,13 @@ const apiTableData = [
   { prop: 'color', type: '"primary" | "error" | "secondary" | "success" | "tetriary" | "warning"', default: '"primary"', description: 'The color scheme' },
   { prop: 'size', type: '"sm" | "default" | "lg"', default: '"default"', description: 'The badge size' },
   { prop: 'text', type: 'string', default: '-', description: 'Text to display in the badge' },
+  { prop: 'textClassName', type: 'string', default: '-', description: 'Class name for the text element' },
   { prop: 'icon', type: 'ReactNode', default: '-', description: 'Icon to display in the badge' },
 ];
 
 const BadgePage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -44,7 +49,14 @@ const BadgePage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <CustomSyntaxHighlighter content='npx msi-ui-cli add badge' />
+        <Tabs className='[&_button]:text-base'>
+          <Tab value='cli' label="CLI">
+            <CustomSyntaxHighlighter content='npx msi-ui-cli add badge' />
+          </Tab>
+          <Tab value='manual' label={t("Manual")}>
+            <ComponentSourceViewer componentName="badge" />
+          </Tab>
+        </Tabs>
       </section>
 
       {/* Usage */}

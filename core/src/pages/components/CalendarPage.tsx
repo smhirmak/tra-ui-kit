@@ -4,6 +4,9 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
+import { Tab, Tabs } from '@/components/tabs';
+import ComponentSourceViewer from '@/components/component-source-viewer';
+import { useTranslation } from 'react-i18next';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -24,6 +27,7 @@ const apiTableData = [
 
 const CalendarPage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useTranslation();
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [dateRange, setDateRange] = useState<{ from: Date | undefined; to?: Date | undefined } | undefined>({
     from: new Date(),
@@ -47,7 +51,14 @@ const CalendarPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <CustomSyntaxHighlighter content='npx msi-ui-cli add calendar' />
+        <Tabs className='[&_button]:text-base'>
+          <Tab value='cli' label="CLI">
+            <CustomSyntaxHighlighter content='npx msi-ui-cli add calendar' />
+          </Tab>
+          <Tab value='manual' label={t("Manual")}>
+            <ComponentSourceViewer componentName="calendar" />
+          </Tab>
+        </Tabs>
         <p className="mt-4 text-sm text-neutral-grey">
           This component uses <strong>react-day-picker</strong> under the hood for advanced date selection features.
         </p>

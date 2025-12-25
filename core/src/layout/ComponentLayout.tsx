@@ -3,23 +3,36 @@ import { motion } from 'framer-motion';
 import TableOfContents from '@/components/table-of-contents';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import Constants from '@/constants/Constants';
+import { useVersion } from '@/contexts/version';
+import { useEffect } from 'react';
 
 const ComponentLayout = () => {
   const location = useLocation();
   const { tocItems } = useTOC();
+  const { currentVersion } = useVersion();
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      try {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (e) {
+      }
+    }, 0);
+
+    return () => clearTimeout(id);
+  }, [location.pathname]);
 
   return (
     <div className="flex min-h-screen w-full">
-      {/* Left Sidebar - Component List */}
       <aside className="hidden w-64 shrink-0 border-r border-border lg:block">
         <div className="sticky top-20 max-h-[calc(100vh-5rem)] overflow-auto p-6">
           <h3 className="mb-4 text-sm font-semibold text-neutral-grey">Components</h3>
           <nav className="space-y-1">
-            {Constants.componentList.map((component) => (
+            {Constants.componentList.sort((a, b) => a.name.localeCompare(b.name)).map((component) => (
               <Link
                 key={component.path}
-                to={component.path}
-                className={`block rounded-md px-3 py-2 text-sm transition-colors ${location.pathname === component.path
+                to={`/v${currentVersion}${component.path}`}
+                className={`block rounded-md px-3 py-2 text-sm transition-colors ${location.pathname === `/v${currentVersion}${component.path}`
                   ? 'bg-primary/10 font-medium text-primary'
                   : 'text-foreground hover:bg-neutral-light'
                   }`}
@@ -31,7 +44,6 @@ const ComponentLayout = () => {
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 px-6 py-12 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,7 +55,6 @@ const ComponentLayout = () => {
         </motion.div>
       </main>
 
-      {/* Right Sidebar - Table of Contents - STICKY */}
       <aside className="hidden w-64 shrink-0 border-l border-border xl:block">
         <div className="sticky top-20 p-6">
           <TableOfContents items={tocItems} />

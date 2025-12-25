@@ -181,10 +181,10 @@ interface IMultipleAvatarContainer {
   childrenClassName?: string;
 }
 
-const Avatar = React.forwardRef((
+const Avatar = React.forwardRef(function <C extends React.ElementType = 'div'>(
   props: PolymorphicAvatarProps<C>,
   ref: React.Ref<any>,
-) => {
+) {
   const {
     asChild,
     badgeClassName,

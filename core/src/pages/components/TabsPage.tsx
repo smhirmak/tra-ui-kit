@@ -4,6 +4,8 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
+import ComponentSourceViewer from '@/components/component-source-viewer';
+import { useTranslation } from 'react-i18next';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -36,6 +38,8 @@ const tabApiData = [
 
 const TabsPage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useTranslation();
+
   const [activeTab, setActiveTab] = useState('tab1');
 
   useEffect(() => {
@@ -55,7 +59,14 @@ const TabsPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <CustomSyntaxHighlighter content='npx msi-ui-cli add tabs' />
+        <Tabs className='[&_button]:text-base'>
+          <Tab value='cli' label="CLI">
+            <CustomSyntaxHighlighter content='npx msi-ui-cli add tabs' />
+          </Tab>
+          <Tab value='manual' label={t("Manual")}>
+            <ComponentSourceViewer componentName="tabs" />
+          </Tab>
+        </Tabs>
       </section>
 
       {/* Usage */}

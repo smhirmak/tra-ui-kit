@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
 
 import { cva } from 'class-variance-authority';

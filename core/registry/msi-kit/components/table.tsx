@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { HTMLProps, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 

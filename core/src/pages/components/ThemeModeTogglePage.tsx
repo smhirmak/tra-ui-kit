@@ -4,6 +4,9 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
+import { Tab, Tabs } from '@/components/tabs';
+import ComponentSourceViewer from '@/components/component-source-viewer';
+import { useTranslation } from 'react-i18next';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -20,6 +23,7 @@ const apiTableData = [
 
 const ThemeModeTogglePage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -38,7 +42,14 @@ const ThemeModeTogglePage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <CustomSyntaxHighlighter content='npx msi-ui-cli add theme-mode-toggle' />
+        <Tabs className='[&_button]:text-base'>
+          <Tab value='cli' label="CLI">
+            <CustomSyntaxHighlighter content='npx msi-ui-cli add theme-mode-toggle' />
+          </Tab>
+          <Tab value='manual' label={t("Manual")}>
+            <ComponentSourceViewer componentName="theme-mode-toggle" />
+          </Tab>
+        </Tabs>
         <p className="mt-4 text-sm text-neutral-grey">
           This component uses the ThemeProvider context to manage theme state.
         </p>

@@ -156,10 +156,8 @@ const selectorVariants = cva('absolute transition-transform duration-200', {
   },
 });
 
-interface ITabs {
-  activeTab: string;
+interface ITabsBase {
   variant?: 'default' | 'solid' | 'outlined' | 'split';
-  onChange?: (value: string) => void;
   className?: string;
   children: ReactNode;
   disabled?: boolean;
@@ -170,6 +168,22 @@ interface ITabs {
   contentPlacement?: 'top' | 'bottom' | 'left' | 'right';
   contentClasName?: string;
 }
+
+// Controlled mode: activeTab and onChange are required
+interface ITabsControlled extends ITabsBase {
+  activeTab: string;
+  onChange: (value: string) => void;
+  defaultActiveTab?: never;
+}
+
+// Uncontrolled mode: activeTab and onChange are optional, defaultActiveTab can be used
+interface ITabsUncontrolled extends ITabsBase {
+  activeTab?: never;
+  onChange?: (value: string) => void;
+  defaultActiveTab?: string;
+}
+
+type ITabs = ITabsControlled | ITabsUncontrolled;
 
 interface ITab {
   label: string | ReactNode;
@@ -184,10 +198,21 @@ interface ITab {
   radius?: 'default' | 'none' | 'sm' | 'lg' | 'full';
 }
 
-const Tabs: React.FC<ITabs> = ({ activeTab, variant = 'default', onChange, className, contentClasName,
-  selectorClassName, children, disabled, size = 'default', radius = 'default', direction = 'horizontal', contentPlacement = 'bottom' }) => {
+const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'default', onChange, className, contentClasName,
+  selectorClassName, children, disabled, size = 'default', radius = 'default', direction = 'horizontal', contentPlacement = 'bottom', defaultActiveTab }) => {
   const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>({});
   const tabsRef = useRef<HTMLDivElement>(null);
+
+  const [internalActiveTab, setInternalActiveTab] = useState<string>(() => {
+    if (defaultActiveTab) return defaultActiveTab;
+    const firstTab = React.Children.toArray(children).find(
+      child => React.isValidElement<ITab>(child)
+    ) as React.ReactElement<ITab> | undefined;
+    return firstTab?.props.value || '';
+  });
+
+  const isControlled = externalActiveTab !== undefined;
+  const activeTab = isControlled ? externalActiveTab : internalActiveTab;
 
   useEffect(() => {
     const activeTabElement = tabsRef.current?.querySelector('.active-tab') as HTMLButtonElement;
@@ -204,7 +229,12 @@ const Tabs: React.FC<ITabs> = ({ activeTab, variant = 'default', onChange, class
   }, [activeTab, direction, variant]);
 
   const handleTabClick = (value: string) => {
-    if (onChange) onChange(value);
+    if (isControlled) {
+      if (onChange) onChange(value);
+    } else {
+      setInternalActiveTab(value);
+      if (onChange) onChange(value);
+    }
   };
 
   const contextValue = React.useMemo(() => ({ activeTab, handleTabClick, variant }), [activeTab, variant]);
@@ -231,7 +261,6 @@ const Tabs: React.FC<ITabs> = ({ activeTab, variant = 'default', onChange, class
             })}
           </div>
         </div>
-        {/* Content */}
         <div>
           {React.Children.map(children, child => {
             if (React.isValidElement<ITab>(child) && child.props.value === activeTab) {
@@ -248,7 +277,6 @@ const Tabs: React.FC<ITabs> = ({ activeTab, variant = 'default', onChange, class
 const Tab: React.FC<ITab> = ({ className, label, value, onClick, disabled, allDisabled, size }) => {
   const context = useContext(TabsContext);
 
-  // If Tab is used without a Tabs component, throw an error
   if (!context) {
     throw new Error('Tab component must be used within a Tabs component');
   }

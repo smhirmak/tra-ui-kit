@@ -1,12 +1,16 @@
 import { MoonIcon, SunIcon } from '@phosphor-icons/react';
 import Button from '@/components/button';
+import { useTheme } from '@/contexts/theme/theme-provider';
 
 interface IThemeModeToggle {
-  theme: 'light' | 'dark';
-  setTheme: (theme: 'light' | 'dark') => void;
+  theme?: 'light' | 'dark';
+  setTheme?: (theme: 'light' | 'dark') => void;
 }
 
-const ThemeModeToggle = ({ theme, setTheme }: IThemeModeToggle) => {
+const ThemeModeToggle = ({ theme: themeProp, setTheme: setThemeProp }: IThemeModeToggle) => {
+  const themeContext = useTheme();
+  const theme = themeProp || themeContext.theme;
+  const setTheme = setThemeProp || themeContext.setTheme;
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
