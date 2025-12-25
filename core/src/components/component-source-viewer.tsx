@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { getComponentSource } from '@/utilities/getComponentSource';
-import LoadingSpinner from '@/components/loading-spinner';
-import { useTranslation } from 'react-i18next';
+import Skeleton from './skeleton';
 
 interface ComponentSourceViewerProps {
   componentName: string;
@@ -12,7 +11,6 @@ interface ComponentSourceViewerProps {
 const ComponentSourceViewer = ({ componentName, className }: ComponentSourceViewerProps) => {
   const [source, setSource] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
-  const { t } = useTranslation();
 
   useEffect(() => {
     setLoading(true);
@@ -24,9 +22,11 @@ const ComponentSourceViewer = ({ componentName, className }: ComponentSourceView
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center gap-3 rounded-lg border border-border bg-background p-8">
-        <LoadingSpinner className='size-8 mr-2' />
-        <span className="text-neutral-grey">{t('Loading component source...')}</span>
+      <div className="flex flex-col items-center justify-center gap-3 rounded-lg border border-border bg-background p-8">
+        <Skeleton className='h-8 w-full' />
+        <Skeleton className='h-8 w-full' />
+        <Skeleton className='h-8 w-full' />
+        <Skeleton className='h-8 w-full' />
       </div>
     );
   }

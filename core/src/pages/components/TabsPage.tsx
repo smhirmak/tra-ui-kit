@@ -16,6 +16,7 @@ const tocItems: TOCItem[] = [
   { id: 'solid', title: 'Solid', level: 2 },
   { id: 'outlined', title: 'Outlined', level: 2 },
   { id: 'sizes', title: 'Sizes', level: 1 },
+  { id: 'direction', title: 'Direction', level: 1 },
   { id: 'content-placement', title: 'Content Placement', level: 1 },
   { id: 'api', title: 'API Reference', level: 1 },
 ];
@@ -27,6 +28,7 @@ const apiTableData = [
   { prop: 'size', type: '"sm" | "default" | "lg"', default: '"default"', description: 'Tab size' },
   { prop: 'contentPlacement', type: '"top" | "right" | "bottom" | "left"', default: '"bottom"', description: 'Position of tab content' },
   { prop: 'radius', type: '"none" | "sm" | "default" | "lg" | "full"', default: '"default"', description: 'Border radius' },
+  { prop: 'direction', type: '"horizontal" | "vertical"', default: '"horizontal"', description: 'Tabs direction' },
 ];
 
 const tabApiData = [
@@ -203,6 +205,50 @@ const TabsPage = () => {
           <CustomSyntaxHighlighter className="mb-2" content='<Tabs size="default" ... />' />
           <CustomSyntaxHighlighter content='<Tabs size="lg" ... />' />
         </div>
+      </section>
+
+      {/* Direction */}
+      <section id="direction">
+        <h2 className="mb-4 text-2xl font-bold">Direction</h2>
+        <p className="mb-4 text-neutral-grey">Direction of the tabs.</p>
+        <div className="flex gap-8 rounded-lg border border-border bg-background p-6">
+          <Tabs activeTab={activeTab} direction='horizontal' onChange={setActiveTab}>
+            <Tab label="Tab 1" value="tab1">Horizontal</Tab>
+            <Tab label="Tab 2" value="tab2">Horizontal</Tab>
+          </Tabs>
+          <Tabs variant='solid' activeTab={activeTab} direction='horizontal' onChange={setActiveTab}>
+            <Tab label="Tab 1" value="tab1">Horizontal</Tab>
+            <Tab label="Tab 2" value="tab2">Horizontal</Tab>
+          </Tabs>
+          <Tabs variant='outlined' activeTab={activeTab} direction='horizontal' onChange={setActiveTab}>
+            <Tab label="Tab 1" value="tab1">Horizontal</Tab>
+            <Tab label="Tab 2" value="tab2">Horizontal</Tab>
+          </Tabs>
+          <Tabs variant='split' activeTab={activeTab} direction='horizontal' onChange={setActiveTab}>
+            <Tab label="Tab 1" value="tab1">Horizontal</Tab>
+            <Tab label="Tab 2" value="tab2">Horizontal</Tab>
+          </Tabs>
+        </div>
+        <CustomSyntaxHighlighter content='<Tabs direction="horizontal" ... />' />
+        <div className="flex gap-8 rounded-lg border border-border bg-background p-6">
+          <Tabs activeTab={activeTab} direction='vertical' onChange={setActiveTab}>
+            <Tab label="Tab 1" value="tab1">Vertical</Tab>
+            <Tab label="Tab 2" value="tab2">Vertical</Tab>
+          </Tabs>
+          <Tabs variant='solid' activeTab={activeTab} direction='vertical' onChange={setActiveTab}>
+            <Tab label="Tab 1" value="tab1">Vertical</Tab>
+            <Tab label="Tab 2" value="tab2">Vertical</Tab>
+          </Tabs>
+          <Tabs variant='outlined' activeTab={activeTab} direction='vertical' onChange={setActiveTab}>
+            <Tab label="Tab 1" value="tab1">Vertical</Tab>
+            <Tab label="Tab 2" value="tab2">Vertical</Tab>
+          </Tabs>
+          <Tabs variant='split' activeTab={activeTab} direction='vertical' onChange={setActiveTab}>
+            <Tab label="Tab 1" value="tab1">Vertical</Tab>
+            <Tab label="Tab 2" value="tab2">Vertical</Tab>
+          </Tabs>
+        </div>
+        <CustomSyntaxHighlighter content='<Tabs direction="vertical" ... />' />
       </section>
 
       {/* Content Placement */}

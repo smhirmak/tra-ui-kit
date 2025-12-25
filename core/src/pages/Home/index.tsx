@@ -57,7 +57,7 @@ const Home = () => {
           </motion.div>
           <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
-              <motion.div key={feature.title} variants={itemVariants} whileHover={{ y: -5 }} className="group rounded-2xl border border-border bg-background p-6 transition-colors duration-300 hover:border-primary/50 hover:shadow-soft-primary">
+              <motion.div key={feature.title} variants={itemVariants} className="group rounded-2xl shadow-soft-primary bg-background p-6 transition-colors duration-300">
                 <feature.Icon size={40} weight="duotone" className="mb-4 text-primary" />
                 <h3 className="mb-2 text-xl font-semibold">{t(feature.title)}</h3>
                 <p className="text-neutral-grey">{t(feature.description)}</p>
@@ -71,12 +71,12 @@ const Home = () => {
         <div className="mx-auto max-w-7xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }}>
             <h2 className="mb-4 text-center text-4xl font-bold md:text-5xl">{t('Explore Components')}</h2>
-            <p className="mb-16 text-center text-lg text-neutral-grey">{t('24 production-ready components to accelerate your development')}</p>
+            <p className="mb-16 text-center text-lg text-neutral-grey">{t('Production-ready components to accelerate your development')}</p>
           </motion.div>
           <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {Constants.componentList?.filter(component => component.isShowHome).sort((a, b) => a.name.localeCompare(b.name)).map((component, index) => (
-              <motion.div key={index} variants={itemVariants} whileHover={{ y: -5 }}>
-                <Link to={`/v${currentVersion}${component.path}`} className="block rounded-xl border border-border h-full bg-background p-5 transition-colors duration-300 hover:border-primary/50 hover:shadow-soft-primary">
+              <motion.div key={index} variants={itemVariants} whileHover={{ scale: 1.03 }}>
+                <Link to={`/v${currentVersion}${component.path}`} className="block rounded-xl shadow-soft-primary h-full bg-background p-5 transition-colors duration-300 hover:shadow-hard-primary">
                   <component.Icon size={32} weight="duotone" className="mb-3 text-primary" />
                   <h3 className="mb-2 text-lg font-semibold">{component.name}</h3>
                   <p className="text-sm text-neutral-grey">{component.description}</p>
@@ -94,7 +94,7 @@ const Home = () => {
 
       <section className="px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} className="rounded-2xl border border-border bg-linear-to-br from-primary/5 to-secondary/5 p-8 md:p-12">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }} className="rounded-2xl shadow-hard-primary bg-linear-to-br from-primary/5 to-secondary/5 p-8 md:p-12">
             <h2 className="mb-4 text-center text-4xl font-bold md:text-5xl">{t('Quick Start')}</h2>
             <p className="mb-8 text-center text-lg text-neutral-grey">{t('Get up and running in less than a minute')}</p>
             <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-6">

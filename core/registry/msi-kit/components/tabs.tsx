@@ -33,7 +33,7 @@ const tabsContainerVariants = cva('flex h-fit gap-2', {
 const tabsVariants = cva('inline-flex w-fit items-center justify-center', {
   variants: {
     variant: {
-      default: 'bg-transparent shadow-md',
+      default: 'bg-transparent shadow-md rounded-none!',
       solid: 'bg-neutral-light p-1',
       outlined: 'border-2 bg-transparent p-1',
       split: 'bg-transparent',
@@ -62,7 +62,7 @@ const tabVariants = cva(
         false: '',
       },
       variant: {
-        default: 'border-b-2',
+        default: 'relative z-20',
         solid: 'relative z-20',
         outlined: 'relative z-20',
         split: 'relative z-20',
@@ -77,12 +77,14 @@ const tabVariants = cva(
       {
         variant: 'default',
         isActive: true,
-        className: 'border-primary text-primary',
+        // className: 'border-primary text-primary',
+        className: 'text-primary hover:text-primary/80',
       },
       {
         variant: 'default',
         isActive: false,
-        className: 'border-neutral text-neutral-grey hover:brightness-75',
+        // className: 'border-neutral text-neutral-grey hover:brightness-75',
+        className: 'text-neutral hover:text-neutral/80',
       },
       {
         variant: 'solid',
@@ -126,7 +128,7 @@ const tabVariants = cva(
 const selectorVariants = cva('absolute transition-transform duration-200', {
   variants: {
     variant: {
-      default: 'bg-primary h-[2px]',
+      default: 'bg-primary z-30 rounded-md',
       solid: 'bg-neutral-white z-10 h-full',
       outlined: 'bg-neutral dark:bg-neutral-white z-10 h-full',
       split: 'bg-neutral dark:bg-neutral-white z-10 h-full',
@@ -154,6 +156,19 @@ const selectorVariants = cva('absolute transition-transform duration-200', {
     radius: 'default',
     direction: 'horizontal',
   },
+
+  compoundVariants: [
+    {
+      variant: 'default',
+      direction: 'vertical',
+      className: '-left-[1.5px]!',
+    },
+    {
+      variant: 'default',
+      direction: 'horizontal',
+      className: '-bottom-[1.5px]!',
+    },
+  ]
 });
 
 interface ITabsBase {
@@ -217,10 +232,11 @@ const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'defaul
   useEffect(() => {
     const activeTabElement = tabsRef.current?.querySelector('.active-tab') as HTMLButtonElement;
 
-    if (activeTabElement && variant !== 'default') {
+    // if (activeTabElement && variant !== 'default') {
+    if (activeTabElement) {
       const newIndicatorStyle = {
-        width: direction === 'horizontal' ? activeTabElement.offsetWidth : '100%',
-        height: direction === 'vertical' ? activeTabElement.offsetHeight : '100%',
+        width: (variant === 'default' && direction === 'vertical') ? '2px' : direction === 'horizontal' ? activeTabElement.offsetWidth : '100%',
+        height: (variant === 'default' && direction === 'horizontal') ? '2px' : direction === 'vertical' ? activeTabElement.offsetHeight : '100%',
         // transform: direction === 'horizontal' ? `translateX(${activeTabElement.offsetLeft}px)` : `translateY(${-activeTabElement.offsetTop}px)`,
         transform: direction === 'horizontal' ? `translateX(${activeTabElement.offsetLeft}px)` : `translateY(${activeTabElement.offsetTop}px)`,
       };
@@ -243,7 +259,10 @@ const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'defaul
     <TabsContext.Provider value={contextValue}>
       <div className={cn(tabsContainerVariants({ contentPlacement }))}>
         <div className={cn(tabsVariants({ variant, radius }), className)}>
-          <div className={cn(direction === 'horizontal' ? 'flex-row' : 'flex-col', 'relative flex')} ref={tabsRef}>
+          <div className={cn(direction === 'horizontal' ? 'flex-row' : 'flex-col',
+            variant === 'default' && direction === 'horizontal' && 'border-b-2 border-neutral-light',
+            variant === 'default' && direction === 'vertical' && 'border-l-2 border-neutral-light',
+            'relative flex')} ref={tabsRef}>
             <div
               className={cn(selectorVariants({ variant, disabled, radius, direction }), selectorClassName)}
               style={indicatorStyle}

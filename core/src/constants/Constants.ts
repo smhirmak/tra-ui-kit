@@ -164,6 +164,7 @@ const Constants = {
       Icon: ListIcon,
       path: '/components/select',
       category: 'Input',
+      isShowHome: true
     },
     {
       name: 'Sidebar',

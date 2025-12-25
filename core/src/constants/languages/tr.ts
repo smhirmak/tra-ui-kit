@@ -20,7 +20,7 @@ const tr = {
   'Why MSI UI Kit?': 'Neden MSI UI Kit?',
   'Everything you need to build beautiful React applications': 'Güzel React uygulamaları oluşturmak için ihtiyacınız olan her şey',
   'Explore Components': 'Bileşenleri Keşfet',
-  '24 production-ready components to accelerate your development': 'Geliştirmenizi hızlandırmak için 24 üretime hazır bileşen',
+  'Production-ready components to accelerate your development': 'Geliştirmenizi hızlandırmak için kullanıma hazır bileşenler',
   'Show All Components': 'Tüm Bileşenleri Göster',
   'Quick Start': 'Hızlı Başlangıç',
   'Get up and running in less than a minute': 'Bir dakikadan kısa sürede çalışmaya başlayın',
