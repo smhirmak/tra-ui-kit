@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useRef, useState } from 'react';
 import { CaretDownIcon, CheckIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
@@ -26,6 +23,7 @@ interface IDropdownProps {
   placeholder?: string;
   dropdownAlign?: 'left' | 'right';
   id?: string;
+  iconClassName?: string;
 }
 
 const Dropdown: React.FC<IDropdownProps> = ({
@@ -42,6 +40,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
   placeholder = 'Select...',
   dropdownAlign = 'left',
   id,
+  iconClassName,
 }) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<IDropdownItem | null>(null);
@@ -117,24 +116,21 @@ const Dropdown: React.FC<IDropdownProps> = ({
     <Popover open={open} onOpenChange={setOpen} disabled={disabled} dropdownAlign={dropdownAlign}>
       <div className={cn('MsiDropdown relative', className)} id={id}>
         {label && <div className="text-neutral mb-2 text-sm font-medium">{label}</div>}
-        <PopoverTrigger className={cn('w-full', triggerClassName)}>
-          <div
-            className={cn(
-              'flex w-full items-center justify-between rounded-md border px-4 py-3 text-left',
-              disabled ? 'border-input-light bg-input-light text-neutral-disabled-text cursor-not-allowed' : 'border-neutral',
-            )}
-            data-disabled={disabled}
-          >
-            <div className="truncate">
-              {selected ? selected.label : <span className="text-neutral-grey">{placeholder}</span>}
-            </div>
-            <div className="ml-4 flex items-center">
-              <CaretDownIcon />
-            </div>
+        <PopoverTrigger
+          className={cn(
+            'flex w-full items-center justify-between rounded-md border px-4 py-3 text-left',
+            disabled ? 'border-input-light bg-input-light text-neutral-disabled-text cursor-not-allowed' : 'border-neutral',
+            triggerClassName
+          )}
+          data-disabled={disabled}
+        >
+          <div className="truncate">
+            {selected ? selected.label : <span className="text-neutral-grey">{placeholder}</span>}
           </div>
+          <CaretDownIcon className={cn('ml-4', iconClassName)} />
         </PopoverTrigger>
 
-        <PopoverContent className={cn('rounded-md border bg-white shadow-md overflow-auto', contentClassName)}>
+        <PopoverContent className={cn('rounded-md border bg-background shadow-md overflow-auto', contentClassName)}>
           <div
             ref={listRef}
             role="listbox"
@@ -152,7 +148,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
                 onMouseEnter={() => setHighlightedIndex(idx)}
                 className={cn(
                   'flex items-center justify-between px-4 py-2 text-sm cursor-pointer',
-                  highlightedIndex === idx && 'bg-neutral-100',
+                  highlightedIndex === idx && 'bg-neutral-light',
                   opt.disabled && 'opacity-50 cursor-not-allowed',
                   itemClassName,
                 )}

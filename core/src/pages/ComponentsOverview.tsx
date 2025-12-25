@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Constants from '@/constants/Constants';
+import { useVersion } from '@/contexts/version';
 
 const ComponentsOverview = () => {
+  const { currentVersion } = useVersion();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
@@ -106,7 +109,7 @@ const ComponentsOverview = () => {
               {group.components.map((component) => (
                 <motion.div key={component.name} variants={itemVariants} whileHover={{ scale: 1.03, y: -5 }}>
                   <Link
-                    to={component.path}
+                    to={`/v${currentVersion}${component.path}`}
                     className="group block h-full rounded-xl border border-border bg-background p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-soft-primary"
                   >
                     <component.Icon

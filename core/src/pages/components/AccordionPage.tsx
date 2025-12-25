@@ -1,10 +1,13 @@
 import { PlusIcon } from '@phosphor-icons/react';
 import { Accordion, AccordionItem } from '@/components/accordion';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
+import ComponentSourceViewer from '@/components/component-source-viewer';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { useEffect } from 'react';
+import { Tab, Tabs } from '@/components/tabs';
+import { useTranslation } from 'react-i18next';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -31,6 +34,7 @@ const apiTableData = [
 
 const AccordionPage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -48,7 +52,14 @@ const AccordionPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <CustomSyntaxHighlighter content='npx msi-ui-cli add accordion' />
+        <Tabs className='[&_button]:text-base'>
+          <Tab value='cli' label="CLI">
+            <CustomSyntaxHighlighter content='npx msi-ui-cli add accordion' />
+          </Tab>
+          <Tab value='manual' label={t("Manual")}>
+            <ComponentSourceViewer componentName="accordion" />
+          </Tab>
+        </Tabs>
       </section>
 
       {/* Usage */}

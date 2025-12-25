@@ -6,10 +6,10 @@ import { cn } from '@/lib/utils';
 import { githubGist, hybrid } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useState } from 'react';
 
-const CustomSyntaxHighlighter = ({ className, content, hideCopyButton = false }: { className?: string; content: string; hideCopyButton?: boolean }) => {
+const CustomSyntaxHighlighter = ({ className, content, hideCopyButton = false, copyButtonClassName }: { className?: string; content: string; hideCopyButton?: boolean; copyButtonClassName?: string }) => {
   const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
-  console.log(copied)
+
   return (
     <div className={cn(className, 'relative [&_pre]:bg-neutral-light/75! [&_pre]:rounded-lg [&_pre]:p-4!')}>
       <SyntaxHighlighter wrapLongLines language="jsx" style={theme === 'dark' ? hybrid : githubGist}>
@@ -31,6 +31,7 @@ const CustomSyntaxHighlighter = ({ className, content, hideCopyButton = false }:
           }}
           className={cn(
             'group absolute right-0 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent brightness-80 hover:brightness-100 cursor-pointer',
+            copyButtonClassName
           )}
         >
           <CheckIcon

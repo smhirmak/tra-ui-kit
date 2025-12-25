@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-nested-ternary */
 import * as React from 'react';
 
 import { format, Locale, parse } from 'date-fns';

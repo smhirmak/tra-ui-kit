@@ -6,19 +6,19 @@ import { cn } from '@/lib/utils';
 import Button from '@/components/button';
 
 export const inputVariants = cva(
-  `border-input file:bg-neutral-disabled-text file:text-neutral-black hover:shadow-soft-primary focus-visible:border-primary-focused 
-  focus-visible:shadow-hard-primary disabled:text-neutral-grey flex w-full border bg-transparent px-3 py-2 
+  `flex w-full border bg-transparent px-3 py-2 border-input 
+  hover:shadow-soft-primary  
+  focus-visible:border-primary-focused focus-visible:shadow-hard-primary focus-visible:border focus-visible:outline-hidden
+  disabled:text-neutral-grey disabled:cursor-not-allowed 
   transition-all file:mr-2 file:h-fit file:cursor-pointer
-  file:rounded-md 
-  file:border-0 file:bg-transparent file:p-2 file:text-sm file:font-medium file:transition-all file:hover:contrast-125 
-  focus-visible:border focus-visible:outline-hidden disabled:cursor-not-allowed `,
+  file:rounded-md file:bg-neutral-disabled-text file:text-neutral-black file:border-0 file:bg-transparent file:p-2 file:text-sm file:font-medium file:transition-all file:hover:contrast-125`,
   {
     variants: {
       variant: {
         filled: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
         outlined: 'border-none outline-hidden focus-visible:border-none focus-visible:outline-hidden',
-        underlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
-        filledUnderlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
+        underlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800 border-t-0 border-x-0 focus-visible:border-t-0 focus-visible:border-x-0',
+        filledUnderlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800 border-t-0 border-x-0 focus-visible:border-t-0 focus-visible:border-x-0',
       },
       size: {
         default: 'h-14 text-base',

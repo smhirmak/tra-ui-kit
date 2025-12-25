@@ -1,5 +1,3 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-plusplus */
 import React from 'react';
 import { cva, VariantProps } from 'class-variance-authority';
 import { CaretLeftIcon, CaretLineLeftIcon, CaretLineRightIcon, CaretRightIcon } from '@phosphor-icons/react';

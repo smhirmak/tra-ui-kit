@@ -4,6 +4,10 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
+import { Tab, Tabs } from '@/components/tabs';
+import ComponentSourceViewer from '@/components/component-source-viewer';
+import { useTranslation } from 'react-i18next';
+import Notification from '@/components/notification';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -34,6 +38,8 @@ const sampleOptions = [
 
 const DropdownPage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useTranslation();
+  const { info } = Notification();
   const [controlledValue, setControlledValue] = useState<string | number | boolean | undefined>('2');
   const [basicValue, setBasicValue] = useState<string | number | boolean | undefined>(undefined);
 
@@ -54,7 +60,14 @@ const DropdownPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <CustomSyntaxHighlighter content='npx msi-ui-cli add dropdown' />
+        <Tabs className='[&_button]:text-base'>
+          <Tab value='cli' label="CLI">
+            <CustomSyntaxHighlighter content='npx msi-ui-cli add dropdown' />
+          </Tab>
+          <Tab value='manual' label={t("Manual")}>
+            <ComponentSourceViewer componentName="dropdown" />
+          </Tab>
+        </Tabs>
       </section>
 
       {/* Usage */}
@@ -104,13 +117,13 @@ const DropdownPage = () => {
           <Dropdown
             options={sampleOptions}
             defaultValue={'3'}
-            onChange={v => console.log('default changed', v)}
+            onChange={v => info(`default changed: ${v}`)}
           />
         </div>
         <CustomSyntaxHighlighter content={`<Dropdown
   options={sampleOptions}
   defaultValue={'3'}
-  onChange={v => console.log('default changed', v)}
+  onChange={v => info('default changed', v)}
 />`} />
       </section>
 

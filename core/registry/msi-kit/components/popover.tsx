@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-// Popover.tsx
 import React, { createContext, useContext, useRef, useEffect, useState, useMemo } from 'react';
 
 type PopoverContextType = {

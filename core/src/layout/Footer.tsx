@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { GithubLogoIcon, TwitterLogoIcon, LinkedinLogoIcon } from '@phosphor-icons/react';
+import { GithubLogoIcon, TwitterLogoIcon, LinkedinLogoIcon, XLogoIcon } from '@phosphor-icons/react';
 
 const Footer = () => (
   <footer className="border-t border-border bg-background">
@@ -85,7 +85,7 @@ const Footer = () => (
               rel="noopener noreferrer"
               className="text-neutral-grey transition-colors hover:text-primary"
             >
-              <TwitterLogoIcon size={24} weight="fill" />
+              <XLogoIcon size={24} weight="fill" />
             </a>
             <a
               href="https://linkedin.com"

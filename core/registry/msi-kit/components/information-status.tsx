@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-nested-ternary */
 import { SealCheckIcon, SealWarningIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React from 'react';
@@ -42,7 +40,7 @@ interface IInformationStatus {
   className?: string;
   icon?: React.ReactNode;
   isHaveIcon?: boolean;
-  title: string;
+  title: string | React.ReactNode;
   type?: 'success' | 'error' | 'warning';
 }
 

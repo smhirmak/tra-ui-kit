@@ -4,6 +4,9 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
+import { useTranslation } from 'react-i18next';
+import { Tab, Tabs } from '@/components/tabs';
+import ComponentSourceViewer from '@/components/component-source-viewer';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -20,6 +23,7 @@ const apiTableData = [
 
 const LoadingSpinnerPage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -38,7 +42,14 @@ const LoadingSpinnerPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <CustomSyntaxHighlighter content='npx msi-ui-cli add loading-spinner' />
+        <Tabs className='[&_button]:text-base'>
+          <Tab value='cli' label="CLI">
+            <CustomSyntaxHighlighter content='npx msi-ui-cli add loading-spinner' />
+          </Tab>
+          <Tab value='manual' label={t("Manual")}>
+            <ComponentSourceViewer componentName="loading-spinner" />
+          </Tab>
+        </Tabs>
       </section>
 
       {/* Usage */}

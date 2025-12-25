@@ -44,6 +44,8 @@ const tr = {
   'Lightweight': 'Düşük Boyutlu',
   'Well-tested components with comprehensive documentation and examples': 'Kapsamlı dokümantasyon ve örneklerle iyi test edilmiş bileşenler',
   'Minimal footprint for fast load times and responsive apps': 'Hızlı yükleme süreleri ve duyarlı uygulamalar için minimal ayak izi',
+  'Loading component source...': 'Bileşen kaynağı yükleniyor...',
+  'Manual': 'Manuel',
 };
 
 export default tr;

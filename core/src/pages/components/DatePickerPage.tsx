@@ -6,6 +6,9 @@ import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
+import { Tab, Tabs } from '@/components/tabs';
+import ComponentSourceViewer from '@/components/component-source-viewer';
+import { useTranslation } from 'react-i18next';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -33,6 +36,7 @@ const apiTableData = [
 const DatePickerPage = () => {
   const { setTocItems } = useTOC();
   const { locale } = useLocalizeContext();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -51,7 +55,14 @@ const DatePickerPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <CustomSyntaxHighlighter content='npx msi-ui-cli add date-picker' />
+        <Tabs className='[&_button]:text-base'>
+          <Tab value='cli' label="CLI">
+            <CustomSyntaxHighlighter content='npx msi-ui-cli add date-picker' />
+          </Tab>
+          <Tab value='manual' label={t("Manual")}>
+            <ComponentSourceViewer componentName="date-picker" />
+          </Tab>
+        </Tabs>
       </section>
 
       {/* Usage */}

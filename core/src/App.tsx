@@ -1,6 +1,7 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './layout/Layout';
+import VersionRedirect from './components/version-redirect';
 import Home from './pages/Home';
 import BackToTopButton from './components/back-to-top-button';
 import AvatarPage from './pages/components/AvatarPage';
@@ -43,13 +44,20 @@ import LabelPage from './pages/components/LabelPage';
 import ContainerPage from './pages/components/ContainerPage';
 import LoadingSpinnerPage from './pages/components/LoadingSpinnerPage';
 import LoadingLinearPage from './pages/components/LoadingLinearPage';
+import ThemeModeTogglePage from './pages/components/ThemeModeTogglePage';
+import BackToTopButtonPage from './pages/components/BackToTopButtonPages';
 
 const router = createBrowserRouter([
   {
+    path: '/',
+    element: <VersionRedirect />,
+  },
+  {
+    path: '/:version',
     element: <Layout />,
     children: [
       {
-        path: '',
+        index: true,
         element: <Home />,
       },
       {
@@ -195,6 +203,14 @@ const router = createBrowserRouter([
           {
             path: 'dropdown',
             element: <DropdownPage />,
+          },
+          {
+            path: 'theme-mode-toggle',
+            element: <ThemeModeTogglePage />,
+          },
+          {
+            path: 'back-to-top-button',
+            element: <BackToTopButtonPage />,
           },
         ]
       },
