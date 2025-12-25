@@ -7,9 +7,11 @@ import {
 import Constants from '@/constants/Constants';
 import { useTranslation } from 'react-i18next';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
+import { useVersion } from '@/contexts/version';
 
 const Home = () => {
   const { t } = useTranslation();
+  const { currentVersion } = useVersion()
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -74,7 +76,7 @@ const Home = () => {
           <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-100px' }} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {Constants.componentList?.filter(component => component.isShowHome).sort((a, b) => a.name.localeCompare(b.name)).map((component, index) => (
               <motion.div key={index} variants={itemVariants} whileHover={{ y: -5 }}>
-                <Link to={component.path} className="block rounded-xl border border-border h-full bg-background p-5 transition-colors duration-300 hover:border-primary/50 hover:shadow-soft-primary">
+                <Link to={`/v${currentVersion}${component.path}`} className="block rounded-xl border border-border h-full bg-background p-5 transition-colors duration-300 hover:border-primary/50 hover:shadow-soft-primary">
                   <component.Icon size={32} weight="duotone" className="mb-3 text-primary" />
                   <h3 className="mb-2 text-lg font-semibold">{component.name}</h3>
                   <p className="text-sm text-neutral-grey">{component.description}</p>
