@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { GithubLogoIcon, TwitterLogoIcon, LinkedinLogoIcon, XLogoIcon } from '@phosphor-icons/react';
+import { GithubLogoIcon, LinkedinLogoIcon, XLogoIcon } from '@phosphor-icons/react';
 
 const Footer = () => (
   <footer className="border-t border-border bg-background">

@@ -1,4 +1,4 @@
-import { lazy, ComponentType } from 'react';
+import { lazy } from 'react';
 
 /**
  * Dynamically imports a versioned component
