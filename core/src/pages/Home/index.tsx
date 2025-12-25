@@ -39,7 +39,7 @@ const Home = () => {
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.4 }} className="mb-8 text-xl text-neutral-grey md:text-2xl">{t('A comprehensive React component library for modern web applications')}</motion.p>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }} className="mb-12 text-base text-neutral-grey/80 md:text-lg">{t('Beautifully crafted components · TypeScript · Dark Mode · Fully customizable')}</motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }} className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link to="/installation"><Button size="lg" className="w-full sm:w-auto">{t('Get Started')}</Button></Link>
+            <Link to={`/v${currentVersion}/installation`}><Button size="lg" className="w-full sm:w-auto">{t('Get Started')}</Button></Link>
             <a href="https://github.com/smhirmak/msi-ui-kit" target="_blank" rel="noopener noreferrer"><Button variant="outlined" size="lg" className="w-full sm:w-auto">{t('View on GitHub')}</Button></a>
           </motion.div>
         </motion.div>
@@ -84,7 +84,7 @@ const Home = () => {
               </motion.div>
             ))}
           </motion.div>
-          <Link to="/components" className='block mx-auto mt-8 w-max'>
+          <Link to={`/v${currentVersion}/components`} className='block mx-auto mt-8 w-max'>
             <motion.div className="rounded-lg bg-primary px-6 py-3 w-fit text-white shadow-md shadow-primary/30 transition-colors duration-300 hover:bg-primary-dark" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.6 }}>
               {t('Show All Components')}
             </motion.div>
