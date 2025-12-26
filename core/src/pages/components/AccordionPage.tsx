@@ -21,12 +21,18 @@ const tocItems: TOCItem[] = [
   { id: 'api', title: 'API Reference', level: 1 },
 ];
 
-const apiTableData = [
+const accordionApiTableData = [
   { prop: 'variant', type: '"underlined" | "outlined" | "solid" | "splitted"', default: '"underlined"', description: 'The visual style variant' },
   { prop: 'multipleExpand', type: 'boolean', default: 'false', description: 'Allow multiple items to be expanded simultaneously' },
+];
+const accordionItemApiTableData = [
   { prop: 'title', type: 'string', default: '-', description: 'The title of the accordion item' },
   { prop: 'subTitle', type: 'string', default: '-', description: 'Optional subtitle for the accordion item' },
-  { prop: 'defaultOpen', type: 'boolean', default: 'false', description: 'Whether the item is open by default' },
+  // { prop: 'defaultOpen', type: 'boolean', default: 'false', description: 'Whether the item is open by default' },
+  { prop: 'className', type: 'string', default: '-', description: 'Custom class name for the accordion item' },
+  { prop: 'triggerClassName', type: 'string', default: '-', description: 'Custom class name for the accordion item trigger' },
+  { prop: 'contentClassName', type: 'string', default: '-', description: 'Custom class name for the accordion item content' },
+  { prop: 'titleClassName', type: 'string', default: '-', description: 'Custom class name for the accordion item title' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the accordion item' },
   { prop: 'icon', type: 'ReactNode', default: '-', description: 'Custom icon for the accordion item' },
   { prop: 'startContent', type: 'ReactNode', default: '-', description: 'Content displayed at the start of the item' },
@@ -215,7 +221,11 @@ const AccordionPage = () => {
       </section>
 
       {/* API Reference */}
-      <ApiTable tableData={apiTableData} />
+      <section id="api">
+        <h2 className="mb-4 text-2xl font-bold">API Reference</h2>
+        <ApiTable title='Accordion' tableData={accordionApiTableData} titleClassName='text-xl font-semibold' />
+        <ApiTable title='Accordion Item' tableData={accordionItemApiTableData} titleClassName='text-xl font-semibold' />
+      </section>
     </div>
   )
 };

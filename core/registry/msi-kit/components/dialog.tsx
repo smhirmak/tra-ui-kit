@@ -14,9 +14,15 @@ import type { VariantProps } from 'class-variance-authority';
 import { cn, preventScrollShift } from '@/lib/utils';
 import Button from '@/components/button';
 
+export type DialogSize = 'sm' | 'default' | 'lg' | 'xl' | 'full';
+
 interface DialogContextProps {
   open: boolean;
   setOpen: (open: boolean) => void;
+  size?: DialogSize;
+  disableBackdropClick?: boolean;
+  disableEscapeKeyDown?: boolean;
+  showCloseButton?: boolean;
 }
 
 const DialogContext = createContext<DialogContextProps | undefined>(undefined);
@@ -34,6 +40,10 @@ interface DialogProps {
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
+  size?: DialogSize;
+  disableBackdropClick?: boolean;
+  disableEscapeKeyDown?: boolean;
+  showCloseButton?: boolean;
 }
 
 const Dialog: React.FC<DialogProps> = ({
@@ -41,6 +51,10 @@ const Dialog: React.FC<DialogProps> = ({
   open: controlledOpen,
   defaultOpen = false,
   onOpenChange,
+  size,
+  disableBackdropClick = false,
+  disableEscapeKeyDown = false,
+  showCloseButton = true,
 }) => {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
   const isControlled = controlledOpen !== undefined;
@@ -57,7 +71,7 @@ const Dialog: React.FC<DialogProps> = ({
   );
 
   return (
-    <DialogContext.Provider value={{ open, setOpen }}>
+    <DialogContext.Provider value={{ open, setOpen, size, disableBackdropClick, disableEscapeKeyDown, showCloseButton }}>
       {children}
     </DialogContext.Provider>
   );
@@ -66,9 +80,10 @@ const Dialog: React.FC<DialogProps> = ({
 interface DialogTriggerProps {
   children?: React.ReactNode;
   asChild?: boolean;
+  className?: string;
 }
 
-const DialogTrigger: React.FC<DialogTriggerProps> = ({ children, asChild = false }) => {
+const DialogTrigger: React.FC<DialogTriggerProps> = ({ children, asChild = false, className }) => {
   const { setOpen } = useDialog();
 
   if (asChild) {
@@ -85,7 +100,7 @@ const DialogTrigger: React.FC<DialogTriggerProps> = ({ children, asChild = false
   }
 
   return (
-    <Button onClick={() => setOpen(true)}>
+    <Button className={cn(className)} onClick={() => setOpen(true)}>
       {children}
     </Button>
   );
@@ -127,21 +142,16 @@ const contentVariants = cva(
 interface DialogContentProps
   extends React.HTMLAttributes<HTMLDivElement>,
   VariantProps<typeof contentVariants> {
-  disableBackdropClick?: boolean;
-  disableEscapeKeyDown?: boolean;
-  showCloseButton?: boolean;
+  className?: string;
+  children: React.ReactNode;
 }
 
 const DialogContent: React.FC<DialogContentProps> = ({
   className,
   children,
-  size,
-  disableBackdropClick = false,
-  disableEscapeKeyDown = false,
-  showCloseButton = true,
   ...props
 }) => {
-  const { open, setOpen } = useDialog();
+  const { open, setOpen, size, disableBackdropClick, disableEscapeKeyDown, showCloseButton } = useDialog();
   const [isRendered, setIsRendered] = useState(open);
 
   useEffect(() => {
@@ -181,7 +191,7 @@ const DialogContent: React.FC<DialogContentProps> = ({
   return createPortal(
     <Fragment>
       <div
-        className={overlayVariants()}
+        className={cn(overlayVariants(), className)}
         data-state={open ? 'open' : 'closed'}
         onClick={() => !disableBackdropClick && setOpen(false)}
       />

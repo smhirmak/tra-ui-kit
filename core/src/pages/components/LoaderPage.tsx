@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Loader, { loaderRef } from '@/components/loader';
 import Button from '@/components/button';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
@@ -28,12 +28,14 @@ const apiTableData = [
 const LoaderPage = () => {
   const { setTocItems } = useTOC();
   const { t } = useTranslation();
+  const [variant, setVariant] = useState<'circular' | 'linear'>('circular');
 
   useEffect(() => {
     setTocItems(tocItems);
   }, [setTocItems]);
 
-  const handleShowLoader = () => {
+  const handleShowLoader = (variant: 'circular' | 'linear') => {
+    setVariant(variant);
     loaderRef.current?.incLoader();
     setTimeout(() => {
       loaderRef.current?.decLoader();
@@ -42,7 +44,7 @@ const LoaderPage = () => {
 
   return (
     <div className="space-y-12">
-      <Loader />
+      <Loader variant={variant} />
 
       {/* Overview */}
       <section id="overview">
@@ -70,7 +72,7 @@ const LoaderPage = () => {
         <h2 className="mb-4 text-2xl font-bold">Usage</h2>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <Button onClick={handleShowLoader}>Show Loader (2s)</Button>
+            <Button onClick={() => handleShowLoader('circular')}>Show Loader (2s)</Button>
           </div>
           <CustomSyntaxHighlighter
             content={`import Loader, { loaderRef } from '@/components/loader';
@@ -91,7 +93,7 @@ loaderRef.current?.decLoader();  // Hide`}
         <p className="mb-4 text-neutral-grey">Default spinning circular loader.</p>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <Button onClick={handleShowLoader}>Show Circular Loader</Button>
+            <Button onClick={() => handleShowLoader('circular')}>Show Circular Loader</Button>
           </div>
           <CustomSyntaxHighlighter
             content={`<Loader variant="circular" />`}
@@ -105,7 +107,7 @@ loaderRef.current?.decLoader();  // Hide`}
         <p className="mb-4 text-neutral-grey">Linear progress bar at the top of the screen.</p>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <p className="mb-4 text-sm text-neutral-grey">Change the Loader variant to "linear" to see this style.</p>
+            <Button onClick={() => handleShowLoader('linear')}>Show Linear Loader</Button>
           </div>
           <CustomSyntaxHighlighter
             content={`<Loader variant="linear" />`}

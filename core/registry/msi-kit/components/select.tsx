@@ -132,6 +132,7 @@ interface ISelect {
   showRequiredIcon?: boolean;
   dropdownAlign?: 'left' | 'right';
   noOptionsMessage?: string;
+  forceTriggerWidth?: boolean;
 }
 
 const Select: React.FC<ISelect> = ({
@@ -166,6 +167,7 @@ const Select: React.FC<ISelect> = ({
   showRequiredIcon,
   dropdownAlign,
   noOptionsMessage,
+  forceTriggerWidth = false,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState<ISelectOption | Array<ISelectOption> | null>(isMulti ? [] : null);
@@ -184,7 +186,45 @@ const Select: React.FC<ISelect> = ({
     ) : [];
   };
 
+
+  const hasSelection = isMulti
+    ? Array.isArray(selectedValue) && selectedValue.length > 0
+    : !!selectedValue;
+
   const optionList = Array.isArray(getOptions()) ? getOptions() : [getOptions()].flat();
+
+  useEffect(() => {
+    const open = showMenu;
+    if (!open) return;
+
+    let currentOptions = Array.isArray(getOptions()) ? getOptions() : [getOptions()].flat();
+    if (hasSelection) {
+      currentOptions = [...(Array.isArray(currentOptions) ? currentOptions : [currentOptions])];
+    }
+
+    const findSelectedIndex = (): number => {
+      if (!Array.isArray(currentOptions) || currentOptions.length === 0) return -1;
+      if (isMulti && Array.isArray(selectedValue) && selectedValue.length > 0) {
+        const firstSelected = selectedValue[0];
+        return currentOptions.findIndex(opt => opt.value === firstSelected?.value);
+      }
+
+      if (!isMulti && selectedValue) {
+        return currentOptions.findIndex(opt => opt.value === (selectedValue as ISelectOption).value);
+      }
+      return -1;
+    };
+
+    const index = findSelectedIndex();
+    if (index >= 0) {
+      setHighlightedIndex(index);
+      setTimeout(() => {
+        scrollToHighlightedItem(index);
+      }, 0);
+    } else {
+      setHighlightedIndex(-1);
+    }
+  }, [showMenu, selectedValue, options]);
 
   useEffect(() => {
     if (defaultValue) {
@@ -429,11 +469,11 @@ const Select: React.FC<ISelect> = ({
   const textContent = getTextFromSelectedItem(selectedItem);
 
   return (
-    <div className={`MsiSelect-root relative flex flex-col gap-1 ${className}`}>
+    <div className={cn('MsiSelect-root relative flex flex-col gap-1', className)}>
       {label
         && (
           <Label
-            className={`ease-cubic flex transition-all duration-150 ${labelClassName}`}
+            className={cn('ease-cubic flex transition-all duration-150', labelClassName)}
             htmlFor={id}
             id={`${id}-label`}
             tooltip={tooltip}
@@ -443,29 +483,34 @@ const Select: React.FC<ISelect> = ({
             {label}
           </Label>
         )}
-      <Popover open={showMenu} onOpenChange={setShowMenu} disabled={disabled} dropdownAlign={dropdownAlign}>
+      <Popover open={showMenu} onOpenChange={setShowMenu} disabled={disabled} dropdownAlign={dropdownAlign} forceTriggerWidth={forceTriggerWidth}>
         <PopoverTrigger className={cn(selectVariants({ size, isMulti, isSearchable, error }), dropdownTriggerClassName)}>
-          <div id={id} className={`MsiSelect-container ${containerClassName} flex max-h-32 min-h-full w-full select-none justify-between gap-2 overflow-y-auto px-3 py-2`}>
-            <div title={textContent} className={`MsiSelect-selectText ${selectTextClassName} flex h-full max-h-full max-w-full items-center ${!isMulti && 'self-center'} truncate font-medium`}>
+          <div id={id} className={cn('MsiSelect-container flex max-h-32 min-h-full w-full select-none justify-between gap-2 overflow-y-auto px-3 py-2', containerClassName)}>
+            <div
+              title={textContent}
+              className={cn('MsiSelect-selectText flex h-full max-h-full max-w-full items-center truncate font-medium',
+                !isMulti && 'self-center',
+                selectTextClassName)}>
               {getDisplay()}
             </div>
             <div className="MsiSelect-iconContainer self-center">
-              <CaretDownIcon className={`MsiSelect-icon ${iconClassName} stroke-neutral-light-black transition-all`} />
+              <CaretDownIcon className={cn('MsiSelect-icon stroke-neutral-light-black transition-all', iconClassName)} />
             </div>
           </div>
         </PopoverTrigger>
 
         <PopoverContent
-          className={`MsiSelect-dropdownMenu ${dropdownMenuClassName} bg-background shadow-soft-grey max-h-80 min-h-12 w-full max-w-full overflow-auto rounded-md`}
+          className={cn('MsiSelect-dropdownMenu bg-background shadow-soft-grey max-h-80 min-h-12 w-full max-w-full overflow-auto rounded-md', dropdownMenuClassName)}
         >
           <div onKeyDown={handleKeyDown} ref={dropdownRef}>
             {Array.isArray(optionList) ? optionList.map((option: ISelectOption, index) => (
               <div
                 onClick={() => { if (!disabled) onItemClick(option); }}
                 key={option.value as number}
-                className={`MsiSelect-dropdownItem ${dropdownItemClassName} text-neutral-black hover:bg-primary-5 flex cursor-pointer items-center justify-between rounded-md px-3
-                  py-2 font-medium ${isSelected(option) ? 'bg-primary-5 text-primary font-semibold' : ''} 
-                  ${highlightedIndex === index ? 'bg-primary-5' : ''}`}
+                className={cn('MsiSelect-dropdownItem text-neutral-black hover:bg-primary-5 flex cursor-pointer items-center justify-between rounded-md px-3 py-2 font-medium',
+                  dropdownItemClassName,
+                  isSelected(option) ? 'bg-primary-5 text-primary font-semibold' : '',
+                  highlightedIndex === index ? 'bg-primary-5' : '')}
               >
                 {option.content}
                 {isMulti && (
@@ -476,8 +521,8 @@ const Select: React.FC<ISelect> = ({
               </div>
             )) : <p className="text-lg">{noOptionsMessage ?? 'No Options'}</p>}
             {completeButton && (
-              <div className={`MsiSelect-completeButtonContainer ${completeButtonContainerClassName} bg-background sticky bottom-0 px-1 pb-1`}>
-                <Button size={size} className={`MsiSelect-completeButton ${completeButtonClassName} w-full`} onClick={() => setShowMenu(false)}>
+              <div className={cn('MsiSelect-completeButtonContainer bg-background sticky bottom-0 px-1 pb-1', completeButtonContainerClassName)}>
+                <Button size={size} className={cn('MsiSelect-completeButton w-full', completeButtonClassName)} onClick={() => setShowMenu(false)}>
                   {completeButtonText ?? 'Complete Selection'}
                 </Button>
               </div>

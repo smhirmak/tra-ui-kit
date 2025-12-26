@@ -30,6 +30,7 @@ const apiTableData = [
   { prop: 'placeholder', type: 'string', default: '"Select..."', description: 'Placeholder text' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the select' },
   { prop: 'error', type: 'boolean', default: 'false', description: 'Shows error state' },
+  { prop: 'forceTriggerWidth', type: 'boolean', default: 'false', description: 'Forces the dropdown to match the trigger width' },
 ];
 
 const options = [
@@ -180,6 +181,30 @@ const SelectPage = () => {
           />
         </div>
         <CustomSyntaxHighlighter content='<Select disabled ... />' />
+      </section>
+
+      {/* Force Trigger Width */}
+      <section id="force-trigger-width">
+        <h2 className="mb-4 text-2xl font-bold">Force Trigger Width</h2>
+        <p className="mb-4 text-neutral-grey">Forces the dropdown to match the trigger width.</p>
+        <div className="flex gap-8 rounded-lg border border-border bg-background p-6">
+          <Select
+            className='w-full'
+            forceTriggerWidth
+            options={options}
+            value={selectedValue}
+            onChange={setSelectedValue}
+            placeholder="Force Trigger Width"
+          />
+          <Select
+            className='w-full'
+            options={options}
+            value={selectedValue}
+            onChange={setSelectedValue}
+            placeholder="Default Width"
+          />
+        </div>
+        <CustomSyntaxHighlighter content='<Select forceTriggerWidth ... />' />
       </section>
 
       {/* API Reference */}

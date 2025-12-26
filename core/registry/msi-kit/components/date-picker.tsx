@@ -39,6 +39,7 @@ interface IDatePicker {
   dropdownAlign?: 'left' | 'right';
   mode?: 'single' | 'range';
   locale?: Locale;
+  forceTriggerWidth?: boolean;
 }
 
 interface ISelectedDate {
@@ -82,6 +83,7 @@ const DatePicker: React.FC<IDatePicker> = ({
   dropdownAlign,
   mode = 'single',
   locale,
+  forceTriggerWidth = false,
 }) => {
   const singleDayRef = React.useRef<HTMLInputElement | null>(null);
   const singleMonthRef = React.useRef<HTMLInputElement | null>(null);
@@ -177,6 +179,12 @@ const DatePicker: React.FC<IDatePicker> = ({
       if (isValidDate(newDay, month, year)) {
         updateDate(newDay, month, year, true);
       }
+      if (newDay.length === 2) {
+        setTimeout(() => {
+          singleMonthRef.current?.focus();
+          singleMonthRef.current?.select();
+        }, 0);
+      }
     }
   };
 
@@ -197,6 +205,12 @@ const DatePicker: React.FC<IDatePicker> = ({
       setMonth(newMonth);
       if (isValidDate(day, newMonth, year)) {
         updateDate(day, newMonth, year, true);
+      }
+      if (newMonth.length === 2) {
+        setTimeout(() => {
+          singleYearRef.current?.focus();
+          singleYearRef.current?.select();
+        }, 0);
       }
     }
   };
@@ -229,6 +243,12 @@ const DatePicker: React.FC<IDatePicker> = ({
       if (isValidDate(newDay, startMonth, startYear)) {
         updateDate(newDay, startMonth, startYear, true);
       }
+      if (newDay.length === 2) {
+        setTimeout(() => {
+          rangeMonthRef1.current?.focus();
+          rangeMonthRef1.current?.select();
+        }, 0);
+      }
     }
   };
 
@@ -242,6 +262,12 @@ const DatePicker: React.FC<IDatePicker> = ({
       if (isValidDate(startDay, newMonth, startYear)) {
         updateDate(startDay, newMonth, startYear, true);
       }
+      if (newMonth.length === 2) {
+        setTimeout(() => {
+          rangeYearRef1.current?.focus();
+          rangeYearRef1.current?.select();
+        }, 0);
+      }
     }
   };
 
@@ -251,6 +277,12 @@ const DatePicker: React.FC<IDatePicker> = ({
       setStartYear(newYear);
       if (isValidDate(startDay, startMonth, newYear)) {
         updateDate(startDay, startMonth, newYear, true);
+      }
+      if (newYear.length === 4) {
+        setTimeout(() => {
+          rangeDayRef2.current?.focus();
+          rangeDayRef2.current?.select();
+        }, 0);
       }
     }
   };
@@ -265,6 +297,12 @@ const DatePicker: React.FC<IDatePicker> = ({
       if (isValidDate(newDay, endMonth, endYear)) {
         updateDate(newDay, endMonth, endYear, false);
       }
+      if (newDay.length === 2) {
+        setTimeout(() => {
+          rangeMonthRef2.current?.focus();
+          rangeMonthRef2.current?.select();
+        }, 0);
+      }
     }
   };
 
@@ -277,6 +315,12 @@ const DatePicker: React.FC<IDatePicker> = ({
       setEndMonth(newMonth);
       if (isValidDate(endDay, newMonth, endYear)) {
         updateDate(endDay, newMonth, endYear, false);
+      }
+      if (newMonth.length === 2) {
+        setTimeout(() => {
+          rangeYearRef2.current?.focus();
+          rangeYearRef2.current?.select();
+        }, 0);
       }
     }
   };
@@ -346,7 +390,13 @@ const DatePicker: React.FC<IDatePicker> = ({
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, nextRef: React.RefObject<HTMLInputElement | null>, prevRef?: React.RefObject<HTMLInputElement | null>) => {
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    nextRef: React.RefObject<HTMLInputElement | null>,
+    prevRef?: React.RefObject<HTMLInputElement | null>,
+    currentValue?: string,
+    setValue?: (value: string) => void
+  ) => {
     if (e.key === 'ArrowRight' || e.key === 'Tab') {
       e.preventDefault();
       nextRef.current?.focus();
@@ -355,6 +405,18 @@ const DatePicker: React.FC<IDatePicker> = ({
       e.preventDefault();
       prevRef.current?.focus();
       prevRef.current?.select();
+    } else if (e.key === 'Backspace' && prevRef && currentValue === '' && setValue) {
+      // If current input is empty and backspace is pressed, go to previous input and delete its last character
+      e.preventDefault();
+      prevRef.current?.focus();
+      const prevValue = prevRef.current?.value || '';
+      if (prevValue.length > 0) {
+        const newValue = prevValue.slice(0, -1);
+        // Trigger the change for the previous input
+        const event = new Event('input', { bubbles: true });
+        Object.defineProperty(event, 'target', { writable: false, value: { value: newValue } });
+        prevRef.current?.dispatchEvent(event);
+      }
     } else if (e.key === 'Escape') {
       e.currentTarget.blur();
     } else if (e.key === 'Enter') {
@@ -396,7 +458,7 @@ const DatePicker: React.FC<IDatePicker> = ({
               onBlur={handleDayBlur}
               placeholder="DD"
               disabled={disabled}
-              onKeyDown={e => handleKeyDown(e, singleMonthRef)}
+              onKeyDown={e => handleKeyDown(e, singleMonthRef, undefined, day, setDay)}
               style={{ width: getInputWidth(day, 'DD') }}
             />
             /
@@ -408,7 +470,7 @@ const DatePicker: React.FC<IDatePicker> = ({
               onBlur={handleMonthBlur}
               placeholder="MM"
               disabled={disabled}
-              onKeyDown={e => handleKeyDown(e, singleYearRef, singleDayRef)}
+              onKeyDown={e => handleKeyDown(e, singleYearRef, singleDayRef, month, setMonth)}
               style={{ width: getInputWidth(month, 'MM') }}
             />
             /
@@ -418,7 +480,7 @@ const DatePicker: React.FC<IDatePicker> = ({
               onChange={handleYearChange}
               placeholder="YYYY"
               disabled={disabled}
-              onKeyDown={e => handleKeyDown(e, singleDayRef, singleMonthRef)}
+              onKeyDown={e => handleKeyDown(e, singleDayRef, singleMonthRef, year, setYear)}
               style={{ width: getInputWidth(year, 'YYYY') }}
             />
           </div>
@@ -436,7 +498,7 @@ const DatePicker: React.FC<IDatePicker> = ({
                 onBlur={handleDayBlur}
                 placeholder="DD"
                 disabled={disabled}
-                onKeyDown={e => handleKeyDown(e, rangeMonthRef1)}
+                onKeyDown={e => handleKeyDown(e, rangeMonthRef1, undefined, startDay, setStartDay)}
                 style={{ width: getInputWidth(startDay, 'DD') }}
               />
               /
@@ -448,7 +510,7 @@ const DatePicker: React.FC<IDatePicker> = ({
                 onBlur={handleMonthBlur}
                 placeholder="MM"
                 disabled={disabled}
-                onKeyDown={e => handleKeyDown(e, rangeYearRef1, rangeDayRef1)}
+                onKeyDown={e => handleKeyDown(e, rangeYearRef1, rangeDayRef1, startMonth, setStartMonth)}
                 style={{ width: getInputWidth(startMonth, 'MM') }}
               />
               /
@@ -458,7 +520,7 @@ const DatePicker: React.FC<IDatePicker> = ({
                 onChange={handleStartYearChange}
                 placeholder="YYYYY"
                 disabled={disabled}
-                onKeyDown={e => handleKeyDown(e, rangeDayRef2, rangeMonthRef1)}
+                onKeyDown={e => handleKeyDown(e, rangeDayRef2, rangeMonthRef1, startYear, setStartYear)}
                 style={{ width: getInputWidth(startYear, 'YYYY') }}
               />
             </div>
@@ -472,7 +534,7 @@ const DatePicker: React.FC<IDatePicker> = ({
                 onBlur={handleDayBlur}
                 placeholder="DD"
                 disabled={disabled}
-                onKeyDown={e => handleKeyDown(e, rangeMonthRef2)}
+                onKeyDown={e => handleKeyDown(e, rangeMonthRef2, rangeYearRef1, endDay, setEndDay)}
                 style={{ width: getInputWidth(endDay, 'DD') }}
               />
               /
@@ -484,7 +546,7 @@ const DatePicker: React.FC<IDatePicker> = ({
                 onBlur={handleMonthBlur}
                 placeholder="MM"
                 disabled={disabled}
-                onKeyDown={e => handleKeyDown(e, rangeYearRef2, rangeDayRef2)}
+                onKeyDown={e => handleKeyDown(e, rangeYearRef2, rangeDayRef2, endMonth, setEndMonth)}
                 style={{ width: getInputWidth(endMonth, 'MM') }}
               />
               /
@@ -495,7 +557,7 @@ const DatePicker: React.FC<IDatePicker> = ({
                 onChange={handleEndYearChange}
                 placeholder="YYYY"
                 disabled={disabled}
-                onKeyDown={e => handleKeyDown(e, rangeDayRef1, rangeMonthRef2)}
+                onKeyDown={e => handleKeyDown(e, rangeDayRef1, rangeMonthRef2, endYear, setEndYear)}
                 style={{ width: getInputWidth(endYear, 'YYYY') }}
               />
             </div>
@@ -527,7 +589,7 @@ const DatePicker: React.FC<IDatePicker> = ({
             {label}
           </Label>
         )}
-      <Popover open={popoverOpen} onOpenChange={handlePopoverOpenChange} disabled={disabled} dropdownAlign={dropdownAlign}>
+      <Popover open={popoverOpen} onOpenChange={handlePopoverOpenChange} disabled={disabled} dropdownAlign={dropdownAlign} forceTriggerWidth={forceTriggerWidth}>
         <PopoverTrigger>
           <Button
             variant="outlined"
@@ -550,7 +612,7 @@ const DatePicker: React.FC<IDatePicker> = ({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className={`MsiDatePicker-dropdownMenu ${dropdownMenuClassName} bg-background shadow-soft-grey max-h-[unset]! min-h-12 w-full max-w-fit overflow-auto rounded-md`}
+          className={cn('MsiDatePicker-dropdownMenu bg-background shadow-soft-grey max-h-[unset]! min-h-12 w-full max-w-fit overflow-auto rounded-md', dropdownMenuClassName)}
         >
           <Calendar
             id={id}

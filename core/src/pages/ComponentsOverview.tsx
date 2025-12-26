@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Constants from '@/constants/Constants';
 import { useVersion } from '@/contexts/version';
+import { useTranslation } from 'react-i18next';
 
 const ComponentsOverview = () => {
   const { currentVersion } = useVersion();
+  const { t } = useTranslation();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -41,10 +43,10 @@ const ComponentsOverview = () => {
         {/* Header */}
         <div className="mb-12 text-center">
           <h1 className="mb-4 bg-linear-to-r from-primary via-primary-focused via-40% to-70% to-secondary bg-clip-text text-5xl font-bold text-transparent md:text-6xl">
-            All Components
+            {t('All Components')}
           </h1>
           <p className="text-lg text-neutral-grey md:text-xl">
-            Browse our complete collection of {Constants.componentList.length} production-ready React components
+            {t('Browse our complete collection of {{count}} production-ready React components', { count: Constants.componentList.length })}
           </p>
         </div>
 
@@ -74,10 +76,10 @@ const ComponentsOverview = () => {
                   }
                 }}
                 key={category.name}
-                className="group rounded-lg border border-border bg-background p-4 text-center hover:bg-neutral-light/10 transition-colors"
+                className="group rounded-lg shadow-soft-grey bg-background p-4 text-center hover:bg-neutral-light/10 hover:shadow-hard-primary transition-colors"
               >
                 <div className="mb-1 text-2xl font-bold text-primary group-hover:text-primary-focused transition-colors">{count}</div>
-                <div className="text-sm text-neutral-grey group-hover:text-neutral-black transition-colors">{category.name}</div>
+                <div className="text-sm text-neutral-grey group-hover:text-neutral-black transition-colors">{t(category.name)}</div>
               </Link>
             );
           })}
@@ -107,10 +109,10 @@ const ComponentsOverview = () => {
               className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
             >
               {group.components.map((component) => (
-                <motion.div key={component.name} variants={itemVariants} whileHover={{ scale: 1.03, y: -5 }}>
+                <motion.div key={component.name} variants={itemVariants} whileHover={{ scale: 1.03 }}>
                   <Link
                     to={`/v${currentVersion}${component.path}`}
-                    className="group block h-full rounded-xl border border-border bg-background p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-soft-primary"
+                    className="group block h-full rounded-xl shadow-soft-grey bg-background p-6 transition-all duration-300 hover:shadow-hard-primary"
                   >
                     <component.Icon
                       size={40}
@@ -118,7 +120,7 @@ const ComponentsOverview = () => {
                       className="mb-4 text-primary transition-transform duration-300 group-hover:scale-110"
                     />
                     <h3 className="mb-2 text-lg font-semibold">{component.name}</h3>
-                    <p className="text-sm text-neutral-grey">{component.description}</p>
+                    <p className="text-sm text-neutral-grey">{t(component.description)}</p>
                   </Link>
                 </motion.div>
               ))}

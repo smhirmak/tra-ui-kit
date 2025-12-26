@@ -90,7 +90,7 @@ interface IAccordionContent {
   className?: string;
 }
 
-export const Accordion: React.FC<IAccordion> = ({ children, className, multipleExpand = false, variant = 'underlined' }) => {
+const Accordion: React.FC<IAccordion> = ({ children, className, multipleExpand = false, variant = 'underlined' }) => {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -147,7 +147,7 @@ export const Accordion: React.FC<IAccordion> = ({ children, className, multipleE
   );
 };
 
-export const AccordionTrigger: React.FC<IAccordionTrigger> = ({ title, subTitle, onClick, isOpen, className, variant, disabled, startContent, icon, iconContainerClassName,
+const AccordionTrigger: React.FC<IAccordionTrigger> = ({ title, subTitle, onClick, isOpen, className, variant, disabled, startContent, icon, iconContainerClassName,
   titleClassName, subTitleClassName }) => (
   <div
     onClick={disabled ? () => { } : onClick}
@@ -165,7 +165,7 @@ export const AccordionTrigger: React.FC<IAccordionTrigger> = ({ title, subTitle,
   </div>
 );
 
-export const AccordionContent: React.FC<IAccordionContent> = ({ isOpen, children, className }) => (
+const AccordionContent: React.FC<IAccordionContent> = ({ isOpen, children, className }) => (
   <div
     className={cn(accoridonContentVariants({}), className)}
     data-open={isOpen}
@@ -174,7 +174,7 @@ export const AccordionContent: React.FC<IAccordionContent> = ({ isOpen, children
   </div>
 );
 
-export const AccordionItem: React.FC<IAccordionItem> = ({
+const AccordionItem: React.FC<IAccordionItem> = ({
   title,
   subTitle,
   isOpen = false,
@@ -207,3 +207,5 @@ export const AccordionItem: React.FC<IAccordionItem> = ({
     </AccordionContent>
   </div>
 );
+
+export {Accordion, AccordionItem}

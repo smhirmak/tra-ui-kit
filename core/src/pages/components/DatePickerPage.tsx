@@ -31,6 +31,7 @@ const apiTableData = [
   { prop: 'error', type: 'boolean', default: 'false', description: 'Shows error state' },
   { prop: 'minDate', type: 'Date', default: '-', description: 'Minimum selectable date' },
   { prop: 'maxDate', type: 'Date', default: '-', description: 'Maximum selectable date' },
+  { prop: 'forceTriggerWidth', type: 'boolean', default: 'false', description: 'Forces the popover content to match the trigger width' },
 ];
 
 const DatePickerPage = () => {

@@ -1,111 +1,329 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
-import Drawer from '../drawer';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerBody,
+  DrawerFooter,
+} from '../drawer';
 
 describe('Drawer Component', () => {
+  beforeEach(() => {
+    document.body.innerHTML = '';
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = '';
+  });
+
   describe('Basic Rendering', () => {
-    it('should not render content when closed', () => {
+    it('should render drawer with trigger', () => {
       render(
-        <Drawer isOpen={false} onClose={vi.fn()} position="left">
-          Test Content
+        <Drawer>
+          <DrawerTrigger>Open Drawer</DrawerTrigger>
+          <DrawerContent>
+            <DrawerBody>Test Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      const drawer = screen.getByText('Test Content').parentElement;
-      expect(drawer).toHaveClass('-translate-x-full');
+      expect(screen.getByText('Open Drawer')).toBeInTheDocument();
     });
 
-    it('should render content when open', () => {
+    it('should not render content when closed', () => {
       render(
-        <Drawer isOpen onClose={vi.fn()} position="left">
-          Test Content
+        <Drawer>
+          <DrawerTrigger>Open</DrawerTrigger>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      const drawer = screen.getByText('Test Content').parentElement;
-      expect(drawer).toHaveClass('translate-x-0');
+      expect(screen.queryByText('Content')).not.toBeInTheDocument();
+    });
+
+    it('should render content when defaultOpen is true', () => {
+      render(
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody>Test Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      expect(screen.getByText('Test Content')).toBeInTheDocument();
+    });
+
+    it('should render content when trigger is clicked', async () => {
+      render(
+        <Drawer>
+          <DrawerTrigger>Open Drawer</DrawerTrigger>
+          <DrawerContent>
+            <DrawerBody>Drawer Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      const trigger = screen.getByText('Open Drawer');
+      fireEvent.click(trigger);
+
+      await waitFor(() => {
+        expect(screen.getByText('Drawer Content')).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('Controlled Mode', () => {
+    it('should work in controlled mode', () => {
+      const onOpenChange = vi.fn();
+      const { rerender } = render(
+        <Drawer open={false} onOpenChange={onOpenChange}>
+          <DrawerContent>
+            <DrawerBody>Controlled Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      expect(screen.queryByText('Controlled Content')).not.toBeInTheDocument();
+
+      rerender(
+        <Drawer open onOpenChange={onOpenChange}>
+          <DrawerContent>
+            <DrawerBody>Controlled Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      expect(screen.getByText('Controlled Content')).toBeInTheDocument();
+    });
+
+    it('should call onOpenChange when closing', async () => {
+      const onOpenChange = vi.fn();
+      render(
+        <Drawer open onOpenChange={onOpenChange}>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      const closeButton = screen.getByLabelText('Close');
+      fireEvent.click(closeButton);
+
+      await waitFor(() => {
+        expect(onOpenChange).toHaveBeenCalledWith(false);
+      });
+    });
+  });
+
+  describe('Trigger', () => {
+    it('should open drawer when trigger is clicked', async () => {
+      render(
+        <Drawer>
+          <DrawerTrigger>Open</DrawerTrigger>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      fireEvent.click(screen.getByText('Open'));
+
+      await waitFor(() => {
+        expect(screen.getByText('Content')).toBeInTheDocument();
+      });
+    });
+
+    it('should work with asChild prop', async () => {
+      render(
+        <Drawer>
+          <DrawerTrigger asChild>
+            <button type="button">Custom Trigger</button>
+          </DrawerTrigger>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      fireEvent.click(screen.getByText('Custom Trigger'));
+
+      await waitFor(() => {
+        expect(screen.getByText('Content')).toBeInTheDocument();
+      });
+    });
+
+    it('should throw error when asChild is used without valid element', () => {
+      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => { });
+
+      expect(() => {
+        render(
+          <Drawer>
+            <DrawerTrigger asChild>Not a valid element</DrawerTrigger>
+            <DrawerContent>
+              <DrawerBody>Content</DrawerBody>
+            </DrawerContent>
+          </Drawer>,
+        );
+      }).toThrow();
+
+      consoleError.mockRestore();
     });
   });
 
   describe('Positions', () => {
     it('should render from left', () => {
-      const { container } = render(
-        <Drawer isOpen onClose={vi.fn()} position="left">
-          Content
+      render(
+        <Drawer defaultOpen position="left">
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      expect(container.querySelector('.left-0')).toBeInTheDocument();
+      const content = document.querySelector('[data-state="open"]');
+      expect(content).toHaveClass('left-0');
     });
 
     it('should render from right', () => {
-      const { container } = render(
-        <Drawer isOpen onClose={vi.fn()} position="right">
-          Content
+      render(
+        <Drawer defaultOpen position="right">
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      expect(container.querySelector('.right-0')).toBeInTheDocument();
+      const content = document.querySelector('[data-state="open"]');
+      expect(content).toHaveClass('right-0');
     });
 
     it('should render from top', () => {
-      const { container } = render(
-        <Drawer isOpen onClose={vi.fn()} position="top">
-          Content
+      render(
+        <Drawer defaultOpen position="top">
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      expect(container.querySelector('.top-0')).toBeInTheDocument();
+      const content = document.querySelector('[data-state="open"]');
+      expect(content).toHaveClass('top-0');
     });
 
     it('should render from bottom', () => {
-      const { container } = render(
-        <Drawer isOpen onClose={vi.fn()} position="bottom">
-          Content
+      render(
+        <Drawer defaultOpen position="bottom">
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      expect(container.querySelector('.bottom-0')).toBeInTheDocument();
+      const content = document.querySelector('[data-state="open"]');
+      expect(content).toHaveClass('bottom-0');
     });
   });
 
   describe('Close Functionality', () => {
-    it('should call onClose when close button is clicked', () => {
-      const handleClose = vi.fn();
+    it('should close when close button is clicked', async () => {
       render(
-        <Drawer isOpen onClose={handleClose} position="left">
-          Content
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      const closeButton = document.querySelector('button[class*="MsiDialog-closeButton"]');
-      if (closeButton) {
-        fireEvent.click(closeButton);
-      }
+      const closeButton = screen.getByLabelText('Close');
+      fireEvent.click(closeButton);
 
-      expect(handleClose).toHaveBeenCalledTimes(1);
+      await waitFor(() => {
+        expect(screen.queryByText('Content')).not.toBeInTheDocument();
+      });
     });
 
-    it('should call onClose when backdrop is clicked', () => {
-      const handleClose = vi.fn();
+    it('should close when backdrop is clicked', async () => {
       render(
-        <Drawer isOpen onClose={handleClose} position="left">
-          Content
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      const backdrop = document.querySelector('.bg-black\\/50');
-      if (backdrop) {
-        fireEvent.click(backdrop);
-        expect(handleClose).toHaveBeenCalled();
+      const backdrop = document.querySelector('[data-state="open"]');
+      if (backdrop?.previousElementSibling) {
+        fireEvent.click(backdrop.previousElementSibling);
       }
+
+      await waitFor(() => {
+        expect(screen.queryByText('Content')).not.toBeInTheDocument();
+      });
     });
 
-    it('should not close when alwaysOpen is true', () => {
-      const handleClose = vi.fn();
+    it('should close when Escape key is pressed', async () => {
       render(
-        <Drawer isOpen onClose={handleClose} position="left" alwaysOpen>
-          Content
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      fireEvent.keyDown(document, { key: 'Escape' });
+
+      await waitFor(() => {
+        expect(screen.queryByText('Content')).not.toBeInTheDocument();
+      });
+    });
+
+    it('should not close when disableBackdropClick is true', async () => {
+      render(
+        <Drawer defaultOpen disableBackdropClick>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      const backdrop = document.querySelector('[data-state="open"]');
+      if (backdrop?.previousElementSibling) {
+        fireEvent.click(backdrop.previousElementSibling);
+      }
+
+      await waitFor(() => {
+        expect(screen.getByText('Content')).toBeInTheDocument();
+      });
+    });
+
+    it('should not close when Escape is pressed and disableEscapeKeyDown is true', async () => {
+      render(
+        <Drawer defaultOpen disableEscapeKeyDown>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      fireEvent.keyDown(document, { key: 'Escape' });
+
+      await waitFor(() => {
+        expect(screen.getByText('Content')).toBeInTheDocument();
+      });
+    });
+
+    it('should not show close button when showCloseButton is false', () => {
+      render(
+        <Drawer defaultOpen showCloseButton={false}>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
@@ -113,212 +331,198 @@ describe('Drawer Component', () => {
     });
   });
 
-  describe('Title and Header', () => {
-    it('should render title', () => {
+  describe('Header Components', () => {
+    it('should render DrawerHeader', () => {
       render(
-        <Drawer isOpen onClose={vi.fn()} position="left" title="Drawer Title">
-          Content
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerHeader data-testid="header">
+              <DrawerTitle>Title</DrawerTitle>
+            </DrawerHeader>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      expect(screen.getByTestId('header')).toBeInTheDocument();
+    });
+
+    it('should render DrawerTitle', () => {
+      render(
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Drawer Title</DrawerTitle>
+            </DrawerHeader>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
       expect(screen.getByText('Drawer Title')).toBeInTheDocument();
     });
 
-    it('should render custom title element', () => {
+    it('should render DrawerDescription', () => {
       render(
-        <Drawer
-          isOpen
-          onClose={vi.fn()}
-          position="left"
-          title={<h2 data-testid="custom-title">Custom Title</h2>}
-        >
-          Content
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Title</DrawerTitle>
+              <DrawerDescription>Description text</DrawerDescription>
+            </DrawerHeader>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      expect(screen.getByTestId('custom-title')).toBeInTheDocument();
+      expect(screen.getByText('Description text')).toBeInTheDocument();
     });
   });
 
-  describe('Footer', () => {
-    it('should render footer', () => {
+  describe('Body and Footer', () => {
+    it('should render DrawerBody', () => {
       render(
-        <Drawer
-          isOpen
-          onClose={vi.fn()}
-          position="left"
-          footer={<div>Footer Content</div>}
-        >
-          Content
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody>Body Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      expect(screen.getByText('Body Content')).toBeInTheDocument();
+    });
+
+    it('should render DrawerFooter', () => {
+      render(
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+            <DrawerFooter>Footer Content</DrawerFooter>
+          </DrawerContent>
         </Drawer>,
       );
 
       expect(screen.getByText('Footer Content')).toBeInTheDocument();
     });
 
-    it('should render footer as string', () => {
+    it('should render complete drawer structure', () => {
       render(
-        <Drawer
-          isOpen
-          onClose={vi.fn()}
-          position="left"
-          footer="Footer Text"
-        >
-          Content
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Title</DrawerTitle>
+              <DrawerDescription>Description</DrawerDescription>
+            </DrawerHeader>
+            <DrawerBody>Body</DrawerBody>
+            <DrawerFooter>Footer</DrawerFooter>
+          </DrawerContent>
         </Drawer>,
       );
 
-      expect(screen.getByText('Footer Text')).toBeInTheDocument();
+      expect(screen.getByText('Title')).toBeInTheDocument();
+      expect(screen.getByText('Description')).toBeInTheDocument();
+      expect(screen.getByText('Body')).toBeInTheDocument();
+      expect(screen.getByText('Footer')).toBeInTheDocument();
     });
   });
 
   describe('Custom Styling', () => {
-    it('should apply custom container className', () => {
-      const { container } = render(
-        <Drawer
-          isOpen
-          onClose={vi.fn()}
-          position="left"
-          containerClassName="custom-container"
-        >
-          Content
-        </Drawer>,
-      );
-
-      expect(container.querySelector('.custom-container')).toBeInTheDocument();
-    });
-
-    it('should apply custom backdrop className', () => {
+    it('should apply custom className to DrawerContent', () => {
       render(
-        <Drawer
-          isOpen
-          onClose={vi.fn()}
-          position="left"
-          backdropClassName="custom-backdrop"
-        >
-          Content
+        <Drawer defaultOpen>
+          <DrawerContent className="custom-class">
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      const backdrop = document.querySelector('.custom-backdrop');
-      expect(backdrop).toBeInTheDocument();
+      const content = document.querySelector('[data-state="open"]');
+      expect(content).toHaveClass('custom-class');
     });
 
-    it('should apply custom close button className', () => {
+    it('should apply custom className to DrawerHeader', () => {
       render(
-        <Drawer
-          isOpen
-          onClose={vi.fn()}
-          position="left"
-          closeButtonClassName="custom-close"
-        >
-          Content
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerHeader className="custom-header">
+              <DrawerTitle>Title</DrawerTitle>
+            </DrawerHeader>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      const closeButton = document.querySelector('button[class*="MsiDialog-closeButton"]');
-      expect(closeButton).toHaveClass('custom-close');
+      expect(document.querySelector('.custom-header')).toBeInTheDocument();
     });
 
-    it('should apply custom header className', () => {
-      const { container } = render(
-        <Drawer
-          isOpen
-          onClose={vi.fn()}
-          position="left"
-          title="Title"
-          headerClassName="custom-header"
-        >
-          Content
+    it('should apply custom className to DrawerBody', () => {
+      render(
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody className="custom-body">Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      expect(container.querySelector('.custom-header')).toBeInTheDocument();
+      expect(document.querySelector('.custom-body')).toBeInTheDocument();
     });
 
-    it('should apply custom body className', () => {
-      const { container } = render(
-        <Drawer
-          isOpen
-          onClose={vi.fn()}
-          position="left"
-          bodyClassName="custom-body"
-        >
-          Content
+    it('should apply custom className to DrawerFooter', () => {
+      render(
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+            <DrawerFooter className="custom-footer">Footer</DrawerFooter>
+          </DrawerContent>
         </Drawer>,
       );
 
-      expect(container.querySelector('.custom-body')).toBeInTheDocument();
-    });
-
-    it('should apply custom footer className', () => {
-      const { container } = render(
-        <Drawer
-          isOpen
-          onClose={vi.fn()}
-          position="left"
-          footer="Footer"
-          footerClassName="custom-footer"
-        >
-          Content
-        </Drawer>,
-      );
-
-      expect(container.querySelector('.custom-footer')).toBeInTheDocument();
+      expect(document.querySelector('.custom-footer')).toBeInTheDocument();
     });
   });
 
-  describe('Mode', () => {
-    it('should render in overlay mode', () => {
-      const { container } = render(
-        <Drawer isOpen onClose={vi.fn()} position="left" mode="overlay">
-          Content
+  describe('Animation States', () => {
+    it('should have correct data-state when open', () => {
+      render(
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
         </Drawer>,
       );
 
-      expect(container.querySelector('.fixed')).toBeInTheDocument();
+      const content = document.querySelector('[data-state="open"]');
+      expect(content).toBeInTheDocument();
+    });
+
+    it('should transition to closed state', async () => {
+      render(
+        <Drawer defaultOpen>
+          <DrawerContent>
+            <DrawerBody>Content</DrawerBody>
+          </DrawerContent>
+        </Drawer>,
+      );
+
+      const closeButton = screen.getByLabelText('Close');
+      fireEvent.click(closeButton);
+
+      await waitFor(() => {
+        const content = document.querySelector('[data-state="closed"]');
+        expect(content).toBeInTheDocument();
+      });
     });
   });
 
-  describe('Animation', () => {
-    it('should apply correct transform when opening from left', () => {
-      const { rerender } = render(
-        <Drawer isOpen={false} onClose={vi.fn()} position="left">
-          Content
-        </Drawer>,
-      );
+  describe('Context Error Handling', () => {
+    it('should throw error when components used outside Drawer', () => {
+      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => { });
 
-      let drawer = screen.getByText('Content').parentElement;
-      expect(drawer).toHaveClass('-translate-x-full');
+      expect(() => {
+        render(<DrawerTrigger>Trigger</DrawerTrigger>);
+      }).toThrow('useDrawer must be used within a <Drawer /> component.');
 
-      rerender(
-        <Drawer isOpen onClose={vi.fn()} position="left">
-          Content
-        </Drawer>,
-      );
-
-      drawer = screen.getByText('Content').parentElement;
-      expect(drawer).toHaveClass('translate-x-0');
-    });
-
-    it('should apply correct transform when opening from right', () => {
-      const { rerender } = render(
-        <Drawer isOpen={false} onClose={vi.fn()} position="right">
-          Content
-        </Drawer>,
-      );
-
-      let drawer = screen.getByText('Content').parentElement;
-      expect(drawer).toHaveClass('translate-x-full');
-
-      rerender(
-        <Drawer isOpen onClose={vi.fn()} position="right">
-          Content
-        </Drawer>,
-      );
-
-      drawer = screen.getByText('Content').parentElement;
-      expect(drawer).toHaveClass('translate-x-0');
+      consoleError.mockRestore();
     });
   });
 });

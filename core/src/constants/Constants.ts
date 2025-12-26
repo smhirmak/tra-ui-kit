@@ -2,7 +2,7 @@ import {
   CircleDashedIcon, PencilSimpleIcon, ListIcon, CheckSquareIcon, ToggleLeftIcon, RadioButtonIcon,
   TableIcon, FilesIcon, ChatCircleIcon, SidebarSimpleIcon, TabsIcon, FolderOpenIcon,
   LightbulbIcon, BalloonIcon, TagIcon, BookmarkIcon, UserIcon, HourglassIcon,
-  GearIcon, TrendUpIcon, CalendarIcon, MagnifyingGlassIcon, BellIcon, PushPinIcon,
+  GearIcon, TrendUpIcon, CalendarIcon, MagnifyingGlassIcon, BellIcon,
   CaretCircleDownIcon,
   AtomIcon,
   ImageIcon,
@@ -103,7 +103,7 @@ const Constants = {
     },
     {
       name: 'Loading Linear',
-      description: 'Loading indicators and progress spinners',
+      description: 'Loading indicators and progress linears',
       Icon: HourglassIcon,
       path: '/components/loading-linear',
       category: 'Feedback',
@@ -169,7 +169,7 @@ const Constants = {
     {
       name: 'Sidebar',
       description: 'Collapsible navigation sidebar component',
-      Icon: PushPinIcon,
+      Icon: SidebarSimpleIcon,
       path: '/components/sidebar',
       category: 'Navigation',
     },

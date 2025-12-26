@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <header className={cn(pathname?.includes('/components') ? 'max-w-screen' : 'container mx-auto',
-      "grid grid-cols-2 md:grid-cols-4 transition-all h-16 items-center px-4 duration-300 sticky top-0 z-1 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60")}>
+      "isolate grid grid-cols-2 md:grid-cols-4 transition-all h-16 items-center px-4 duration-300 sticky top-0 z-1 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60")}>
       <Link to={versionPrefix} className="relative flex items-center space-x-2">
         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
           <span className="text-lg font-bold text-primary-foreground">M</span>

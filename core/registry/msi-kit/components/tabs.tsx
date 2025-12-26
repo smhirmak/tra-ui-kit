@@ -30,7 +30,7 @@ const tabsContainerVariants = cva('flex h-fit gap-2', {
   },
 });
 
-const tabsVariants = cva('inline-flex w-fit items-center justify-center', {
+const tabsVariants = cva('inline-flex w-fit items-center justify-center isolate', {
   variants: {
     variant: {
       default: 'bg-transparent shadow-md rounded-none!',
@@ -182,6 +182,7 @@ interface ITabsBase {
   direction?: 'horizontal' | 'vertical';
   contentPlacement?: 'top' | 'bottom' | 'left' | 'right';
   contentClasName?: string;
+  wrapperClassName?: string;
 }
 
 // Controlled mode: activeTab and onChange are required
@@ -213,7 +214,7 @@ interface ITab {
   radius?: 'default' | 'none' | 'sm' | 'lg' | 'full';
 }
 
-const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'default', onChange, className, contentClasName,
+const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'default', onChange, className, contentClasName, wrapperClassName,
   selectorClassName, children, disabled, size = 'default', radius = 'default', direction = 'horizontal', contentPlacement = 'bottom', defaultActiveTab }) => {
   const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>({});
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -258,11 +259,12 @@ const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'defaul
   return (
     <TabsContext.Provider value={contextValue}>
       <div className={cn(tabsContainerVariants({ contentPlacement }))}>
-        <div className={cn(tabsVariants({ variant, radius }), className)}>
+        <div className={cn(tabsVariants({ variant, radius }),
+          className)}>
           <div className={cn(direction === 'horizontal' ? 'flex-row' : 'flex-col',
             variant === 'default' && direction === 'horizontal' && 'border-b-2 border-neutral-light',
             variant === 'default' && direction === 'vertical' && 'border-l-2 border-neutral-light',
-            'relative flex')} ref={tabsRef}>
+            'relative flex', wrapperClassName)} ref={tabsRef}>
             <div
               className={cn(selectorVariants({ variant, disabled, radius, direction }), selectorClassName)}
               style={indicatorStyle}

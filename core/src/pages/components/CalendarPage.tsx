@@ -23,6 +23,7 @@ const apiTableData = [
   { prop: 'onSelect', type: '(date: Date | DateRange) => void', default: 'undefined', description: 'Callback when date is selected' },
   { prop: 'disabled', type: 'Date[] | ((date: Date) => boolean)', default: 'undefined', description: 'Disable specific dates' },
   { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes' },
+  { prop: 'endMonth', type: 'Date', default: 'new Date((new Date().getFullYear() + 100), 11, 31)', description: 'Last selectable date' },
 ];
 
 const CalendarPage = () => {
@@ -44,7 +45,7 @@ const CalendarPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Calendar</h1>
         <p className="text-lg text-neutral-grey">
-          A flexible calendar component for date selection. Built with react-day-picker for powerful date handling capabilities.
+          A flexible calendar component for date selection. Built with <code className='text-neutral-light-black'>react-day-picker</code> for powerful date handling capabilities.
         </p>
       </section>
 
@@ -69,7 +70,9 @@ const CalendarPage = () => {
         <h2 className="mb-4 text-2xl font-bold">Usage</h2>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <Calendar mode="single" selected={date} onSelect={setDate} />
+            <div className='w-fit'>
+              <Calendar mode="single" selected={date} onSelect={setDate} />
+            </div>
           </div>
           <CustomSyntaxHighlighter
             content={`const [date, setDate] = useState<Date | undefined>(new Date());
@@ -89,7 +92,9 @@ const CalendarPage = () => {
         <p className="mb-4 text-neutral-grey">Select a single date from the calendar.</p>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <Calendar mode="single" selected={date} onSelect={setDate} />
+            <div className='w-fit'>
+              <Calendar mode="single" selected={date} onSelect={setDate} />
+            </div>
             <p className="mt-4 text-sm text-neutral-grey">
               Selected: {date ? date.toLocaleDateString() : 'No date selected'}
             </p>
@@ -112,7 +117,9 @@ const CalendarPage = () => {
         <p className="mb-4 text-neutral-grey">Select a range of dates with from and to.</p>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <Calendar mode="range" selected={dateRange} onSelect={setDateRange} required={false} />
+            <div className='w-fit'>
+              <Calendar mode="range" selected={dateRange} onSelect={setDateRange} required={false} />
+            </div>
             <p className="mt-4 text-sm text-neutral-grey">
               From: {dateRange?.from ? dateRange.from.toLocaleDateString() : 'Not selected'}
               {' | '}

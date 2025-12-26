@@ -24,6 +24,7 @@ interface IDropdownProps {
   dropdownAlign?: 'left' | 'right';
   id?: string;
   iconClassName?: string;
+  forceTriggerWidth?: boolean;
 }
 
 const Dropdown: React.FC<IDropdownProps> = ({
@@ -41,6 +42,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
   dropdownAlign = 'left',
   id,
   iconClassName,
+  forceTriggerWidth = false,
 }) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<IDropdownItem | null>(null);
@@ -113,7 +115,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen} disabled={disabled} dropdownAlign={dropdownAlign}>
+    <Popover open={open} onOpenChange={setOpen} disabled={disabled} dropdownAlign={dropdownAlign} forceTriggerWidth={forceTriggerWidth}>
       <div className={cn('MsiDropdown relative', className)} id={id}>
         {label && <div className="text-neutral mb-2 text-sm font-medium">{label}</div>}
         <PopoverTrigger

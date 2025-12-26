@@ -28,6 +28,7 @@ const apiTableData = [
   { prop: 'placeholder', type: 'string', default: '-', description: 'Placeholder text' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the dropdown' },
   { prop: 'dropdownAlign', type: '"left" | "right"', default: '"left"', description: 'Dropdown menu alignment' },
+  { prop: 'forceTriggerWidth', type: 'boolean', default: 'false', description: 'Forces the dropdown to match the trigger width' },
 ];
 
 const sampleOptions = [

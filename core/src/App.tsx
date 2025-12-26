@@ -46,171 +46,132 @@ import LoadingSpinnerPage from './pages/components/LoadingSpinnerPage';
 import LoadingLinearPage from './pages/components/LoadingLinearPage';
 import ThemeModeTogglePage from './pages/components/ThemeModeTogglePage';
 import BackToTopButtonPage from './pages/components/BackToTopButtonPages';
+import { useEffect } from 'react';
+import { printTraSignature } from './utilities/tra-signature';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <VersionRedirect />,
+    path: '/', element: <VersionRedirect />,
   },
   {
-    path: '/:version',
-    element: <Layout />,
+    path: '/:version', element: <Layout />,
     children: [
       {
-        index: true,
-        element: <Home />,
+        index: true, element: <Home />,
       },
       {
-        path: 'installation',
-        element: <Installation />,
+        path: 'installation', element: <Installation />,
       },
       {
-        path: 'components',
-        element: <ComponentsOverview />,
+        path: 'components', element: <ComponentsOverview />,
       },
       {
-        path: 'components',
-        element: <ComponentLayout />,
+        path: 'components', element: <ComponentLayout />,
         children: [
           {
-            path: 'avatar',
-            element: <AvatarPage />,
+            path: 'avatar', element: <AvatarPage />,
           },
           {
-            path: 'badge',
-            element: <BadgePage />,
+            path: 'badge', element: <BadgePage />,
           },
           {
-            path: 'button',
-            element: <ButtonPage />,
+            path: 'button', element: <ButtonPage />,
           },
           {
-            path: 'checkbox',
-            element: <CheckboxPage />,
+            path: 'checkbox', element: <CheckboxPage />,
           },
           {
-            path: 'chip',
-            element: <ChipPage />,
+            path: 'chip', element: <ChipPage />,
           },
           {
-            path: 'calendar',
-            element: <CalendarPage />,
+            path: 'calendar', element: <CalendarPage />,
           },
           {
-            path: 'information-status',
-            element: <InformationStatusPage />,
+            path: 'information-status', element: <InformationStatusPage />,
           },
           {
-            path: 'loader',
-            element: <LoaderPage />,
+            path: 'loader', element: <LoaderPage />,
           },
           {
-            path: 'loading-linear',
-            element: <LoadingLinearPage />,
+            path: 'loading-linear', element: <LoadingLinearPage />,
           },
           {
-            path: 'loading-spinner',
-            element: <LoadingSpinnerPage />,
+            path: 'loading-spinner', element: <LoadingSpinnerPage />,
           },
           {
-            path: 'text-field',
-            element: <TextFieldPage />,
+            path: 'text-field', element: <TextFieldPage />,
           },
           {
-            path: 'notification',
-            element: <NotificationPage />,
+            path: 'notification', element: <NotificationPage />,
           },
           {
-            path: 'radio-button',
-            element: <RadioButtonPage />,
+            path: 'radio-button', element: <RadioButtonPage />,
           },
           {
-            path: 'search-field',
-            element: <SearchFieldPage />,
+            path: 'search-field', element: <SearchFieldPage />,
           },
           {
-            path: 'skeleton',
-            element: <SkeletonPage />,
+            path: 'skeleton', element: <SkeletonPage />,
           },
           {
-            path: 'switch',
-            element: <SwitchPage />,
+            path: 'switch', element: <SwitchPage />,
           },
           {
-            path: 'tabs',
-            element: <TabsPage />,
+            path: 'tabs', element: <TabsPage />,
           },
           {
-            path: 'image-hover-effect',
-            element: <ImageHoverEffectPage />,
+            path: 'image-hover-effect', element: <ImageHoverEffectPage />,
           },
           {
-            path: 'accordion',
-            element: <AccordionPage />,
+            path: 'accordion', element: <AccordionPage />,
           },
           {
-            path: 'select',
-            element: <SelectPage />,
+            path: 'select', element: <SelectPage />,
           },
           {
-            path: 'input',
-            element: <InputPage />,
+            path: 'input', element: <InputPage />,
           },
           {
-            path: 'label',
-            element: <LabelPage />,
+            path: 'label', element: <LabelPage />,
           },
           {
-            path: 'container',
-            element: <ContainerPage />,
+            path: 'container', element: <ContainerPage />,
           },
           {
-            path: 'tooltip',
-            element: <TooltipPage />,
+            path: 'tooltip', element: <TooltipPage />,
           },
           {
-            path: 'date-picker',
-            element: <DatePickerPage />,
+            path: 'date-picker', element: <DatePickerPage />,
           },
           {
-            path: 'popover',
-            element: <PopoverPage />,
+            path: 'popover', element: <PopoverPage />,
           },
           {
-            path: 'dialog',
-            element: <DialogPage />,
+            path: 'dialog', element: <DialogPage />,
           },
           {
-            path: 'drawer',
-            element: <DrawerPage />,
+            path: 'drawer', element: <DrawerPage />,
           },
           {
-            path: 'pagination',
-            element: <PaginationPage />,
+            path: 'pagination', element: <PaginationPage />,
           },
           {
-            path: 'table',
-            element: <TablePage />,
+            path: 'table', element: <TablePage />,
           },
           {
-            path: 'progress-bar',
-            element: <ProgressBarPage />,
+            path: 'progress-bar', element: <ProgressBarPage />,
           },
           {
-            path: 'sidebar',
-            element: <SidebarPage />,
+            path: 'sidebar', element: <SidebarPage />,
           },
           {
-            path: 'dropdown',
-            element: <DropdownPage />,
+            path: 'dropdown', element: <DropdownPage />,
           },
           {
-            path: 'theme-mode-toggle',
-            element: <ThemeModeTogglePage />,
+            path: 'theme-mode-toggle', element: <ThemeModeTogglePage />,
           },
           {
-            path: 'back-to-top-button',
-            element: <BackToTopButtonPage />,
+            path: 'back-to-top-button', element: <BackToTopButtonPage />,
           },
         ]
       },
@@ -220,6 +181,12 @@ const router = createBrowserRouter([
 const App = () => {
   const { t } = useLocalizeContext();
   const { notificationTheme, notificationMode, notificationAnimateMode, notificationPosition } = useAppContext();
+
+  useEffect(() => {
+    printTraSignature();
+    // printMsiSignature();
+  }, []);
+
   return (
     <TOCProvider>
       <NotificationProvider

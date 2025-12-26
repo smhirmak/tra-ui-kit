@@ -1,190 +1,256 @@
 /* eslint-disable tailwindcss/no-custom-classname */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { XIcon } from '@phosphor-icons/react';
-import { cva } from 'class-variance-authority';
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  Fragment,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+} from 'react';
 import { createPortal } from 'react-dom';
-import { cn } from '@/lib/utils';
-import Button from './button';
+import { cva } from 'class-variance-authority';
+import { XIcon } from '@phosphor-icons/react';
+import type { VariantProps } from 'class-variance-authority';
+import { cn, preventScrollShift } from '@/lib/utils';
+import Button from '@/components/button';
 
-interface IDrawer {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  position: 'left' | 'right' | 'top' | 'bottom';
-  mode?: 'overlay';
-  alwaysOpen?: boolean;
-  containerClassName?: string;
-  backdropClassName?: string;
-  closeButtonClassName?: string;
-  title?: string | React.ReactNode;
-  titleClassName?: string;
-  headerClassName?: string;
-  bodyClassName?: string;
-  footer?: string | React.ReactNode;
-  footerClassName?: string;
+export type DrawerPosition = 'left' | 'right' | 'top' | 'bottom';
+
+interface DrawerContextProps {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  position?: DrawerPosition;
+  disableBackdropClick?: boolean;
+  disableEscapeKeyDown?: boolean;
+  showCloseButton?: boolean;
 }
 
-const drawerVariants = cva('MsiDialog-container bg-neutral-white duration-350 flex flex-col px-6 py-2 shadow-lg transition-all ease-in-out', {
-  variants: {
-    mode: {
-      overlay: 'fixed z-50',
-    },
-    position: {
-      left: 'inset-y-0 left-0 h-full w-fit',
-      right: 'inset-y-0 right-0 h-full w-fit',
-      top: 'inset-x-0 top-0 h-auto max-h-full w-full rounded-b-2xl md:rounded-b-none',
-      bottom: 'inset-x-0 bottom-0 h-auto max-h-full w-full rounded-t-2xl md:rounded-t-none',
-    },
-    internalIsOpen: {
-      true: 'animate-in',
-      false: 'animate-out',
-    },
-  },
-  defaultVariants: {
-    mode: 'overlay',
-    position: 'left',
-  },
-  compoundVariants: [
-    {
-      position: 'left',
-      internalIsOpen: true,
-      className: 'translate-x-0 slide-in-from-left',
-    },
-    {
-      position: 'left',
-      internalIsOpen: false,
-      className: '-translate-x-full slide-out-to-left',
-    },
-    {
-      position: 'right',
-      internalIsOpen: true,
-      className: 'translate-x-0 slide-in-from-right',
-    },
-    {
-      position: 'right',
-      internalIsOpen: false,
-      className: 'translate-x-full slide-out-to-right',
-    },
-    {
-      position: 'top',
-      internalIsOpen: true,
-      className: 'translate-y-0 slide-in-from-top',
-    },
-    {
-      position: 'top',
-      internalIsOpen: false,
-      className: '-translate-y-full slide-out-to-top',
-    },
-    {
-      position: 'bottom',
-      internalIsOpen: true,
-      className: 'translate-y-0 slide-in-from-bottom',
-    },
-    {
-      position: 'bottom',
-      internalIsOpen: false,
-      className: 'translate-y-full slide-out-to-bottom',
-    },
-  ],
-});
+const DrawerContext = createContext<DrawerContextProps | undefined>(undefined);
 
-const Drawer: React.FC<IDrawer> = ({
-  isOpen,
-  onClose,
+const useDrawer = () => {
+  const context = useContext(DrawerContext);
+  if (!context) {
+    throw new Error('useDrawer must be used within a <Drawer /> component.');
+  }
+  return context;
+};
+
+interface DrawerProps {
+  children: React.ReactNode;
+  open?: boolean;
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  position?: DrawerPosition;
+  disableBackdropClick?: boolean;
+  disableEscapeKeyDown?: boolean;
+  showCloseButton?: boolean;
+}
+
+const Drawer: React.FC<DrawerProps> = ({
   children,
+  open: controlledOpen,
+  defaultOpen = false,
+  onOpenChange,
   position = 'left',
-  mode = 'overlay',
-  alwaysOpen = false,
-  title,
-  containerClassName = '',
-  backdropClassName = '',
-  closeButtonClassName = '',
-  titleClassName = '',
-  headerClassName = '',
-  bodyClassName = '',
-  footer,
-  footerClassName = '',
+  disableBackdropClick = false,
+  disableEscapeKeyDown = false,
+  showCloseButton = true,
 }) => {
-  const [internalIsOpen, setInternalIsOpen] = useState(isOpen);
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen : uncontrolledOpen;
+
+  const setOpen = useCallback(
+    (value: boolean) => {
+      if (!isControlled) {
+        setUncontrolledOpen(value);
+      }
+      onOpenChange?.(value);
+    },
+    [isControlled, onOpenChange]
+  );
+
+  return (
+    <DrawerContext.Provider value={{ open, setOpen, position, disableBackdropClick, disableEscapeKeyDown, showCloseButton }}>
+      {children}
+    </DrawerContext.Provider>
+  );
+};
+
+interface DrawerTriggerProps {
+  children?: React.ReactNode;
+  asChild?: boolean;
+  className?: string;
+}
+
+const DrawerTrigger: React.FC<DrawerTriggerProps> = ({ children, asChild = false, className }) => {
+  const { setOpen } = useDrawer();
+
+  if (asChild) {
+    if (!React.isValidElement(children)) {
+      throw new Error('DrawerTrigger: when using asChild, children must be a single React element');
+    }
+
+    return React.cloneElement(children as React.ReactElement<any>, {
+      onClick: (e: React.MouseEvent) => {
+        (children as React.ReactElement<any>).props.onClick?.(e);
+        setOpen(true);
+      },
+    });
+  }
+
+  return (
+    <Button className={cn(className)} onClick={() => setOpen(true)}>
+      {children}
+    </Button>
+  );
+};
+
+const overlayVariants = cva(
+  'fixed inset-0 z-50 bg-black/50 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0'
+);
+
+const contentVariants = cva(
+  'fixed z-50 bg-background shadow-lg duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out',
+  {
+    variants: {
+      position: {
+        left: 'inset-y-0 left-0 h-full w-full sm:max-w-sm data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left',
+        right: 'inset-y-0 right-0 h-full w-full sm:max-w-sm data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right',
+        top: 'inset-x-0 top-0 w-full max-h-[85vh] data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top',
+        bottom: 'inset-x-0 bottom-0 w-full max-h-[85vh] data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom',
+      },
+    },
+    defaultVariants: {
+      position: 'left',
+    },
+  }
+);
+
+interface DrawerContentProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+  VariantProps<typeof contentVariants> {
+  className?: string;
+  children: React.ReactNode;
+}
+
+const DrawerContent: React.FC<DrawerContentProps> = ({
+  className,
+  children,
+  ...props
+}) => {
+  const { open, setOpen, position, disableBackdropClick, disableEscapeKeyDown, showCloseButton } = useDrawer();
   const drawerRef = useRef<HTMLDivElement>(null);
 
-  // Disable scrolling when drawer is open
   useEffect(() => {
-    setInternalIsOpen(isOpen);
-
-    if (isOpen && !alwaysOpen) {
-      const { scrollY } = window;
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    let timeoutId: NodeJS.Timeout;
+    if (open) {
+      setOpen(true);
     } else {
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.body.style.paddingRight = '';
-      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      timeoutId = setTimeout(() => {
+        setOpen(false);
+      }, 300);
     }
-  }, [isOpen, alwaysOpen]);
+    return () => clearTimeout(timeoutId);
+  }, [open]);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (drawerRef.current && !drawerRef.current.contains(event.target as Node) && !alwaysOpen) {
-        onClose();
+    if (open) {
+      preventScrollShift.lock();
+    }
+
+    return () => {
+      preventScrollShift.unlock();
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && !disableEscapeKeyDown) {
+        setOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [onClose, alwaysOpen]);
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [open, disableEscapeKeyDown, setOpen]);
 
-  if (!internalIsOpen && !alwaysOpen) {
-    return null;
-  }
+  const handleBackdropClick = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!disableBackdropClick) {
+      setOpen(false);
+    }
+  }, [disableBackdropClick, setOpen]);
 
-  const content = (
-    <>
-      {(internalIsOpen || alwaysOpen) && mode === 'overlay' && (
-        <div
-          className={cn(
-            'MsiDialog-backdrop fixed inset-0 bg-neutral-black/70 dark:bg-neutral-black/10 transition-opacity duration-350',
-            { [internalIsOpen ? 'opacity-100' : 'opacity-0']: true },
-            backdropClassName,
-          )}
-          onClick={!alwaysOpen ? onClose : undefined}
-        />
-      )}
+  const handleContentClick = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+  }, []);
+
+  if (!open) return null;
+
+  return createPortal(
+    <Fragment>
+      <div
+        className={cn(overlayVariants())}
+        data-state={open ? 'open' : 'closed'}
+        onClick={handleBackdropClick}
+      />
+
       <div
         ref={drawerRef}
-        className={cn(drawerVariants({ mode, position, internalIsOpen }), containerClassName)}
+        className={cn(contentVariants({ position }), 'flex flex-col', className)}
+        data-state={open ? 'open' : 'closed'}
+        onClick={handleContentClick}
+        {...props}
       >
-        <div className={cn('MsiDialog-header my-2 flex items-center justify-between gap-2 border-b pb-2', { [position === 'right' ? 'flex-row-reverse' : 'flex-row']: true }, headerClassName)}>
-          <p className={cn('MsiDialog-headerTitle text-2xl font-semibold', titleClassName)}>{title}</p>
-          {!alwaysOpen && (
-            <Button
-              size="icon"
-              variant="ghost"
-              rounded="lg"
-              onClick={onClose}
-              className={cn('MsiDialog-closeButton bg-neutral hover:bg-neutral/80', closeButtonClassName)}
-            >
-              <XIcon className="size-5" />
-            </Button>
-          )}
-        </div>
-        <div className={cn('MsiDialog-body h-full overflow-y-auto', bodyClassName)}>{children}</div>
-        {footer && <div className={cn('MsiDialog-footer border-t my-2 pt-2', footerClassName)}>{footer}</div>}
-      </div>
-    </>
-  );
+        {children}
 
-  return createPortal(content, document.body);
+        {showCloseButton && (
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+          >
+            <XIcon className="size-4" />
+            <span className="sr-only">Close</span>
+          </button>
+        )}
+      </div>
+    </Fragment>,
+    document.body
+  );
 };
 
-export default Drawer;
+const DrawerHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn('flex flex-col space-y-2 text-center sm:text-left px-6 pt-6', className)} {...props} />
+);
+
+const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 px-6 pb-6', className)} {...props} />
+);
+
+const DrawerTitle = ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  <h2 className={cn('text-lg font-semibold leading-none tracking-tight', className)} {...props} />
+);
+
+const DrawerDescription = ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
+  <p className={cn('text-sm text-muted-foreground', className)} {...props} />
+);
+
+const DrawerBody = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn('flex-1 overflow-y-auto px-6 py-4', className)} {...props} />
+);
+
+export {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerBody,
+};

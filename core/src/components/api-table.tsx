@@ -16,7 +16,7 @@ const ApiTable = ({ tableData, title, titleClassName }: { tableData: { prop: str
           <tbody>
             {tableData?.map((item) => {
               return (
-                <tr key={item.prop} className="border-b border-border [&_td]:odd:text-primary [&_td]:odd:font-medium [&_td]:text-sm [&_td]:font-mono [&_td]:last:font-sans">
+                <tr key={item.prop} className="border-b border-border hover:bg-neutral-grey/10 transition-all [&_td]:odd:text-primary [&_td]:odd:font-medium [&_td]:text-sm [&_td]:font-mono [&_td]:last:font-sans">
                   <td>{item.prop ?? '-'}</td>
                   <td>{item.type ?? '-'}</td>
                   <td>{item.default ?? '-'}</td>

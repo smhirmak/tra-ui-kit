@@ -24,6 +24,8 @@ const apiTableData = [
   { prop: 'onOpenChange', type: '(open: boolean) => void', default: '-', description: 'Callback when open state changes' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the popover trigger' },
   { prop: 'dropdownAlign', type: '"left" | "right"', default: '"left"', description: 'Horizontal alignment of the popover content' },
+  { prop: 'forceTriggerWidth', type: 'boolean', default: 'false', description: 'Forces the popover content to match the trigger width' },
+
 ];
 
 const PopoverPage = () => {

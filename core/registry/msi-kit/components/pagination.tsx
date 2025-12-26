@@ -10,7 +10,7 @@ export const paginationVariants = cva(
   {
     variants: {
       status: {
-        default: 'border-neutral-black/75 text-neutral-black/75 bg-transparent',
+        default: 'border-neutral-black/75 text-neutral-black/75 bg-transparent hover:bg-primary/40',
         active: '',
         disabled: 'border-neutral-disabled-text bg-neutral-disabled-text text-neutral-disabled-text cursor-not-allowed hover:bg-transparent',
       },
@@ -140,7 +140,7 @@ const Pagination: React.FC<IPagination> = ({
           rounded={rounded}
           onClick={() => { if (currentPage > 1) onPageChange(currentPage - 1); }}
           disabled={disabled ?? currentPage === 1}
-          className={cn(paginationVariants({ size, status: currentPage === 1 ? 'disabled' : 'default' }), 'MsiPagination-left bg-transparent', arrowsClassName)}
+          className={cn(paginationVariants({ size, status: currentPage === 1 ? 'disabled' : 'default' }), 'MsiPagination-left bg-transparent hover:bg-primary/90', arrowsClassName)}
           color={color}
           aria-label="Previous page"
           title="Previous page"
