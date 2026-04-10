@@ -1,5 +1,4 @@
-import { createContext, useContext, useState, ReactNode, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { createContext, useContext, useState, ReactNode, useMemo } from 'react';
 import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
 
 interface ISidebar {
@@ -13,6 +12,7 @@ interface ISidebarItem {
   active?: boolean;
   alert?: boolean;
   url?: string;
+  onClick?: () => void;
 }
 
 const SidebarContext = createContext<{ expanded: boolean } | undefined>(undefined);
@@ -25,7 +25,7 @@ const Sidebar: React.FC<ISidebar> = ({ children, headerLogo }) => {
       <nav className="bg-background flex h-full flex-col shadow-xs">
         <div className={`flex items-center ${(expanded && headerLogo) ? 'justify-between' : 'justify-end'} p-4 pb-2`}>
           {headerLogo && <img src={headerLogo} alt="logo" className={`overflow-hidden transition-all ease-out ${expanded ? 'w-16' : 'w-0'}`} />}
-          <button type="button" onClick={() => setExpanded(curr => !curr)} className="bg-background self-end p-1.5 hover:bg-gray-300 dark:hover:bg-blue-950">
+          <button type="button" onClick={() => setExpanded(curr => !curr)} className="bg-background self-end p-1.5 hover:bg-neutral dark:hover:bg-primary-15">
             {expanded ? <CaretLeftIcon /> : <CaretRightIcon />}
           </button>
         </div>
@@ -49,26 +49,25 @@ const Sidebar: React.FC<ISidebar> = ({ children, headerLogo }) => {
   );
 };
 
-export const SidebarItem = ({ icon, text, active, alert, url }: ISidebarItem) => {
+export const SidebarItem = ({ icon, text, active, alert, onClick }: ISidebarItem) => {
   const context = useContext(SidebarContext);
   if (!context) {
     throw new Error('SidebarItem must be used within a Sidebar');
   }
   const { expanded } = context;
-  const navigate = useNavigate();
   return (
     <li
-      onClick={() => url && navigate(url)}
-      className={`group relative my-1 flex cursor-pointer items-center rounded-md px-3 py-2 font-medium transition-colors ${active ? 'bg-linear-to-tr from-indigo-200 to-indigo-100 text-indigo-800' : 'justify-center hover:bg-gray-300 dark:hover:bg-blue-950'}`}
+      onClick={() => { onClick?.(); }}
+      className={`group relative my-1 flex cursor-pointer items-center rounded-md px-3 py-2 font-medium transition-colors ${active ? 'bg-primary-15 text-primary' : 'justify-center hover:bg-neutral dark:hover:bg-primary-15'}`}
     >
       {icon}
       <span className={`overflow-hidden transition-all ease-out ${expanded ? 'ml-3 w-40' : 'size-0'}`}>{text}</span>
       {alert && (
-        <div className={`absolute right-2 size-2 rounded bg-indigo-400 ${expanded ? '' : 'top-2'}`} />
+        <div className={`absolute right-2 size-2 rounded bg-primary ${expanded ? '' : 'top-2'}`} />
       )}
 
       {!expanded && (
-        <div className="z-2 invisible absolute left-full ml-6 -translate-x-3 text-nowrap rounded-md bg-indigo-100 px-2 py-1 text-sm text-indigo-800 opacity-20 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
+        <div className="z-2 invisible absolute left-full ml-6 -translate-x-3 text-nowrap rounded-md bg-primary-15 px-2 py-1 text-sm text-primary opacity-20 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
           {text}
         </div>
       )}

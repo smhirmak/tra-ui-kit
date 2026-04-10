@@ -21,17 +21,22 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'locale', type: 'Locale', default: '-', description: 'Date locale for formatting' },
-  { prop: 'label', type: 'string', default: '-', description: 'Label text for the date picker' },
-  { prop: 'placeholder', type: 'string', default: '-', description: 'Placeholder text' },
-  { prop: 'mode', type: '"single" | "range"', default: '"single"', description: 'Selection mode' },
-  { prop: 'value', type: 'Date | DateRange', default: '-', description: 'Selected date value' },
-  { prop: 'onChange', type: '(date: Date | DateRange) => void', default: '-', description: 'Callback when date changes' },
+  { prop: 'id', type: 'string', default: '-', description: 'HTML id attribute' },
+  { prop: 'label', type: 'string', default: '-', description: 'Label text displayed above the picker' },
+  { prop: 'labelClassName', type: 'string', default: '-', description: 'Custom CSS class for the label' },
+  { prop: 'showRequiredIcon', type: 'boolean', default: 'false', description: 'Shows a required asterisk on the label' },
+  { prop: 'tooltip', type: 'string | string[]', default: '-', description: 'Tooltip content shown next to the label' },
+  { prop: 'locale', type: 'Locale', default: 'tr', description: 'date-fns locale for formatting and segment labels' },
+  { prop: 'mode', type: '"single" | "range" | "multiple"', default: '"single"', description: 'Selection mode' },
+  { prop: 'value', type: 'Date | DateRange | undefined', default: '-', description: 'Selected date value' },
+  { prop: 'onChange', type: '(date?: Date | DateRange) => void', default: '-', description: 'Callback when date changes' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the date picker' },
-  { prop: 'error', type: 'boolean', default: 'false', description: 'Shows error state' },
+  { prop: 'error', type: 'boolean', default: 'false', description: 'Shows error state styling' },
+  { prop: 'showCompleteButton', type: 'boolean', default: 'false', description: 'Show explicit complete button inside popover' },
+  { prop: 'showClearButton', type: 'boolean', default: 'false', description: 'Show clear/reset button inside popover' },
   { prop: 'minDate', type: 'Date', default: '-', description: 'Minimum selectable date' },
   { prop: 'maxDate', type: 'Date', default: '-', description: 'Maximum selectable date' },
-  { prop: 'forceTriggerWidth', type: 'boolean', default: 'false', description: 'Forces the popover content to match the trigger width' },
+  { prop: 'onBlur', type: '() => void', default: '-', description: 'Called when picker loses focus' },
 ];
 
 const DatePickerPage = () => {
@@ -73,18 +78,12 @@ const DatePickerPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <DatePicker
               locale={locale === 'tr' ? tr : enUS}
-              label="Select Date"
-              id="basic-date-picker"
               onChange={date => console.log(date)}
-              placeholder="Choose a date"
             />
           </div>
           <CustomSyntaxHighlighter content={`<DatePicker
   locale={locale === 'tr' ? tr : enUS}
-  label="Select Date"
-  id="basic-date-picker"
   onChange={date => console.log(date)}
-  placeholder="Choose a date"
 />`} />
         </div>
       </section>
@@ -97,25 +96,17 @@ const DatePickerPage = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <DatePicker
               locale={locale === 'tr' ? tr : enUS}
-              label="Single Date"
-              id="single-date"
               onChange={date => console.log(date)}
-              placeholder="Select a date"
             />
             <DatePicker
               locale={locale === 'tr' ? tr : enUS}
-              label="Range Date Picker"
-              id="range-date"
-              value={new Date()}
-              onChange={date => console.log(date)}
-              placeholder="Select date range"
               mode="range"
+              onChange={date => console.log(date)}
             />
           </div>
         </div>
         <CustomSyntaxHighlighter content={`<DatePicker
   locale={locale === 'tr' ? tr : enUS}
-  label="Range Date Picker"
   mode="range"
   onChange={date => console.log(date)}
 />`} />
@@ -129,23 +120,17 @@ const DatePickerPage = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <DatePicker
               locale={locale === 'tr' ? tr : enUS}
-              label="Disabled"
-              id="disabled-picker"
               disabled
               onChange={date => console.log(date)}
-              placeholder="Disabled"
             />
             <DatePicker
               locale={locale === 'tr' ? tr : enUS}
-              label="Error"
-              id="error-picker"
               error
               onChange={date => console.log(date)}
-              placeholder="Error state"
             />
           </div>
         </div>
-        <CustomSyntaxHighlighter content='<DatePicker label="Error" error />' />
+        <CustomSyntaxHighlighter content='<DatePicker error />' />
       </section>
 
       {/* Constraints */}
@@ -156,28 +141,19 @@ const DatePickerPage = () => {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <DatePicker
               locale={locale === 'tr' ? tr : enUS}
-              label="Minimum Date 16/12/2024"
               minDate={new Date('2024-12-16')}
-              id="min-date-picker"
               onChange={date => console.log(date)}
-              placeholder="Select date"
             />
             <DatePicker
               locale={locale === 'tr' ? tr : enUS}
-              label="Maximum Date 20/12/2024"
               maxDate={new Date('2024-12-20')}
-              id="max-date-picker"
               onChange={date => console.log(date)}
-              placeholder="Select date"
             />
             <DatePicker
               locale={locale === 'tr' ? tr : enUS}
-              label="Min & Max Date"
               minDate={new Date('2024-12-16')}
               maxDate={new Date('2024-12-20')}
-              id="minmax-date-picker"
               onChange={date => console.log(date)}
-              placeholder="Select date"
             />
           </div>
         </div>

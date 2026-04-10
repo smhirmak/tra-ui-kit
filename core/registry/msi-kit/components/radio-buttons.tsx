@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from 'react';
 
 interface IRadioButtonContext {
   selectedValue: string | number | undefined;
-  setSelectedValue: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setSelectedValue: React.Dispatch<React.SetStateAction<string | number | undefined>>;
   onChange?: (value: string | number | undefined) => void;
 }
 
@@ -74,12 +74,12 @@ export const RadioGroupItem: React.FC<IRadioGroupItem> = ({
 interface IRadioGroup {
   children?: React.ReactNode;
   className?: string;
-  defaultValue?: string;
+  defaultValue?: string | number;
   onChange?: (value: string | number | undefined) => void;
 }
 
 export const RadioGroup: React.FC<IRadioGroup> = ({ children, className, defaultValue, onChange }) => {
-  const [selectedValue, setSelectedValue] = React.useState(defaultValue);
+  const [selectedValue, setSelectedValue] = React.useState<string | number | undefined>(defaultValue);
 
   const value = useMemo(() => ({ selectedValue, setSelectedValue, onChange }), [selectedValue]);
   return (

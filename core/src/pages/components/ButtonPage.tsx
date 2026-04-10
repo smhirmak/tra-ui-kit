@@ -48,10 +48,13 @@ const tocItems: TOCItem[] = [
 const apiTableData = [
   { prop: 'variant', type: '"solid" | "outlined" | "ghost"', default: '"solid"', description: 'The visual style variant' },
   { prop: 'size', type: '"sm" | "default" | "lg" | "icon"', default: '"default"', description: 'The button size' },
-  { prop: 'color', type: '"primary" | "secondary" | "tetriary"', default: '"primary"', description: 'The color scheme' },
+  { prop: 'color', type: '"primary" | "secondary" | "tertiary" | "error"', default: '"primary"', description: 'The color scheme' },
+  { prop: 'rounded', type: '"default" | "lg"', default: '"default"', description: 'Border radius style (default: rounded-lg, lg: rounded-full)' },
   { prop: 'loading', type: 'boolean', default: 'false', description: 'Shows loading spinner' },
-  { prop: 'loadingText', type: 'string', default: 'Sending...', description: 'Text shown during loading' },
+  { prop: 'loadingText', type: 'string', default: '"Sending..."', description: 'Text shown during loading' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the button' },
+  { prop: 'className', type: 'string', default: '-', description: 'Additional CSS classes' },
+  { prop: 'disableEffect', type: 'boolean', default: 'false', description: 'Disables the ripple click effect' },
 ];
 
 const ButtonPage = () => {
@@ -117,8 +120,8 @@ const ButtonPage = () => {
                 <Button variant="solid" color="secondary">
                   Secondary
                 </Button>
-                <Button variant="solid" color="tetriary">
-                  Tetriary
+                <Button variant="solid" color="tertiary">
+                  tertiary
                 </Button>
               </div>
             </div>
@@ -135,8 +138,8 @@ const ButtonPage = () => {
                 <Button variant="outlined" color="secondary">
                   Secondary
                 </Button>
-                <Button variant="outlined" color="tetriary">
-                  Tetriary
+                <Button variant="outlined" color="tertiary">
+                  tertiary
                 </Button>
               </div>
             </div>
@@ -153,8 +156,8 @@ const ButtonPage = () => {
                 <Button variant="ghost" color="secondary">
                   Secondary
                 </Button>
-                <Button variant="ghost" color="tetriary">
-                  Tetriary
+                <Button variant="ghost" color="tertiary">
+                  tertiary
                 </Button>
               </div>
             </div>
@@ -190,7 +193,7 @@ const ButtonPage = () => {
             <div className="flex flex-wrap gap-4">
               <Button color="primary">Primary</Button>
               <Button color="secondary">Secondary</Button>
-              <Button color="tetriary">Tetriary</Button>
+              <Button color="tertiary">tertiary</Button>
             </div>
           </div>
         </section>

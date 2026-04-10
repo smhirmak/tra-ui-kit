@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { HouseIcon, GearIcon, UserIcon, ChartBarIcon } from '@phosphor-icons/react';
 import Sidebar, { SidebarItem } from '@/components/sidebar';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
@@ -28,12 +28,14 @@ const sidebarItemApiData = [
   { prop: 'text', type: 'string', default: '-', description: 'Display text' },
   { prop: 'active', type: 'boolean', default: 'false', description: 'Active state indicator' },
   { prop: 'alert', type: 'boolean', default: 'false', description: 'Show alert badge' },
-  { prop: 'url', type: 'string', default: '-', description: 'Navigation URL' },
+  { prop: 'url', type: 'string', default: '-', description: 'Navigation URL (metadata only, not used for routing)' },
+  { prop: 'onClick', type: '() => void', default: '-', description: 'Click handler for the sidebar item' },
 ];
 
 const SidebarPage = () => {
   const { setTocItems } = useTOC();
   const { t } = useTranslation();
+  const [activeItem, setActiveItem] = useState<string>('Dashboard');
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -70,8 +72,8 @@ const SidebarPage = () => {
             content={`<Sidebar>
   <SidebarItem 
     icon={<HouseIcon />} 
-    text="Home" 
-    url="/"
+    text="Home"
+    onClick={() => console.log('Home clicked')}
   />
 </Sidebar>`}
           />
@@ -85,43 +87,48 @@ const SidebarPage = () => {
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="h-96 w-64">
             <Sidebar>
-              <SidebarItem icon={<HouseIcon className="size-5" />} text="Home" url="/" />
-              <SidebarItem icon={<ChartBarIcon className="size-5" />} text="Dashboard" url="/dashboard" />
-              <SidebarItem icon={<UserIcon className="size-5" />} text="Profile" url="/profile" />
-              <SidebarItem icon={<GearIcon className="size-5" />} text="Settings" url="/settings" />
+              <SidebarItem icon={<HouseIcon className="size-5" />} text="Home" onClick={() => setActiveItem('Home')} active={activeItem === 'Home'} />
+              <SidebarItem icon={<ChartBarIcon className="size-5" />} text="Dashboard" onClick={() => setActiveItem('Dashboard')} active={activeItem === 'Dashboard'} />
+              <SidebarItem icon={<UserIcon className="size-5" />} text="Profile" onClick={() => setActiveItem('Profile')} active={activeItem === 'Profile'} />
+              <SidebarItem icon={<GearIcon className="size-5" />} text="Settings" onClick={() => setActiveItem('Settings')} active={activeItem === 'Settings'} />
             </Sidebar>
           </div>
         </div>
         <CustomSyntaxHighlighter
-          content={`<Sidebar>
-  <SidebarItem icon={<HouseIcon />} text="Home" url="/" />
-  <SidebarItem icon={<ChartBarIcon />} text="Dashboard" url="/dashboard" />
-  <SidebarItem icon={<UserIcon />} text="Profile" url="/profile" />
-  <SidebarItem icon={<GearIcon />} text="Settings" url="/settings" />
+          content={`const [activeItem, setActiveItem] = useState('Dashboard');
+
+<Sidebar>
+  <SidebarItem icon={<HouseIcon />} text="Home" active={activeItem === 'Home'} onClick={() => setActiveItem('Home')} />
+  <SidebarItem icon={<ChartBarIcon />} text="Dashboard" active={activeItem === 'Dashboard'} onClick={() => setActiveItem('Dashboard')} />
+  <SidebarItem icon={<UserIcon />} text="Profile" active={activeItem === 'Profile'} onClick={() => setActiveItem('Profile')} />
+  <SidebarItem icon={<GearIcon />} text="Settings" active={activeItem === 'Settings'} onClick={() => setActiveItem('Settings')} />
 </Sidebar>`}
         />
       </section>
 
       {/* Active State */}
       <section id="active-state">
-        <h2 className="mb-4 text-2xl font-bold">Active State</h2>
-        <p className="mb-4 text-neutral-grey">Highlight the current active navigation item.</p>
+        <h2 className="mb-4 text-2xl font-bold">Active State &amp; Alert</h2>
+        <p className="mb-4 text-neutral-grey">
+          Use the <code className="rounded bg-neutral px-1 py-0.5 text-sm">active</code> prop to highlight the current page,
+          and <code className="rounded bg-neutral px-1 py-0.5 text-sm">alert</code> to show a notification badge.
+        </p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="h-96 w-64">
             <Sidebar>
-              <SidebarItem icon={<HouseIcon className="size-5" />} text="Home" url="/" />
-              <SidebarItem icon={<ChartBarIcon className="size-5" />} text="Dashboard" url="/dashboard" active />
-              <SidebarItem icon={<UserIcon className="size-5" />} text="Profile" url="/profile" />
-              <SidebarItem icon={<GearIcon className="size-5" />} text="Settings" url="/settings" alert />
+              <SidebarItem icon={<HouseIcon className="size-5" />} text="Home" onClick={() => { }} />
+              <SidebarItem icon={<ChartBarIcon className="size-5" />} text="Dashboard" active onClick={() => { }} />
+              <SidebarItem icon={<UserIcon className="size-5" />} text="Profile" onClick={() => { }} />
+              <SidebarItem icon={<GearIcon className="size-5" />} text="Settings" alert onClick={() => { }} />
             </Sidebar>
           </div>
         </div>
         <CustomSyntaxHighlighter
           content={`<Sidebar>
-  <SidebarItem icon={<HouseIcon />} text="Home" url="/" />
-  <SidebarItem icon={<ChartBarIcon />} text="Dashboard" active />
-  <SidebarItem icon={<UserIcon />} text="Profile" />
-  <SidebarItem icon={<GearIcon />} text="Settings" alert />
+  <SidebarItem icon={<HouseIcon />} text="Home" onClick={() => navigate('/')} />
+  <SidebarItem icon={<ChartBarIcon />} text="Dashboard" active onClick={() => navigate('/dashboard')} />
+  <SidebarItem icon={<UserIcon />} text="Profile" onClick={() => navigate('/profile')} />
+  <SidebarItem icon={<GearIcon />} text="Settings" alert onClick={() => navigate('/settings')} />
 </Sidebar>`}
         />
       </section>

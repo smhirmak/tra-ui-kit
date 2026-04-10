@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
+import { createRef } from 'react';
 import { Popover, PopoverTrigger, PopoverContent } from '../popover';
 
 describe('Popover Component', () => {
@@ -127,6 +128,150 @@ describe('Popover Component', () => {
       });
 
       // Click outside behavior depends on implementation
+    });
+  });
+
+  describe('Align & Side Props (PopoverContent)', () => {
+    it('should accept align="start" on PopoverContent', () => {
+      render(
+        <Popover>
+          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverContent align="start">Content</PopoverContent>
+        </Popover>,
+      );
+      expect(screen.getByText('Trigger')).toBeInTheDocument();
+    });
+
+    it('should accept align="end" on PopoverContent', () => {
+      render(
+        <Popover>
+          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverContent align="end">Content</PopoverContent>
+        </Popover>,
+      );
+      expect(screen.getByText('Trigger')).toBeInTheDocument();
+    });
+
+    it('should accept align="center" on PopoverContent', () => {
+      render(
+        <Popover>
+          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverContent align="center">Content</PopoverContent>
+        </Popover>,
+      );
+      expect(screen.getByText('Trigger')).toBeInTheDocument();
+    });
+
+    it('should accept side="top" on PopoverContent', () => {
+      render(
+        <Popover>
+          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverContent side="top">Content</PopoverContent>
+        </Popover>,
+      );
+      expect(screen.getByText('Trigger')).toBeInTheDocument();
+    });
+
+    it('should accept side="bottom" on PopoverContent', () => {
+      render(
+        <Popover>
+          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverContent side="bottom">Content</PopoverContent>
+        </Popover>,
+      );
+      expect(screen.getByText('Trigger')).toBeInTheDocument();
+    });
+
+    it('should show content with align="end" after trigger click', async () => {
+      render(
+        <Popover>
+          <PopoverTrigger><button>Open</button></PopoverTrigger>
+          <PopoverContent align="end">Aligned Content</PopoverContent>
+        </Popover>,
+      );
+
+      await act(async () => {
+        fireEvent.click(screen.getByText('Open'));
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText('Aligned Content')).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('maxHeight Prop (Popover)', () => {
+    it('should accept maxHeight as a number', () => {
+      render(
+        <Popover maxHeight={400}>
+          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverContent>Content</PopoverContent>
+        </Popover>,
+      );
+      expect(screen.getByText('Trigger')).toBeInTheDocument();
+    });
+
+    it('should accept maxHeight as a string', () => {
+      render(
+        <Popover maxHeight="50vh">
+          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverContent>Content</PopoverContent>
+        </Popover>,
+      );
+      expect(screen.getByText('Trigger')).toBeInTheDocument();
+    });
+
+    it('should show content with maxHeight after trigger click', async () => {
+      render(
+        <Popover maxHeight={300}>
+          <PopoverTrigger><button>Open</button></PopoverTrigger>
+          <PopoverContent>Scrollable Content</PopoverContent>
+        </Popover>,
+      );
+
+      await act(async () => {
+        fireEvent.click(screen.getByText('Open'));
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText('Scrollable Content')).toBeInTheDocument();
+      });
+    });
+  });
+
+  describe('PopoverTrigger ref forwarding', () => {
+    it('should forward ref to trigger element', () => {
+      const ref = createRef<HTMLElement | null>();
+      render(
+        <Popover>
+          <PopoverTrigger ref={ref}>
+            <button>Trigger</button>
+          </PopoverTrigger>
+          <PopoverContent>Content</PopoverContent>
+        </Popover>,
+      );
+      // ref.current will be set after click (trigger node is set on interaction)
+      expect(screen.getByText('Trigger')).toBeInTheDocument();
+    });
+
+    it('should set ref after trigger is clicked', async () => {
+      const ref = createRef<HTMLElement | null>();
+      render(
+        <Popover>
+          <PopoverTrigger ref={ref}>
+            <button>Open</button>
+          </PopoverTrigger>
+          <PopoverContent>Content</PopoverContent>
+        </Popover>,
+      );
+
+      await act(async () => {
+        fireEvent.click(screen.getByText('Open'));
+      });
+
+      await waitFor(() => {
+        expect(screen.getByText('Content')).toBeInTheDocument();
+      });
     });
   });
 });

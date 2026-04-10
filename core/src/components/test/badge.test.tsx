@@ -41,7 +41,7 @@ describe('Badge Component', () => {
 
     it('should apply small size', () => {
       const { container } = render(<Badge text="1" size="sm" />);
-      expect(container.firstChild).toHaveClass('h-2.5');
+      expect(container.firstChild).toHaveClass('h-5');
     });
 
     it('should apply large size', () => {
@@ -51,34 +51,41 @@ describe('Badge Component', () => {
   });
 
   describe('Colors', () => {
+    const dot = <span>•</span>;
+
     it('should apply primary color by default', () => {
-      const { container } = render(<Badge text="1" />);
+      const { container } = render(<Badge icon={dot} />);
       expect(container.firstChild).toHaveClass('bg-primary');
     });
 
     it('should apply secondary color', () => {
-      const { container } = render(<Badge text="1" color="secondary" />);
+      const { container } = render(<Badge icon={dot} color="secondary" />);
       expect(container.firstChild).toHaveClass('bg-secondary');
     });
 
-    it('should apply tetriary color', () => {
-      const { container } = render(<Badge text="1" color="tetriary" />);
-      expect(container.firstChild).toHaveClass('bg-tetriary');
+    it('should apply tertiary color', () => {
+      const { container } = render(<Badge icon={dot} color="tertiary" />);
+      expect(container.firstChild).toHaveClass('bg-tertiary');
     });
 
     it('should apply error color', () => {
-      const { container } = render(<Badge text="1" color="error" />);
+      const { container } = render(<Badge icon={dot} color="error" />);
       expect(container.firstChild).toHaveClass('bg-error');
     });
 
     it('should apply success color', () => {
-      const { container } = render(<Badge text="1" color="success" />);
+      const { container } = render(<Badge icon={dot} color="success" />);
       expect(container.firstChild).toHaveClass('bg-success');
     });
 
     it('should apply warning color', () => {
-      const { container } = render(<Badge text="1" color="warning" />);
+      const { container } = render(<Badge icon={dot} color="warning" />);
       expect(container.firstChild).toHaveClass('bg-warning');
+    });
+
+    it('should apply text-mode (light background) when text prop is a string', () => {
+      const { container } = render(<Badge text="5" color="error" />);
+      expect(container.firstChild).toHaveClass('bg-error/30', 'text-error');
     });
   });
 

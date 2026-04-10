@@ -81,6 +81,8 @@ const tr = {
   'A flexible input component with multiple variants, sizes, and icon support': 'Çoklu varyantlar, boyutlar ve simge desteği ile esnek bir giriş bileşeni',
   'A versatile label component for form elements and UI': 'Form öğeleri ve UI için çok yönlü bir etiket bileşeni',
   'A button that allows users to quickly scroll back to the top of the page': 'Kullanıcıların sayfanın en üstüne hızlıca kaydırmasını sağlayan bir buton',
+  'Next': 'Sonraki',
+  'Previous': 'Önceki',
 };
 
 export default tr;

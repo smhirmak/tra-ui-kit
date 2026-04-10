@@ -21,7 +21,7 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'color', type: '"primary" | "error" | "secondary" | "success" | "tetriary" | "warning"', default: '"primary"', description: 'The color scheme' },
+  { prop: 'color', type: '"primary" | "error" | "secondary" | "success" | "tertiary" | "warning"', default: '"primary"', description: 'The color scheme' },
   { prop: 'size', type: '"sm" | "default" | "lg"', default: '"default"', description: 'The badge size' },
   { prop: 'text', type: 'string', default: '-', description: 'Text to display in the badge' },
   { prop: 'textClassName', type: 'string', default: '-', description: 'Class name for the text element' },
@@ -96,7 +96,7 @@ const BadgePage = () => {
             <Badge color="error" />
             <Badge color="secondary" />
             <Badge color="success" />
-            <Badge color="tetriary" />
+            <Badge color="tertiary" />
             <Badge color="warning" />
           </div>
         </div>
@@ -113,7 +113,7 @@ const BadgePage = () => {
             <Badge color="error" text="Text" />
             <Badge color="secondary" text="Text" />
             <Badge color="success" text="Text" />
-            <Badge color="tetriary" text="Text" />
+            <Badge color="tertiary" text="Text" />
             <Badge color="warning" text="Text" />
           </div>
         </div>

@@ -92,7 +92,7 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
       error,
       size,
       startIcon,
-      type,
+      type = 'text',
       variant = 'filled',
       value,
       onChange,
@@ -115,7 +115,10 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
           ref={ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>}
           autoComplete={autoComplete ?? 'off'}
           value={value}
-          onChange={e => onChange && onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)}
+          onChange={e => {
+            const target = e.target as HTMLInputElement;
+            if (!target.disabled && onChange) onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
+          }}
           rows={textarea ? 4 : undefined}
           {...(restProps as React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
         />
@@ -135,7 +138,10 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
           ref={ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>}
           autoComplete={autoComplete ?? 'off'}
           value={value}
-          onChange={e => onChange && onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)}
+          onChange={e => {
+            const target = e.target as HTMLInputElement;
+            if (!target.disabled && onChange) onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
+          }}
           style={{
             paddingLeft: startIcon ? '2.5rem' : undefined,
             paddingRight: (endIcon || type === 'password') ? '2.5rem' : undefined,

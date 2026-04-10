@@ -1,4 +1,4 @@
-import { SealCheckIcon, SealWarningIcon } from '@phosphor-icons/react';
+import { SealCheckIcon, SealWarningIcon, InfoIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React from 'react';
 import { cn } from '@/lib/utils';
@@ -24,8 +24,8 @@ const informationStatusVariants = cva(
       type: {
         success: 'bg-success-light text-success',
         error: 'bg-error-light text-error',
-        warning: 'bg-secondary-light text-secondary',
-
+        warning: 'bg-warning-light text-warning',
+        info: 'bg-primary-15 text-primary',
       },
     },
     defaultVariants: {
@@ -41,7 +41,7 @@ interface IInformationStatus {
   icon?: React.ReactNode;
   isHaveIcon?: boolean;
   title: string | React.ReactNode;
-  type?: 'success' | 'error' | 'warning';
+  type?: 'success' | 'error' | 'warning' | 'info';
 }
 
 const InformationStatus: React.FC<IInformationStatus> = ({
@@ -62,7 +62,8 @@ const InformationStatus: React.FC<IInformationStatus> = ({
         type === 'success'
           ? (icon ?? <SealCheckIcon className={cn(iconsStyle())} />) : type === 'warning'
             ? (icon ?? <SealWarningIcon className={cn(iconsStyle())} />) : type === 'error'
-              ? (icon ?? <SealError className={cn(iconsStyle())} />) : null
+              ? (icon ?? <SealError className={cn(iconsStyle())} />) : type === 'info'
+                ? (icon ?? <InfoIcon className={cn(iconsStyle())} />) : null
       )}
     </span>
     <span>{title}</span>

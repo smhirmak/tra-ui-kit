@@ -2,12 +2,11 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "badge",
   "type": "registry:ui",
-  "title": "Back to Top Button",
-  "description": "A back to top button component that can be used to quickly scroll to the top of the page.",
+  "title": "Badge",
+  "description": "A badge component for displaying status indicators, counts and labels.",
   "files": [
     {
-      "path": "registry/msi-kit/components/back-to-top-button.tsx",
-      "content": "import React, { useState, useEffect } from 'react';\nimport { CaretUpIcon } from '@phosphor-icons/react';\nimport { cva } from 'class-variance-authority';\nimport { cn } from '@/lib/utils';\nimport Button from '@/components/button';\n\nconst buttonVariants = cva(\n  `size-8 min-h-8 min-w-8 rounded-full border border-white/80\n  text-white/80 transition-opacity duration-300 group-hover:border-white  \n  group-hover:text-white`,\n  {\n    variants: {\n      isVisible: {\n        true: 'opacity-100',\n        false: 'pointer-events-none opacity-0',\n      },\n    },\n  },\n);\n\ninterface IBackToTopButton {\n  buttonClassName?: string;\n  containerClassName?: string;\n  icon?: React.ReactNode;\n  iconClassName?: string;\n}\n\nconst BackToTopButton: React.FC<IBackToTopButton> = ({ buttonClassName, containerClassName, icon, iconClassName }) => {\n  const [isVisible, setIsVisible] = useState(false);\n\n  const toggleVisibility = () => {\n    setIsVisible(window.scrollY > 500);\n  };\n\n  const scrollToTop = () => {\n    window.scrollTo({\n      top: 0,\n      behavior: 'smooth',\n    });\n  };\n\n  useEffect(() => {\n    window.addEventListener('scroll', toggleVisibility);\n    return () => window.removeEventListener('scroll', toggleVisibility);\n  }, []);\n\n  const IconComponent = icon ?? <CaretUpIcon className={cn('w-6 h-6', iconClassName)} />;\n\n  return (\n    <div className={cn('fixed bottom-16 right-5 z-50 group hover:animate-bounce', containerClassName)}>\n      <Button\n        variant=\"ghost\"\n        size=\"icon\"\n        onClick={scrollToTop}\n        aria-label=\"Back to top\"\n        className={cn(buttonVariants({ isVisible }), buttonClassName)}\n      >\n        {IconComponent}\n      </Button>\n    </div>\n  );\n};\n\nexport default BackToTopButton;\n",
+      "path": "registry/msi-kit/components/badge.tsx",
       "type": "registry:component"
     }
   ]

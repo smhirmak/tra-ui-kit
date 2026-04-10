@@ -20,12 +20,12 @@ const countries = [
   },
 ];
 
-interface ILanguangeSelect {
+interface ILanguageSelect {
   className?: string;
   setLocale?: (locale: string) => void;
 }
 
-const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className, setLocale: setLocaleProp }) => {
+const LanguageSelect: React.FC<ILanguageSelect> = ({ className, setLocale: setLocaleProp }) => {
   const { locale, setLocale: setLocaleContext } = useLocalizeContext();
   const setLocale = setLocaleProp || setLocaleContext;
   const handleChange = (event: string | string[] | number | number[] | boolean) => {
@@ -46,4 +46,4 @@ const LanguangeSelect: React.FC<ILanguangeSelect> = ({ className, setLocale: set
   );
 };
 
-export default LanguangeSelect;
+export default LanguageSelect;

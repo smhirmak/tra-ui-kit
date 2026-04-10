@@ -53,7 +53,8 @@ describe('Tabs', () => {
       );
 
       const tabButton = screen.getByText('Tab 1');
-      expect(tabButton).toHaveClass('border-b-2');
+      // default variant uses text-primary for active tab (no border-b-2 underline)
+      expect(tabButton).toHaveClass('text-primary');
     });
 
     it('should render solid variant', () => {

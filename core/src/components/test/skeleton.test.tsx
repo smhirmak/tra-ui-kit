@@ -35,14 +35,15 @@ describe('Skeleton Component', () => {
 
     it('should merge custom className with base classes', () => {
       const { container } = render(<Skeleton className="size-20" />);
-      expect(container.firstChild).toHaveClass('h-20', 'w-20', 'rounded-md', 'bg-gray-500');
+      // size-20 is a Tailwind shorthand (h-20 + w-20) — check the actual class name applied
+      expect(container.firstChild).toHaveClass('size-20', 'rounded-md', 'bg-neutral');
     });
   });
 
   describe('Base Classes', () => {
     it('should have base styling classes', () => {
       const { container } = render(<Skeleton />);
-      expect(container.firstChild).toHaveClass('h-4', 'w-full', 'rounded-md', 'bg-gray-500');
+      expect(container.firstChild).toHaveClass('h-4', 'w-full', 'rounded-md', 'bg-neutral');
     });
   });
 

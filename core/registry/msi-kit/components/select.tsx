@@ -136,7 +136,7 @@ interface ISelect {
 }
 
 const Select: React.FC<ISelect> = ({
-  placeholder = '',
+  placeholder = 'Select...',
   label,
   size = 'default',
   value,
@@ -443,6 +443,7 @@ const Select: React.FC<ISelect> = ({
 
   const isSelected = (option: ISelectOption): boolean => {
     if (isMulti) {
+      if (!selectedValue || !Array.isArray(selectedValue)) return false;
       return (selectedValue as Array<ISelectOption>).some(o => o.value === option.value);
     }
     return selectedValue ? (selectedValue as ISelectOption).value === option.value : false;

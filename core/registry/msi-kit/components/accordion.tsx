@@ -208,4 +208,4 @@ const AccordionItem: React.FC<IAccordionItem> = ({
   </div>
 );
 
-export {Accordion, AccordionItem}
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

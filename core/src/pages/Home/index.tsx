@@ -8,6 +8,13 @@ import Constants from '@/constants/Constants';
 import { useTranslation } from 'react-i18next';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useVersion } from '@/contexts/version';
+import Calendar from '@/components/calendar';
+import Badge from '@/components/badge';
+import Chip from '@/components/chip';
+import Checkbox from '@/components/checkbox';
+import Switch from '@/components/switch';
+import { Avatar } from '@/components/avatar';
+import Tooltip from '@/components/tooltip';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -46,6 +53,87 @@ const Home = () => {
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
           <motion.div animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }} className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-secondary/10 blur-3xl" />
+
+          {/* Floating Components Decoration */}
+          <motion.div
+            animate={{ y: [0, -20, 0], opacity: [0.15, 0.25, 0.15] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute left-[10%] top-[20%] blur-[1px]"
+          >
+            <Badge variant="rectangular" text='New' />
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, 25, 0], rotate: [0, 5, 0], opacity: [0.2, 0.3, 0.2] }}
+            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+            className="absolute right-[15%] top-[15%] scale-75 blur-[1px]"
+          >
+            <Chip label="React" />
+          </motion.div>
+
+          <motion.div
+            animate={{ x: [-10, 10, -10], opacity: [0.15, 0.25, 0.15] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            className="absolute left-[15%] bottom-[25%] blur-[1px]"
+          >
+            <Avatar title="MSI" />
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, -15, 0], x: [0, 10, 0], opacity: [0.2, 0.3, 0.2] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+            className="absolute right-[12%] bottom-[20%] scale-90 blur-[1px]"
+          >
+            <Button size="sm" variant="outlined">Click me</Button>
+          </motion.div>
+
+          <motion.div
+            animate={{ rotate: [0, 360], opacity: [0.15, 0.25, 0.15] }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            className="absolute left-[20%] top-[40%] scale-50 blur-[1.5px]"
+          >
+            <Calendar />
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, -20, 0], scale: [1, 1.1, 1], opacity: [0.2, 0.3, 0.2] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+            className="absolute right-[25%] top-[35%] blur-[1px]"
+          >
+            <div className="flex items-center gap-2">
+              <Checkbox checked />
+              <span className="text-sm text-foreground/50">Checked</span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            animate={{ x: [0, 15, 0], opacity: [0.15, 0.25, 0.15] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 2.5 }}
+            className="absolute left-[8%] top-[60%] blur-[1px]"
+          >
+            <Switch checked />
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, 20, 0], rotate: [0, -5, 0], opacity: [0.2, 0.3, 0.2] }}
+            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+            className="absolute right-[8%] bottom-[35%] blur-[1px]"
+          >
+            <Tooltip content={"Tooltip"}>
+              <Badge variant="circular" text='Hover' />
+            </Tooltip>
+          </motion.div>
+
+          <motion.div
+            animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.25, 0.15] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 3.5 }}
+            className="absolute left-[25%] bottom-[15%] blur-[1px]"
+          >
+            <div className="flex gap-2">
+              <Badge variant="rectangular" color="success" text='Success' />
+              <Badge variant="rectangular" color="error" text='Error' />
+            </div>
+          </motion.div>
         </div>
       </section>
 

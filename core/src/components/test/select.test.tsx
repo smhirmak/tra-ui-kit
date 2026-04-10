@@ -62,8 +62,8 @@ describe('Select Component', () => {
   describe('Disabled State', () => {
     it('should be disabled when disabled prop is true', () => {
       render(<Select options={mockOptions} disabled onChange={vi.fn()} />);
-      const trigger = screen.getByText('Select...');
-      expect(trigger.closest('button')).toHaveAttribute('disabled');
+      const trigger = screen.getByText('Select...').closest('[data-disabled]');
+      expect(trigger).toHaveAttribute('data-disabled', 'true');
     });
 
     it('should not open when disabled', () => {

@@ -4,16 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import Sidebar, { SidebarItem } from '../sidebar';
 
-// Mock useNavigate
-const mockNavigate = vi.fn();
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
-  return {
-    ...actual,
-    useNavigate: () => mockNavigate,
-  };
-});
-
 // Mock LocalizeContext
 vi.mock('@/contexts/locale/LocalizeContext', () => ({
   useLocalizeContext: () => ({
@@ -160,7 +150,7 @@ describe('Sidebar', () => {
       );
 
       const item = container.querySelector('li');
-      expect(item).toHaveClass('bg-linear-to-tr', 'from-indigo-200', 'to-indigo-100', 'text-indigo-800');
+      expect(item).toHaveClass('bg-primary-15', 'text-primary');
     });
 
     it('should apply hover styling when not active', () => {
@@ -173,7 +163,7 @@ describe('Sidebar', () => {
       );
 
       const item = container.querySelector('li');
-      expect(item).toHaveClass('hover:bg-gray-300');
+      expect(item).toHaveClass('hover:bg-neutral');
     });
 
     it('should show alert indicator when alert prop is true', () => {
@@ -185,7 +175,7 @@ describe('Sidebar', () => {
         </BrowserRouter>,
       );
 
-      const alertDot = container.querySelector('.size-2.rounded.bg-indigo-400');
+      const alertDot = container.querySelector('.size-2.rounded.bg-primary');
       expect(alertDot).toBeInTheDocument();
     });
 
@@ -198,18 +188,19 @@ describe('Sidebar', () => {
         </BrowserRouter>,
       );
 
-      const alertDot = container.querySelector('.size-2.rounded.bg-indigo-400');
+      const alertDot = container.querySelector('.size-2.rounded.bg-primary');
       expect(alertDot).not.toBeInTheDocument();
     });
   });
 
   describe('Navigation', () => {
-    it('should navigate to URL when item is clicked', async () => {
+    it('should call onClick handler when item is clicked', async () => {
+      const handleClick = vi.fn();
       const user = userEvent.setup();
       const { container } = render(
         <BrowserRouter>
           <Sidebar>
-            <SidebarItem icon={TestIcon} text="Home" url="/home" />
+            <SidebarItem icon={TestIcon} text="Home" onClick={handleClick} />
           </Sidebar>
         </BrowserRouter>,
       );
@@ -217,10 +208,10 @@ describe('Sidebar', () => {
       const item = container.querySelector('li') as HTMLElement;
       await user.click(item);
 
-      expect(mockNavigate).toHaveBeenCalledWith('/home');
+      expect(handleClick).toHaveBeenCalledTimes(1);
     });
 
-    it('should not navigate when URL is not provided', async () => {
+    it('should not throw when onClick is not provided', async () => {
       const user = userEvent.setup();
       const { container } = render(
         <BrowserRouter>
@@ -230,11 +221,8 @@ describe('Sidebar', () => {
         </BrowserRouter>,
       );
 
-      mockNavigate.mockClear();
       const item = container.querySelector('li') as HTMLElement;
-      await user.click(item);
-
-      expect(mockNavigate).not.toHaveBeenCalled();
+      await expect(user.click(item)).resolves.not.toThrow();
     });
   });
 
@@ -394,10 +382,10 @@ describe('Sidebar', () => {
       expect(items).toHaveLength(3);
 
       // First item should be active
-      expect(items[0]).toHaveClass('bg-linear-to-tr');
+      expect(items[0]).toHaveClass('bg-primary-15', 'text-primary');
 
       // Second item should have alert
-      const alertDot = items[1].querySelector('.size-2.rounded.bg-indigo-400');
+      const alertDot = items[1].querySelector('.size-2.rounded.bg-primary');
       expect(alertDot).toBeInTheDocument();
     });
   });

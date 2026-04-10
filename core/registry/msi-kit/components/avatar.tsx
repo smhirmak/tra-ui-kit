@@ -13,12 +13,13 @@ const avatarVariants = cva(
       },
       size: {
         sm: 'aspect-square size-12 text-lg',
+        default: 'aspect-square size-20 min-h-20 min-w-20 text-3xl',
         lg: 'aspect-square size-52 min-h-52 min-w-52 text-6xl',
       },
     },
     defaultVariants: {
       variant: 'circular',
-      size: 'lg',
+      size: 'default',
     },
   },
 );
@@ -29,11 +30,12 @@ const avatarIconVariants = cva(
     variants: {
       size: {
         sm: 'size-5',
+        default: 'size-9',
         lg: 'size-20',
       },
     },
     defaultVariants: {
-      size: 'lg',
+      size: 'default',
     },
   },
 );

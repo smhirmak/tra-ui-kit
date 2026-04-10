@@ -46,6 +46,7 @@ import LoadingSpinnerPage from './pages/components/LoadingSpinnerPage';
 import LoadingLinearPage from './pages/components/LoadingLinearPage';
 import ThemeModeTogglePage from './pages/components/ThemeModeTogglePage';
 import BackToTopButtonPage from './pages/components/BackToTopButtonPages';
+import LanguageSelectPage from './pages/components/LanguageSelectPage';
 import { useEffect } from 'react';
 import { printTraSignature } from './utilities/tra-signature';
 
@@ -172,6 +173,9 @@ const router = createBrowserRouter([
           },
           {
             path: 'back-to-top-button', element: <BackToTopButtonPage />,
+          },
+          {
+            path: 'language-select', element: <LanguageSelectPage />,
           },
         ]
       },

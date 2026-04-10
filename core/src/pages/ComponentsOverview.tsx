@@ -21,10 +21,10 @@ const ComponentsOverview = () => {
   const categories = [
     { name: 'Input', color: 'primary' },
     { name: 'Display', color: 'secondary' },
-    { name: 'Feedback', color: 'tetriary' },
+    { name: 'Feedback', color: 'tertiary' },
     { name: 'Navigation', color: 'primary' },
     { name: 'Overlay', color: 'secondary' },
-    { name: 'Layout', color: 'tetriary' },
+    { name: 'Layout', color: 'tertiary' },
   ];
 
   const groupedComponents = categories.map((category) => ({
