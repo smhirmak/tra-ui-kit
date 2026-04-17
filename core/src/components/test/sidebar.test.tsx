@@ -1,8 +1,17 @@
-import { describe, it, expect, vi } from 'vitest';
+﻿import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { createMemoryHistory, createRouter, createRootRoute, RouterProvider } from '@tanstack/react-router';
 import userEvent from '@testing-library/user-event';
 import Sidebar, { SidebarItem } from '../sidebar';
+
+const createTestRouter = (ui: React.ReactNode) => {
+  const rootRoute = createRootRoute({ component: () => <>{ui}</> });
+  const router = createRouter({
+    routeTree: rootRoute,
+    history: createMemoryHistory(),
+  });
+  return router;
+};
 
 // Mock LocalizeContext
 vi.mock('@/contexts/locale/LocalizeContext', () => ({
@@ -17,11 +26,11 @@ describe('Sidebar', () => {
   describe('Rendering', () => {
     it('should render sidebar container', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
       expect(container.querySelector('aside')).toBeInTheDocument();
       expect(container.querySelector('nav')).toBeInTheDocument();
@@ -29,12 +38,12 @@ describe('Sidebar', () => {
 
     it('should render sidebar items', () => {
       render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
             <SidebarItem icon={TestIcon} text="Profile" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       expect(screen.getByText('Home')).toBeInTheDocument();
@@ -43,11 +52,11 @@ describe('Sidebar', () => {
 
     it('should render header logo when provided', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar headerLogo="/logo.png">
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const logo = container.querySelector('img[alt="logo"]');
@@ -57,11 +66,11 @@ describe('Sidebar', () => {
 
     it('should not render logo when not provided', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       expect(container.querySelector('img[alt="logo"]')).not.toBeInTheDocument();
@@ -71,11 +80,11 @@ describe('Sidebar', () => {
   describe('Expand/Collapse Functionality', () => {
     it('should start in expanded state by default', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar headerLogo="/logo.png">
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const logo = container.querySelector('img[alt="logo"]');
@@ -85,11 +94,11 @@ describe('Sidebar', () => {
     it('should toggle expanded state when clicking toggle button', async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar headerLogo="/logo.png">
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const toggleButton = container.querySelector('button');
@@ -107,11 +116,11 @@ describe('Sidebar', () => {
     it('should show/hide item text based on expanded state', async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const toggleButton = container.querySelector('button');
@@ -130,11 +139,11 @@ describe('Sidebar', () => {
   describe('SidebarItem Features', () => {
     it('should render item icon', () => {
       render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       expect(screen.getByTestId('test-icon')).toBeInTheDocument();
@@ -142,11 +151,11 @@ describe('Sidebar', () => {
 
     it('should apply active styling when active prop is true', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" active />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const item = container.querySelector('li');
@@ -155,11 +164,11 @@ describe('Sidebar', () => {
 
     it('should apply hover styling when not active', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const item = container.querySelector('li');
@@ -168,11 +177,11 @@ describe('Sidebar', () => {
 
     it('should show alert indicator when alert prop is true', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" alert />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const alertDot = container.querySelector('.size-2.rounded.bg-primary');
@@ -181,11 +190,11 @@ describe('Sidebar', () => {
 
     it('should not show alert indicator when alert prop is false', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const alertDot = container.querySelector('.size-2.rounded.bg-primary');
@@ -198,11 +207,11 @@ describe('Sidebar', () => {
       const handleClick = vi.fn();
       const user = userEvent.setup();
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" onClick={handleClick} />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const item = container.querySelector('li') as HTMLElement;
@@ -214,11 +223,11 @@ describe('Sidebar', () => {
     it('should not throw when onClick is not provided', async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const item = container.querySelector('li') as HTMLElement;
@@ -230,11 +239,11 @@ describe('Sidebar', () => {
     it('should show tooltip when sidebar is collapsed', async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Settings" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const toggleButton = container.querySelector('button');
@@ -252,11 +261,11 @@ describe('Sidebar', () => {
 
     it('should not show tooltip when sidebar is expanded', () => {
       render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Settings" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       // When expanded, tooltip element still exists but text width is not 0
@@ -269,11 +278,11 @@ describe('Sidebar', () => {
   describe('Localization', () => {
     it('should translate item text using t function', () => {
       render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="home.title" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       // Since mock returns the key itself, it should render "home.title"
@@ -284,11 +293,11 @@ describe('Sidebar', () => {
   describe('Sticky Positioning', () => {
     it('should have sticky positioning', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const aside = container.querySelector('aside');
@@ -303,9 +312,9 @@ describe('Sidebar', () => {
 
       expect(() => {
         render(
-          <BrowserRouter>
+          <RouterProvider router={createTestRouter(
             <SidebarItem icon={TestIcon} text="Home" />
-          </BrowserRouter>,
+          )} />,
         );
       }).toThrow('SidebarItem must be used within a Sidebar');
 
@@ -316,11 +325,11 @@ describe('Sidebar', () => {
   describe('Layout Adjustments', () => {
     it('should adjust header layout when logo is present and expanded', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar headerLogo="/logo.png">
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const header = container.querySelector('.flex.items-center');
@@ -329,11 +338,11 @@ describe('Sidebar', () => {
 
     it('should adjust header layout when logo is not present', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const header = container.querySelector('.flex.items-center');
@@ -343,11 +352,11 @@ describe('Sidebar', () => {
     it('should adjust header layout when collapsed even with logo', async () => {
       const user = userEvent.setup();
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar headerLogo="/logo.png">
             <SidebarItem icon={TestIcon} text="Home" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const toggleButton = container.querySelector('button');
@@ -369,13 +378,13 @@ describe('Sidebar', () => {
   describe('Multiple Items', () => {
     it('should render multiple sidebar items with mixed states', () => {
       const { container } = render(
-        <BrowserRouter>
+        <RouterProvider router={createTestRouter(
           <Sidebar>
             <SidebarItem icon={TestIcon} text="Home" active />
             <SidebarItem icon={TestIcon} text="Profile" alert />
             <SidebarItem icon={TestIcon} text="Settings" />
           </Sidebar>
-        </BrowserRouter>,
+        )} />,
       );
 
       const items = container.querySelectorAll('li');
@@ -390,3 +399,5 @@ describe('Sidebar', () => {
     });
   });
 });
+
+

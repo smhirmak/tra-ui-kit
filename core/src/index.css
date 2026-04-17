@@ -353,7 +353,7 @@
     --neutral-light: 225 14% 95%;
     --neutral-black: 0 0% 12%;
     --neutral-light-black: 0 0% 25%;
-    --neutral-grey: 0 0% 60%;
+    --neutral-grey: 0 0% 45%;
     --neutral-soft-grey: 0, 0%, 0%, 0.08;
     --neutral-hard-grey: 0, 0%, 0%, 0.15;
     --neutral-disabled-text: 223 12% 89%;
@@ -438,6 +438,32 @@
   }
   body {
     @apply bg-background text-foreground;
+    transition: background-color 300ms ease, color 150ms ease;
+  }
+
+  /* Improved focus ring for accessibility */
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  /* Docs section heading style */
+  .docs-h2 {
+    @apply border-l-4 border-primary pl-3;
   }
 }
 
@@ -466,24 +492,21 @@
 }
 
 /* ScrollBar Design Start */
-::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F0F0F0;
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  background-color: hsl(var(--neutral-light));
 }
 
-::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F0F0F0;
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: hsl(var(--neutral-light));
 }
 
-::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #5F5D5C;
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  background-color: hsl(var(--neutral-grey));
 }
 /* ScrollBar Design End */
 
@@ -494,25 +517,25 @@
 /* Calendar icon settings End */
 
 /*Input Autofill Color Change Start*/
-input:-webkit-autofill{
-  -webkit-text-fill-color: black !important;
+input:-webkit-autofill {
+  -webkit-text-fill-color: hsl(var(--neutral-black)) !important;
 }
 
-.dark input:-webkit-autofill{
-  -webkit-text-fill-color: white !important;
+.dark input:-webkit-autofill {
+  -webkit-text-fill-color: hsl(var(--neutral-black)) !important;
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-  }
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px hsl(var(--input-fill)) inset !important;
+}
 .dark input:-webkit-autofill,
-.dark input:-webkit-autofill:hover, 
-.dark input:-webkit-autofill:focus, 
-.dark input:-webkit-autofill:active{
-  -webkit-box-shadow: 0 0 0 30px #171922 inset !important;
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px hsl(var(--input-fill)) inset !important;
 }
 /*Input Autofill Color Change End*/
 

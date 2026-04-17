@@ -31,13 +31,13 @@ export const printTraSignature = () => {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;`
   );
-  console.log(
-    `%c${asciiTRA2}`,
-    `font-weight: 900; font-family: "Courier New", monospace; line-height: 1.2;
-    background: linear-gradient(to right, #00b4d8, #e91e63);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;`
-  );
+  // console.log(
+  //   `%c${asciiTRA2}`,
+  //   `font-weight: 900; font-family: "Courier New", monospace; line-height: 1.2;
+  //   background: linear-gradient(to right, #00b4d8, #e91e63);
+  //   -webkit-background-clip: text;
+  //   -webkit-text-fill-color: transparent;`
+  // );
 
   // console.log(
   //   '%c TRABİLİSİM %c  High Performance Frontend Team  ',

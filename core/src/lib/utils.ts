@@ -7,13 +7,12 @@ export function cn(...inputs: ClassValue[]) {
 
 export const preventScrollShift = {
   lock: () => {
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.scrollbarGutter = 'stable';
     document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = `${scrollbarWidth}px`;
   },
 
   unlock: () => {
     document.body.style.overflow = '';
-    document.body.style.paddingRight = '';
+    document.documentElement.style.scrollbarGutter = '';
   },
 };

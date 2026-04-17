@@ -9,7 +9,7 @@ const resources = {
   tr: { translation: tr },
 };
 
-const savedLang = localStorage.getItem('lang') || 'tr';
+const savedLang = localStorage.getItem('lang') || 'en';
 
 i18n
   .use(initReactI18next)

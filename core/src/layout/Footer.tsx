@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from '@tanstack/react-router';
 import { GithubLogoIcon, LinkedinLogoIcon, XLogoIcon } from '@phosphor-icons/react';
 import { useVersion } from '@/contexts/version';
 
@@ -21,12 +21,12 @@ const Footer = () => {
             <h3 className="mb-4 text-sm font-semibold">Resources</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to={`/v${currentVersion}/installation`} className="text-neutral-grey transition-colors hover:text-primary">
+                <Link to={`/v${currentVersion}/installation` as any} className="text-neutral-grey transition-colors hover:text-primary">
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link to={`/v${currentVersion}/components`} className="text-neutral-grey transition-colors hover:text-primary">
+                <Link to={`/v${currentVersion}/components` as any} className="text-neutral-grey transition-colors hover:text-primary">
                   Components
                 </Link>
               </li>
@@ -106,15 +106,15 @@ const Footer = () => {
         <div className="mt-12 border-t border-border pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-neutral-grey">
-              © {new Date().getFullYear()} MSI UI Kit. All rights reserved.
+              Â© {new Date().getFullYear()} MSI UI Kit. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
-              <Link to="/privacy" className="text-neutral-grey transition-colors hover:text-primary">
+              <a href="/privacy" className="text-neutral-grey transition-colors hover:text-primary">
                 Privacy Policy
-              </Link>
-              <Link to="/terms" className="text-neutral-grey transition-colors hover:text-primary">
+              </a>
+              <a href="/terms" className="text-neutral-grey transition-colors hover:text-primary">
                 Terms of Service
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -124,3 +124,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

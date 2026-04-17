@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useRef, useEffect, useState, useMemo } from 'react';
 import { createPortal } from 'react-dom';
-import { cn } from '@/lib/utils';
+import { cn, preventScrollShift } from '@/lib/utils';
 
 type PopoverContextType = {
   open: boolean;
@@ -42,6 +42,17 @@ const Popover: React.FC<PopoverProps> = ({
   const triggerRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
   const contentRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
   const [styles, setStyles] = useState<React.CSSProperties>({});
+
+  useEffect(() => {
+    if (open) {
+      preventScrollShift.lock();
+    } else {
+      preventScrollShift.unlock();
+    }
+    return () => {
+      preventScrollShift.unlock();
+    };
+  }, [open]);
 
   useEffect(() => {
     if (controlledOpen !== undefined) {

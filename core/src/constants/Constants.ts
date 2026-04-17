@@ -269,6 +269,7 @@ const Constants = {
       Icon: ArrowUpIcon,
       path: '/components/back-to-top-button',
       category: 'Navigation',
+      isNew: true,
     },
     {
       name: 'Language Select',
@@ -276,6 +277,7 @@ const Constants = {
       Icon: GlobeIcon,
       path: '/components/language-select',
       category: 'Navigation',
+      isNew: true,
     },
   ]
 }

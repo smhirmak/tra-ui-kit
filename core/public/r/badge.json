@@ -2,11 +2,12 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "badge",
   "type": "registry:ui",
-  "title": "Badge",
-  "description": "A badge component for displaying status indicators, counts and labels.",
+  "title": "Back to Top Button",
+  "description": "A back to top button component that can be used to quickly scroll to the top of the page.",
   "files": [
     {
-      "path": "registry/msi-kit/components/badge.tsx",
+      "path": "registry/msi-kit/components/back-to-top-button.tsx",
+      "content": "import React, { useState, useEffect } from 'react';\r\nimport { CaretUpIcon } from '@phosphor-icons/react';\r\nimport { cva } from 'class-variance-authority';\r\nimport { cn } from '@/lib/utils';\r\nimport Button from '@/components/button';\r\n\r\nconst buttonVariants = cva(\r\n  `size-10 min-h-10 min-w-10 rounded-full border border-neutral-grey\r\n  text-neutral-grey transition-opacity duration-300 group-hover:border-primary  \r\n  group-hover:text-primary!`,\r\n  {\r\n    variants: {\r\n      isVisible: {\r\n        true: 'opacity-100',\r\n        false: 'pointer-events-none opacity-0',\r\n      },\r\n    },\r\n  },\r\n);\r\n\r\ninterface IBackToTopButton {\r\n  buttonClassName?: string;\r\n  containerClassName?: string;\r\n  icon?: React.ReactNode;\r\n  iconClassName?: string;\r\n  scrollThreshold?: number;\r\n}\r\n\r\nconst BackToTopButton: React.FC<IBackToTopButton> = ({ buttonClassName, containerClassName, icon, iconClassName, scrollThreshold = 500 }) => {\r\n  const [isVisible, setIsVisible] = useState(false);\r\n\r\n  const toggleVisibility = () => {\r\n    setIsVisible(window.scrollY > scrollThreshold);\r\n  };\r\n\r\n  const scrollToTop = () => {\r\n    window.scrollTo({\r\n      top: 0,\r\n      behavior: 'smooth',\r\n    });\r\n  };\r\n\r\n  useEffect(() => {\r\n    window.addEventListener('scroll', toggleVisibility);\r\n    return () => window.removeEventListener('scroll', toggleVisibility);\r\n  }, []);\r\n\r\n  const IconComponent = icon ?? <CaretUpIcon className={cn('w-6 h-6', iconClassName)} />;\r\n\r\n  if (!isVisible) {\r\n    return null;\r\n  }\r\n\r\n  return (\r\n    <div className={cn('fixed bottom-16 right-5 z-50 group before:absolute before:animate-ping hover:before:animate-none before:duration-2000 before:rounded-full before:bg-neutral-black/20 hover:before:bg-transparent before:content-[\"\"] before:inset-0 hover:animate-bounce', containerClassName)}>\r\n      <Button\r\n        variant=\"ghost\"\r\n        size=\"icon\"\r\n        onClick={scrollToTop}\r\n        aria-label=\"Back to top\"\r\n        className={cn(buttonVariants({ isVisible }), buttonClassName)}\r\n      >\r\n        {IconComponent}\r\n      </Button>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default BackToTopButton;\r\n",
       "type": "registry:component"
     }
   ]
