@@ -13,21 +13,21 @@ describe('BackToTopButton Component', () => {
   });
 
   describe('Visibility', () => {
-    it('should be hidden initially', () => {
-      render(<BackToTopButton />);
-      const button = screen.getByLabelText('Back to top');
-      expect(button).toHaveClass('opacity-0');
+    it('should be hidden initially (returns null when not visible)', () => {
+      const { container } = render(<BackToTopButton />);
+      // Component returns null when not visible (scrollY < threshold)
+      expect(container.firstChild).toBeNull();
     });
 
     it('should become visible when scrolled down', () => {
       render(<BackToTopButton />);
 
-      // Simulate scroll
+      // Simulate scroll past threshold
       Object.defineProperty(window, 'scrollY', { value: 600, writable: true });
       fireEvent.scroll(window);
 
       const button = screen.getByLabelText('Back to top');
-      expect(button).toHaveClass('opacity-100');
+      expect(button).toBeInTheDocument();
     });
 
     it('should hide when scrolled back to top', () => {
@@ -41,8 +41,8 @@ describe('BackToTopButton Component', () => {
       Object.defineProperty(window, 'scrollY', { value: 100, writable: true });
       fireEvent.scroll(window);
 
-      const button = screen.getByLabelText('Back to top');
-      expect(button).toHaveClass('opacity-0');
+      // Component returns null again
+      expect(screen.queryByLabelText('Back to top')).not.toBeInTheDocument();
     });
   });
 
@@ -67,22 +67,31 @@ describe('BackToTopButton Component', () => {
   describe('Custom Props', () => {
     it('should render with custom icon', () => {
       render(<BackToTopButton icon={<span data-testid="custom-icon">↑</span>} />);
+      // make visible
+      Object.defineProperty(window, 'scrollY', { value: 600, writable: true });
+      fireEvent.scroll(window);
       expect(screen.getByTestId('custom-icon')).toBeInTheDocument();
     });
 
     it('should apply custom button className', () => {
       render(<BackToTopButton buttonClassName="custom-button-class" />);
+      Object.defineProperty(window, 'scrollY', { value: 600, writable: true });
+      fireEvent.scroll(window);
       const button = screen.getByLabelText('Back to top');
       expect(button).toHaveClass('custom-button-class');
     });
 
     it('should apply custom container className', () => {
       const { container } = render(<BackToTopButton containerClassName="custom-container" />);
+      Object.defineProperty(window, 'scrollY', { value: 600, writable: true });
+      fireEvent.scroll(window);
       expect(container.firstChild).toHaveClass('custom-container');
     });
 
     it('should apply custom icon className', () => {
       render(<BackToTopButton iconClassName="custom-icon-class" />);
+      Object.defineProperty(window, 'scrollY', { value: 600, writable: true });
+      fireEvent.scroll(window);
       const icon = screen.getByLabelText('Back to top').querySelector('svg');
       expect(icon).toHaveClass('custom-icon-class');
     });

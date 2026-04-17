@@ -136,7 +136,8 @@ describe('Loader', () => {
       });
 
       await waitFor(() => {
-        expect(document.body.classList.contains('overflow-hidden')).toBe(true);
+        // Loader sets document.body.style.overflow = 'hidden' (inline style, not class)
+        expect(document.body.style.overflow).toBe('hidden');
       });
     });
 
@@ -148,17 +149,16 @@ describe('Loader', () => {
       });
 
       await waitFor(() => {
-        expect(document.body.classList.contains('overflow-hidden')).toBe(true);
+        expect(document.body.style.overflow).toBe('hidden');
       });
 
       act(() => {
         loaderRef.current?.decLoader();
       });
 
-      // Component removes overflow-auto but not overflow-hidden (component behavior)
-      // This is the actual implementation - it only removes overflow-auto
       await waitFor(() => {
-        expect(document.body.classList.contains('overflow-auto')).toBe(false);
+        // When counter reaches 0, overflow is set to 'auto'
+        expect(document.body.style.overflow).toBe('auto');
       });
     });
 
@@ -170,7 +170,8 @@ describe('Loader', () => {
       });
 
       await waitFor(() => {
-        expect(document.body.classList.contains('overflow-hidden')).toBe(false);
+        // enableScroll=true keeps overflow as auto
+        expect(document.body.style.overflow).toBe('auto');
       });
     });
 
@@ -182,7 +183,7 @@ describe('Loader', () => {
       });
 
       await waitFor(() => {
-        expect(document.body.classList.contains('overflow-hidden')).toBe(true);
+        expect(document.body.style.overflow).toBe('hidden');
       });
 
       act(() => {
@@ -190,7 +191,7 @@ describe('Loader', () => {
       });
 
       await waitFor(() => {
-        expect(document.body.classList.contains('overflow-auto')).toBe(false);
+        expect(document.body.style.overflow).toBe('auto');
       });
     });
   });

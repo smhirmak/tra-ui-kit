@@ -28,7 +28,7 @@ describe('LoadingSpinner Component', () => {
 
     it('should have border classes', () => {
       const { container } = render(<LoadingSpinner />);
-      expect(container.firstChild).toHaveClass('border-4', 'border-gray-200', 'border-t-gray-800');
+      expect(container.firstChild).toHaveClass('border-4', 'border-neutral', 'border-t-primary');
     });
   });
 

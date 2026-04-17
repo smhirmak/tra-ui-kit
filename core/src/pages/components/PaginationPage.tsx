@@ -26,7 +26,7 @@ const apiTableData = [
   { prop: 'currentPage', type: 'number', default: '-', description: 'Current active page' },
   { prop: 'onPageChange', type: '(page: number) => void', default: '-', description: 'Callback when page changes' },
   { prop: 'maxVisiblePages', type: 'number', default: '7', description: 'Maximum visible page buttons' },
-  { prop: 'color', type: '"primary" | "secondary" | "tetriary"', default: '"primary"', description: 'Button color scheme' },
+  { prop: 'color', type: '"primary" | "secondary" | "tertiary"', default: '"primary"', description: 'Button color scheme' },
   { prop: 'variant', type: '"solid" | "outlined" | "ghost"', default: '"solid"', description: 'Button variant style' },
   { prop: 'size', type: '"xs" | "sm" | "default" | "lg" | "xl"', default: '"default"', description: 'Size of pagination buttons' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables pagination' },

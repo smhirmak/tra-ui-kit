@@ -8,6 +8,7 @@ import { useTOC } from '@/contexts/toc/TOCContext';
 import { Tab, Tabs } from '@/components/tabs';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/dialog';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -16,16 +17,29 @@ const tocItems: TOCItem[] = [
   { id: 'alignment', title: 'Alignment', level: 1 },
   { id: 'controlled', title: 'Controlled', level: 1 },
   { id: 'disabled', title: 'Disabled State', level: 1 },
+  { id: 'popover-in-dialog', title: 'Popover in Dialog', level: 1 },
   { id: 'api', title: 'API Reference', level: 1 },
 ];
 
-const apiTableData = [
+const popoverApiTableData = [
   { prop: 'open', type: 'boolean', default: 'undefined', description: 'Controlled open state' },
   { prop: 'onOpenChange', type: '(open: boolean) => void', default: '-', description: 'Callback when open state changes' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the popover trigger' },
   { prop: 'dropdownAlign', type: '"left" | "right"', default: '"left"', description: 'Horizontal alignment of the popover content' },
   { prop: 'forceTriggerWidth', type: 'boolean', default: 'false', description: 'Forces the popover content to match the trigger width' },
+];
 
+const popoverTriggerApiTableData = [
+  { prop: 'className', type: 'string', default: '-', description: 'CSS class for the popover trigger' },
+  { prop: 'asChild', type: 'boolean', default: 'false', description: 'If true, the child element will be used as the trigger' },
+  { prop: 'ref', type: 'React.Ref<HTMLElement>', default: '-', description: 'Forwarded ref to the trigger element (useful for measurement or focus)' },
+];
+
+const popoverContentApiTableData = [
+  { prop: 'className', type: 'string', default: '-', description: 'CSS class for the popover trigger' },
+  { prop: 'align', type: '"left" | "right" | "center"', default: 'left', description: 'Horizontal alignment of the content relative to the trigger (overrides Popover.dropdownAlign)' },
+  { prop: 'side', type: '"top" | "bottom"', default: 'bottom', description: 'Vertical side where the content appears relative to the trigger' },
+  { prop: 'style', type: 'React.CSSProperties', default: '-', description: 'Inline style overrides for the content container' },
 ];
 
 const PopoverPage = () => {
@@ -130,6 +144,22 @@ const PopoverPage = () => {
                 </PopoverContent>
               </Popover>
             </div>
+            <div className="mt-4">
+              <p className="text-neutral-grey">You can also control alignment on the content itself using <code>align</code> and <code>side</code> on <code>PopoverContent</code>.</p>
+              <div className="mt-2">
+                <Popover>
+                  <PopoverTrigger>
+                    <Button>Content-Aligned Right</Button>
+                  </PopoverTrigger>
+                  <PopoverContent align="right" side="bottom" className="rounded-lg border border-border bg-background p-4 shadow-lg">
+                    <div className="space-y-2">
+                      <h3 className="font-semibold">Content Aligned Right</h3>
+                      <p className="text-sm text-neutral-grey">This popover uses <code>align="right"</code> to align its right edge with the trigger.</p>
+                    </div>
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </div>
           </div>
           <CustomSyntaxHighlighter content={`// Left aligned (default)
 <Popover dropdownAlign="left">
@@ -197,8 +227,49 @@ const PopoverPage = () => {
         </div>
       </section>
 
+      {/* Popover in Dialog */}
+      <section id="popover-in-dialog">
+        <h2 className="mb-4 text-2xl font-bold">Popover in Dialog</h2>
+        <div className="space-y-4">
+          <p className="text-neutral-grey">Popover inside a dialog component.</p>
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Dialog>
+              <DialogTrigger>Open Dialog</DialogTrigger>
+              <DialogContent>
+                <Popover>
+                  <PopoverTrigger>
+                    <Button>Disabled Popover</Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="rounded-lg border border-border bg-background p-4 shadow-lg">
+                    <div>This content won't show</div>
+                  </PopoverContent>
+                </Popover>
+              </DialogContent>
+            </Dialog>
+          </div>
+          <CustomSyntaxHighlighter content={`<Dialog>
+  <DialogTrigger>Open Dialog</DialogTrigger>
+  <DialogContent>
+    <Popover>
+      <PopoverTrigger>
+        Disabled Popover
+      </PopoverTrigger>
+      <PopoverContent className="rounded-lg border border-border bg-background p-4 shadow-lg">
+        <div>This content won't show</div>
+      </PopoverContent>
+    </Popover>
+  </DialogContent>
+</Dialog>`} />
+        </div>
+      </section>
+
       {/* API Reference */}
-      <ApiTable tableData={apiTableData} />
+      <section id="api">
+        <h2 className="mb-4 text-2xl font-bold">API Reference</h2>
+        <ApiTable title='Popover' tableData={popoverApiTableData} titleClassName='text-xl font-semibold' />
+        <ApiTable title='Popover Trigger' tableData={popoverTriggerApiTableData} titleClassName='text-xl font-semibold mt-4' />
+        <ApiTable title='Popover Content' tableData={popoverContentApiTableData} titleClassName='text-xl font-semibold mt-4' />
+      </section>
     </div>
   );
 };

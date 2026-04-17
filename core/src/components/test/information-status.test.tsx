@@ -28,7 +28,7 @@ describe('InformationStatus Component', () => {
 
     it('should apply warning type styling', () => {
       const { container } = render(<InformationStatus type="warning" title="Warning" />);
-      expect(container.firstChild).toHaveClass('bg-secondary-light', 'text-secondary');
+      expect(container.firstChild).toHaveClass('bg-warning-light', 'text-warning');
     });
   });
 

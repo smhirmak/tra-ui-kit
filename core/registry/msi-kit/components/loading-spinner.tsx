@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
 
-const spinnerVariants = cva('size-16 animate-spin rounded-full border-4 border-gray-200 border-t-gray-800');
+const spinnerVariants = cva('size-16 animate-spin rounded-full border-4 border-neutral border-t-primary');
 
 interface ILoadingSpinner extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;

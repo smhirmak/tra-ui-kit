@@ -178,31 +178,31 @@ describe('Dialog Component', () => {
 
     it('should apply small size', async () => {
       render(
-        <Dialog defaultOpen>
-          <DialogContent size="sm">
+        <Dialog defaultOpen size="sm">
+          <DialogContent>
             <DialogTitle>Test</DialogTitle>
           </DialogContent>
         </Dialog>,
       );
 
       await waitFor(() => {
-        const content = screen.getByText('Test').closest('[data-state]');
-        expect(content).toHaveClass('max-w-sm');
+        const content = document.querySelector('.max-w-sm');
+        expect(content).toBeInTheDocument();
       });
     });
 
     it('should apply large size', async () => {
       render(
-        <Dialog defaultOpen>
-          <DialogContent size="lg">
+        <Dialog defaultOpen size="lg">
+          <DialogContent>
             <DialogTitle>Test</DialogTitle>
           </DialogContent>
         </Dialog>,
       );
 
       await waitFor(() => {
-        const content = screen.getByText('Test').closest('[data-state]');
-        expect(content).toHaveClass('max-w-2xl');
+        const content = document.querySelector('.max-w-2xl');
+        expect(content).toBeInTheDocument();
       });
     });
   });

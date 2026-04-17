@@ -22,8 +22,11 @@ const apiTableData = [
   { prop: 'selected', type: 'Date | DateRange', default: 'undefined', description: 'Selected date or date range' },
   { prop: 'onSelect', type: '(date: Date | DateRange) => void', default: 'undefined', description: 'Callback when date is selected' },
   { prop: 'disabled', type: 'Date[] | ((date: Date) => boolean)', default: 'undefined', description: 'Disable specific dates' },
-  { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes' },
+  { prop: 'locale', type: 'Locale', default: 'undefined', description: 'date-fns locale for month/day names' },
+  { prop: 'numberOfMonths', type: 'number', default: '1', description: 'Number of months to display simultaneously' },
+  { prop: 'startMonth', type: 'Date', default: 'undefined', description: 'First selectable month (navigation start)' },
   { prop: 'endMonth', type: 'Date', default: 'new Date((new Date().getFullYear() + 100), 11, 31)', description: 'Last selectable date' },
+  { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes' },
 ];
 
 const CalendarPage = () => {

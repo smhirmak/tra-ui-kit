@@ -18,7 +18,7 @@ const badgeVariants = cva(
       color: {
         primary: 'bg-primary text-neutral-white',
         secondary: 'bg-secondary text-neutral-white',
-        tetriary: 'bg-tetriary text-neutral-white',
+        tertiary: 'bg-tertiary text-neutral-white',
         error: 'bg-error text-neutral-white',
         success: 'bg-success text-neutral-white',
         warning: 'bg-warning text-neutral-white',
@@ -45,9 +45,9 @@ const badgeVariants = cva(
         className: 'bg-secondary/30 text-secondary',
       },
       {
-        color: 'tetriary',
+        color: 'tertiary',
         text: true,
-        className: 'bg-tetriary/30 text-tetriary',
+        className: 'bg-tertiary/30 text-tertiary',
       },
       {
         color: 'error',
@@ -70,7 +70,7 @@ const badgeVariants = cva(
 
 interface IBadge {
   className?: string;
-  color?: 'primary' | 'secondary' | 'tetriary' | 'error' | 'success' | 'warning';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'error' | 'success' | 'warning';
   icon?: React.ReactNode;
   size?: 'default' | 'sm' | 'lg';
   text?: string;

@@ -20,7 +20,7 @@ export const buttonVariants = cva(
       color: {
         primary: 'bg-primary text-primary-foreground',
         secondary: 'bg-secondary text-secondary-foreground',
-        tetriary: 'bg-tetriary text-tetriary-foreground',
+        tertiary: 'bg-tertiary text-tertiary-foreground',
         error: 'bg-error text-error-foreground',
       },
       size: {
@@ -47,8 +47,8 @@ export const buttonVariants = cva(
       },
       {
         variant: 'outlined',
-        color: 'tetriary',
-        className: 'border-tetriary text-tetriary hover:bg-tetriary/10 bg-transparent',
+        color: 'tertiary',
+        className: 'border-tertiary text-tertiary hover:bg-tertiary/10 bg-transparent',
       },
       {
         variant: 'outlined',
@@ -67,8 +67,8 @@ export const buttonVariants = cva(
       },
       {
         variant: 'solid',
-        color: 'tetriary',
-        className: 'bg-tetriary text-tetriary-foreground hover:bg-tetriary/90',
+        color: 'tertiary',
+        className: 'bg-tertiary text-tertiary-foreground hover:bg-tertiary/90',
       },
       {
         variant: 'solid',
@@ -87,8 +87,8 @@ export const buttonVariants = cva(
       },
       {
         variant: 'ghost',
-        color: 'tetriary',
-        className: 'text-tetriary hover:text-tetriary/80 bg-transparent',
+        color: 'tertiary',
+        className: 'text-tertiary hover:text-tertiary/80 bg-transparent',
       },
       {
         variant: 'ghost',
@@ -128,7 +128,7 @@ export interface IButton
   asChild?: React.ElementType;
   children: React.ReactNode;
   className?: string;
-  color?: 'primary' | 'secondary' | 'tetriary';
+  color?: 'primary' | 'secondary' | 'tertiary';
   disabled?: boolean;
   disableEffect?: boolean;
   effectColor?: string;

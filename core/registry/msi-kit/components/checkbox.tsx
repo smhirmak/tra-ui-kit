@@ -40,6 +40,7 @@ interface ICheckbox {
   size?: 'sm' | 'default' | 'lg';
   variant?: 'rectangular' | 'circular';
   checked?: boolean;
+  onChange?: (checked: boolean) => void;
 }
 
 const Checkbox = React.forwardRef<
@@ -53,9 +54,15 @@ const Checkbox = React.forwardRef<
   label,
   size,
   variant,
+  onChange,
   ...props
 }, ref) => {
-  const [checkedValue, setCheckedValue] = React.useState<boolean | undefined>(checked);
+  const [checkedValue, setCheckedValue] = React.useState<boolean>(checked);
+
+  React.useEffect(() => {
+    setCheckedValue(checked);
+  }, [checked]);
+
   return (
     <div className="flex items-center gap-2">
       <div>
@@ -88,7 +95,12 @@ const Checkbox = React.forwardRef<
           type="checkbox"
           checked={checkedValue}
           disabled={disabled}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (!disabled) setCheckedValue(e.target.checked); }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            if (!disabled) {
+              setCheckedValue(e.target.checked);
+              onChange?.(e.target.checked);
+            }
+          }}
           id={id}
           className="peer hidden"
           {...props}

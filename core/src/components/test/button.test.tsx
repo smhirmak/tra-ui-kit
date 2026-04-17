@@ -43,9 +43,9 @@ describe('Button Component', () => {
       expect(container.firstChild).toHaveClass('bg-secondary');
     });
 
-    it('should apply tetriary color', () => {
-      const { container } = render(<Button color="tetriary">Click</Button>);
-      expect(container.firstChild).toHaveClass('bg-tetriary');
+    it('should apply tertiary color', () => {
+      const { container } = render(<Button color="tertiary">Click</Button>);
+      expect(container.firstChild).toHaveClass('bg-tertiary');
     });
 
     it('should apply secondary color variant', () => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from '@tanstack/react-router';
 
 interface VersionsData {
   versions: Array<{
@@ -12,6 +12,7 @@ interface VersionsData {
 const VersionRedirect = () => {
   const [latestVersion, setLatestVersion] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadLatestVersion = async () => {
@@ -31,11 +32,13 @@ const VersionRedirect = () => {
     loadLatestVersion();
   }, []);
 
-  if (isLoading) {
-    return null; // or a loading spinner
-  }
+  useEffect(() => {
+    if (!isLoading && latestVersion) {
+      navigate({ to: `/$version` as any, params: { version: `v${latestVersion}` } as any });
+    }
+  }, [isLoading, latestVersion, navigate]);
 
-  return <Navigate to={`/v${latestVersion}`} replace />;
+  return null;
 };
 
 export default VersionRedirect;

@@ -7,7 +7,7 @@ import {
   useCallback,
   type ReactNode,
 } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useParams, useRouterState } from '@tanstack/react-router';
 
 export interface VersionInfo {
   version: string;
@@ -45,9 +45,10 @@ export const VersionProvider = ({
   children,
   storageKey = 'msi-ui-version',
 }: VersionProviderProps) => {
-  const { version: urlVersionRaw } = useParams<{ version: string }>();
+  const { version: urlVersionRaw } = useParams({ strict: false });
   const navigate = useNavigate();
-  const location = useLocation();
+  const routerState = useRouterState();
+  const pathname = routerState.location.pathname;
   const [versions, setVersions] = useState<VersionInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentVersion, setCurrentVersion] = useState<string>('');
@@ -76,8 +77,7 @@ export const VersionProvider = ({
 
         // If no URL version, redirect to default
         if (!urlVersion) {
-          const pathWithoutVersion = location.pathname;
-          navigate(`/v${finalVersion}${pathWithoutVersion}`, { replace: true });
+          navigate({ to: `/v${finalVersion}` as any, replace: true });
         }
       } catch (error) {
         console.error('Failed to load versions:', error);
@@ -116,12 +116,12 @@ export const VersionProvider = ({
       localStorage.setItem(storageKey, version);
 
       // Replace version in URL path
-      const pathParts = location.pathname.split('/');
+      const pathParts = pathname.split('/');
       pathParts[1] = `v${version}`; // Replace /vX part
       const newPath = pathParts.join('/');
-      navigate(newPath + location.search + location.hash);
+      navigate({ to: newPath as any });
     },
-    [storageKey, navigate, location],
+    [storageKey, navigate, pathname],
   );
 
   const isLatestVersion = useMemo(() => {

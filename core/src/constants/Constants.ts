@@ -5,11 +5,14 @@ import {
   GearIcon, TrendUpIcon, CalendarIcon, MagnifyingGlassIcon, BellIcon,
   CaretCircleDownIcon,
   AtomIcon,
-  ImageIcon,
   SpinnerGapIcon,
   TextboxIcon,
   TextAaIcon,
   ArrowUpIcon,
+  SunIcon,
+  SquareIcon,
+  LayoutIcon,
+  GlobeIcon,
 } from '@phosphor-icons/react';
 
 const Constants = {
@@ -228,21 +231,21 @@ const Constants = {
     {
       name: 'Theme Mode Toggle',
       description: 'Toggle between light and dark themes',
-      Icon: ImageIcon,
+      Icon: SunIcon,
       path: '/components/theme-mode-toggle',
       category: 'Display',
     },
     {
       name: 'Calendar',
       description: 'Interactive calendar component for date selection',
-      Icon: CalendarIcon,
+      Icon: SquareIcon,
       path: '/components/calendar',
       category: 'Display',
     },
     {
       name: 'Container',
       description: 'A responsive container component for layout',
-      Icon: PencilSimpleIcon,
+      Icon: LayoutIcon,
       path: '/components/container',
       category: 'Layout',
     },
@@ -251,14 +254,14 @@ const Constants = {
       description: 'A flexible input component with multiple variants, sizes, and icon support',
       Icon: TextboxIcon,
       path: '/components/input',
-      category: 'Layout',
+      category: 'Input',
     },
     {
       name: 'Label',
       description: 'A versatile label component for form elements and UI',
       Icon: TextAaIcon,
       path: '/components/label',
-      category: 'Layout',
+      category: 'Display',
     },
     {
       name: 'Back to Top Button',
@@ -266,6 +269,15 @@ const Constants = {
       Icon: ArrowUpIcon,
       path: '/components/back-to-top-button',
       category: 'Navigation',
+      isNew: true,
+    },
+    {
+      name: 'Language Select',
+      description: 'Dropdown for switching application language / locale',
+      Icon: GlobeIcon,
+      path: '/components/language-select',
+      category: 'Navigation',
+      isNew: true,
     },
   ]
 }
