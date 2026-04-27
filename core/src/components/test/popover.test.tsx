@@ -136,17 +136,17 @@ describe('Popover Component', () => {
       render(
         <Popover>
           <PopoverTrigger><button>Trigger</button></PopoverTrigger>
-          <PopoverContent align="start">Content</PopoverContent>
+          <PopoverContent align="left">Content</PopoverContent>
         </Popover>,
       );
       expect(screen.getByText('Trigger')).toBeInTheDocument();
     });
 
-    it('should accept align="end" on PopoverContent', () => {
+    it('should accept align="right" on PopoverContent', () => {
       render(
         <Popover>
           <PopoverTrigger><button>Trigger</button></PopoverTrigger>
-          <PopoverContent align="end">Content</PopoverContent>
+          <PopoverContent align="right">Content</PopoverContent>
         </Popover>,
       );
       expect(screen.getByText('Trigger')).toBeInTheDocument();
@@ -186,7 +186,7 @@ describe('Popover Component', () => {
       render(
         <Popover>
           <PopoverTrigger><button>Open</button></PopoverTrigger>
-          <PopoverContent align="end">Aligned Content</PopoverContent>
+          <PopoverContent align="right">Aligned Content</PopoverContent>
         </Popover>,
       );
 

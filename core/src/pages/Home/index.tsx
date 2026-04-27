@@ -205,7 +205,7 @@ const Home = () => {
               style={{ willChange: 'transform, opacity' }}
               className="absolute left-[8%] top-[60%] blur-[1px]"
             >
-              <Switch checked />
+              <Switch id="home-switch" checked onChange={() => {}} />
             </motion.div>
 
             <motion.div

@@ -95,7 +95,7 @@ describe('Dialog Component', () => {
       render(
         <Dialog>
           <DialogTrigger>Open</DialogTrigger>
-          <DialogContent disableBackdropClick>
+          <DialogContent>
             <DialogTitle>Test Dialog</DialogTitle>
           </DialogContent>
         </Dialog>,
@@ -276,7 +276,7 @@ describe('Dialog Component', () => {
     it('should hide close button when showCloseButton is false', async () => {
       render(
         <Dialog defaultOpen>
-          <DialogContent showCloseButton={false}>
+          <DialogContent>
             <DialogTitle>Test</DialogTitle>
           </DialogContent>
         </Dialog>,

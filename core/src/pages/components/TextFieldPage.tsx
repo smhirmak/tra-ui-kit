@@ -201,7 +201,7 @@ const TextFieldPage = () => {
         <p className="mb-4 text-neutral-grey">Labels are integrated and styled automatically.</p>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <TextField label="Full Name" placeholder="John Doe" required />
+            <TextField label="Full Name" placeholder="John Doe" showRequiredIcon />
           </div>
           <CustomSyntaxHighlighter
             content='<TextField label="Full Name" placeholder="John Doe" required />'
