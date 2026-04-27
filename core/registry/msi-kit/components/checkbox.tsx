@@ -40,6 +40,7 @@ interface ICheckbox {
   onChange?: (checked: boolean) => void;
   labelSide?: 'left' | 'right';
   labelClassName?: string;
+  containerClassName?: string;
 }
 
 const Checkbox = React.forwardRef<
@@ -56,11 +57,12 @@ const Checkbox = React.forwardRef<
   onChange,
   labelSide = 'right',
   labelClassName,
+  containerClassName,
   ...props
 }, ref) => {
   const [checkedValue, setCheckedValue] = React.useState<boolean | undefined>(checked);
   return (
-    <div className="flex items-center gap-2">
+    <div className={cn("flex items-center gap-2", containerClassName)}>
       {label && labelSide === 'left' &&
         <Label className={cn('select-none', labelClassName)} htmlFor={id} id={`${id}-label`} disabled={disabled} size={size}>
           {label}
