@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DayPicker, DayPickerProps, DropdownProps } from 'react-day-picker';
+import { DayPicker, type DayPickerProps, type DropdownProps } from 'react-day-picker';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from './button';
 import React from 'react';
