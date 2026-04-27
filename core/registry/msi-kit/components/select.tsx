@@ -95,7 +95,7 @@ const selectVariants = cva(
   },
 );
 
-interface ISelectOption {
+export interface ISelectOption {
   content: string | React.ReactNode;
   value: number | string | boolean;
 }
