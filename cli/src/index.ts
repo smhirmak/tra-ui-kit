@@ -14,7 +14,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const websiteUrl = 'https://msi-ui-kit.vercel.app';
 const githubUrl = 'https://github.com/smhirmak/msi-ui-kit';
 
-// ComponentJson tipini tanımla
+// ComponentJson tipini tanÄ±mla
 interface ComponentJson {
   $schema?: string;
   style?: string;
@@ -90,7 +90,7 @@ async function fetchComponentsFromRegistry(): Promise<RegistryItem[]> {
     
     const registry: RegistryResponse = await response.json();
     
-    // Sadece UI component'lerini filtrele (theme, utils gibi diğer item'ları hariç tut)
+    // Sadece UI component'lerini filtrele (theme, utils gibi diÄŸer item'larÄ± hariÃ§ tut)
     const uiComponents = registry.items.filter(item => 
       item.type === 'registry:ui' || item.name !== 'theme' && item.name !== 'utils'
     );
@@ -101,7 +101,7 @@ async function fetchComponentsFromRegistry(): Promise<RegistryItem[]> {
     spinner.fail('Failed to fetch components from registry');
     console.log(chalk.yellowBright('Using fallback component list...'));
     
-    // Fallback olarak hardcoded listeyi dön
+    // Fallback olarak hardcoded listeyi dÃ¶n
     return [
       { 
         name: 'button', 
@@ -119,7 +119,7 @@ async function fetchComponentsFromRegistry(): Promise<RegistryItem[]> {
   }
 }
 
-// INIT FONKSİYONU
+// INIT FONKSÄ°YONU
 async function initCompleteSetup(options: { yes?: boolean } = {}) {
   const cwd = process.cwd();
   
@@ -131,14 +131,13 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
     // 1. First run shadcn init (if needed)
     const componentJsonPath = path.join(cwd, 'components.json');
     if (!(await fs.pathExists(componentJsonPath))) {
-      spinner.start('Setting up MSI UI Kit base...');
+      console.log('Setting up MSI UI Kit base...');
       
       const initArgs = [
         'shadcn@latest',
         'init',
+        '-b', 'radix',
         '-s',
-        // '--no-css-variables', 
-        '--no-base-style'
       ];
       if (options.yes) initArgs.push('-y');
       
@@ -147,23 +146,24 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
         cwd 
       });
       
-      spinner.succeed('MSI UI Kit base setup completed');
+      console.log('✔ MSI UI Kit base setup completed');
     }
 
     // 2. Add MSI registry
-    spinner.start('Adding MSI registry...');
+    console.log('Adding MSI registry...');
+    spinner.stop();
     const registrySuccess = await ensureMsiRegistry();
     if (registrySuccess) {
-      spinner.succeed('MSI registry added');
+      console.log('✔ MSI registry added');
     } else {
-      spinner.fail('Failed to add MSI registry');
+      console.log('✗ Failed to add MSI registry');
       return;
     }
 
-    // 3. Add MSI Theme - ÖZEL HANDLING
+    // 3. Add MSI Theme - Ã–ZEL HANDLING
     console.log('\nAdding MSI UI Kit theme...');
     
-    // Spinner kullanmadan direkt execa çalıştır
+    // Spinner kullanmadan direkt execa Ã§alÄ±ÅŸtÄ±r
     const themeArgs = [
       'shadcn@latest',
       'add',
@@ -171,10 +171,9 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
       '@msi/typhography', 
       '@msi/utils',
       '-s',
-      '--no-css-variables'
     ];
     
-    // Eğer --yes flag'i varsa, otomatik onayla
+    // EÄŸer --yes flag'i varsa, otomatik onayla
     if (options.yes) {
       themeArgs.push('--yes');
     }
@@ -190,7 +189,7 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
     showSuccessMessage();
 
   } catch (error: any) {
-    spinner.stop(); // Spinner'ı durdur
+    spinner.stop(); // Spinner'Ä± durdur
     
     console.log(chalk.red('\nInitialization failed'));
     
@@ -240,7 +239,7 @@ async function ensureMsiRegistry(): Promise<boolean> {
 }
 
 async function addComponents(components: string[]) {
-  // Eğer component belirtilmemişse, interaktif seçim göster
+  // EÄŸer component belirtilmemiÅŸse, interaktif seÃ§im gÃ¶ster
   if (components.length === 0) {
     await showInteractiveComponentSelector();
     return;
@@ -273,10 +272,10 @@ async function addComponents(components: string[]) {
         cwd: process.cwd()
       });
       
-      console.log(chalk.green(`✓ Added ${component}`));
+      console.log(chalk.green(`âœ“ Added ${component}`));
       successCount++;
     } catch (error: any) {
-      console.log(chalk.red(`✗ Failed to add ${component}`));
+      console.log(chalk.red(`âœ— Failed to add ${component}`));
       console.log('  Try manually:');
       console.log(chalk.yellowBright(`  npx shadcn add @msi/${component}`));
       errorCount++;
@@ -291,9 +290,9 @@ async function addComponents(components: string[]) {
   console.log(`  Total: ${components.length}\n`);
 }
 
-// Interaktif component seçici
+// Interaktif component seÃ§ici
 async function showInteractiveComponentSelector() {
-  console.log('\n🌿 MSI UI Kit - Component Selector\n');
+  console.log('\nðŸŒ¿ MSI UI Kit - Component Selector\n');
   
   try {
     const components = await fetchComponentsFromRegistry();
@@ -324,7 +323,7 @@ async function showInteractiveComponentSelector() {
 
     console.log(`\nSelected ${selectedComponents.length} component(s):`);
     selectedComponents.forEach((comp: string) => {
-      console.log(`  • ${chalk.cyan(comp)}`);
+      console.log(`  â€¢ ${chalk.cyan(comp)}`);
     });
 
     const { confirm } = await inquirer.prompt([
@@ -355,7 +354,7 @@ async function listComponents() {
     const components = await fetchComponentsFromRegistry();
     
     components.forEach(comp => {
-      console.log(`  • ${chalk.cyan(comp.name.padEnd(18))} - ${comp.description}`);
+      console.log(`  â€¢ ${chalk.cyan(comp.name.padEnd(18))} - ${comp.description}`);
     });
 
     console.log('\nUsage:');
@@ -393,7 +392,7 @@ async function removeOnlyShadcnApplyRules() {
     // components.json'dan CSS dosya yolunu al
     const componentJsonPath = path.join(cwd, 'components.json');
     if (!(await fs.pathExists(componentJsonPath))) {
-      console.log(chalk.yellow('⚠️  components.json bulunamadı, CSS temizleme atlanıyor'));
+      console.log(chalk.yellow('âš ï¸  components.json bulunamadÄ±, CSS temizleme atlanÄ±yor'));
       return;
     }
 
@@ -401,13 +400,13 @@ async function removeOnlyShadcnApplyRules() {
     const cssFilePath = componentJson.tailwind?.css;
 
     if (!cssFilePath) {
-      console.log(chalk.yellow('⚠️  CSS dosya yolu bulunamadı, işlem atlanıyor'));
+      console.log(chalk.yellow('âš ï¸  CSS dosya yolu bulunamadÄ±, iÅŸlem atlanÄ±yor'));
       return;
     }
 
     const fullCssPath = path.join(cwd, cssFilePath);
     if (!(await fs.pathExists(fullCssPath))) {
-      console.log(chalk.yellow(`⚠️  CSS dosyası bulunamadı: ${cssFilePath}`));
+      console.log(chalk.yellow(`âš ï¸  CSS dosyasÄ± bulunamadÄ±: ${cssFilePath}`));
       return;
     }
 
@@ -417,14 +416,14 @@ async function removeOnlyShadcnApplyRules() {
     
     await fs.writeFile(fullCssPath, cssContent);
   } catch (error) {
-    console.log(chalk.yellow('⚠️  CSS temizleme sırasında hata oluştu:'), error);
+    console.log(chalk.yellow('âš ï¸  CSS temizleme sÄ±rasÄ±nda hata oluÅŸtu:'), error);
   }
 }
 
 function removeSpecificApplyRules(cssContent: string): string {
   let cleanedContent = cssContent;
   
-  // SADECE bu iki spesifik @apply kuralını temizle
+  // SADECE bu iki spesifik @apply kuralÄ±nÄ± temizle
   const unwantedApplyRules = [
     // @apply border-border outline-ring/50;
     /@apply border-border outline-ring\/50;/g,
@@ -437,7 +436,7 @@ function removeSpecificApplyRules(cssContent: string): string {
     cleanedContent = cleanedContent.replace(pattern, '');
   });
 
-  // Boş kalan selector'ları temizle (sadece {} kalan)
+  // BoÅŸ kalan selector'larÄ± temizle (sadece {} kalan)
   cleanedContent = cleanedContent.replace(/\*\s*\{\s*\}/g, '');
   cleanedContent = cleanedContent.replace(/body\s*\{\s*\}/g, '');
 

@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-nested-ternary */
 import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
@@ -41,6 +38,8 @@ interface ICheckbox {
   variant?: 'rectangular' | 'circular';
   checked?: boolean;
   onChange?: (checked: boolean) => void;
+  labelSide?: 'left' | 'right';
+  labelClassName?: string;
 }
 
 const Checkbox = React.forwardRef<
@@ -55,16 +54,18 @@ const Checkbox = React.forwardRef<
   size,
   variant,
   onChange,
+  labelSide = 'right',
+  labelClassName,
   ...props
 }, ref) => {
-  const [checkedValue, setCheckedValue] = React.useState<boolean>(checked);
-
-  React.useEffect(() => {
-    setCheckedValue(checked);
-  }, [checked]);
-
+  const [checkedValue, setCheckedValue] = React.useState<boolean | undefined>(checked);
   return (
     <div className="flex items-center gap-2">
+      {label && labelSide === 'left' &&
+        <Label className={cn('select-none', labelClassName)} htmlFor={id} id={`${id}-label`} disabled={disabled} size={size}>
+          {label}
+        </Label>
+      }
       <div>
         <label
           className={cn(checkboxVariants({ variant, size }), className)}
@@ -95,18 +96,17 @@ const Checkbox = React.forwardRef<
           type="checkbox"
           checked={checkedValue}
           disabled={disabled}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            if (!disabled) {
-              setCheckedValue(e.target.checked);
-              onChange?.(e.target.checked);
-            }
-          }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (!disabled) { setCheckedValue(e.target.checked); onChange?.(e.target.checked); } }}
           id={id}
           className="peer hidden"
           {...props}
         />
       </div>
-      {label && <Label className="select-none" htmlFor={id} id={`${id}-label`} disabled={disabled} size={size}>{label}</Label>}
+      {label && labelSide === 'right' &&
+        <Label className={cn('select-none', labelClassName)} htmlFor={id} id={`${id}-label`} disabled={disabled} size={size}>
+          {label}
+        </Label>
+      }
     </div>
   );
 });
