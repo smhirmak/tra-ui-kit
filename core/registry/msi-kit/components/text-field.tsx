@@ -157,7 +157,6 @@ export interface ITextField {
   textarea?: boolean;
   className?: string;
   fieldClassName?: string;
-  required?: boolean;
 }
 
 const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
@@ -187,7 +186,6 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
   helperText,
   textarea,
   fieldClassName,
-  required = false,
   ...otherProps
 }, ref) => {
   const [inputFocused, setInputFocused] = useState(false);
@@ -234,7 +232,6 @@ const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
         borderRadius={borderRadius}
         maxLength={maxLength}
         textarea={textarea}
-        required={required}
         {...otherProps}
       />
       {variant === 'outlined' && (
