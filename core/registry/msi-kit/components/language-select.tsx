@@ -1,11 +1,10 @@
 import Select from './select';
-import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const countries = [
   {
     content:
       <span className="flex gap-1">
-        <img src="/assets/icons/flagOfTurkey.svg" alt="TR" width="30px" height="20px" style={{ overflow: 'hidden' }} />
+        <img src="/assets/icons/flagOfTurkey.svg" className='overflow-hidden' alt="TR" width="30px" height="20px" />
         TR
       </span>,
     value: 'tr',
@@ -13,7 +12,7 @@ const countries = [
   {
     content:
       <span className="flex gap-1">
-        <img src="/assets/icons/flagOfUK.svg" alt="EN" width="30px" height="20px" style={{ overflow: 'hidden' }} />
+        <img src="/assets/icons/flagOfUK.svg" className='overflow-hidden' alt="EN" width="30px" height="20px" />
         EN
       </span>,
     value: 'en',
@@ -22,16 +21,17 @@ const countries = [
 
 interface ILanguageSelect {
   className?: string;
-  setLocale?: (locale: string) => void;
+  locale: string;
+  setLocale: (locale: string) => void;
+  defaultValue?: string;
 }
 
-const LanguageSelect: React.FC<ILanguageSelect> = ({ className, setLocale: setLocaleProp }) => {
-  const { locale, setLocale: setLocaleContext } = useLocalizeContext();
-  const setLocale = setLocaleProp || setLocaleContext;
+const LanguageSelect: React.FC<ILanguageSelect> = ({ className, locale, setLocale, defaultValue }) => {
+
   const handleChange = (event: string | string[] | number | number[] | boolean) => {
-    const localeLang: string = countries?.find(f => f?.value === event)?.value ?? '';
-    localStorage.setItem('lang', localeLang);
-    setLocale(localeLang);
+    const found = countries.find(f => f.value === event);
+    const localeLang = (found?.value ?? defaultValue ?? 'en');
+    setLocale?.(localeLang);
   };
 
   return (
@@ -39,7 +39,7 @@ const LanguageSelect: React.FC<ILanguageSelect> = ({ className, setLocale: setLo
       <Select
         dropdownTriggerClassName="border-none"
         options={countries}
-        value={(locale as string || localStorage.getItem('lang')) ?? 'en'}
+        value={(locale as string || localStorage.getItem('lang')) ?? defaultValue ?? 'en'}
         onChange={handleChange}
       />
     </div>

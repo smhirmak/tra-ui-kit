@@ -7,6 +7,7 @@ import VersionSelect from '@/components/version-select';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const MsiLogo = () => (
   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary shadow-soft-primary">
@@ -29,6 +30,7 @@ const Header = () => {
   const versionPrefix = version ? `/${version}` : '/v1';
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { locale, setLocale } = useLocalizeContext();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -103,7 +105,11 @@ const Header = () => {
             <GithubLogoIcon size={20} weight="fill" />
           </a>
           <ThemeModeToggle />
-          <LanguageSelect />
+          <LanguageSelect
+            locale={locale}
+            setLocale={setLocale}
+            defaultValue='en'
+          />
           {/* Hamburger — mobile only */}
           <button
             type="button"

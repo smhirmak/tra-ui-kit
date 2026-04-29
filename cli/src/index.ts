@@ -183,6 +183,36 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
       cwd
     });
 
+    try {
+      const componentsConfig = await fs.readJson(componentJsonPath);
+      
+      // 1. Alias'tan gerçek yolu ayıkla (Örn: "@/components/ui" -> "components/ui")
+      // Baştaki @ ve / işaretlerini temizliyoruz
+      let uiAlias = componentsConfig.aliases?.ui || "components/ui";
+      const relativeUiPath = uiAlias.replace(/^@\//, ''); 
+
+      // 2. CWD ile birleştirerek mutlak yolu oluştur
+      const fullUiDir = path.resolve(cwd, relativeUiPath);
+      
+      console.log('Target UI directory:', fullUiDir);
+
+      if (await fs.pathExists(fullUiDir)) {
+        await fs.remove(fullUiDir);
+        console.log(chalk.green('✔ Default shadcn ui directory removed.'));
+      } else {
+        // Alternatif yol denemesi (Eğer src/ altında ise ve alias'ta yazmıyorsa)
+        const fallbackPath = path.resolve(cwd, 'src', relativeUiPath);
+        if (await fs.pathExists(fallbackPath)) {
+          await fs.remove(fallbackPath);
+          console.log(chalk.green('✔ Default shadcn ui directory removed (from src).'));
+        } else {
+          console.log(chalk.yellow('ℹ UI directory not found, skipping cleanup.'));
+        }
+      }
+    } catch (e) {
+      console.log('Cleanup error:', String(e));
+    }
+
     await removeOnlyShadcnApplyRules();
 
     // Success message and next steps
