@@ -7,6 +7,7 @@ import ApiTable from '@/components/api-table';
 import { Tab, Tabs } from '@/components/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { useTranslation } from 'react-i18next';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -23,6 +24,8 @@ const apiTableData = [
 const LanguageSelectPage = () => {
   const { setTocItems } = useTOC();
   const { t } = useTranslation();
+
+  const { locale, setLocale } = useLocalizeContext();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -61,7 +64,7 @@ const LanguageSelectPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="flex items-center gap-4">
               <span className="text-neutral-grey">Select Language:</span>
-              <LanguageSelect />
+              <LanguageSelect locale={locale} setLocale={setLocale} />
             </div>
           </div>
           <CustomSyntaxHighlighter content='<LanguageSelect />' />
