@@ -27,11 +27,11 @@ const SearchInput: React.FC<ISearchInput> = ({
 }) => (
   <input
     className={`MsiSelect-searchInput ${searchInputClassName} h-unset focus-visible:ring-none text-neutral-black m-0 bg-transparent p-0
-     opacity-100 focus-visible:border-none focus-visible:outline-hidden ${!showMenu && 'w-0'}`}
+     opacity-100 focus-visible:border-none focus-visible:outline-none ${!showMenu && 'w-0'}`}
     value={searchValue ?? ''}
     disabled={disabled}
     onChange={onSearch}
-    ref={searchRef}
+    ref={searchRef as React.RefObject<HTMLInputElement>}
     style={{ width: searchValue ? `${searchValue.length + 1}ch` : '1ch' }}
     onKeyDown={handleKeyDown}
   />
@@ -39,7 +39,8 @@ const SearchInput: React.FC<ISearchInput> = ({
 
 const selectVariants = cva(
   `custom--dropdown-container border-neutral data-[disabled=true]:border-input-light data-[disabled=true]:bg-input-light data-[disabled=true]:text-neutral-grey relative flex w-full cursor-pointer 
-  items-center rounded-md border text-left data-[disabled=true]:cursor-not-allowed`,
+  items-center rounded-md border text-left data-[disabled=true]:cursor-not-allowed
+  disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus:border-ring`,
   {
     variants: {
       showMenu: {
@@ -47,7 +48,7 @@ const selectVariants = cva(
         false: '',
       },
       size: {
-        default: '',
+        default: 'text-sm',
         sm: '',
         lg: '',
       },
@@ -106,6 +107,8 @@ const selectVariants = cva(
 export interface ISelectOption {
   content: string | React.ReactNode;
   value: number | string | boolean;
+  disabled?: boolean;
+  className?: string;
 }
 
 interface ISelect {
@@ -176,7 +179,7 @@ const Select: React.FC<ISelect> = ({
   showRequiredIcon,
   dropdownAlign,
   noOptionsMessage,
-  forceTriggerWidth = false,
+  forceTriggerWidth = true,
   dropdownItemContainerClassName,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -208,6 +211,14 @@ const Select: React.FC<ISelect> = ({
 
   const optionList = Array.isArray(getOptions()) ? getOptions() : [getOptions()].flat();
 
+  const scrollToHighlightedItem = (index: number) => {
+    const dropdownMenu = dropdownRef.current;
+    const highlightedItem = dropdownMenu?.children[index] as HTMLElement;
+    if (highlightedItem) {
+      highlightedItem.scrollIntoView({ block: 'nearest' });
+    }
+  };
+
   useEffect(() => {
     const open = showMenu;
     if (!open) return;
@@ -233,15 +244,13 @@ const Select: React.FC<ISelect> = ({
     };
 
     const index = findSelectedIndex();
-    if (index >= 0) {
+    setTimeout(() => {
       setHighlightedIndex(index);
-      setTimeout(() => {
+      if (index >= 0) {
         scrollToHighlightedItem(index);
-      }, 0);
-    } else {
-      setHighlightedIndex(-1);
-    }
-  }, [showMenu, selectedValue, options]);
+      }
+    }, 0);
+  }, [showMenu, selectedValue, options, isMulti, hasSelection]);
 
   useEffect(() => {
     if (defaultValue) {
@@ -249,44 +258,53 @@ const Select: React.FC<ISelect> = ({
         const defaultOptions = (options as Array<ISelectOption>).filter((option) =>
           (defaultValue as Array<string | number | boolean>).includes(option.value),
         );
-        setSelectedValue(defaultOptions);
+        const t = setTimeout(() => setSelectedValue(defaultOptions), 0);
+        return () => clearTimeout(t);
       } else if (!isMulti && !Array.isArray(defaultValue)) {
         const defaultOption: ISelectOption | undefined = (options as Array<ISelectOption>).find(
           (option: ISelectOption) => option.value === defaultValue,
         );
-        setSelectedValue(defaultOption || null);
+        const t = setTimeout(() => setSelectedValue(defaultOption || null), 0);
+        return () => clearTimeout(t);
       }
     }
   }, [defaultValue, options, isMulti]);
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined;
     if (value !== null && value !== undefined) {
       if (isMulti && Array.isArray(value)) {
         const selectedOptions = (options as Array<ISelectOption>).filter((option) =>
           (value as Array<string | number | boolean>).includes(option.value),
         );
-        setSelectedValue(selectedOptions);
+        timer = setTimeout(() => setSelectedValue(selectedOptions), 0);
       } else if (!isMulti && !Array.isArray(value)) {
         const selectedOption = (options as Array<ISelectOption>).find(
           (option) => option.value === value,
         );
-        setSelectedValue(selectedOption || null);
+        timer = setTimeout(() => setSelectedValue(selectedOption || null), 0);
       }
     } else {
-      setSelectedValue(null);
+      timer = setTimeout(() => setSelectedValue(null), 0);
     }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
   }, [value, options, isMulti]);
 
   useEffect(() => {
-    setSearchValue('');
-    if (showMenu && searchRef.current) {
-      searchRef.current.focus();
-    }
+    const t = setTimeout(() => {
+      setSearchValue('');
+      if (showMenu && searchRef.current) {
+        searchRef.current.focus();
+      }
+    }, 0);
     if (showMenu) {
       preventScrollShift.lock();
     } else {
       preventScrollShift.unlock();
     }
+    return () => clearTimeout(t);
   }, [showMenu]);
 
   useEffect(() => {
@@ -307,24 +325,24 @@ const Select: React.FC<ISelect> = ({
     };
   }, []);
 
-  const scrollToHighlightedItem = (index: number) => {
-    const dropdownMenu = dropdownRef.current;
-    const highlightedItem = dropdownMenu?.children[index] as HTMLElement;
-    if (highlightedItem) {
-      highlightedItem.scrollIntoView({ block: 'nearest' });
-    }
-  };
-
   const removeOption = (option: ISelectOption): Array<ISelectOption> | null =>
     selectedValue && Array.isArray(selectedValue)
       ? selectedValue.filter((o) => o.value !== option.value)
       : null;
 
+  const getOptionValues = (opts: Array<ISelectOption>): Array<string> | Array<number> => {
+    const values = opts
+      .map((o) => o.value)
+      .filter((v): v is string | number => typeof v !== 'boolean');
+    if (values.every((v): v is number => typeof v === 'number')) return values as Array<number>;
+    return values.map(String) as Array<string>;
+  };
+
   const onTagRemove = (e: React.MouseEvent, option: ISelectOption): void => {
     e.stopPropagation();
     const newValue = removeOption(option);
     setSelectedValue(newValue);
-    onChange(newValue ? newValue.map((o: any) => o.value) : []);
+    onChange(newValue ? getOptionValues(newValue) : []);
   };
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -345,7 +363,7 @@ const Select: React.FC<ISelect> = ({
           selectedValue && Array.isArray(selectedValue) ? [...selectedValue, option] : [option];
       }
       setSelectedValue(newValue);
-      onChange(newValue ? newValue.map((o: any) => o.value) : []);
+      onChange(newValue ? getOptionValues(newValue) : []);
     } else {
       newValue = option;
       setSelectedValue(newValue);
@@ -502,17 +520,22 @@ const Select: React.FC<ISelect> = ({
     return selectedValue ? (selectedValue as ISelectOption).value === option.value : false;
   };
 
-  const getTextFromSelectedItem = (item: any): string => {
-    if (item && item.props && item.props.children) {
-      const { children } = item.props;
+  const getTextFromSelectedItem = (item: React.ReactElement): string => {
+    if (item && item.props && (item.props as { children: React.ReactNode }).children) {
+      const { children } = item.props as { children: React.ReactNode };
       if (Array.isArray(children)) {
-        return children
-          .map((child: any) => {
+        return (children as React.ReactNode[])
+          .map((child: React.ReactNode) => {
             if (typeof child === 'string') {
               return child;
             }
-            if (child.props && child.props.children) {
-              return getTextFromSelectedItem(child);
+            if (
+              child !== null &&
+              typeof child === 'object' &&
+              'props' in child &&
+              ((child as React.ReactElement).props as { children: React.ReactNode })?.children
+            ) {
+              return getTextFromSelectedItem(child as React.ReactElement);
             }
             return '';
           })

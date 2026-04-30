@@ -1,5 +1,5 @@
 import React from 'react';
-import { cva, VariantProps } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import {
   CaretLeftIcon,
   CaretLineLeftIcon,
@@ -7,7 +7,7 @@ import {
   CaretRightIcon,
 } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
-import Button, { IButton } from './button';
+import Button, { type IButton } from './button';
 import Input from './input';
 
 export const paginationVariants = cva('', {
