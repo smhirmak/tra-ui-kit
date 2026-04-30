@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "registry/msi-kit/utils/utils.ts",
-      "content": "import { type ClassValue, clsx } from 'clsx';\r\nimport { twMerge } from 'tailwind-merge';\r\n\r\nexport function cn(...inputs: ClassValue[]) {\r\n  return twMerge(clsx(inputs));\r\n}\r\n\r\nexport const preventScrollShift = {\r\n  lock: () => {\r\n    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;\r\n    document.body.style.overflow = 'hidden';\r\n    document.body.style.paddingRight = `${scrollbarWidth}px`;\r\n  },\r\n\r\n  unlock: () => {\r\n    document.body.style.overflow = '';\r\n    document.body.style.paddingRight = '';\r\n  },\r\n};\r\n",
+      "content": "import { type ClassValue, clsx } from 'clsx';\nimport { twMerge } from 'tailwind-merge';\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\nexport const preventScrollShift = {\n  lock: () => {\n    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;\n    document.body.style.overflow = 'hidden';\n    document.body.style.paddingRight = `${scrollbarWidth}px`;\n  },\n\n  unlock: () => {\n    document.body.style.overflow = '';\n    document.body.style.paddingRight = '';\n  },\n};\n",
       "type": "registry:lib"
     }
   ]

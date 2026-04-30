@@ -8,9 +8,7 @@
       "type": "registry:style",
       "title": "MSI UI Theme",
       "description": "Complete theme configuration for MSI UI Kit including colors and design tokens",
-      "dependencies": [
-        "@phosphor-icons/react"
-      ],
+      "dependencies": ["@phosphor-icons/react"],
       "cssVars": {
         "theme": {
           "font-sans": "Inter, sans-serif",
@@ -228,10 +226,7 @@
           "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n \nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"]
     },
     {
       "name": "accordion",
@@ -268,9 +263,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/button"
-      ]
+      "registryDependencies": ["@msi/button"]
     },
     {
       "name": "badge",
@@ -295,12 +288,8 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "tailwindcss"
-      ],
-      "registryDependencies": [
-        "@msi/loading-spinner"
-      ]
+      "dependencies": ["tailwindcss"],
+      "registryDependencies": ["@msi/loading-spinner"]
     },
     {
       "name": "calendar",
@@ -313,9 +302,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/button"
-      ]
+      "registryDependencies": ["@msi/button"]
     },
     {
       "name": "checkbox",
@@ -328,9 +315,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/label"
-      ]
+      "registryDependencies": ["@msi/label"]
     },
     {
       "name": "chip",
@@ -367,16 +352,8 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "date-fns",
-        "react-day-picker"
-      ],
-      "registryDependencies": [
-        "@msi/button",
-        "@msi/calendar",
-        "@msi/label",
-        "@msi/popover"
-      ]
+      "dependencies": ["date-fns", "react-day-picker"],
+      "registryDependencies": ["@msi/button", "@msi/calendar", "@msi/label", "@msi/popover"]
     },
     {
       "name": "dialog",
@@ -401,9 +378,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/button"
-      ]
+      "registryDependencies": ["@msi/button"]
     },
     {
       "name": "dropdown",
@@ -416,9 +391,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/popover"
-      ]
+      "registryDependencies": ["@msi/popover"]
     },
     {
       "name": "information-status",
@@ -443,9 +416,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/button"
-      ]
+      "registryDependencies": ["@msi/button"]
     },
     {
       "name": "label",
@@ -458,9 +429,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/tooltip"
-      ]
+      "registryDependencies": ["@msi/tooltip"]
     },
     {
       "name": "language-select",
@@ -473,9 +442,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/select"
-      ]
+      "registryDependencies": ["@msi/select"]
     },
     {
       "name": "loader",
@@ -488,10 +455,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/loading-spinner",
-        "@msi/loading-linear"
-      ]
+      "registryDependencies": ["@msi/loading-spinner", "@msi/loading-linear"]
     },
     {
       "name": "loading-linear",
@@ -528,10 +492,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/button",
-        "@msi/label"
-      ]
+      "registryDependencies": ["@msi/button", "@msi/label"]
     },
     {
       "name": "popover",
@@ -580,20 +541,14 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/text-field"
-      ]
+      "registryDependencies": ["@msi/text-field"]
     },
     {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
       "description": "A select component that can be used to display a dropdown list of options.",
-      "registryDependencies": [
-        "@msi/popover",
-        "@msi/label",
-        "@msi/button"
-      ],
+      "registryDependencies": ["@msi/popover", "@msi/label", "@msi/button"],
       "files": [
         {
           "path": "registry/msi-kit/components/select.tsx",
@@ -636,9 +591,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/label"
-      ]
+      "registryDependencies": ["@msi/label"]
     },
     {
       "name": "table",
@@ -675,10 +628,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/input",
-        "@msi/label"
-      ]
+      "registryDependencies": ["@msi/input", "@msi/label"]
     },
     {
       "name": "theme-mode-toggle",
@@ -691,9 +641,7 @@
           "type": "registry:component"
         }
       ],
-      "registryDependencies": [
-        "@msi/button"
-      ]
+      "registryDependencies": ["@msi/button"]
     },
     {
       "name": "tooltip",
@@ -706,9 +654,7 @@
           "type": "registry:component"
         }
       ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "dependencies": ["class-variance-authority"]
     }
   ]
 }

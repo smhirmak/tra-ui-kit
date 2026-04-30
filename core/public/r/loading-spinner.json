@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "registry/msi-kit/components/loading-spinner.tsx",
-      "content": "import { cva } from 'class-variance-authority';\r\nimport * as React from 'react';\r\nimport { cn } from '@/lib/utils';\r\n\r\nconst spinnerVariants = cva('size-16 animate-spin rounded-full border-4 border-neutral border-t-primary');\r\n\r\ninterface ILoadingSpinner extends React.HTMLAttributes<HTMLDivElement> {\r\n  className?: string;\r\n}\r\n\r\nconst LoadingSpinner = React.forwardRef<HTMLDivElement, ILoadingSpinner>((props, ref) => {\r\n  const { className, ...rest } = props;\r\n  return <div ref={ref} className={cn(spinnerVariants(), className)} {...rest} />;\r\n});\r\n\r\nLoadingSpinner.displayName = 'LoadingSpinner';\r\n\r\nexport default LoadingSpinner;\r\n",
+      "content": "import { cva } from 'class-variance-authority';\nimport * as React from 'react';\nimport { cn } from '@/lib/utils';\n\nconst spinnerVariants = cva(\n  'size-16 animate-spin rounded-full border-4 border-neutral border-t-primary',\n);\n\ninterface ILoadingSpinner extends React.HTMLAttributes<HTMLDivElement> {\n  className?: string;\n}\n\nconst LoadingSpinner = React.forwardRef<HTMLDivElement, ILoadingSpinner>((props, ref) => {\n  const { className, ...rest } = props;\n  return (\n    <div\n      ref={ref}\n      className={cn(spinnerVariants(), className)}\n      {...rest}\n    />\n  );\n});\n\nLoadingSpinner.displayName = 'LoadingSpinner';\n\nexport default LoadingSpinner;\n",
       "type": "registry:component"
     }
   ]

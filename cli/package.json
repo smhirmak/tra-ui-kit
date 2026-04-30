@@ -1,6 +1,6 @@
 {
   "name": "msi-ui-cli",
-  "version": "0.0.59",
+  "version": "0.0.60",
   "main": "index.js",
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",
