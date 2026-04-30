@@ -5,6 +5,7 @@ import Label from '@/components/label';
 import { cn, preventScrollShift } from '@/lib/utils';
 import Button from '@/components/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
+import { X } from 'lucide-react';
 
 interface ISearchInput {
   searchValue: string;
@@ -593,6 +594,30 @@ const Select: React.FC<ISelect> = ({
             >
               {getDisplay()}
             </div>
+            {hasSelection && !disabled && (
+              <Button
+                className="group absolute right-8 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent"
+                size="icon"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (hasSelection && !disabled) {
+                    if (isMulti) {
+                      setSelectedValue([]);
+                      onChange([]);
+                    } else {
+                      setSelectedValue(null);
+                      onChange('');
+                    }
+                  }
+                }}
+              >
+                <X
+                  className={cn(
+                    'MsiSelect-icon stroke-neutral group-hover:stroke-neutral-dark-white transition-all',
+                  )}
+                />
+              </Button>
+            )}
             <div className="MsiSelect-iconContainer self-center">
               <CaretDownIcon
                 className={cn(
