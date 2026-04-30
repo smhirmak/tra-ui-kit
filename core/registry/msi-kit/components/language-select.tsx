@@ -55,6 +55,7 @@ const LanguageSelect: React.FC<ILanguageSelect> = ({
         options={countries}
         value={((locale as string) || localStorage.getItem('lang')) ?? defaultValue ?? 'en'}
         onChange={handleChange}
+        dropdownItemContainerClassName="flex flex-col gap-1"
       />
     </div>
   );

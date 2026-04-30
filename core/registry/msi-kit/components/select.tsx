@@ -141,6 +141,7 @@ interface ISelect {
   dropdownAlign?: 'left' | 'right';
   noOptionsMessage?: string;
   forceTriggerWidth?: boolean;
+  dropdownItemContainerClassName?: string;
 }
 
 const Select: React.FC<ISelect> = ({
@@ -176,6 +177,7 @@ const Select: React.FC<ISelect> = ({
   dropdownAlign,
   noOptionsMessage,
   forceTriggerWidth = false,
+  dropdownItemContainerClassName,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState<ISelectOption | Array<ISelectOption> | null>(
@@ -586,6 +588,7 @@ const Select: React.FC<ISelect> = ({
           )}
         >
           <div
+            className={cn(dropdownItemContainerClassName)}
             onKeyDown={handleKeyDown}
             ref={dropdownRef}
           >
