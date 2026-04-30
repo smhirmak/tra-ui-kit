@@ -20,17 +20,37 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'options', type: 'Array<{value: any, content: string}>', default: '-', description: 'Array of selectable options' },
+  {
+    prop: 'options',
+    type: 'Array<{value: any, content: string}>',
+    default: '-',
+    description: 'Array of selectable options',
+  },
   { prop: 'value', type: 'any', default: '-', description: 'Selected value(s)' },
   { prop: 'onChange', type: '(value: any) => void', default: '-', description: 'Change handler' },
   { prop: 'isMulti', type: 'boolean', default: 'false', description: 'Enable multi-selection' },
-  { prop: 'isSearchable', type: 'boolean', default: 'false', description: 'Enable search functionality' },
-  { prop: 'size', type: '"sm" | "default" | "lg"', default: '"default"', description: 'Select field size' },
+  {
+    prop: 'isSearchable',
+    type: 'boolean',
+    default: 'false',
+    description: 'Enable search functionality',
+  },
+  {
+    prop: 'size',
+    type: '"sm" | "default" | "lg"',
+    default: '"default"',
+    description: 'Select field size',
+  },
   { prop: 'label', type: 'string', default: '-', description: 'Label text' },
   { prop: 'placeholder', type: 'string', default: '"Select..."', description: 'Placeholder text' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the select' },
   { prop: 'error', type: 'boolean', default: 'false', description: 'Shows error state' },
-  { prop: 'forceTriggerWidth', type: 'boolean', default: 'false', description: 'Forces the dropdown to match the trigger width' },
+  {
+    prop: 'forceTriggerWidth',
+    type: 'boolean',
+    default: 'false',
+    description: 'Forces the dropdown to match the trigger width',
+  },
 ];
 
 const options = [
@@ -65,18 +85,25 @@ const SelectPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Select</h1>
         <p className="text-lg text-neutral-grey">
-          A versatile dropdown select component with support for single/multi selection and search functionality.
+          A versatile dropdown select component with support for single/multi selection and search
+          functionality.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add select' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add select" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="select" />
           </Tab>
         </Tabs>
@@ -157,13 +184,37 @@ const SelectPage = () => {
         <p className="mb-4 text-neutral-grey">Different size options for select field.</p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="flex flex-col gap-4">
-            <Select size="sm" options={options} value={selectedValue} onChange={setSelectedValue} placeholder="Small" />
-            <Select size="default" options={options} value={selectedValue} onChange={setSelectedValue} placeholder="Default" />
-            <Select size="lg" options={options} value={selectedValue} onChange={setSelectedValue} placeholder="Large" />
+            <Select
+              size="sm"
+              options={options}
+              value={selectedValue}
+              onChange={setSelectedValue}
+              placeholder="Small"
+            />
+            <Select
+              size="default"
+              options={options}
+              value={selectedValue}
+              onChange={setSelectedValue}
+              placeholder="Default"
+            />
+            <Select
+              size="lg"
+              options={options}
+              value={selectedValue}
+              onChange={setSelectedValue}
+              placeholder="Large"
+            />
           </div>
         </div>
-        <CustomSyntaxHighlighter className="mb-2" content='<Select size="sm" ... />' />
-        <CustomSyntaxHighlighter className="mb-2" content='<Select size="default" ... />' />
+        <CustomSyntaxHighlighter
+          className="mb-2"
+          content='<Select size="sm" ... />'
+        />
+        <CustomSyntaxHighlighter
+          className="mb-2"
+          content='<Select size="default" ... />'
+        />
         <CustomSyntaxHighlighter content='<Select size="lg" ... />' />
       </section>
 
@@ -180,7 +231,7 @@ const SelectPage = () => {
             placeholder="Disabled"
           />
         </div>
-        <CustomSyntaxHighlighter content='<Select disabled ... />' />
+        <CustomSyntaxHighlighter content="<Select disabled ... />" />
       </section>
 
       {/* Force Trigger Width */}
@@ -189,7 +240,7 @@ const SelectPage = () => {
         <p className="mb-4 text-neutral-grey">Forces the dropdown to match the trigger width.</p>
         <div className="flex gap-8 rounded-lg border border-border bg-background p-6">
           <Select
-            className='w-full'
+            className="w-full"
             forceTriggerWidth
             options={options}
             value={selectedValue}
@@ -197,14 +248,14 @@ const SelectPage = () => {
             placeholder="Force Trigger Width"
           />
           <Select
-            className='w-full'
+            className="w-full"
             options={options}
             value={selectedValue}
             onChange={setSelectedValue}
             placeholder="Default Width"
           />
         </div>
-        <CustomSyntaxHighlighter content='<Select forceTriggerWidth ... />' />
+        <CustomSyntaxHighlighter content="<Select forceTriggerWidth ... />" />
       </section>
 
       {/* API Reference */}
@@ -214,4 +265,3 @@ const SelectPage = () => {
 };
 
 export default SelectPage;
-

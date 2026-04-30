@@ -17,14 +17,24 @@ describe('Input Component', () => {
 
   describe('Value Handling', () => {
     it('should display value', () => {
-      render(<Input value="test" onChange={vi.fn()} />);
+      render(
+        <Input
+          value="test"
+          onChange={vi.fn()}
+        />,
+      );
       const input = screen.getByDisplayValue('test');
       expect(input).toBeInTheDocument();
     });
 
     it('should call onChange when typing', () => {
       const onChange = vi.fn();
-      render(<Input value="" onChange={onChange} />);
+      render(
+        <Input
+          value=""
+          onChange={onChange}
+        />,
+      );
       const input = screen.getByRole('textbox');
       fireEvent.change(input, { target: { value: 'new text' } });
       expect(onChange).toHaveBeenCalled();
@@ -54,7 +64,12 @@ describe('Input Component', () => {
 
     it('should not call onChange when disabled', () => {
       const onChange = vi.fn();
-      render(<Input disabled onChange={onChange} />);
+      render(
+        <Input
+          disabled
+          onChange={onChange}
+        />,
+      );
       const input = screen.getByRole('textbox');
       fireEvent.change(input, { target: { value: 'test' } });
       expect(onChange).not.toHaveBeenCalled();

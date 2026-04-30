@@ -17,8 +17,18 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'setLocale', type: '(locale: string) => void', default: 'undefined', description: 'Custom locale setter function' },
-  { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes' },
+  {
+    prop: 'setLocale',
+    type: '(locale: string) => void',
+    default: 'undefined',
+    description: 'Custom locale setter function',
+  },
+  {
+    prop: 'className',
+    type: 'string',
+    default: 'undefined',
+    description: 'Additional CSS classes',
+  },
 ];
 
 const LanguageSelectPage = () => {
@@ -44,11 +54,17 @@ const LanguageSelectPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add language-select' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add language-select" />
           </Tab>
-          <Tab value='manual' label={t('Manual')}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="language-select" />
           </Tab>
         </Tabs>
@@ -64,12 +80,16 @@ const LanguageSelectPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="flex items-center gap-4">
               <span className="text-neutral-grey">Select Language:</span>
-              <LanguageSelect locale={locale} setLocale={setLocale} />
+              <LanguageSelect
+                locale={locale}
+                setLocale={setLocale}
+              />
             </div>
           </div>
-          <CustomSyntaxHighlighter content='<LanguageSelect />' />
+          <CustomSyntaxHighlighter content="<LanguageSelect />" />
           <p className="text-sm text-neutral-grey">
-            The component automatically saves the selected language to localStorage and updates the LocalizeContext.
+            The component automatically saves the selected language to localStorage and updates the
+            LocalizeContext.
           </p>
         </div>
       </section>
@@ -90,4 +110,3 @@ const LanguageSelectPage = () => {
 };
 
 export default LanguageSelectPage;
-

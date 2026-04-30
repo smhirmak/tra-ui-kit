@@ -18,7 +18,12 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'id', type: 'string', default: '-', description: 'Unique identifier for the radio input' },
+  {
+    prop: 'id',
+    type: 'string',
+    default: '-',
+    description: 'Unique identifier for the radio input',
+  },
   { prop: 'value', type: 'string', default: '-', description: 'Value of the radio button' },
   { prop: 'label', type: 'string', default: '-', description: 'Label text for the radio button' },
   { prop: 'checked', type: 'boolean', default: 'false', description: 'Checked state' },
@@ -49,11 +54,17 @@ const RadioButtonPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add radio-buttons' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add radio-buttons" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="radio-buttons" />
           </Tab>
         </Tabs>
@@ -64,10 +75,25 @@ const RadioButtonPage = () => {
         <h2 className="mb-4 text-2xl font-bold">Usage</h2>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <RadioGroup className="flex flex-col gap-2" defaultValue="1">
-              <RadioGroupItem id="1" value="1" label="Option 1" />
-              <RadioGroupItem id="2" value="2" label="Option 2" />
-              <RadioGroupItem id="3" value="3" label="Option 3" />
+            <RadioGroup
+              className="flex flex-col gap-2"
+              defaultValue="1"
+            >
+              <RadioGroupItem
+                id="1"
+                value="1"
+                label="Option 1"
+              />
+              <RadioGroupItem
+                id="2"
+                value="2"
+                label="Option 2"
+              />
+              <RadioGroupItem
+                id="3"
+                value="3"
+                label="Option 3"
+              />
             </RadioGroup>
           </div>
           <CustomSyntaxHighlighter
@@ -83,13 +109,37 @@ const RadioButtonPage = () => {
       {/* States */}
       <section id="states">
         <h2 className="mb-4 text-2xl font-bold">States</h2>
-        <p className="mb-4 text-neutral-grey">Radio buttons support various states including checked and disabled.</p>
+        <p className="mb-4 text-neutral-grey">
+          Radio buttons support various states including checked and disabled.
+        </p>
         <div className="rounded-lg border border-border bg-background p-6">
-          <RadioGroup className="flex flex-col gap-2" defaultValue="2">
-            <RadioGroupItem id="r1" value="1" label="Default" />
-            <RadioGroupItem id="r2" value="2" label="Checked" />
-            <RadioGroupItem id="r3" value="3" label="Disabled" disabled />
-            <RadioGroupItem id="r4" value="4" label="Checked & Disabled" checked disabled />
+          <RadioGroup
+            className="flex flex-col gap-2"
+            defaultValue="2"
+          >
+            <RadioGroupItem
+              id="r1"
+              value="1"
+              label="Default"
+            />
+            <RadioGroupItem
+              id="r2"
+              value="2"
+              label="Checked"
+            />
+            <RadioGroupItem
+              id="r3"
+              value="3"
+              label="Disabled"
+              disabled
+            />
+            <RadioGroupItem
+              id="r4"
+              value="4"
+              label="Checked & Disabled"
+              checked
+              disabled
+            />
           </RadioGroup>
         </div>
         <CustomSyntaxHighlighter
@@ -114,9 +164,21 @@ const RadioButtonPage = () => {
                 defaultValue={selectedValue}
                 onChange={(value) => setSelectedValue(value as string)}
               >
-                <RadioGroupItem id="c1" value="1" label="React" />
-                <RadioGroupItem id="c2" value="2" label="Vue" />
-                <RadioGroupItem id="c3" value="3" label="Angular" />
+                <RadioGroupItem
+                  id="c1"
+                  value="1"
+                  label="React"
+                />
+                <RadioGroupItem
+                  id="c2"
+                  value="2"
+                  label="Vue"
+                />
+                <RadioGroupItem
+                  id="c3"
+                  value="3"
+                  label="Angular"
+                />
               </RadioGroup>
               <p className="text-sm text-neutral-grey">Selected: {selectedValue}</p>
             </div>
@@ -143,4 +205,3 @@ const RadioButtonPage = () => {
 };
 
 export default RadioButtonPage;
-

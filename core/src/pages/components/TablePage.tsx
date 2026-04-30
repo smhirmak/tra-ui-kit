@@ -19,7 +19,12 @@ const tocItems: TOCItem[] = [
 
 const apiTableData = [
   { prop: 'className', type: 'string', default: '-', description: 'Custom CSS class for table' },
-  { prop: 'children', type: 'ReactNode', default: '-', description: 'Table content (THead, TBody)' },
+  {
+    prop: 'children',
+    type: 'ReactNode',
+    default: '-',
+    description: 'Table content (THead, TBody)',
+  },
 ];
 
 const componentApiData = [
@@ -59,11 +64,17 @@ const TablePage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add table' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add table" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="table" />
           </Tab>
         </Tabs>
@@ -206,12 +217,19 @@ const TablePage = () => {
       {/* API Reference */}
       <section id="api">
         <h2 className="mb-4 text-2xl font-bold">API Reference</h2>
-        <ApiTable tableData={componentApiData} title='Table Components' titleClassName='text-xl font-semibold' />
-        <ApiTable tableData={apiTableData} title='Props' titleClassName='text-xl font-semibold' />
+        <ApiTable
+          tableData={componentApiData}
+          title="Table Components"
+          titleClassName="text-xl font-semibold"
+        />
+        <ApiTable
+          tableData={apiTableData}
+          title="Props"
+          titleClassName="text-xl font-semibold"
+        />
       </section>
     </div>
   );
 };
 
 export default TablePage;
-

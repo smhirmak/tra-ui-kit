@@ -135,7 +135,9 @@ describe('Popover Component', () => {
     it('should accept align="start" on PopoverContent', () => {
       render(
         <Popover>
-          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
           <PopoverContent align="left">Content</PopoverContent>
         </Popover>,
       );
@@ -145,7 +147,9 @@ describe('Popover Component', () => {
     it('should accept align="right" on PopoverContent', () => {
       render(
         <Popover>
-          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
           <PopoverContent align="right">Content</PopoverContent>
         </Popover>,
       );
@@ -155,7 +159,9 @@ describe('Popover Component', () => {
     it('should accept align="center" on PopoverContent', () => {
       render(
         <Popover>
-          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
           <PopoverContent align="center">Content</PopoverContent>
         </Popover>,
       );
@@ -165,7 +171,9 @@ describe('Popover Component', () => {
     it('should accept side="top" on PopoverContent', () => {
       render(
         <Popover>
-          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
           <PopoverContent side="top">Content</PopoverContent>
         </Popover>,
       );
@@ -175,7 +183,9 @@ describe('Popover Component', () => {
     it('should accept side="bottom" on PopoverContent', () => {
       render(
         <Popover>
-          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
           <PopoverContent side="bottom">Content</PopoverContent>
         </Popover>,
       );
@@ -185,7 +195,9 @@ describe('Popover Component', () => {
     it('should show content with align="end" after trigger click', async () => {
       render(
         <Popover>
-          <PopoverTrigger><button>Open</button></PopoverTrigger>
+          <PopoverTrigger>
+            <button>Open</button>
+          </PopoverTrigger>
           <PopoverContent align="right">Aligned Content</PopoverContent>
         </Popover>,
       );
@@ -204,7 +216,9 @@ describe('Popover Component', () => {
     it('should accept maxHeight as a number', () => {
       render(
         <Popover maxHeight={400}>
-          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
           <PopoverContent>Content</PopoverContent>
         </Popover>,
       );
@@ -214,7 +228,9 @@ describe('Popover Component', () => {
     it('should accept maxHeight as a string', () => {
       render(
         <Popover maxHeight="50vh">
-          <PopoverTrigger><button>Trigger</button></PopoverTrigger>
+          <PopoverTrigger>
+            <button>Trigger</button>
+          </PopoverTrigger>
           <PopoverContent>Content</PopoverContent>
         </Popover>,
       );
@@ -224,7 +240,9 @@ describe('Popover Component', () => {
     it('should show content with maxHeight after trigger click', async () => {
       render(
         <Popover maxHeight={300}>
-          <PopoverTrigger><button>Open</button></PopoverTrigger>
+          <PopoverTrigger>
+            <button>Open</button>
+          </PopoverTrigger>
           <PopoverContent>Scrollable Content</PopoverContent>
         </Popover>,
       );

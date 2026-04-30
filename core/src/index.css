@@ -292,13 +292,19 @@
   }
   @keyframes gradient-slide {
     0% {
-      background-position: 100%, 0% 50%;
+      background-position:
+        100%,
+        0% 50%;
     }
     50% {
-      background-position: 100%, 100% 50%;
+      background-position:
+        100%,
+        100% 50%;
     }
     100% {
-      background-position: 100%, 0% 50%;
+      background-position:
+        100%,
+        0% 50%;
     }
   }
 }
@@ -438,7 +444,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    transition: background-color 300ms ease, color 150ms ease;
+    transition:
+      background-color 300ms ease,
+      color 150ms ease;
   }
 
   /* Improved focus ring for accessibility */
@@ -470,23 +478,39 @@
 @layer utilities {
   .border-gradient-primary {
     border: 2px solid transparent;
-    background-image: 
+    background-image:
       linear-gradient(var(--color-background), var(--color-background)),
-      linear-gradient(120deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--primary)), hsl(var(--secondary)));
+      linear-gradient(
+        120deg,
+        hsl(var(--primary)),
+        hsl(var(--secondary)),
+        hsl(var(--primary)),
+        hsl(var(--secondary))
+      );
     background-origin: border-box;
     background-clip: padding-box, border-box;
-    background-size: 100%, 300% 100%;
+    background-size:
+      100%,
+      300% 100%;
     animation: var(--animate-gradient-slide);
   }
-  
+
   .border-gradient-secondary {
     border: 2px solid transparent;
-    background-image: 
+    background-image:
       linear-gradient(var(--color-background), var(--color-background)),
-      linear-gradient(120deg, hsl(var(--secondary)), hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--primary)));
+      linear-gradient(
+        120deg,
+        hsl(var(--secondary)),
+        hsl(var(--primary)),
+        hsl(var(--secondary)),
+        hsl(var(--primary))
+      );
     background-origin: border-box;
     background-clip: padding-box, border-box;
-    background-size: 100%, 300% 100%;
+    background-size:
+      100%,
+      300% 100%;
     animation: var(--animate-gradient-slide);
   }
 }
@@ -548,7 +572,7 @@ input:-webkit-autofill:active {
   -webkit-appearance: none;
   margin: 0;
 }
-.MsiDatePicker-root input[type="number"] {
+.MsiDatePicker-root input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -557,6 +581,6 @@ input:-webkit-autofill:active {
   -webkit-appearance: none;
   margin: 0;
 }
-.MsiPagination-container input[type="number"] {
+.MsiPagination-container input[type='number'] {
   -moz-appearance: textfield;
 }

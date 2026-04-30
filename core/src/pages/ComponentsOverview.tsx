@@ -42,17 +42,18 @@ const ComponentsOverview = () => {
   // Active category pill (click-based)
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  const groupedComponents = useMemo(() =>
-    CATEGORIES.map((category) => ({
-      ...category,
-      components: Constants.componentList.filter(
-        (c) =>
-          c.category === category.name &&
-          (debouncedSearch === '' ||
-            c.name.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
-            c.description.toLowerCase().includes(debouncedSearch.toLowerCase())),
-      ),
-    })).filter((g) => g.components.length > 0),
+  const groupedComponents = useMemo(
+    () =>
+      CATEGORIES.map((category) => ({
+        ...category,
+        components: Constants.componentList.filter(
+          (c) =>
+            c.category === category.name &&
+            (debouncedSearch === '' ||
+              c.name.toLowerCase().includes(debouncedSearch.toLowerCase()) ||
+              c.description.toLowerCase().includes(debouncedSearch.toLowerCase())),
+        ),
+      })).filter((g) => g.components.length > 0),
     [debouncedSearch],
   );
 
@@ -80,7 +81,9 @@ const ComponentsOverview = () => {
               {t('All Components')}
             </h1>
             <p className="text-lg text-neutral-grey md:text-xl">
-              {t('Browse our complete collection of {{count}} production-ready React components', { count: Constants.componentList.length })}
+              {t('Browse our complete collection of {{count}} production-ready React components', {
+                count: Constants.componentList.length,
+              })}
             </p>
           </div>
 
@@ -110,7 +113,9 @@ const ComponentsOverview = () => {
               className="mb-10 grid gap-3 sm:grid-cols-3 lg:grid-cols-6"
             >
               {CATEGORIES.map((category) => {
-                const count = Constants.componentList.filter((c) => c.category === category.name).length;
+                const count = Constants.componentList.filter(
+                  (c) => c.category === category.name,
+                ).length;
                 const isActive = activeCategory === category.name;
                 return (
                   <a
@@ -124,16 +129,22 @@ const ComponentsOverview = () => {
                         : 'bg-background shadow-soft-grey hover:bg-primary/5 hover:shadow-hard-primary',
                     )}
                   >
-                    <div className={cn(
-                      'mb-1 text-2xl font-bold transition-colors',
-                      isActive ? 'text-white' : 'text-primary group-hover:text-primary-focused',
-                    )}>
+                    <div
+                      className={cn(
+                        'mb-1 text-2xl font-bold transition-colors',
+                        isActive ? 'text-white' : 'text-primary group-hover:text-primary-focused',
+                      )}
+                    >
                       {count}
                     </div>
-                    <div className={cn(
-                      'text-sm transition-colors',
-                      isActive ? 'text-white/90' : 'text-neutral-grey group-hover:text-foreground',
-                    )}>
+                    <div
+                      className={cn(
+                        'text-sm transition-colors',
+                        isActive
+                          ? 'text-white/90'
+                          : 'text-neutral-grey group-hover:text-foreground',
+                      )}
+                    >
                       {t(category.name)}
                     </div>
                   </a>
@@ -174,7 +185,11 @@ const ComponentsOverview = () => {
                 className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
               >
                 {group.components.map((component) => (
-                  <motion.div key={component.name} variants={itemVariants} whileHover={{ scale: 1.03, y: -2 }}>
+                  <motion.div
+                    key={component.name}
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.03, y: -2 }}
+                  >
                     <Link
                       to={`/v${currentVersion}${component.path}` as any}
                       className="group relative block h-full rounded-xl border border-transparent bg-background p-6 shadow-soft-grey transition-all duration-300 hover:border-primary/20 hover:shadow-hard-primary"
@@ -204,4 +219,3 @@ const ComponentsOverview = () => {
 };
 
 export default ComponentsOverview;
-

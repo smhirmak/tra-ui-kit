@@ -31,24 +31,45 @@ describe('LanguageSelect Component', () => {
 
   describe('Basic Rendering', () => {
     it('should render select component', () => {
-      render(<LanguageSelect locale='en' setLocale={mockSetLocale} />);
+      render(
+        <LanguageSelect
+          locale="en"
+          setLocale={mockSetLocale}
+        />,
+      );
       expect(screen.getByTestId('select-mock')).toBeInTheDocument();
     });
 
     it('should apply custom className', () => {
-      const { container } = render(<LanguageSelect className="custom-class" locale='en' setLocale={mockSetLocale} />);
+      const { container } = render(
+        <LanguageSelect
+          className="custom-class"
+          locale="en"
+          setLocale={mockSetLocale}
+        />,
+      );
       expect(container.firstChild).toHaveClass('custom-class');
     });
 
     it('should pass border-none to select trigger', () => {
-      render(<LanguageSelect locale='en' setLocale={mockSetLocale} />);
+      render(
+        <LanguageSelect
+          locale="en"
+          setLocale={mockSetLocale}
+        />,
+      );
       expect(screen.getByTestId('trigger-class')).toHaveTextContent('border-none');
     });
   });
 
   describe('Language Selection', () => {
     it('should call setLocale when selecting TR', async () => {
-      render(<LanguageSelect locale='en' setLocale={mockSetLocale} />);
+      render(
+        <LanguageSelect
+          locale="en"
+          setLocale={mockSetLocale}
+        />,
+      );
 
       const trButton = screen.getByText('TR');
       fireEvent.click(trButton);
@@ -59,7 +80,12 @@ describe('LanguageSelect Component', () => {
     });
 
     it('should call setLocale when selecting EN', async () => {
-      render(<LanguageSelect locale='en' setLocale={mockSetLocale} />);
+      render(
+        <LanguageSelect
+          locale="en"
+          setLocale={mockSetLocale}
+        />,
+      );
 
       const enButton = screen.getByText('EN');
       fireEvent.click(enButton);
@@ -70,7 +96,12 @@ describe('LanguageSelect Component', () => {
     });
 
     it('should save selected language to localStorage', async () => {
-      render(<LanguageSelect locale='en' setLocale={mockSetLocale} />);
+      render(
+        <LanguageSelect
+          locale="en"
+          setLocale={mockSetLocale}
+        />,
+      );
 
       const trButton = screen.getByText('TR');
       fireEvent.click(trButton);
@@ -84,13 +115,23 @@ describe('LanguageSelect Component', () => {
   describe('Default Value', () => {
     it('should use localStorage value as default if available', () => {
       localStorage.setItem('lang', 'en');
-      render(<LanguageSelect locale='en' setLocale={mockSetLocale} />);
+      render(
+        <LanguageSelect
+          locale="en"
+          setLocale={mockSetLocale}
+        />,
+      );
 
       expect(screen.getByTestId('default-value')).toHaveTextContent('en');
     });
 
     it('should use locale as default when localStorage is empty', () => {
-      render(<LanguageSelect locale='en' setLocale={mockSetLocale} />);
+      render(
+        <LanguageSelect
+          locale="en"
+          setLocale={mockSetLocale}
+        />,
+      );
 
       // locale from mock is 'en', so value should be 'en'
       const defaultValue = screen.getByTestId('default-value');

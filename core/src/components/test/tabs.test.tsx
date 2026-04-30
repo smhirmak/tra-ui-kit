@@ -9,9 +9,22 @@ describe('Tabs', () => {
   describe('Rendering', () => {
     it('should render tabs container', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2">Content 2</Tab>
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+          >
+            Content 2
+          </Tab>
         </Tabs>,
       );
       expect(container.querySelector('.flex')).toBeInTheDocument();
@@ -19,10 +32,28 @@ describe('Tabs', () => {
 
     it('should render all tab labels', () => {
       render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2">Content 2</Tab>
-          <Tab label="Tab 3" value="tab3">Content 3</Tab>
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+          >
+            Content 2
+          </Tab>
+          <Tab
+            label="Tab 3"
+            value="tab3"
+          >
+            Content 3
+          </Tab>
         </Tabs>,
       );
 
@@ -33,9 +64,22 @@ describe('Tabs', () => {
 
     it('should render active tab content', () => {
       render(
-        <Tabs activeTab="tab2" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2">Content 2</Tab>
+        <Tabs
+          activeTab="tab2"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+          >
+            Content 2
+          </Tab>
         </Tabs>,
       );
 
@@ -47,8 +91,17 @@ describe('Tabs', () => {
   describe('Variants', () => {
     it('should render default variant', () => {
       render(
-        <Tabs activeTab="tab1" variant="default" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          variant="default"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -59,8 +112,17 @@ describe('Tabs', () => {
 
     it('should render solid variant', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" variant="solid" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          variant="solid"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -70,8 +132,17 @@ describe('Tabs', () => {
 
     it('should render outlined variant', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" variant="outlined" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          variant="outlined"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -81,8 +152,17 @@ describe('Tabs', () => {
 
     it('should render split variant', () => {
       render(
-        <Tabs activeTab="tab1" variant="split" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          variant="split"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -94,8 +174,17 @@ describe('Tabs', () => {
   describe('Sizes', () => {
     it('should apply small size', () => {
       render(
-        <Tabs activeTab="tab1" size="sm" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          size="sm"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -105,8 +194,17 @@ describe('Tabs', () => {
 
     it('should apply default size', () => {
       render(
-        <Tabs activeTab="tab1" size="default" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          size="default"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -116,8 +214,17 @@ describe('Tabs', () => {
 
     it('should apply large size', () => {
       render(
-        <Tabs activeTab="tab1" size="lg" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          size="lg"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -129,8 +236,16 @@ describe('Tabs', () => {
   describe('Direction', () => {
     it('should render horizontal direction by default', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -140,8 +255,17 @@ describe('Tabs', () => {
 
     it('should render vertical direction', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" direction="vertical" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          direction="vertical"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -153,8 +277,16 @@ describe('Tabs', () => {
   describe('Content Placement', () => {
     it('should place content at bottom by default', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -163,8 +295,17 @@ describe('Tabs', () => {
 
     it('should place content at top', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" contentPlacement="top" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          contentPlacement="top"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -173,8 +314,17 @@ describe('Tabs', () => {
 
     it('should place content at right', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" contentPlacement="right" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          contentPlacement="right"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -183,8 +333,17 @@ describe('Tabs', () => {
 
     it('should place content at left', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" contentPlacement="left" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          contentPlacement="left"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -195,8 +354,17 @@ describe('Tabs', () => {
   describe('Radius', () => {
     it('should apply default radius', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" radius="default" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          radius="default"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -205,8 +373,17 @@ describe('Tabs', () => {
 
     it('should apply no radius', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" radius="none" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          radius="none"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -215,8 +392,17 @@ describe('Tabs', () => {
 
     it('should apply full radius', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" radius="full" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          radius="full"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -228,9 +414,22 @@ describe('Tabs', () => {
     it('should call onChange when clicking a tab', async () => {
       const user = userEvent.setup();
       render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2">Content 2</Tab>
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+          >
+            Content 2
+          </Tab>
         </Tabs>,
       );
 
@@ -240,18 +439,44 @@ describe('Tabs', () => {
 
     it('should update active tab content when activeTab changes', () => {
       const { rerender } = render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2">Content 2</Tab>
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+          >
+            Content 2
+          </Tab>
         </Tabs>,
       );
 
       expect(screen.getByText('Content 1')).toBeInTheDocument();
 
       rerender(
-        <Tabs activeTab="tab2" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2">Content 2</Tab>
+        <Tabs
+          activeTab="tab2"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+          >
+            Content 2
+          </Tab>
         </Tabs>,
       );
 
@@ -263,9 +488,22 @@ describe('Tabs', () => {
   describe('Active States', () => {
     it('should mark active tab with active-tab class', () => {
       render(
-        <Tabs activeTab="tab2" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2">Content 2</Tab>
+        <Tabs
+          activeTab="tab2"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+          >
+            Content 2
+          </Tab>
         </Tabs>,
       );
 
@@ -275,9 +513,22 @@ describe('Tabs', () => {
 
     it('should not mark inactive tabs with active-tab class', () => {
       render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2">Content 2</Tab>
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+          >
+            Content 2
+          </Tab>
         </Tabs>,
       );
 
@@ -289,9 +540,23 @@ describe('Tabs', () => {
   describe('Disabled States', () => {
     it('should disable all tabs when disabled prop is true', () => {
       render(
-        <Tabs activeTab="tab1" disabled onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2">Content 2</Tab>
+        <Tabs
+          activeTab="tab1"
+          disabled
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+          >
+            Content 2
+          </Tab>
         </Tabs>,
       );
 
@@ -301,9 +566,23 @@ describe('Tabs', () => {
 
     it('should disable individual tab', () => {
       render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
-          <Tab label="Tab 2" value="tab2" disabled>Content 2</Tab>
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
+          <Tab
+            label="Tab 2"
+            value="tab2"
+            disabled
+          >
+            Content 2
+          </Tab>
         </Tabs>,
       );
 
@@ -315,8 +594,17 @@ describe('Tabs', () => {
   describe('Custom Styling', () => {
     it('should apply custom className to Tabs', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" className="custom-tabs" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          className="custom-tabs"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -325,8 +613,17 @@ describe('Tabs', () => {
 
     it('should apply custom className to Tab', () => {
       render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1" className="custom-tab">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+            className="custom-tab"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -335,8 +632,17 @@ describe('Tabs', () => {
 
     it('should apply custom contentClassName', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" contentClasName="custom-content" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          contentClasName="custom-content"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -345,8 +651,18 @@ describe('Tabs', () => {
 
     it('should apply custom selectorClassName', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" variant="solid" selectorClassName="custom-selector" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          variant="solid"
+          selectorClassName="custom-selector"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -357,8 +673,14 @@ describe('Tabs', () => {
   describe('ReactNode Labels', () => {
     it('should render ReactNode as label', () => {
       render(
-        <Tabs activeTab="tab1" onChange={mockOnChange}>
-          <Tab label={<span data-testid="custom-label">Custom Label</span>} value="tab1">
+        <Tabs
+          activeTab="tab1"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label={<span data-testid="custom-label">Custom Label</span>}
+            value="tab1"
+          >
             Content 1
           </Tab>
         </Tabs>,
@@ -371,7 +693,14 @@ describe('Tabs', () => {
   describe('Context Validation', () => {
     it('should use default context when Tab is used outside Tabs', () => {
       // Component has default context value, so it won't throw
-      const { container } = render(<Tab label="Tab 1" value="tab1">Content</Tab>);
+      const { container } = render(
+        <Tab
+          label="Tab 1"
+          value="tab1"
+        >
+          Content
+        </Tab>,
+      );
 
       expect(screen.getByText('Tab 1')).toBeInTheDocument();
       expect(container.querySelector('button')).toBeInTheDocument();
@@ -381,8 +710,17 @@ describe('Tabs', () => {
   describe('Selector Position Updates', () => {
     it('should render selector for non-default variants', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" variant="solid" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          variant="solid"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 
@@ -391,8 +729,17 @@ describe('Tabs', () => {
 
     it('should not render selector for default variant', () => {
       const { container } = render(
-        <Tabs activeTab="tab1" variant="default" onChange={mockOnChange}>
-          <Tab label="Tab 1" value="tab1">Content 1</Tab>
+        <Tabs
+          activeTab="tab1"
+          variant="default"
+          onChange={mockOnChange}
+        >
+          <Tab
+            label="Tab 1"
+            value="tab1"
+          >
+            Content 1
+          </Tab>
         </Tabs>,
       );
 

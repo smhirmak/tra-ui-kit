@@ -50,31 +50,46 @@ interface IChip {
 }
 
 const Chip = React.forwardRef<HTMLButtonElement, IChip>(
-  ({
-    active = false,
-    deleteIcon,
-    endIcon,
-    id,
-    label,
-    labelClassName,
-    onClick,
-    onDelete,
-    selected = false,
-    size = 'default',
-    startIcon,
-  }, ref) => (
-    <button ref={ref} id={id} className={cn(chipVariants({ size, clickable: Boolean(onClick), active, selected }))} type="button" onClick={onClick ? () => onClick(id) : () => { }}>
-      {(startIcon)
-        && <span className="mr-1.5">{startIcon}</span>}
+  (
+    {
+      active = false,
+      deleteIcon,
+      endIcon,
+      id,
+      label,
+      labelClassName,
+      onClick,
+      onDelete,
+      selected = false,
+      size = 'default',
+      startIcon,
+    },
+    ref,
+  ) => (
+    <button
+      ref={ref}
+      id={id}
+      className={cn(chipVariants({ size, clickable: Boolean(onClick), active, selected }))}
+      type="button"
+      onClick={onClick ? () => onClick(id) : () => {}}
+    >
+      {startIcon && <span className="mr-1.5">{startIcon}</span>}
       <span className={`TraChipLabel ${cn(labelClassName)}`}>{label}</span>
-      {(endIcon)
-        && <span className="ml-1.5">{endIcon}</span>}
+      {endIcon && <span className="ml-1.5">{endIcon}</span>}
       {onDelete && (
         <div
           role="button"
           tabIndex={0}
-          onClick={e => { e.stopPropagation(); onDelete(id); }}
-          onKeyPress={e => { if (e.key === 'Enter') { e.stopPropagation(); onDelete(id); } }}
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete(id);
+          }}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              e.stopPropagation();
+              onDelete(id);
+            }
+          }}
           className="hover:bg-primary/50 hover:text-primary-5 ml-1 rounded-full p-0.5"
         >
           {deleteIcon ?? <XIcon />}

@@ -8,431 +8,408 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as VersionRouteRouteImport } from './routes/$version/route'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as VersionIndexRouteImport } from './routes/$version/index'
-import { Route as VersionInstallationRouteImport } from './routes/$version/installation'
-import { Route as VersionComponentsIndexRouteImport } from './routes/$version/components/index'
-import { Route as VersionComponentsSidebarRouteRouteImport } from './routes/$version/components/_sidebar/route'
-import { Route as VersionComponentsSidebarTooltipRouteImport } from './routes/$version/components/_sidebar/tooltip'
-import { Route as VersionComponentsSidebarThemeModeToggleRouteImport } from './routes/$version/components/_sidebar/theme-mode-toggle'
-import { Route as VersionComponentsSidebarTextFieldRouteImport } from './routes/$version/components/_sidebar/text-field'
-import { Route as VersionComponentsSidebarTabsRouteImport } from './routes/$version/components/_sidebar/tabs'
-import { Route as VersionComponentsSidebarTableRouteImport } from './routes/$version/components/_sidebar/table'
-import { Route as VersionComponentsSidebarSwitchRouteImport } from './routes/$version/components/_sidebar/switch'
-import { Route as VersionComponentsSidebarSkeletonRouteImport } from './routes/$version/components/_sidebar/skeleton'
-import { Route as VersionComponentsSidebarSidebarRouteImport } from './routes/$version/components/_sidebar/sidebar'
-import { Route as VersionComponentsSidebarSelectRouteImport } from './routes/$version/components/_sidebar/select'
-import { Route as VersionComponentsSidebarSearchFieldRouteImport } from './routes/$version/components/_sidebar/search-field'
-import { Route as VersionComponentsSidebarRadioButtonRouteImport } from './routes/$version/components/_sidebar/radio-button'
-import { Route as VersionComponentsSidebarProgressBarRouteImport } from './routes/$version/components/_sidebar/progress-bar'
-import { Route as VersionComponentsSidebarPopoverRouteImport } from './routes/$version/components/_sidebar/popover'
-import { Route as VersionComponentsSidebarPaginationRouteImport } from './routes/$version/components/_sidebar/pagination'
-import { Route as VersionComponentsSidebarNotificationRouteImport } from './routes/$version/components/_sidebar/notification'
-import { Route as VersionComponentsSidebarLoadingSpinnerRouteImport } from './routes/$version/components/_sidebar/loading-spinner'
-import { Route as VersionComponentsSidebarLoadingLinearRouteImport } from './routes/$version/components/_sidebar/loading-linear'
-import { Route as VersionComponentsSidebarLanguageSelectRouteImport } from './routes/$version/components/_sidebar/language-select'
-import { Route as VersionComponentsSidebarLabelRouteImport } from './routes/$version/components/_sidebar/label'
-import { Route as VersionComponentsSidebarInputRouteImport } from './routes/$version/components/_sidebar/input'
-import { Route as VersionComponentsSidebarInformationStatusRouteImport } from './routes/$version/components/_sidebar/information-status'
-import { Route as VersionComponentsSidebarImageHoverEffectRouteImport } from './routes/$version/components/_sidebar/image-hover-effect'
-import { Route as VersionComponentsSidebarDropdownRouteImport } from './routes/$version/components/_sidebar/dropdown'
-import { Route as VersionComponentsSidebarDrawerRouteImport } from './routes/$version/components/_sidebar/drawer'
-import { Route as VersionComponentsSidebarDialogRouteImport } from './routes/$version/components/_sidebar/dialog'
-import { Route as VersionComponentsSidebarDatePickerRouteImport } from './routes/$version/components/_sidebar/date-picker'
-import { Route as VersionComponentsSidebarContainerRouteImport } from './routes/$version/components/_sidebar/container'
-import { Route as VersionComponentsSidebarChipRouteImport } from './routes/$version/components/_sidebar/chip'
-import { Route as VersionComponentsSidebarCheckboxRouteImport } from './routes/$version/components/_sidebar/checkbox'
-import { Route as VersionComponentsSidebarCalendarRouteImport } from './routes/$version/components/_sidebar/calendar'
-import { Route as VersionComponentsSidebarButtonRouteImport } from './routes/$version/components/_sidebar/button'
-import { Route as VersionComponentsSidebarBadgeRouteImport } from './routes/$version/components/_sidebar/badge'
-import { Route as VersionComponentsSidebarBackToTopButtonRouteImport } from './routes/$version/components/_sidebar/back-to-top-button'
-import { Route as VersionComponentsSidebarAvatarRouteImport } from './routes/$version/components/_sidebar/avatar'
-import { Route as VersionComponentsSidebarAccordionRouteImport } from './routes/$version/components/_sidebar/accordion'
-import { Route as VersionComponentsSidebarLoaderIndexRouteImport } from './routes/$version/components/_sidebar/loader/index'
+import { Route as rootRouteImport } from './routes/__root';
+import { Route as VersionRouteRouteImport } from './routes/$version/route';
+import { Route as IndexRouteImport } from './routes/index';
+import { Route as VersionIndexRouteImport } from './routes/$version/index';
+import { Route as VersionInstallationRouteImport } from './routes/$version/installation';
+import { Route as VersionComponentsIndexRouteImport } from './routes/$version/components/index';
+import { Route as VersionComponentsSidebarRouteRouteImport } from './routes/$version/components/_sidebar/route';
+import { Route as VersionComponentsSidebarTooltipRouteImport } from './routes/$version/components/_sidebar/tooltip';
+import { Route as VersionComponentsSidebarThemeModeToggleRouteImport } from './routes/$version/components/_sidebar/theme-mode-toggle';
+import { Route as VersionComponentsSidebarTextFieldRouteImport } from './routes/$version/components/_sidebar/text-field';
+import { Route as VersionComponentsSidebarTabsRouteImport } from './routes/$version/components/_sidebar/tabs';
+import { Route as VersionComponentsSidebarTableRouteImport } from './routes/$version/components/_sidebar/table';
+import { Route as VersionComponentsSidebarSwitchRouteImport } from './routes/$version/components/_sidebar/switch';
+import { Route as VersionComponentsSidebarSkeletonRouteImport } from './routes/$version/components/_sidebar/skeleton';
+import { Route as VersionComponentsSidebarSidebarRouteImport } from './routes/$version/components/_sidebar/sidebar';
+import { Route as VersionComponentsSidebarSelectRouteImport } from './routes/$version/components/_sidebar/select';
+import { Route as VersionComponentsSidebarSearchFieldRouteImport } from './routes/$version/components/_sidebar/search-field';
+import { Route as VersionComponentsSidebarRadioButtonRouteImport } from './routes/$version/components/_sidebar/radio-button';
+import { Route as VersionComponentsSidebarProgressBarRouteImport } from './routes/$version/components/_sidebar/progress-bar';
+import { Route as VersionComponentsSidebarPopoverRouteImport } from './routes/$version/components/_sidebar/popover';
+import { Route as VersionComponentsSidebarPaginationRouteImport } from './routes/$version/components/_sidebar/pagination';
+import { Route as VersionComponentsSidebarNotificationRouteImport } from './routes/$version/components/_sidebar/notification';
+import { Route as VersionComponentsSidebarLoadingSpinnerRouteImport } from './routes/$version/components/_sidebar/loading-spinner';
+import { Route as VersionComponentsSidebarLoadingLinearRouteImport } from './routes/$version/components/_sidebar/loading-linear';
+import { Route as VersionComponentsSidebarLanguageSelectRouteImport } from './routes/$version/components/_sidebar/language-select';
+import { Route as VersionComponentsSidebarLabelRouteImport } from './routes/$version/components/_sidebar/label';
+import { Route as VersionComponentsSidebarInputRouteImport } from './routes/$version/components/_sidebar/input';
+import { Route as VersionComponentsSidebarInformationStatusRouteImport } from './routes/$version/components/_sidebar/information-status';
+import { Route as VersionComponentsSidebarImageHoverEffectRouteImport } from './routes/$version/components/_sidebar/image-hover-effect';
+import { Route as VersionComponentsSidebarDropdownRouteImport } from './routes/$version/components/_sidebar/dropdown';
+import { Route as VersionComponentsSidebarDrawerRouteImport } from './routes/$version/components/_sidebar/drawer';
+import { Route as VersionComponentsSidebarDialogRouteImport } from './routes/$version/components/_sidebar/dialog';
+import { Route as VersionComponentsSidebarDatePickerRouteImport } from './routes/$version/components/_sidebar/date-picker';
+import { Route as VersionComponentsSidebarContainerRouteImport } from './routes/$version/components/_sidebar/container';
+import { Route as VersionComponentsSidebarChipRouteImport } from './routes/$version/components/_sidebar/chip';
+import { Route as VersionComponentsSidebarCheckboxRouteImport } from './routes/$version/components/_sidebar/checkbox';
+import { Route as VersionComponentsSidebarCalendarRouteImport } from './routes/$version/components/_sidebar/calendar';
+import { Route as VersionComponentsSidebarButtonRouteImport } from './routes/$version/components/_sidebar/button';
+import { Route as VersionComponentsSidebarBadgeRouteImport } from './routes/$version/components/_sidebar/badge';
+import { Route as VersionComponentsSidebarBackToTopButtonRouteImport } from './routes/$version/components/_sidebar/back-to-top-button';
+import { Route as VersionComponentsSidebarAvatarRouteImport } from './routes/$version/components/_sidebar/avatar';
+import { Route as VersionComponentsSidebarAccordionRouteImport } from './routes/$version/components/_sidebar/accordion';
+import { Route as VersionComponentsSidebarLoaderIndexRouteImport } from './routes/$version/components/_sidebar/loader/index';
 
 const VersionRouteRoute = VersionRouteRouteImport.update({
   id: '/$version',
   path: '/$version',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const VersionIndexRoute = VersionIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => VersionRouteRoute,
-} as any)
+} as any);
 const VersionInstallationRoute = VersionInstallationRouteImport.update({
   id: '/installation',
   path: '/installation',
   getParentRoute: () => VersionRouteRoute,
-} as any)
+} as any);
 const VersionComponentsIndexRoute = VersionComponentsIndexRouteImport.update({
   id: '/components/',
   path: '/components/',
   getParentRoute: () => VersionRouteRoute,
-} as any)
-const VersionComponentsSidebarRouteRoute =
-  VersionComponentsSidebarRouteRouteImport.update({
-    id: '/components/_sidebar',
-    path: '/components',
-    getParentRoute: () => VersionRouteRoute,
-  } as any)
-const VersionComponentsSidebarTooltipRoute =
-  VersionComponentsSidebarTooltipRouteImport.update({
-    id: '/tooltip',
-    path: '/tooltip',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+} as any);
+const VersionComponentsSidebarRouteRoute = VersionComponentsSidebarRouteRouteImport.update({
+  id: '/components/_sidebar',
+  path: '/components',
+  getParentRoute: () => VersionRouteRoute,
+} as any);
+const VersionComponentsSidebarTooltipRoute = VersionComponentsSidebarTooltipRouteImport.update({
+  id: '/tooltip',
+  path: '/tooltip',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
 const VersionComponentsSidebarThemeModeToggleRoute =
   VersionComponentsSidebarThemeModeToggleRouteImport.update({
     id: '/theme-mode-toggle',
     path: '/theme-mode-toggle',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarTextFieldRoute =
-  VersionComponentsSidebarTextFieldRouteImport.update({
-    id: '/text-field',
-    path: '/text-field',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarTabsRoute =
-  VersionComponentsSidebarTabsRouteImport.update({
-    id: '/tabs',
-    path: '/tabs',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarTableRoute =
-  VersionComponentsSidebarTableRouteImport.update({
-    id: '/table',
-    path: '/table',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarSwitchRoute =
-  VersionComponentsSidebarSwitchRouteImport.update({
-    id: '/switch',
-    path: '/switch',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarSkeletonRoute =
-  VersionComponentsSidebarSkeletonRouteImport.update({
-    id: '/skeleton',
-    path: '/skeleton',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarSidebarRoute =
-  VersionComponentsSidebarSidebarRouteImport.update({
-    id: '/sidebar',
-    path: '/sidebar',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarSelectRoute =
-  VersionComponentsSidebarSelectRouteImport.update({
-    id: '/select',
-    path: '/select',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
+const VersionComponentsSidebarTextFieldRoute = VersionComponentsSidebarTextFieldRouteImport.update({
+  id: '/text-field',
+  path: '/text-field',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarTabsRoute = VersionComponentsSidebarTabsRouteImport.update({
+  id: '/tabs',
+  path: '/tabs',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarTableRoute = VersionComponentsSidebarTableRouteImport.update({
+  id: '/table',
+  path: '/table',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarSwitchRoute = VersionComponentsSidebarSwitchRouteImport.update({
+  id: '/switch',
+  path: '/switch',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarSkeletonRoute = VersionComponentsSidebarSkeletonRouteImport.update({
+  id: '/skeleton',
+  path: '/skeleton',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarSidebarRoute = VersionComponentsSidebarSidebarRouteImport.update({
+  id: '/sidebar',
+  path: '/sidebar',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarSelectRoute = VersionComponentsSidebarSelectRouteImport.update({
+  id: '/select',
+  path: '/select',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
 const VersionComponentsSidebarSearchFieldRoute =
   VersionComponentsSidebarSearchFieldRouteImport.update({
     id: '/search-field',
     path: '/search-field',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
 const VersionComponentsSidebarRadioButtonRoute =
   VersionComponentsSidebarRadioButtonRouteImport.update({
     id: '/radio-button',
     path: '/radio-button',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
 const VersionComponentsSidebarProgressBarRoute =
   VersionComponentsSidebarProgressBarRouteImport.update({
     id: '/progress-bar',
     path: '/progress-bar',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarPopoverRoute =
-  VersionComponentsSidebarPopoverRouteImport.update({
-    id: '/popover',
-    path: '/popover',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
+const VersionComponentsSidebarPopoverRoute = VersionComponentsSidebarPopoverRouteImport.update({
+  id: '/popover',
+  path: '/popover',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
 const VersionComponentsSidebarPaginationRoute =
   VersionComponentsSidebarPaginationRouteImport.update({
     id: '/pagination',
     path: '/pagination',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
 const VersionComponentsSidebarNotificationRoute =
   VersionComponentsSidebarNotificationRouteImport.update({
     id: '/notification',
     path: '/notification',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
 const VersionComponentsSidebarLoadingSpinnerRoute =
   VersionComponentsSidebarLoadingSpinnerRouteImport.update({
     id: '/loading-spinner',
     path: '/loading-spinner',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
 const VersionComponentsSidebarLoadingLinearRoute =
   VersionComponentsSidebarLoadingLinearRouteImport.update({
     id: '/loading-linear',
     path: '/loading-linear',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
 const VersionComponentsSidebarLanguageSelectRoute =
   VersionComponentsSidebarLanguageSelectRouteImport.update({
     id: '/language-select',
     path: '/language-select',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarLabelRoute =
-  VersionComponentsSidebarLabelRouteImport.update({
-    id: '/label',
-    path: '/label',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarInputRoute =
-  VersionComponentsSidebarInputRouteImport.update({
-    id: '/input',
-    path: '/input',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
+const VersionComponentsSidebarLabelRoute = VersionComponentsSidebarLabelRouteImport.update({
+  id: '/label',
+  path: '/label',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarInputRoute = VersionComponentsSidebarInputRouteImport.update({
+  id: '/input',
+  path: '/input',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
 const VersionComponentsSidebarInformationStatusRoute =
   VersionComponentsSidebarInformationStatusRouteImport.update({
     id: '/information-status',
     path: '/information-status',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
 const VersionComponentsSidebarImageHoverEffectRoute =
   VersionComponentsSidebarImageHoverEffectRouteImport.update({
     id: '/image-hover-effect',
     path: '/image-hover-effect',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarDropdownRoute =
-  VersionComponentsSidebarDropdownRouteImport.update({
-    id: '/dropdown',
-    path: '/dropdown',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarDrawerRoute =
-  VersionComponentsSidebarDrawerRouteImport.update({
-    id: '/drawer',
-    path: '/drawer',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarDialogRoute =
-  VersionComponentsSidebarDialogRouteImport.update({
-    id: '/dialog',
-    path: '/dialog',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
+const VersionComponentsSidebarDropdownRoute = VersionComponentsSidebarDropdownRouteImport.update({
+  id: '/dropdown',
+  path: '/dropdown',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarDrawerRoute = VersionComponentsSidebarDrawerRouteImport.update({
+  id: '/drawer',
+  path: '/drawer',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarDialogRoute = VersionComponentsSidebarDialogRouteImport.update({
+  id: '/dialog',
+  path: '/dialog',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
 const VersionComponentsSidebarDatePickerRoute =
   VersionComponentsSidebarDatePickerRouteImport.update({
     id: '/date-picker',
     path: '/date-picker',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarContainerRoute =
-  VersionComponentsSidebarContainerRouteImport.update({
-    id: '/container',
-    path: '/container',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarChipRoute =
-  VersionComponentsSidebarChipRouteImport.update({
-    id: '/chip',
-    path: '/chip',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarCheckboxRoute =
-  VersionComponentsSidebarCheckboxRouteImport.update({
-    id: '/checkbox',
-    path: '/checkbox',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarCalendarRoute =
-  VersionComponentsSidebarCalendarRouteImport.update({
-    id: '/calendar',
-    path: '/calendar',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarButtonRoute =
-  VersionComponentsSidebarButtonRouteImport.update({
-    id: '/button',
-    path: '/button',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarBadgeRoute =
-  VersionComponentsSidebarBadgeRouteImport.update({
-    id: '/badge',
-    path: '/badge',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
+const VersionComponentsSidebarContainerRoute = VersionComponentsSidebarContainerRouteImport.update({
+  id: '/container',
+  path: '/container',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarChipRoute = VersionComponentsSidebarChipRouteImport.update({
+  id: '/chip',
+  path: '/chip',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarCheckboxRoute = VersionComponentsSidebarCheckboxRouteImport.update({
+  id: '/checkbox',
+  path: '/checkbox',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarCalendarRoute = VersionComponentsSidebarCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarButtonRoute = VersionComponentsSidebarButtonRouteImport.update({
+  id: '/button',
+  path: '/button',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarBadgeRoute = VersionComponentsSidebarBadgeRouteImport.update({
+  id: '/badge',
+  path: '/badge',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
 const VersionComponentsSidebarBackToTopButtonRoute =
   VersionComponentsSidebarBackToTopButtonRouteImport.update({
     id: '/back-to-top-button',
     path: '/back-to-top-button',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarAvatarRoute =
-  VersionComponentsSidebarAvatarRouteImport.update({
-    id: '/avatar',
-    path: '/avatar',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
-const VersionComponentsSidebarAccordionRoute =
-  VersionComponentsSidebarAccordionRouteImport.update({
-    id: '/accordion',
-    path: '/accordion',
-    getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
+const VersionComponentsSidebarAvatarRoute = VersionComponentsSidebarAvatarRouteImport.update({
+  id: '/avatar',
+  path: '/avatar',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
+const VersionComponentsSidebarAccordionRoute = VersionComponentsSidebarAccordionRouteImport.update({
+  id: '/accordion',
+  path: '/accordion',
+  getParentRoute: () => VersionComponentsSidebarRouteRoute,
+} as any);
 const VersionComponentsSidebarLoaderIndexRoute =
   VersionComponentsSidebarLoaderIndexRouteImport.update({
     id: '/loader/',
     path: '/loader/',
     getParentRoute: () => VersionComponentsSidebarRouteRoute,
-  } as any)
+  } as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/$version': typeof VersionRouteRouteWithChildren
-  '/$version/installation': typeof VersionInstallationRoute
-  '/$version/': typeof VersionIndexRoute
-  '/$version/components': typeof VersionComponentsSidebarRouteRouteWithChildren
-  '/$version/components/': typeof VersionComponentsIndexRoute
-  '/$version/components/accordion': typeof VersionComponentsSidebarAccordionRoute
-  '/$version/components/avatar': typeof VersionComponentsSidebarAvatarRoute
-  '/$version/components/back-to-top-button': typeof VersionComponentsSidebarBackToTopButtonRoute
-  '/$version/components/badge': typeof VersionComponentsSidebarBadgeRoute
-  '/$version/components/button': typeof VersionComponentsSidebarButtonRoute
-  '/$version/components/calendar': typeof VersionComponentsSidebarCalendarRoute
-  '/$version/components/checkbox': typeof VersionComponentsSidebarCheckboxRoute
-  '/$version/components/chip': typeof VersionComponentsSidebarChipRoute
-  '/$version/components/container': typeof VersionComponentsSidebarContainerRoute
-  '/$version/components/date-picker': typeof VersionComponentsSidebarDatePickerRoute
-  '/$version/components/dialog': typeof VersionComponentsSidebarDialogRoute
-  '/$version/components/drawer': typeof VersionComponentsSidebarDrawerRoute
-  '/$version/components/dropdown': typeof VersionComponentsSidebarDropdownRoute
-  '/$version/components/image-hover-effect': typeof VersionComponentsSidebarImageHoverEffectRoute
-  '/$version/components/information-status': typeof VersionComponentsSidebarInformationStatusRoute
-  '/$version/components/input': typeof VersionComponentsSidebarInputRoute
-  '/$version/components/label': typeof VersionComponentsSidebarLabelRoute
-  '/$version/components/language-select': typeof VersionComponentsSidebarLanguageSelectRoute
-  '/$version/components/loading-linear': typeof VersionComponentsSidebarLoadingLinearRoute
-  '/$version/components/loading-spinner': typeof VersionComponentsSidebarLoadingSpinnerRoute
-  '/$version/components/notification': typeof VersionComponentsSidebarNotificationRoute
-  '/$version/components/pagination': typeof VersionComponentsSidebarPaginationRoute
-  '/$version/components/popover': typeof VersionComponentsSidebarPopoverRoute
-  '/$version/components/progress-bar': typeof VersionComponentsSidebarProgressBarRoute
-  '/$version/components/radio-button': typeof VersionComponentsSidebarRadioButtonRoute
-  '/$version/components/search-field': typeof VersionComponentsSidebarSearchFieldRoute
-  '/$version/components/select': typeof VersionComponentsSidebarSelectRoute
-  '/$version/components/sidebar': typeof VersionComponentsSidebarSidebarRoute
-  '/$version/components/skeleton': typeof VersionComponentsSidebarSkeletonRoute
-  '/$version/components/switch': typeof VersionComponentsSidebarSwitchRoute
-  '/$version/components/table': typeof VersionComponentsSidebarTableRoute
-  '/$version/components/tabs': typeof VersionComponentsSidebarTabsRoute
-  '/$version/components/text-field': typeof VersionComponentsSidebarTextFieldRoute
-  '/$version/components/theme-mode-toggle': typeof VersionComponentsSidebarThemeModeToggleRoute
-  '/$version/components/tooltip': typeof VersionComponentsSidebarTooltipRoute
-  '/$version/components/loader/': typeof VersionComponentsSidebarLoaderIndexRoute
+  '/': typeof IndexRoute;
+  '/$version': typeof VersionRouteRouteWithChildren;
+  '/$version/installation': typeof VersionInstallationRoute;
+  '/$version/': typeof VersionIndexRoute;
+  '/$version/components': typeof VersionComponentsSidebarRouteRouteWithChildren;
+  '/$version/components/': typeof VersionComponentsIndexRoute;
+  '/$version/components/accordion': typeof VersionComponentsSidebarAccordionRoute;
+  '/$version/components/avatar': typeof VersionComponentsSidebarAvatarRoute;
+  '/$version/components/back-to-top-button': typeof VersionComponentsSidebarBackToTopButtonRoute;
+  '/$version/components/badge': typeof VersionComponentsSidebarBadgeRoute;
+  '/$version/components/button': typeof VersionComponentsSidebarButtonRoute;
+  '/$version/components/calendar': typeof VersionComponentsSidebarCalendarRoute;
+  '/$version/components/checkbox': typeof VersionComponentsSidebarCheckboxRoute;
+  '/$version/components/chip': typeof VersionComponentsSidebarChipRoute;
+  '/$version/components/container': typeof VersionComponentsSidebarContainerRoute;
+  '/$version/components/date-picker': typeof VersionComponentsSidebarDatePickerRoute;
+  '/$version/components/dialog': typeof VersionComponentsSidebarDialogRoute;
+  '/$version/components/drawer': typeof VersionComponentsSidebarDrawerRoute;
+  '/$version/components/dropdown': typeof VersionComponentsSidebarDropdownRoute;
+  '/$version/components/image-hover-effect': typeof VersionComponentsSidebarImageHoverEffectRoute;
+  '/$version/components/information-status': typeof VersionComponentsSidebarInformationStatusRoute;
+  '/$version/components/input': typeof VersionComponentsSidebarInputRoute;
+  '/$version/components/label': typeof VersionComponentsSidebarLabelRoute;
+  '/$version/components/language-select': typeof VersionComponentsSidebarLanguageSelectRoute;
+  '/$version/components/loading-linear': typeof VersionComponentsSidebarLoadingLinearRoute;
+  '/$version/components/loading-spinner': typeof VersionComponentsSidebarLoadingSpinnerRoute;
+  '/$version/components/notification': typeof VersionComponentsSidebarNotificationRoute;
+  '/$version/components/pagination': typeof VersionComponentsSidebarPaginationRoute;
+  '/$version/components/popover': typeof VersionComponentsSidebarPopoverRoute;
+  '/$version/components/progress-bar': typeof VersionComponentsSidebarProgressBarRoute;
+  '/$version/components/radio-button': typeof VersionComponentsSidebarRadioButtonRoute;
+  '/$version/components/search-field': typeof VersionComponentsSidebarSearchFieldRoute;
+  '/$version/components/select': typeof VersionComponentsSidebarSelectRoute;
+  '/$version/components/sidebar': typeof VersionComponentsSidebarSidebarRoute;
+  '/$version/components/skeleton': typeof VersionComponentsSidebarSkeletonRoute;
+  '/$version/components/switch': typeof VersionComponentsSidebarSwitchRoute;
+  '/$version/components/table': typeof VersionComponentsSidebarTableRoute;
+  '/$version/components/tabs': typeof VersionComponentsSidebarTabsRoute;
+  '/$version/components/text-field': typeof VersionComponentsSidebarTextFieldRoute;
+  '/$version/components/theme-mode-toggle': typeof VersionComponentsSidebarThemeModeToggleRoute;
+  '/$version/components/tooltip': typeof VersionComponentsSidebarTooltipRoute;
+  '/$version/components/loader/': typeof VersionComponentsSidebarLoaderIndexRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/$version/installation': typeof VersionInstallationRoute
-  '/$version': typeof VersionIndexRoute
-  '/$version/components': typeof VersionComponentsIndexRoute
-  '/$version/components/accordion': typeof VersionComponentsSidebarAccordionRoute
-  '/$version/components/avatar': typeof VersionComponentsSidebarAvatarRoute
-  '/$version/components/back-to-top-button': typeof VersionComponentsSidebarBackToTopButtonRoute
-  '/$version/components/badge': typeof VersionComponentsSidebarBadgeRoute
-  '/$version/components/button': typeof VersionComponentsSidebarButtonRoute
-  '/$version/components/calendar': typeof VersionComponentsSidebarCalendarRoute
-  '/$version/components/checkbox': typeof VersionComponentsSidebarCheckboxRoute
-  '/$version/components/chip': typeof VersionComponentsSidebarChipRoute
-  '/$version/components/container': typeof VersionComponentsSidebarContainerRoute
-  '/$version/components/date-picker': typeof VersionComponentsSidebarDatePickerRoute
-  '/$version/components/dialog': typeof VersionComponentsSidebarDialogRoute
-  '/$version/components/drawer': typeof VersionComponentsSidebarDrawerRoute
-  '/$version/components/dropdown': typeof VersionComponentsSidebarDropdownRoute
-  '/$version/components/image-hover-effect': typeof VersionComponentsSidebarImageHoverEffectRoute
-  '/$version/components/information-status': typeof VersionComponentsSidebarInformationStatusRoute
-  '/$version/components/input': typeof VersionComponentsSidebarInputRoute
-  '/$version/components/label': typeof VersionComponentsSidebarLabelRoute
-  '/$version/components/language-select': typeof VersionComponentsSidebarLanguageSelectRoute
-  '/$version/components/loading-linear': typeof VersionComponentsSidebarLoadingLinearRoute
-  '/$version/components/loading-spinner': typeof VersionComponentsSidebarLoadingSpinnerRoute
-  '/$version/components/notification': typeof VersionComponentsSidebarNotificationRoute
-  '/$version/components/pagination': typeof VersionComponentsSidebarPaginationRoute
-  '/$version/components/popover': typeof VersionComponentsSidebarPopoverRoute
-  '/$version/components/progress-bar': typeof VersionComponentsSidebarProgressBarRoute
-  '/$version/components/radio-button': typeof VersionComponentsSidebarRadioButtonRoute
-  '/$version/components/search-field': typeof VersionComponentsSidebarSearchFieldRoute
-  '/$version/components/select': typeof VersionComponentsSidebarSelectRoute
-  '/$version/components/sidebar': typeof VersionComponentsSidebarSidebarRoute
-  '/$version/components/skeleton': typeof VersionComponentsSidebarSkeletonRoute
-  '/$version/components/switch': typeof VersionComponentsSidebarSwitchRoute
-  '/$version/components/table': typeof VersionComponentsSidebarTableRoute
-  '/$version/components/tabs': typeof VersionComponentsSidebarTabsRoute
-  '/$version/components/text-field': typeof VersionComponentsSidebarTextFieldRoute
-  '/$version/components/theme-mode-toggle': typeof VersionComponentsSidebarThemeModeToggleRoute
-  '/$version/components/tooltip': typeof VersionComponentsSidebarTooltipRoute
-  '/$version/components/loader': typeof VersionComponentsSidebarLoaderIndexRoute
+  '/': typeof IndexRoute;
+  '/$version/installation': typeof VersionInstallationRoute;
+  '/$version': typeof VersionIndexRoute;
+  '/$version/components': typeof VersionComponentsIndexRoute;
+  '/$version/components/accordion': typeof VersionComponentsSidebarAccordionRoute;
+  '/$version/components/avatar': typeof VersionComponentsSidebarAvatarRoute;
+  '/$version/components/back-to-top-button': typeof VersionComponentsSidebarBackToTopButtonRoute;
+  '/$version/components/badge': typeof VersionComponentsSidebarBadgeRoute;
+  '/$version/components/button': typeof VersionComponentsSidebarButtonRoute;
+  '/$version/components/calendar': typeof VersionComponentsSidebarCalendarRoute;
+  '/$version/components/checkbox': typeof VersionComponentsSidebarCheckboxRoute;
+  '/$version/components/chip': typeof VersionComponentsSidebarChipRoute;
+  '/$version/components/container': typeof VersionComponentsSidebarContainerRoute;
+  '/$version/components/date-picker': typeof VersionComponentsSidebarDatePickerRoute;
+  '/$version/components/dialog': typeof VersionComponentsSidebarDialogRoute;
+  '/$version/components/drawer': typeof VersionComponentsSidebarDrawerRoute;
+  '/$version/components/dropdown': typeof VersionComponentsSidebarDropdownRoute;
+  '/$version/components/image-hover-effect': typeof VersionComponentsSidebarImageHoverEffectRoute;
+  '/$version/components/information-status': typeof VersionComponentsSidebarInformationStatusRoute;
+  '/$version/components/input': typeof VersionComponentsSidebarInputRoute;
+  '/$version/components/label': typeof VersionComponentsSidebarLabelRoute;
+  '/$version/components/language-select': typeof VersionComponentsSidebarLanguageSelectRoute;
+  '/$version/components/loading-linear': typeof VersionComponentsSidebarLoadingLinearRoute;
+  '/$version/components/loading-spinner': typeof VersionComponentsSidebarLoadingSpinnerRoute;
+  '/$version/components/notification': typeof VersionComponentsSidebarNotificationRoute;
+  '/$version/components/pagination': typeof VersionComponentsSidebarPaginationRoute;
+  '/$version/components/popover': typeof VersionComponentsSidebarPopoverRoute;
+  '/$version/components/progress-bar': typeof VersionComponentsSidebarProgressBarRoute;
+  '/$version/components/radio-button': typeof VersionComponentsSidebarRadioButtonRoute;
+  '/$version/components/search-field': typeof VersionComponentsSidebarSearchFieldRoute;
+  '/$version/components/select': typeof VersionComponentsSidebarSelectRoute;
+  '/$version/components/sidebar': typeof VersionComponentsSidebarSidebarRoute;
+  '/$version/components/skeleton': typeof VersionComponentsSidebarSkeletonRoute;
+  '/$version/components/switch': typeof VersionComponentsSidebarSwitchRoute;
+  '/$version/components/table': typeof VersionComponentsSidebarTableRoute;
+  '/$version/components/tabs': typeof VersionComponentsSidebarTabsRoute;
+  '/$version/components/text-field': typeof VersionComponentsSidebarTextFieldRoute;
+  '/$version/components/theme-mode-toggle': typeof VersionComponentsSidebarThemeModeToggleRoute;
+  '/$version/components/tooltip': typeof VersionComponentsSidebarTooltipRoute;
+  '/$version/components/loader': typeof VersionComponentsSidebarLoaderIndexRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/$version': typeof VersionRouteRouteWithChildren
-  '/$version/installation': typeof VersionInstallationRoute
-  '/$version/': typeof VersionIndexRoute
-  '/$version/components/_sidebar': typeof VersionComponentsSidebarRouteRouteWithChildren
-  '/$version/components/': typeof VersionComponentsIndexRoute
-  '/$version/components/_sidebar/accordion': typeof VersionComponentsSidebarAccordionRoute
-  '/$version/components/_sidebar/avatar': typeof VersionComponentsSidebarAvatarRoute
-  '/$version/components/_sidebar/back-to-top-button': typeof VersionComponentsSidebarBackToTopButtonRoute
-  '/$version/components/_sidebar/badge': typeof VersionComponentsSidebarBadgeRoute
-  '/$version/components/_sidebar/button': typeof VersionComponentsSidebarButtonRoute
-  '/$version/components/_sidebar/calendar': typeof VersionComponentsSidebarCalendarRoute
-  '/$version/components/_sidebar/checkbox': typeof VersionComponentsSidebarCheckboxRoute
-  '/$version/components/_sidebar/chip': typeof VersionComponentsSidebarChipRoute
-  '/$version/components/_sidebar/container': typeof VersionComponentsSidebarContainerRoute
-  '/$version/components/_sidebar/date-picker': typeof VersionComponentsSidebarDatePickerRoute
-  '/$version/components/_sidebar/dialog': typeof VersionComponentsSidebarDialogRoute
-  '/$version/components/_sidebar/drawer': typeof VersionComponentsSidebarDrawerRoute
-  '/$version/components/_sidebar/dropdown': typeof VersionComponentsSidebarDropdownRoute
-  '/$version/components/_sidebar/image-hover-effect': typeof VersionComponentsSidebarImageHoverEffectRoute
-  '/$version/components/_sidebar/information-status': typeof VersionComponentsSidebarInformationStatusRoute
-  '/$version/components/_sidebar/input': typeof VersionComponentsSidebarInputRoute
-  '/$version/components/_sidebar/label': typeof VersionComponentsSidebarLabelRoute
-  '/$version/components/_sidebar/language-select': typeof VersionComponentsSidebarLanguageSelectRoute
-  '/$version/components/_sidebar/loading-linear': typeof VersionComponentsSidebarLoadingLinearRoute
-  '/$version/components/_sidebar/loading-spinner': typeof VersionComponentsSidebarLoadingSpinnerRoute
-  '/$version/components/_sidebar/notification': typeof VersionComponentsSidebarNotificationRoute
-  '/$version/components/_sidebar/pagination': typeof VersionComponentsSidebarPaginationRoute
-  '/$version/components/_sidebar/popover': typeof VersionComponentsSidebarPopoverRoute
-  '/$version/components/_sidebar/progress-bar': typeof VersionComponentsSidebarProgressBarRoute
-  '/$version/components/_sidebar/radio-button': typeof VersionComponentsSidebarRadioButtonRoute
-  '/$version/components/_sidebar/search-field': typeof VersionComponentsSidebarSearchFieldRoute
-  '/$version/components/_sidebar/select': typeof VersionComponentsSidebarSelectRoute
-  '/$version/components/_sidebar/sidebar': typeof VersionComponentsSidebarSidebarRoute
-  '/$version/components/_sidebar/skeleton': typeof VersionComponentsSidebarSkeletonRoute
-  '/$version/components/_sidebar/switch': typeof VersionComponentsSidebarSwitchRoute
-  '/$version/components/_sidebar/table': typeof VersionComponentsSidebarTableRoute
-  '/$version/components/_sidebar/tabs': typeof VersionComponentsSidebarTabsRoute
-  '/$version/components/_sidebar/text-field': typeof VersionComponentsSidebarTextFieldRoute
-  '/$version/components/_sidebar/theme-mode-toggle': typeof VersionComponentsSidebarThemeModeToggleRoute
-  '/$version/components/_sidebar/tooltip': typeof VersionComponentsSidebarTooltipRoute
-  '/$version/components/_sidebar/loader/': typeof VersionComponentsSidebarLoaderIndexRoute
+  __root__: typeof rootRouteImport;
+  '/': typeof IndexRoute;
+  '/$version': typeof VersionRouteRouteWithChildren;
+  '/$version/installation': typeof VersionInstallationRoute;
+  '/$version/': typeof VersionIndexRoute;
+  '/$version/components/_sidebar': typeof VersionComponentsSidebarRouteRouteWithChildren;
+  '/$version/components/': typeof VersionComponentsIndexRoute;
+  '/$version/components/_sidebar/accordion': typeof VersionComponentsSidebarAccordionRoute;
+  '/$version/components/_sidebar/avatar': typeof VersionComponentsSidebarAvatarRoute;
+  '/$version/components/_sidebar/back-to-top-button': typeof VersionComponentsSidebarBackToTopButtonRoute;
+  '/$version/components/_sidebar/badge': typeof VersionComponentsSidebarBadgeRoute;
+  '/$version/components/_sidebar/button': typeof VersionComponentsSidebarButtonRoute;
+  '/$version/components/_sidebar/calendar': typeof VersionComponentsSidebarCalendarRoute;
+  '/$version/components/_sidebar/checkbox': typeof VersionComponentsSidebarCheckboxRoute;
+  '/$version/components/_sidebar/chip': typeof VersionComponentsSidebarChipRoute;
+  '/$version/components/_sidebar/container': typeof VersionComponentsSidebarContainerRoute;
+  '/$version/components/_sidebar/date-picker': typeof VersionComponentsSidebarDatePickerRoute;
+  '/$version/components/_sidebar/dialog': typeof VersionComponentsSidebarDialogRoute;
+  '/$version/components/_sidebar/drawer': typeof VersionComponentsSidebarDrawerRoute;
+  '/$version/components/_sidebar/dropdown': typeof VersionComponentsSidebarDropdownRoute;
+  '/$version/components/_sidebar/image-hover-effect': typeof VersionComponentsSidebarImageHoverEffectRoute;
+  '/$version/components/_sidebar/information-status': typeof VersionComponentsSidebarInformationStatusRoute;
+  '/$version/components/_sidebar/input': typeof VersionComponentsSidebarInputRoute;
+  '/$version/components/_sidebar/label': typeof VersionComponentsSidebarLabelRoute;
+  '/$version/components/_sidebar/language-select': typeof VersionComponentsSidebarLanguageSelectRoute;
+  '/$version/components/_sidebar/loading-linear': typeof VersionComponentsSidebarLoadingLinearRoute;
+  '/$version/components/_sidebar/loading-spinner': typeof VersionComponentsSidebarLoadingSpinnerRoute;
+  '/$version/components/_sidebar/notification': typeof VersionComponentsSidebarNotificationRoute;
+  '/$version/components/_sidebar/pagination': typeof VersionComponentsSidebarPaginationRoute;
+  '/$version/components/_sidebar/popover': typeof VersionComponentsSidebarPopoverRoute;
+  '/$version/components/_sidebar/progress-bar': typeof VersionComponentsSidebarProgressBarRoute;
+  '/$version/components/_sidebar/radio-button': typeof VersionComponentsSidebarRadioButtonRoute;
+  '/$version/components/_sidebar/search-field': typeof VersionComponentsSidebarSearchFieldRoute;
+  '/$version/components/_sidebar/select': typeof VersionComponentsSidebarSelectRoute;
+  '/$version/components/_sidebar/sidebar': typeof VersionComponentsSidebarSidebarRoute;
+  '/$version/components/_sidebar/skeleton': typeof VersionComponentsSidebarSkeletonRoute;
+  '/$version/components/_sidebar/switch': typeof VersionComponentsSidebarSwitchRoute;
+  '/$version/components/_sidebar/table': typeof VersionComponentsSidebarTableRoute;
+  '/$version/components/_sidebar/tabs': typeof VersionComponentsSidebarTabsRoute;
+  '/$version/components/_sidebar/text-field': typeof VersionComponentsSidebarTextFieldRoute;
+  '/$version/components/_sidebar/theme-mode-toggle': typeof VersionComponentsSidebarThemeModeToggleRoute;
+  '/$version/components/_sidebar/tooltip': typeof VersionComponentsSidebarTooltipRoute;
+  '/$version/components/_sidebar/loader/': typeof VersionComponentsSidebarLoaderIndexRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
+  fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
     | '/'
     | '/$version'
@@ -475,8 +452,8 @@ export interface FileRouteTypes {
     | '/$version/components/text-field'
     | '/$version/components/theme-mode-toggle'
     | '/$version/components/tooltip'
-    | '/$version/components/loader/'
-  fileRoutesByTo: FileRoutesByTo
+    | '/$version/components/loader/';
+  fileRoutesByTo: FileRoutesByTo;
   to:
     | '/'
     | '/$version/installation'
@@ -517,7 +494,7 @@ export interface FileRouteTypes {
     | '/$version/components/text-field'
     | '/$version/components/theme-mode-toggle'
     | '/$version/components/tooltip'
-    | '/$version/components/loader'
+    | '/$version/components/loader';
   id:
     | '__root__'
     | '/'
@@ -561,441 +538,414 @@ export interface FileRouteTypes {
     | '/$version/components/_sidebar/text-field'
     | '/$version/components/_sidebar/theme-mode-toggle'
     | '/$version/components/_sidebar/tooltip'
-    | '/$version/components/_sidebar/loader/'
-  fileRoutesById: FileRoutesById
+    | '/$version/components/_sidebar/loader/';
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  VersionRouteRoute: typeof VersionRouteRouteWithChildren
+  IndexRoute: typeof IndexRoute;
+  VersionRouteRoute: typeof VersionRouteRouteWithChildren;
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/$version': {
-      id: '/$version'
-      path: '/$version'
-      fullPath: '/$version'
-      preLoaderRoute: typeof VersionRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/$version';
+      path: '/$version';
+      fullPath: '/$version';
+      preLoaderRoute: typeof VersionRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof IndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/$version/': {
-      id: '/$version/'
-      path: '/'
-      fullPath: '/$version/'
-      preLoaderRoute: typeof VersionIndexRouteImport
-      parentRoute: typeof VersionRouteRoute
-    }
+      id: '/$version/';
+      path: '/';
+      fullPath: '/$version/';
+      preLoaderRoute: typeof VersionIndexRouteImport;
+      parentRoute: typeof VersionRouteRoute;
+    };
     '/$version/installation': {
-      id: '/$version/installation'
-      path: '/installation'
-      fullPath: '/$version/installation'
-      preLoaderRoute: typeof VersionInstallationRouteImport
-      parentRoute: typeof VersionRouteRoute
-    }
+      id: '/$version/installation';
+      path: '/installation';
+      fullPath: '/$version/installation';
+      preLoaderRoute: typeof VersionInstallationRouteImport;
+      parentRoute: typeof VersionRouteRoute;
+    };
     '/$version/components/': {
-      id: '/$version/components/'
-      path: '/components'
-      fullPath: '/$version/components/'
-      preLoaderRoute: typeof VersionComponentsIndexRouteImport
-      parentRoute: typeof VersionRouteRoute
-    }
+      id: '/$version/components/';
+      path: '/components';
+      fullPath: '/$version/components/';
+      preLoaderRoute: typeof VersionComponentsIndexRouteImport;
+      parentRoute: typeof VersionRouteRoute;
+    };
     '/$version/components/_sidebar': {
-      id: '/$version/components/_sidebar'
-      path: '/components'
-      fullPath: '/$version/components'
-      preLoaderRoute: typeof VersionComponentsSidebarRouteRouteImport
-      parentRoute: typeof VersionRouteRoute
-    }
+      id: '/$version/components/_sidebar';
+      path: '/components';
+      fullPath: '/$version/components';
+      preLoaderRoute: typeof VersionComponentsSidebarRouteRouteImport;
+      parentRoute: typeof VersionRouteRoute;
+    };
     '/$version/components/_sidebar/tooltip': {
-      id: '/$version/components/_sidebar/tooltip'
-      path: '/tooltip'
-      fullPath: '/$version/components/tooltip'
-      preLoaderRoute: typeof VersionComponentsSidebarTooltipRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/tooltip';
+      path: '/tooltip';
+      fullPath: '/$version/components/tooltip';
+      preLoaderRoute: typeof VersionComponentsSidebarTooltipRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/theme-mode-toggle': {
-      id: '/$version/components/_sidebar/theme-mode-toggle'
-      path: '/theme-mode-toggle'
-      fullPath: '/$version/components/theme-mode-toggle'
-      preLoaderRoute: typeof VersionComponentsSidebarThemeModeToggleRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/theme-mode-toggle';
+      path: '/theme-mode-toggle';
+      fullPath: '/$version/components/theme-mode-toggle';
+      preLoaderRoute: typeof VersionComponentsSidebarThemeModeToggleRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/text-field': {
-      id: '/$version/components/_sidebar/text-field'
-      path: '/text-field'
-      fullPath: '/$version/components/text-field'
-      preLoaderRoute: typeof VersionComponentsSidebarTextFieldRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/text-field';
+      path: '/text-field';
+      fullPath: '/$version/components/text-field';
+      preLoaderRoute: typeof VersionComponentsSidebarTextFieldRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/tabs': {
-      id: '/$version/components/_sidebar/tabs'
-      path: '/tabs'
-      fullPath: '/$version/components/tabs'
-      preLoaderRoute: typeof VersionComponentsSidebarTabsRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/tabs';
+      path: '/tabs';
+      fullPath: '/$version/components/tabs';
+      preLoaderRoute: typeof VersionComponentsSidebarTabsRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/table': {
-      id: '/$version/components/_sidebar/table'
-      path: '/table'
-      fullPath: '/$version/components/table'
-      preLoaderRoute: typeof VersionComponentsSidebarTableRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/table';
+      path: '/table';
+      fullPath: '/$version/components/table';
+      preLoaderRoute: typeof VersionComponentsSidebarTableRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/switch': {
-      id: '/$version/components/_sidebar/switch'
-      path: '/switch'
-      fullPath: '/$version/components/switch'
-      preLoaderRoute: typeof VersionComponentsSidebarSwitchRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/switch';
+      path: '/switch';
+      fullPath: '/$version/components/switch';
+      preLoaderRoute: typeof VersionComponentsSidebarSwitchRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/skeleton': {
-      id: '/$version/components/_sidebar/skeleton'
-      path: '/skeleton'
-      fullPath: '/$version/components/skeleton'
-      preLoaderRoute: typeof VersionComponentsSidebarSkeletonRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/skeleton';
+      path: '/skeleton';
+      fullPath: '/$version/components/skeleton';
+      preLoaderRoute: typeof VersionComponentsSidebarSkeletonRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/sidebar': {
-      id: '/$version/components/_sidebar/sidebar'
-      path: '/sidebar'
-      fullPath: '/$version/components/sidebar'
-      preLoaderRoute: typeof VersionComponentsSidebarSidebarRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/sidebar';
+      path: '/sidebar';
+      fullPath: '/$version/components/sidebar';
+      preLoaderRoute: typeof VersionComponentsSidebarSidebarRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/select': {
-      id: '/$version/components/_sidebar/select'
-      path: '/select'
-      fullPath: '/$version/components/select'
-      preLoaderRoute: typeof VersionComponentsSidebarSelectRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/select';
+      path: '/select';
+      fullPath: '/$version/components/select';
+      preLoaderRoute: typeof VersionComponentsSidebarSelectRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/search-field': {
-      id: '/$version/components/_sidebar/search-field'
-      path: '/search-field'
-      fullPath: '/$version/components/search-field'
-      preLoaderRoute: typeof VersionComponentsSidebarSearchFieldRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/search-field';
+      path: '/search-field';
+      fullPath: '/$version/components/search-field';
+      preLoaderRoute: typeof VersionComponentsSidebarSearchFieldRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/radio-button': {
-      id: '/$version/components/_sidebar/radio-button'
-      path: '/radio-button'
-      fullPath: '/$version/components/radio-button'
-      preLoaderRoute: typeof VersionComponentsSidebarRadioButtonRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/radio-button';
+      path: '/radio-button';
+      fullPath: '/$version/components/radio-button';
+      preLoaderRoute: typeof VersionComponentsSidebarRadioButtonRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/progress-bar': {
-      id: '/$version/components/_sidebar/progress-bar'
-      path: '/progress-bar'
-      fullPath: '/$version/components/progress-bar'
-      preLoaderRoute: typeof VersionComponentsSidebarProgressBarRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/progress-bar';
+      path: '/progress-bar';
+      fullPath: '/$version/components/progress-bar';
+      preLoaderRoute: typeof VersionComponentsSidebarProgressBarRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/popover': {
-      id: '/$version/components/_sidebar/popover'
-      path: '/popover'
-      fullPath: '/$version/components/popover'
-      preLoaderRoute: typeof VersionComponentsSidebarPopoverRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/popover';
+      path: '/popover';
+      fullPath: '/$version/components/popover';
+      preLoaderRoute: typeof VersionComponentsSidebarPopoverRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/pagination': {
-      id: '/$version/components/_sidebar/pagination'
-      path: '/pagination'
-      fullPath: '/$version/components/pagination'
-      preLoaderRoute: typeof VersionComponentsSidebarPaginationRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/pagination';
+      path: '/pagination';
+      fullPath: '/$version/components/pagination';
+      preLoaderRoute: typeof VersionComponentsSidebarPaginationRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/notification': {
-      id: '/$version/components/_sidebar/notification'
-      path: '/notification'
-      fullPath: '/$version/components/notification'
-      preLoaderRoute: typeof VersionComponentsSidebarNotificationRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/notification';
+      path: '/notification';
+      fullPath: '/$version/components/notification';
+      preLoaderRoute: typeof VersionComponentsSidebarNotificationRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/loading-spinner': {
-      id: '/$version/components/_sidebar/loading-spinner'
-      path: '/loading-spinner'
-      fullPath: '/$version/components/loading-spinner'
-      preLoaderRoute: typeof VersionComponentsSidebarLoadingSpinnerRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/loading-spinner';
+      path: '/loading-spinner';
+      fullPath: '/$version/components/loading-spinner';
+      preLoaderRoute: typeof VersionComponentsSidebarLoadingSpinnerRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/loading-linear': {
-      id: '/$version/components/_sidebar/loading-linear'
-      path: '/loading-linear'
-      fullPath: '/$version/components/loading-linear'
-      preLoaderRoute: typeof VersionComponentsSidebarLoadingLinearRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/loading-linear';
+      path: '/loading-linear';
+      fullPath: '/$version/components/loading-linear';
+      preLoaderRoute: typeof VersionComponentsSidebarLoadingLinearRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/language-select': {
-      id: '/$version/components/_sidebar/language-select'
-      path: '/language-select'
-      fullPath: '/$version/components/language-select'
-      preLoaderRoute: typeof VersionComponentsSidebarLanguageSelectRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/language-select';
+      path: '/language-select';
+      fullPath: '/$version/components/language-select';
+      preLoaderRoute: typeof VersionComponentsSidebarLanguageSelectRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/label': {
-      id: '/$version/components/_sidebar/label'
-      path: '/label'
-      fullPath: '/$version/components/label'
-      preLoaderRoute: typeof VersionComponentsSidebarLabelRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/label';
+      path: '/label';
+      fullPath: '/$version/components/label';
+      preLoaderRoute: typeof VersionComponentsSidebarLabelRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/input': {
-      id: '/$version/components/_sidebar/input'
-      path: '/input'
-      fullPath: '/$version/components/input'
-      preLoaderRoute: typeof VersionComponentsSidebarInputRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/input';
+      path: '/input';
+      fullPath: '/$version/components/input';
+      preLoaderRoute: typeof VersionComponentsSidebarInputRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/information-status': {
-      id: '/$version/components/_sidebar/information-status'
-      path: '/information-status'
-      fullPath: '/$version/components/information-status'
-      preLoaderRoute: typeof VersionComponentsSidebarInformationStatusRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/information-status';
+      path: '/information-status';
+      fullPath: '/$version/components/information-status';
+      preLoaderRoute: typeof VersionComponentsSidebarInformationStatusRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/image-hover-effect': {
-      id: '/$version/components/_sidebar/image-hover-effect'
-      path: '/image-hover-effect'
-      fullPath: '/$version/components/image-hover-effect'
-      preLoaderRoute: typeof VersionComponentsSidebarImageHoverEffectRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/image-hover-effect';
+      path: '/image-hover-effect';
+      fullPath: '/$version/components/image-hover-effect';
+      preLoaderRoute: typeof VersionComponentsSidebarImageHoverEffectRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/dropdown': {
-      id: '/$version/components/_sidebar/dropdown'
-      path: '/dropdown'
-      fullPath: '/$version/components/dropdown'
-      preLoaderRoute: typeof VersionComponentsSidebarDropdownRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/dropdown';
+      path: '/dropdown';
+      fullPath: '/$version/components/dropdown';
+      preLoaderRoute: typeof VersionComponentsSidebarDropdownRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/drawer': {
-      id: '/$version/components/_sidebar/drawer'
-      path: '/drawer'
-      fullPath: '/$version/components/drawer'
-      preLoaderRoute: typeof VersionComponentsSidebarDrawerRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/drawer';
+      path: '/drawer';
+      fullPath: '/$version/components/drawer';
+      preLoaderRoute: typeof VersionComponentsSidebarDrawerRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/dialog': {
-      id: '/$version/components/_sidebar/dialog'
-      path: '/dialog'
-      fullPath: '/$version/components/dialog'
-      preLoaderRoute: typeof VersionComponentsSidebarDialogRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/dialog';
+      path: '/dialog';
+      fullPath: '/$version/components/dialog';
+      preLoaderRoute: typeof VersionComponentsSidebarDialogRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/date-picker': {
-      id: '/$version/components/_sidebar/date-picker'
-      path: '/date-picker'
-      fullPath: '/$version/components/date-picker'
-      preLoaderRoute: typeof VersionComponentsSidebarDatePickerRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/date-picker';
+      path: '/date-picker';
+      fullPath: '/$version/components/date-picker';
+      preLoaderRoute: typeof VersionComponentsSidebarDatePickerRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/container': {
-      id: '/$version/components/_sidebar/container'
-      path: '/container'
-      fullPath: '/$version/components/container'
-      preLoaderRoute: typeof VersionComponentsSidebarContainerRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/container';
+      path: '/container';
+      fullPath: '/$version/components/container';
+      preLoaderRoute: typeof VersionComponentsSidebarContainerRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/chip': {
-      id: '/$version/components/_sidebar/chip'
-      path: '/chip'
-      fullPath: '/$version/components/chip'
-      preLoaderRoute: typeof VersionComponentsSidebarChipRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/chip';
+      path: '/chip';
+      fullPath: '/$version/components/chip';
+      preLoaderRoute: typeof VersionComponentsSidebarChipRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/checkbox': {
-      id: '/$version/components/_sidebar/checkbox'
-      path: '/checkbox'
-      fullPath: '/$version/components/checkbox'
-      preLoaderRoute: typeof VersionComponentsSidebarCheckboxRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/checkbox';
+      path: '/checkbox';
+      fullPath: '/$version/components/checkbox';
+      preLoaderRoute: typeof VersionComponentsSidebarCheckboxRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/calendar': {
-      id: '/$version/components/_sidebar/calendar'
-      path: '/calendar'
-      fullPath: '/$version/components/calendar'
-      preLoaderRoute: typeof VersionComponentsSidebarCalendarRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/calendar';
+      path: '/calendar';
+      fullPath: '/$version/components/calendar';
+      preLoaderRoute: typeof VersionComponentsSidebarCalendarRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/button': {
-      id: '/$version/components/_sidebar/button'
-      path: '/button'
-      fullPath: '/$version/components/button'
-      preLoaderRoute: typeof VersionComponentsSidebarButtonRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/button';
+      path: '/button';
+      fullPath: '/$version/components/button';
+      preLoaderRoute: typeof VersionComponentsSidebarButtonRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/badge': {
-      id: '/$version/components/_sidebar/badge'
-      path: '/badge'
-      fullPath: '/$version/components/badge'
-      preLoaderRoute: typeof VersionComponentsSidebarBadgeRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/badge';
+      path: '/badge';
+      fullPath: '/$version/components/badge';
+      preLoaderRoute: typeof VersionComponentsSidebarBadgeRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/back-to-top-button': {
-      id: '/$version/components/_sidebar/back-to-top-button'
-      path: '/back-to-top-button'
-      fullPath: '/$version/components/back-to-top-button'
-      preLoaderRoute: typeof VersionComponentsSidebarBackToTopButtonRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/back-to-top-button';
+      path: '/back-to-top-button';
+      fullPath: '/$version/components/back-to-top-button';
+      preLoaderRoute: typeof VersionComponentsSidebarBackToTopButtonRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/avatar': {
-      id: '/$version/components/_sidebar/avatar'
-      path: '/avatar'
-      fullPath: '/$version/components/avatar'
-      preLoaderRoute: typeof VersionComponentsSidebarAvatarRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/avatar';
+      path: '/avatar';
+      fullPath: '/$version/components/avatar';
+      preLoaderRoute: typeof VersionComponentsSidebarAvatarRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/accordion': {
-      id: '/$version/components/_sidebar/accordion'
-      path: '/accordion'
-      fullPath: '/$version/components/accordion'
-      preLoaderRoute: typeof VersionComponentsSidebarAccordionRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/accordion';
+      path: '/accordion';
+      fullPath: '/$version/components/accordion';
+      preLoaderRoute: typeof VersionComponentsSidebarAccordionRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
     '/$version/components/_sidebar/loader/': {
-      id: '/$version/components/_sidebar/loader/'
-      path: '/loader'
-      fullPath: '/$version/components/loader/'
-      preLoaderRoute: typeof VersionComponentsSidebarLoaderIndexRouteImport
-      parentRoute: typeof VersionComponentsSidebarRouteRoute
-    }
+      id: '/$version/components/_sidebar/loader/';
+      path: '/loader';
+      fullPath: '/$version/components/loader/';
+      preLoaderRoute: typeof VersionComponentsSidebarLoaderIndexRouteImport;
+      parentRoute: typeof VersionComponentsSidebarRouteRoute;
+    };
   }
 }
 
 interface VersionComponentsSidebarRouteRouteChildren {
-  VersionComponentsSidebarAccordionRoute: typeof VersionComponentsSidebarAccordionRoute
-  VersionComponentsSidebarAvatarRoute: typeof VersionComponentsSidebarAvatarRoute
-  VersionComponentsSidebarBackToTopButtonRoute: typeof VersionComponentsSidebarBackToTopButtonRoute
-  VersionComponentsSidebarBadgeRoute: typeof VersionComponentsSidebarBadgeRoute
-  VersionComponentsSidebarButtonRoute: typeof VersionComponentsSidebarButtonRoute
-  VersionComponentsSidebarCalendarRoute: typeof VersionComponentsSidebarCalendarRoute
-  VersionComponentsSidebarCheckboxRoute: typeof VersionComponentsSidebarCheckboxRoute
-  VersionComponentsSidebarChipRoute: typeof VersionComponentsSidebarChipRoute
-  VersionComponentsSidebarContainerRoute: typeof VersionComponentsSidebarContainerRoute
-  VersionComponentsSidebarDatePickerRoute: typeof VersionComponentsSidebarDatePickerRoute
-  VersionComponentsSidebarDialogRoute: typeof VersionComponentsSidebarDialogRoute
-  VersionComponentsSidebarDrawerRoute: typeof VersionComponentsSidebarDrawerRoute
-  VersionComponentsSidebarDropdownRoute: typeof VersionComponentsSidebarDropdownRoute
-  VersionComponentsSidebarImageHoverEffectRoute: typeof VersionComponentsSidebarImageHoverEffectRoute
-  VersionComponentsSidebarInformationStatusRoute: typeof VersionComponentsSidebarInformationStatusRoute
-  VersionComponentsSidebarInputRoute: typeof VersionComponentsSidebarInputRoute
-  VersionComponentsSidebarLabelRoute: typeof VersionComponentsSidebarLabelRoute
-  VersionComponentsSidebarLanguageSelectRoute: typeof VersionComponentsSidebarLanguageSelectRoute
-  VersionComponentsSidebarLoadingLinearRoute: typeof VersionComponentsSidebarLoadingLinearRoute
-  VersionComponentsSidebarLoadingSpinnerRoute: typeof VersionComponentsSidebarLoadingSpinnerRoute
-  VersionComponentsSidebarNotificationRoute: typeof VersionComponentsSidebarNotificationRoute
-  VersionComponentsSidebarPaginationRoute: typeof VersionComponentsSidebarPaginationRoute
-  VersionComponentsSidebarPopoverRoute: typeof VersionComponentsSidebarPopoverRoute
-  VersionComponentsSidebarProgressBarRoute: typeof VersionComponentsSidebarProgressBarRoute
-  VersionComponentsSidebarRadioButtonRoute: typeof VersionComponentsSidebarRadioButtonRoute
-  VersionComponentsSidebarSearchFieldRoute: typeof VersionComponentsSidebarSearchFieldRoute
-  VersionComponentsSidebarSelectRoute: typeof VersionComponentsSidebarSelectRoute
-  VersionComponentsSidebarSidebarRoute: typeof VersionComponentsSidebarSidebarRoute
-  VersionComponentsSidebarSkeletonRoute: typeof VersionComponentsSidebarSkeletonRoute
-  VersionComponentsSidebarSwitchRoute: typeof VersionComponentsSidebarSwitchRoute
-  VersionComponentsSidebarTableRoute: typeof VersionComponentsSidebarTableRoute
-  VersionComponentsSidebarTabsRoute: typeof VersionComponentsSidebarTabsRoute
-  VersionComponentsSidebarTextFieldRoute: typeof VersionComponentsSidebarTextFieldRoute
-  VersionComponentsSidebarThemeModeToggleRoute: typeof VersionComponentsSidebarThemeModeToggleRoute
-  VersionComponentsSidebarTooltipRoute: typeof VersionComponentsSidebarTooltipRoute
-  VersionComponentsSidebarLoaderIndexRoute: typeof VersionComponentsSidebarLoaderIndexRoute
+  VersionComponentsSidebarAccordionRoute: typeof VersionComponentsSidebarAccordionRoute;
+  VersionComponentsSidebarAvatarRoute: typeof VersionComponentsSidebarAvatarRoute;
+  VersionComponentsSidebarBackToTopButtonRoute: typeof VersionComponentsSidebarBackToTopButtonRoute;
+  VersionComponentsSidebarBadgeRoute: typeof VersionComponentsSidebarBadgeRoute;
+  VersionComponentsSidebarButtonRoute: typeof VersionComponentsSidebarButtonRoute;
+  VersionComponentsSidebarCalendarRoute: typeof VersionComponentsSidebarCalendarRoute;
+  VersionComponentsSidebarCheckboxRoute: typeof VersionComponentsSidebarCheckboxRoute;
+  VersionComponentsSidebarChipRoute: typeof VersionComponentsSidebarChipRoute;
+  VersionComponentsSidebarContainerRoute: typeof VersionComponentsSidebarContainerRoute;
+  VersionComponentsSidebarDatePickerRoute: typeof VersionComponentsSidebarDatePickerRoute;
+  VersionComponentsSidebarDialogRoute: typeof VersionComponentsSidebarDialogRoute;
+  VersionComponentsSidebarDrawerRoute: typeof VersionComponentsSidebarDrawerRoute;
+  VersionComponentsSidebarDropdownRoute: typeof VersionComponentsSidebarDropdownRoute;
+  VersionComponentsSidebarImageHoverEffectRoute: typeof VersionComponentsSidebarImageHoverEffectRoute;
+  VersionComponentsSidebarInformationStatusRoute: typeof VersionComponentsSidebarInformationStatusRoute;
+  VersionComponentsSidebarInputRoute: typeof VersionComponentsSidebarInputRoute;
+  VersionComponentsSidebarLabelRoute: typeof VersionComponentsSidebarLabelRoute;
+  VersionComponentsSidebarLanguageSelectRoute: typeof VersionComponentsSidebarLanguageSelectRoute;
+  VersionComponentsSidebarLoadingLinearRoute: typeof VersionComponentsSidebarLoadingLinearRoute;
+  VersionComponentsSidebarLoadingSpinnerRoute: typeof VersionComponentsSidebarLoadingSpinnerRoute;
+  VersionComponentsSidebarNotificationRoute: typeof VersionComponentsSidebarNotificationRoute;
+  VersionComponentsSidebarPaginationRoute: typeof VersionComponentsSidebarPaginationRoute;
+  VersionComponentsSidebarPopoverRoute: typeof VersionComponentsSidebarPopoverRoute;
+  VersionComponentsSidebarProgressBarRoute: typeof VersionComponentsSidebarProgressBarRoute;
+  VersionComponentsSidebarRadioButtonRoute: typeof VersionComponentsSidebarRadioButtonRoute;
+  VersionComponentsSidebarSearchFieldRoute: typeof VersionComponentsSidebarSearchFieldRoute;
+  VersionComponentsSidebarSelectRoute: typeof VersionComponentsSidebarSelectRoute;
+  VersionComponentsSidebarSidebarRoute: typeof VersionComponentsSidebarSidebarRoute;
+  VersionComponentsSidebarSkeletonRoute: typeof VersionComponentsSidebarSkeletonRoute;
+  VersionComponentsSidebarSwitchRoute: typeof VersionComponentsSidebarSwitchRoute;
+  VersionComponentsSidebarTableRoute: typeof VersionComponentsSidebarTableRoute;
+  VersionComponentsSidebarTabsRoute: typeof VersionComponentsSidebarTabsRoute;
+  VersionComponentsSidebarTextFieldRoute: typeof VersionComponentsSidebarTextFieldRoute;
+  VersionComponentsSidebarThemeModeToggleRoute: typeof VersionComponentsSidebarThemeModeToggleRoute;
+  VersionComponentsSidebarTooltipRoute: typeof VersionComponentsSidebarTooltipRoute;
+  VersionComponentsSidebarLoaderIndexRoute: typeof VersionComponentsSidebarLoaderIndexRoute;
 }
 
-const VersionComponentsSidebarRouteRouteChildren: VersionComponentsSidebarRouteRouteChildren =
-  {
-    VersionComponentsSidebarAccordionRoute:
-      VersionComponentsSidebarAccordionRoute,
-    VersionComponentsSidebarAvatarRoute: VersionComponentsSidebarAvatarRoute,
-    VersionComponentsSidebarBackToTopButtonRoute:
-      VersionComponentsSidebarBackToTopButtonRoute,
-    VersionComponentsSidebarBadgeRoute: VersionComponentsSidebarBadgeRoute,
-    VersionComponentsSidebarButtonRoute: VersionComponentsSidebarButtonRoute,
-    VersionComponentsSidebarCalendarRoute:
-      VersionComponentsSidebarCalendarRoute,
-    VersionComponentsSidebarCheckboxRoute:
-      VersionComponentsSidebarCheckboxRoute,
-    VersionComponentsSidebarChipRoute: VersionComponentsSidebarChipRoute,
-    VersionComponentsSidebarContainerRoute:
-      VersionComponentsSidebarContainerRoute,
-    VersionComponentsSidebarDatePickerRoute:
-      VersionComponentsSidebarDatePickerRoute,
-    VersionComponentsSidebarDialogRoute: VersionComponentsSidebarDialogRoute,
-    VersionComponentsSidebarDrawerRoute: VersionComponentsSidebarDrawerRoute,
-    VersionComponentsSidebarDropdownRoute:
-      VersionComponentsSidebarDropdownRoute,
-    VersionComponentsSidebarImageHoverEffectRoute:
-      VersionComponentsSidebarImageHoverEffectRoute,
-    VersionComponentsSidebarInformationStatusRoute:
-      VersionComponentsSidebarInformationStatusRoute,
-    VersionComponentsSidebarInputRoute: VersionComponentsSidebarInputRoute,
-    VersionComponentsSidebarLabelRoute: VersionComponentsSidebarLabelRoute,
-    VersionComponentsSidebarLanguageSelectRoute:
-      VersionComponentsSidebarLanguageSelectRoute,
-    VersionComponentsSidebarLoadingLinearRoute:
-      VersionComponentsSidebarLoadingLinearRoute,
-    VersionComponentsSidebarLoadingSpinnerRoute:
-      VersionComponentsSidebarLoadingSpinnerRoute,
-    VersionComponentsSidebarNotificationRoute:
-      VersionComponentsSidebarNotificationRoute,
-    VersionComponentsSidebarPaginationRoute:
-      VersionComponentsSidebarPaginationRoute,
-    VersionComponentsSidebarPopoverRoute: VersionComponentsSidebarPopoverRoute,
-    VersionComponentsSidebarProgressBarRoute:
-      VersionComponentsSidebarProgressBarRoute,
-    VersionComponentsSidebarRadioButtonRoute:
-      VersionComponentsSidebarRadioButtonRoute,
-    VersionComponentsSidebarSearchFieldRoute:
-      VersionComponentsSidebarSearchFieldRoute,
-    VersionComponentsSidebarSelectRoute: VersionComponentsSidebarSelectRoute,
-    VersionComponentsSidebarSidebarRoute: VersionComponentsSidebarSidebarRoute,
-    VersionComponentsSidebarSkeletonRoute:
-      VersionComponentsSidebarSkeletonRoute,
-    VersionComponentsSidebarSwitchRoute: VersionComponentsSidebarSwitchRoute,
-    VersionComponentsSidebarTableRoute: VersionComponentsSidebarTableRoute,
-    VersionComponentsSidebarTabsRoute: VersionComponentsSidebarTabsRoute,
-    VersionComponentsSidebarTextFieldRoute:
-      VersionComponentsSidebarTextFieldRoute,
-    VersionComponentsSidebarThemeModeToggleRoute:
-      VersionComponentsSidebarThemeModeToggleRoute,
-    VersionComponentsSidebarTooltipRoute: VersionComponentsSidebarTooltipRoute,
-    VersionComponentsSidebarLoaderIndexRoute:
-      VersionComponentsSidebarLoaderIndexRoute,
-  }
+const VersionComponentsSidebarRouteRouteChildren: VersionComponentsSidebarRouteRouteChildren = {
+  VersionComponentsSidebarAccordionRoute: VersionComponentsSidebarAccordionRoute,
+  VersionComponentsSidebarAvatarRoute: VersionComponentsSidebarAvatarRoute,
+  VersionComponentsSidebarBackToTopButtonRoute: VersionComponentsSidebarBackToTopButtonRoute,
+  VersionComponentsSidebarBadgeRoute: VersionComponentsSidebarBadgeRoute,
+  VersionComponentsSidebarButtonRoute: VersionComponentsSidebarButtonRoute,
+  VersionComponentsSidebarCalendarRoute: VersionComponentsSidebarCalendarRoute,
+  VersionComponentsSidebarCheckboxRoute: VersionComponentsSidebarCheckboxRoute,
+  VersionComponentsSidebarChipRoute: VersionComponentsSidebarChipRoute,
+  VersionComponentsSidebarContainerRoute: VersionComponentsSidebarContainerRoute,
+  VersionComponentsSidebarDatePickerRoute: VersionComponentsSidebarDatePickerRoute,
+  VersionComponentsSidebarDialogRoute: VersionComponentsSidebarDialogRoute,
+  VersionComponentsSidebarDrawerRoute: VersionComponentsSidebarDrawerRoute,
+  VersionComponentsSidebarDropdownRoute: VersionComponentsSidebarDropdownRoute,
+  VersionComponentsSidebarImageHoverEffectRoute: VersionComponentsSidebarImageHoverEffectRoute,
+  VersionComponentsSidebarInformationStatusRoute: VersionComponentsSidebarInformationStatusRoute,
+  VersionComponentsSidebarInputRoute: VersionComponentsSidebarInputRoute,
+  VersionComponentsSidebarLabelRoute: VersionComponentsSidebarLabelRoute,
+  VersionComponentsSidebarLanguageSelectRoute: VersionComponentsSidebarLanguageSelectRoute,
+  VersionComponentsSidebarLoadingLinearRoute: VersionComponentsSidebarLoadingLinearRoute,
+  VersionComponentsSidebarLoadingSpinnerRoute: VersionComponentsSidebarLoadingSpinnerRoute,
+  VersionComponentsSidebarNotificationRoute: VersionComponentsSidebarNotificationRoute,
+  VersionComponentsSidebarPaginationRoute: VersionComponentsSidebarPaginationRoute,
+  VersionComponentsSidebarPopoverRoute: VersionComponentsSidebarPopoverRoute,
+  VersionComponentsSidebarProgressBarRoute: VersionComponentsSidebarProgressBarRoute,
+  VersionComponentsSidebarRadioButtonRoute: VersionComponentsSidebarRadioButtonRoute,
+  VersionComponentsSidebarSearchFieldRoute: VersionComponentsSidebarSearchFieldRoute,
+  VersionComponentsSidebarSelectRoute: VersionComponentsSidebarSelectRoute,
+  VersionComponentsSidebarSidebarRoute: VersionComponentsSidebarSidebarRoute,
+  VersionComponentsSidebarSkeletonRoute: VersionComponentsSidebarSkeletonRoute,
+  VersionComponentsSidebarSwitchRoute: VersionComponentsSidebarSwitchRoute,
+  VersionComponentsSidebarTableRoute: VersionComponentsSidebarTableRoute,
+  VersionComponentsSidebarTabsRoute: VersionComponentsSidebarTabsRoute,
+  VersionComponentsSidebarTextFieldRoute: VersionComponentsSidebarTextFieldRoute,
+  VersionComponentsSidebarThemeModeToggleRoute: VersionComponentsSidebarThemeModeToggleRoute,
+  VersionComponentsSidebarTooltipRoute: VersionComponentsSidebarTooltipRoute,
+  VersionComponentsSidebarLoaderIndexRoute: VersionComponentsSidebarLoaderIndexRoute,
+};
 
 const VersionComponentsSidebarRouteRouteWithChildren =
-  VersionComponentsSidebarRouteRoute._addFileChildren(
-    VersionComponentsSidebarRouteRouteChildren,
-  )
+  VersionComponentsSidebarRouteRoute._addFileChildren(VersionComponentsSidebarRouteRouteChildren);
 
 interface VersionRouteRouteChildren {
-  VersionInstallationRoute: typeof VersionInstallationRoute
-  VersionIndexRoute: typeof VersionIndexRoute
-  VersionComponentsSidebarRouteRoute: typeof VersionComponentsSidebarRouteRouteWithChildren
-  VersionComponentsIndexRoute: typeof VersionComponentsIndexRoute
+  VersionInstallationRoute: typeof VersionInstallationRoute;
+  VersionIndexRoute: typeof VersionIndexRoute;
+  VersionComponentsSidebarRouteRoute: typeof VersionComponentsSidebarRouteRouteWithChildren;
+  VersionComponentsIndexRoute: typeof VersionComponentsIndexRoute;
 }
 
 const VersionRouteRouteChildren: VersionRouteRouteChildren = {
   VersionInstallationRoute: VersionInstallationRoute,
   VersionIndexRoute: VersionIndexRoute,
-  VersionComponentsSidebarRouteRoute:
-    VersionComponentsSidebarRouteRouteWithChildren,
+  VersionComponentsSidebarRouteRoute: VersionComponentsSidebarRouteRouteWithChildren,
   VersionComponentsIndexRoute: VersionComponentsIndexRoute,
-}
+};
 
-const VersionRouteRouteWithChildren = VersionRouteRoute._addFileChildren(
-  VersionRouteRouteChildren,
-)
+const VersionRouteRouteWithChildren = VersionRouteRoute._addFileChildren(VersionRouteRouteChildren);
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   VersionRouteRoute: VersionRouteRouteWithChildren,
-}
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();

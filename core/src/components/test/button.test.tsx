@@ -103,7 +103,14 @@ describe('Button Component', () => {
 
     it('should not call onClick when disabled', () => {
       const handleClick = vi.fn();
-      render(<Button disabled onClick={handleClick}>Click</Button>);
+      render(
+        <Button
+          disabled
+          onClick={handleClick}
+        >
+          Click
+        </Button>,
+      );
       fireEvent.click(screen.getByRole('button'));
       expect(handleClick).not.toHaveBeenCalled();
     });
@@ -119,7 +126,14 @@ describe('Button Component', () => {
 
     it('should not call onClick when loading', () => {
       const handleClick = vi.fn();
-      render(<Button loading onClick={handleClick}>Click</Button>);
+      render(
+        <Button
+          loading
+          onClick={handleClick}
+        >
+          Click
+        </Button>,
+      );
       fireEvent.click(screen.getByRole('button'));
       expect(handleClick).not.toHaveBeenCalled();
     });

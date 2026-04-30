@@ -12,21 +12,28 @@ const Footer = () => {
           <div>
             <h3 className="mb-4 text-sm font-semibold">About</h3>
             <p className="text-sm text-neutral-grey">
-              MSI UI Kit is a comprehensive React component library built with TypeScript and Tailwind CSS.
+              MSI UI Kit is a comprehensive React component library built with TypeScript and
+              Tailwind CSS.
             </p>
           </div>
 
           {/* Resources */}
-          <div className='md:justify-self-center'>
+          <div className="md:justify-self-center">
             <h3 className="mb-4 text-sm font-semibold">Resources</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to={`/v${currentVersion}/installation` as any} className="text-neutral-grey transition-colors hover:text-primary">
+                <Link
+                  to={`/v${currentVersion}/installation` as any}
+                  className="text-neutral-grey transition-colors hover:text-primary"
+                >
                   Documentation
                 </Link>
               </li>
               <li>
-                <Link to={`/v${currentVersion}/components` as any} className="text-neutral-grey transition-colors hover:text-primary">
+                <Link
+                  to={`/v${currentVersion}/components` as any}
+                  className="text-neutral-grey transition-colors hover:text-primary"
+                >
                   Components
                 </Link>
               </li>
@@ -44,7 +51,7 @@ const Footer = () => {
           </div>
 
           {/* Community */}
-          <div className='md:justify-self-center'>
+          <div className="md:justify-self-center">
             <h3 className="mb-4 text-sm font-semibold">Community</h3>
             <ul className="space-y-2 text-sm">
               <li>
@@ -71,7 +78,7 @@ const Footer = () => {
           </div>
 
           {/* Social */}
-          <div className='md:justify-self-center'>
+          <div className="md:justify-self-center">
             <h3 className="mb-4 text-sm font-semibold">Follow Us</h3>
             <div className="flex space-x-4">
               <a
@@ -80,7 +87,10 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-neutral-grey transition-colors hover:text-primary"
               >
-                <GithubLogoIcon size={24} weight="fill" />
+                <GithubLogoIcon
+                  size={24}
+                  weight="fill"
+                />
               </a>
               <a
                 href="https://twitter.com"
@@ -88,7 +98,10 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-neutral-grey transition-colors hover:text-primary"
               >
-                <XLogoIcon size={24} weight="fill" />
+                <XLogoIcon
+                  size={24}
+                  weight="fill"
+                />
               </a>
               <a
                 href="https://linkedin.com"
@@ -96,7 +109,10 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-neutral-grey transition-colors hover:text-primary"
               >
-                <LinkedinLogoIcon size={24} weight="fill" />
+                <LinkedinLogoIcon
+                  size={24}
+                  weight="fill"
+                />
               </a>
             </div>
           </div>
@@ -109,10 +125,16 @@ const Footer = () => {
               Â© {new Date().getFullYear()} MSI UI Kit. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
-              <a href="/privacy" className="text-neutral-grey transition-colors hover:text-primary">
+              <a
+                href="/privacy"
+                className="text-neutral-grey transition-colors hover:text-primary"
+              >
                 Privacy Policy
               </a>
-              <a href="/terms" className="text-neutral-grey transition-colors hover:text-primary">
+              <a
+                href="/terms"
+                className="text-neutral-grey transition-colors hover:text-primary"
+              >
                 Terms of Service
               </a>
             </div>
@@ -120,8 +142,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
+  );
 };
 
 export default Footer;
-

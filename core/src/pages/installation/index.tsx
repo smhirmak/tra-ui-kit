@@ -38,14 +38,19 @@ const Installation = () => {
         <div className="mb-10">
           <h1 className="mb-3 text-4xl font-bold">Installation</h1>
           <p className="text-lg text-neutral-grey">
-            Get MSI UI Kit integrated into your project and start building beautiful interfaces right away.
+            Get MSI UI Kit integrated into your project and start building beautiful interfaces
+            right away.
           </p>
         </div>
 
         {/* Framework indicator — React only */}
         <div className="mb-10 flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 px-5 py-4">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15">
-            <AtomIcon size={22} className="text-primary" weight="duotone" />
+            <AtomIcon
+              size={22}
+              className="text-primary"
+              weight="duotone"
+            />
           </div>
           <div>
             <p className="font-semibold text-foreground">React</p>
@@ -59,7 +64,10 @@ const Installation = () => {
         {/* Steps */}
         <div>
           {/* Step 1 */}
-          <Step number={1} title="Create a New Vite Project">
+          <Step
+            number={1}
+            title="Create a New Vite Project"
+          >
             <p className="mb-3 text-neutral-grey">
               Start by creating a new Vite project with the React TypeScript template:
             </p>
@@ -71,7 +79,10 @@ const Installation = () => {
           </Step>
 
           {/* Step 2 */}
-          <Step number={2} title="Install Tailwind CSS">
+          <Step
+            number={2}
+            title="Install Tailwind CSS"
+          >
             <p className="mb-3 text-neutral-grey">
               MSI UI Kit requires Tailwind CSS v4. Install the Tailwind Vite plugin:
             </p>
@@ -79,10 +90,15 @@ const Installation = () => {
           </Step>
 
           {/* Step 3 */}
-          <Step number={3} title="Configure Tailwind CSS">
+          <Step
+            number={3}
+            title="Configure Tailwind CSS"
+          >
             <p className="mb-3 text-neutral-grey">
               Add the Tailwind CSS import to your{' '}
-              <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">src/index.css</code>{' '}
+              <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
+                src/index.css
+              </code>{' '}
               file:
             </p>
             <CustomSyntaxHighlighter
@@ -93,10 +109,16 @@ const Installation = () => {
           </Step>
 
           {/* Step 4 */}
-          <Step number={4} title="Update tsconfig.json">
+          <Step
+            number={4}
+            title="Update tsconfig.json"
+          >
             <p className="mb-3 text-neutral-grey">
               Add path aliases to your{' '}
-              <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">tsconfig.json</code>:
+              <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
+                tsconfig.json
+              </code>
+              :
             </p>
             <CustomSyntaxHighlighter
               title="tsconfig.json"
@@ -118,10 +140,16 @@ const Installation = () => {
           </Step>
 
           {/* Step 5 */}
-          <Step number={5} title="Update tsconfig.app.json">
+          <Step
+            number={5}
+            title="Update tsconfig.app.json"
+          >
             <p className="mb-3 text-neutral-grey">
               Add the same path aliases to{' '}
-              <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">tsconfig.app.json</code>:
+              <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
+                tsconfig.app.json
+              </code>
+              :
             </p>
             <CustomSyntaxHighlighter
               title="tsconfig.app.json"
@@ -140,7 +168,10 @@ const Installation = () => {
           </Step>
 
           {/* Step 6 */}
-          <Step number={6} title="Update vite.config.ts">
+          <Step
+            number={6}
+            title="Update vite.config.ts"
+          >
             <p className="mb-3 text-neutral-grey">
               Install the Node types and configure the Vite config with Tailwind and the path alias:
             </p>
@@ -171,17 +202,26 @@ export default defineConfig({
           </Step>
 
           {/* Step 7 */}
-          <Step number={7} title="Initialize MSI UI Kit">
+          <Step
+            number={7}
+            title="Initialize MSI UI Kit"
+          >
             <p className="mb-3 text-neutral-grey">
-              Run the MSI UI Kit CLI to install all required dependencies and configuration automatically:
+              Run the MSI UI Kit CLI to install all required dependencies and configuration
+              automatically:
             </p>
             <CustomSyntaxHighlighter content="npx msi-ui-cli init" />
           </Step>
 
           {/* Step 8 */}
-          <Step number={8} title="Add Components" isLast>
+          <Step
+            number={8}
+            title="Add Components"
+            isLast
+          >
             <p className="mb-3 text-neutral-grey">
-              Now you're ready to add components to your project. Choose one of the following methods:
+              Now you're ready to add components to your project. Choose one of the following
+              methods:
             </p>
 
             <div className="space-y-4">
@@ -203,7 +243,8 @@ export default defineConfig({
                 </p>
                 <CustomSyntaxHighlighter content="npx msi-ui-cli add" />
                 <p className="mt-2 text-sm text-neutral-grey">
-                  This lists all available components and lets you pick one or multiple interactively.
+                  This lists all available components and lets you pick one or multiple
+                  interactively.
                 </p>
               </div>
             </div>
@@ -214,11 +255,16 @@ export default defineConfig({
               title={
                 <div>
                   <div className="mb-1 flex items-center gap-2">
-                    <CheckCircleIcon size={18} weight="fill" className="text-success" />
+                    <CheckCircleIcon
+                      size={18}
+                      weight="fill"
+                      className="text-success"
+                    />
                     <h3 className="font-semibold">You're all set!</h3>
                   </div>
                   <p className="text-sm text-neutral-grey">
-                    MSI UI Kit is installed. You can now use modern, accessible React components in your project.
+                    MSI UI Kit is installed. You can now use modern, accessible React components in
+                    your project.
                   </p>
                 </div>
               }
@@ -230,7 +276,10 @@ export default defineConfig({
                 className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
               >
                 Browse Components
-                <ArrowRightIcon size={16} weight="bold" />
+                <ArrowRightIcon
+                  size={16}
+                  weight="bold"
+                />
               </Link>
             </div>
           </Step>
@@ -241,4 +290,3 @@ export default defineConfig({
 };
 
 export default Installation;
-

@@ -19,10 +19,30 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'variant', type: '"circular" | "linear"', default: '"circular"', description: 'Loader style variant' },
-  { prop: 'enableScroll', type: 'boolean', default: 'false', description: 'Allow scrolling while loading' },
-  { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes' },
-  { prop: 'linearItemClassName', type: 'string', default: 'undefined', description: 'Custom class for linear bar' },
+  {
+    prop: 'variant',
+    type: '"circular" | "linear"',
+    default: '"circular"',
+    description: 'Loader style variant',
+  },
+  {
+    prop: 'enableScroll',
+    type: 'boolean',
+    default: 'false',
+    description: 'Allow scrolling while loading',
+  },
+  {
+    prop: 'className',
+    type: 'string',
+    default: 'undefined',
+    description: 'Additional CSS classes',
+  },
+  {
+    prop: 'linearItemClassName',
+    type: 'string',
+    default: 'undefined',
+    description: 'Custom class for linear bar',
+  },
 ];
 
 const LoaderPage = () => {
@@ -50,18 +70,25 @@ const LoaderPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Loader</h1>
         <p className="text-lg text-neutral-grey">
-          A full-screen loader component with circular and linear variants, controlled via ref for global loading states.
+          A full-screen loader component with circular and linear variants, controlled via ref for
+          global loading states.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add loader' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add loader" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="loader" />
           </Tab>
         </Tabs>
@@ -95,9 +122,7 @@ loaderRef.current?.decLoader();  // Hide`}
           <div className="rounded-lg border border-border bg-background p-6">
             <Button onClick={() => handleShowLoader('circular')}>Show Circular Loader</Button>
           </div>
-          <CustomSyntaxHighlighter
-            content={`<Loader variant="circular" />`}
-          />
+          <CustomSyntaxHighlighter content={`<Loader variant="circular" />`} />
         </div>
       </section>
 
@@ -109,9 +134,7 @@ loaderRef.current?.decLoader();  // Hide`}
           <div className="rounded-lg border border-border bg-background p-6">
             <Button onClick={() => handleShowLoader('linear')}>Show Linear Loader</Button>
           </div>
-          <CustomSyntaxHighlighter
-            content={`<Loader variant="linear" />`}
-          />
+          <CustomSyntaxHighlighter content={`<Loader variant="linear" />`} />
         </div>
       </section>
 
@@ -121,8 +144,14 @@ loaderRef.current?.decLoader();  // Hide`}
         <div className="mt-6 rounded-lg border border-border bg-muted/50 p-4">
           <h3 className="mb-2 font-semibold">Ref Methods</h3>
           <ul className="list-inside list-disc space-y-1 text-sm text-neutral-grey">
-            <li><code className="rounded bg-muted px-1">incLoader()</code> - Show loader (increment counter)</li>
-            <li><code className="rounded bg-muted px-1">decLoader()</code> - Hide loader (decrement counter)</li>
+            <li>
+              <code className="rounded bg-muted px-1">incLoader()</code> - Show loader (increment
+              counter)
+            </li>
+            <li>
+              <code className="rounded bg-muted px-1">decLoader()</code> - Hide loader (decrement
+              counter)
+            </li>
           </ul>
         </div>
       </section>
@@ -131,4 +160,3 @@ loaderRef.current?.decLoader();  // Hide`}
 };
 
 export default LoaderPage;
-

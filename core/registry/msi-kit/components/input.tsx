@@ -15,10 +15,14 @@ export const inputVariants = cva(
   {
     variants: {
       variant: {
-        filled: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
-        outlined: 'border-none outline-hidden focus-visible:border-none focus-visible:outline-hidden',
-        underlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800 border-t-0 border-x-0 focus-visible:border-t-0 focus-visible:border-x-0',
-        filledUnderlined: 'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800 border-t-0 border-x-0 focus-visible:border-t-0 focus-visible:border-x-0',
+        filled:
+          'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800',
+        outlined:
+          'border-none outline-hidden focus-visible:border-none focus-visible:outline-hidden',
+        underlined:
+          'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800 border-t-0 border-x-0 focus-visible:border-t-0 focus-visible:border-x-0',
+        filledUnderlined:
+          'disabled:bg-input-light disabled:placeholder:text-neutral-200 dark:disabled:placeholder:text-neutral-800 border-t-0 border-x-0 focus-visible:border-t-0 focus-visible:border-x-0',
       },
       size: {
         default: 'h-14 text-base',
@@ -48,25 +52,29 @@ export const inputVariants = cva(
       {
         error: true,
         variant: 'filled',
-        className: 'border-error focus-visible:border-error focus-visible:outline-error outline-hidden focus-visible:shadow-none focus-visible:-outline-offset-1',
+        className:
+          'border-error focus-visible:border-error focus-visible:outline-error outline-hidden focus-visible:shadow-none focus-visible:-outline-offset-1',
       },
       {
         error: true,
         variant: 'underlined',
-        className: 'border-b-error focus-visible:border-b-error outline-hidden focus-visible:shadow-none focus-visible:-outline-offset-1',
+        className:
+          'border-b-error focus-visible:border-b-error outline-hidden focus-visible:shadow-none focus-visible:-outline-offset-1',
       },
       {
         error: true,
         variant: 'filledUnderlined',
-        className: 'border-b-error focus-visible:border-b-error outline-hidden focus-visible:shadow-none focus-visible:-outline-offset-1',
+        className:
+          'border-b-error focus-visible:border-b-error outline-hidden focus-visible:shadow-none focus-visible:-outline-offset-1',
       },
     ],
   },
 );
 
 interface IInput
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
-  VariantProps<typeof inputVariants> {
+  extends
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
+    VariantProps<typeof inputVariants> {
   autoComplete?: string;
   borderRadius?: 'default' | 'lg';
   className?: string;
@@ -83,94 +91,89 @@ interface IInput
   noWrapper?: boolean;
 }
 
-const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>(
-  (props, ref) => {
-    const {
-      borderRadius,
-      className = '',
-      endIcon,
-      error,
-      size,
-      startIcon,
-      type = 'text',
-      variant = 'filled',
-      value,
-      onChange,
-      autoComplete,
-      textarea = false,
-      noWrapper = false,
-      ...restProps
-    } = props;
-    const [passwordVisible, setPasswordVisible] = React.useState(false);
-    const Comp = textarea ? 'textarea' : 'input';
-    const hasIconsOrToggle = Boolean(startIcon || endIcon || type === 'password');
+const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>((props, ref) => {
+  const {
+    borderRadius,
+    className = '',
+    endIcon,
+    error,
+    size,
+    startIcon,
+    type = 'text',
+    variant = 'filled',
+    value,
+    onChange,
+    autoComplete,
+    textarea = false,
+    noWrapper = false,
+    ...restProps
+  } = props;
+  const [passwordVisible, setPasswordVisible] = React.useState(false);
+  const Comp = textarea ? 'textarea' : 'input';
+  const hasIconsOrToggle = Boolean(startIcon || endIcon || type === 'password');
 
-    const renderWithoutWrapper = noWrapper && !hasIconsOrToggle;
+  const renderWithoutWrapper = noWrapper && !hasIconsOrToggle;
 
-    if (renderWithoutWrapper) {
-      return (
-        <Comp
-          type={passwordVisible ? 'text' : type}
-          className={cn(inputVariants({ variant, size, error, borderRadius, textarea }), className)}
-          ref={ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>}
-          autoComplete={autoComplete ?? 'off'}
-          value={value}
-          onChange={e => {
-            const target = e.target as HTMLInputElement;
-            if (!target.disabled && onChange) onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
-          }}
-          rows={textarea ? 4 : undefined}
-          {...(restProps as React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
-        />
-      );
-    }
-
+  if (renderWithoutWrapper) {
     return (
-      <div className="relative flex w-full items-center">
-        {startIcon && (
-          <span className="absolute left-3 text-current">
-            {startIcon}
-          </span>
-        )}
-        <Comp
-          type={passwordVisible ? 'text' : type}
-          className={cn(inputVariants({ variant, size, error, borderRadius, textarea }), className)}
-          ref={ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>}
-          autoComplete={autoComplete ?? 'off'}
-          value={value}
-          onChange={e => {
-            const target = e.target as HTMLInputElement;
-            if (!target.disabled && onChange) onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
-          }}
-          style={{
-            paddingLeft: startIcon ? '2.5rem' : undefined,
-            paddingRight: (endIcon || type === 'password') ? '2.5rem' : undefined,
-          }}
-          rows={textarea ? 4 : undefined}
-          {...(restProps as React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
-        />
-        {endIcon && (
-          <span className="absolute right-3 text-current">
-            {endIcon}
-          </span>
-        )}
-        {type === 'password'
-          && (
-            <Button
-              className="z-3 absolute right-3 size-6 min-h-[unset] min-w-[unset] bg-transparent text-current hover:bg-transparent"
-              size="icon"
-              type="button"
-              onClick={() => setPasswordVisible(prev => !prev)}
-            >
-              {passwordVisible
-                ? <EyeSlashIcon className="size-4 dark:text-gray-400" />
-                : <EyeIcon className="size-4 dark:text-white" />}
-            </Button>
-          )}
-      </div>
+      <Comp
+        type={passwordVisible ? 'text' : type}
+        className={cn(inputVariants({ variant, size, error, borderRadius, textarea }), className)}
+        ref={ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>}
+        autoComplete={autoComplete ?? 'off'}
+        value={value}
+        onChange={(e) => {
+          const target = e.target as HTMLInputElement;
+          if (!target.disabled && onChange)
+            onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
+        }}
+        rows={textarea ? 4 : undefined}
+        {...(restProps as React.InputHTMLAttributes<HTMLInputElement> &
+          React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+      />
     );
-  },
-);
+  }
+
+  return (
+    <div className="relative flex w-full items-center">
+      {startIcon && <span className="absolute left-3 text-current">{startIcon}</span>}
+      <Comp
+        type={passwordVisible ? 'text' : type}
+        className={cn(inputVariants({ variant, size, error, borderRadius, textarea }), className)}
+        ref={ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>}
+        autoComplete={autoComplete ?? 'off'}
+        value={value}
+        onChange={(e) => {
+          const target = e.target as HTMLInputElement;
+          if (!target.disabled && onChange)
+            onChange(e as React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>);
+        }}
+        style={{
+          paddingLeft: startIcon ? '2.5rem' : undefined,
+          paddingRight: endIcon || type === 'password' ? '2.5rem' : undefined,
+        }}
+        rows={textarea ? 4 : undefined}
+        {...(restProps as React.InputHTMLAttributes<HTMLInputElement> &
+          React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+      />
+      {endIcon && <span className="absolute right-3 text-current">{endIcon}</span>}
+      {type === 'password' && (
+        <Button
+          className="z-3 absolute right-3 size-6 min-h-[unset] min-w-[unset] bg-transparent text-current hover:bg-transparent"
+          size="icon"
+          type="button"
+          onClick={() => setPasswordVisible((prev) => !prev)}
+        >
+          {passwordVisible ? (
+            <EyeSlashIcon className="size-4 dark:text-gray-400" />
+          ) : (
+            <EyeIcon className="size-4 dark:text-white" />
+          )}
+        </Button>
+      )}
+    </div>
+  );
+});
 Input.displayName = 'Input';
 
 export default Input;

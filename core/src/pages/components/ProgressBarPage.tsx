@@ -23,12 +23,42 @@ const tocItems: TOCItem[] = [
 const apiTableData = [
   { prop: 'currentStep', type: 'number', default: '-', description: 'Current progress step' },
   { prop: 'totalStepSize', type: 'number', default: '-', description: 'Total number of steps' },
-  { prop: 'progressTitle', type: 'string', default: '-', description: 'Title shown above progress bar' },
-  { prop: 'valueType', type: '"number" | "percentage"', default: '"number"', description: 'Display type for progress value' },
-  { prop: 'stepTextPosition', type: '"top" | "bottom"', default: '"top"', description: 'Position of step text' },
-  { prop: 'progressTitleClassName', type: 'string', default: '-', description: 'Custom CSS class for title' },
-  { prop: 'stepTextClassName', type: 'string', default: '-', description: 'Custom CSS class for step text' },
-  { prop: 'containerClassName', type: 'string', default: '-', description: 'Custom CSS class for container' },
+  {
+    prop: 'progressTitle',
+    type: 'string',
+    default: '-',
+    description: 'Title shown above progress bar',
+  },
+  {
+    prop: 'valueType',
+    type: '"number" | "percentage"',
+    default: '"number"',
+    description: 'Display type for progress value',
+  },
+  {
+    prop: 'stepTextPosition',
+    type: '"top" | "bottom"',
+    default: '"top"',
+    description: 'Position of step text',
+  },
+  {
+    prop: 'progressTitleClassName',
+    type: 'string',
+    default: '-',
+    description: 'Custom CSS class for title',
+  },
+  {
+    prop: 'stepTextClassName',
+    type: 'string',
+    default: '-',
+    description: 'Custom CSS class for step text',
+  },
+  {
+    prop: 'containerClassName',
+    type: 'string',
+    default: '-',
+    description: 'Custom CSS class for container',
+  },
 ];
 
 const ProgressBarPage = () => {
@@ -48,18 +78,25 @@ const ProgressBarPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Progress Bar</h1>
         <p className="text-lg text-neutral-grey">
-          A progress indicator component to visualize task completion with customizable step display and positioning.
+          A progress indicator component to visualize task completion with customizable step display
+          and positioning.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add progress-bar' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add progress-bar" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="progress-bar" />
           </Tab>
         </Tabs>
@@ -70,16 +107,25 @@ const ProgressBarPage = () => {
         <h2 className="mb-4 text-2xl font-bold">Usage</h2>
         <div className="space-y-4">
           <div className="mb-4 flex items-center gap-4">
-            <Button size="icon" onClick={() => setCurrentStep(prev => (prev > 0 ? prev - 1 : 0))}>
+            <Button
+              size="icon"
+              onClick={() => setCurrentStep((prev) => (prev > 0 ? prev - 1 : 0))}
+            >
               <MinusIcon className="size-6" />
             </Button>
             <span className="text-xl font-semibold">Step: {currentStep}</span>
-            <Button size="icon" onClick={() => setCurrentStep(prev => (prev < totalStepSize ? prev + 1 : prev))}>
+            <Button
+              size="icon"
+              onClick={() => setCurrentStep((prev) => (prev < totalStepSize ? prev + 1 : prev))}
+            >
               <PlusIcon className="size-6" />
             </Button>
           </div>
           <div className="rounded-lg border border-border bg-background p-6">
-            <ProgressBar totalStepSize={totalStepSize} currentStep={currentStep} />
+            <ProgressBar
+              totalStepSize={totalStepSize}
+              currentStep={currentStep}
+            />
           </div>
           <CustomSyntaxHighlighter
             content={`<ProgressBar 
@@ -135,7 +181,10 @@ const ProgressBarPage = () => {
               />
             </div>
           </div>
-          <CustomSyntaxHighlighter className="mb-2" content='<ProgressBar valueType="number" ... />' />
+          <CustomSyntaxHighlighter
+            className="mb-2"
+            content='<ProgressBar valueType="number" ... />'
+          />
           <CustomSyntaxHighlighter content='<ProgressBar valueType="percentage" ... />' />
         </div>
       </section>
@@ -167,7 +216,10 @@ const ProgressBarPage = () => {
               />
             </div>
           </div>
-          <CustomSyntaxHighlighter className="mb-2" content='<ProgressBar stepTextPosition="top" ... />' />
+          <CustomSyntaxHighlighter
+            className="mb-2"
+            content='<ProgressBar stepTextPosition="top" ... />'
+          />
           <CustomSyntaxHighlighter content='<ProgressBar stepTextPosition="bottom" ... />' />
         </div>
       </section>
@@ -179,4 +231,3 @@ const ProgressBarPage = () => {
 };
 
 export default ProgressBarPage;
-

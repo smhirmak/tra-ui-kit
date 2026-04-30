@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState, ReactNode, useRef, useMemo 
 import NotificationContainer from './NotificationContainer';
 
 const defaultNotificationContext: INotificationContext = {
-  invoke: () => { },
-  translateFunction: () => { },
+  invoke: () => {},
+  translateFunction: () => {},
 };
 
 const NotificationContext = createContext<INotificationContext>(defaultNotificationContext);
@@ -18,76 +18,121 @@ export const useNotification = () => {
 
 interface INotification {
   children: ReactNode;
-  newestTop?: boolean,
-  closeIcon?: boolean,
-  translateFunction?: (e: string | string[]) => void,
-  theme?: 'colored' | 'default' | 'lined',
-  mode?: 'light' | 'dark',
-  containerClassName?: string,
-  notificationClassName?: string,
-  closeButtonClassName?: string,
-  progressBarClassName?: string,
-  animationMode?: 'bounce' | 'slide' | 'flip' | false,
-  position?: 'top-right' | 'bottom-right' | 'top-left' | 'bottom-left',
+  newestTop?: boolean;
+  closeIcon?: boolean;
+  translateFunction?: (e: string | string[]) => void;
+  theme?: 'colored' | 'default' | 'lined';
+  mode?: 'light' | 'dark';
+  containerClassName?: string;
+  notificationClassName?: string;
+  closeButtonClassName?: string;
+  progressBarClassName?: string;
+  animationMode?: 'bounce' | 'slide' | 'flip' | false;
+  position?: 'top-right' | 'bottom-right' | 'top-left' | 'bottom-left';
 }
 
 interface INotificationContext {
-  invoke: (type: string, message: string, options: { autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode }) => void;
+  invoke: (
+    type: string,
+    message: string,
+    options: { autoClose?: boolean; autoCloseTime?: number; icon?: ReactNode },
+  ) => void;
   translateFunction?: (e: string | string[]) => void;
 }
 
-export const NotificationProvider: React.FC<INotification> = (
-  { children,
-    newestTop,
-    closeIcon,
-    translateFunction,
-    theme, mode = 'light',
-    containerClassName,
-    notificationClassName,
-    closeButtonClassName,
-    progressBarClassName,
-    animationMode = 'bounce' as 'flip' | 'bounce' | 'slide' | null | undefined,
-    position = 'top-right' },
-) => {
-  const [notifications, setNotifications] = useState<{ id: number; type: string; message: string; icon?: ReactNode; timeoutId?: NodeJS.Timeout, exiting?: boolean }[]>([]);
-  const [localAutoClose, setLocalAutoClose] = useState<{ state: boolean | undefined, time: number | undefined }>();
+export const NotificationProvider: React.FC<INotification> = ({
+  children,
+  newestTop,
+  closeIcon,
+  translateFunction,
+  theme,
+  mode = 'light',
+  containerClassName,
+  notificationClassName,
+  closeButtonClassName,
+  progressBarClassName,
+  animationMode = 'bounce' as 'flip' | 'bounce' | 'slide' | null | undefined,
+  position = 'top-right',
+}) => {
+  const [notifications, setNotifications] = useState<
+    {
+      id: number;
+      type: string;
+      message: string;
+      icon?: ReactNode;
+      timeoutId?: NodeJS.Timeout;
+      exiting?: boolean;
+    }[]
+  >([]);
+  const [localAutoClose, setLocalAutoClose] = useState<{
+    state: boolean | undefined;
+    time: number | undefined;
+  }>();
   const notificationIdRef = useRef(0);
 
-  const invoke = (type: string, message: string, options: { autoClose?: boolean, autoCloseTime?: number, icon?: ReactNode }) => {
+  const invoke = (
+    type: string,
+    message: string,
+    options: { autoClose?: boolean; autoCloseTime?: number; icon?: ReactNode },
+  ) => {
     setLocalAutoClose({ state: options.autoClose, time: options.autoCloseTime });
     const id = notificationIdRef.current++;
-    const newNotification = { id, type, message, icon: options.icon, closeIcon, autoClose: options.autoClose, autoCloseTime: options.autoCloseTime };
+    const newNotification = {
+      id,
+      type,
+      message,
+      icon: options.icon,
+      closeIcon,
+      autoClose: options.autoClose,
+      autoCloseTime: options.autoCloseTime,
+    };
 
-    setNotifications(prev => [...prev, newNotification]);
+    setNotifications((prev) => [...prev, newNotification]);
 
     if (options.autoClose) {
       const timeoutId = setTimeout(() => {
-        setNotifications(prev => prev.map(notification => (notification.id === id ? { ...notification, exiting: true } : notification)));
+        setNotifications((prev) =>
+          prev.map((notification) =>
+            notification.id === id ? { ...notification, exiting: true } : notification,
+          ),
+        );
         setTimeout(() => {
-          setNotifications(prev => prev.filter(notification => notification.id !== id));
+          setNotifications((prev) => prev.filter((notification) => notification.id !== id));
         }, 200); // Animasyon için bekleme süresi
       }, options.autoCloseTime ?? 3000);
 
-      setNotifications(prev => prev.map(notification => (notification.id === id ? { ...notification, timeoutId } : notification)));
+      setNotifications((prev) =>
+        prev.map((notification) =>
+          notification.id === id ? { ...notification, timeoutId } : notification,
+        ),
+      );
     }
   };
 
   const clearNotification = (id: number) => {
-    setNotifications(prev => {
-      const notification = prev.find(e => e.id === id);
+    setNotifications((prev) => {
+      const notification = prev.find((e) => e.id === id);
       if (notification && notification.timeoutId) {
         clearTimeout(notification.timeoutId);
       }
-      return prev.map(notification => (notification.id === id ? { ...notification, exiting: true, autoClose: false } : notification));
+      return prev.map((notification) =>
+        notification.id === id
+          ? { ...notification, exiting: true, autoClose: false }
+          : notification,
+      );
     });
     setTimeout(() => {
-      setNotifications(prev => prev.filter(notification => notification.id !== id));
+      setNotifications((prev) => prev.filter((notification) => notification.id !== id));
     }, 200); // Animasyon için bekleme süresi
   };
 
-  const values = useMemo(() => ({
-    invoke, translateFunction,
-  }), [invoke]);
+  const values = useMemo(
+    () => ({
+      invoke,
+      translateFunction,
+    }),
+    [invoke],
+  );
 
   return (
     <NotificationContext.Provider value={values}>

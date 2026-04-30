@@ -1,14 +1,14 @@
-const fs = require('fs');
-const path = require('path');
-const { pathToFileURL } = require('url');
+const fs = require("fs");
+const path = require("path");
+const { pathToFileURL } = require("url");
 
 async function updateTailwindConfig() {
   const currentDir = process.cwd();
 
-  const configPath = path.join(currentDir, 'tailwind.config.js');
+  const configPath = path.join(currentDir, "tailwind.config.js");
 
   if (!fs.existsSync(configPath)) {
-    console.error('tailwind.config.js dosyası bulunamadı.');
+    console.error("tailwind.config.js dosyası bulunamadı.");
     process.exit(1);
   }
 
@@ -19,7 +19,7 @@ async function updateTailwindConfig() {
     config = await import(configUrl);
     config = config.default;
   } catch (error) {
-    console.error('tailwind.config.js dosyası yüklenemedi:', error);
+    console.error("tailwind.config.js dosyası yüklenemedi:", error);
     process.exit(1);
   }
 
@@ -27,8 +27,8 @@ async function updateTailwindConfig() {
     theme: {
       extend: {
         colors: {
-          primary: 'var(--color-primary)',
-          secondary: 'var(--color-secondary)',
+          primary: "var(--color-primary)",
+          secondary: "var(--color-secondary)",
           // Diğer renkleri ekleyin
         },
       },
@@ -47,8 +47,11 @@ async function updateTailwindConfig() {
     },
   };
 
-  fs.writeFileSync(configPath, `export default ${JSON.stringify(config, null, 2)}`);
-  console.log('Tailwind yapılandırması güncellendi.');
+  fs.writeFileSync(
+    configPath,
+    `export default ${JSON.stringify(config, null, 2)}`,
+  );
+  console.log("Tailwind yapılandırması güncellendi.");
 }
 
 module.exports = updateTailwindConfig;

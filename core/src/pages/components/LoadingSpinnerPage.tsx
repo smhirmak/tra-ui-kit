@@ -18,7 +18,12 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes for customization' },
+  {
+    prop: 'className',
+    type: 'string',
+    default: 'undefined',
+    description: 'Additional CSS classes for customization',
+  },
 ];
 
 const LoadingSpinnerPage = () => {
@@ -42,11 +47,17 @@ const LoadingSpinnerPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add loading-spinner' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add loading-spinner" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="loading-spinner" />
           </Tab>
         </Tabs>
@@ -61,7 +72,7 @@ const LoadingSpinnerPage = () => {
               <LoadingSpinner />
             </div>
           </div>
-          <CustomSyntaxHighlighter content='<LoadingSpinner />' />
+          <CustomSyntaxHighlighter content="<LoadingSpinner />" />
         </div>
       </section>
 
@@ -116,4 +127,3 @@ const LoadingSpinnerPage = () => {
 };
 
 export default LoadingSpinnerPage;
-

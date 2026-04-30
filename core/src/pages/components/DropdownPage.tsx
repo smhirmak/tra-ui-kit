@@ -21,14 +21,44 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'options', type: 'Array<{label: string, value: string | number | boolean}>', default: '-', description: 'Available options' },
-  { prop: 'value', type: 'string | number | boolean', default: '-', description: 'Controlled value' },
-  { prop: 'defaultValue', type: 'string | number | boolean', default: '-', description: 'Default selected value' },
-  { prop: 'onChange', type: '(value: string | number | boolean) => void', default: '-', description: 'Callback when value changes' },
+  {
+    prop: 'options',
+    type: 'Array<{label: string, value: string | number | boolean}>',
+    default: '-',
+    description: 'Available options',
+  },
+  {
+    prop: 'value',
+    type: 'string | number | boolean',
+    default: '-',
+    description: 'Controlled value',
+  },
+  {
+    prop: 'defaultValue',
+    type: 'string | number | boolean',
+    default: '-',
+    description: 'Default selected value',
+  },
+  {
+    prop: 'onChange',
+    type: '(value: string | number | boolean) => void',
+    default: '-',
+    description: 'Callback when value changes',
+  },
   { prop: 'placeholder', type: 'string', default: '-', description: 'Placeholder text' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the dropdown' },
-  { prop: 'dropdownAlign', type: '"left" | "right"', default: '"left"', description: 'Dropdown menu alignment' },
-  { prop: 'forceTriggerWidth', type: 'boolean', default: 'false', description: 'Forces the dropdown to match the trigger width' },
+  {
+    prop: 'dropdownAlign',
+    type: '"left" | "right"',
+    default: '"left"',
+    description: 'Dropdown menu alignment',
+  },
+  {
+    prop: 'forceTriggerWidth',
+    type: 'boolean',
+    default: 'false',
+    description: 'Forces the dropdown to match the trigger width',
+  },
 ];
 
 const sampleOptions = [
@@ -41,7 +71,9 @@ const DropdownPage = () => {
   const { setTocItems } = useTOC();
   const { t } = useTranslation();
   const { info } = Notification();
-  const [controlledValue, setControlledValue] = useState<string | number | boolean | undefined>('2');
+  const [controlledValue, setControlledValue] = useState<string | number | boolean | undefined>(
+    '2',
+  );
   const [basicValue, setBasicValue] = useState<string | number | boolean | undefined>(undefined);
 
   useEffect(() => {
@@ -54,18 +86,25 @@ const DropdownPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Dropdown</h1>
         <p className="text-lg text-neutral-grey">
-          A versatile dropdown component for selecting from a list of options with support for controlled and uncontrolled modes.
+          A versatile dropdown component for selecting from a list of options with support for
+          controlled and uncontrolled modes.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add dropdown' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add dropdown" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="dropdown" />
           </Tab>
         </Tabs>
@@ -78,36 +117,46 @@ const DropdownPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <Dropdown
               options={sampleOptions}
-              onChange={v => setBasicValue(v)}
+              onChange={(v) => setBasicValue(v)}
               placeholder="Choose an option"
             />
-            <div className="mt-2 text-sm text-neutral-grey">Selected: {String(basicValue ?? 'none')}</div>
+            <div className="mt-2 text-sm text-neutral-grey">
+              Selected: {String(basicValue ?? 'none')}
+            </div>
           </div>
-          <CustomSyntaxHighlighter content={`<Dropdown
+          <CustomSyntaxHighlighter
+            content={`<Dropdown
   options={sampleOptions}
   onChange={v => setBasicValue(v)}
   placeholder="Choose an option"
-/>`} />
+/>`}
+          />
         </div>
       </section>
 
       {/* Controlled */}
       <section id="controlled">
         <h2 className="mb-4 text-2xl font-bold">Controlled</h2>
-        <p className="mb-4 text-neutral-grey">Use value and onChange props for controlled behavior.</p>
+        <p className="mb-4 text-neutral-grey">
+          Use value and onChange props for controlled behavior.
+        </p>
         <div className="rounded-lg border border-border bg-background p-6">
           <Dropdown
             options={sampleOptions}
             value={controlledValue}
-            onChange={v => setControlledValue(v)}
+            onChange={(v) => setControlledValue(v)}
           />
-          <div className="mt-2 text-sm text-neutral-grey">Controlled value: {String(controlledValue)}</div>
+          <div className="mt-2 text-sm text-neutral-grey">
+            Controlled value: {String(controlledValue)}
+          </div>
         </div>
-        <CustomSyntaxHighlighter content={`<Dropdown
+        <CustomSyntaxHighlighter
+          content={`<Dropdown
   options={sampleOptions}
   value={controlledValue}
   onChange={v => setControlledValue(v)}
-/>`} />
+/>`}
+        />
       </section>
 
       {/* Default Value */}
@@ -118,14 +167,16 @@ const DropdownPage = () => {
           <Dropdown
             options={sampleOptions}
             defaultValue={'3'}
-            onChange={v => info(`default changed: ${v}`)}
+            onChange={(v) => info(`default changed: ${v}`)}
           />
         </div>
-        <CustomSyntaxHighlighter content={`<Dropdown
+        <CustomSyntaxHighlighter
+          content={`<Dropdown
   options={sampleOptions}
   defaultValue={'3'}
   onChange={v => info('default changed', v)}
-/>`} />
+/>`}
+        />
       </section>
 
       {/* States */}
@@ -145,7 +196,9 @@ const DropdownPage = () => {
       {/* Alignment */}
       <section id="alignment">
         <h2 className="mb-4 text-2xl font-bold">Alignment</h2>
-        <p className="mb-4 text-neutral-grey">Control dropdown menu alignment with dropdownAlign prop.</p>
+        <p className="mb-4 text-neutral-grey">
+          Control dropdown menu alignment with dropdownAlign prop.
+        </p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="flex justify-end">
             <div className="max-w-xs">

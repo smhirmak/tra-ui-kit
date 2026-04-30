@@ -8,7 +8,7 @@ describe('Tooltip Component', () => {
       render(
         <Tooltip content="Tooltip text">
           <button>Hover me</button>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(screen.getByText('Hover me')).toBeInTheDocument();
     });
@@ -17,7 +17,7 @@ describe('Tooltip Component', () => {
       render(
         <Tooltip content="Tooltip text">
           <button>Hover</button>
-        </Tooltip>
+        </Tooltip>,
       );
       // Tooltip content may be in DOM but hidden
       expect(screen.getByText('Hover')).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe('Tooltip Component', () => {
       render(
         <Tooltip content="Help text">
           <span>Info</span>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(screen.getByText('Info')).toBeInTheDocument();
     });
@@ -38,7 +38,7 @@ describe('Tooltip Component', () => {
       render(
         <Tooltip content={['Line 1', 'Line 2']}>
           <button>Button</button>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });
@@ -47,36 +47,48 @@ describe('Tooltip Component', () => {
   describe('Position', () => {
     it('should accept top position', () => {
       render(
-        <Tooltip content="Top" position="top">
+        <Tooltip
+          content="Top"
+          position="top"
+        >
           <button>Button</button>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });
 
     it('should accept bottom position', () => {
       render(
-        <Tooltip content="Bottom" position="bottom">
+        <Tooltip
+          content="Bottom"
+          position="bottom"
+        >
           <button>Button</button>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });
 
     it('should accept left position', () => {
       render(
-        <Tooltip content="Left" position="left">
+        <Tooltip
+          content="Left"
+          position="left"
+        >
           <button>Button</button>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });
 
     it('should accept right position', () => {
       render(
-        <Tooltip content="Right" position="right">
+        <Tooltip
+          content="Right"
+          position="right"
+        >
           <button>Button</button>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });
@@ -85,9 +97,12 @@ describe('Tooltip Component', () => {
   describe('Delay', () => {
     it('should accept delay prop', () => {
       render(
-        <Tooltip content="Delayed" delay={500}>
+        <Tooltip
+          content="Delayed"
+          delay={500}
+        >
           <button>Button</button>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });
@@ -96,9 +111,12 @@ describe('Tooltip Component', () => {
   describe('Custom Styling', () => {
     it('should apply custom className', () => {
       const { container } = render(
-        <Tooltip content="Text" className="custom-tooltip">
+        <Tooltip
+          content="Text"
+          className="custom-tooltip"
+        >
           <button>Button</button>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(container.querySelector('.custom-tooltip')).toBeInTheDocument();
     });
@@ -107,9 +125,12 @@ describe('Tooltip Component', () => {
   describe('Arrow', () => {
     it('should accept arrow prop', () => {
       render(
-        <Tooltip content="Text" arrow>
+        <Tooltip
+          content="Text"
+          arrow
+        >
           <button>Button</button>
-        </Tooltip>
+        </Tooltip>,
       );
       expect(screen.getByText('Button')).toBeInTheDocument();
     });

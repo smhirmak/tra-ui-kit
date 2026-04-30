@@ -10,7 +10,7 @@ const Object: ObjectUtilities = {
   GetNestedValue: (obj: NestedObject, key: string): any => {
     const properties = key.split('.');
     let value = obj;
-    properties.forEach(prop => {
+    properties.forEach((prop) => {
       if (!value) return null;
       value = value[prop];
     });

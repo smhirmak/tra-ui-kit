@@ -20,10 +20,18 @@ const VersionSelect: React.FC<VersionSelectProps> = ({ className }) => {
       <div className="flex items-center gap-2">
         <span>{v.label}</span>
         {v.isLatest && (
-          <Badge color='primary' size="sm" text="Latest" />
+          <Badge
+            color="primary"
+            size="sm"
+            text="Latest"
+          />
         )}
         {v.isDeprecated && (
-          <Badge color="error" size="sm" text="Deprecated" />
+          <Badge
+            color="error"
+            size="sm"
+            text="Deprecated"
+          />
         )}
       </div>
     ),
@@ -37,9 +45,9 @@ const VersionSelect: React.FC<VersionSelectProps> = ({ className }) => {
       onChange={(value) => setVersion(value as string)}
       className={cn('', className)}
       triggerClassName="bg-background border-border hover:bg-accent py-1 px-1.5"
-      itemClassName='px-1.5'
+      itemClassName="px-1.5"
       contentClassName="min-w-[80px]"
-      iconClassName='!size-3 ml-2'
+      iconClassName="!size-3 ml-2"
       placeholder="Select version"
       dropdownAlign="right"
     />

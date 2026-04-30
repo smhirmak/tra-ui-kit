@@ -11,12 +11,22 @@ describe('Dropdown Component', () => {
 
   describe('Basic Rendering', () => {
     it('should render with placeholder', () => {
-      render(<Dropdown options={mockOptions} placeholder="Select an option" />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          placeholder="Select an option"
+        />,
+      );
       expect(screen.getByText('Select an option')).toBeInTheDocument();
     });
 
     it('should render with label', () => {
-      render(<Dropdown options={mockOptions} label="Choose option" />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          label="Choose option"
+        />,
+      );
       expect(screen.getByText('Choose option')).toBeInTheDocument();
     });
 
@@ -56,7 +66,12 @@ describe('Dropdown Component', () => {
   describe('Selection', () => {
     it('should select option when clicked', async () => {
       const handleChange = vi.fn();
-      render(<Dropdown options={mockOptions} onChange={handleChange} />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          onChange={handleChange}
+        />,
+      );
 
       fireEvent.click(screen.getByText('Select...'));
 
@@ -73,26 +88,46 @@ describe('Dropdown Component', () => {
     });
 
     it('should show selected value', () => {
-      render(<Dropdown options={mockOptions} value="opt2" />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          value="opt2"
+        />,
+      );
       expect(screen.getByText('Option 2')).toBeInTheDocument();
     });
 
     it('should show default value', () => {
-      render(<Dropdown options={mockOptions} defaultValue="opt1" />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          defaultValue="opt1"
+        />,
+      );
       expect(screen.getByText('Option 1')).toBeInTheDocument();
     });
   });
 
   describe('Disabled State', () => {
     it('should be disabled when disabled prop is true', () => {
-      render(<Dropdown options={mockOptions} disabled />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          disabled
+        />,
+      );
       const trigger = screen.getByText('Select...');
       const triggerParent = trigger.closest('[data-disabled]');
       expect(triggerParent).toHaveAttribute('data-disabled', 'true');
     });
 
     it('should not open when disabled', () => {
-      render(<Dropdown options={mockOptions} disabled />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          disabled
+        />,
+      );
 
       fireEvent.click(screen.getByText('Select...'));
 
@@ -107,7 +142,12 @@ describe('Dropdown Component', () => {
       ];
 
       const handleChange = vi.fn();
-      render(<Dropdown options={optionsWithDisabled} onChange={handleChange} />);
+      render(
+        <Dropdown
+          options={optionsWithDisabled}
+          onChange={handleChange}
+        />,
+      );
 
       fireEvent.click(screen.getByText('Select...'));
 
@@ -157,7 +197,12 @@ describe('Dropdown Component', () => {
 
     it('should select option with Enter key', async () => {
       const handleChange = vi.fn();
-      render(<Dropdown options={mockOptions} onChange={handleChange} />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          onChange={handleChange}
+        />,
+      );
 
       const trigger = screen.getByText('Select...');
       fireEvent.click(trigger);
@@ -192,44 +237,79 @@ describe('Dropdown Component', () => {
     });
 
     it('should align right when specified', () => {
-      render(<Dropdown options={mockOptions} dropdownAlign="right" />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          dropdownAlign="right"
+        />,
+      );
       // Right alignment should be applied
     });
   });
 
   describe('Custom Styling', () => {
     it('should apply custom className', () => {
-      const { container } = render(<Dropdown options={mockOptions} className="custom-dropdown" />);
+      const { container } = render(
+        <Dropdown
+          options={mockOptions}
+          className="custom-dropdown"
+        />,
+      );
       expect(container.querySelector('.custom-dropdown')).toBeInTheDocument();
     });
 
     it('should apply custom trigger className', () => {
-      render(<Dropdown options={mockOptions} triggerClassName="custom-trigger" />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          triggerClassName="custom-trigger"
+        />,
+      );
       const triggerContainer = document.querySelector('.custom-trigger');
       expect(triggerContainer).toBeInTheDocument();
     });
 
     it('should apply custom content className', () => {
-      render(<Dropdown options={mockOptions} contentClassName="custom-content" />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          contentClassName="custom-content"
+        />,
+      );
       // Custom content class should be applied
     });
 
     it('should apply custom item className', () => {
-      render(<Dropdown options={mockOptions} itemClassName="custom-item" />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          itemClassName="custom-item"
+        />,
+      );
       // Custom item class should be applied
     });
   });
 
   describe('ID Prop', () => {
     it('should apply id to component', () => {
-      const { container } = render(<Dropdown options={mockOptions} id="test-dropdown" />);
+      const { container } = render(
+        <Dropdown
+          options={mockOptions}
+          id="test-dropdown"
+        />,
+      );
       expect(container.querySelector('#test-dropdown')).toBeInTheDocument();
     });
   });
 
   describe('Selected Indicator', () => {
     it('should show check icon for selected option', async () => {
-      render(<Dropdown options={mockOptions} value="opt1" />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          value="opt1"
+        />,
+      );
 
       fireEvent.click(screen.getAllByText('Option 1')[0]);
 
@@ -259,7 +339,12 @@ describe('Dropdown Component', () => {
   describe('Value Types', () => {
     it('should work with string values', async () => {
       const handleChange = vi.fn();
-      render(<Dropdown options={mockOptions} onChange={handleChange} />);
+      render(
+        <Dropdown
+          options={mockOptions}
+          onChange={handleChange}
+        />,
+      );
 
       fireEvent.click(screen.getByText('Select...'));
       await waitFor(() => screen.getByText('Option 1'));
@@ -275,7 +360,12 @@ describe('Dropdown Component', () => {
       ];
 
       const handleChange = vi.fn();
-      render(<Dropdown options={numberOptions} onChange={handleChange} />);
+      render(
+        <Dropdown
+          options={numberOptions}
+          onChange={handleChange}
+        />,
+      );
 
       fireEvent.click(screen.getByText('Select...'));
       await waitFor(() => screen.getByText('One'));
@@ -291,7 +381,12 @@ describe('Dropdown Component', () => {
       ];
 
       const handleChange = vi.fn();
-      render(<Dropdown options={boolOptions} onChange={handleChange} />);
+      render(
+        <Dropdown
+          options={boolOptions}
+          onChange={handleChange}
+        />,
+      );
 
       fireEvent.click(screen.getByText('Select...'));
       await waitFor(() => screen.getByText('True'));

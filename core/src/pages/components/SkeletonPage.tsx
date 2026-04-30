@@ -44,11 +44,17 @@ const SkeletonPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add skeleton' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add skeleton" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="skeleton" />
           </Tab>
         </Tabs>
@@ -61,7 +67,7 @@ const SkeletonPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <Skeleton />
           </div>
-          <CustomSyntaxHighlighter content='<Skeleton />' />
+          <CustomSyntaxHighlighter content="<Skeleton />" />
         </div>
       </section>
 
@@ -75,8 +81,14 @@ const SkeletonPage = () => {
             <div className="rounded-lg border border-border bg-background p-6">
               <div className="space-y-2">
                 <Skeleton animation />
-                <Skeleton className="h-6" animation />
-                <Skeleton className="h-10" animation />
+                <Skeleton
+                  className="h-6"
+                  animation
+                />
+                <Skeleton
+                  className="h-10"
+                  animation
+                />
               </div>
             </div>
           </div>
@@ -85,13 +97,22 @@ const SkeletonPage = () => {
             <div className="rounded-lg border border-border bg-background p-6">
               <div className="space-y-2">
                 <Skeleton animation={false} />
-                <Skeleton className="h-6" animation={false} />
-                <Skeleton className="h-10" animation={false} />
+                <Skeleton
+                  className="h-6"
+                  animation={false}
+                />
+                <Skeleton
+                  className="h-10"
+                  animation={false}
+                />
               </div>
             </div>
           </div>
-          <CustomSyntaxHighlighter className="mb-2" content='<Skeleton animation />' />
-          <CustomSyntaxHighlighter content='<Skeleton animation={false} />' />
+          <CustomSyntaxHighlighter
+            className="mb-2"
+            content="<Skeleton animation />"
+          />
+          <CustomSyntaxHighlighter content="<Skeleton animation={false} />" />
         </div>
       </section>
 
@@ -118,7 +139,9 @@ const SkeletonPage = () => {
       {/* Complex Layouts */}
       <section id="complex-layouts">
         <h2 className="mb-4 text-2xl font-bold">Complex Layouts</h2>
-        <p className="mb-4 text-neutral-grey">Create complex loading layouts with multiple skeletons.</p>
+        <p className="mb-4 text-neutral-grey">
+          Create complex loading layouts with multiple skeletons.
+        </p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="space-y-4">
             <div className="flex items-center space-x-4">
@@ -157,4 +180,3 @@ const SkeletonPage = () => {
 };
 
 export default SkeletonPage;
-

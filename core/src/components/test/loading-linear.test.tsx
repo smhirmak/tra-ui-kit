@@ -44,7 +44,12 @@ describe('LoadingLinear Component', () => {
 
   describe('HTML Attributes', () => {
     it('should accept additional HTML attributes', () => {
-      const { container } = render(<LoadingLinear id="test-loader" data-testid="loader" />);
+      const { container } = render(
+        <LoadingLinear
+          id="test-loader"
+          data-testid="loader"
+        />,
+      );
       expect(container.firstChild).toHaveAttribute('id', 'test-loader');
       expect(container.firstChild).toHaveAttribute('data-testid', 'loader');
     });

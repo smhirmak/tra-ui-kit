@@ -67,11 +67,13 @@ const Dialog: React.FC<DialogProps> = ({
       }
       onOpenChange?.(value);
     },
-    [isControlled, onOpenChange]
+    [isControlled, onOpenChange],
   );
 
   return (
-    <DialogContext.Provider value={{ open, setOpen, size, disableBackdropClick, disableEscapeKeyDown, showCloseButton }}>
+    <DialogContext.Provider
+      value={{ open, setOpen, size, disableBackdropClick, disableEscapeKeyDown, showCloseButton }}
+    >
       {children}
     </DialogContext.Provider>
   );
@@ -100,14 +102,17 @@ const DialogTrigger: React.FC<DialogTriggerProps> = ({ children, asChild = false
   }
 
   return (
-    <Button className={cn(className)} onClick={() => setOpen(true)}>
+    <Button
+      className={cn(className)}
+      onClick={() => setOpen(true)}
+    >
       {children}
     </Button>
   );
 };
 
 const overlayVariants = cva(
-  'fixed inset-0 z-50 bg-black/50 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0'
+  'fixed inset-0 z-50 bg-black/50 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
 );
 
 const contentVariants = cva(
@@ -136,22 +141,18 @@ const contentVariants = cva(
     defaultVariants: {
       size: 'default',
     },
-  }
+  },
 );
 
 interface DialogContentProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-  VariantProps<typeof contentVariants> {
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof contentVariants> {
   className?: string;
   children: React.ReactNode;
 }
 
-const DialogContent: React.FC<DialogContentProps> = ({
-  className,
-  children,
-  ...props
-}) => {
-  const { open, setOpen, size, disableBackdropClick, disableEscapeKeyDown, showCloseButton } = useDialog();
+const DialogContent: React.FC<DialogContentProps> = ({ className, children, ...props }) => {
+  const { open, setOpen, size, disableBackdropClick, disableEscapeKeyDown, showCloseButton } =
+    useDialog();
   const [isRendered, setIsRendered] = useState(open);
 
   useEffect(() => {
@@ -215,24 +216,36 @@ const DialogContent: React.FC<DialogContentProps> = ({
         )}
       </div>
     </Fragment>,
-    document.body
+    document.body,
   );
 };
 
 const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)} {...props} />
+  <div
+    className={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)}
+    {...props}
+  />
 );
 
 const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)} {...props} />
+  <div
+    className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
+    {...props}
+  />
 );
 
 const DialogTitle = ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-  <h2 className={cn('text-lg font-semibold leading-none tracking-tight', className)} {...props} />
+  <h2
+    className={cn('text-lg font-semibold leading-none tracking-tight', className)}
+    {...props}
+  />
 );
 
 const DialogDescription = ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-  <p className={cn('text-sm text-muted-foreground', className)} {...props} />
+  <p
+    className={cn('text-sm text-muted-foreground', className)}
+    {...props}
+  />
 );
 
 export {

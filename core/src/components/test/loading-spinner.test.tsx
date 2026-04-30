@@ -46,7 +46,12 @@ describe('LoadingSpinner Component', () => {
 
   describe('HTML Attributes', () => {
     it('should accept additional HTML attributes', () => {
-      const { container } = render(<LoadingSpinner id="test-spinner" data-testid="spinner" />);
+      const { container } = render(
+        <LoadingSpinner
+          id="test-spinner"
+          data-testid="spinner"
+        />,
+      );
       expect(container.firstChild).toHaveAttribute('id', 'test-spinner');
       expect(container.firstChild).toHaveAttribute('data-testid', 'spinner');
     });

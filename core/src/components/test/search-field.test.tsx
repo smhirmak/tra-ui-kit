@@ -11,12 +11,22 @@ describe('SearchField Component', () => {
     });
 
     it('should render with placeholder', () => {
-      render(<SearchField value="" placeholder="Search..." />);
+      render(
+        <SearchField
+          value=""
+          placeholder="Search..."
+        />,
+      );
       expect(screen.getByPlaceholderText('Search...')).toBeInTheDocument();
     });
 
     it('should render with label', () => {
-      render(<SearchField value="" label="Search Items" />);
+      render(
+        <SearchField
+          value=""
+          label="Search Items"
+        />,
+      );
       expect(screen.getByText('Search Items')).toBeInTheDocument();
     });
   });
@@ -24,17 +34,32 @@ describe('SearchField Component', () => {
   describe('User Interactions', () => {
     it('should call onChange when typing', () => {
       const onChange = vi.fn();
-      render(<SearchField value="" onChange={onChange} />);
+      render(
+        <SearchField
+          value=""
+          onChange={onChange}
+        />,
+      );
       const input = screen.getByRole('textbox');
       fireEvent.change(input, { target: { value: 'test' } });
       expect(onChange).toHaveBeenCalled();
     });
 
     it('should update value when typing', () => {
-      const { rerender } = render(<SearchField value="" onChange={vi.fn()} />);
+      const { rerender } = render(
+        <SearchField
+          value=""
+          onChange={vi.fn()}
+        />,
+      );
       const input = screen.getByRole('textbox') as HTMLInputElement;
 
-      rerender(<SearchField value="query" onChange={vi.fn()} />);
+      rerender(
+        <SearchField
+          value="query"
+          onChange={vi.fn()}
+        />,
+      );
       expect(input.value).toBe('query');
     });
   });
@@ -49,7 +74,12 @@ describe('SearchField Component', () => {
 
   describe('Disabled State', () => {
     it('should be disabled when disabled prop is true', () => {
-      render(<SearchField value="" disabled />);
+      render(
+        <SearchField
+          value=""
+          disabled
+        />,
+      );
       const input = screen.getByRole('textbox');
       expect(input).toBeDisabled();
     });
@@ -57,7 +87,12 @@ describe('SearchField Component', () => {
 
   describe('Custom Styling', () => {
     it('should apply custom className', () => {
-      const { container } = render(<SearchField value="" className="custom-search" />);
+      const { container } = render(
+        <SearchField
+          value=""
+          className="custom-search"
+        />,
+      );
       expect(container.querySelector('.custom-search')).toBeInTheDocument();
     });
   });

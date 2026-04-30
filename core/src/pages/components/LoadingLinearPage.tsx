@@ -17,9 +17,24 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'linearContainerClassName', type: 'string', default: 'undefined', description: 'Custom class for container' },
-  { prop: 'linearItemClassName', type: 'string', default: 'undefined', description: 'Custom class for progress bar' },
-  { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes' },
+  {
+    prop: 'linearContainerClassName',
+    type: 'string',
+    default: 'undefined',
+    description: 'Custom class for container',
+  },
+  {
+    prop: 'linearItemClassName',
+    type: 'string',
+    default: 'undefined',
+    description: 'Custom class for progress bar',
+  },
+  {
+    prop: 'className',
+    type: 'string',
+    default: 'undefined',
+    description: 'Additional CSS classes',
+  },
 ];
 
 const LoadingLinearPage = () => {
@@ -43,11 +58,17 @@ const LoadingLinearPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add loading-linear' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add loading-linear" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="loading-linear" />
           </Tab>
         </Tabs>
@@ -60,14 +81,16 @@ const LoadingLinearPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <LoadingLinear />
           </div>
-          <CustomSyntaxHighlighter content='<LoadingLinear />' />
+          <CustomSyntaxHighlighter content="<LoadingLinear />" />
         </div>
       </section>
 
       {/* Custom Style */}
       <section id="custom-style">
         <h2 className="mb-4 text-2xl font-bold">Custom Styling</h2>
-        <p className="mb-4 text-neutral-grey">Customize the container and progress bar appearance.</p>
+        <p className="mb-4 text-neutral-grey">
+          Customize the container and progress bar appearance.
+        </p>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="space-y-6">
@@ -97,4 +120,3 @@ const LoadingLinearPage = () => {
 };
 
 export default LoadingLinearPage;
-

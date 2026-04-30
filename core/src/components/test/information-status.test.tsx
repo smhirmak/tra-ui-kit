@@ -17,17 +17,32 @@ describe('InformationStatus Component', () => {
 
   describe('Type Variants', () => {
     it('should apply success type styling', () => {
-      const { container } = render(<InformationStatus type="success" title="Success" />);
+      const { container } = render(
+        <InformationStatus
+          type="success"
+          title="Success"
+        />,
+      );
       expect(container.firstChild).toHaveClass('bg-success-light', 'text-success');
     });
 
     it('should apply error type styling', () => {
-      const { container } = render(<InformationStatus type="error" title="Error" />);
+      const { container } = render(
+        <InformationStatus
+          type="error"
+          title="Error"
+        />,
+      );
       expect(container.firstChild).toHaveClass('bg-error-light', 'text-error');
     });
 
     it('should apply warning type styling', () => {
-      const { container } = render(<InformationStatus type="warning" title="Warning" />);
+      const { container } = render(
+        <InformationStatus
+          type="warning"
+          title="Warning"
+        />,
+      );
       expect(container.firstChild).toHaveClass('bg-warning-light', 'text-warning');
     });
   });
@@ -40,7 +55,12 @@ describe('InformationStatus Component', () => {
     });
 
     it('should render icon when isHaveIcon is true', () => {
-      const { container } = render(<InformationStatus title="Test" isHaveIcon />);
+      const { container } = render(
+        <InformationStatus
+          title="Test"
+          isHaveIcon
+        />,
+      );
       const icon = container.querySelector('svg');
       expect(icon).toBeInTheDocument();
     });
@@ -56,19 +76,37 @@ describe('InformationStatus Component', () => {
     });
 
     it('should render success icon when type is success', () => {
-      const { container } = render(<InformationStatus type="success" title="Test" isHaveIcon />);
+      const { container } = render(
+        <InformationStatus
+          type="success"
+          title="Test"
+          isHaveIcon
+        />,
+      );
       const icon = container.querySelector('svg');
       expect(icon).toBeInTheDocument();
     });
 
     it('should render error icon when type is error', () => {
-      const { container } = render(<InformationStatus type="error" title="Test" isHaveIcon />);
+      const { container } = render(
+        <InformationStatus
+          type="error"
+          title="Test"
+          isHaveIcon
+        />,
+      );
       const icon = container.querySelector('svg');
       expect(icon).toBeInTheDocument();
     });
 
     it('should render warning icon when type is warning', () => {
-      const { container } = render(<InformationStatus type="warning" title="Test" isHaveIcon />);
+      const { container } = render(
+        <InformationStatus
+          type="warning"
+          title="Test"
+          isHaveIcon
+        />,
+      );
       const icon = container.querySelector('svg');
       expect(icon).toBeInTheDocument();
     });
@@ -76,7 +114,12 @@ describe('InformationStatus Component', () => {
 
   describe('Custom Styling', () => {
     it('should apply custom className', () => {
-      const { container } = render(<InformationStatus title="Test" className="custom-class" />);
+      const { container } = render(
+        <InformationStatus
+          title="Test"
+          className="custom-class"
+        />,
+      );
       expect(container.firstChild).toHaveClass('custom-class');
     });
   });

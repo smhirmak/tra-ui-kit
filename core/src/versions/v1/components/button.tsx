@@ -13,9 +13,12 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        solid: 'bg-primary text-primary-foreground hover:bg-primary/90 disabled:bg-button-disabled disabled:text-button-disabled-text',
-        outlined: 'border-primary text-primary-foreground hover:bg-primary/10 disabled:border-button-disabled-text disabled:text-button-disabled-text border-2 bg-transparent',
-        ghost: 'text-primary hover:text-primary/90 disabled:text-button-disabled-text bg-transparent',
+        solid:
+          'bg-primary text-primary-foreground hover:bg-primary/90 disabled:bg-button-disabled disabled:text-button-disabled-text',
+        outlined:
+          'border-primary text-primary-foreground hover:bg-primary/10 disabled:border-button-disabled-text disabled:text-button-disabled-text border-2 bg-transparent',
+        ghost:
+          'text-primary hover:text-primary/90 disabled:text-button-disabled-text bg-transparent',
       },
       color: {
         primary: 'bg-primary text-primary-foreground',
@@ -105,26 +108,24 @@ export const buttonVariants = cva(
   },
 );
 
-const spinnerVariants = cva(
-  'border-t-button-disabled text-button-disabled-text mr-2 border-2',
-  {
-    variants: {
-      size: {
-        default: 'size-4 max-h-4 min-h-4 min-w-4 max-w-4',
-        sm: 'size-3 max-h-3 min-h-3 min-w-3 max-w-3',
-        lg: 'size-5 max-h-5 min-h-5 min-w-5 max-w-5',
-        icon: 'size-3 max-h-3 min-h-3 min-w-3 max-w-3',
-      },
-    },
-    defaultVariants: {
-      size: 'default',
+const spinnerVariants = cva('border-t-button-disabled text-button-disabled-text mr-2 border-2', {
+  variants: {
+    size: {
+      default: 'size-4 max-h-4 min-h-4 min-w-4 max-w-4',
+      sm: 'size-3 max-h-3 min-h-3 min-w-3 max-w-3',
+      lg: 'size-5 max-h-5 min-h-5 min-w-5 max-w-5',
+      icon: 'size-3 max-h-3 min-h-3 min-w-3 max-w-3',
     },
   },
-);
+  defaultVariants: {
+    size: 'default',
+  },
+});
 
 export interface IButton
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
-  VariantProps<typeof buttonVariants> {
+  extends
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+    VariantProps<typeof buttonVariants> {
   asChild?: React.ElementType;
   children: React.ReactNode;
   className?: string;
@@ -142,24 +143,27 @@ export interface IButton
 }
 
 const Button = React.forwardRef<HTMLButtonElement, IButton>(
-  ({
-    asChild,
-    children,
-    className,
-    color,
-    disableEffect = false,
-    disabled,
-    effectColor = '#212129',
-    effectOpacity = '0.3',
-    loading = false,
-    loadingSpinnerClassname,
-    loadingText = 'Sending...',
-    rounded = 'default',
-    size,
-    variant,
-    type,
-    ...props
-  }, ref) => {
+  (
+    {
+      asChild,
+      children,
+      className,
+      color,
+      disableEffect = false,
+      disabled,
+      effectColor = '#212129',
+      effectOpacity = '0.3',
+      loading = false,
+      loadingSpinnerClassname,
+      loadingText = 'Sending...',
+      rounded = 'default',
+      size,
+      variant,
+      type,
+      ...props
+    },
+    ref,
+  ) => {
     const Comp = asChild ?? 'button';
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -234,7 +238,9 @@ const Button = React.forwardRef<HTMLButtonElement, IButton>(
         {loading && (
           <LoadingSpinner className={cn(spinnerVariants({ size }), loadingSpinnerClassname)} />
         )}
-        <>{(loading && size !== 'icon') ? (loadingText) : (loading && size === 'icon') ? null : children}</>
+        <>
+          {loading && size !== 'icon' ? loadingText : loading && size === 'icon' ? null : children}
+        </>
       </Comp>
     );
   },

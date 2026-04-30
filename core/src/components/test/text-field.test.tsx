@@ -40,14 +40,24 @@ describe('TextField Component', () => {
 
   describe('Value Handling', () => {
     it('should display value', () => {
-      render(<TextField value="test value" onChange={vi.fn()} />);
+      render(
+        <TextField
+          value="test value"
+          onChange={vi.fn()}
+        />,
+      );
       const input = screen.getByDisplayValue('test value');
       expect(input).toBeInTheDocument();
     });
 
     it('should call onChange when typing', () => {
       const onChange = vi.fn();
-      render(<TextField value="" onChange={onChange} />);
+      render(
+        <TextField
+          value=""
+          onChange={onChange}
+        />,
+      );
       const input = screen.getByRole('textbox');
       fireEvent.change(input, { target: { value: 'new' } });
       expect(onChange).toHaveBeenCalled();
@@ -77,7 +87,12 @@ describe('TextField Component', () => {
 
     it('should not call onChange when disabled', () => {
       const onChange = vi.fn();
-      render(<TextField disabled onChange={onChange} />);
+      render(
+        <TextField
+          disabled
+          onChange={onChange}
+        />,
+      );
       const input = screen.getByRole('textbox');
       fireEvent.change(input, { target: { value: 'test' } });
       expect(onChange).not.toHaveBeenCalled();
@@ -86,7 +101,12 @@ describe('TextField Component', () => {
 
   describe('Error State', () => {
     it('should display error with helper text', () => {
-      render(<TextField error helperText="Required field" />);
+      render(
+        <TextField
+          error
+          helperText="Required field"
+        />,
+      );
       expect(screen.getByText('Required field')).toBeInTheDocument();
     });
 
@@ -105,7 +125,12 @@ describe('TextField Component', () => {
 
   describe('Required Field', () => {
     it('should show required indicator', () => {
-      render(<TextField showRequiredIcon label="Email" />);
+      render(
+        <TextField
+          showRequiredIcon
+          label="Email"
+        />,
+      );
       expect(screen.getByText('Email')).toBeInTheDocument();
     });
   });

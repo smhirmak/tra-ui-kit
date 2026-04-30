@@ -11,7 +11,13 @@ import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const MsiLogo = () => (
   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary shadow-soft-primary">
-    <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="22"
+      height="20"
+      viewBox="0 0 22 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M2 17L6.8 3L11 10.5L15.2 3L20 17"
         stroke="white"
@@ -63,7 +69,10 @@ const Header = () => {
         )}
       >
         {/* Logo */}
-        <Link to={versionPrefix} className="relative flex items-center gap-2.5">
+        <Link
+          to={versionPrefix}
+          className="relative flex items-center gap-2.5"
+        >
           <MsiLogo />
           <span className="text-xl font-bold tracking-tight">MSI UI Kit</span>
         </Link>
@@ -102,13 +111,16 @@ const Header = () => {
             rel="noopener noreferrer"
             className="hidden md:flex cursor-pointer! px-3 py-1.5 text-neutral-grey hover:text-primary transition-colors rounded-md hover:bg-neutral-light"
           >
-            <GithubLogoIcon size={20} weight="fill" />
+            <GithubLogoIcon
+              size={20}
+              weight="fill"
+            />
           </a>
           <ThemeModeToggle />
           <LanguageSelect
             locale={locale}
             setLocale={setLocale}
-            defaultValue='en'
+            defaultValue="en"
           />
           {/* Hamburger — mobile only */}
           <button
@@ -161,7 +173,10 @@ const Header = () => {
                   onClick={closeMenu}
                   className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-neutral-grey transition-colors hover:text-primary"
                 >
-                  <GithubLogoIcon size={18} weight="fill" />
+                  <GithubLogoIcon
+                    size={18}
+                    weight="fill"
+                  />
                   GitHub
                 </a>
               </div>
@@ -174,4 +189,3 @@ const Header = () => {
 };
 
 export default Header;
-

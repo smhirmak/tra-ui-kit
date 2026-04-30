@@ -1,3 +1,3 @@
-# MSI UI KIT 
+# MSI UI KIT
 
-# React + TypeScript + Vite 
+# React + TypeScript + Vite

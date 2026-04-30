@@ -26,7 +26,12 @@ describe('DatePicker Component', () => {
 
   describe('Mode', () => {
     it('should render range trigger button in range mode', () => {
-      const { container } = render(<DatePicker mode="range" onChange={mockOnChange} />);
+      const { container } = render(
+        <DatePicker
+          mode="range"
+          onChange={mockOnChange}
+        />,
+      );
       expect(container.firstChild).toBeInTheDocument();
     });
   });
@@ -34,7 +39,12 @@ describe('DatePicker Component', () => {
   describe('Value Handling', () => {
     it('should pre-fill segments when a Date value is provided', () => {
       const date = new Date(2024, 0, 15); // 15 Jan 2024
-      render(<DatePicker onChange={mockOnChange} value={date} />);
+      render(
+        <DatePicker
+          onChange={mockOnChange}
+          value={date}
+        />,
+      );
       const inputs = screen.getAllByRole('textbox');
       // day input
       expect((inputs[0] as HTMLInputElement).value).toBe('15');
@@ -43,9 +53,14 @@ describe('DatePicker Component', () => {
 
   describe('Disabled State', () => {
     it('should disable all segment inputs when disabled prop is true', () => {
-      render(<DatePicker onChange={mockOnChange} disabled />);
+      render(
+        <DatePicker
+          onChange={mockOnChange}
+          disabled
+        />,
+      );
       const inputs = screen.getAllByRole('textbox');
-      inputs.forEach(input => {
+      inputs.forEach((input) => {
         expect(input).toBeDisabled();
       });
     });
@@ -53,7 +68,12 @@ describe('DatePicker Component', () => {
 
   describe('Error State', () => {
     it('should apply error styling when error prop is true', () => {
-      const { container } = render(<DatePicker onChange={mockOnChange} error />);
+      const { container } = render(
+        <DatePicker
+          onChange={mockOnChange}
+          error
+        />,
+      );
       const wrapper = container.querySelector('.border-red-500');
       expect(wrapper).toBeInTheDocument();
     });

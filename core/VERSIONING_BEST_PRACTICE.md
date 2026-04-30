@@ -3,11 +3,13 @@
 ## 🎯 Prensip: Single Source of Truth
 
 ### ❌ YANLIŞ Yaklaşım (Şu anki)
+
 ```
 src/components/button.tsx          (güncelle)
 src/versions/v1/components/button.tsx  (güncelle)
 registry/msi-kit/components/button.tsx (güncelle)
 ```
+
 → 3 farklı yerde aynı değişiklik = KÖTÜ
 
 ### ✅ DOĞRU Yaklaşım (Önerilen)
@@ -29,6 +31,7 @@ src/versions/
 ### Nasıl Çalışır?
 
 #### 1. Normal Güncelleme (Breaking change YOK)
+
 ```bash
 # Sadece registry'yi güncelle
 edit registry/msi-kit/components/button.tsx
@@ -40,6 +43,7 @@ edit registry/msi-kit/components/button.tsx
 ```
 
 #### 2. Breaking Change (Yeni major versiyon)
+
 ```bash
 # Adım 1: Eski versiyonu sakla
 cp registry/msi-kit/components/button.tsx src/versions/v0/components/button.tsx
@@ -84,6 +88,7 @@ core/
 ## 🔄 Workflow Örnekleri
 
 ### Örnek 1: Bug Fix / Minor Update
+
 ```bash
 # 1. Sadece registry'yi düzenle
 vim registry/msi-kit/components/button.tsx
@@ -95,6 +100,7 @@ vim registry/msi-kit/components/button.tsx
 ```
 
 ### Örnek 2: Breaking Change (API değişikliği)
+
 ```bash
 # Scenario: color prop kaldırıyorsun, variant kullanıyorsun
 
@@ -115,6 +121,7 @@ cp src/pages/components/ButtonPage.tsx \
 ```
 
 ### Örnek 3: Yeni Component Eklemek
+
 ```bash
 # 1. Sadece registry'ye ekle
 touch registry/msi-kit/components/tooltip.tsx
@@ -130,6 +137,7 @@ touch src/pages/components/TooltipPage.tsx
 ## 🛠️ Implementation
 
 ### 1. src/components/button.tsx (Re-export)
+
 ```tsx
 // Simple re-export from registry
 export { default } from '@/registry/msi-kit/components/button';
@@ -138,23 +146,23 @@ export type { IButton } from '@/registry/msi-kit/components/button';
 ```
 
 ### 2. src/lib/version-loader.ts (Updated)
+
 ```tsx
 export const getVersionedComponent = (version: string, componentName: string) => {
   // v0 gibi eski versiyonlar için versions klasörüne bak
   if (version === '0') {
-    return lazy(() => 
-      import(`@/versions/v${version}/components/${componentName.toLowerCase()}.tsx`)
+    return lazy(
+      () => import(`@/versions/v${version}/components/${componentName.toLowerCase()}.tsx`),
     );
   }
-  
+
   // Latest (v1+) için registry'den al
-  return lazy(() => 
-    import(`@/registry/msi-kit/components/${componentName.toLowerCase()}.tsx`)
-  );
+  return lazy(() => import(`@/registry/msi-kit/components/${componentName.toLowerCase()}.tsx`));
 };
 ```
 
 ### 3. ButtonPage.tsx (Updated)
+
 ```tsx
 import { lazy, Suspense } from 'react';
 import { useVersion } from '@/contexts/version';
@@ -171,22 +179,24 @@ const getButtonComponent = (version: string) => {
 
 ## 📊 Karşılaştırma
 
-| Durum | Eski Yöntem | Yeni Yöntem |
-|-------|-------------|-------------|
-| Bug fix | 3 dosya değiştir | 1 dosya değiştir (registry) |
-| Minor update | 3 dosya değiştir | 1 dosya değiştir (registry) |
+| Durum           | Eski Yöntem                 | Yeni Yöntem                  |
+| --------------- | --------------------------- | ---------------------------- |
+| Bug fix         | 3 dosya değiştir            | 1 dosya değiştir (registry)  |
+| Minor update    | 3 dosya değiştir            | 1 dosya değiştir (registry)  |
 | Breaking change | 3 dosya değiştir + versions | 1 dosya değiştir + 1 kopyala |
-| Yeni component | 3 dosya oluştur | 1 dosya + 1 re-export |
+| Yeni component  | 3 dosya oluştur             | 1 dosya + 1 re-export        |
 
 ## 🎓 Best Practices
 
 ### ✅ DO
+
 - Registry'yi source of truth olarak kullan
 - Breaking change'de eski versiyonu versions/'a kopyala
 - Re-export dosyalarını basit tut
 - Latest version her zaman registry'den gelsin
 
 ### ❌ DON'T
+
 - Aynı kodu 3 yere kopyalama
 - src/components/'e direkt kod yazma (re-export kullan)
 - versions/v1 oluşturma (latest zaten registry)
@@ -195,6 +205,7 @@ const getButtonComponent = (version: string) => {
 ## 🚀 Migration Plan
 
 ### 1. Mevcut Button'u Migrate Et
+
 ```bash
 # Backup
 cp src/components/button.tsx src/components/button.tsx.backup
@@ -205,27 +216,30 @@ echo "export * from '@/registry/msi-kit/components/button';" >> src/components/b
 ```
 
 ### 2. Registry'nin Güncel Olduğunu Doğrula
+
 ```bash
 # Registry ve src/components'in aynı olduğunu kontrol et
 diff src/components/button.tsx.backup registry/msi-kit/components/button.tsx
 ```
 
 ### 3. Versions Klasörünü Temizle
+
 ```bash
 # v1'i sil (latest zaten registry'de)
 rm -rf src/versions/v1
 ```
 
 ### 4. Version Loader'ı Güncelle
+
 ```tsx
 // src/lib/version-loader.ts
 export const getVersionedComponent = (version: string, componentName: string) => {
   const isOldVersion = parseInt(version) < 1;
-  
+
   if (isOldVersion) {
     return lazy(() => import(`@/versions/v${version}/components/${componentName}`));
   }
-  
+
   // Latest always from registry
   return lazy(() => import(`@/registry/msi-kit/components/${componentName}`));
 };

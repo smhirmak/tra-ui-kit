@@ -82,7 +82,10 @@ describe('Drawer Component', () => {
     it('should work in controlled mode', () => {
       const onOpenChange = vi.fn();
       const { rerender } = render(
-        <Drawer open={false} onOpenChange={onOpenChange}>
+        <Drawer
+          open={false}
+          onOpenChange={onOpenChange}
+        >
           <DrawerContent>
             <DrawerBody>Controlled Content</DrawerBody>
           </DrawerContent>
@@ -92,7 +95,10 @@ describe('Drawer Component', () => {
       expect(screen.queryByText('Controlled Content')).not.toBeInTheDocument();
 
       rerender(
-        <Drawer open onOpenChange={onOpenChange}>
+        <Drawer
+          open
+          onOpenChange={onOpenChange}
+        >
           <DrawerContent>
             <DrawerBody>Controlled Content</DrawerBody>
           </DrawerContent>
@@ -105,7 +111,10 @@ describe('Drawer Component', () => {
     it('should call onOpenChange when closing', async () => {
       const onOpenChange = vi.fn();
       render(
-        <Drawer open onOpenChange={onOpenChange}>
+        <Drawer
+          open
+          onOpenChange={onOpenChange}
+        >
           <DrawerContent>
             <DrawerBody>Content</DrawerBody>
           </DrawerContent>
@@ -159,7 +168,7 @@ describe('Drawer Component', () => {
     });
 
     it('should throw error when asChild is used without valid element', () => {
-      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       expect(() => {
         render(
@@ -179,7 +188,10 @@ describe('Drawer Component', () => {
   describe('Positions', () => {
     it('should render from left', () => {
       render(
-        <Drawer defaultOpen position="left">
+        <Drawer
+          defaultOpen
+          position="left"
+        >
           <DrawerContent>
             <DrawerBody>Content</DrawerBody>
           </DrawerContent>
@@ -193,7 +205,10 @@ describe('Drawer Component', () => {
 
     it('should render from right', () => {
       render(
-        <Drawer defaultOpen position="right">
+        <Drawer
+          defaultOpen
+          position="right"
+        >
           <DrawerContent>
             <DrawerBody>Content</DrawerBody>
           </DrawerContent>
@@ -206,7 +221,10 @@ describe('Drawer Component', () => {
 
     it('should render from top', () => {
       render(
-        <Drawer defaultOpen position="top">
+        <Drawer
+          defaultOpen
+          position="top"
+        >
           <DrawerContent>
             <DrawerBody>Content</DrawerBody>
           </DrawerContent>
@@ -219,7 +237,10 @@ describe('Drawer Component', () => {
 
     it('should render from bottom', () => {
       render(
-        <Drawer defaultOpen position="bottom">
+        <Drawer
+          defaultOpen
+          position="bottom"
+        >
           <DrawerContent>
             <DrawerBody>Content</DrawerBody>
           </DrawerContent>
@@ -267,9 +288,12 @@ describe('Drawer Component', () => {
         fireEvent.click(closeButton);
       });
 
-      await waitFor(() => {
-        expect(screen.queryByText('Content')).not.toBeInTheDocument();
-      }, { timeout: 2000 });
+      await waitFor(
+        () => {
+          expect(screen.queryByText('Content')).not.toBeInTheDocument();
+        },
+        { timeout: 2000 },
+      );
     });
 
     it('should close when Escape key is pressed', async () => {
@@ -290,7 +314,10 @@ describe('Drawer Component', () => {
 
     it('should not close when disableBackdropClick is true', async () => {
       render(
-        <Drawer defaultOpen disableBackdropClick>
+        <Drawer
+          defaultOpen
+          disableBackdropClick
+        >
           <DrawerContent>
             <DrawerBody>Content</DrawerBody>
           </DrawerContent>
@@ -307,7 +334,10 @@ describe('Drawer Component', () => {
 
     it('should not close when Escape is pressed and disableEscapeKeyDown is true', async () => {
       render(
-        <Drawer defaultOpen disableEscapeKeyDown>
+        <Drawer
+          defaultOpen
+          disableEscapeKeyDown
+        >
           <DrawerContent>
             <DrawerBody>Content</DrawerBody>
           </DrawerContent>
@@ -323,7 +353,10 @@ describe('Drawer Component', () => {
 
     it('should not show close button when showCloseButton is false', () => {
       render(
-        <Drawer defaultOpen showCloseButton={false}>
+        <Drawer
+          defaultOpen
+          showCloseButton={false}
+        >
           <DrawerContent>
             <DrawerBody>Content</DrawerBody>
           </DrawerContent>
@@ -520,7 +553,7 @@ describe('Drawer Component', () => {
 
   describe('Context Error Handling', () => {
     it('should throw error when components used outside Drawer', () => {
-      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       expect(() => {
         render(<DrawerTrigger>Trigger</DrawerTrigger>);

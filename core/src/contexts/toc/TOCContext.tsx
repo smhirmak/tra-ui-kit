@@ -11,11 +11,7 @@ const TOCContext = createContext<TOCContextType | undefined>(undefined);
 export const TOCProvider = ({ children }: { children: ReactNode }) => {
   const [tocItems, setTocItems] = useState<TOCItem[]>([]);
 
-  return (
-    <TOCContext.Provider value={{ tocItems, setTocItems }}>
-      {children}
-    </TOCContext.Provider>
-  );
+  return <TOCContext.Provider value={{ tocItems, setTocItems }}>{children}</TOCContext.Provider>;
 };
 
 export const useTOC = () => {

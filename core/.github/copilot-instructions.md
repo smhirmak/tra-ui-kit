@@ -77,6 +77,7 @@ core/
 ## Bileşen Tanımlama Kuralları
 
 ### Kural 1: Tek Kayıt Noktası
+
 **Gerçek implementasyon daima `registry/msi-kit/components/<bileşen-adı>.tsx` içinde olmalıdır.**
 
 `src/components/<bileşen-adı>.tsx` dosyası yalnızca re-export içerir:
@@ -88,6 +89,7 @@ export { default } from '../../registry/msi-kit/components/button';
 ```
 
 ### Kural 2: CVA (class-variance-authority) Kullanımı
+
 Her bileşen `cva()` ile varyant sistemi kurar. Standart yapı:
 
 ```tsx
@@ -100,21 +102,21 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        solid:    '...',
+        solid: '...',
         outlined: '...',
-        ghost:    '...',
+        ghost: '...',
       },
       size: {
         default: 'h-14 px-7',
-        sm:      'h-13 px-6',
-        lg:      'h-15 px-8',
-        icon:    'size-10 rounded-full',
+        sm: 'h-13 px-6',
+        lg: 'h-15 px-8',
+        icon: 'size-10 rounded-full',
       },
       color: {
-        primary:   '...',
+        primary: '...',
         secondary: '...',
-        tertiary:  '...',  // ⚠️ "tertiary" DEĞİL, "tertiary" (proje genelinde bu yazım kullanılır)
-        error:     '...',
+        tertiary: '...', // ⚠️ "tertiary" DEĞİL, "tertiary" (proje genelinde bu yazım kullanılır)
+        error: '...',
       },
     },
     compoundVariants: [
@@ -131,13 +133,15 @@ const buttonVariants = cva(
 ```
 
 ### Kural 3: TypeScript Interface Adlandırması
+
 - Interface isimleri **`I` prefiksi** alır: `IButton`, `IInput`, `IAccordion`
 - `VariantProps<typeof xyzVariants>` kullanılır
 - `React.ButtonHTMLAttributes` gibi standart HTML attribute'ları `Omit` ile genişletilir:
 
 ```tsx
 export interface IButton
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+  extends
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
   loading?: boolean;
   loadingText?: string;
@@ -146,6 +150,7 @@ export interface IButton
 ```
 
 ### Kural 4: React.forwardRef Kullanımı
+
 Form elemanları ve ref iletimi gereken bileşenler `React.forwardRef` kullanır:
 
 ```tsx
@@ -166,21 +171,24 @@ export default Button;
 ```
 
 ### Kural 5: cn() Utility Kullanımı
+
 Tüm className birleştirmeleri `cn()` ile yapılır:
 
 ```tsx
 import { cn } from '@/lib/utils';
 
 // Kullanım
-<div className={cn(componentVariants({ variant, size }), className, 'ek-sınıf')} />
+<div className={cn(componentVariants({ variant, size }), className, 'ek-sınıf')} />;
 ```
 
-### Kural 6: data-* Attribute ile State Yönetimi
+### Kural 6: data-\* Attribute ile State Yönetimi
+
 CSS state kontrolü `data-*` attribute'larla yapılır:
 
 ```tsx
 <div data-open={isOpen} data-disabled={disabled}>
 ```
+
 ```css
 /* TailwindCSS ile */
 data-[open="true"]:max-h-full
@@ -194,12 +202,15 @@ data-[disabled="true"]:cursor-default
 Yeni bir bileşen eklerken sırasıyla şu adımlar izlenir:
 
 ### Adım 1 — Registry bileşeni oluştur
+
 ```
 registry/msi-kit/components/<bileşen-adı>.tsx
 ```
+
 CVA pattern, `I` prefixli interface, `React.forwardRef`, `export default` kurallarına uy.
 
 ### Adım 2 — src/components re-export dosyasını oluştur
+
 ```tsx
 // src/components/<bileşen-adı>.tsx
 export * from '../../registry/msi-kit/components/<bileşen-adı>';
@@ -207,6 +218,7 @@ export { default } from '../../registry/msi-kit/components/<bileşen-adı>';
 ```
 
 ### Adım 3 — Constants.ts componentList'e ekle
+
 ```ts
 // src/constants/Constants.ts
 {
@@ -220,25 +232,31 @@ export { default } from '../../registry/msi-kit/components/<bileşen-adı>';
 ```
 
 ### Adım 4 — Dokümantasyon sayfasını oluştur
+
 ```
 src/pages/components/<BileşenAdı>Page.tsx
 ```
+
 Standart sayfa yapısı (aşağıya bakınız).
 
 ### Adım 5 — App.tsx'e route ekle
+
 ```tsx
 { path: '<slug>', element: <BileşenAdıPage /> }
 ```
 
 ### Adım 6 — Test dosyasını oluştur
+
 ```
 src/components/test/<bileşen-adı>.test.tsx
 ```
 
 ### Adım 7 — Registry'e JSON ekle
+
 ```
 public/r/<bileşen-adı>.json
 ```
+
 Ve `registry.json` içine item ekle.
 
 ---
@@ -261,11 +279,11 @@ import Button from '@/components/button';
 
 // 1) TOC tanımı
 const tocItems: TOCItem[] = [
-  { id: 'overview',      title: 'Overview',       level: 1 },
-  { id: 'installation',  title: 'Installation',   level: 1 },
-  { id: 'usage',         title: 'Usage',           level: 1 },
-  { id: 'variants',      title: 'Variants',        level: 1 },
-  { id: 'api',           title: 'API Reference',   level: 1 },
+  { id: 'overview', title: 'Overview', level: 1 },
+  { id: 'installation', title: 'Installation', level: 1 },
+  { id: 'usage', title: 'Usage', level: 1 },
+  { id: 'variants', title: 'Variants', level: 1 },
+  { id: 'api', title: 'API Reference', level: 1 },
 ];
 
 // 2) API tablosu
@@ -292,7 +310,9 @@ const ComponentPage = () => {
 
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <CustomSyntaxHighlighter content={`npx shadcn@latest add https://msi-ui-kit.vercel.app/r/<bileşen>.json`} />
+        <CustomSyntaxHighlighter
+          content={`npx shadcn@latest add https://msi-ui-kit.vercel.app/r/<bileşen>.json`}
+        />
       </section>
 
       <section id="usage">
@@ -318,7 +338,7 @@ export default ComponentPage;
 ## Context Kullanım Referansı
 
 | Context / Hook | Import | Açıklama |
-|---|---|---|
+| --- | --- | --- |
 | `useTheme()` | `@/contexts/theme/theme-provider` | `theme`, `setTheme` |
 | `useVersion()` | `@/contexts/version` | `currentVersion`, `versions`, `isLatestVersion`, `setVersion` |
 | `useTOC()` | `@/contexts/toc/TOCContext` | `tocItems`, `setTocItems` |
@@ -327,6 +347,7 @@ export default ComponentPage;
 | `useAppContext()` | `@/contexts/app/AppProvider` | Bildirim tema/mod/pozisyon ayarları |
 
 ### Notification Kullanımı
+
 ```tsx
 const { invoke } = useNotification();
 invoke('success', 'İşlem başarılı', { autoClose: true, autoCloseTime: 3000 });
@@ -335,9 +356,10 @@ invoke('warning', 'Uyarı', { icon: <CustomIcon /> });
 ```
 
 ### Theme Kullanımı
+
 ```tsx
 const { theme, setTheme } = useTheme();
-setTheme('dark');  // veya 'light'
+setTheme('dark'); // veya 'light'
 ```
 
 ---
@@ -345,6 +367,7 @@ setTheme('dark');  // veya 'light'
 ## Stil Sistemi (TailwindCSS v4)
 
 ### Renk Tokenleri
+
 Tüm renkler CSS custom property olarak tanımlanmıştır (`src/index.css` `@theme` bloğu):
 
 ```
@@ -362,6 +385,7 @@ background, foreground, border, ring
 ```
 
 ### Gölge Tokenleri
+
 ```
 shadow-input-hover    → hover state (form elemanları)
 shadow-input-focus    → focus state
@@ -372,6 +396,7 @@ shadow-hard-primary   → sert mavi gölge
 ```
 
 ### Özel Animasyonlar
+
 ```
 animate-accordion-down / animate-accordion-up
 animate-linear-loader
@@ -382,10 +407,12 @@ animate-flip-in / animate-flip-out
 ```
 
 ### Dark Mode
+
 Dark mode `.dark` class ile tetiklenir:
+
 ```tsx
 // TailwindCSS'te
-className="bg-white dark:bg-neutral-black"
+className = 'bg-white dark:bg-neutral-black';
 
 // @custom-variant tanımı (index.css):
 // @custom-variant dark (&:is(.dark *));
@@ -396,6 +423,7 @@ className="bg-white dark:bg-neutral-black"
 ## Sürüm Yönetimi
 
 ### URL Yapısı
+
 ```
 /           → VersionRedirect (varsayılan sürüme yönlendirir)
 /v1         → Layout > Home
@@ -404,20 +432,21 @@ className="bg-white dark:bg-neutral-black"
 ```
 
 ### Sürüm Dosyaları
+
 - `public/versions.json` — Sürüm metadata listesi
 - `src/versions/v0/` — v0 bileşen override'ları
 - `src/versions/v1/` — v1 bileşen override'ları
 
 ### Sürüme Göre Dinamik Import
+
 Sayfa bileşenlerinde sürüme göre farklı bileşen yüklenir:
+
 ```tsx
 const getButtonComponent = (version: string) => {
   const versionNum = parseInt(version);
   if (versionNum === 0) {
     return lazy(() =>
-      import(`@/versions/v0/components/button.tsx`).catch(
-        () => import('@/components/button')
-      )
+      import(`@/versions/v0/components/button.tsx`).catch(() => import('@/components/button')),
     );
   }
   return lazy(() => Promise.resolve({ default: Button }));
@@ -429,7 +458,7 @@ const getButtonComponent = (version: string) => {
 ## Yardımcı Bileşenler (Dokümantasyon İçin)
 
 | Bileşen | Açıklama |
-|---|---|
+| --- | --- |
 | `<ApiTable tableData={...} />` | Prop tablosu (prop, type, default, description sütunları) |
 | `<ComponentSourceViewer componentName="button" />` | Bileşen kaynak kodunu gösterir (`?raw` import) |
 | `<CustomSyntaxHighlighter content={code} />` | Söz dizimi vurgulayıcı |
@@ -464,6 +493,7 @@ describe('ComponentName Component', () => {
 ```
 
 Test komutları:
+
 ```bash
 npm run test           # watch mode
 npm run test:run       # tek seferlik
@@ -476,13 +506,13 @@ npm run test:coverage  # coverage raporu
 
 Formik wrapper bileşenleri `src/components/formikInputs/` altındadır:
 
-| Dosya | Açıklama |
-|---|---|
-| `FormikInput.tsx` | `TextField` sarmalayıcı |
-| `FormikSelect.tsx` | `Select` sarmalayıcı |
-| `FormikSwitch.tsx` | `Switch` sarmalayıcı |
+| Dosya                  | Açıklama                  |
+| ---------------------- | ------------------------- |
+| `FormikInput.tsx`      | `TextField` sarmalayıcı   |
+| `FormikSelect.tsx`     | `Select` sarmalayıcı      |
+| `FormikSwitch.tsx`     | `Switch` sarmalayıcı      |
 | `FormikFileUpload.tsx` | Dosya yükleme sarmalayıcı |
-| `FormikErrorText.tsx` | Hata mesajı gösterici |
+| `FormikErrorText.tsx`  | Hata mesajı gösterici     |
 
 ```tsx
 // Kullanım örneği
@@ -504,6 +534,7 @@ Formik wrapper bileşenleri `src/components/formikInputs/` altındadır:
 ```
 
 Örnek importlar:
+
 ```tsx
 import Button from '@/components/button';
 import { cn } from '@/lib/utils';

@@ -7,7 +7,11 @@ describe('Radio Button Components', () => {
     it('should render children', () => {
       render(
         <RadioGroup>
-          <RadioGroupItem id="option1" value="1" label="Option 1" />
+          <RadioGroupItem
+            id="option1"
+            value="1"
+            label="Option 1"
+          />
         </RadioGroup>,
       );
       expect(screen.getByText('Option 1')).toBeInTheDocument();
@@ -16,7 +20,11 @@ describe('Radio Button Components', () => {
     it('should apply custom className', () => {
       const { container } = render(
         <RadioGroup className="custom-group">
-          <RadioGroupItem id="option1" value="1" label="Option 1" />
+          <RadioGroupItem
+            id="option1"
+            value="1"
+            label="Option 1"
+          />
         </RadioGroup>,
       );
       expect(container.firstChild).toHaveClass('custom-group');
@@ -25,8 +33,16 @@ describe('Radio Button Components', () => {
     it('should set default value', () => {
       const { container } = render(
         <RadioGroup defaultValue="2">
-          <RadioGroupItem id="option1" value="1" label="Option 1" />
-          <RadioGroupItem id="option2" value="2" label="Option 2" />
+          <RadioGroupItem
+            id="option1"
+            value="1"
+            label="Option 1"
+          />
+          <RadioGroupItem
+            id="option2"
+            value="2"
+            label="Option 2"
+          />
         </RadioGroup>,
       );
 
@@ -38,8 +54,16 @@ describe('Radio Button Components', () => {
       const handleChange = vi.fn();
       render(
         <RadioGroup onChange={handleChange}>
-          <RadioGroupItem id="option1" value="1" label="Option 1" />
-          <RadioGroupItem id="option2" value="2" label="Option 2" />
+          <RadioGroupItem
+            id="option1"
+            value="1"
+            label="Option 1"
+          />
+          <RadioGroupItem
+            id="option2"
+            value="2"
+            label="Option 2"
+          />
         </RadioGroup>,
       );
 
@@ -54,7 +78,11 @@ describe('Radio Button Components', () => {
     it('should render with label', () => {
       render(
         <RadioGroup>
-          <RadioGroupItem id="test-radio" value="test" label="Test Label" />
+          <RadioGroupItem
+            id="test-radio"
+            value="test"
+            label="Test Label"
+          />
         </RadioGroup>,
       );
       expect(screen.getByText('Test Label')).toBeInTheDocument();
@@ -63,7 +91,10 @@ describe('Radio Button Components', () => {
     it('should render without label', () => {
       const { container } = render(
         <RadioGroup>
-          <RadioGroupItem id="test-radio" value="test" />
+          <RadioGroupItem
+            id="test-radio"
+            value="test"
+          />
         </RadioGroup>,
       );
       const input = container.querySelector('#test-radio');
@@ -73,7 +104,12 @@ describe('Radio Button Components', () => {
     it('should be disabled when disabled prop is true', () => {
       const { container } = render(
         <RadioGroup>
-          <RadioGroupItem id="test-radio" value="test" label="Test" disabled />
+          <RadioGroupItem
+            id="test-radio"
+            value="test"
+            label="Test"
+            disabled
+          />
         </RadioGroup>,
       );
       const input = container.querySelector('#test-radio') as HTMLInputElement;
@@ -83,7 +119,12 @@ describe('Radio Button Components', () => {
     it('should apply disabled styling', () => {
       const { container } = render(
         <RadioGroup>
-          <RadioGroupItem id="test-radio" value="test" label="Test" disabled />
+          <RadioGroupItem
+            id="test-radio"
+            value="test"
+            label="Test"
+            disabled
+          />
         </RadioGroup>,
       );
       const label = container.querySelector('label[for="test-radio"]');
@@ -93,7 +134,12 @@ describe('Radio Button Components', () => {
     it('should be checked when checked prop is true', () => {
       const { container } = render(
         <RadioGroup>
-          <RadioGroupItem id="test-radio" value="test" label="Test" checked />
+          <RadioGroupItem
+            id="test-radio"
+            value="test"
+            label="Test"
+            checked
+          />
         </RadioGroup>,
       );
       const input = container.querySelector('#test-radio') as HTMLInputElement;
@@ -103,7 +149,12 @@ describe('Radio Button Components', () => {
     it('should apply checked styling', () => {
       const { container } = render(
         <RadioGroup>
-          <RadioGroupItem id="test-radio" value="test" label="Test" checked />
+          <RadioGroupItem
+            id="test-radio"
+            value="test"
+            label="Test"
+            checked
+          />
         </RadioGroup>,
       );
       const label = container.querySelector('label[for="test-radio"]');
@@ -113,7 +164,11 @@ describe('Radio Button Components', () => {
     it('should apply custom className', () => {
       const { container } = render(
         <RadioGroup>
-          <RadioGroupItem id="test-radio" value="test" className="custom-radio" />
+          <RadioGroupItem
+            id="test-radio"
+            value="test"
+            className="custom-radio"
+          />
         </RadioGroup>,
       );
       const label = container.querySelector('label[for="test-radio"]');
@@ -123,8 +178,16 @@ describe('Radio Button Components', () => {
     it('should change selection on click', () => {
       const { container } = render(
         <RadioGroup>
-          <RadioGroupItem id="option1" value="1" label="Option 1" />
-          <RadioGroupItem id="option2" value="2" label="Option 2" />
+          <RadioGroupItem
+            id="option1"
+            value="1"
+            label="Option 1"
+          />
+          <RadioGroupItem
+            id="option2"
+            value="2"
+            label="Option 2"
+          />
         </RadioGroup>,
       );
 
@@ -137,10 +200,15 @@ describe('Radio Button Components', () => {
 
     it('should throw error when used outside RadioGroup', () => {
       // Suppress console.error for this test
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       expect(() => {
-        render(<RadioGroupItem id="test" value="test" />);
+        render(
+          <RadioGroupItem
+            id="test"
+            value="test"
+          />,
+        );
       }).toThrow('RadioGroupItem component must be used within a RadioGroup component');
 
       consoleSpy.mockRestore();
@@ -151,9 +219,21 @@ describe('Radio Button Components', () => {
     it('should render multiple radio items', () => {
       render(
         <RadioGroup>
-          <RadioGroupItem id="option1" value="1" label="Option 1" />
-          <RadioGroupItem id="option2" value="2" label="Option 2" />
-          <RadioGroupItem id="option3" value="3" label="Option 3" />
+          <RadioGroupItem
+            id="option1"
+            value="1"
+            label="Option 1"
+          />
+          <RadioGroupItem
+            id="option2"
+            value="2"
+            label="Option 2"
+          />
+          <RadioGroupItem
+            id="option3"
+            value="3"
+            label="Option 3"
+          />
         </RadioGroup>,
       );
 
@@ -165,8 +245,18 @@ describe('Radio Button Components', () => {
     it('should allow only one selection at a time', () => {
       const { container } = render(
         <RadioGroup>
-          <RadioGroupItem id="option1" value="1" label="Option 1" name="test-group" />
-          <RadioGroupItem id="option2" value="2" label="Option 2" name="test-group" />
+          <RadioGroupItem
+            id="option1"
+            value="1"
+            label="Option 1"
+            name="test-group"
+          />
+          <RadioGroupItem
+            id="option2"
+            value="2"
+            label="Option 2"
+            name="test-group"
+          />
         </RadioGroup>,
       );
 
@@ -189,16 +279,14 @@ describe('Radio Button Components', () => {
     it('should have base radio button classes', () => {
       const { container } = render(
         <RadioGroup>
-          <RadioGroupItem id="test-radio" value="test" />
+          <RadioGroupItem
+            id="test-radio"
+            value="test"
+          />
         </RadioGroup>,
       );
       const label = container.querySelector('label[for="test-radio"]');
-      expect(label).toHaveClass(
-        'rounded-full',
-        'border-[1.5px]',
-        'aspect-square',
-        'size-5',
-      );
+      expect(label).toHaveClass('rounded-full', 'border-[1.5px]', 'aspect-square', 'size-5');
     });
   });
 });

@@ -6,18 +6,42 @@ import { cn } from '@/lib/utils';
 import { githubGist, hybrid } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useState } from 'react';
 
-const CustomSyntaxHighlighter = ({ className, content, hideCopyButton = false, copyButtonClassName, addedHighlightLines, removedHighlightLines, title = '' }:
-  { className?: string; content: string; hideCopyButton?: boolean; copyButtonClassName?: string; addedHighlightLines?: number[]; removedHighlightLines?: number[]; title?: React.ReactNode }) => {
+const CustomSyntaxHighlighter = ({
+  className,
+  content,
+  hideCopyButton = false,
+  copyButtonClassName,
+  addedHighlightLines,
+  removedHighlightLines,
+  title = '',
+}: {
+  className?: string;
+  content: string;
+  hideCopyButton?: boolean;
+  copyButtonClassName?: string;
+  addedHighlightLines?: number[];
+  removedHighlightLines?: number[];
+  title?: React.ReactNode;
+}) => {
   const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
 
   const lineCount = content ? content.split(/\r\n|\r|\n/).length : 0;
 
   return (
-    <div data-line-count={lineCount} className={cn(className, 'relative [&_pre]:bg-neutral-light/75! [&_pre]:rounded-b-lg [&_pre]:p-4!')}>
-      <div className={cn('flex items-center  bg-neutral-light/75 px-4 rounded-t-lg border-b-2 border-neutral-white'
-        , !!title ? 'justify-between' : 'justify-end',
-      )}>
+    <div
+      data-line-count={lineCount}
+      className={cn(
+        className,
+        'relative [&_pre]:bg-neutral-light/75! [&_pre]:rounded-b-lg [&_pre]:p-4!',
+      )}
+    >
+      <div
+        className={cn(
+          'flex items-center  bg-neutral-light/75 px-4 rounded-t-lg border-b-2 border-neutral-white',
+          !!title ? 'justify-between' : 'justify-end',
+        )}
+      >
         <code>{title}</code>
         {!hideCopyButton && (
           <Button
@@ -36,7 +60,7 @@ const CustomSyntaxHighlighter = ({ className, content, hideCopyButton = false, c
             className={cn(
               'group bg-transparent hover:bg-transparent brightness-80 hover:brightness-100 cursor-pointer',
               // lineCount > 3 ? 'top-6' : 'top-1/2',
-              copyButtonClassName
+              copyButtonClassName,
             )}
           >
             <CheckIcon
@@ -63,7 +87,7 @@ const CustomSyntaxHighlighter = ({ className, content, hideCopyButton = false, c
         language="tsx"
         style={theme === 'dark' ? hybrid : githubGist}
         showLineNumbers
-        lineProps={lineNumber => {
+        lineProps={(lineNumber) => {
           let style = { display: 'block', backgroundColor: 'transparent' };
           if (addedHighlightLines?.includes(lineNumber)) {
             style.backgroundColor = 'hsl(var(--primary-hard))';
@@ -79,4 +103,4 @@ const CustomSyntaxHighlighter = ({ className, content, hideCopyButton = false, c
   );
 };
 
-export default CustomSyntaxHighlighter
+export default CustomSyntaxHighlighter;

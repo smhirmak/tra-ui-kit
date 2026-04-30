@@ -16,7 +16,10 @@ vi.mock('@/contexts/theme/theme-provider', () => ({
 // Mock Button component
 vi.mock('@/components/button', () => ({
   default: ({ children, onClick, ...props }: any) => (
-    <button onClick={onClick} {...props}>
+    <button
+      onClick={onClick}
+      {...props}
+    >
       {children}
     </button>
   ),
@@ -30,12 +33,22 @@ describe('ThemeModeToggle Component', () => {
 
   describe('Basic Rendering', () => {
     it('should render toggle button', () => {
-      const { container } = render(<ThemeModeToggle theme={currentTheme as 'light' | 'dark'} setTheme={mockSetTheme} />);
+      const { container } = render(
+        <ThemeModeToggle
+          theme={currentTheme as 'light' | 'dark'}
+          setTheme={mockSetTheme}
+        />,
+      );
       expect(container.querySelector('button')).toBeInTheDocument();
     });
 
     it('should render moon and sun icons', () => {
-      const { container } = render(<ThemeModeToggle theme={currentTheme as 'light' | 'dark'} setTheme={mockSetTheme} />);
+      const { container } = render(
+        <ThemeModeToggle
+          theme={currentTheme as 'light' | 'dark'}
+          setTheme={mockSetTheme}
+        />,
+      );
       // SVG icons should be present
       const svgs = container.querySelectorAll('svg');
       expect(svgs.length).toBeGreaterThan(0);
@@ -44,7 +57,12 @@ describe('ThemeModeToggle Component', () => {
 
   describe('Theme Toggle Functionality', () => {
     it('should call setTheme when clicked', () => {
-      const { container } = render(<ThemeModeToggle theme={currentTheme as 'light' | 'dark'} setTheme={mockSetTheme} />);
+      const { container } = render(
+        <ThemeModeToggle
+          theme={currentTheme as 'light' | 'dark'}
+          setTheme={mockSetTheme}
+        />,
+      );
       const button = container.querySelector('button') as HTMLElement;
 
       fireEvent.click(button);
@@ -54,7 +72,12 @@ describe('ThemeModeToggle Component', () => {
 
     it('should toggle from light to dark theme', () => {
       currentTheme = 'light';
-      const { container } = render(<ThemeModeToggle theme={currentTheme as 'light' | 'dark'} setTheme={mockSetTheme} />);
+      const { container } = render(
+        <ThemeModeToggle
+          theme={currentTheme as 'light' | 'dark'}
+          setTheme={mockSetTheme}
+        />,
+      );
       const button = container.querySelector('button') as HTMLElement;
 
       fireEvent.click(button);
@@ -64,7 +87,12 @@ describe('ThemeModeToggle Component', () => {
 
     it('should toggle from dark to light theme', () => {
       currentTheme = 'dark';
-      const { container } = render(<ThemeModeToggle theme={currentTheme as 'light' | 'dark'} setTheme={mockSetTheme} />);
+      const { container } = render(
+        <ThemeModeToggle
+          theme={currentTheme as 'light' | 'dark'}
+          setTheme={mockSetTheme}
+        />,
+      );
       const button = container.querySelector('button') as HTMLElement;
 
       fireEvent.click(button);
@@ -75,14 +103,24 @@ describe('ThemeModeToggle Component', () => {
 
   describe('Icon Animation Classes', () => {
     it('should have transition classes on moon icon', () => {
-      const { container } = render(<ThemeModeToggle theme={currentTheme as 'light' | 'dark'} setTheme={mockSetTheme} />);
+      const { container } = render(
+        <ThemeModeToggle
+          theme={currentTheme as 'light' | 'dark'}
+          setTheme={mockSetTheme}
+        />,
+      );
       // Moon icon should have transition classes
       const icons = container.querySelectorAll('svg');
       expect(icons.length).toBeGreaterThan(0);
     });
 
     it('should have absolute positioning on sun icon', () => {
-      const { container } = render(<ThemeModeToggle theme={currentTheme as 'light' | 'dark'} setTheme={mockSetTheme} />);
+      const { container } = render(
+        <ThemeModeToggle
+          theme={currentTheme as 'light' | 'dark'}
+          setTheme={mockSetTheme}
+        />,
+      );
       // Sun icon should have absolute positioning
       const svgs = container.querySelectorAll('svg');
       expect(svgs.length).toBeGreaterThan(0);

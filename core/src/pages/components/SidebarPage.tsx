@@ -28,8 +28,18 @@ const sidebarItemApiData = [
   { prop: 'text', type: 'string', default: '-', description: 'Display text' },
   { prop: 'active', type: 'boolean', default: 'false', description: 'Active state indicator' },
   { prop: 'alert', type: 'boolean', default: 'false', description: 'Show alert badge' },
-  { prop: 'url', type: 'string', default: '-', description: 'Navigation URL (metadata only, not used for routing)' },
-  { prop: 'onClick', type: '() => void', default: '-', description: 'Click handler for the sidebar item' },
+  {
+    prop: 'url',
+    type: 'string',
+    default: '-',
+    description: 'Navigation URL (metadata only, not used for routing)',
+  },
+  {
+    prop: 'onClick',
+    type: '() => void',
+    default: '-',
+    description: 'Click handler for the sidebar item',
+  },
 ];
 
 const SidebarPage = () => {
@@ -54,11 +64,17 @@ const SidebarPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add sidebar' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add sidebar" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="sidebar" />
           </Tab>
         </Tabs>
@@ -87,10 +103,30 @@ const SidebarPage = () => {
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="h-96 w-64">
             <Sidebar>
-              <SidebarItem icon={<HouseIcon className="size-5" />} text="Home" onClick={() => setActiveItem('Home')} active={activeItem === 'Home'} />
-              <SidebarItem icon={<ChartBarIcon className="size-5" />} text="Dashboard" onClick={() => setActiveItem('Dashboard')} active={activeItem === 'Dashboard'} />
-              <SidebarItem icon={<UserIcon className="size-5" />} text="Profile" onClick={() => setActiveItem('Profile')} active={activeItem === 'Profile'} />
-              <SidebarItem icon={<GearIcon className="size-5" />} text="Settings" onClick={() => setActiveItem('Settings')} active={activeItem === 'Settings'} />
+              <SidebarItem
+                icon={<HouseIcon className="size-5" />}
+                text="Home"
+                onClick={() => setActiveItem('Home')}
+                active={activeItem === 'Home'}
+              />
+              <SidebarItem
+                icon={<ChartBarIcon className="size-5" />}
+                text="Dashboard"
+                onClick={() => setActiveItem('Dashboard')}
+                active={activeItem === 'Dashboard'}
+              />
+              <SidebarItem
+                icon={<UserIcon className="size-5" />}
+                text="Profile"
+                onClick={() => setActiveItem('Profile')}
+                active={activeItem === 'Profile'}
+              />
+              <SidebarItem
+                icon={<GearIcon className="size-5" />}
+                text="Settings"
+                onClick={() => setActiveItem('Settings')}
+                active={activeItem === 'Settings'}
+              />
             </Sidebar>
           </div>
         </div>
@@ -110,16 +146,36 @@ const SidebarPage = () => {
       <section id="active-state">
         <h2 className="mb-4 text-2xl font-bold">Active State &amp; Alert</h2>
         <p className="mb-4 text-neutral-grey">
-          Use the <code className="rounded bg-neutral px-1 py-0.5 text-sm">active</code> prop to highlight the current page,
-          and <code className="rounded bg-neutral px-1 py-0.5 text-sm">alert</code> to show a notification badge.
+          Use the <code className="rounded bg-neutral px-1 py-0.5 text-sm">active</code> prop to
+          highlight the current page, and{' '}
+          <code className="rounded bg-neutral px-1 py-0.5 text-sm">alert</code> to show a
+          notification badge.
         </p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="h-96 w-64">
             <Sidebar>
-              <SidebarItem icon={<HouseIcon className="size-5" />} text="Home" onClick={() => { }} />
-              <SidebarItem icon={<ChartBarIcon className="size-5" />} text="Dashboard" active onClick={() => { }} />
-              <SidebarItem icon={<UserIcon className="size-5" />} text="Profile" onClick={() => { }} />
-              <SidebarItem icon={<GearIcon className="size-5" />} text="Settings" alert onClick={() => { }} />
+              <SidebarItem
+                icon={<HouseIcon className="size-5" />}
+                text="Home"
+                onClick={() => {}}
+              />
+              <SidebarItem
+                icon={<ChartBarIcon className="size-5" />}
+                text="Dashboard"
+                active
+                onClick={() => {}}
+              />
+              <SidebarItem
+                icon={<UserIcon className="size-5" />}
+                text="Profile"
+                onClick={() => {}}
+              />
+              <SidebarItem
+                icon={<GearIcon className="size-5" />}
+                text="Settings"
+                alert
+                onClick={() => {}}
+              />
             </Sidebar>
           </div>
         </div>
@@ -136,12 +192,19 @@ const SidebarPage = () => {
       {/* API Reference */}
       <section id="api">
         <h2 className="mb-4 text-2xl font-bold">API Reference</h2>
-        <ApiTable tableData={apiTableData} title='Sidebar' titleClassName='text-xl font-semibold' />
-        <ApiTable tableData={sidebarItemApiData} title='SidebarItem' titleClassName='text-xl font-semibold mt-3' />
+        <ApiTable
+          tableData={apiTableData}
+          title="Sidebar"
+          titleClassName="text-xl font-semibold"
+        />
+        <ApiTable
+          tableData={sidebarItemApiData}
+          title="SidebarItem"
+          titleClassName="text-xl font-semibold mt-3"
+        />
       </section>
     </div>
   );
 };
 
 export default SidebarPage;
-

@@ -1,17 +1,17 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-type Theme = 'dark' | 'light'
+type Theme = 'dark' | 'light';
 
 type ThemeProviderProps = {
-  children: React.ReactNode
-  defaultTheme?: Theme
-  storageKey?: string
-}
+  children: React.ReactNode;
+  defaultTheme?: Theme;
+  storageKey?: string;
+};
 
 type ThemeProviderState = {
-  theme: Theme
-  setTheme: (theme: Theme) => void
-}
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+};
 
 const initialState: ThemeProviderState = {
   theme: 'dark',
@@ -40,17 +40,23 @@ export const ThemeProvider = ({
       root.classList.add(theme);
     }
   }, [theme]);
-  const value = useMemo(() => ({
-    theme,
-    setTheme: (newTheme: Theme) => {
-      localStorage.setItem(storageKey, newTheme);
-      setTheme(newTheme);
-    },
-  }), [theme, storageKey]);
+  const value = useMemo(
+    () => ({
+      theme,
+      setTheme: (newTheme: Theme) => {
+        localStorage.setItem(storageKey, newTheme);
+        setTheme(newTheme);
+      },
+    }),
+    [theme, storageKey],
+  );
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <ThemeProviderContext.Provider {...props} value={value}>
+    <ThemeProviderContext.Provider
+      {...props}
+      value={value}
+    >
       {children}
     </ThemeProviderContext.Provider>
   );

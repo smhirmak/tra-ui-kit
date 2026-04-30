@@ -94,8 +94,10 @@ const inputStyles = cva('disabled:bg-input-light p-2 pl-5 disabled:shadow-none',
     variant: {
       filled: '',
       outlined: 'border-none',
-      underlined: 'rounded-none border-x-0 border-t-0 bg-transparent hover:bg-transparent hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
-      filledUnderlined: 'bg-input-fill hover:bg-input-fill rounded-none border-x-0 border-t-0 hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
+      underlined:
+        'rounded-none border-x-0 border-t-0 bg-transparent hover:bg-transparent hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
+      filledUnderlined:
+        'bg-input-fill hover:bg-input-fill rounded-none border-x-0 border-t-0 hover:shadow-none focus-visible:shadow-none disabled:bg-transparent',
     },
   },
   defaultVariants: {
@@ -159,98 +161,121 @@ export interface ITextField {
   fieldClassName?: string;
 }
 
-const TextField = React.forwardRef<HTMLInputElement, ITextField>(({
-  borderRadius,
-  disabled = false,
-  endIcon,
-  error,
-  id,
-  name,
-  inputClassName = '',
-  className = '',
-  label,
-  labelClassName = '',
-  onChange,
-  onBlur,
-  onWheel,
-  placeholder,
-  showRequiredIcon,
-  size = 'default',
-  startIcon,
-  tooltip = null,
-  type,
-  value,
-  autoComplete,
-  variant = 'filled',
-  maxLength,
-  helperText,
-  textarea,
-  fieldClassName,
-  ...otherProps
-}, ref) => {
-  const [inputFocused, setInputFocused] = useState(false);
-  const labelRef = useRef<HTMLLabelElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+const TextField = React.forwardRef<HTMLInputElement, ITextField>(
+  (
+    {
+      borderRadius,
+      disabled = false,
+      endIcon,
+      error,
+      id,
+      name,
+      inputClassName = '',
+      className = '',
+      label,
+      labelClassName = '',
+      onChange,
+      onBlur,
+      onWheel,
+      placeholder,
+      showRequiredIcon,
+      size = 'default',
+      startIcon,
+      tooltip = null,
+      type,
+      value,
+      autoComplete,
+      variant = 'filled',
+      maxLength,
+      helperText,
+      textarea,
+      fieldClassName,
+      ...otherProps
+    },
+    ref,
+  ) => {
+    const [inputFocused, setInputFocused] = useState(false);
+    const labelRef = useRef<HTMLLabelElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-  return (
-    <div ref={ref} className={cn(textFieldStyles({ variant }), className)}>
-      <Label
-        ref={labelRef}
-        className={` 
+    return (
+      <div
+        ref={ref}
+        className={cn(textFieldStyles({ variant }), className)}
+      >
+        <Label
+          ref={labelRef}
+          className={` 
           ${cn(labelStyles({ variant, borderRadius, isHaveStartIcon: Boolean(startIcon), outlineFocused: inputFocused || !!value || Boolean(inputRef.current?.value) }))}
           ${labelClassName}`}
-        variant={variant}
-        outlineFocused={inputFocused || !!value || Boolean(inputRef.current?.value)}
-        htmlFor={id}
-        id={`${id}-label`}
-        size={size}
-        tooltip={tooltip}
-        disabled={disabled}
-        showRequiredIcon={showRequiredIcon}
-      >
-        {label}
-      </Label>
-      <Input
-        id={id}
-        ref={inputRef}
-        variant={variant}
-        className={`${cn(inputStyles({ variant }))} ${inputClassName}`}
-        autoComplete={autoComplete}
-        size={size}
-        name={name}
-        error={error}
-        value={value}
-        onWheel={onWheel}
-        onChange={onChange}
-        onFocus={() => setInputFocused(true)}
-        onBlur={e => { setInputFocused(false); onBlur && onBlur(e); }}
-        disabled={disabled}
-        type={type}
-        placeholder={variant !== 'outlined' ? placeholder : ''}
-        endIcon={endIcon}
-        startIcon={startIcon}
-        borderRadius={borderRadius}
-        maxLength={maxLength}
-        textarea={textarea}
-        {...otherProps}
-      />
-      {variant === 'outlined' && (
-        <fieldset disabled={disabled} className={cn(fieldsetStyles({ inputFocused, error, borderRadius, size }), fieldClassName)}>
-          <legend className={`float-[unset] invisible block h-0 w-fit overflow-hidden p-0 text-base ${(inputFocused || !!value || Boolean(inputRef.current?.value)) && 'px-2'}`}>
-            {(inputFocused || !!value || Boolean(inputRef.current?.value)) ? (
-              <span>
-                <span className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-0.5' : ''}`}>{label}</span>
-                {(tooltip) && (
-                  <span className="inline-block size-5" />
-                )}
-              </span>
-            ) : ''}
-          </legend>
-        </fieldset>
-      )}
-      {helperText && <p className="text-neutral-light-black self-end text-sm">{helperText}</p>}
-    </div>
-  );
-});
+          variant={variant}
+          outlineFocused={inputFocused || !!value || Boolean(inputRef.current?.value)}
+          htmlFor={id}
+          id={`${id}-label`}
+          size={size}
+          tooltip={tooltip}
+          disabled={disabled}
+          showRequiredIcon={showRequiredIcon}
+        >
+          {label}
+        </Label>
+        <Input
+          id={id}
+          ref={inputRef}
+          variant={variant}
+          className={`${cn(inputStyles({ variant }))} ${inputClassName}`}
+          autoComplete={autoComplete}
+          size={size}
+          name={name}
+          error={error}
+          value={value}
+          onWheel={onWheel}
+          onChange={onChange}
+          onFocus={() => setInputFocused(true)}
+          onBlur={(e) => {
+            setInputFocused(false);
+            onBlur && onBlur(e);
+          }}
+          disabled={disabled}
+          type={type}
+          placeholder={variant !== 'outlined' ? placeholder : ''}
+          endIcon={endIcon}
+          startIcon={startIcon}
+          borderRadius={borderRadius}
+          maxLength={maxLength}
+          textarea={textarea}
+          {...otherProps}
+        />
+        {variant === 'outlined' && (
+          <fieldset
+            disabled={disabled}
+            className={cn(
+              fieldsetStyles({ inputFocused, error, borderRadius, size }),
+              fieldClassName,
+            )}
+          >
+            <legend
+              className={`float-[unset] invisible block h-0 w-fit overflow-hidden p-0 text-base ${(inputFocused || !!value || Boolean(inputRef.current?.value)) && 'px-2'}`}
+            >
+              {inputFocused || !!value || Boolean(inputRef.current?.value) ? (
+                <span>
+                  <span
+                    className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-0.5' : ''}`}
+                  >
+                    {label}
+                  </span>
+                  {tooltip && <span className="inline-block size-5" />}
+                </span>
+              ) : (
+                ''
+              )}
+            </legend>
+          </fieldset>
+        )}
+        {helperText && <p className="text-neutral-light-black self-end text-sm">{helperText}</p>}
+      </div>
+    );
+  },
+);
 
 export default TextField;

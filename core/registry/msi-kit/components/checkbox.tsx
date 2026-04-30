@@ -32,7 +32,7 @@ const checkboxVariants = cva(
 interface ICheckbox {
   className?: string;
   disabled?: boolean;
-  id?: string
+  id?: string;
   label?: string;
   size?: 'sm' | 'default' | 'lg';
   variant?: 'rectangular' | 'circular';
@@ -43,74 +43,95 @@ interface ICheckbox {
   containerClassName?: string;
 }
 
-const Checkbox = React.forwardRef<
-  HTMLInputElement,
-  ICheckbox
->(({
-  className,
-  disabled,
-  id,
-  checked = false,
-  label,
-  size,
-  variant,
-  onChange,
-  labelSide = 'right',
-  labelClassName,
-  containerClassName,
-  ...props
-}, ref) => {
-  const [checkedValue, setCheckedValue] = React.useState<boolean | undefined>(checked);
-  return (
-    <div className={cn("flex items-center gap-2", containerClassName)}>
-      {label && labelSide === 'left' &&
-        <Label className={cn('select-none', labelClassName)} htmlFor={id} id={`${id}-label`} disabled={disabled} size={size}>
-          {label}
-        </Label>
-      }
-      <div>
-        <label
-          className={cn(checkboxVariants({ variant, size }), className)}
-          htmlFor={id}
-          data-disabled={disabled}
-          data-checked={checkedValue}
-        >
-          {(disabled && !checkedValue)
-            ? <MinusIcon className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`} />
-            : (disabled && checkedValue)
-              ? (
-                <CheckIcon className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`} />
-              )
-              : (
-                <>
-                  {checkedValue && (
-                    <span
-                      className={cn('flex items-center justify-center text-current')}
-                    >
-                      <CheckIcon className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-primary rounded-sm`} />
-                    </span>
-                  )}
-                </>
-              )}
-        </label>
-        <input
-          ref={ref}
-          type="checkbox"
-          checked={checkedValue}
-          disabled={disabled}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (!disabled) { setCheckedValue(e.target.checked); onChange?.(e.target.checked); } }}
-          id={id}
-          className="peer hidden"
-          {...props}
-        />
+const Checkbox = React.forwardRef<HTMLInputElement, ICheckbox>(
+  (
+    {
+      className,
+      disabled,
+      id,
+      checked = false,
+      label,
+      size,
+      variant,
+      onChange,
+      labelSide = 'right',
+      labelClassName,
+      containerClassName,
+      ...props
+    },
+    ref,
+  ) => {
+    const [checkedValue, setCheckedValue] = React.useState<boolean | undefined>(checked);
+    return (
+      <div className={cn('flex items-center gap-2', containerClassName)}>
+        {label && labelSide === 'left' && (
+          <Label
+            className={cn('select-none', labelClassName)}
+            htmlFor={id}
+            id={`${id}-label`}
+            disabled={disabled}
+            size={size}
+          >
+            {label}
+          </Label>
+        )}
+        <div>
+          <label
+            className={cn(checkboxVariants({ variant, size }), className)}
+            htmlFor={id}
+            data-disabled={disabled}
+            data-checked={checkedValue}
+          >
+            {disabled && !checkedValue ? (
+              <MinusIcon
+                className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`}
+              />
+            ) : disabled && checkedValue ? (
+              <CheckIcon
+                className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-input`}
+              />
+            ) : (
+              <>
+                {checkedValue && (
+                  <span className={cn('flex items-center justify-center text-current')}>
+                    <CheckIcon
+                      className={`${size === 'sm' ? 'size-2' : size === 'lg' ? 'size-4' : 'size-3'} ${variant === 'circular' ? 'rounded-full' : 'rounded-sm'} bg-primary rounded-sm`}
+                    />
+                  </span>
+                )}
+              </>
+            )}
+          </label>
+          <input
+            ref={ref}
+            type="checkbox"
+            checked={checkedValue}
+            disabled={disabled}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              if (!disabled) {
+                setCheckedValue(e.target.checked);
+                onChange?.(e.target.checked);
+              }
+            }}
+            id={id}
+            className="peer hidden"
+            {...props}
+          />
+        </div>
+        {label && labelSide === 'right' && (
+          <Label
+            className={cn('select-none', labelClassName)}
+            htmlFor={id}
+            id={`${id}-label`}
+            disabled={disabled}
+            size={size}
+          >
+            {label}
+          </Label>
+        )}
       </div>
-      {label && labelSide === 'right' &&
-        <Label className={cn('select-none', labelClassName)} htmlFor={id} id={`${id}-label`} disabled={disabled} size={size}>
-          {label}
-        </Label>
-      }
-    </div>
-  );
-});
+    );
+  },
+);
 
 export default Checkbox;

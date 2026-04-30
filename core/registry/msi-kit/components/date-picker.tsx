@@ -9,18 +9,14 @@ import { CalendarIcon, XCircleIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import Button from './button';
 import Calendar from './calendar';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from './popover';
+import { Popover, PopoverContent, PopoverTrigger } from './popover';
 import { type DateRange, type Matcher } from 'react-day-picker';
 import { useEffect, useRef, useState } from 'react';
 // import { useIsMobile } from '@/hooks/use-mobile';
 import { tr, type Locale } from 'date-fns/locale';
 import Label from './label';
 
-type Segment = 'day' | 'month' | 'year'
+type Segment = 'day' | 'month' | 'year';
 
 /** locale'e göre segment placeholder etiketleri döndürür */
 const getSegmentLabels = (locale: Locale) => {
@@ -38,7 +34,7 @@ interface IDatePicker {
   mode?: 'single' | 'range' | 'multiple';
   locale?: Locale;
   value?: Date | DateRange | undefined;
-  onChange?: (e: any) => void
+  onChange?: (e: any) => void;
   disabled?: boolean;
   error?: boolean;
   showCompleteButton?: boolean;
@@ -48,7 +44,24 @@ interface IDatePicker {
   onBlur?: () => void;
 }
 
-const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode = 'single', locale = tr, value, onChange, disabled, showCompleteButton, showClearButton, error, minDate, maxDate, onBlur }: IDatePicker) => {
+const DatePicker = ({
+  id,
+  label,
+  labelClassName,
+  showRequiredIcon,
+  tooltip,
+  mode = 'single',
+  locale = tr,
+  value,
+  onChange,
+  disabled,
+  showCompleteButton,
+  showClearButton,
+  error,
+  minDate,
+  maxDate,
+  onBlur,
+}: IDatePicker) => {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [triggerWidth, setTriggerWidth] = useState<number>();
   const [open, setOpen] = useState<boolean>(false);
@@ -137,33 +150,56 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
 
   const handleKeyDown = (e: any, seg: Segment) => {
     const { key } = e;
-    if (key === 'ArrowRight') { e.preventDefault(); nextSegment(seg); return; }
-    if (key === 'ArrowLeft') { e.preventDefault(); prevSegment(seg); return; }
+    if (key === 'ArrowRight') {
+      e.preventDefault();
+      nextSegment(seg);
+      return;
+    }
+    if (key === 'ArrowLeft') {
+      e.preventDefault();
+      prevSegment(seg);
+      return;
+    }
     if (key === 'Tab') return;
     if (key === 'Backspace') {
       e.preventDefault();
       if (seg === 'day') {
         if (day === '') prevSegment(seg);
-        else setDay(d => d.slice(0, -1));
+        else setDay((d) => d.slice(0, -1));
       } else if (seg === 'month') {
-        if (month === '') prevSegment(seg); else setMonth(m => m.slice(0, -1));
-      } else if (year === '') prevSegment(seg); else setYear(y => y.slice(0, -1));
+        if (month === '') prevSegment(seg);
+        else setMonth((m) => m.slice(0, -1));
+      } else if (year === '') prevSegment(seg);
+      else setYear((y) => y.slice(0, -1));
       return;
     }
-    if (!/^\d$/.test(key)) { e.preventDefault(); return; }
+    if (!/^\d$/.test(key)) {
+      e.preventDefault();
+      return;
+    }
     e.preventDefault();
 
     if (seg === 'day') {
-      if (day.length === 2) { setDay(key); } else if (day.length === 0) {
-        if (parseInt(key, 10) > 3) { setDay(`0${key}`); nextSegment('day'); } else setDay(key);
+      if (day.length === 2) {
+        setDay(key);
+      } else if (day.length === 0) {
+        if (parseInt(key, 10) > 3) {
+          setDay(`0${key}`);
+          nextSegment('day');
+        } else setDay(key);
       } else {
         const val = parseInt(day + key, 10);
         setDay(String(Math.min(Math.max(val, 1), 31)).padStart(2, '0'));
         nextSegment('day');
       }
     } else if (seg === 'month') {
-      if (month.length === 2) { setMonth(key); } else if (month.length === 0) {
-        if (parseInt(key, 10) > 1) { setMonth(`0${key}`); nextSegment('month'); } else setMonth(key);
+      if (month.length === 2) {
+        setMonth(key);
+      } else if (month.length === 0) {
+        if (parseInt(key, 10) > 1) {
+          setMonth(`0${key}`);
+          nextSegment('month');
+        } else setMonth(key);
       } else {
         const val = parseInt(month + key, 10);
         setMonth(String(Math.min(Math.max(val, 1), 12)).padStart(2, '0'));
@@ -184,8 +220,9 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
 
   const getSegmentDate = (): Date | undefined => {
     if (day.length !== 2 || month.length !== 2 || year.length !== 4) return undefined;
-    const dd = parseInt(day, 10); const mm = parseInt(month, 10); const
-      yyyy = parseInt(year, 10);
+    const dd = parseInt(day, 10);
+    const mm = parseInt(month, 10);
+    const yyyy = parseInt(year, 10);
     const d = new Date(yyyy, mm - 1, dd);
     if (d.getFullYear() === yyyy && d.getMonth() === mm - 1 && d.getDate() === dd) return d;
     return undefined;
@@ -220,23 +257,26 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
   const yearDisplay = year !== '' ? year : focused === 'year' ? segmentLabels.year : '';
 
   return (
-    <div ref={containerRef} onBlur={handleContainerBlur} className="contents">
-      {label
-        && (
-          <Label
-            className={`ease-cubic mb-1 flex transition-all duration-150 ${labelClassName}`}
-            htmlFor={id}
-            id={`${id}-label`}
-            tooltip={tooltip}
-            disabled={disabled}
-            showRequiredIcon={showRequiredIcon}
-          >
-            {label}
-          </Label>
-        )}
+    <div
+      ref={containerRef}
+      onBlur={handleContainerBlur}
+      className="contents"
+    >
+      {label && (
+        <Label
+          className={`ease-cubic mb-1 flex transition-all duration-150 ${labelClassName}`}
+          htmlFor={id}
+          id={`${id}-label`}
+          tooltip={tooltip}
+          disabled={disabled}
+          showRequiredIcon={showRequiredIcon}
+        >
+          {label}
+        </Label>
+      )}
       <Popover
         open={open}
-        onOpenChange={isOpen => {
+        onOpenChange={(isOpen) => {
           setOpen(isOpen);
           if (!isOpen) {
             // Popover kapandıktan sonra focus bileşen dışına çıktıysa blur'u tetikle
@@ -274,8 +314,12 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
                   focused === 'day' && 'bg-accent text-accent-foreground rounded-sm',
                 )}
                 onFocus={() => setFocused('day')}
-                onBlur={() => { if (dayValRef.current === '0') setDay('01'); else if (dayValRef.current.length === 1) setDay(d => d.padStart(2, '0')); setFocused(null); }}
-                onKeyDown={e => handleKeyDown(e, 'day')}
+                onBlur={() => {
+                  if (dayValRef.current === '0') setDay('01');
+                  else if (dayValRef.current.length === 1) setDay((d) => d.padStart(2, '0'));
+                  setFocused(null);
+                }}
+                onKeyDown={(e) => handleKeyDown(e, 'day')}
               />
               <span className="text-muted-foreground select-none text-sm">/</span>
               <input
@@ -290,8 +334,12 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
                   focused === 'month' && 'bg-accent text-accent-foreground rounded-sm',
                 )}
                 onFocus={() => setFocused('month')}
-                onBlur={() => { if (monthValRef.current === '0') setMonth('01'); else if (monthValRef.current.length === 1) setMonth(m => m.padStart(2, '0')); setFocused(null); }}
-                onKeyDown={e => handleKeyDown(e, 'month')}
+                onBlur={() => {
+                  if (monthValRef.current === '0') setMonth('01');
+                  else if (monthValRef.current.length === 1) setMonth((m) => m.padStart(2, '0'));
+                  setFocused(null);
+                }}
+                onKeyDown={(e) => handleKeyDown(e, 'month')}
               />
               <span className="text-muted-foreground select-none text-sm">/</span>
               <input
@@ -307,7 +355,7 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
                 )}
                 onFocus={() => setFocused('year')}
                 onBlur={() => setFocused(null)}
-                onKeyDown={e => handleKeyDown(e, 'year')}
+                onKeyDown={(e) => handleKeyDown(e, 'year')}
               />
             </div>
             <PopoverTrigger asChild>
@@ -323,7 +371,10 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
           </div>
         ) : (
           /* ── Button Trigger (range / showMonthYearPicker) ── */
-          <PopoverTrigger asChild ref={triggerRef}>
+          <PopoverTrigger
+            asChild
+            ref={triggerRef}
+          >
             <Button
               variant="outlined"
               disabled={disabled}
@@ -339,10 +390,7 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
                   {value && 'from' in value && value.from ? (
                     value.to ? (
                       <>
-                        {format(value.from, 'd MMMM yyyy', { locale })}
-                        {' '}
-                        -
-                        {' '}
+                        {format(value.from, 'd MMMM yyyy', { locale })} -{' '}
                         {format(value.to, 'd MMMM yyyy', { locale })}
                       </>
                     ) : (
@@ -359,10 +407,12 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
         )}
 
         <PopoverContent
-          className={cn('w-auto p-0 pointer-events-auto bg-background shadow-soft-grey shadow-xl min-w-[250px] max-w-75')}
+          className={cn(
+            'w-auto p-0 pointer-events-auto bg-background shadow-soft-grey shadow-xl min-w-[250px] max-w-75',
+          )}
           align="right"
           side="bottom"
-          style={(triggerWidth && mode !== 'range') ? { width: triggerWidth } : undefined}
+          style={triggerWidth && mode !== 'range' ? { width: triggerWidth } : undefined}
         >
           {mode === 'range' ? (
             <Calendar
@@ -371,54 +421,78 @@ const DatePicker = ({ id, label, labelClassName, showRequiredIcon, tooltip, mode
               locale={locale}
               defaultMonth={value && 'from' in value ? value.from : undefined}
               selected={value as DateRange | undefined}
-              onSelect={(e: any) => { if (onChange) onChange(e); }}
+              onSelect={(e: any) => {
+                if (onChange) onChange(e);
+              }}
               // numberOfMonths={isMobile ? 1 : 2}
-              disabled={minDate || maxDate ? [
-                minDate ? { before: minDate } : undefined,
-                maxDate ? { after: maxDate } : undefined,
-              ].filter(Boolean) as Matcher[] : undefined}
+              disabled={
+                minDate || maxDate
+                  ? ([
+                      minDate ? { before: minDate } : undefined,
+                      maxDate ? { after: maxDate } : undefined,
+                    ].filter(Boolean) as Matcher[])
+                  : undefined
+              }
             />
           ) : (
             <Calendar
               initialFocus
               mode="single"
               locale={locale}
-              defaultMonth={isSegmentedMode ? segmentDate : (value instanceof Date ? value : undefined)}
+              defaultMonth={
+                isSegmentedMode ? segmentDate : value instanceof Date ? value : undefined
+              }
               selected={isSegmentedMode ? segmentDate : (value as Date | undefined)}
               onSelect={(e: any) => {
-                if (isSegmentedMode) { handleCalendarSelect(e); return; }
+                if (isSegmentedMode) {
+                  handleCalendarSelect(e);
+                  return;
+                }
                 if (onChange) onChange(e);
               }}
-              onMonthChange={e => { if (onChange) onChange(e); }}
+              onMonthChange={(e) => {
+                if (onChange) onChange(e);
+              }}
               numberOfMonths={1}
-              disabled={minDate || maxDate ? [
-                minDate ? { before: minDate } : undefined,
-                maxDate ? { after: maxDate } : undefined,
-              ].filter(Boolean) as Matcher[] : undefined}
+              disabled={
+                minDate || maxDate
+                  ? ([
+                      minDate ? { before: minDate } : undefined,
+                      maxDate ? { after: maxDate } : undefined,
+                    ].filter(Boolean) as Matcher[])
+                  : undefined
+              }
             />
           )}
-          {showCompleteButton
-            && (
-              <div className="w-full flex justify-end px-3 pb-3">
-                <Button className="px-10" onClick={() => setOpen(false)}>Seçimi Tamamla</Button>
-              </div>
-            )}
-          {showClearButton && value
-            && (
-              <div className="w-full flex justify-end px-3 pb-3">
-                <Button
-                  size="sm"
-                  className="bg-error hover:bg-error/80"
-                  onClick={() => {
-                    if (isSegmentedMode) { setDay(''); setMonth(''); setYear(''); }
-                    onChange?.(mode === 'single' ? undefined : { from: undefined, to: undefined });
-                  }}
-                >
-                  <XCircleIcon className="size-4!" />
-                  Temizle
-                </Button>
-              </div>
-            )}
+          {showCompleteButton && (
+            <div className="w-full flex justify-end px-3 pb-3">
+              <Button
+                className="px-10"
+                onClick={() => setOpen(false)}
+              >
+                Seçimi Tamamla
+              </Button>
+            </div>
+          )}
+          {showClearButton && value && (
+            <div className="w-full flex justify-end px-3 pb-3">
+              <Button
+                size="sm"
+                className="bg-error hover:bg-error/80"
+                onClick={() => {
+                  if (isSegmentedMode) {
+                    setDay('');
+                    setMonth('');
+                    setYear('');
+                  }
+                  onChange?.(mode === 'single' ? undefined : { from: undefined, to: undefined });
+                }}
+              >
+                <XCircleIcon className="size-4!" />
+                Temizle
+              </Button>
+            </div>
+          )}
         </PopoverContent>
       </Popover>
     </div>

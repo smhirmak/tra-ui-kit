@@ -16,7 +16,11 @@ const LoadingLinear = React.forwardRef<HTMLDivElement, ILoadingLinear>((props, r
   // eslint-disable-next-line react/jsx-props-no-spreading
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <div ref={ref} className={cn(linearContainerVariants(), linearContainerClassName)} {...rest}>
+    <div
+      ref={ref}
+      className={cn(linearContainerVariants(), linearContainerClassName)}
+      {...rest}
+    >
       <div className={cn(linearVariants(), linearItemClassName)} />
     </div>
   );

@@ -23,14 +23,34 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'size', type: '"sm" | "default" | "lg"', default: '"default"', description: 'The chip size' },
+  {
+    prop: 'size',
+    type: '"sm" | "default" | "lg"',
+    default: '"default"',
+    description: 'The chip size',
+  },
   { prop: 'label', type: 'string', default: '-', description: 'Text to display in the chip' },
   { prop: 'active', type: 'boolean', default: 'false', description: 'Active state styling' },
   { prop: 'selected', type: 'boolean', default: 'false', description: 'Selected state styling' },
-  { prop: 'startIcon', type: 'ReactNode', default: '-', description: 'Icon displayed at the start' },
+  {
+    prop: 'startIcon',
+    type: 'ReactNode',
+    default: '-',
+    description: 'Icon displayed at the start',
+  },
   { prop: 'endIcon', type: 'ReactNode', default: '-', description: 'Icon displayed at the end' },
-  { prop: 'onDelete', type: '() => void', default: '-', description: 'Callback when delete icon is clicked' },
-  { prop: 'onClick', type: '() => void', default: '-', description: 'Callback when chip is clicked' },
+  {
+    prop: 'onDelete',
+    type: '() => void',
+    default: '-',
+    description: 'Callback when delete icon is clicked',
+  },
+  {
+    prop: 'onClick',
+    type: '() => void',
+    default: '-',
+    description: 'Callback when chip is clicked',
+  },
 ];
 
 const ChipPage = () => {
@@ -48,18 +68,25 @@ const ChipPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Chip</h1>
         <p className="text-lg text-neutral-grey">
-          A compact component for displaying tags, filters, or selections with various states and interactions.
+          A compact component for displaying tags, filters, or selections with various states and
+          interactions.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add chip' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add chip" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="chip" />
           </Tab>
         </Tabs>
@@ -82,13 +109,25 @@ const ChipPage = () => {
         <p className="mb-4 text-neutral-grey">Chip comes in three different sizes.</p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="flex items-center gap-4">
-            <Chip size="sm" label="Small" />
+            <Chip
+              size="sm"
+              label="Small"
+            />
             <Chip label="Default" />
-            <Chip size="lg" label="Large" />
+            <Chip
+              size="lg"
+              label="Large"
+            />
           </div>
         </div>
-        <CustomSyntaxHighlighter className="mb-2" content='<Chip size="sm" label="Small" />' />
-        <CustomSyntaxHighlighter className="mb-2" content='<Chip label="Default" />' />
+        <CustomSyntaxHighlighter
+          className="mb-2"
+          content='<Chip size="sm" label="Small" />'
+        />
+        <CustomSyntaxHighlighter
+          className="mb-2"
+          content='<Chip label="Default" />'
+        />
         <CustomSyntaxHighlighter content='<Chip size="lg" label="Large" />' />
       </section>
 
@@ -99,8 +138,14 @@ const ChipPage = () => {
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="flex flex-wrap gap-4">
             <Chip label="Default" />
-            <Chip label="Active" active />
-            <Chip label="Selected" selected />
+            <Chip
+              label="Active"
+              active
+            />
+            <Chip
+              label="Selected"
+              selected
+            />
           </div>
         </div>
         <CustomSyntaxHighlighter content='<Chip label="Selected" selected />' />
@@ -112,9 +157,19 @@ const ChipPage = () => {
         <p className="mb-4 text-neutral-grey">Chips can display icons at the start or end.</p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="flex flex-wrap gap-4">
-            <Chip label="Start Icon" startIcon={<PlusIcon />} />
-            <Chip label="End Icon" endIcon={<PlusIcon />} />
-            <Chip label="Both" startIcon={<PlusIcon />} endIcon={<PlusIcon />} />
+            <Chip
+              label="Start Icon"
+              startIcon={<PlusIcon />}
+            />
+            <Chip
+              label="End Icon"
+              endIcon={<PlusIcon />}
+            />
+            <Chip
+              label="Both"
+              startIcon={<PlusIcon />}
+              endIcon={<PlusIcon />}
+            />
           </div>
         </div>
         <CustomSyntaxHighlighter content='<Chip label="Start Icon" startIcon={<PlusIcon />} />' />
@@ -126,9 +181,20 @@ const ChipPage = () => {
         <p className="mb-4 text-neutral-grey">Chips can have a delete button.</p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="flex flex-wrap gap-4">
-            <Chip size="sm" label="Delete" onDelete={() => info('Delete')} />
-            <Chip label="Delete" onDelete={() => info('Delete')} />
-            <Chip size="lg" label="Delete" onDelete={() => info('Delete')} />
+            <Chip
+              size="sm"
+              label="Delete"
+              onDelete={() => info('Delete')}
+            />
+            <Chip
+              label="Delete"
+              onDelete={() => info('Delete')}
+            />
+            <Chip
+              size="lg"
+              label="Delete"
+              onDelete={() => info('Delete')}
+            />
           </div>
         </div>
         <CustomSyntaxHighlighter content='<Chip label="Delete" onDelete={() => info("Delete")} />' />
@@ -137,12 +203,25 @@ const ChipPage = () => {
       {/* Clickable */}
       <section id="clickable">
         <h2 className="mb-4 text-2xl font-bold">Clickable</h2>
-        <p className="mb-4 text-neutral-grey">Chips can be clickable with hover and active states.</p>
+        <p className="mb-4 text-neutral-grey">
+          Chips can be clickable with hover and active states.
+        </p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="flex flex-wrap gap-4">
-            <Chip size="sm" label="Click me" onClick={() => info('Clicked')} />
-            <Chip label="Click me" onClick={() => info('Clicked')} />
-            <Chip size="lg" label="Click me" onClick={() => info('Clicked')} />
+            <Chip
+              size="sm"
+              label="Click me"
+              onClick={() => info('Clicked')}
+            />
+            <Chip
+              label="Click me"
+              onClick={() => info('Clicked')}
+            />
+            <Chip
+              size="lg"
+              label="Click me"
+              onClick={() => info('Clicked')}
+            />
           </div>
         </div>
         <CustomSyntaxHighlighter content='<Chip label="Click me" onClick={() => info("Clicked")} />' />
@@ -155,4 +234,3 @@ const ChipPage = () => {
 };
 
 export default ChipPage;
-

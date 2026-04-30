@@ -20,12 +20,37 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'size', type: '"sm" | "default" | "lg"', default: '"default"', description: 'Label text size' },
+  {
+    prop: 'size',
+    type: '"sm" | "default" | "lg"',
+    default: '"default"',
+    description: 'Label text size',
+  },
   { prop: 'required', type: 'boolean', default: 'false', description: 'Shows required asterisk' },
-  { prop: 'tooltip', type: 'string', default: 'undefined', description: 'Tooltip text with info icon' },
-  { prop: 'variant', type: '"filled" | "outlined" | "underlined" | "filledUnderlined"', default: 'undefined', description: 'Style variant for input pairing' },
-  { prop: 'htmlFor', type: 'string', default: 'undefined', description: 'Associates label with input' },
-  { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes' },
+  {
+    prop: 'tooltip',
+    type: 'string',
+    default: 'undefined',
+    description: 'Tooltip text with info icon',
+  },
+  {
+    prop: 'variant',
+    type: '"filled" | "outlined" | "underlined" | "filledUnderlined"',
+    default: 'undefined',
+    description: 'Style variant for input pairing',
+  },
+  {
+    prop: 'htmlFor',
+    type: 'string',
+    default: 'undefined',
+    description: 'Associates label with input',
+  },
+  {
+    prop: 'className',
+    type: 'string',
+    default: 'undefined',
+    description: 'Additional CSS classes',
+  },
 ];
 
 const LabelPage = () => {
@@ -42,18 +67,25 @@ const LabelPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Label</h1>
         <p className="text-lg text-neutral-grey">
-          A label component for form inputs with support for required fields, tooltips, and multiple sizes.
+          A label component for form inputs with support for required fields, tooltips, and multiple
+          sizes.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add label' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add label" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="label" />
           </Tab>
         </Tabs>
@@ -66,7 +98,11 @@ const LabelPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="space-y-2">
               <Label htmlFor="email">Email Address</Label>
-              <Input id="email" type="email" placeholder="Enter your email" />
+              <Input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+              />
             </div>
           </div>
           <CustomSyntaxHighlighter
@@ -85,15 +121,24 @@ const LabelPage = () => {
             <div className="space-y-6">
               <div className="space-y-2">
                 <Label size="sm">Small Label</Label>
-                <Input size="sm" placeholder="Small input" />
+                <Input
+                  size="sm"
+                  placeholder="Small input"
+                />
               </div>
               <div className="space-y-2">
                 <Label size="default">Default Label</Label>
-                <Input size="default" placeholder="Default input" />
+                <Input
+                  size="default"
+                  placeholder="Default input"
+                />
               </div>
               <div className="space-y-2">
                 <Label size="lg">Large Label</Label>
-                <Input size="lg" placeholder="Large input" />
+                <Input
+                  size="lg"
+                  placeholder="Large input"
+                />
               </div>
             </div>
           </div>
@@ -138,7 +183,10 @@ const LabelPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="space-y-2">
               <Label showRequiredIcon>Password</Label>
-              <Input type="password" placeholder="Enter password" />
+              <Input
+                type="password"
+                placeholder="Enter password"
+              />
             </div>
           </div>
           <CustomSyntaxHighlighter
@@ -157,4 +205,3 @@ const LabelPage = () => {
 };
 
 export default LabelPage;
-

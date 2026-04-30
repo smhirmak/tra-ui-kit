@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 type TooltipPosition = 'top' | 'right' | 'bottom' | 'left';
 
 interface ITooltip {
-  content: string | Array<string>
+  content: string | Array<string>;
   position?: TooltipPosition;
   children: React.ReactNode;
   delay?: number;
@@ -13,19 +13,16 @@ interface ITooltip {
   arrow?: boolean;
 }
 
-const arrowVariants = cva(
-  'absolute size-0 border-[5px] border-transparent',
-  {
-    variants: {
-      tooltipPosition: {
-        top: 'left-1/2 top-full -translate-x-1/2 border-t-neutral-black',
-        bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-neutral-black',
-        left: 'left-full top-1/2 -translate-y-1/2 border-l-neutral-black',
-        right: 'right-full top-1/2 -translate-y-1/2 border-r-neutral-black',
-      },
+const arrowVariants = cva('absolute size-0 border-[5px] border-transparent', {
+  variants: {
+    tooltipPosition: {
+      top: 'left-1/2 top-full -translate-x-1/2 border-t-neutral-black',
+      bottom: 'bottom-full left-1/2 -translate-x-1/2 border-b-neutral-black',
+      left: 'left-full top-1/2 -translate-y-1/2 border-l-neutral-black',
+      right: 'right-full top-1/2 -translate-y-1/2 border-r-neutral-black',
     },
   },
-);
+});
 
 const Tooltip: React.FC<ITooltip> = ({
   content,
@@ -136,17 +133,18 @@ const Tooltip: React.FC<ITooltip> = ({
           {Array.isArray(content) ? (
             <ul className="m-0 list-none space-y-1 p-0">
               {content.map((item, index) => (
-                <li className="w-max" key={index}>{item}</li>
+                <li
+                  className="w-max"
+                  key={index}
+                >
+                  {item}
+                </li>
               ))}
             </ul>
           ) : (
             content
           )}
-          {arrow && (
-            <div
-              className={arrowVariants({ tooltipPosition })}
-            />
-          )}
+          {arrow && <div className={arrowVariants({ tooltipPosition })} />}
         </div>
       )}
     </div>

@@ -26,7 +26,7 @@ const badgeVariants = cva(
       text: {
         true: '',
         false: '',
-      }
+      },
     },
     defaultVariants: {
       variant: 'circular',
@@ -64,7 +64,7 @@ const badgeVariants = cva(
         text: true,
         className: 'bg-warning/30 text-warning',
       },
-    ]
+    ],
   },
 );
 
@@ -78,7 +78,15 @@ interface IBadge {
   textClassName?: string;
 }
 
-const Badge: React.FC<IBadge> = ({ className, color, icon, size, text, variant = 'circular', textClassName }) => (
+const Badge: React.FC<IBadge> = ({
+  className,
+  color,
+  icon,
+  size,
+  text,
+  variant = 'circular',
+  textClassName,
+}) => (
   <div className={cn(badgeVariants({ variant, size, color, text: !!text }), className)}>
     {icon && <span className={text && 'mr-1'}>{icon}</span>}
     {text && <span className={cn(textClassName, 'p-1 font-medium')}>{text}</span>}

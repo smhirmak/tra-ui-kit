@@ -28,15 +28,45 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'variant', type: '"filled" | "outlined" | "underlined" | "filledUnderlined"', default: '"filled"', description: 'Input style variant' },
-  { prop: 'size', type: '"sm" | "default" | "lg"', default: '"default"', description: 'Input size' },
+  {
+    prop: 'variant',
+    type: '"filled" | "outlined" | "underlined" | "filledUnderlined"',
+    default: '"filled"',
+    description: 'Input style variant',
+  },
+  {
+    prop: 'size',
+    type: '"sm" | "default" | "lg"',
+    default: '"default"',
+    description: 'Input size',
+  },
   { prop: 'label', type: 'string', default: 'undefined', description: 'Label text' },
-  { prop: 'tooltip', type: 'string', default: 'undefined', description: 'Tooltip text with info icon' },
+  {
+    prop: 'tooltip',
+    type: 'string',
+    default: 'undefined',
+    description: 'Tooltip text with info icon',
+  },
   { prop: 'error', type: 'boolean', default: 'false', description: 'Error state styling' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disabled state' },
-  { prop: 'startIcon', type: 'React.ReactNode', default: 'undefined', description: 'Icon at start of input' },
-  { prop: 'endIcon', type: 'React.ReactNode', default: 'undefined', description: 'Icon at end of input' },
-  { prop: 'borderRadius', type: '"default" | "lg"', default: '"default"', description: 'Border radius style' },
+  {
+    prop: 'startIcon',
+    type: 'React.ReactNode',
+    default: 'undefined',
+    description: 'Icon at start of input',
+  },
+  {
+    prop: 'endIcon',
+    type: 'React.ReactNode',
+    default: 'undefined',
+    description: 'Icon at end of input',
+  },
+  {
+    prop: 'borderRadius',
+    type: '"default" | "lg"',
+    default: '"default"',
+    description: 'Border radius style',
+  },
   { prop: 'required', type: 'boolean', default: 'false', description: 'Shows required indicator' },
 ];
 
@@ -56,18 +86,25 @@ const TextFieldPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">TextField</h1>
         <p className="text-lg text-neutral-grey">
-          A complete text field component combining Input and Label with multiple variants, sizes, and additional features.
+          A complete text field component combining Input and Label with multiple variants, sizes,
+          and additional features.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add text-field' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add text-field" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="text-field" />
           </Tab>
         </Tabs>
@@ -85,9 +122,7 @@ const TextFieldPage = () => {
               onChange={(e) => setValue(e.target.value)}
             />
           </div>
-          <CustomSyntaxHighlighter
-            content='<TextField label="Email" placeholder="Enter your email" />'
-          />
+          <CustomSyntaxHighlighter content='<TextField label="Email" placeholder="Enter your email" />' />
         </div>
       </section>
 
@@ -95,48 +130,68 @@ const TextFieldPage = () => {
       <section id="variants">
         <h2 className="mb-4 text-2xl font-bold">Variants</h2>
 
-        <div id="filled" className="mb-8 space-y-4">
+        <div
+          id="filled"
+          className="mb-8 space-y-4"
+        >
           <h3 className="text-xl font-semibold">Filled</h3>
           <p className="text-neutral-grey">Filled background with label.</p>
           <div className="rounded-lg border border-border bg-background p-6">
-            <TextField variant="filled" label="Username" placeholder="Enter username" />
+            <TextField
+              variant="filled"
+              label="Username"
+              placeholder="Enter username"
+            />
           </div>
-          <CustomSyntaxHighlighter
-            content='<TextField variant="filled" label="Username" placeholder="Enter username" />'
-          />
+          <CustomSyntaxHighlighter content='<TextField variant="filled" label="Username" placeholder="Enter username" />' />
         </div>
 
-        <div id="outlined" className="mb-8 space-y-4">
+        <div
+          id="outlined"
+          className="mb-8 space-y-4"
+        >
           <h3 className="text-xl font-semibold">Outlined</h3>
           <p className="text-neutral-grey">Outlined with floating label.</p>
           <div className="rounded-lg border border-border bg-background p-6">
-            <TextField variant="outlined" label="Email" placeholder="Enter email" />
+            <TextField
+              variant="outlined"
+              label="Email"
+              placeholder="Enter email"
+            />
           </div>
-          <CustomSyntaxHighlighter
-            content='<TextField variant="outlined" label="Email" placeholder="Enter email" />'
-          />
+          <CustomSyntaxHighlighter content='<TextField variant="outlined" label="Email" placeholder="Enter email" />' />
         </div>
 
-        <div id="underlined" className="mb-8 space-y-4">
+        <div
+          id="underlined"
+          className="mb-8 space-y-4"
+        >
           <h3 className="text-xl font-semibold">Underlined</h3>
           <p className="text-neutral-grey">Bottom border only.</p>
           <div className="rounded-lg border border-border bg-background p-6">
-            <TextField variant="underlined" label="Password" type="password" />
+            <TextField
+              variant="underlined"
+              label="Password"
+              type="password"
+            />
           </div>
-          <CustomSyntaxHighlighter
-            content='<TextField variant="underlined" label="Password" type="password" />'
-          />
+          <CustomSyntaxHighlighter content='<TextField variant="underlined" label="Password" type="password" />' />
         </div>
 
-        <div id="filled-underlined" className="mb-8 space-y-4">
+        <div
+          id="filled-underlined"
+          className="mb-8 space-y-4"
+        >
           <h3 className="text-xl font-semibold">Filled Underlined</h3>
           <p className="text-neutral-grey">Filled background with bottom border.</p>
           <div className="rounded-lg border border-border bg-background p-6">
-            <TextField variant="filledUnderlined" label="Phone" placeholder="+1 234 567 8900" />
+            <TextField
+              variant="filledUnderlined"
+              label="Phone"
+              placeholder="+1 234 567 8900"
+            />
           </div>
-          <CustomSyntaxHighlighter
-            content='<TextField variant="filledUnderlined" label="Phone" placeholder="+1 234 567 8900" />'
-          />
+          <CustomSyntaxHighlighter content='<TextField variant="filledUnderlined" label="Phone" placeholder="+1 234 567 8900" />' />
         </div>
       </section>
 
@@ -147,9 +202,21 @@ const TextFieldPage = () => {
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="space-y-4">
-              <TextField size="sm" label="Small" placeholder="Small size" />
-              <TextField size="default" label="Default" placeholder="Default size" />
-              <TextField size="lg" label="Large" placeholder="Large size" />
+              <TextField
+                size="sm"
+                label="Small"
+                placeholder="Small size"
+              />
+              <TextField
+                size="default"
+                label="Default"
+                placeholder="Default size"
+              />
+              <TextField
+                size="lg"
+                label="Large"
+                placeholder="Large size"
+              />
             </div>
           </div>
           <CustomSyntaxHighlighter
@@ -201,11 +268,13 @@ const TextFieldPage = () => {
         <p className="mb-4 text-neutral-grey">Labels are integrated and styled automatically.</p>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <TextField label="Full Name" placeholder="John Doe" showRequiredIcon />
+            <TextField
+              label="Full Name"
+              placeholder="John Doe"
+              showRequiredIcon
+            />
           </div>
-          <CustomSyntaxHighlighter
-            content='<TextField label="Full Name" placeholder="John Doe" required />'
-          />
+          <CustomSyntaxHighlighter content='<TextField label="Full Name" placeholder="John Doe" required />' />
         </div>
       </section>
 
@@ -244,9 +313,7 @@ const TextFieldPage = () => {
               value="invalid@email"
             />
           </div>
-          <CustomSyntaxHighlighter
-            content='<TextField label="Email" error placeholder="invalid@email" />'
-          />
+          <CustomSyntaxHighlighter content='<TextField label="Email" error placeholder="invalid@email" />' />
         </div>
       </section>
 
@@ -262,9 +329,7 @@ const TextFieldPage = () => {
               value="john_doe"
             />
           </div>
-          <CustomSyntaxHighlighter
-            content='<TextField label="Username" disabled value="john_doe" />'
-          />
+          <CustomSyntaxHighlighter content='<TextField label="Username" disabled value="john_doe" />' />
         </div>
       </section>
 
@@ -277,4 +342,3 @@ const TextFieldPage = () => {
 };
 
 export default TextFieldPage;
-

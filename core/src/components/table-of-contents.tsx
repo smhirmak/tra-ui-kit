@@ -148,10 +148,11 @@ const TableOfContents = ({ items }: TableOfContentsProps) => {
             <motion.button
               key={item.id}
               onClick={() => handleClick(item.id)}
-              className={`block w-full text-left text-sm transition-all duration-200 ${activeId === item.id
+              className={`block w-full text-left text-sm transition-all duration-200 ${
+                activeId === item.id
                   ? 'font-medium text-primary'
                   : 'text-neutral-grey hover:text-foreground'
-                }`}
+              }`}
               style={{
                 paddingLeft: `${(item.level - 1) * 12}px`,
               }}

@@ -23,9 +23,21 @@ const Sidebar: React.FC<ISidebar> = ({ children, headerLogo }) => {
   return (
     <aside className="z-2 sticky top-0 max-h-screen overflow-y-auto overflow-x-hidden">
       <nav className="bg-background flex h-full flex-col shadow-xs">
-        <div className={`flex items-center ${(expanded && headerLogo) ? 'justify-between' : 'justify-end'} p-4 pb-2`}>
-          {headerLogo && <img src={headerLogo} alt="logo" className={`overflow-hidden transition-all ease-out ${expanded ? 'w-16' : 'w-0'}`} />}
-          <button type="button" onClick={() => setExpanded(curr => !curr)} className="bg-background self-end p-1.5 hover:bg-neutral dark:hover:bg-primary-15">
+        <div
+          className={`flex items-center ${expanded && headerLogo ? 'justify-between' : 'justify-end'} p-4 pb-2`}
+        >
+          {headerLogo && (
+            <img
+              src={headerLogo}
+              alt="logo"
+              className={`overflow-hidden transition-all ease-out ${expanded ? 'w-16' : 'w-0'}`}
+            />
+          )}
+          <button
+            type="button"
+            onClick={() => setExpanded((curr) => !curr)}
+            className="bg-background self-end p-1.5 hover:bg-neutral dark:hover:bg-primary-15"
+          >
             {expanded ? <CaretLeftIcon /> : <CaretRightIcon />}
           </button>
         </div>
@@ -57,11 +69,17 @@ export const SidebarItem = ({ icon, text, active, alert, onClick }: ISidebarItem
   const { expanded } = context;
   return (
     <li
-      onClick={() => { onClick?.(); }}
+      onClick={() => {
+        onClick?.();
+      }}
       className={`group relative my-1 flex cursor-pointer items-center rounded-md px-3 py-2 font-medium transition-colors ${active ? 'bg-primary-15 text-primary' : 'justify-center hover:bg-neutral dark:hover:bg-primary-15'}`}
     >
       {icon}
-      <span className={`overflow-hidden transition-all ease-out ${expanded ? 'ml-3 w-40' : 'size-0'}`}>{text}</span>
+      <span
+        className={`overflow-hidden transition-all ease-out ${expanded ? 'ml-3 w-40' : 'size-0'}`}
+      >
+        {text}
+      </span>
       {alert && (
         <div className={`absolute right-2 size-2 rounded bg-primary ${expanded ? '' : 'top-2'}`} />
       )}

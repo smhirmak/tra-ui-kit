@@ -10,7 +10,7 @@ interface ITabsContext {
 
 const defaultTabsContext: ITabsContext = {
   activeTab: '',
-  handleTabClick: () => { },
+  handleTabClick: () => {},
   variant: 'default',
 };
 
@@ -168,7 +168,7 @@ const selectorVariants = cva('absolute transition-transform duration-200', {
       direction: 'horizontal',
       className: '-bottom-[1.5px]!',
     },
-  ]
+  ],
 });
 
 interface ITabsBase {
@@ -214,15 +214,29 @@ interface ITab {
   radius?: 'default' | 'none' | 'sm' | 'lg' | 'full';
 }
 
-const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'default', onChange, className, contentClasName, wrapperClassName,
-  selectorClassName, children, disabled, size = 'default', radius = 'default', direction = 'horizontal', contentPlacement = 'bottom', defaultActiveTab }) => {
+const Tabs: React.FC<ITabs> = ({
+  activeTab: externalActiveTab,
+  variant = 'default',
+  onChange,
+  className,
+  contentClasName,
+  wrapperClassName,
+  selectorClassName,
+  children,
+  disabled,
+  size = 'default',
+  radius = 'default',
+  direction = 'horizontal',
+  contentPlacement = 'bottom',
+  defaultActiveTab,
+}) => {
   const [indicatorStyle, setIndicatorStyle] = useState<React.CSSProperties>({});
   const tabsRef = useRef<HTMLDivElement>(null);
 
   const [internalActiveTab, setInternalActiveTab] = useState<string>(() => {
     if (defaultActiveTab) return defaultActiveTab;
-    const firstTab = React.Children.toArray(children).find(
-      child => React.isValidElement<ITab>(child)
+    const firstTab = React.Children.toArray(children).find((child) =>
+      React.isValidElement<ITab>(child),
     ) as React.ReactElement<ITab> | undefined;
     return firstTab?.props.value || '';
   });
@@ -236,10 +250,23 @@ const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'defaul
     // if (activeTabElement && variant !== 'default') {
     if (activeTabElement) {
       const newIndicatorStyle = {
-        width: (variant === 'default' && direction === 'vertical') ? '2px' : direction === 'horizontal' ? activeTabElement.offsetWidth : '100%',
-        height: (variant === 'default' && direction === 'horizontal') ? '2px' : direction === 'vertical' ? activeTabElement.offsetHeight : '100%',
+        width:
+          variant === 'default' && direction === 'vertical'
+            ? '2px'
+            : direction === 'horizontal'
+              ? activeTabElement.offsetWidth
+              : '100%',
+        height:
+          variant === 'default' && direction === 'horizontal'
+            ? '2px'
+            : direction === 'vertical'
+              ? activeTabElement.offsetHeight
+              : '100%',
         // transform: direction === 'horizontal' ? `translateX(${activeTabElement.offsetLeft}px)` : `translateY(${-activeTabElement.offsetTop}px)`,
-        transform: direction === 'horizontal' ? `translateX(${activeTabElement.offsetLeft}px)` : `translateY(${activeTabElement.offsetTop}px)`,
+        transform:
+          direction === 'horizontal'
+            ? `translateX(${activeTabElement.offsetLeft}px)`
+            : `translateY(${activeTabElement.offsetTop}px)`,
       };
       setIndicatorStyle(newIndicatorStyle);
     }
@@ -254,22 +281,37 @@ const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'defaul
     }
   };
 
-  const contextValue = React.useMemo(() => ({ activeTab, handleTabClick, variant }), [activeTab, variant]);
+  const contextValue = React.useMemo(
+    () => ({ activeTab, handleTabClick, variant }),
+    [activeTab, variant],
+  );
 
   return (
     <TabsContext.Provider value={contextValue}>
       <div className={cn(tabsContainerVariants({ contentPlacement }))}>
-        <div className={cn(tabsVariants({ variant, radius }),
-          className)}>
-          <div className={cn(direction === 'horizontal' ? 'flex-row' : 'flex-col',
-            variant === 'default' && direction === 'horizontal' && 'border-b-2 border-neutral-light',
-            variant === 'default' && direction === 'vertical' && 'border-l-2 border-neutral-light',
-            'relative flex', wrapperClassName)} ref={tabsRef}>
+        <div className={cn(tabsVariants({ variant, radius }), className)}>
+          <div
+            className={cn(
+              direction === 'horizontal' ? 'flex-row' : 'flex-col',
+              variant === 'default' &&
+                direction === 'horizontal' &&
+                'border-b-2 border-neutral-light',
+              variant === 'default' &&
+                direction === 'vertical' &&
+                'border-l-2 border-neutral-light',
+              'relative flex',
+              wrapperClassName,
+            )}
+            ref={tabsRef}
+          >
             <div
-              className={cn(selectorVariants({ variant, disabled, radius, direction }), selectorClassName)}
+              className={cn(
+                selectorVariants({ variant, disabled, radius, direction }),
+                selectorClassName,
+              )}
               style={indicatorStyle}
             />
-            {React.Children.map(children, child => {
+            {React.Children.map(children, (child) => {
               if (React.isValidElement<ITab>(child)) {
                 return React.cloneElement(child, {
                   isActive: child.props.value === activeTab,
@@ -283,7 +325,7 @@ const Tabs: React.FC<ITabs> = ({ activeTab: externalActiveTab, variant = 'defaul
           </div>
         </div>
         <div>
-          {React.Children.map(children, child => {
+          {React.Children.map(children, (child) => {
             if (React.isValidElement<ITab>(child) && child.props.value === activeTab) {
               return <div className={contentClasName}>{child.props.children}</div>;
             }

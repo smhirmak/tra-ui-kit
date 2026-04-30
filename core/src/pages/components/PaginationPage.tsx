@@ -21,17 +21,57 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'mode', type: '"default" | "simple"', default: '"default"', description: 'The pagination display mode' },
+  {
+    prop: 'mode',
+    type: '"default" | "simple"',
+    default: '"default"',
+    description: 'The pagination display mode',
+  },
   { prop: 'totalPages', type: 'number', default: '-', description: 'Total number of pages' },
   { prop: 'currentPage', type: 'number', default: '-', description: 'Current active page' },
-  { prop: 'onPageChange', type: '(page: number) => void', default: '-', description: 'Callback when page changes' },
-  { prop: 'maxVisiblePages', type: 'number', default: '7', description: 'Maximum visible page buttons' },
-  { prop: 'color', type: '"primary" | "secondary" | "tertiary"', default: '"primary"', description: 'Button color scheme' },
-  { prop: 'variant', type: '"solid" | "outlined" | "ghost"', default: '"solid"', description: 'Button variant style' },
-  { prop: 'size', type: '"xs" | "sm" | "default" | "lg" | "xl"', default: '"default"', description: 'Size of pagination buttons' },
+  {
+    prop: 'onPageChange',
+    type: '(page: number) => void',
+    default: '-',
+    description: 'Callback when page changes',
+  },
+  {
+    prop: 'maxVisiblePages',
+    type: 'number',
+    default: '7',
+    description: 'Maximum visible page buttons',
+  },
+  {
+    prop: 'color',
+    type: '"primary" | "secondary" | "tertiary"',
+    default: '"primary"',
+    description: 'Button color scheme',
+  },
+  {
+    prop: 'variant',
+    type: '"solid" | "outlined" | "ghost"',
+    default: '"solid"',
+    description: 'Button variant style',
+  },
+  {
+    prop: 'size',
+    type: '"xs" | "sm" | "default" | "lg" | "xl"',
+    default: '"default"',
+    description: 'Size of pagination buttons',
+  },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables pagination' },
-  { prop: 'hideFirstLastArrows', type: 'boolean', default: 'false', description: 'Hide first/last page arrows' },
-  { prop: 'hideNavigationArrows', type: 'boolean', default: 'false', description: 'Hide prev/next arrows' },
+  {
+    prop: 'hideFirstLastArrows',
+    type: 'boolean',
+    default: 'false',
+    description: 'Hide first/last page arrows',
+  },
+  {
+    prop: 'hideNavigationArrows',
+    type: 'boolean',
+    default: 'false',
+    description: 'Hide prev/next arrows',
+  },
 ];
 
 const PaginationPage = () => {
@@ -50,18 +90,25 @@ const PaginationPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Pagination</h1>
         <p className="text-lg text-neutral-grey">
-          A flexible pagination component for navigating through pages with multiple display modes and customization options.
+          A flexible pagination component for navigating through pages with multiple display modes
+          and customization options.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add pagination' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add pagination" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="pagination" />
           </Tab>
         </Tabs>
@@ -93,7 +140,10 @@ const PaginationPage = () => {
         <h2 className="mb-4 text-2xl font-bold">Modes</h2>
 
         {/* Simple */}
-        <div id="simple" className="mb-8 space-y-4">
+        <div
+          id="simple"
+          className="mb-8 space-y-4"
+        >
           <h3 className="text-xl font-semibold">Simple</h3>
           <p className="text-neutral-grey">Simple mode with minimal page indicators.</p>
           <div className="rounded-lg border border-border bg-background p-6">
@@ -115,7 +165,10 @@ const PaginationPage = () => {
         </div>
 
         {/* Solid Button */}
-        <div id="solid-button" className="mb-8 space-y-4">
+        <div
+          id="solid-button"
+          className="mb-8 space-y-4"
+        >
           <h3 className="text-xl font-semibold">Solid Button</h3>
           <p className="text-neutral-grey">Pagination with solid button variant.</p>
           <div className="rounded-lg border border-border bg-background p-6">
@@ -137,7 +190,10 @@ const PaginationPage = () => {
         </div>
 
         {/* Outlined Button */}
-        <div id="outlined-button" className="mb-8 space-y-4">
+        <div
+          id="outlined-button"
+          className="mb-8 space-y-4"
+        >
           <h3 className="text-xl font-semibold">Outlined Button</h3>
           <p className="text-neutral-grey">Pagination with outlined button variant.</p>
           <div className="rounded-lg border border-border bg-background p-6">
@@ -186,8 +242,14 @@ const PaginationPage = () => {
               />
             </div>
           </div>
-          <CustomSyntaxHighlighter className="mb-2" content='<Pagination size="sm" ... />' />
-          <CustomSyntaxHighlighter className="mb-2" content='<Pagination size="default" ... />' />
+          <CustomSyntaxHighlighter
+            className="mb-2"
+            content='<Pagination size="sm" ... />'
+          />
+          <CustomSyntaxHighlighter
+            className="mb-2"
+            content='<Pagination size="default" ... />'
+          />
           <CustomSyntaxHighlighter content='<Pagination size="lg" ... />' />
         </div>
       </section>
@@ -199,4 +261,3 @@ const PaginationPage = () => {
 };
 
 export default PaginationPage;
-

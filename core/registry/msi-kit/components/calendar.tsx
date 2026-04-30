@@ -16,10 +16,10 @@ const Calendar = ({
   showOutsideDays = true,
   id,
   locale,
-  endMonth = new Date((new Date().getFullYear() + 100), 11, 31),
+  endMonth = new Date(new Date().getFullYear() + 100, 11, 31),
   ...props
 }: CalendarProps) => {
-  console.log(new Date((new Date().getFullYear() + 50), 11, 31));
+  console.log(new Date(new Date().getFullYear() + 50, 11, 31));
   return (
     <DayPicker
       locale={locale}
@@ -59,8 +59,7 @@ const Calendar = ({
           'day-outside text-neutral-grey aria-selected:bg-primary/50 aria-selected:text-muted-foreground',
         disabled: 'text-neutral!',
         range_start: 'day-range-start rounded-l-md rounded-r-none',
-        range_middle:
-          'rounded-none',
+        range_middle: 'rounded-none',
         range_end: 'day-range-end rounded-r-md rounded-l-none',
         day_hidden: 'invisible',
         ...classNames,
@@ -69,30 +68,35 @@ const Calendar = ({
         Dropdown: ({ options, value, onChange }: DropdownProps) => {
           // const options = React.Children.toArray(children) as React.ReactElement<React.HTMLProps<HTMLOptionElement>>[]
           const handleChange = (value: string) => {
-            if (!onChange) return
+            if (!onChange) return;
             const changeEvent = {
               target: { value },
-            } as React.ChangeEvent<HTMLSelectElement>
-            onChange?.(changeEvent)
-          }
+            } as React.ChangeEvent<HTMLSelectElement>;
+            onChange?.(changeEvent);
+          };
           return (
             <Select
               value={value?.toString()}
               onChange={(value) => {
-                handleChange(value as string)
+                handleChange(value as string);
               }}
-              options={options?.map((option) => ({ value: option.value?.toString() ?? "", content: option.label ?? option.value?.toString() ?? "" })) || []}
+              options={
+                options?.map((option) => ({
+                  value: option.value?.toString() ?? '',
+                  content: option.label ?? option.value?.toString() ?? '',
+                })) || []
+              }
               // hideClearOption
               isSearchable
-              dropdownTriggerClassName='h-10'
-              selectTextClassName='text-sm'
+              dropdownTriggerClassName="h-10"
+              selectTextClassName="text-sm"
             />
-          )
+          );
         },
       }}
       {...props}
     />
-  )
+  );
 };
 
 export default Calendar;

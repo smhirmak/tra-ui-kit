@@ -20,11 +20,36 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'maxWidth', type: '"xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "full"', default: '"xl"', description: 'Maximum width of the container' },
-  { prop: 'disableGutters', type: 'boolean', default: 'false', description: 'Removes horizontal padding' },
-  { prop: 'centered', type: 'boolean', default: 'false', description: 'Centers content vertically and horizontally' },
-  { prop: 'as', type: 'React.ElementType', default: '"div"', description: 'Render as different HTML element' },
-  { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes' },
+  {
+    prop: 'maxWidth',
+    type: '"xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "full"',
+    default: '"xl"',
+    description: 'Maximum width of the container',
+  },
+  {
+    prop: 'disableGutters',
+    type: 'boolean',
+    default: 'false',
+    description: 'Removes horizontal padding',
+  },
+  {
+    prop: 'centered',
+    type: 'boolean',
+    default: 'false',
+    description: 'Centers content vertically and horizontally',
+  },
+  {
+    prop: 'as',
+    type: 'React.ElementType',
+    default: '"div"',
+    description: 'Render as different HTML element',
+  },
+  {
+    prop: 'className',
+    type: 'string',
+    default: 'undefined',
+    description: 'Additional CSS classes',
+  },
 ];
 
 const ContainerPage = () => {
@@ -41,18 +66,25 @@ const ContainerPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Container</h1>
         <p className="text-lg text-neutral-grey">
-          A responsive container component that centers content and provides consistent horizontal padding across different screen sizes.
+          A responsive container component that centers content and provides consistent horizontal
+          padding across different screen sizes.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add container' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add container" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="container" />
           </Tab>
         </Tabs>
@@ -64,9 +96,7 @@ const ContainerPage = () => {
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
             <Container>
-              <div className="rounded bg-primary/10 p-4 text-center">
-                Container Content
-              </div>
+              <div className="rounded bg-primary/10 p-4 text-center">Container Content</div>
             </Container>
           </div>
           <CustomSyntaxHighlighter
@@ -121,10 +151,11 @@ const ContainerPage = () => {
         <p className="mb-4 text-neutral-grey">Center content vertically and horizontally.</p>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
-            <Container centered className="h-48">
-              <div className="rounded bg-primary/10 p-4">
-                Centered Content
-              </div>
+            <Container
+              centered
+              className="h-48"
+            >
+              <div className="rounded bg-primary/10 p-4">Centered Content</div>
             </Container>
           </div>
           <CustomSyntaxHighlighter
@@ -142,9 +173,7 @@ const ContainerPage = () => {
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
             <Container disableGutters>
-              <div className="rounded bg-primary/10 p-4 text-center">
-                No Horizontal Padding
-              </div>
+              <div className="rounded bg-primary/10 p-4 text-center">No Horizontal Padding</div>
             </Container>
           </div>
           <CustomSyntaxHighlighter
@@ -158,7 +187,9 @@ const ContainerPage = () => {
       {/* Custom Element */}
       <section id="custom-element">
         <h2 className="mb-4 text-2xl font-bold">Custom Element</h2>
-        <p className="mb-4 text-neutral-grey">Render as a different HTML element using the 'as' prop.</p>
+        <p className="mb-4 text-neutral-grey">
+          Render as a different HTML element using the 'as' prop.
+        </p>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
             <Container as="section">
@@ -184,4 +215,3 @@ const ContainerPage = () => {
 };
 
 export default ContainerPage;
-

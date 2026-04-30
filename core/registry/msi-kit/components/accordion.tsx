@@ -90,7 +90,12 @@ interface IAccordionContent {
   className?: string;
 }
 
-const Accordion: React.FC<IAccordion> = ({ children, className, multipleExpand = false, variant = 'underlined' }) => {
+const Accordion: React.FC<IAccordion> = ({
+  children,
+  className,
+  multipleExpand = false,
+  variant = 'underlined',
+}) => {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -121,11 +126,13 @@ const Accordion: React.FC<IAccordion> = ({ children, className, multipleExpand =
 
   const handleItemClick = (index: number) => {
     if (multipleExpand) {
-      setOpenIndexes(prevIndexes => (prevIndexes.includes(index)
-        ? prevIndexes.filter(i => i !== index)
-        : [...prevIndexes, index]));
+      setOpenIndexes((prevIndexes) =>
+        prevIndexes.includes(index)
+          ? prevIndexes.filter((i) => i !== index)
+          : [...prevIndexes, index],
+      );
     } else {
-      setOpenIndex(prevIndex => (prevIndex === index ? null : index));
+      setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
     }
   };
 
@@ -147,10 +154,22 @@ const Accordion: React.FC<IAccordion> = ({ children, className, multipleExpand =
   );
 };
 
-const AccordionTrigger: React.FC<IAccordionTrigger> = ({ title, subTitle, onClick, isOpen, className, variant, disabled, startContent, icon, iconContainerClassName,
-  titleClassName, subTitleClassName }) => (
+const AccordionTrigger: React.FC<IAccordionTrigger> = ({
+  title,
+  subTitle,
+  onClick,
+  isOpen,
+  className,
+  variant,
+  disabled,
+  startContent,
+  icon,
+  iconContainerClassName,
+  titleClassName,
+  subTitleClassName,
+}) => (
   <div
-    onClick={disabled ? () => { } : onClick}
+    onClick={disabled ? () => {} : onClick}
     data-disabled={disabled}
     className={cn(accordionTriggerVariants({ variant }), className)}
   >
@@ -161,7 +180,11 @@ const AccordionTrigger: React.FC<IAccordionTrigger> = ({ title, subTitle, onClic
         {subTitle && <p className={`text-neutral-grey text-sm ${subTitleClassName}`}>{subTitle}</p>}
       </div>
     </div>
-    <span className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'} ${iconContainerClassName}`}>{icon ?? <CaretDownIcon />}</span>
+    <span
+      className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'} ${iconContainerClassName}`}
+    >
+      {icon ?? <CaretDownIcon />}
+    </span>
   </div>
 );
 
@@ -189,20 +212,26 @@ const AccordionItem: React.FC<IAccordionItem> = ({
   titleClassName = '',
   icon,
 }) => (
-  <div className={cn(accordionItemVariants({ variant }), className)} data-disabled={disabled}>
+  <div
+    className={cn(accordionItemVariants({ variant }), className)}
+    data-disabled={disabled}
+  >
     <AccordionTrigger
       title={title}
       subTitle={subTitle}
       className={triggerClassName}
       titleClassName={titleClassName}
-      onClick={disabled ? () => { } : onClick}
+      onClick={disabled ? () => {} : onClick}
       isOpen={isOpen}
       variant={variant}
       disabled={disabled}
       startContent={startContent}
       icon={icon}
     />
-    <AccordionContent className={contentClassName} isOpen={isOpen}>
+    <AccordionContent
+      className={contentClassName}
+      isOpen={isOpen}
+    >
       {children}
     </AccordionContent>
   </div>

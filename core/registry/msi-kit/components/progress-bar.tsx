@@ -16,9 +16,13 @@ interface IProgressBar {
   valueType?: 'percentage' | 'number';
 }
 
-const linearContainerVariants = cva('MsiProgressBar-linearContainer bg-primary-15 relative h-1 w-full overflow-hidden rounded-2xl');
+const linearContainerVariants = cva(
+  'MsiProgressBar-linearContainer bg-primary-15 relative h-1 w-full overflow-hidden rounded-2xl',
+);
 
-const linearVariants = cva('MsiProgressBar-linearProgress bg-primary absolute left-0 top-0 size-full transition-transform duration-300');
+const linearVariants = cva(
+  'MsiProgressBar-linearProgress bg-primary absolute left-0 top-0 size-full transition-transform duration-300',
+);
 
 interface StepTextProps {
   className?: string;
@@ -26,44 +30,72 @@ interface StepTextProps {
 }
 
 const StepText = ({ className, children }: StepTextProps) => (
-  <p className={cn('MsiProgressBar-stepText self-end text-sm text-neutral-light-black', className)}>{children}</p>
+  <p className={cn('MsiProgressBar-stepText self-end text-sm text-neutral-light-black', className)}>
+    {children}
+  </p>
 );
 
-const ProgressBar = memo(({ progressTitle,
-  progressTitleClassName,
-  stepTextClassName,
-  currentStep = 0,
-  totalStepSize = 0,
-  containerClassName,
-  headerContainerClassName,
-  linearContainerClassName,
-  linearProgressClassName,
-  valueType = 'number',
-  stepTextPosition = 'top',
-  ...otherProps }: IProgressBar) => {
-  if (currentStep > totalStepSize) {
-    throw new Error('Current step cannot be greater than total step size');
-  }
+const ProgressBar = memo(
+  ({
+    progressTitle,
+    progressTitleClassName,
+    stepTextClassName,
+    currentStep = 0,
+    totalStepSize = 0,
+    containerClassName,
+    headerContainerClassName,
+    linearContainerClassName,
+    linearProgressClassName,
+    valueType = 'number',
+    stepTextPosition = 'top',
+    ...otherProps
+  }: IProgressBar) => {
+    if (currentStep > totalStepSize) {
+      throw new Error('Current step cannot be greater than total step size');
+    }
 
-  const progress = Math.min(Math.max((currentStep / Math.max(totalStepSize, 1)) * 100, 0), 100);
-  const stepText = valueType === 'number' ? `${currentStep}/${totalStepSize}` : `${Math.round(progress)}%`;
+    const progress = Math.min(Math.max((currentStep / Math.max(totalStepSize, 1)) * 100, 0), 100);
+    const stepText =
+      valueType === 'number' ? `${currentStep}/${totalStepSize}` : `${Math.round(progress)}%`;
 
-  return (
-    <div className={cn(containerClassName, 'MsiProgressBar-container flex flex-col gap-1')}>
-      <div className={cn(headerContainerClassName, `MsiProgressBar-headerContainer flex ${progressTitle ? 'justify-between' : 'justify-end'}`)}>
-        {progressTitle && <p className={cn(progressTitleClassName, 'MsiProgressBar-title text-neutral-light-black')}>{progressTitle}</p>}
-        {stepTextPosition === 'top' && <StepText className={cn(stepTextClassName)}>{stepText}</StepText>}
-      </div>
-      <div className={cn(linearContainerVariants(), linearContainerClassName)} {...otherProps}>
+    return (
+      <div className={cn(containerClassName, 'MsiProgressBar-container flex flex-col gap-1')}>
         <div
-          className={cn(linearVariants(), linearProgressClassName)}
-          style={{ transform: `translateX(-${100 - progress}%)` }}
-        />
+          className={cn(
+            headerContainerClassName,
+            `MsiProgressBar-headerContainer flex ${progressTitle ? 'justify-between' : 'justify-end'}`,
+          )}
+        >
+          {progressTitle && (
+            <p
+              className={cn(
+                progressTitleClassName,
+                'MsiProgressBar-title text-neutral-light-black',
+              )}
+            >
+              {progressTitle}
+            </p>
+          )}
+          {stepTextPosition === 'top' && (
+            <StepText className={cn(stepTextClassName)}>{stepText}</StepText>
+          )}
+        </div>
+        <div
+          className={cn(linearContainerVariants(), linearContainerClassName)}
+          {...otherProps}
+        >
+          <div
+            className={cn(linearVariants(), linearProgressClassName)}
+            style={{ transform: `translateX(-${100 - progress}%)` }}
+          />
+        </div>
+        {stepTextPosition === 'bottom' && (
+          <StepText className={cn(stepTextClassName)}>{stepText}</StepText>
+        )}
       </div>
-      {stepTextPosition === 'bottom' && <StepText className={cn(stepTextClassName)}>{stepText}</StepText>}
-    </div>
-  );
-});
+    );
+  },
+);
 
 ProgressBar.displayName = 'ProgressBar';
 

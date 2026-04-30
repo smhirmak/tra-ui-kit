@@ -23,15 +23,21 @@ const ComponentSourceViewer = ({ componentName, className }: ComponentSourceView
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center gap-3 rounded-lg border border-border bg-background p-8">
-        <Skeleton className='h-8 w-full' />
-        <Skeleton className='h-8 w-full' />
-        <Skeleton className='h-8 w-full' />
-        <Skeleton className='h-8 w-full' />
+        <Skeleton className="h-8 w-full" />
+        <Skeleton className="h-8 w-full" />
+        <Skeleton className="h-8 w-full" />
+        <Skeleton className="h-8 w-full" />
       </div>
     );
   }
 
-  return <CustomSyntaxHighlighter content={source} className={className} copyButtonClassName='top-8' />;
+  return (
+    <CustomSyntaxHighlighter
+      content={source}
+      className={className}
+      copyButtonClassName="top-8"
+    />
+  );
 };
 
 export default ComponentSourceViewer;

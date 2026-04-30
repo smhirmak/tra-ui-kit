@@ -20,11 +20,26 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'type', type: '"success" | "warning" | "error"', default: '"success"', description: 'Visual style variant' },
+  {
+    prop: 'type',
+    type: '"success" | "warning" | "error"',
+    default: '"success"',
+    description: 'Visual style variant',
+  },
   { prop: 'title', type: 'string', default: '-', description: 'Status message text' },
   { prop: 'isHaveIcon', type: 'boolean', default: 'false', description: 'Show default icon' },
-  { prop: 'icon', type: 'React.ReactNode', default: 'undefined', description: 'Custom icon element' },
-  { prop: 'className', type: 'string', default: 'undefined', description: 'Additional CSS classes' },
+  {
+    prop: 'icon',
+    type: 'React.ReactNode',
+    default: 'undefined',
+    description: 'Custom icon element',
+  },
+  {
+    prop: 'className',
+    type: 'string',
+    default: 'undefined',
+    description: 'Additional CSS classes',
+  },
 ];
 
 const InformationStatusPage = () => {
@@ -48,11 +63,17 @@ const InformationStatusPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add information-status' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add information-status" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="information-status" />
           </Tab>
         </Tabs>
@@ -76,9 +97,18 @@ const InformationStatusPage = () => {
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="flex flex-col gap-4">
-              <InformationStatus type="success" title="Successfully saved your changes." />
-              <InformationStatus type="warning" title="This action requires confirmation." />
-              <InformationStatus type="error" title="An error occurred. Please try again." />
+              <InformationStatus
+                type="success"
+                title="Successfully saved your changes."
+              />
+              <InformationStatus
+                type="warning"
+                title="This action requires confirmation."
+              />
+              <InformationStatus
+                type="error"
+                title="An error occurred. Please try again."
+              />
             </div>
           </div>
           <CustomSyntaxHighlighter
@@ -96,9 +126,21 @@ const InformationStatusPage = () => {
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="flex flex-col gap-4">
-              <InformationStatus isHaveIcon type="success" title="Successfully saved your changes." />
-              <InformationStatus isHaveIcon type="warning" title="This action requires confirmation." />
-              <InformationStatus isHaveIcon type="error" title="An error occurred. Please try again." />
+              <InformationStatus
+                isHaveIcon
+                type="success"
+                title="Successfully saved your changes."
+              />
+              <InformationStatus
+                isHaveIcon
+                type="warning"
+                title="This action requires confirmation."
+              />
+              <InformationStatus
+                isHaveIcon
+                type="error"
+                title="An error occurred. Please try again."
+              />
             </div>
           </div>
           <CustomSyntaxHighlighter
@@ -116,9 +158,24 @@ const InformationStatusPage = () => {
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="flex flex-col gap-4">
-              <InformationStatus isHaveIcon icon={<PlusIcon />} type="success" title="Item added successfully." />
-              <InformationStatus isHaveIcon icon={<PlusIcon />} type="warning" title="Custom warning icon." />
-              <InformationStatus isHaveIcon icon={<PlusIcon />} type="error" title="Custom error icon." />
+              <InformationStatus
+                isHaveIcon
+                icon={<PlusIcon />}
+                type="success"
+                title="Item added successfully."
+              />
+              <InformationStatus
+                isHaveIcon
+                icon={<PlusIcon />}
+                type="warning"
+                title="Custom warning icon."
+              />
+              <InformationStatus
+                isHaveIcon
+                icon={<PlusIcon />}
+                type="error"
+                title="Custom error icon."
+              />
             </div>
           </div>
           <CustomSyntaxHighlighter
@@ -141,4 +198,3 @@ const InformationStatusPage = () => {
 };
 
 export default InformationStatusPage;
-

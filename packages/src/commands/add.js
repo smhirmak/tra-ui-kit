@@ -1,15 +1,18 @@
-const fs = require('fs-extra');
-const path = require('path');
-const inquirer = require('inquirer');
+const fs = require("fs-extra");
+const path = require("path");
+const inquirer = require("inquirer");
 
 async function add(componentName, language) {
   const currentDir = process.cwd();
-  const componentDir = path.join(currentDir, 'src/components/msi-kit');
-  const templateDir = path.join(__dirname, '..', 'components');
+  const componentDir = path.join(currentDir, "src/components/msi-kit");
+  const templateDir = path.join(__dirname, "..", "components");
 
   // Determine the correct file extension based on user preference
-  const fileExtension = language === 'JavaScript' ? 'jsx' : 'tsx';
-  const templateFilePath = path.join(templateDir, `${componentName}.${fileExtension}`);
+  const fileExtension = language === "JavaScript" ? "jsx" : "tsx";
+  const templateFilePath = path.join(
+    templateDir,
+    `${componentName}.${fileExtension}`,
+  );
 
   if (!fs.existsSync(templateFilePath)) {
     console.error(`Component template for ${componentName} not found.`);
@@ -20,10 +23,15 @@ async function add(componentName, language) {
     await fs.ensureDir(componentDir);
   }
 
-  const componentContent = fs.readFileSync(templateFilePath, 'utf8');
-  const componentFilePath = path.join(componentDir, `${componentName}.${fileExtension}`);
+  const componentContent = fs.readFileSync(templateFilePath, "utf8");
+  const componentFilePath = path.join(
+    componentDir,
+    `${componentName}.${fileExtension}`,
+  );
   fs.writeFileSync(componentFilePath, componentContent.trim());
-  console.log(`${componentName} component added successfully at src/components/msi-kit`);
+  console.log(
+    `${componentName} component added successfully at src/components/msi-kit`,
+  );
 }
 
 module.exports = add;

@@ -9,7 +9,8 @@ import { useAppContext } from '@/contexts/app/AppProvider';
 
 const RootComponent = () => {
   const { t } = useLocalizeContext();
-  const { notificationTheme, notificationMode, notificationAnimateMode, notificationPosition } = useAppContext();
+  const { notificationTheme, notificationMode, notificationAnimateMode, notificationPosition } =
+    useAppContext();
 
   return (
     <TOCProvider>

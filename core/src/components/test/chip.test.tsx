@@ -22,24 +22,44 @@ describe('Chip Component', () => {
     });
 
     it('should apply small size', () => {
-      const { container } = render(<Chip label="Test" size="sm" />);
+      const { container } = render(
+        <Chip
+          label="Test"
+          size="sm"
+        />,
+      );
       expect(container.firstChild).toHaveClass('px-4');
     });
 
     it('should apply large size', () => {
-      const { container } = render(<Chip label="Test" size="lg" />);
+      const { container } = render(
+        <Chip
+          label="Test"
+          size="lg"
+        />,
+      );
       expect(container.firstChild).toHaveClass('px-6');
     });
   });
 
   describe('States', () => {
     it('should apply active state', () => {
-      const { container } = render(<Chip label="Test" active />);
+      const { container } = render(
+        <Chip
+          label="Test"
+          active
+        />,
+      );
       expect(container.firstChild).toHaveClass('border-primary');
     });
 
     it('should apply selected state', () => {
-      const { container } = render(<Chip label="Test" selected />);
+      const { container } = render(
+        <Chip
+          label="Test"
+          selected
+        />,
+      );
       expect(container.firstChild).toHaveClass('bg-primary');
     });
 
@@ -53,7 +73,12 @@ describe('Chip Component', () => {
   describe('Clickable', () => {
     it('should be clickable when onClick is provided', () => {
       const handleClick = vi.fn();
-      const { container } = render(<Chip label="Test" onClick={handleClick} />);
+      const { container } = render(
+        <Chip
+          label="Test"
+          onClick={handleClick}
+        />,
+      );
       expect(container.firstChild).toHaveClass('cursor-pointer');
     });
 
@@ -64,7 +89,13 @@ describe('Chip Component', () => {
 
     it('should call onClick with id when clicked', () => {
       const handleClick = vi.fn();
-      render(<Chip id="test-id" label="Test" onClick={handleClick} />);
+      render(
+        <Chip
+          id="test-id"
+          label="Test"
+          onClick={handleClick}
+        />,
+      );
       fireEvent.click(screen.getByRole('button'));
       expect(handleClick).toHaveBeenCalledWith('test-id');
     });
@@ -72,12 +103,22 @@ describe('Chip Component', () => {
 
   describe('Icons', () => {
     it('should render with start icon', () => {
-      render(<Chip label="Test" startIcon={<span data-testid="start-icon">←</span>} />);
+      render(
+        <Chip
+          label="Test"
+          startIcon={<span data-testid="start-icon">←</span>}
+        />,
+      );
       expect(screen.getByTestId('start-icon')).toBeInTheDocument();
     });
 
     it('should render with end icon', () => {
-      render(<Chip label="Test" endIcon={<span data-testid="end-icon">→</span>} />);
+      render(
+        <Chip
+          label="Test"
+          endIcon={<span data-testid="end-icon">→</span>}
+        />,
+      );
       expect(screen.getByTestId('end-icon')).toBeInTheDocument();
     });
 
@@ -97,14 +138,25 @@ describe('Chip Component', () => {
   describe('Delete Functionality', () => {
     it('should render delete icon when onDelete is provided', () => {
       const handleDelete = vi.fn();
-      const { container } = render(<Chip label="Test" onDelete={handleDelete} />);
+      const { container } = render(
+        <Chip
+          label="Test"
+          onDelete={handleDelete}
+        />,
+      );
       const deleteButton = container.querySelector('[role="button"]:not([type="button"])');
       expect(deleteButton).toBeInTheDocument();
     });
 
     it('should call onDelete with id when delete is clicked', () => {
       const handleDelete = vi.fn();
-      const { container } = render(<Chip id="test-id" label="Test" onDelete={handleDelete} />);
+      const { container } = render(
+        <Chip
+          id="test-id"
+          label="Test"
+          onDelete={handleDelete}
+        />,
+      );
 
       const deleteButton = container.querySelector('[role="button"]:not([type="button"])');
       if (deleteButton) {
@@ -117,7 +169,13 @@ describe('Chip Component', () => {
     it('should prevent onClick when delete is clicked', () => {
       const handleClick = vi.fn();
       const handleDelete = vi.fn();
-      const { container } = render(<Chip label="Test" onClick={handleClick} onDelete={handleDelete} />);
+      const { container } = render(
+        <Chip
+          label="Test"
+          onClick={handleClick}
+          onDelete={handleDelete}
+        />,
+      );
 
       const deleteButton = container.querySelector('[role="button"]:not([type="button"])');
       if (deleteButton) {
@@ -142,7 +200,13 @@ describe('Chip Component', () => {
 
     it('should handle keyboard delete with Enter key', () => {
       const handleDelete = vi.fn();
-      const { container } = render(<Chip id="test-id" label="Test" onDelete={handleDelete} />);
+      const { container } = render(
+        <Chip
+          id="test-id"
+          label="Test"
+          onDelete={handleDelete}
+        />,
+      );
 
       const deleteButton = container.querySelector('[role="button"]:not([type="button"])');
       if (deleteButton) {
@@ -156,7 +220,12 @@ describe('Chip Component', () => {
 
   describe('Custom Styling', () => {
     it('should apply custom label className', () => {
-      render(<Chip label="Test" labelClassName="custom-label" />);
+      render(
+        <Chip
+          label="Test"
+          labelClassName="custom-label"
+        />,
+      );
       const label = screen.getByText('Test');
       expect(label).toHaveClass('custom-label');
     });
@@ -164,7 +233,12 @@ describe('Chip Component', () => {
 
   describe('ID Prop', () => {
     it('should apply id to button', () => {
-      render(<Chip id="test-chip" label="Test" />);
+      render(
+        <Chip
+          id="test-chip"
+          label="Test"
+        />,
+      );
       const button = screen.getByRole('button');
       expect(button).toHaveAttribute('id', 'test-chip');
     });

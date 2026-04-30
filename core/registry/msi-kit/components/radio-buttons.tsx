@@ -58,12 +58,16 @@ export const RadioGroupItem: React.FC<IRadioGroupItem> = ({
         focus-visible:ring-2 focus-visible:ring-offset-2 peer-checked:bg-transparent data-[disabled=true]:cursor-not-allowed data-[disabled=true]:opacity-50
         dark:bg-transparent ${className}`}
       >
-        <span className="group-data-[checked=true]:bg-primary group-data-[disabled=true]:bg-primary-15 absolute left-1/2 top-1/2 hidden aspect-square size-3 -translate-x-1/2
+        <span
+          className="group-data-[checked=true]:bg-primary group-data-[disabled=true]:bg-primary-15 absolute left-1/2 top-1/2 hidden aspect-square size-3 -translate-x-1/2
       -translate-y-1/2 select-none rounded-full group-data-[checked=true]:block"
         />
       </label>
       {label && (
-        <label htmlFor={id} className="select-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50">
+        <label
+          htmlFor={id}
+          className="select-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
+        >
           {label}
         </label>
       )}
@@ -78,15 +82,20 @@ interface IRadioGroup {
   onChange?: (value: string | number | undefined) => void;
 }
 
-export const RadioGroup: React.FC<IRadioGroup> = ({ children, className, defaultValue, onChange }) => {
-  const [selectedValue, setSelectedValue] = React.useState<string | number | undefined>(defaultValue);
+export const RadioGroup: React.FC<IRadioGroup> = ({
+  children,
+  className,
+  defaultValue,
+  onChange,
+}) => {
+  const [selectedValue, setSelectedValue] = React.useState<string | number | undefined>(
+    defaultValue,
+  );
 
   const value = useMemo(() => ({ selectedValue, setSelectedValue, onChange }), [selectedValue]);
   return (
     <RadioButtonContext.Provider value={value}>
-      <div className={className}>
-        {children}
-      </div>
+      <div className={className}>{children}</div>
     </RadioButtonContext.Provider>
   );
 };

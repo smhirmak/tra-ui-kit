@@ -75,7 +75,12 @@ describe('Calendar Component', () => {
 
     it('should apply selected day styling with single date', () => {
       const selectedDate = new Date();
-      render(<Calendar mode="single" selected={selectedDate} />);
+      render(
+        <Calendar
+          mode="single"
+          selected={selectedDate}
+        />,
+      );
       // Selected styling should be applied
     });
   });

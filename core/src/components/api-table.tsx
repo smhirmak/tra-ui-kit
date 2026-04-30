@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 const renderDefaultValue = (value: string) => {
   if (!value || value === '-') {
@@ -25,10 +25,18 @@ const renderDefaultValue = (value: string) => {
   );
 };
 
-const ApiTable = ({ tableData, title, titleClassName }: { tableData: { prop: string; type: string; default: string; description: string }[]; title?: string; titleClassName?: string }) => {
+const ApiTable = ({
+  tableData,
+  title,
+  titleClassName,
+}: {
+  tableData: { prop: string; type: string; default: string; description: string }[];
+  title?: string;
+  titleClassName?: string;
+}) => {
   return (
     <section id="api">
-      <h2 className={cn("mb-4 text-2xl font-bold", titleClassName)}>{title || 'API Reference'}</h2>
+      <h2 className={cn('mb-4 text-2xl font-bold', titleClassName)}>{title || 'API Reference'}</h2>
       <div className="overflow-x-auto rounded-xl border border-border">
         <table className="w-full border-collapse">
           <thead>
@@ -44,13 +52,15 @@ const ApiTable = ({ tableData, title, titleClassName }: { tableData: { prop: str
               <tr
                 key={item.prop}
                 className={cn(
-                  "border-b border-border transition-colors last:border-0",
-                  i % 2 === 0 ? "bg-background" : "bg-neutral-light/20 dark:bg-neutral-light/5",
-                  "hover:bg-primary/5"
+                  'border-b border-border transition-colors last:border-0',
+                  i % 2 === 0 ? 'bg-background' : 'bg-neutral-light/20 dark:bg-neutral-light/5',
+                  'hover:bg-primary/5',
                 )}
               >
                 <td className="p-3">
-                  <code className="text-sm font-medium text-primary font-mono">{item.prop ?? '—'}</code>
+                  <code className="text-sm font-medium text-primary font-mono">
+                    {item.prop ?? '—'}
+                  </code>
                 </td>
                 <td className="p-3">
                   {item.type && item.type !== '-' ? (

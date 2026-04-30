@@ -8,10 +8,12 @@ interface IFormikErrorText {
 
 const FormikErrorText: React.FC<IFormikErrorText> = ({ id, formik }) => {
   const { t } = useLocalizeContext();
-  return (
-    MethodHelper.formikErrorCheck(formik, id)
-      ? <span className="text-sm font-medium text-red-500">{t(MethodHelper.formikErrorCheck(formik, id))}</span>
-      : <span className="text-sm font-medium text-red-500">&nbsp;</span>
+  return MethodHelper.formikErrorCheck(formik, id) ? (
+    <span className="text-sm font-medium text-red-500">
+      {t(MethodHelper.formikErrorCheck(formik, id))}
+    </span>
+  ) : (
+    <span className="text-sm font-medium text-red-500">&nbsp;</span>
   );
 };
 

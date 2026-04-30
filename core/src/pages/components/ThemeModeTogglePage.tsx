@@ -17,8 +17,18 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'theme', type: '"light" | "dark"', default: 'undefined', description: 'Current theme (for controlled component)' },
-  { prop: 'setTheme', type: '(theme: "light" | "dark") => void', default: 'undefined', description: 'Theme setter function' },
+  {
+    prop: 'theme',
+    type: '"light" | "dark"',
+    default: 'undefined',
+    description: 'Current theme (for controlled component)',
+  },
+  {
+    prop: 'setTheme',
+    type: '(theme: "light" | "dark") => void',
+    default: 'undefined',
+    description: 'Theme setter function',
+  },
 ];
 
 const ThemeModeTogglePage = () => {
@@ -35,18 +45,25 @@ const ThemeModeTogglePage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Theme Mode Toggle</h1>
         <p className="text-lg text-neutral-grey">
-          A button component to toggle between light and dark theme modes with animated icon transitions.
+          A button component to toggle between light and dark theme modes with animated icon
+          transitions.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add theme-mode-toggle' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add theme-mode-toggle" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="theme-mode-toggle" />
           </Tab>
         </Tabs>
@@ -64,9 +81,10 @@ const ThemeModeTogglePage = () => {
               <ThemeModeToggle />
             </div>
           </div>
-          <CustomSyntaxHighlighter content='<ThemeModeToggle />' />
+          <CustomSyntaxHighlighter content="<ThemeModeToggle />" />
           <p className="text-sm text-neutral-grey">
-            The component automatically uses the ThemeProvider context. Click the button to toggle between themes.
+            The component automatically uses the ThemeProvider context. Click the button to toggle
+            between themes.
           </p>
         </div>
       </section>
@@ -104,4 +122,3 @@ const ThemeModeTogglePage = () => {
 };
 
 export default ThemeModeTogglePage;
-

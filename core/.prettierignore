@@ -1,0 +1,40 @@
+# Build ve Çıktı Klasörleri
+dist/
+build/
+out/
+.next/
+.cache/
+
+# Test ve Coverage Raporları
+coverage/
+junit.xml
+
+# Paket Yöneticileri ve Lock Dosyaları
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# TypeScript ve Otomatik Oluşturulan Dosyalar
+*.d.ts
+tsconfig.tsbuildinfo
+
+# Çevresel Değişkenler ve Gizli Dosyalar
+.env
+.env.*
+.local
+
+# Diğer Statik Assetler ve Binary Dosyalar
+public/
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.gif
+*.ico
+*.pdf
+
+# Versiyon Kontrol Sistemi
+.git/
+.svn/
+.hg/

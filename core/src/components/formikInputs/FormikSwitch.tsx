@@ -39,7 +39,10 @@ const FormikSwitch: React.FC<IFormikSwitch> = ({
         {...otherProps}
         checked={Object.GetNestedValue(formik.values, id) as boolean}
       />
-      <FormikErrorText id={id} formik={formik} />
+      <FormikErrorText
+        id={id}
+        formik={formik}
+      />
     </div>
   );
 };

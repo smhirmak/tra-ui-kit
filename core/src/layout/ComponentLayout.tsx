@@ -7,7 +7,13 @@ import Constants from '@/constants/Constants';
 import { useVersion } from '@/contexts/version';
 import { useEffect, useState, useMemo } from 'react';
 import Button from '@/components/button';
-import { ArrowLeftIcon, ArrowRightIcon, CaretDownIcon, GithubLogoIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  CaretDownIcon,
+  GithubLogoIcon,
+  MagnifyingGlassIcon,
+} from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
 
@@ -29,9 +35,7 @@ const ComponentLayout = () => {
   }, [search]);
 
   // Category open/close state — all open by default
-  const [openCategories, setOpenCategories] = useState<Set<string>>(
-    new Set(CATEGORIES),
-  );
+  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set(CATEGORIES));
   const toggleCategory = (cat: string) => {
     setOpenCategories((prev) => {
       const next = new Set(prev);
@@ -46,26 +50,24 @@ const ComponentLayout = () => {
     [],
   );
 
-  const groupedCategories = useMemo(() =>
-    CATEGORIES.map((cat) => ({
-      name: cat,
-      components: sortedComponents.filter(
-        (c) =>
-          c.category === cat &&
-          (debouncedSearch === '' ||
-            c.name.toLowerCase().includes(debouncedSearch.toLowerCase())),
-      ),
-    })).filter((g) => g.components.length > 0),
+  const groupedCategories = useMemo(
+    () =>
+      CATEGORIES.map((cat) => ({
+        name: cat,
+        components: sortedComponents.filter(
+          (c) =>
+            c.category === cat &&
+            (debouncedSearch === '' ||
+              c.name.toLowerCase().includes(debouncedSearch.toLowerCase())),
+        ),
+      })).filter((g) => g.components.length > 0),
     [sortedComponents, debouncedSearch],
   );
 
   // Scroll to top on navigation
 
-
   const currentIndex =
-    sortedComponents.findIndex(
-      (c) => `/v${currentVersion}${c.path}` === location.pathname,
-    ) ?? -1;
+    sortedComponents.findIndex((c) => `/v${currentVersion}${c.path}` === location.pathname) ?? -1;
   const prevComponent = sortedComponents[currentIndex - 1];
   const nextComponent = sortedComponents[currentIndex + 1];
 
@@ -75,11 +77,9 @@ const ComponentLayout = () => {
   return (
     <ScrollRestoration>
       <div className="flex min-h-screen w-full">
-
         {/* â”€â”€ Left Sidebar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <aside className="hidden w-64 shrink-0 border-r border-border lg:block">
           <div className="sticky top-16 max-h-[calc(100vh-4rem)] overflow-auto p-4">
-
             {/* Search */}
             <div className="relative mb-4">
               <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-neutral-grey" />
@@ -160,7 +160,10 @@ const ComponentLayout = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 transition-colors hover:text-primary"
                 >
-                  <GithubLogoIcon size={15} weight="fill" />
+                  <GithubLogoIcon
+                    size={15}
+                    weight="fill"
+                  />
                   {t('View source on GitHub')}
                 </a>
               </div>
@@ -234,5 +237,3 @@ const ComponentLayout = () => {
 };
 
 export default ComponentLayout;
-
-

@@ -23,11 +23,26 @@ const tocItems: TOCItem[] = [
 const apiTableData = [
   { prop: 'id', type: 'string', default: '-', description: 'Unique identifier' },
   { prop: 'checked', type: 'boolean', default: '-', description: 'Checked state' },
-  { prop: 'onChange', type: '(checked: boolean) => void', default: '-', description: 'Change handler' },
-  { prop: 'variant', type: '"apple" | "android"', default: '"apple"', description: 'Visual style variant' },
+  {
+    prop: 'onChange',
+    type: '(checked: boolean) => void',
+    default: '-',
+    description: 'Change handler',
+  },
+  {
+    prop: 'variant',
+    type: '"apple" | "android"',
+    default: '"apple"',
+    description: 'Visual style variant',
+  },
   { prop: 'label', type: 'string', default: '-', description: 'Label text' },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the switch' },
-  { prop: 'showRequiredIcon', type: 'boolean', default: 'false', description: 'Show required indicator' },
+  {
+    prop: 'showRequiredIcon',
+    type: 'boolean',
+    default: 'false',
+    description: 'Show required indicator',
+  },
   { prop: 'className', type: 'string', default: '-', description: 'Custom CSS class' },
 ];
 
@@ -55,11 +70,17 @@ const SwitchPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add switch' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add switch" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="switch" />
           </Tab>
         </Tabs>
@@ -91,7 +112,10 @@ const SwitchPage = () => {
         <h2 className="mb-4 text-2xl font-bold">Variants</h2>
 
         {/* Apple */}
-        <div id="apple" className="mb-8 space-y-4">
+        <div
+          id="apple"
+          className="mb-8 space-y-4"
+        >
           <h3 className="text-xl font-semibold">Apple</h3>
           <p className="text-neutral-grey">iOS-style switch with smooth toggle animation.</p>
           <div className="rounded-lg border border-border bg-background p-6">
@@ -114,7 +138,10 @@ const SwitchPage = () => {
         </div>
 
         {/* Android */}
-        <div id="android" className="mb-8 space-y-4">
+        <div
+          id="android"
+          className="mb-8 space-y-4"
+        >
           <h3 className="text-xl font-semibold">Android</h3>
           <p className="text-neutral-grey">Material Design-style switch.</p>
           <div className="rounded-lg border border-border bg-background p-6">
@@ -176,20 +203,20 @@ const SwitchPage = () => {
             <Switch
               id="disabled-1"
               checked={false}
-              onChange={() => { }}
+              onChange={() => {}}
               label="Disabled (Off)"
               disabled
             />
             <Switch
               id="disabled-2"
               checked={true}
-              onChange={() => { }}
+              onChange={() => {}}
               label="Disabled (On)"
               disabled
             />
           </div>
         </div>
-        <CustomSyntaxHighlighter content='<Switch disabled checked={false} />' />
+        <CustomSyntaxHighlighter content="<Switch disabled checked={false} />" />
       </section>
 
       {/* API Reference */}
@@ -199,4 +226,3 @@ const SwitchPage = () => {
 };
 
 export default SwitchPage;
-

@@ -68,11 +68,20 @@ const Drawer: React.FC<DrawerProps> = ({
       }
       onOpenChange?.(value);
     },
-    [isControlled, onOpenChange]
+    [isControlled, onOpenChange],
   );
 
   return (
-    <DrawerContext.Provider value={{ open, setOpen, position, disableBackdropClick, disableEscapeKeyDown, showCloseButton }}>
+    <DrawerContext.Provider
+      value={{
+        open,
+        setOpen,
+        position,
+        disableBackdropClick,
+        disableEscapeKeyDown,
+        showCloseButton,
+      }}
+    >
       {children}
     </DrawerContext.Provider>
   );
@@ -101,14 +110,17 @@ const DrawerTrigger: React.FC<DrawerTriggerProps> = ({ children, asChild = false
   }
 
   return (
-    <Button className={cn(className)} onClick={() => setOpen(true)}>
+    <Button
+      className={cn(className)}
+      onClick={() => setOpen(true)}
+    >
       {children}
     </Button>
   );
 };
 
 const overlayVariants = cva(
-  'fixed inset-0 z-50 bg-black/50 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0'
+  'fixed inset-0 z-50 bg-black/50 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
 );
 
 const contentVariants = cva(
@@ -117,30 +129,28 @@ const contentVariants = cva(
     variants: {
       position: {
         left: 'inset-y-0 left-0 h-full w-full sm:max-w-sm data-[state=open]:slide-in-from-left data-[state=closed]:slide-out-to-left',
-        right: 'inset-y-0 right-0 h-full w-full sm:max-w-sm data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right',
+        right:
+          'inset-y-0 right-0 h-full w-full sm:max-w-sm data-[state=open]:slide-in-from-right data-[state=closed]:slide-out-to-right',
         top: 'inset-x-0 top-0 w-full max-h-[85vh] data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top',
-        bottom: 'inset-x-0 bottom-0 w-full max-h-[85vh] data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom',
+        bottom:
+          'inset-x-0 bottom-0 w-full max-h-[85vh] data-[state=open]:slide-in-from-bottom data-[state=closed]:slide-out-to-bottom',
       },
     },
     defaultVariants: {
       position: 'left',
     },
-  }
+  },
 );
 
 interface DrawerContentProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-  VariantProps<typeof contentVariants> {
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof contentVariants> {
   className?: string;
   children: React.ReactNode;
 }
 
-const DrawerContent: React.FC<DrawerContentProps> = ({
-  className,
-  children,
-  ...props
-}) => {
-  const { open, setOpen, position, disableBackdropClick, disableEscapeKeyDown, showCloseButton } = useDrawer();
+const DrawerContent: React.FC<DrawerContentProps> = ({ className, children, ...props }) => {
+  const { open, setOpen, position, disableBackdropClick, disableEscapeKeyDown, showCloseButton } =
+    useDrawer();
   const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -166,12 +176,15 @@ const DrawerContent: React.FC<DrawerContentProps> = ({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [open, disableEscapeKeyDown, setOpen]);
 
-  const handleBackdropClick = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!disableBackdropClick) {
-      setOpen(false);
-    }
-  }, [disableBackdropClick, setOpen]);
+  const handleBackdropClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (!disableBackdropClick) {
+        setOpen(false);
+      }
+    },
+    [disableBackdropClick, setOpen],
+  );
 
   const handleContentClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
@@ -209,28 +222,46 @@ const DrawerContent: React.FC<DrawerContentProps> = ({
         )}
       </div>
     </Fragment>,
-    document.body
+    document.body,
   );
 };
 
 const DrawerHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col space-y-2 text-center sm:text-left px-6 pt-6', className)} {...props} />
+  <div
+    className={cn('flex flex-col space-y-2 text-center sm:text-left px-6 pt-6', className)}
+    {...props}
+  />
 );
 
 const DrawerFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 px-6 pb-6', className)} {...props} />
+  <div
+    className={cn(
+      'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 px-6 pb-6',
+      className,
+    )}
+    {...props}
+  />
 );
 
 const DrawerTitle = ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-  <h2 className={cn('text-lg font-semibold leading-none tracking-tight', className)} {...props} />
+  <h2
+    className={cn('text-lg font-semibold leading-none tracking-tight', className)}
+    {...props}
+  />
 );
 
 const DrawerDescription = ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-  <p className={cn('text-sm text-muted-foreground', className)} {...props} />
+  <p
+    className={cn('text-sm text-muted-foreground', className)}
+    {...props}
+  />
 );
 
 const DrawerBody = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex-1 overflow-y-auto px-6 py-4', className)} {...props} />
+  <div
+    className={cn('flex-1 overflow-y-auto px-6 py-4', className)}
+    {...props}
+  />
 );
 
 export {

@@ -18,19 +18,43 @@ describe('Table Components', () => {
     });
 
     it('should apply custom className', () => {
-      const { container } = render(<Table className="custom-table"><TBody><TR><TD>Test</TD></TR></TBody></Table>);
+      const { container } = render(
+        <Table className="custom-table">
+          <TBody>
+            <TR>
+              <TD>Test</TD>
+            </TR>
+          </TBody>
+        </Table>,
+      );
       const table = container.querySelector('table');
       expect(table).toHaveClass('custom-table', 'MsiTable-table');
     });
 
     it('should have base MsiTable-table class', () => {
-      const { container } = render(<Table><TBody><TR><TD>Test</TD></TR></TBody></Table>);
+      const { container } = render(
+        <Table>
+          <TBody>
+            <TR>
+              <TD>Test</TD>
+            </TR>
+          </TBody>
+        </Table>,
+      );
       const table = container.querySelector('table');
       expect(table).toHaveClass('MsiTable-table', 'shadow-soft-primary');
     });
 
     it('should accept HTML table attributes', () => {
-      const { container } = render(<Table id="test-table"><TBody><TR><TD>Test</TD></TR></TBody></Table>);
+      const { container } = render(
+        <Table id="test-table">
+          <TBody>
+            <TR>
+              <TD>Test</TD>
+            </TR>
+          </TBody>
+        </Table>,
+      );
       const table = container.querySelector('table');
       expect(table).toHaveAttribute('id', 'test-table');
     });
@@ -54,7 +78,9 @@ describe('Table Components', () => {
       const { container } = render(
         <Table>
           <THead className="custom-thead">
-            <TR><TH>Test</TH></TR>
+            <TR>
+              <TH>Test</TH>
+            </TR>
           </THead>
         </Table>,
       );
@@ -66,7 +92,9 @@ describe('Table Components', () => {
       const { container } = render(
         <Table>
           <THead>
-            <TR><TH>Test</TH></TR>
+            <TR>
+              <TH>Test</TH>
+            </TR>
           </THead>
         </Table>,
       );
@@ -93,7 +121,9 @@ describe('Table Components', () => {
       const { container } = render(
         <Table>
           <TBody className="custom-tbody">
-            <TR><TD>Test</TD></TR>
+            <TR>
+              <TD>Test</TD>
+            </TR>
           </TBody>
         </Table>,
       );

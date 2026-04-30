@@ -1,8 +1,27 @@
 import {
-  CircleDashedIcon, PencilSimpleIcon, ListIcon, CheckSquareIcon, ToggleLeftIcon, RadioButtonIcon,
-  TableIcon, FilesIcon, ChatCircleIcon, SidebarSimpleIcon, TabsIcon, FolderOpenIcon,
-  LightbulbIcon, BalloonIcon, TagIcon, BookmarkIcon, UserIcon, HourglassIcon,
-  GearIcon, TrendUpIcon, CalendarIcon, MagnifyingGlassIcon, BellIcon,
+  CircleDashedIcon,
+  PencilSimpleIcon,
+  ListIcon,
+  CheckSquareIcon,
+  ToggleLeftIcon,
+  RadioButtonIcon,
+  TableIcon,
+  FilesIcon,
+  ChatCircleIcon,
+  SidebarSimpleIcon,
+  TabsIcon,
+  FolderOpenIcon,
+  LightbulbIcon,
+  BalloonIcon,
+  TagIcon,
+  BookmarkIcon,
+  UserIcon,
+  HourglassIcon,
+  GearIcon,
+  TrendUpIcon,
+  CalendarIcon,
+  MagnifyingGlassIcon,
+  BellIcon,
   CaretCircleDownIcon,
   AtomIcon,
   SpinnerGapIcon,
@@ -16,7 +35,7 @@ import {
 } from '@phosphor-icons/react';
 
 const Constants = {
-  componentList:[
+  componentList: [
     {
       name: 'Accordion',
       description: 'Collapsible content sections with smooth animations',
@@ -44,7 +63,7 @@ const Constants = {
       Icon: CircleDashedIcon,
       path: '/components/button',
       category: 'Input',
-      isShowHome: true
+      isShowHome: true,
     },
     {
       name: 'Checkbox',
@@ -52,7 +71,7 @@ const Constants = {
       Icon: CheckSquareIcon,
       path: '/components/checkbox',
       category: 'Input',
-      isShowHome: true
+      isShowHome: true,
     },
     {
       name: 'Chip',
@@ -67,7 +86,7 @@ const Constants = {
       Icon: CalendarIcon,
       path: '/components/date-picker',
       category: 'Input',
-      isShowHome: true
+      isShowHome: true,
     },
     {
       name: 'Dialog',
@@ -124,7 +143,7 @@ const Constants = {
       Icon: BellIcon,
       path: '/components/notification',
       category: 'Feedback',
-      isShowHome: true
+      isShowHome: true,
     },
     {
       name: 'Pagination',
@@ -167,7 +186,7 @@ const Constants = {
       Icon: ListIcon,
       path: '/components/select',
       category: 'Input',
-      isShowHome: true
+      isShowHome: true,
     },
     {
       name: 'Sidebar',
@@ -182,7 +201,7 @@ const Constants = {
       Icon: HourglassIcon,
       path: '/components/skeleton',
       category: 'Feedback',
-      isShowHome: true
+      isShowHome: true,
     },
     {
       name: 'Switch',
@@ -190,7 +209,7 @@ const Constants = {
       Icon: ToggleLeftIcon,
       path: '/components/switch',
       category: 'Input',
-      isShowHome: true
+      isShowHome: true,
     },
     {
       name: 'Table',
@@ -212,7 +231,7 @@ const Constants = {
       Icon: PencilSimpleIcon,
       path: '/components/text-field',
       category: 'Input',
-      isShowHome: true
+      isShowHome: true,
     },
     {
       name: 'Tooltip',
@@ -279,7 +298,7 @@ const Constants = {
       category: 'Navigation',
       isNew: true,
     },
-  ]
-}
+  ],
+};
 
 export default Constants;

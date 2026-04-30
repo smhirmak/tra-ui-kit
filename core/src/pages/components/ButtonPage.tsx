@@ -18,11 +18,10 @@ const getButtonComponent = (version: string) => {
   // v0: Old implementation from versions folder
   if (versionNum === 0) {
     return lazy(() =>
-      import(`@/versions/v0/components/button.tsx`)
-        .catch(() => {
-          console.warn('v0 button not found, using default');
-          return import('@/components/button');
-        })
+      import(`@/versions/v0/components/button.tsx`).catch(() => {
+        console.warn('v0 button not found, using default');
+        return import('@/components/button');
+      }),
     );
   }
 
@@ -46,15 +45,45 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'variant', type: '"solid" | "outlined" | "ghost"', default: '"solid"', description: 'The visual style variant' },
-  { prop: 'size', type: '"sm" | "default" | "lg" | "icon"', default: '"default"', description: 'The button size' },
-  { prop: 'color', type: '"primary" | "secondary" | "tertiary" | "error"', default: '"primary"', description: 'The color scheme' },
-  { prop: 'rounded', type: '"default" | "lg"', default: '"default"', description: 'Border radius style (default: rounded-lg, lg: rounded-full)' },
+  {
+    prop: 'variant',
+    type: '"solid" | "outlined" | "ghost"',
+    default: '"solid"',
+    description: 'The visual style variant',
+  },
+  {
+    prop: 'size',
+    type: '"sm" | "default" | "lg" | "icon"',
+    default: '"default"',
+    description: 'The button size',
+  },
+  {
+    prop: 'color',
+    type: '"primary" | "secondary" | "tertiary" | "error"',
+    default: '"primary"',
+    description: 'The color scheme',
+  },
+  {
+    prop: 'rounded',
+    type: '"default" | "lg"',
+    default: '"default"',
+    description: 'Border radius style (default: rounded-lg, lg: rounded-full)',
+  },
   { prop: 'loading', type: 'boolean', default: 'false', description: 'Shows loading spinner' },
-  { prop: 'loadingText', type: 'string', default: '"Sending..."', description: 'Text shown during loading' },
+  {
+    prop: 'loadingText',
+    type: 'string',
+    default: '"Sending..."',
+    description: 'Text shown during loading',
+  },
   { prop: 'disabled', type: 'boolean', default: 'false', description: 'Disables the button' },
   { prop: 'className', type: 'string', default: '-', description: 'Additional CSS classes' },
-  { prop: 'disableEffect', type: 'boolean', default: 'false', description: 'Disables the ripple click effect' },
+  {
+    prop: 'disableEffect',
+    type: 'boolean',
+    default: 'false',
+    description: 'Disables the ripple click effect',
+  },
 ];
 
 const ButtonPage = () => {
@@ -77,18 +106,25 @@ const ButtonPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Button</h1>
         <p className="text-lg text-neutral-grey">
-          A versatile button component with multiple variants, sizes, and states for various use cases.
+          A versatile button component with multiple variants, sizes, and states for various use
+          cases.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add button' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add button" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="button" />
           </Tab>
         </Tabs>
@@ -111,16 +147,25 @@ const ButtonPage = () => {
           <h2 className="mb-4 text-2xl font-bold">Variants</h2>
 
           {/* Solid */}
-          <div id="solid" className="mb-8 space-y-4">
+          <div
+            id="solid"
+            className="mb-8 space-y-4"
+          >
             <h3 className="text-xl font-semibold">Solid</h3>
             <p className="text-neutral-grey">The default filled button variant.</p>
             <div className="rounded-lg border border-border bg-background p-6">
               <div className="flex flex-wrap gap-4">
                 <Button variant="solid">Solid Button</Button>
-                <Button variant="solid" color="secondary">
+                <Button
+                  variant="solid"
+                  color="secondary"
+                >
                   Secondary
                 </Button>
-                <Button variant="solid" color="tertiary">
+                <Button
+                  variant="solid"
+                  color="tertiary"
+                >
                   tertiary
                 </Button>
               </div>
@@ -129,16 +174,25 @@ const ButtonPage = () => {
           </div>
 
           {/* Outlined */}
-          <div id="outlined" className="mb-8 space-y-4">
+          <div
+            id="outlined"
+            className="mb-8 space-y-4"
+          >
             <h3 className="text-xl font-semibold">Outlined</h3>
             <p className="text-neutral-grey">Button with border and transparent background.</p>
             <div className="rounded-lg border border-border bg-background p-6">
               <div className="flex flex-wrap gap-4">
                 <Button variant="outlined">Outlined Button</Button>
-                <Button variant="outlined" color="secondary">
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                >
                   Secondary
                 </Button>
-                <Button variant="outlined" color="tertiary">
+                <Button
+                  variant="outlined"
+                  color="tertiary"
+                >
                   tertiary
                 </Button>
               </div>
@@ -147,16 +201,25 @@ const ButtonPage = () => {
           </div>
 
           {/* Ghost */}
-          <div id="ghost" className="mb-8 space-y-4">
+          <div
+            id="ghost"
+            className="mb-8 space-y-4"
+          >
             <h3 className="text-xl font-semibold">Ghost</h3>
             <p className="text-neutral-grey">Minimal button with hover effect.</p>
             <div className="rounded-lg border border-border bg-background p-6">
               <div className="flex flex-wrap gap-4">
                 <Button variant="ghost">Ghost Button</Button>
-                <Button variant="ghost" color="secondary">
+                <Button
+                  variant="ghost"
+                  color="secondary"
+                >
                   Secondary
                 </Button>
-                <Button variant="ghost" color="tertiary">
+                <Button
+                  variant="ghost"
+                  color="tertiary"
+                >
                   tertiary
                 </Button>
               </div>
@@ -179,9 +242,18 @@ const ButtonPage = () => {
               </Button>
             </div>
           </div>
-          <CustomSyntaxHighlighter className="mb-2" content='<Button size="sm">Small</Button>' />
-          <CustomSyntaxHighlighter className='mb-2' content='<Button size="default">Default</Button>' />
-          <CustomSyntaxHighlighter className='mb-2' content='<Button size="lg">Large</Button>' />
+          <CustomSyntaxHighlighter
+            className="mb-2"
+            content='<Button size="sm">Small</Button>'
+          />
+          <CustomSyntaxHighlighter
+            className="mb-2"
+            content='<Button size="default">Default</Button>'
+          />
+          <CustomSyntaxHighlighter
+            className="mb-2"
+            content='<Button size="lg">Large</Button>'
+          />
           <CustomSyntaxHighlighter content='<Button size="icon"><PlusIcon /></Button>' />
         </section>
 
@@ -205,7 +277,10 @@ const ButtonPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="flex flex-wrap gap-4">
               <Button loading>Loading...</Button>
-              <Button loading loadingText="Processing">
+              <Button
+                loading
+                loadingText="Processing"
+              >
                 Submit
               </Button>
             </div>
@@ -220,10 +295,16 @@ const ButtonPage = () => {
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="flex flex-wrap gap-4">
               <Button disabled>Disabled</Button>
-              <Button variant="outlined" disabled>
+              <Button
+                variant="outlined"
+                disabled
+              >
                 Disabled
               </Button>
-              <Button variant="ghost" disabled>
+              <Button
+                variant="ghost"
+                disabled
+              >
                 Disabled
               </Button>
             </div>
@@ -238,4 +319,3 @@ const ButtonPage = () => {
 };
 
 export default ButtonPage;
-

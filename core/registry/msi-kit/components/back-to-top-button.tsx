@@ -26,7 +26,13 @@ interface IBackToTopButton {
   scrollThreshold?: number;
 }
 
-const BackToTopButton: React.FC<IBackToTopButton> = ({ buttonClassName, containerClassName, icon, iconClassName, scrollThreshold = 500 }) => {
+const BackToTopButton: React.FC<IBackToTopButton> = ({
+  buttonClassName,
+  containerClassName,
+  icon,
+  iconClassName,
+  scrollThreshold = 500,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -52,7 +58,12 @@ const BackToTopButton: React.FC<IBackToTopButton> = ({ buttonClassName, containe
   }
 
   return (
-    <div className={cn('fixed bottom-16 right-5 z-50 group before:absolute before:animate-ping hover:before:animate-none before:duration-2000 before:rounded-full before:bg-neutral-black/20 hover:before:bg-transparent before:content-[""] before:inset-0 hover:animate-bounce', containerClassName)}>
+    <div
+      className={cn(
+        'fixed bottom-16 right-5 z-50 group before:absolute before:animate-ping hover:before:animate-none before:duration-2000 before:rounded-full before:bg-neutral-black/20 hover:before:bg-transparent before:content-[""] before:inset-0 hover:animate-bounce',
+        containerClassName,
+      )}
+    >
       <Button
         variant="ghost"
         size="icon"

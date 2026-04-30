@@ -34,6 +34,7 @@ src/
 ## 🎯 Nasıl Çalışır?
 
 ### 1. Version Metadata (versions.json)
+
 ```json
 {
   "versions": [
@@ -51,6 +52,7 @@ src/
 ```
 
 ### 2. URL Yapısı
+
 - `/v1/components/button` → v1 versiyonu
 - `/v0/components/button` → v0 versiyonu
 
@@ -83,12 +85,14 @@ function ButtonPage() {
 ## 🔄 Yeni Versiyon Ekleme Workflow
 
 ### Adım 1: Klasör Oluştur
+
 ```bash
 mkdir -p src/versions/v2/components
 mkdir -p src/versions/v2/pages
 ```
 
 ### Adım 2: Component'i Kopyala ve Değiştir
+
 ```bash
 # Önceki versiyondan kopyala
 cp src/versions/v1/components/button.tsx src/versions/v2/components/button.tsx
@@ -98,12 +102,14 @@ cp src/versions/v1/components/button.tsx src/versions/v2/components/button.tsx
 ```
 
 ### Adım 3: Page'i Kopyala (Gerekirse)
+
 ```bash
 # Eğer dokümantasyon sayfası değişiyorsa
 cp src/pages/components/ButtonPage.tsx src/versions/v2/pages/ButtonPage.tsx
 ```
 
 ### Adım 4: versions.json Güncelle
+
 ```json
 {
   "versions": [
@@ -126,6 +132,7 @@ cp src/pages/components/ButtonPage.tsx src/versions/v2/pages/ButtonPage.tsx
 ```
 
 ### Adım 5: Test Et
+
 - `/v2/components/button` URL'ini ziyaret et
 - v2 component'inin yüklendiğini doğrula
 - v1 ve v0'ın hala çalıştığını kontrol et
@@ -133,11 +140,13 @@ cp src/pages/components/ButtonPage.tsx src/versions/v2/pages/ButtonPage.tsx
 ## 📋 Hangi Dosyalar Versiyonlanmalı?
 
 ### ✅ Versiyonlanması Gerekenler:
+
 - **Components**: `button.tsx`, `input.tsx`, vb.
 - **Component Pages**: `ButtonPage.tsx`, `InputPage.tsx` (eğer içerik değişiyorsa)
 - **Component Utilities**: Sadece o component'e özel utilities
 
 ### ❌ Versiyonlanmaması Gerekenler:
+
 - **Global Utilities**: `lib/utils.ts`, `lib/cn.ts`
 - **Contexts**: `contexts/theme`, `contexts/version`
 - **Layout Components**: `Header.tsx`, `Footer.tsx`
@@ -146,6 +155,7 @@ cp src/pages/components/ButtonPage.tsx src/versions/v2/pages/ButtonPage.tsx
 ## 💡 Best Practices
 
 ### 1. Breaking Changes için Yeni Versiyon
+
 ```tsx
 // v0: Old API
 <Button type="primary">Click</Button>
@@ -155,14 +165,18 @@ cp src/pages/components/ButtonPage.tsx src/versions/v2/pages/ButtonPage.tsx
 ```
 
 ### 2. Fallback Mekanizması
+
 Her zaman default component'e fallback yap:
+
 ```tsx
 import(\`@/versions/v\${version}/components/button.tsx\`)
   .catch(() => import('@/components/button'))
 ```
 
 ### 3. Shared Code için Re-export
+
 Eğer kodun çoğu aynı:
+
 ```tsx
 // v1/components/button.tsx
 export { default } from '@/components/button';
@@ -170,7 +184,9 @@ export * from '@/components/button';
 ```
 
 ### 4. Version-Specific Docs
+
 Eğer component'in kullanımı değiştiyse, sayfa da versiyonla:
+
 ```tsx
 // v0/pages/ButtonPage.tsx - Old examples
 // v1/pages/ButtonPage.tsx - New examples with new props
@@ -179,6 +195,7 @@ Eğer component'in kullanımı değiştiyse, sayfa da versiyonla:
 ## 🚀 Gelişmiş Kullanım
 
 ### Utility Helper ile
+
 ```tsx
 import { loadVersionedComponent } from '@/lib/version-loader';
 
@@ -186,6 +203,7 @@ const Button = loadVersionedComponent(currentVersion, 'Button');
 ```
 
 ### Conditional Rendering
+
 ```tsx
 const { currentVersion } = useVersion();
 
@@ -200,13 +218,17 @@ return (
 ## 🔍 Debugging
 
 ### Component Yükleme Problemleri
+
 Tarayıcı console'da:
+
 ```
 Versioned component v1/Button not found, using default
 ```
 
 ### Build Problemleri
+
 Vite dynamic import'ları destekler ama glob pattern kontrol et:
+
 ```ts
 // ✅ İyi
 import(\`@/versions/v\${version}/components/button.tsx\`)

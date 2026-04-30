@@ -70,9 +70,12 @@ describe('Avatar Component', () => {
         'bottom-right',
       ];
 
-      positions.forEach(position => {
+      positions.forEach((position) => {
         const { container } = render(
-          <Avatar badgeContent="1" badgePosition={position} />,
+          <Avatar
+            badgeContent="1"
+            badgePosition={position}
+          />,
         );
         expect(container.querySelector('.absolute')).toBeInTheDocument();
       });
@@ -101,7 +104,12 @@ describe('Avatar Component', () => {
     });
 
     it('should apply custom badge className', () => {
-      render(<Avatar badgeContent="1" badgeClassName="custom-badge" />);
+      render(
+        <Avatar
+          badgeContent="1"
+          badgeClassName="custom-badge"
+        />,
+      );
       const badge = screen.getByText('1').closest('.absolute');
       expect(badge).toHaveClass('custom-badge');
     });
@@ -116,18 +124,19 @@ describe('Avatar Component', () => {
     });
 
     it('should prioritize src over title', () => {
-      const { container } = render(<Avatar src="https://example.com/avatar.jpg" title="John Doe" />);
+      const { container } = render(
+        <Avatar
+          src="https://example.com/avatar.jpg"
+          title="John Doe"
+        />,
+      );
       const img = container.querySelector('img');
       expect(img).toBeInTheDocument();
       expect(screen.queryByText('JD')).not.toBeInTheDocument();
     });
 
     it('should render icon when only icon provided', () => {
-      render(
-        <Avatar
-          icon={<span data-testid="custom-icon">🎭</span>}
-        />,
-      );
+      render(<Avatar icon={<span data-testid="custom-icon">🎭</span>} />);
       expect(screen.getByTestId('custom-icon')).toBeInTheDocument();
     });
   });

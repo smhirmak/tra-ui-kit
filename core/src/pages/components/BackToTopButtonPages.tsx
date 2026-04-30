@@ -17,11 +17,36 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'buttonClassName', type: 'string', default: '-', description: 'Custom class name for the button' },
-  { prop: 'containerClassName', type: 'string', default: '-', description: 'Custom class name for the container' },
-  { prop: 'icon', type: 'ReactNode', default: '<CaretUpIcon />', description: 'Custom icon to display in the button' },
-  { prop: 'iconClassName', type: 'string', default: '-', description: 'Custom class name for the icon' },
-  { prop: 'scrollThreshold', type: 'number', default: '500', description: 'The scroll position (in pixels) at which the button becomes visible' },
+  {
+    prop: 'buttonClassName',
+    type: 'string',
+    default: '-',
+    description: 'Custom class name for the button',
+  },
+  {
+    prop: 'containerClassName',
+    type: 'string',
+    default: '-',
+    description: 'Custom class name for the container',
+  },
+  {
+    prop: 'icon',
+    type: 'ReactNode',
+    default: '<CaretUpIcon />',
+    description: 'Custom icon to display in the button',
+  },
+  {
+    prop: 'iconClassName',
+    type: 'string',
+    default: '-',
+    description: 'Custom class name for the icon',
+  },
+  {
+    prop: 'scrollThreshold',
+    type: 'number',
+    default: '500',
+    description: 'The scroll position (in pixels) at which the button becomes visible',
+  },
 ];
 
 const BackToTopButtonPage = () => {
@@ -38,18 +63,25 @@ const BackToTopButtonPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Back To Top Button</h1>
         <p className="text-lg text-neutral-grey">
-          A floating button that appears when scrolling down and smoothly scrolls the page back to the top when clicked.
+          A floating button that appears when scrolling down and smoothly scrolls the page back to
+          the top when clicked.
         </p>
       </section>
 
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add back-to-top-button' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add back-to-top-button" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="back-to-top-button" />
           </Tab>
         </Tabs>
@@ -60,7 +92,8 @@ const BackToTopButtonPage = () => {
         <h2 className="mb-4 text-2xl font-bold">Usage</h2>
         <div className="space-y-4">
           <p className="text-neutral-grey">
-            The Back To Top button is typically placed in your main layout or App component. It will automatically appear when the user scrolls down 500px.
+            The Back To Top button is typically placed in your main layout or App component. It will
+            automatically appear when the user scrolls down 500px.
           </p>
           <div className="rounded-lg border border-border bg-background p-6">
             <div className="flex min-h-50 items-center justify-center">
@@ -71,7 +104,8 @@ const BackToTopButtonPage = () => {
               </p>
             </div>
           </div>
-          <CustomSyntaxHighlighter content={`import BackToTopButton from '@/components/back-to-top-button';
+          <CustomSyntaxHighlighter
+            content={`import BackToTopButton from '@/components/back-to-top-button';
 
 function App() {
   return (
@@ -80,7 +114,8 @@ function App() {
       <BackToTopButton />
     </div>
   );
-}`} />
+}`}
+          />
         </div>
       </section>
 
@@ -89,12 +124,14 @@ function App() {
         <h2 className="mb-4 text-2xl font-bold">Custom Icon</h2>
         <div className="space-y-4">
           <p className="text-neutral-grey">You can customize the icon displayed in the button.</p>
-          <CustomSyntaxHighlighter content={`import { ArrowUpIcon } from '@phosphor-icons/react';
+          <CustomSyntaxHighlighter
+            content={`import { ArrowUpIcon } from '@phosphor-icons/react';
 import BackToTopButton from '@/components/back-to-top-button';
 
 <BackToTopButton 
   icon={<ArrowUpIcon className="w-6 h-6" />}
-/>`} />
+/>`}
+          />
         </div>
       </section>
 
@@ -103,11 +140,13 @@ import BackToTopButton from '@/components/back-to-top-button';
         <h2 className="mb-4 text-2xl font-bold">Custom Styling</h2>
         <div className="space-y-4">
           <p className="text-neutral-grey">Customize the button appearance with className props.</p>
-          <CustomSyntaxHighlighter content={`<BackToTopButton 
+          <CustomSyntaxHighlighter
+            content={`<BackToTopButton 
   containerClassName="bottom-20 right-10"
   buttonClassName="bg-primary text-white hover:bg-primary/80"
   iconClassName="w-8 h-8"
-/>`} />
+/>`}
+          />
         </div>
 
         {/* Examples */}
@@ -123,17 +162,21 @@ import BackToTopButton from '@/components/back-to-top-button';
             {/* Custom Position */}
             <div className="space-y-2">
               <p className="font-medium">Custom Position (Bottom Left)</p>
-              <CustomSyntaxHighlighter content={`<BackToTopButton 
+              <CustomSyntaxHighlighter
+                content={`<BackToTopButton 
   containerClassName="bottom-16 left-5 right-auto"
-/>`} />
+/>`}
+              />
             </div>
 
             {/* Custom Colors */}
             <div className="space-y-2">
               <p className="font-medium">Custom Colors</p>
-              <CustomSyntaxHighlighter content={`<BackToTopButton 
+              <CustomSyntaxHighlighter
+                content={`<BackToTopButton 
   buttonClassName="border-primary text-primary hover:bg-primary hover:text-white"
-/>`} />
+/>`}
+              />
             </div>
           </div>
         </div>

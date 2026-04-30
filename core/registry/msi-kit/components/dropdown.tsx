@@ -51,14 +51,14 @@ const Dropdown: React.FC<IDropdownProps> = ({
 
   useEffect(() => {
     if (defaultValue !== undefined) {
-      const def = options.find(o => o.value === defaultValue) || null;
+      const def = options.find((o) => o.value === defaultValue) || null;
       setSelected(def);
     }
   }, [defaultValue, options]);
 
   useEffect(() => {
     if (value !== undefined) {
-      const val = options.find(o => o.value === value) || null;
+      const val = options.find((o) => o.value === value) || null;
       setSelected(val);
     }
   }, [value, options]);
@@ -81,7 +81,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault();
-        setHighlightedIndex(prev => {
+        setHighlightedIndex((prev) => {
           const next = Math.min(prev + 1, options.length - 1);
           scrollIntoView(next);
           return next;
@@ -89,7 +89,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
         break;
       case 'ArrowUp':
         e.preventDefault();
-        setHighlightedIndex(prev => {
+        setHighlightedIndex((prev) => {
           const next = Math.max(prev - 1, 0);
           scrollIntoView(next);
           return next;
@@ -115,14 +115,25 @@ const Dropdown: React.FC<IDropdownProps> = ({
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen} disabled={disabled} dropdownAlign={dropdownAlign} forceTriggerWidth={forceTriggerWidth}>
-      <div className={cn('MsiDropdown relative', className)} id={id}>
+    <Popover
+      open={open}
+      onOpenChange={setOpen}
+      disabled={disabled}
+      dropdownAlign={dropdownAlign}
+      forceTriggerWidth={forceTriggerWidth}
+    >
+      <div
+        className={cn('MsiDropdown relative', className)}
+        id={id}
+      >
         {label && <div className="text-neutral mb-2 text-sm font-medium">{label}</div>}
         <PopoverTrigger
           className={cn(
             'flex w-full items-center justify-between rounded-md border px-4 py-3 text-left',
-            disabled ? 'border-input-light bg-input-light text-neutral-disabled-text cursor-not-allowed' : 'border-neutral',
-            triggerClassName
+            disabled
+              ? 'border-input-light bg-input-light text-neutral-disabled-text cursor-not-allowed'
+              : 'border-neutral',
+            triggerClassName,
           )}
           data-disabled={disabled}
         >
@@ -132,7 +143,12 @@ const Dropdown: React.FC<IDropdownProps> = ({
           <CaretDownIcon className={cn('ml-4', iconClassName)} />
         </PopoverTrigger>
 
-        <PopoverContent className={cn('rounded-md border bg-background shadow-md overflow-auto', contentClassName)}>
+        <PopoverContent
+          className={cn(
+            'rounded-md border bg-background shadow-md overflow-auto',
+            contentClassName,
+          )}
+        >
           <div
             ref={listRef}
             role="listbox"
@@ -156,9 +172,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
                 )}
               >
                 <div className="truncate">{opt.label}</div>
-                {selected?.value === opt.value && (
-                  <CheckIcon className="ml-2" />
-                )}
+                {selected?.value === opt.value && <CheckIcon className="ml-2" />}
               </div>
             ))}
           </div>

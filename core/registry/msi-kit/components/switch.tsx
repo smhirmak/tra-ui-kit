@@ -45,7 +45,7 @@ interface ISwitch {
   showRequiredIcon?: boolean;
   labelClassName?: string;
   disabled?: boolean;
-  checked: boolean
+  checked: boolean;
   onChange: (e: boolean) => void;
 }
 
@@ -72,13 +72,17 @@ const Switch = React.forwardRef<HTMLInputElement, ISwitch>(
         ref={ref}
         type="checkbox"
         checked={checked}
-        onChange={e => onChange && onChange(e.target.checked)}
+        onChange={(e) => onChange && onChange(e.target.checked)}
         id={id}
         disabled={disabled}
         className="peer hidden"
         {...props}
       />
-      <label htmlFor={id} data-checked={checked} className={cn(switchBaseVariants({ variant }), className)}>
+      <label
+        htmlFor={id}
+        data-checked={checked}
+        className={cn(switchBaseVariants({ variant }), className)}
+      >
         <span className={cn(switchThumbVariants({ variant }), thumbClassName)} />
       </label>
       <Label

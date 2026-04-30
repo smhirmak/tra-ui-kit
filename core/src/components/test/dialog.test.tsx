@@ -1,7 +1,15 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '../dialog';
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from '../dialog';
 
 describe('Dialog Component', () => {
   describe('Basic Rendering', () => {
@@ -122,7 +130,10 @@ describe('Dialog Component', () => {
       const TestComponent = () => {
         const [open, setOpen] = React.useState(false);
         return (
-          <Dialog open={open} onOpenChange={setOpen}>
+          <Dialog
+            open={open}
+            onOpenChange={setOpen}
+          >
             <DialogTrigger>Open</DialogTrigger>
             <DialogContent>
               <DialogTitle>Controlled Dialog</DialogTitle>
@@ -178,7 +189,10 @@ describe('Dialog Component', () => {
 
     it('should apply small size', async () => {
       render(
-        <Dialog defaultOpen size="sm">
+        <Dialog
+          defaultOpen
+          size="sm"
+        >
           <DialogContent>
             <DialogTitle>Test</DialogTitle>
           </DialogContent>
@@ -193,7 +207,10 @@ describe('Dialog Component', () => {
 
     it('should apply large size', async () => {
       render(
-        <Dialog defaultOpen size="lg">
+        <Dialog
+          defaultOpen
+          size="lg"
+        >
           <DialogContent>
             <DialogTitle>Test</DialogTitle>
           </DialogContent>

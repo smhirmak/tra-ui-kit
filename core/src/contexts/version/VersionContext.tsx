@@ -66,7 +66,8 @@ export const VersionProvider = ({
         setVersions(data.versions);
 
         // Use URL version if available
-        const defaultVersion = data.defaultVersion || data.versions.find((v: VersionInfo) => v.isLatest)?.version || '1';
+        const defaultVersion =
+          data.defaultVersion || data.versions.find((v: VersionInfo) => v.isLatest)?.version || '1';
         const initialVersion = urlVersion || defaultVersion;
 
         // Validate version exists

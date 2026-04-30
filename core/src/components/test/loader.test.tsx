@@ -237,7 +237,12 @@ describe('Loader', () => {
     });
 
     it('should apply custom linearItemClassName to linear loader', async () => {
-      const { container } = render(<Loader variant="linear" linearItemClassName="custom-linear-item" />);
+      const { container } = render(
+        <Loader
+          variant="linear"
+          linearItemClassName="custom-linear-item"
+        />,
+      );
 
       act(() => {
         loaderRef.current?.incLoader();
@@ -250,7 +255,12 @@ describe('Loader', () => {
     });
 
     it('should apply className to linearContainer for linear variant', async () => {
-      const { container } = render(<Loader variant="linear" className="custom-container" />);
+      const { container } = render(
+        <Loader
+          variant="linear"
+          className="custom-container"
+        />,
+      );
 
       act(() => {
         loaderRef.current?.incLoader();

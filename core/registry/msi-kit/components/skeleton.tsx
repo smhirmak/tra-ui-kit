@@ -19,13 +19,8 @@ interface ISkeleton {
   animation?: boolean;
 }
 
-const Skeleton: React.FC<ISkeleton> = ({
-  className = '',
-  animation = true,
-}) => (
-  <div
-    className={cn(skeletonVariants({ animation }), className)}
-  />
+const Skeleton: React.FC<ISkeleton> = ({ className = '', animation = true }) => (
+  <div className={cn(skeletonVariants({ animation }), className)} />
 );
 
 export default Skeleton;

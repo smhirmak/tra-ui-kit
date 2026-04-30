@@ -21,13 +21,38 @@ const tocItems: TOCItem[] = [
 ];
 
 const apiTableData = [
-  { prop: 'content', type: 'string | string[]', default: '-', description: 'Tooltip content text or array of lines' },
-  { prop: 'children', type: 'ReactNode', default: '-', description: 'Element to attach tooltip to' },
-  { prop: 'position', type: '"top" | "right" | "bottom" | "left"', default: '"top"', description: 'Tooltip position' },
+  {
+    prop: 'content',
+    type: 'string | string[]',
+    default: '-',
+    description: 'Tooltip content text or array of lines',
+  },
+  {
+    prop: 'children',
+    type: 'ReactNode',
+    default: '-',
+    description: 'Element to attach tooltip to',
+  },
+  {
+    prop: 'position',
+    type: '"top" | "right" | "bottom" | "left"',
+    default: '"top"',
+    description: 'Tooltip position',
+  },
   { prop: 'delay', type: 'number', default: '200', description: 'Show delay in milliseconds' },
   { prop: 'arrow', type: 'boolean', default: 'true', description: 'Show arrow indicator' },
-  { prop: 'className', type: 'string', default: '-', description: 'Custom CSS class for container' },
-  { prop: 'contentClassName', type: 'string', default: '-', description: 'Custom CSS class for content' },
+  {
+    prop: 'className',
+    type: 'string',
+    default: '-',
+    description: 'Custom CSS class for container',
+  },
+  {
+    prop: 'contentClassName',
+    type: 'string',
+    default: '-',
+    description: 'Custom CSS class for content',
+  },
 ];
 
 const TooltipPage = () => {
@@ -51,11 +76,17 @@ const TooltipPage = () => {
       {/* Installation */}
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <Tabs className='[&_button]:text-base'>
-          <Tab value='cli' label="CLI">
-            <CustomSyntaxHighlighter content='npx msi-ui-cli add tooltip' />
+        <Tabs className="[&_button]:text-base">
+          <Tab
+            value="cli"
+            label="CLI"
+          >
+            <CustomSyntaxHighlighter content="npx msi-ui-cli add tooltip" />
           </Tab>
-          <Tab value='manual' label={t("Manual")}>
+          <Tab
+            value="manual"
+            label={t('Manual')}
+          >
             <ComponentSourceViewer componentName="tooltip" />
           </Tab>
         </Tabs>
@@ -84,16 +115,28 @@ const TooltipPage = () => {
         <p className="mb-4 text-neutral-grey">Tooltip can be positioned in four directions.</p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="flex flex-wrap items-center justify-center gap-8">
-            <Tooltip content="Top tooltip" position="top">
+            <Tooltip
+              content="Top tooltip"
+              position="top"
+            >
               <Button>Top</Button>
             </Tooltip>
-            <Tooltip content="Right tooltip" position="right">
+            <Tooltip
+              content="Right tooltip"
+              position="right"
+            >
               <Button>Right</Button>
             </Tooltip>
-            <Tooltip content="Bottom tooltip" position="bottom">
+            <Tooltip
+              content="Bottom tooltip"
+              position="bottom"
+            >
               <Button>Bottom</Button>
             </Tooltip>
-            <Tooltip content="Left tooltip" position="left">
+            <Tooltip
+              content="Left tooltip"
+              position="left"
+            >
               <Button>Left</Button>
             </Tooltip>
           </div>
@@ -114,13 +157,22 @@ const TooltipPage = () => {
         <p className="mb-4 text-neutral-grey">Add a delay before showing the tooltip.</p>
         <div className="rounded-lg border border-border bg-background p-6">
           <div className="flex flex-wrap gap-4">
-            <Tooltip content="No delay" delay={0}>
+            <Tooltip
+              content="No delay"
+              delay={0}
+            >
               <Button>No Delay</Button>
             </Tooltip>
-            <Tooltip content="500ms delay" delay={500}>
+            <Tooltip
+              content="500ms delay"
+              delay={500}
+            >
               <Button>500ms Delay</Button>
             </Tooltip>
-            <Tooltip content="1 second delay" delay={1000}>
+            <Tooltip
+              content="1 second delay"
+              delay={1000}
+            >
               <Button>1s Delay</Button>
             </Tooltip>
           </div>
@@ -153,7 +205,10 @@ const TooltipPage = () => {
         <h2 className="mb-4 text-2xl font-bold">Without Arrow</h2>
         <p className="mb-4 text-neutral-grey">Hide the arrow indicator.</p>
         <div className="rounded-lg border border-border bg-background p-6">
-          <Tooltip content="Tooltip without arrow" arrow={false}>
+          <Tooltip
+            content="Tooltip without arrow"
+            arrow={false}
+          >
             <Button>No Arrow</Button>
           </Tooltip>
         </div>
@@ -171,4 +226,3 @@ const TooltipPage = () => {
 };
 
 export default TooltipPage;
-

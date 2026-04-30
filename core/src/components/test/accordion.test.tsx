@@ -29,7 +29,7 @@ describe('Accordion Component', () => {
     it('should render with different variants', () => {
       const variants = ['solid', 'outlined', 'splitted', 'underlined'] as const;
 
-      variants.forEach(variant => {
+      variants.forEach((variant) => {
         const { container } = render(
           <Accordion variant={variant}>
             <AccordionItem title="Item 1">Content 1</AccordionItem>
@@ -107,7 +107,12 @@ describe('Accordion Component', () => {
     it('should respect defaultOpen prop in single expand mode', () => {
       render(
         <Accordion>
-          <AccordionItem title="Item 1" defaultOpen>Content 1</AccordionItem>
+          <AccordionItem
+            title="Item 1"
+            defaultOpen
+          >
+            Content 1
+          </AccordionItem>
           <AccordionItem title="Item 2">Content 2</AccordionItem>
         </Accordion>,
       );
@@ -119,8 +124,18 @@ describe('Accordion Component', () => {
     it('should respect defaultOpen prop in multiple expand mode', () => {
       render(
         <Accordion multipleExpand>
-          <AccordionItem title="Item 1" defaultOpen>Content 1</AccordionItem>
-          <AccordionItem title="Item 2" defaultOpen>Content 2</AccordionItem>
+          <AccordionItem
+            title="Item 1"
+            defaultOpen
+          >
+            Content 1
+          </AccordionItem>
+          <AccordionItem
+            title="Item 2"
+            defaultOpen
+          >
+            Content 2
+          </AccordionItem>
         </Accordion>,
       );
 
@@ -135,7 +150,10 @@ describe('Accordion Component', () => {
   describe('AccordionItem', () => {
     it('should render item with title and content', () => {
       render(
-        <AccordionItem title="Test Item" isOpen={false}>
+        <AccordionItem
+          title="Test Item"
+          isOpen={false}
+        >
           Test Content
         </AccordionItem>,
       );
@@ -146,7 +164,11 @@ describe('Accordion Component', () => {
 
     it('should render subtitle when provided', () => {
       render(
-        <AccordionItem title="Test Item" subTitle="Test Subtitle" isOpen={false}>
+        <AccordionItem
+          title="Test Item"
+          subTitle="Test Subtitle"
+          isOpen={false}
+        >
           Test Content
         </AccordionItem>,
       );
@@ -157,7 +179,11 @@ describe('Accordion Component', () => {
     it('should call onClick when clicked and not disabled', () => {
       const handleClick = vi.fn();
       render(
-        <AccordionItem title="Test Item" onClick={handleClick} isOpen={false}>
+        <AccordionItem
+          title="Test Item"
+          onClick={handleClick}
+          isOpen={false}
+        >
           Test Content
         </AccordionItem>,
       );
@@ -169,7 +195,12 @@ describe('Accordion Component', () => {
     it('should not call onClick when disabled', () => {
       const handleClick = vi.fn();
       render(
-        <AccordionItem title="Test Item" onClick={handleClick} disabled isOpen={false}>
+        <AccordionItem
+          title="Test Item"
+          onClick={handleClick}
+          disabled
+          isOpen={false}
+        >
           Test Content
         </AccordionItem>,
       );
@@ -180,7 +211,11 @@ describe('Accordion Component', () => {
 
     it('should apply disabled styling when disabled', () => {
       const { container } = render(
-        <AccordionItem title="Test Item" disabled isOpen={false}>
+        <AccordionItem
+          title="Test Item"
+          disabled
+          isOpen={false}
+        >
           Test Content
         </AccordionItem>,
       );
@@ -238,7 +273,12 @@ describe('Accordion Component', () => {
 
   describe('AccordionTrigger', () => {
     it('should render trigger with title', () => {
-      render(<AccordionTrigger title="Test Trigger" isOpen={false} />);
+      render(
+        <AccordionTrigger
+          title="Test Trigger"
+          isOpen={false}
+        />,
+      );
       expect(screen.getByText('Test Trigger')).toBeInTheDocument();
     });
 
@@ -284,13 +324,21 @@ describe('Accordion Component', () => {
 
     it('should rotate icon when open', () => {
       const { container, rerender } = render(
-        <AccordionTrigger title="Test Trigger" isOpen={false} />,
+        <AccordionTrigger
+          title="Test Trigger"
+          isOpen={false}
+        />,
       );
 
       let iconSpan = container.querySelector('span:last-child');
       expect(iconSpan).toHaveClass('rotate-0');
 
-      rerender(<AccordionTrigger title="Test Trigger" isOpen />);
+      rerender(
+        <AccordionTrigger
+          title="Test Trigger"
+          isOpen
+        />,
+      );
       iconSpan = container.querySelector('span:last-child');
       expect(iconSpan).toHaveClass('rotate-180');
     });
@@ -322,30 +370,20 @@ describe('Accordion Component', () => {
 
   describe('AccordionContent', () => {
     it('should render content', () => {
-      render(
-        <AccordionContent isOpen>
-          Test Content
-        </AccordionContent>,
-      );
+      render(<AccordionContent isOpen>Test Content</AccordionContent>);
 
       expect(screen.getByText('Test Content')).toBeInTheDocument();
     });
 
     it('should have correct data-open attribute when open', () => {
-      const { container } = render(
-        <AccordionContent isOpen>
-          Test Content
-        </AccordionContent>,
-      );
+      const { container } = render(<AccordionContent isOpen>Test Content</AccordionContent>);
 
       expect(container.firstChild).toHaveAttribute('data-open', 'true');
     });
 
     it('should have correct data-open attribute when closed', () => {
       const { container } = render(
-        <AccordionContent isOpen={false}>
-          Test Content
-        </AccordionContent>,
+        <AccordionContent isOpen={false}>Test Content</AccordionContent>,
       );
 
       expect(container.firstChild).toHaveAttribute('data-open', 'false');
@@ -353,7 +391,10 @@ describe('Accordion Component', () => {
 
     it('should apply custom className', () => {
       const { container } = render(
-        <AccordionContent isOpen className="custom-content">
+        <AccordionContent
+          isOpen
+          className="custom-content"
+        >
           Test Content
         </AccordionContent>,
       );

@@ -59,8 +59,9 @@ const tooltipVariants = cva('', {
 });
 
 interface ILabel
-  extends Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'size'>,
-  VariantProps<typeof labelVariants> {
+  extends
+    Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'size'>,
+    VariantProps<typeof labelVariants> {
   alwaysTop?: boolean;
   className?: string;
   children?: React.ReactNode;
@@ -74,38 +75,48 @@ interface ILabel
   variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
 }
 
-const Label = React.forwardRef<HTMLLabelElement, ILabel>(({
-  className = '',
-  children,
-  disabled,
-  htmlFor,
-  id,
-  outlineFocused,
-  showRequiredIcon,
-  size,
-  tooltip,
-  variant,
-  ...props
-}, ref) => (
-  <label
-    ref={ref}
-    className={cn(labelVariants({ size, variant, outlineFocused }), className)}
-    htmlFor={htmlFor}
-    id={id}
-    data-disabled={disabled || undefined}
-    {...props}
-  >
-    <span className="flex items-center gap-1">
-      <span className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-[3px]' : ''} ${disabled ? 'cursor-not-allowed text-neutral-200 dark:text-neutral-800' : ''}`}>
-        {children}
+const Label = React.forwardRef<HTMLLabelElement, ILabel>(
+  (
+    {
+      className = '',
+      children,
+      disabled,
+      htmlFor,
+      id,
+      outlineFocused,
+      showRequiredIcon,
+      size,
+      tooltip,
+      variant,
+      ...props
+    },
+    ref,
+  ) => (
+    <label
+      ref={ref}
+      className={cn(labelVariants({ size, variant, outlineFocused }), className)}
+      htmlFor={htmlFor}
+      id={id}
+      data-disabled={disabled || undefined}
+      {...props}
+    >
+      <span className="flex items-center gap-1">
+        <span
+          className={`${showRequiredIcon ? 'after:text-error after:content-required after:ml-[3px]' : ''} ${disabled ? 'cursor-not-allowed text-neutral-200 dark:text-neutral-800' : ''}`}
+        >
+          {children}
+        </span>
+        {tooltip && (
+          <Tooltip
+            position="bottom"
+            content={tooltip}
+          >
+            <InfoIcon className={cn(tooltipVariants({ size, variant }))} />
+          </Tooltip>
+        )}
       </span>
-      {(tooltip) && (
-        <Tooltip position="bottom" content={tooltip}>
-          <InfoIcon className={cn(tooltipVariants({ size, variant }))} />
-        </Tooltip>
-      )}
-    </span>
-  </label>
-));
+    </label>
+  ),
+);
 
 export default Label;

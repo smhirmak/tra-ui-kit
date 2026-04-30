@@ -76,7 +76,8 @@ const Popover: React.FC<PopoverProps> = ({
       const spaceBelow = window.innerHeight - rect.bottom;
       // const spaceAbove = rect.top;
 
-      const maxHeightPx = typeof maxHeight === 'number' ? maxHeight : parseInt(maxHeight as string, 10) || 320;
+      const maxHeightPx =
+        typeof maxHeight === 'number' ? maxHeight : parseInt(maxHeight as string, 10) || 320;
       setStyles({
         position: 'fixed',
         top: spaceBelow > maxHeightPx ? `${rect.bottom}px` : 'auto',
@@ -103,9 +104,11 @@ const Popover: React.FC<PopoverProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (contentRef.current
-        && !contentRef.current.contains(event.target as Node)
-        && !triggerRef.current?.contains(event.target as Node)) {
+      if (
+        contentRef.current &&
+        !contentRef.current.contains(event.target as Node) &&
+        !triggerRef.current?.contains(event.target as Node)
+      ) {
         handleOpenChange(false);
       }
     };
@@ -119,20 +122,21 @@ const Popover: React.FC<PopoverProps> = ({
     };
   }, [open]);
 
-  const contextValue = useMemo(() => ({
-    open,
-    setOpen: handleOpenChange,
-    triggerRef,
-    contentRef,
-    styles,
-    disabled,
-  }), [open, styles, triggerRef, contentRef, disabled]);
+  const contextValue = useMemo(
+    () => ({
+      open,
+      setOpen: handleOpenChange,
+      triggerRef,
+      contentRef,
+      styles,
+      disabled,
+    }),
+    [open, styles, triggerRef, contentRef, disabled],
+  );
 
   return (
     <PopoverContext.Provider value={contextValue}>
-      <div className="relative">
-        {children}
-      </div>
+      <div className="relative">{children}</div>
     </PopoverContext.Provider>
   );
 };
@@ -257,7 +261,12 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
       // ignore measurement errors in server or unusual envs
     }
 
-    const mergedStyles = { position: 'fixed', zIndex: 50, ...finalStyles, ...(styleOverride || {}) };
+    const mergedStyles = {
+      position: 'fixed',
+      zIndex: 50,
+      ...finalStyles,
+      ...(styleOverride || {}),
+    };
 
     return createPortal(
       <>
@@ -266,11 +275,15 @@ const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
           style={{ height: '100vh' }}
           onClick={() => setOpen(false)}
         />
-        <div ref={mergedRef} style={mergedStyles as React.CSSProperties} className={className}>
+        <div
+          ref={mergedRef}
+          style={mergedStyles as React.CSSProperties}
+          className={className}
+        >
           {children}
         </div>
       </>,
-      document.body
+      document.body,
     );
   },
 );

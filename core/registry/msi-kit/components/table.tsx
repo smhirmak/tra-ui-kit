@@ -32,25 +32,55 @@ type ITd = HTMLProps<HTMLTableCellElement> & {
 };
 
 export const Table = ({ children, className, ...otherProps }: ITable) => (
-  <table className={cn(className, 'MsiTable-table shadow-soft-primary')} {...otherProps}>{children}</table>
+  <table
+    className={cn(className, 'MsiTable-table shadow-soft-primary')}
+    {...otherProps}
+  >
+    {children}
+  </table>
 );
 
 export const THead = ({ children, className, ...otherProps }: IThead) => (
-  <thead className={cn(className, 'MsiTable-thead bg-primary-15')} {...otherProps}>{children}</thead>
+  <thead
+    className={cn(className, 'MsiTable-thead bg-primary-15')}
+    {...otherProps}
+  >
+    {children}
+  </thead>
 );
 
 export const TBody = ({ children, className, ...otherProps }: ITbody) => (
-  <tbody className={cn(className, 'MsiTable-tbody')} {...otherProps}>{children}</tbody>
+  <tbody
+    className={cn(className, 'MsiTable-tbody')}
+    {...otherProps}
+  >
+    {children}
+  </tbody>
 );
 
 export const TR = ({ children, className, ...otherProps }: ITr) => (
-  <tr className={cn(className, 'MsiTable-tr transition-all hover:bg-primary-5')} {...otherProps}>{children}</tr>
+  <tr
+    className={cn(className, 'MsiTable-tr transition-all hover:bg-primary-5')}
+    {...otherProps}
+  >
+    {children}
+  </tr>
 );
 
 export const TH = ({ children, className, ...otherProps }: ITh) => (
-  <th className={cn(className, 'MsiTable-th p-4 text-sm')} {...otherProps}>{children}</th>
+  <th
+    className={cn(className, 'MsiTable-th p-4 text-sm')}
+    {...otherProps}
+  >
+    {children}
+  </th>
 );
 
 export const TD = ({ children, className, ...otherProps }: ITd) => (
-  <td className={cn(className, 'MsiTable-td p-4 text-sm')} {...otherProps}>{children}</td>
+  <td
+    className={cn(className, 'MsiTable-td p-4 text-sm')}
+    {...otherProps}
+  >
+    {children}
+  </td>
 );

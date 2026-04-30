@@ -11,26 +11,24 @@ const resources = {
 
 const savedLang = localStorage.getItem('lang') || 'en';
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources,
-    lng: savedLang,
-    fallbackLng: 'en',
-    interpolation: {
-      escapeValue: false,
-    },
-    returnObjects: true,
-    defaultValue: (key: any) => key,
-  } as InitOptions);
+i18n.use(initReactI18next).init({
+  resources,
+  lng: savedLang,
+  fallbackLng: 'en',
+  interpolation: {
+    escapeValue: false,
+  },
+  returnObjects: true,
+  defaultValue: (key: any) => key,
+} as InitOptions);
 
-  interface LocalizeContextType {
-    i18n: typeof i18n;
-    toggleLanguage: (lang: string) => void;
-    t: (key: any) => string;
-    setLocale: (lang: string) => void;
-    locale: string;
-  }
+interface LocalizeContextType {
+  i18n: typeof i18n;
+  toggleLanguage: (lang: string) => void;
+  t: (key: any) => string;
+  setLocale: (lang: string) => void;
+  locale: string;
+}
 
 const LocalizeContext = createContext<LocalizeContextType>({
   i18n,
