@@ -145,6 +145,7 @@ interface ISelect {
   noOptionsMessage?: string;
   forceTriggerWidth?: boolean;
   dropdownItemContainerClassName?: string;
+  hideClearButton?: boolean;
 }
 
 const Select: React.FC<ISelect> = ({
@@ -181,6 +182,7 @@ const Select: React.FC<ISelect> = ({
   noOptionsMessage,
   forceTriggerWidth = true,
   dropdownItemContainerClassName,
+  hideClearButton = false,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState<ISelectOption | Array<ISelectOption> | null>(
@@ -593,7 +595,7 @@ const Select: React.FC<ISelect> = ({
             >
               {getDisplay()}
             </div>
-            {hasSelection && !disabled && (
+            {hasSelection && !disabled && !hideClearButton && (
               <Button
                 className="group absolute right-8 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent"
                 size="icon"
