@@ -28,10 +28,10 @@ describe('Table Components', () => {
         </Table>,
       );
       const table = container.querySelector('table');
-      expect(table).toHaveClass('custom-table', 'MsiTable-table');
+      expect(table).toHaveClass('custom-table', 'TraTable-table');
     });
 
-    it('should have base MsiTable-table class', () => {
+    it('should have base TraTable-table class', () => {
       const { container } = render(
         <Table>
           <TBody>
@@ -42,7 +42,7 @@ describe('Table Components', () => {
         </Table>,
       );
       const table = container.querySelector('table');
-      expect(table).toHaveClass('MsiTable-table', 'shadow-soft-primary');
+      expect(table).toHaveClass('TraTable-table', 'shadow-soft-primary');
     });
 
     it('should accept HTML table attributes', () => {
@@ -85,7 +85,7 @@ describe('Table Components', () => {
         </Table>,
       );
       const thead = container.querySelector('thead');
-      expect(thead).toHaveClass('custom-thead', 'MsiTable-thead');
+      expect(thead).toHaveClass('custom-thead', 'TraTable-thead');
     });
 
     it('should have base classes', () => {
@@ -99,7 +99,7 @@ describe('Table Components', () => {
         </Table>,
       );
       const thead = container.querySelector('thead');
-      expect(thead).toHaveClass('MsiTable-thead', 'bg-primary-15');
+      expect(thead).toHaveClass('TraTable-thead', 'bg-primary-15');
     });
   });
 
@@ -128,7 +128,7 @@ describe('Table Components', () => {
         </Table>,
       );
       const tbody = container.querySelector('tbody');
-      expect(tbody).toHaveClass('custom-tbody', 'MsiTable-tbody');
+      expect(tbody).toHaveClass('custom-tbody', 'TraTable-tbody');
     });
   });
 
@@ -157,7 +157,7 @@ describe('Table Components', () => {
         </Table>,
       );
       const tr = container.querySelector('tr');
-      expect(tr).toHaveClass('custom-tr', 'MsiTable-tr');
+      expect(tr).toHaveClass('custom-tr', 'TraTable-tr');
     });
 
     it('should have hover effect classes', () => {
@@ -200,7 +200,7 @@ describe('Table Components', () => {
         </Table>,
       );
       const th = container.querySelector('th');
-      expect(th).toHaveClass('custom-th', 'MsiTable-th');
+      expect(th).toHaveClass('custom-th', 'TraTable-th');
     });
 
     it('should have base padding and text classes', () => {
@@ -243,7 +243,7 @@ describe('Table Components', () => {
         </Table>,
       );
       const td = container.querySelector('td');
-      expect(td).toHaveClass('custom-td', 'MsiTable-td');
+      expect(td).toHaveClass('custom-td', 'TraTable-td');
     });
 
     it('should have base padding and text classes', () => {

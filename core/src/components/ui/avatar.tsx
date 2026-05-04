@@ -1,1 +1,1 @@
-export * from '../../../registry/msi-kit/components/avatar';
+export * from '../../../registry/tra-kit/components/avatar';

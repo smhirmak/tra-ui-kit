@@ -79,7 +79,7 @@ const ContainerPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add container" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add container" />
           </Tab>
           <Tab
             value="manual"

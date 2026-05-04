@@ -1,6 +1,6 @@
 {
-  "name": "msi-ui-cli",
-  "version": "0.0.61",
+  "name": "tra-ui-cli",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",
@@ -9,7 +9,7 @@
   },
   "type": "module",
   "bin": {
-    "msi-ui-cli": "./dist/index.js"
+    "tra-ui-cli": "./dist/index.js"
   },
   "files": [
     "dist"
@@ -18,12 +18,12 @@
     "cli",
     "ui",
     "components",
-    "msi",
+    "tra",
     "kit"
   ],
-  "author": "MSI UI Kit Contributors",
+  "author": "TRA UI Kit Contributors",
   "license": "MIT",
-  "description": "MSI UI Kit CLI - Complete UI solution with single init command",
+  "description": "TRA UI Kit CLI - Complete UI solution with single init command",
   "dependencies": {
     "chalk": "^5.6.2",
     "commander": "^14.0.2",

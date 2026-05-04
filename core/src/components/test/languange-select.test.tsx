@@ -12,7 +12,7 @@ vi.mock('@/contexts/locale/LocalizeContext', () => ({
 }));
 
 // Mock registry Select component (LanguageSelect imports from registry path)
-vi.mock('../../../registry/msi-kit/components/select', () => ({
+vi.mock('../../../registry/tra-kit/components/select', () => ({
   default: ({ onChange, value, dropdownTriggerClassName }: any) => (
     <div data-testid="select-mock">
       <button onClick={() => onChange && onChange('tr')}>TR</button>

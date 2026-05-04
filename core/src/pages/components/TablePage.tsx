@@ -69,7 +69,7 @@ const TablePage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add table" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add table" />
           </Tab>
           <Tab
             value="manual"

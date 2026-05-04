@@ -103,7 +103,7 @@ const PaginationPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add pagination" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add pagination" />
           </Tab>
           <Tab
             value="manual"

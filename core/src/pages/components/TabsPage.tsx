@@ -96,7 +96,7 @@ const TabsPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add tabs" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add tabs" />
           </Tab>
           <Tab
             value="manual"

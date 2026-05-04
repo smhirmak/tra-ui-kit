@@ -128,7 +128,7 @@ const DialogPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add dialog" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add dialog" />
           </Tab>
           <Tab
             value="manual"

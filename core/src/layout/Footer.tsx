@@ -12,7 +12,7 @@ const Footer = () => {
           <div>
             <h3 className="mb-4 text-sm font-semibold">About</h3>
             <p className="text-sm text-neutral-grey">
-              MSI UI Kit is a comprehensive React component library built with TypeScript and
+              TRA UI Kit is a comprehensive React component library built with TypeScript and
               Tailwind CSS.
             </p>
           </div>
@@ -39,7 +39,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/smhirmak/msi-ui-kit"
+                  href="https://github.com/smhirmak/tra-ui-kit"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-grey transition-colors hover:text-primary"
@@ -56,7 +56,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="https://github.com/smhirmak/msi-ui-kit/issues"
+                  href="https://github.com/smhirmak/tra-ui-kit/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-grey transition-colors hover:text-primary"
@@ -66,7 +66,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/smhirmak/msi-ui-kit/discussions"
+                  href="https://github.com/smhirmak/tra-ui-kit/discussions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-grey transition-colors hover:text-primary"
@@ -122,7 +122,7 @@ const Footer = () => {
         <div className="mt-12 border-t border-border pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-neutral-grey">
-              Â© {new Date().getFullYear()} MSI UI Kit. All rights reserved.
+              Â© {new Date().getFullYear()} TRA UI Kit. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <a

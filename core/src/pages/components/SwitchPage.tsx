@@ -75,7 +75,7 @@ const SwitchPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add switch" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add switch" />
           </Tab>
           <Tab
             value="manual"

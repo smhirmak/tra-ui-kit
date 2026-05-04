@@ -7,7 +7,7 @@ const add = require('../src/commands/add');
 const program = new Command();
 
 program
-  .name('msi-ui-kit')
+  .name('tra-ui-kit')
   .description('CLI tool for initializing and managing UI components with Tailwind CSS')
   .version('1.0.0');
 

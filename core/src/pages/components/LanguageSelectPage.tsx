@@ -59,7 +59,7 @@ const LanguageSelectPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add language-select" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add language-select" />
           </Tab>
           <Tab
             value="manual"

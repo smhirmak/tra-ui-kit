@@ -19,7 +19,7 @@ const tr = {
     'Güzelce tasarlanmış bileşenler · TypeScript · Koyu Mod · Tamamen özelleştirilebilir',
   'Get Started': 'Başlayın',
   'View on GitHub': "GitHub'da Görüntüle",
-  'Why MSI UI Kit?': 'Neden MSI UI Kit?',
+  'Why TRA UI Kit?': 'Neden TRA UI Kit?',
   'Everything you need to build beautiful React applications':
     'Güzel React uygulamaları oluşturmak için ihtiyacınız olan her şey',
   'Explore Components': 'Bileşenleri Keşfet',
@@ -28,7 +28,7 @@ const tr = {
   'Show All Components': 'Tüm Bileşenleri Göster',
   'Quick Start': 'Hızlı Başlangıç',
   'Get up and running in less than a minute': 'Bir dakikadan kısa sürede çalışmaya başlayın',
-  'Initialize MSI UI Kit': "MSI UI Kit'i Başlatın",
+  'Initialize TRA UI Kit': "TRA UI Kit'i Başlatın",
   'Add components': 'Bileşen ekle',
   'View Full Documentation': 'Tam Dokümantasyonu Görüntüle',
   'Clean, contemporary UI components built with Tailwind CSS':
@@ -113,8 +113,8 @@ const tr = {
   'CSS Framework': 'CSS Çatısı',
   License: 'Lisans',
   'Ready to get started?': 'Başlamaya hazır mısınız?',
-  'Start building with MSI UI Kit today and deliver beautiful, accessible React applications faster.':
-    'MSI UI Kit ile bugün geliştirmeye başlayın ve güzel, erişilebilir React uygulamalarını daha hızlı teslim edin.',
+  'Start building with TRA UI Kit today and deliver beautiful, accessible React applications faster.':
+    'TRA UI Kit ile bugün geliştirmeye başlayın ve güzel, erişilebilir React uygulamalarını daha hızlı teslim edin.',
   'Get Started for Free': 'Ücretsiz Başlayın',
   'View All Components': 'Tüm Bileşenleri Görüntüle',
   // ComponentsOverview

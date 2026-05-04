@@ -38,12 +38,12 @@ const Installation = () => {
         <div className="mb-10">
           <h1 className="mb-3 text-4xl font-bold">Installation</h1>
           <p className="text-lg text-neutral-grey">
-            Get MSI UI Kit integrated into your project and start building beautiful interfaces
+            Get TRA UI Kit integrated into your project and start building beautiful interfaces
             right away.
           </p>
         </div>
 
-        {/* Framework indicator — React only */}
+        {/* Framework indicator ï¿½ React only */}
         <div className="mb-10 flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 px-5 py-4">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15">
             <AtomIcon
@@ -84,7 +84,7 @@ const Installation = () => {
             title="Install Tailwind CSS"
           >
             <p className="mb-3 text-neutral-grey">
-              MSI UI Kit requires Tailwind CSS v4. Install the Tailwind Vite plugin:
+              TRA UI Kit requires Tailwind CSS v4. Install the Tailwind Vite plugin:
             </p>
             <CustomSyntaxHighlighter content="npm install tailwindcss @tailwindcss/vite" />
           </Step>
@@ -204,13 +204,13 @@ export default defineConfig({
           {/* Step 7 */}
           <Step
             number={7}
-            title="Initialize MSI UI Kit"
+            title="Initialize TRA UI Kit"
           >
             <p className="mb-3 text-neutral-grey">
-              Run the MSI UI Kit CLI to install all required dependencies and configuration
+              Run the TRA UI Kit CLI to install all required dependencies and configuration
               automatically:
             </p>
-            <CustomSyntaxHighlighter content="npx msi-ui-cli init" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli init" />
           </Step>
 
           {/* Step 8 */}
@@ -227,21 +227,21 @@ export default defineConfig({
             <div className="space-y-4">
               <div>
                 <p className="mb-2 text-sm font-medium">
-                  <span className="text-primary">•</span> Add a single component:
+                  <span className="text-primary">ï¿½</span> Add a single component:
                 </p>
-                <CustomSyntaxHighlighter content="npx msi-ui-cli add button" />
+                <CustomSyntaxHighlighter content="npx tra-ui-cli add button" />
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">
-                  <span className="text-primary">•</span> Add multiple components at once:
+                  <span className="text-primary">ï¿½</span> Add multiple components at once:
                 </p>
-                <CustomSyntaxHighlighter content="npx msi-ui-cli add button input dialog" />
+                <CustomSyntaxHighlighter content="npx tra-ui-cli add button input dialog" />
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">
-                  <span className="text-primary">•</span> Interactive selection mode:
+                  <span className="text-primary">ï¿½</span> Interactive selection mode:
                 </p>
-                <CustomSyntaxHighlighter content="npx msi-ui-cli add" />
+                <CustomSyntaxHighlighter content="npx tra-ui-cli add" />
                 <p className="mt-2 text-sm text-neutral-grey">
                   This lists all available components and lets you pick one or multiple
                   interactively.
@@ -263,7 +263,7 @@ export default defineConfig({
                     <h3 className="font-semibold">You're all set!</h3>
                   </div>
                   <p className="text-sm text-neutral-grey">
-                    MSI UI Kit is installed. You can now use modern, accessible React components in
+                    TRA UI Kit is installed. You can now use modern, accessible React components in
                     your project.
                   </p>
                 </div>

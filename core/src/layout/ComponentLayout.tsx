@@ -34,7 +34,7 @@ const ComponentLayout = () => {
     return () => clearTimeout(timer);
   }, [search]);
 
-  // Category open/close state — all open by default
+  // Category open/close state ï¿½ all open by default
   const [openCategories, setOpenCategories] = useState<Set<string>>(new Set(CATEGORIES));
   const toggleCategory = (cat: string) => {
     setOpenCategories((prev) => {
@@ -155,7 +155,7 @@ const ComponentLayout = () => {
             {slug && (
               <div className="mt-16 flex items-center gap-2 border-t border-border pt-6 text-sm text-neutral-grey">
                 <a
-                  href={`https://github.com/smhirmak/msi-ui-kit/blob/main/core/registry/msi-kit/components/${slug}.tsx`}
+                  href={`https://github.com/smhirmak/tra-ui-kit/blob/main/core/registry/tra-kit/components/${slug}.tsx`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 transition-colors hover:text-primary"

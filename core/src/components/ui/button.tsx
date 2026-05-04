@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/button';
-export { default } from '../../../registry/msi-kit/components/button';
+export * from '../../../registry/tra-kit/components/button';
+export { default } from '../../../registry/tra-kit/components/button';

@@ -11,9 +11,9 @@ describe('ProgressBar', () => {
           totalStepSize={10}
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-container')).toBeInTheDocument();
-      expect(container.querySelector('.MsiProgressBar-linearContainer')).toBeInTheDocument();
-      expect(container.querySelector('.MsiProgressBar-linearProgress')).toBeInTheDocument();
+      expect(container.querySelector('.TraProgressBar-container')).toBeInTheDocument();
+      expect(container.querySelector('.TraProgressBar-linearContainer')).toBeInTheDocument();
+      expect(container.querySelector('.TraProgressBar-linearProgress')).toBeInTheDocument();
     });
 
     it('should render progress title when provided', () => {
@@ -24,7 +24,7 @@ describe('ProgressBar', () => {
           progressTitle="Loading..."
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-title')).toHaveTextContent('Loading...');
+      expect(container.querySelector('.TraProgressBar-title')).toHaveTextContent('Loading...');
     });
 
     it('should render step text with number value type by default', () => {
@@ -34,7 +34,7 @@ describe('ProgressBar', () => {
           totalStepSize={10}
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-stepText')).toHaveTextContent('3/10');
+      expect(container.querySelector('.TraProgressBar-stepText')).toHaveTextContent('3/10');
     });
 
     it('should render step text with percentage value type', () => {
@@ -45,7 +45,7 @@ describe('ProgressBar', () => {
           valueType="percentage"
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-stepText')).toHaveTextContent('50%');
+      expect(container.querySelector('.TraProgressBar-stepText')).toHaveTextContent('50%');
     });
   });
 
@@ -58,9 +58,9 @@ describe('ProgressBar', () => {
         />,
       );
       const headerContainer = container.querySelector(
-        '.MsiProgressBar-headerContainer',
+        '.TraProgressBar-headerContainer',
       ) as HTMLElement;
-      const stepText = container.querySelector('.MsiProgressBar-stepText') as HTMLElement;
+      const stepText = container.querySelector('.TraProgressBar-stepText') as HTMLElement;
       expect(headerContainer).toContainElement(stepText);
     });
 
@@ -73,10 +73,10 @@ describe('ProgressBar', () => {
         />,
       );
       const headerContainer = container.querySelector(
-        '.MsiProgressBar-headerContainer',
+        '.TraProgressBar-headerContainer',
       ) as HTMLElement;
-      const mainContainer = container.querySelector('.MsiProgressBar-container') as HTMLElement;
-      const stepText = container.querySelector('.MsiProgressBar-stepText') as HTMLElement;
+      const mainContainer = container.querySelector('.TraProgressBar-container') as HTMLElement;
+      const stepText = container.querySelector('.TraProgressBar-stepText') as HTMLElement;
 
       expect(headerContainer).not.toContainElement(stepText);
       expect(mainContainer).toContainElement(stepText);
@@ -91,7 +91,7 @@ describe('ProgressBar', () => {
           totalStepSize={10}
         />,
       );
-      const progressBar = container.querySelector('.MsiProgressBar-linearProgress') as HTMLElement;
+      const progressBar = container.querySelector('.TraProgressBar-linearProgress') as HTMLElement;
       expect(progressBar.style.transform).toBe('translateX(-100%)');
     });
 
@@ -102,7 +102,7 @@ describe('ProgressBar', () => {
           totalStepSize={10}
         />,
       );
-      const progressBar = container.querySelector('.MsiProgressBar-linearProgress') as HTMLElement;
+      const progressBar = container.querySelector('.TraProgressBar-linearProgress') as HTMLElement;
       expect(progressBar.style.transform).toBe('translateX(-50%)');
     });
 
@@ -113,7 +113,7 @@ describe('ProgressBar', () => {
           totalStepSize={10}
         />,
       );
-      const progressBar = container.querySelector('.MsiProgressBar-linearProgress') as HTMLElement;
+      const progressBar = container.querySelector('.TraProgressBar-linearProgress') as HTMLElement;
       expect(progressBar.style.transform).toBe('translateX(-0%)');
     });
 
@@ -124,7 +124,7 @@ describe('ProgressBar', () => {
           totalStepSize={0}
         />,
       );
-      const progressBar = container.querySelector('.MsiProgressBar-linearProgress') as HTMLElement;
+      const progressBar = container.querySelector('.TraProgressBar-linearProgress') as HTMLElement;
       expect(progressBar.style.transform).toBe('translateX(-100%)');
     });
   });
@@ -151,7 +151,7 @@ describe('ProgressBar', () => {
           containerClassName="custom-container"
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-container')).toHaveClass('custom-container');
+      expect(container.querySelector('.TraProgressBar-container')).toHaveClass('custom-container');
     });
 
     it('should apply custom progress title className', () => {
@@ -163,7 +163,7 @@ describe('ProgressBar', () => {
           progressTitleClassName="custom-title"
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-title')).toHaveClass('custom-title');
+      expect(container.querySelector('.TraProgressBar-title')).toHaveClass('custom-title');
     });
 
     it('should apply custom step text className', () => {
@@ -174,7 +174,7 @@ describe('ProgressBar', () => {
           stepTextClassName="custom-step-text"
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-stepText')).toHaveClass('custom-step-text');
+      expect(container.querySelector('.TraProgressBar-stepText')).toHaveClass('custom-step-text');
     });
 
     it('should apply custom header container className', () => {
@@ -185,7 +185,7 @@ describe('ProgressBar', () => {
           headerContainerClassName="custom-header"
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-headerContainer')).toHaveClass(
+      expect(container.querySelector('.TraProgressBar-headerContainer')).toHaveClass(
         'custom-header',
       );
     });
@@ -198,7 +198,7 @@ describe('ProgressBar', () => {
           linearContainerClassName="custom-linear-container"
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-linearContainer')).toHaveClass(
+      expect(container.querySelector('.TraProgressBar-linearContainer')).toHaveClass(
         'custom-linear-container',
       );
     });
@@ -211,7 +211,7 @@ describe('ProgressBar', () => {
           linearProgressClassName="custom-linear-progress"
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-linearProgress')).toHaveClass(
+      expect(container.querySelector('.TraProgressBar-linearProgress')).toHaveClass(
         'custom-linear-progress',
       );
     });
@@ -225,7 +225,7 @@ describe('ProgressBar', () => {
           totalStepSize={10}
         />,
       );
-      const progressBar = container.querySelector('.MsiProgressBar-linearProgress') as HTMLElement;
+      const progressBar = container.querySelector('.TraProgressBar-linearProgress') as HTMLElement;
       // Progress should be clamped to 0% (translateX -100%)
       expect(progressBar.style.transform).toBe('translateX(-100%)');
     });
@@ -239,7 +239,7 @@ describe('ProgressBar', () => {
         />,
       );
       // 1/3 = 33.33% should be rounded to 33%
-      expect(container.querySelector('.MsiProgressBar-stepText')).toHaveTextContent('33%');
+      expect(container.querySelector('.TraProgressBar-stepText')).toHaveTextContent('33%');
     });
 
     it('should handle header container layout when progressTitle is not provided', () => {
@@ -249,7 +249,7 @@ describe('ProgressBar', () => {
           totalStepSize={10}
         />,
       );
-      const headerContainer = container.querySelector('.MsiProgressBar-headerContainer');
+      const headerContainer = container.querySelector('.TraProgressBar-headerContainer');
       expect(headerContainer).toHaveClass('justify-end');
       expect(headerContainer).not.toHaveClass('justify-between');
     });
@@ -262,7 +262,7 @@ describe('ProgressBar', () => {
           progressTitle="Test"
         />,
       );
-      const headerContainer = container.querySelector('.MsiProgressBar-headerContainer');
+      const headerContainer = container.querySelector('.TraProgressBar-headerContainer');
       expect(headerContainer).toHaveClass('justify-between');
     });
   });
@@ -276,7 +276,7 @@ describe('ProgressBar', () => {
           data-testid="progress-bar"
         />,
       );
-      expect(container.querySelector('.MsiProgressBar-linearContainer')).toHaveAttribute(
+      expect(container.querySelector('.TraProgressBar-linearContainer')).toHaveAttribute(
         'data-testid',
         'progress-bar',
       );

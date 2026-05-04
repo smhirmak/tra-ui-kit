@@ -1,1 +1,1 @@
-export * from '../../../registry/msi-kit/components/dialog';
+export * from '../../../registry/tra-kit/components/dialog';

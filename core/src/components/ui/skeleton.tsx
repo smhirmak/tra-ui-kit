@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/skeleton';
-export { default } from '../../../registry/msi-kit/components/skeleton';
+export * from '../../../registry/tra-kit/components/skeleton';
+export { default } from '../../../registry/tra-kit/components/skeleton';

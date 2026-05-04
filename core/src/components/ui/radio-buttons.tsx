@@ -1,1 +1,1 @@
-export * from '../../../registry/msi-kit/components/radio-buttons';
+export * from '../../../registry/tra-kit/components/radio-buttons';

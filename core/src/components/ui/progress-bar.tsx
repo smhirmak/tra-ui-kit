@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/progress-bar';
-export { default } from '../../../registry/msi-kit/components/progress-bar';
+export * from '../../../registry/tra-kit/components/progress-bar';
+export { default } from '../../../registry/tra-kit/components/progress-bar';

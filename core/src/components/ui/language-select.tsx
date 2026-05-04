@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/language-select';
-export { default } from '../../../registry/msi-kit/components/language-select';
+export * from '../../../registry/tra-kit/components/language-select';
+export { default } from '../../../registry/tra-kit/components/language-select';

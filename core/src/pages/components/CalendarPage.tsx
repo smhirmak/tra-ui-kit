@@ -109,7 +109,7 @@ const CalendarPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add calendar" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add calendar" />
           </Tab>
           <Tab
             value="manual"

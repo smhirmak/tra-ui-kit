@@ -59,7 +59,7 @@ const RadioButtonPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add radio-buttons" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add radio-buttons" />
           </Tab>
           <Tab
             value="manual"

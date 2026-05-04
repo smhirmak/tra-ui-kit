@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/chip';
-export { default } from '../../../registry/msi-kit/components/chip';
+export * from '../../../registry/tra-kit/components/chip';
+export { default } from '../../../registry/tra-kit/components/chip';

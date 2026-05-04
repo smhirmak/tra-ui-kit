@@ -1,8 +1,8 @@
 {
-  "name": "msi-ui-kit",
+  "name": "tra-ui-kit",
   "private": true,
   "version": "0.0.1",
-  "description": "MSI UI Kit - React component library and CLI tooling",
+  "description": "TRA UI Kit - React component library and CLI tooling",
   "scripts": {
     "prepare": "husky",
     "lint:cli": "cd cli && npx tsc --noEmit",
@@ -12,19 +12,5 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
     "prettier": "^3.5.3"
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx,js,json,css,md}": [
-      "prettier --check"
-    ],
-    "cli/src/**/*.ts": [
-      "npx tsc --noEmit -p cli/tsconfig.json"
-    ],
-    "core/registry/**/*.{ts,tsx}": [
-      "npx tsc --noEmit -p core/tsconfig.app.json"
-    ],
-    "core/src/**/*.{ts,tsx}": [
-      "npx tsc --noEmit -p core/tsconfig.app.json"
-    ]
   }
 }

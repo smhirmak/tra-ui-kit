@@ -81,7 +81,7 @@ const TooltipPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add tooltip" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add tooltip" />
           </Tab>
           <Tab
             value="manual"

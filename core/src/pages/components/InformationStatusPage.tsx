@@ -68,7 +68,7 @@ const InformationStatusPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add information-status" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add information-status" />
           </Tab>
           <Tab
             value="manual"

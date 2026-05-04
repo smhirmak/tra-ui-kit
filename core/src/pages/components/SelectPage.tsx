@@ -98,7 +98,7 @@ const SelectPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add select" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add select" />
           </Tab>
           <Tab
             value="manual"

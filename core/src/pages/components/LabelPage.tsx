@@ -80,7 +80,7 @@ const LabelPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add label" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add label" />
           </Tab>
           <Tab
             value="manual"

@@ -79,7 +79,7 @@ const NotificationPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add notification" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add notification" />
           </Tab>
           <Tab
             value="manual"

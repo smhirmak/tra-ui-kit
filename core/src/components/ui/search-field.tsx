@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/search-field';
-export { default } from '../../../registry/msi-kit/components/search-field';
+export * from '../../../registry/tra-kit/components/search-field';
+export { default } from '../../../registry/tra-kit/components/search-field';

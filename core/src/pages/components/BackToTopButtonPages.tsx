@@ -76,7 +76,7 @@ const BackToTopButtonPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add back-to-top-button" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add back-to-top-button" />
           </Tab>
           <Tab
             value="manual"

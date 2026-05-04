@@ -1,1 +1,1 @@
-export * from '../../../registry/msi-kit/components/table';
+export * from '../../../registry/tra-kit/components/table';

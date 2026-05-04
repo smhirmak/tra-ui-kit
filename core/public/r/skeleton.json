@@ -6,8 +6,8 @@
   "description": "A skeleton component that can be used to display loading placeholders.",
   "files": [
     {
-      "path": "registry/msi-kit/components/skeleton.tsx",
-      "content": "import { cva } from 'class-variance-authority';\nimport React from 'react';\nimport { cn } from '@/lib/utils';\n\nconst skeletonVariants = cva('h-4 w-full rounded-md bg-neutral opacity-60', {\n  variants: {\n    animation: {\n      true: 'animate-pulse',\n      false: '',\n    },\n  },\n  defaultVariants: {\n    animation: true,\n  },\n});\n\ninterface ISkeleton {\n  className?: string;\n  animation?: boolean;\n}\n\nconst Skeleton: React.FC<ISkeleton> = ({ className = '', animation = true }) => (\n  <div className={cn(skeletonVariants({ animation }), className)} />\n);\n\nexport default Skeleton;\n",
+      "path": "registry/tra-kit/components/skeleton.tsx",
+      "content": "import { cva } from 'class-variance-authority';\r\nimport React from 'react';\r\nimport { cn } from '@/lib/utils';\r\n\r\nconst skeletonVariants = cva('h-4 w-full rounded-md bg-neutral opacity-60', {\r\n  variants: {\r\n    animation: {\r\n      true: 'animate-pulse',\r\n      false: '',\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    animation: true,\r\n  },\r\n});\r\n\r\ninterface ISkeleton {\r\n  className?: string;\r\n  animation?: boolean;\r\n}\r\n\r\nconst Skeleton: React.FC<ISkeleton> = ({ className = '', animation = true }) => (\r\n  <div className={cn(skeletonVariants({ animation }), className)} />\r\n);\r\n\r\nexport default Skeleton;\r\n",
       "type": "registry:ui"
     }
   ]

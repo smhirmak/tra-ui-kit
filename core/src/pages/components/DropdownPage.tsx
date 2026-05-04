@@ -99,7 +99,7 @@ const DropdownPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add dropdown" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add dropdown" />
           </Tab>
           <Tab
             value="manual"

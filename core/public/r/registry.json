@@ -1,13 +1,13 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "msiuikit",
-  "homepage": "https://msi-ui-kit.vercel.app/",
+  "name": "trauikit",
+  "homepage": "https://ui.trabilisim.tech//",
   "items": [
     {
       "name": "theme",
       "type": "registry:style",
-      "title": "MSI UI Theme",
-      "description": "Complete theme configuration for MSI UI Kit including colors and design tokens",
+      "title": "TRA UI Theme",
+      "description": "Complete theme configuration for TRA UI Kit including colors and design tokens",
       "dependencies": ["@phosphor-icons/react"],
       "cssVars": {
         "theme": {
@@ -137,18 +137,18 @@
           ".custom--dropdown-container .dropdown-menu::-webkit-scrollbar": {
             "width": "8px"
           },
-          ".MsiDatePicker-root input::-webkit-outer-spin-button, .MsiDatePicker-root input::-webkit-inner-spin-button": {
+          ".TraDatePicker-root input::-webkit-outer-spin-button, .TraDatePicker-root input::-webkit-inner-spin-button": {
             "-webkit-appearance": "none",
             "margin": "0"
           },
-          ".MsiDatePicker-root input[type=\"number\"]": {
+          ".TraDatePicker-root input[type=\"number\"]": {
             "-moz-appearance": "textfield"
           },
-          ".MsiPagination-container input::-webkit-outer-spin-button, .MsiPagination-container input::-webkit-inner-spin-button": {
+          ".TraPagination-container input::-webkit-outer-spin-button, .TraPagination-container input::-webkit-inner-spin-button": {
             "-webkit-appearance": "none",
             "margin": "0"
           },
-          ".MsiPagination-container input[type=\"number\"]": {
+          ".TraPagination-container input[type=\"number\"]": {
             "-moz-appearance": "textfield"
           }
         },
@@ -164,8 +164,8 @@
     {
       "name": "typhography",
       "type": "registry:style",
-      "title": "MSI UI Typography",
-      "description": "Typography design tokens for MSI UI Kit",
+      "title": "TRA UI Typography",
+      "description": "Typography design tokens for TRA UI Kit",
       "cssVars": {
         "theme": {
           "font-sans": "Inter, sans-serif",
@@ -221,7 +221,7 @@
       "description": "Utility functions including cn for class name merging",
       "files": [
         {
-          "path": "registry/msi-kit/utils/utils.ts",
+          "path": "registry/tra-kit/utils/utils.ts",
           "type": "registry:lib",
           "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n \nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}"
         }
@@ -235,7 +235,7 @@
       "description": "An accordion component that can be used to display collapsible content.",
       "files": [
         {
-          "path": "registry/msi-kit/components/accordion.tsx",
+          "path": "registry/tra-kit/components/accordion.tsx",
           "type": "registry:ui"
         }
       ]
@@ -247,7 +247,7 @@
       "description": "An avatar component that can be used to display user profile pictures.",
       "files": [
         {
-          "path": "registry/msi-kit/components/avatar.tsx",
+          "path": "registry/tra-kit/components/avatar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -259,20 +259,20 @@
       "description": "A back to top button component that can be used to quickly scroll to the top of the page.",
       "files": [
         {
-          "path": "registry/msi-kit/components/back-to-top-button.tsx",
+          "path": "registry/tra-kit/components/back-to-top-button.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/button"]
+      "registryDependencies": ["@tra/button"]
     },
     {
       "name": "badge",
       "type": "registry:ui",
-      "title": "Back to Top Button",
-      "description": "A back to top button component that can be used to quickly scroll to the top of the page.",
+      "title": "Badge",
+      "description": "A badge component that can be used to display small pieces of information.",
       "files": [
         {
-          "path": "registry/msi-kit/components/back-to-top-button.tsx",
+          "path": "registry/tra-kit/components/badge.tsx",
           "type": "registry:ui"
         }
       ]
@@ -284,12 +284,12 @@
       "description": "A button component that can be used to trigger an action.",
       "files": [
         {
-          "path": "registry/msi-kit/components/button.tsx",
+          "path": "registry/tra-kit/components/button.tsx",
           "type": "registry:ui"
         }
       ],
       "dependencies": ["tailwindcss"],
-      "registryDependencies": ["@msi/loading-spinner"]
+      "registryDependencies": ["@tra/loading-spinner"]
     },
     {
       "name": "calendar",
@@ -298,11 +298,11 @@
       "description": "A calendar component that can be used to select dates.",
       "files": [
         {
-          "path": "registry/msi-kit/components/calendar.tsx",
+          "path": "registry/tra-kit/components/calendar.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/button"]
+      "registryDependencies": ["@tra/button"]
     },
     {
       "name": "checkbox",
@@ -311,11 +311,11 @@
       "description": "A checkbox component that can be used to select options.",
       "files": [
         {
-          "path": "registry/msi-kit/components/checkbox.tsx",
+          "path": "registry/tra-kit/components/checkbox.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/label"]
+      "registryDependencies": ["@tra/label"]
     },
     {
       "name": "chip",
@@ -324,7 +324,7 @@
       "description": "A chip component that can be used to display small blocks of information.",
       "files": [
         {
-          "path": "registry/msi-kit/components/chip.tsx",
+          "path": "registry/tra-kit/components/chip.tsx",
           "type": "registry:ui"
         }
       ]
@@ -336,7 +336,7 @@
       "description": "A container component that can be used to contain and center content.",
       "files": [
         {
-          "path": "registry/msi-kit/components/container.tsx",
+          "path": "registry/tra-kit/components/container.tsx",
           "type": "registry:ui"
         }
       ]
@@ -348,12 +348,12 @@
       "description": "A date picker component that can be used to select dates.",
       "files": [
         {
-          "path": "registry/msi-kit/components/date-picker.tsx",
+          "path": "registry/tra-kit/components/date-picker.tsx",
           "type": "registry:ui"
         }
       ],
       "dependencies": ["date-fns", "react-day-picker"],
-      "registryDependencies": ["@msi/button", "@msi/calendar", "@msi/label", "@msi/popover"]
+      "registryDependencies": ["@tra/button", "@tra/calendar", "@tra/label", "@tra/popover"]
     },
     {
       "name": "dialog",
@@ -362,7 +362,7 @@
       "description": "A dialog component that can be used to display a modal window.",
       "files": [
         {
-          "path": "registry/msi-kit/components/dialog.tsx",
+          "path": "registry/tra-kit/components/dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -374,11 +374,11 @@
       "description": "A drawer component that can be used to display a modal window.",
       "files": [
         {
-          "path": "registry/msi-kit/components/drawer.tsx",
+          "path": "registry/tra-kit/components/drawer.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/button"]
+      "registryDependencies": ["@tra/button"]
     },
     {
       "name": "dropdown",
@@ -387,11 +387,11 @@
       "description": "A dropdown component that can be used to display a list of options.",
       "files": [
         {
-          "path": "registry/msi-kit/components/dropdown.tsx",
+          "path": "registry/tra-kit/components/dropdown.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/popover"]
+      "registryDependencies": ["@tra/popover"]
     },
     {
       "name": "information-status",
@@ -400,7 +400,7 @@
       "description": "An information status component that can be used to display status messages.",
       "files": [
         {
-          "path": "registry/msi-kit/components/information-status.tsx",
+          "path": "registry/tra-kit/components/information-status.tsx",
           "type": "registry:ui"
         }
       ]
@@ -412,11 +412,11 @@
       "description": "An input component that can be used to enter text.",
       "files": [
         {
-          "path": "registry/msi-kit/components/input.tsx",
+          "path": "registry/tra-kit/components/input.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/button"]
+      "registryDependencies": ["@tra/button"]
     },
     {
       "name": "label",
@@ -425,11 +425,11 @@
       "description": "A label component that can be used to describe form elements.",
       "files": [
         {
-          "path": "registry/msi-kit/components/label.tsx",
+          "path": "registry/tra-kit/components/label.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/tooltip"]
+      "registryDependencies": ["@tra/tooltip"]
     },
     {
       "name": "language-select",
@@ -438,11 +438,11 @@
       "description": "A language select component that can be used to select a language.",
       "files": [
         {
-          "path": "registry/msi-kit/components/language-select.tsx",
+          "path": "registry/tra-kit/components/language-select.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/select"]
+      "registryDependencies": ["@tra/select"]
     },
     {
       "name": "loader",
@@ -451,11 +451,11 @@
       "description": "A loader component that can be used to indicate loading state.",
       "files": [
         {
-          "path": "registry/msi-kit/components/loader.tsx",
+          "path": "registry/tra-kit/components/loader.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/loading-spinner", "@msi/loading-linear"]
+      "registryDependencies": ["@tra/loading-spinner", "@tra/loading-linear"]
     },
     {
       "name": "loading-linear",
@@ -464,7 +464,7 @@
       "description": "A loading linear component that can be used to indicate loading state.",
       "files": [
         {
-          "path": "registry/msi-kit/components/loading-linear.tsx",
+          "path": "registry/tra-kit/components/loading-linear.tsx",
           "type": "registry:ui"
         }
       ]
@@ -476,7 +476,7 @@
       "description": "A loading spinner component that can be used to indicate loading state.",
       "files": [
         {
-          "path": "registry/msi-kit/components/loading-spinner.tsx",
+          "path": "registry/tra-kit/components/loading-spinner.tsx",
           "type": "registry:ui"
         }
       ]
@@ -488,11 +488,11 @@
       "description": "A pagination component that can be used to navigate through pages.",
       "files": [
         {
-          "path": "registry/msi-kit/components/pagination.tsx",
+          "path": "registry/tra-kit/components/pagination.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/button", "@msi/label"]
+      "registryDependencies": ["@tra/button", "@tra/label"]
     },
     {
       "name": "popover",
@@ -501,7 +501,7 @@
       "description": "A popover component that can be used to display additional information.",
       "files": [
         {
-          "path": "registry/msi-kit/components/popover.tsx",
+          "path": "registry/tra-kit/components/popover.tsx",
           "type": "registry:ui"
         }
       ]
@@ -513,7 +513,7 @@
       "description": "A progress bar component that can be used to display the progress of a task.",
       "files": [
         {
-          "path": "registry/msi-kit/components/progress-bar.tsx",
+          "path": "registry/tra-kit/components/progress-bar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -525,7 +525,7 @@
       "description": "A radio buttons component that can be used to select one option from a set.",
       "files": [
         {
-          "path": "registry/msi-kit/components/radio-buttons.tsx",
+          "path": "registry/tra-kit/components/radio-buttons.tsx",
           "type": "registry:ui"
         }
       ]
@@ -537,21 +537,21 @@
       "description": "A search field component that can be used to enter search queries.",
       "files": [
         {
-          "path": "registry/msi-kit/components/search-field.tsx",
+          "path": "registry/tra-kit/components/search-field.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/text-field"]
+      "registryDependencies": ["@tra/text-field"]
     },
     {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
       "description": "A select component that can be used to display a dropdown list of options.",
-      "registryDependencies": ["@msi/popover", "@msi/label", "@msi/button"],
+      "registryDependencies": ["@tra/popover", "@tra/label", "@tra/button"],
       "files": [
         {
-          "path": "registry/msi-kit/components/select.tsx",
+          "path": "registry/tra-kit/components/select.tsx",
           "type": "registry:ui"
         }
       ]
@@ -561,10 +561,10 @@
       "type": "registry:ui",
       "title": "Sidebar",
       "description": "A sidebar component that can be used to display a navigation menu.",
-      "registryDependencies": ["@msi/button"],
+      "registryDependencies": ["@tra/button"],
       "files": [
         {
-          "path": "registry/msi-kit/components/sidebar.tsx",
+          "path": "registry/tra-kit/components/sidebar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -576,7 +576,7 @@
       "description": "A skeleton component that can be used to display loading placeholders.",
       "files": [
         {
-          "path": "registry/msi-kit/components/skeleton.tsx",
+          "path": "registry/tra-kit/components/skeleton.tsx",
           "type": "registry:ui"
         }
       ]
@@ -588,11 +588,11 @@
       "description": "A switch component that can be used to toggle between two states.",
       "files": [
         {
-          "path": "registry/msi-kit/components/switch.tsx",
+          "path": "registry/tra-kit/components/switch.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/label"]
+      "registryDependencies": ["@tra/label"]
     },
     {
       "name": "table",
@@ -601,7 +601,7 @@
       "description": "A table component that can be used to display data in a tabular format.",
       "files": [
         {
-          "path": "registry/msi-kit/components/table.tsx",
+          "path": "registry/tra-kit/components/table.tsx",
           "type": "registry:ui"
         }
       ]
@@ -613,7 +613,7 @@
       "description": "A tabs component that can be used to switch between different views or sections.",
       "files": [
         {
-          "path": "registry/msi-kit/components/tabs.tsx",
+          "path": "registry/tra-kit/components/tabs.tsx",
           "type": "registry:ui"
         }
       ]
@@ -625,11 +625,11 @@
       "description": "A text field component that can be used to enter text.",
       "files": [
         {
-          "path": "registry/msi-kit/components/text-field.tsx",
+          "path": "registry/tra-kit/components/text-field.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/input", "@msi/label"]
+      "registryDependencies": ["@tra/input", "@tra/label"]
     },
     {
       "name": "theme-mode-toggle",
@@ -638,11 +638,11 @@
       "description": "A theme mode toggle component that can be used to switch between light and dark modes.",
       "files": [
         {
-          "path": "registry/msi-kit/components/theme-mode-toggle.tsx",
+          "path": "registry/tra-kit/components/theme-mode-toggle.tsx",
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@msi/button"]
+      "registryDependencies": ["@tra/button"]
     },
     {
       "name": "tooltip",
@@ -651,7 +651,7 @@
       "description": "A tooltip component that can be used to display additional information.",
       "files": [
         {
-          "path": "registry/msi-kit/components/tooltip.tsx",
+          "path": "registry/tra-kit/components/tooltip.tsx",
           "type": "registry:ui"
         }
       ],
