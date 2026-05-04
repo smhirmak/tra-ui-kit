@@ -1,5 +1,5 @@
 ﻿import { Link } from '@tanstack/react-router';
-import { GithubLogoIcon, LinkedinLogoIcon, XLogoIcon } from '@phosphor-icons/react';
+import { GithubLogoIcon } from '@phosphor-icons/react';
 import { useVersion } from '@/contexts/version';
 
 const Footer = () => {
@@ -92,7 +92,7 @@ const Footer = () => {
                   weight="fill"
                 />
               </a>
-              <a
+              {/* <a
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -113,7 +113,7 @@ const Footer = () => {
                   size={24}
                   weight="fill"
                 />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@ const Footer = () => {
         <div className="mt-12 border-t border-border pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-neutral-grey">
-              Â© {new Date().getFullYear()} TRA UI Kit. All rights reserved.
+              · {new Date().getFullYear()} TRA UI Kit. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <a
