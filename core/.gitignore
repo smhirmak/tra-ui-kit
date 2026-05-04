@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 coverage
+
+# Auto-generated files
+src/routeTree.gen.ts

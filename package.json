@@ -18,13 +18,13 @@
       "prettier --check"
     ],
     "cli/src/**/*.ts": [
-      "bash -c 'cd cli && npx tsc --noEmit'"
+      "npx tsc --noEmit -p cli/tsconfig.json"
     ],
     "core/registry/**/*.{ts,tsx}": [
-      "bash -c 'cd core && npx tsc --noEmit'"
+      "npx tsc --noEmit -p core/tsconfig.app.json"
     ],
     "core/src/**/*.{ts,tsx}": [
-      "bash -c 'cd core && npx tsc --noEmit'"
+      "npx tsc --noEmit -p core/tsconfig.app.json"
     ]
   }
 }
