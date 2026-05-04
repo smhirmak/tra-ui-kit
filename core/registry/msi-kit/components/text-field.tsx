@@ -1,8 +1,8 @@
 import { cva } from 'class-variance-authority';
 import React, { useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import Input from '@/components/input';
-import Label from '@/components/label';
+import Input from '@/components/ui/input';
+import Label from '@/components/ui/label';
 
 const textFieldStyles = cva('TextField-container relative flex h-fit flex-col gap-1', {
   variants: {

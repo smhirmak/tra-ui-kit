@@ -3,7 +3,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import { TOCProvider } from '@/contexts/toc/TOCContext';
 import { NotificationProvider } from '@/contexts/notification/NotificationProvider';
-import BackToTopButton from '@/components/back-to-top-button';
+import BackToTopButton from '@/components/ui/back-to-top-button';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { useAppContext } from '@/contexts/app/AppProvider';
 

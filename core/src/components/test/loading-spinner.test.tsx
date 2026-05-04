@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import LoadingSpinner from '../loading-spinner';
+import LoadingSpinner from '../ui/loading-spinner';
 
 describe('LoadingSpinner Component', () => {
   describe('Basic Rendering', () => {

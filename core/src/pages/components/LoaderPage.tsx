@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import Loader, { loaderRef } from '@/components/loader';
-import Button from '@/components/button';
+import Loader, { loaderRef } from '@/components/ui/loader';
+import Button from '@/components/ui/button';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { useTranslation } from 'react-i18next';
 
@@ -102,7 +102,7 @@ const LoaderPage = () => {
             <Button onClick={() => handleShowLoader('circular')}>Show Loader (2s)</Button>
           </div>
           <CustomSyntaxHighlighter
-            content={`import Loader, { loaderRef } from '@/components/loader';
+            content={`import Loader, { loaderRef } from '@/components/ui/loader';
 
 // Add Loader to your app root
 <Loader />

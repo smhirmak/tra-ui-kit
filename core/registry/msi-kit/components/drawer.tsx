@@ -13,7 +13,7 @@ import { cva } from 'class-variance-authority';
 import { XIcon } from '@phosphor-icons/react';
 import type { VariantProps } from 'class-variance-authority';
 import { cn, preventScrollShift } from '@/lib/utils';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 
 export type DrawerPosition = 'left' | 'right' | 'top' | 'bottom';
 

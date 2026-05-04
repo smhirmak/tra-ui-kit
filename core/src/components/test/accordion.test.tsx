@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../accordion';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '../ui/accordion';
 
 describe('Accordion Component', () => {
   describe('Accordion', () => {

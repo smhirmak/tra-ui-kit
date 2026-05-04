@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { PlusIcon } from '@phosphor-icons/react';
-import Chip from '@/components/chip';
+import Chip from '@/components/ui/chip';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { useTranslation } from 'react-i18next';
-import Notification from '@/components/notification';
+import Notification from '@/components/ui/notification';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },

@@ -11,7 +11,7 @@
     {
       "path": "registry/msi-kit/components/language-select.tsx",
       "content": "import Select from './select';\n\nconst countries = [\n  {\n    content: (\n      <img\n        src=\"/assets/icons/flagOfTurkey.svg\"\n        className=\"overflow-hidden\"\n        alt=\"TR\"\n        width=\"30px\"\n        height=\"20px\"\n        title=\"TR\"\n      />\n    ),\n    value: 'tr',\n  },\n  {\n    content: (\n      <img\n        src=\"/assets/icons/flagOfUK.svg\"\n        className=\"overflow-hidden\"\n        alt=\"EN\"\n        width=\"30px\"\n        height=\"20px\"\n        title=\"EN\"\n      />\n    ),\n    value: 'en',\n  },\n];\n\ninterface ILanguageSelect {\n  className?: string;\n  locale: string;\n  setLocale: (locale: string) => void;\n  defaultValue?: string;\n}\n\nconst LanguageSelect: React.FC<ILanguageSelect> = ({\n  className,\n  locale,\n  setLocale,\n  defaultValue,\n}) => {\n  const handleChange = (event: string | string[] | number | number[] | boolean) => {\n    const found = countries.find((f) => f.value === event);\n    const localeLang = found?.value ?? defaultValue ?? 'en';\n    setLocale?.(localeLang);\n  };\n\n  return (\n    <div className={className}>\n      <Select\n        dropdownTriggerClassName=\"border-none\"\n        options={countries}\n        value={((locale as string) || localStorage.getItem('lang')) ?? defaultValue ?? 'en'}\n        onChange={handleChange}\n        dropdownItemContainerClassName=\"flex flex-col gap-1\"\n      />\n    </div>\n  );\n};\n\nexport default LanguageSelect;\n",
-      "type": "registry:component"
+      "type": "registry:ui"
     }
   ]
 }

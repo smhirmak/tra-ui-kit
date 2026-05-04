@@ -2,7 +2,7 @@
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { createRef } from 'react';
-import { Popover, PopoverTrigger, PopoverContent } from '../popover';
+import { Popover, PopoverTrigger, PopoverContent } from '../ui/popover';
 
 describe('Popover Component', () => {
   describe('Basic Rendering', () => {

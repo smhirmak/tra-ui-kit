@@ -1,5 +1,5 @@
 import { MoonIcon, SunIcon } from '@phosphor-icons/react';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 import { useTheme } from '@/contexts/theme/theme-provider';
 
 interface IThemeModeToggle {

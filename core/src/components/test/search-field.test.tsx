@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import SearchField from '../search-field';
+import SearchField from '../ui/search-field';
 
 describe('SearchField Component', () => {
   describe('Basic Rendering', () => {

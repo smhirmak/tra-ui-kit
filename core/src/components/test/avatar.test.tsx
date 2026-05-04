@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { Avatar } from '../avatar';
+import { Avatar } from '../ui/avatar';
 
 describe('Avatar Component', () => {
   describe('Basic Rendering', () => {

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { InfoIcon } from '@phosphor-icons/react';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import Tooltip from '@/components/tooltip';
+import Tooltip from '@/components/ui/tooltip';
 
 export const labelVariants = cva(
   `font-medium leading-none

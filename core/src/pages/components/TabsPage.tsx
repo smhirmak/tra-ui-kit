@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';

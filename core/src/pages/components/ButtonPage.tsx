@@ -1,13 +1,13 @@
 import { useEffect, Suspense, lazy } from 'react';
 import { PlusIcon } from '@phosphor-icons/react';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import VersionBanner from '@/components/version-banner';
 import { useVersion } from '@/contexts/version';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { useTranslation } from 'react-i18next';
 
@@ -20,7 +20,7 @@ const getButtonComponent = (version: string) => {
     return lazy(() =>
       import(`@/versions/v0/components/button.tsx`).catch(() => {
         console.warn('v0 button not found, using default');
-        return import('@/components/button');
+        return import('@/components/ui/button');
       }),
     );
   }

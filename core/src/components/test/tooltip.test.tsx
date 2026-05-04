@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import Tooltip from '../tooltip';
+import Tooltip from '../ui/tooltip';
 
 describe('Tooltip Component', () => {
   describe('Basic Rendering', () => {

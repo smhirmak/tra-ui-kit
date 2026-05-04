@@ -8,7 +8,7 @@
     {
       "path": "registry/msi-kit/components/skeleton.tsx",
       "content": "import { cva } from 'class-variance-authority';\nimport React from 'react';\nimport { cn } from '@/lib/utils';\n\nconst skeletonVariants = cva('h-4 w-full rounded-md bg-neutral opacity-60', {\n  variants: {\n    animation: {\n      true: 'animate-pulse',\n      false: '',\n    },\n  },\n  defaultVariants: {\n    animation: true,\n  },\n});\n\ninterface ISkeleton {\n  className?: string;\n  animation?: boolean;\n}\n\nconst Skeleton: React.FC<ISkeleton> = ({ className = '', animation = true }) => (\n  <div className={cn(skeletonVariants({ animation }), className)} />\n);\n\nexport default Skeleton;\n",
-      "type": "registry:component"
+      "type": "registry:ui"
     }
   ]
 }

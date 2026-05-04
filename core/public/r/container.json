@@ -8,7 +8,7 @@
     {
       "path": "registry/msi-kit/components/container.tsx",
       "content": "import { cva, VariantProps } from 'class-variance-authority';\nimport React, { ReactNode } from 'react';\nimport { cn } from '@/lib/utils';\n\nexport const containerVariants = cva('container mx-auto w-full', {\n  variants: {\n    maxWidth: {\n      xs: 'max-w-full',\n      sm: 'max-w-(--breakpoint-sm)',\n      md: 'max-w-(--breakpoint-md)',\n      lg: 'max-w-(--breakpoint-lg)',\n      xl: 'max-w-(--breakpoint-xl)',\n      '2xl': 'max-w-(--breakpoint-2xl)',\n      full: 'max-w-full',\n    },\n    disableGutters: {\n      true: 'px-0',\n      false: 'px-4 md:px-6',\n    },\n    centered: {\n      true: 'flex items-center justify-center',\n      false: '',\n    },\n  },\n  defaultVariants: {\n    maxWidth: 'xl',\n    disableGutters: false,\n    centered: false,\n  },\n});\n\ninterface IContainer extends VariantProps<typeof containerVariants> {\n  as?: React.ElementType;\n  children: ReactNode;\n  className?: string;\n}\n\nconst Container: React.FC<IContainer> = ({\n  as = 'div',\n  centered = false,\n  children,\n  className = '',\n  disableGutters = false,\n  maxWidth = 'xl',\n}) => {\n  const Comp = as ?? 'div';\n  return (\n    <Comp className={cn(containerVariants({ maxWidth, disableGutters, centered }), className)}>\n      {children}\n    </Comp>\n  );\n};\n\nexport default Container;\n",
-      "type": "registry:component"
+      "type": "registry:ui"
     }
   ]
 }

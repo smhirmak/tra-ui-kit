@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import Chip from '../chip';
+import Chip from '../ui/chip';
 
 describe('Chip Component', () => {
   describe('Basic Rendering', () => {

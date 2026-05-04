@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
 import { CheckIcon, MinusIcon } from '@phosphor-icons/react';
-import Label from '@/components/label';
+import Label from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 
 const checkboxVariants = cva(

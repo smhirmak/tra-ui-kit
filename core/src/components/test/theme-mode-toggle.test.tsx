@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import ThemeModeToggle from '../theme-mode-toggle';
+import ThemeModeToggle from '../ui/theme-mode-toggle';
 
 // Mock theme provider
 const mockSetTheme = vi.fn();
@@ -14,7 +14,7 @@ vi.mock('@/contexts/theme/theme-provider', () => ({
 }));
 
 // Mock Button component
-vi.mock('@/components/button', () => ({
+vi.mock('@/components/ui/button', () => ({
   default: ({ children, onClick, ...props }: any) => (
     <button
       onClick={onClick}

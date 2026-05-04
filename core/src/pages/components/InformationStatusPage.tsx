@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { PlusIcon } from '@phosphor-icons/react';
-import InformationStatus from '@/components/information-status';
+import InformationStatus from '@/components/ui/information-status';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTranslation } from 'react-i18next';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 
 const tocItems: TOCItem[] = [

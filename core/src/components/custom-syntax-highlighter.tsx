@@ -1,6 +1,6 @@
 import { useTheme } from '@/contexts/theme/theme-provider';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import Button from './button';
+import Button from './ui/button';
 import { ClipboardIcon, CheckIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import { githubGist, hybrid } from 'react-syntax-highlighter/dist/esm/styles/hljs';

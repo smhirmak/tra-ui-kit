@@ -9,7 +9,7 @@ import {
   DrawerDescription,
   DrawerBody,
   DrawerFooter,
-} from '../drawer';
+} from '../ui/drawer';
 
 describe('Drawer Component', () => {
   beforeEach(() => {

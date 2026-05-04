@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Tabs, Tab } from '../tabs';
+import { Tabs, Tab } from '../ui/tabs';
 
 describe('Tabs', () => {
   const mockOnChange = vi.fn();

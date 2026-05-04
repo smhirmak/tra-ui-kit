@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
-import Input from '@/components/input';
+import Input from '@/components/ui/input';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { useTranslation } from 'react-i18next';
 

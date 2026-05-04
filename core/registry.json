@@ -236,7 +236,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/accordion.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -248,7 +248,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/avatar.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -260,7 +260,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/back-to-top-button.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/button"]
@@ -273,7 +273,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/back-to-top-button.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -285,7 +285,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/button.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "dependencies": ["tailwindcss"],
@@ -299,7 +299,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/calendar.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/button"]
@@ -312,7 +312,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/checkbox.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/label"]
@@ -325,7 +325,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/chip.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -337,7 +337,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/container.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -349,7 +349,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/date-picker.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "dependencies": ["date-fns", "react-day-picker"],
@@ -363,7 +363,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/dialog.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -375,7 +375,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/drawer.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/button"]
@@ -388,7 +388,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/dropdown.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/popover"]
@@ -401,7 +401,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/information-status.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -413,7 +413,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/input.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/button"]
@@ -426,7 +426,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/label.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/tooltip"]
@@ -439,7 +439,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/language-select.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/select"]
@@ -452,7 +452,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/loader.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/loading-spinner", "@msi/loading-linear"]
@@ -465,7 +465,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/loading-linear.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -477,7 +477,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/loading-spinner.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -489,7 +489,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/pagination.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/button", "@msi/label"]
@@ -502,7 +502,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/popover.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -514,7 +514,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/progress-bar.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -526,7 +526,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/radio-buttons.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -538,7 +538,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/search-field.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/text-field"]
@@ -552,7 +552,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/select.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -564,7 +564,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/sidebar.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -576,7 +576,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/skeleton.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -588,7 +588,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/switch.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/label"]
@@ -601,7 +601,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/table.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -613,7 +613,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/tabs.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -625,7 +625,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/text-field.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/input", "@msi/label"]
@@ -638,7 +638,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/theme-mode-toggle.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "registryDependencies": ["@msi/button"]
@@ -651,7 +651,7 @@
       "files": [
         {
           "path": "registry/msi-kit/components/tooltip.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ],
       "dependencies": ["class-variance-authority"]

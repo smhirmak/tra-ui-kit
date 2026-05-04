@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import Skeleton from '../skeleton';
+import Skeleton from '../ui/skeleton';
 
 describe('Skeleton Component', () => {
   describe('Basic Rendering', () => {

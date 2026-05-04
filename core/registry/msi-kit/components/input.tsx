@@ -3,7 +3,7 @@ import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
 import React from 'react';
 import type { VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 
 export const inputVariants = cva(
   `flex w-full border bg-transparent px-3 py-2 border-input 

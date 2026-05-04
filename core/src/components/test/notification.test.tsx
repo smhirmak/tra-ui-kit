@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { renderHook } from '@testing-library/react';
 import { ReactNode } from 'react';
-import Notification from '../notification';
+import Notification from '../ui/notification';
 import { NotificationProvider } from '@/contexts/notification/NotificationProvider';
 
 // Wrapper component for testing

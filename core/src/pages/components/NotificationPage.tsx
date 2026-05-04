@@ -1,15 +1,15 @@
-import Button from '@/components/button';
-import { RadioGroup, RadioGroupItem } from '@/components/radio-buttons';
+import Button from '@/components/ui/button';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-buttons';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { useAppContext } from '@/contexts/app/AppProvider';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Notification from '@/components/notification';
+import Notification from '@/components/ui/notification';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },

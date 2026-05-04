@@ -1,11 +1,10 @@
 import { cva } from 'class-variance-authority';
 import React, { useEffect, useRef, useState } from 'react';
 import { CaretDownIcon, CheckIcon, XIcon } from '@phosphor-icons/react';
-import Label from '@/components/label';
+import Label from '@/components/ui/label';
 import { cn, preventScrollShift } from '@/lib/utils';
-import Button from '@/components/button';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
-import { X } from 'lucide-react';
+import Button from '@/components/ui/button';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 interface ISearchInput {
   searchValue: string;
@@ -611,7 +610,7 @@ const Select: React.FC<ISelect> = ({
                   }
                 }}
               >
-                <X
+                <XIcon
                   className={cn(
                     'MsiSelect-icon stroke-neutral group-hover:stroke-neutral-dark-white transition-all',
                   )}

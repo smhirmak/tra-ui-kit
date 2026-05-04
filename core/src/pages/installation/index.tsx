@@ -1,6 +1,6 @@
-ï»¿import Container from '@/components/container';
+import Container from '@/components/ui/container';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
-import InformationStatus from '@/components/information-status';
+import InformationStatus from '@/components/ui/information-status';
 import { AtomIcon, ArrowRightIcon, CheckCircleIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import { Link } from '@tanstack/react-router';
@@ -43,7 +43,7 @@ const Installation = () => {
           </p>
         </div>
 
-        {/* Framework indicator â€” React only */}
+        {/* Framework indicator — React only */}
         <div className="mb-10 flex items-center gap-3 rounded-xl border border-primary/20 bg-primary/5 px-5 py-4">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/15">
             <AtomIcon
@@ -227,19 +227,19 @@ export default defineConfig({
             <div className="space-y-4">
               <div>
                 <p className="mb-2 text-sm font-medium">
-                  <span className="text-primary">â€¢</span> Add a single component:
+                  <span className="text-primary">•</span> Add a single component:
                 </p>
                 <CustomSyntaxHighlighter content="npx msi-ui-cli add button" />
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">
-                  <span className="text-primary">â€¢</span> Add multiple components at once:
+                  <span className="text-primary">•</span> Add multiple components at once:
                 </p>
                 <CustomSyntaxHighlighter content="npx msi-ui-cli add button input dialog" />
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">
-                  <span className="text-primary">â€¢</span> Interactive selection mode:
+                  <span className="text-primary">•</span> Interactive selection mode:
                 </p>
                 <CustomSyntaxHighlighter content="npx msi-ui-cli add" />
                 <p className="mt-2 text-sm text-neutral-grey">

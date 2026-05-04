@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import LoadingLinear from '../loading-linear';
+import LoadingLinear from '../ui/loading-linear';
 
 describe('LoadingLinear Component', () => {
   describe('Basic Rendering', () => {

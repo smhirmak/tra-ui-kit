@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useRouterState, useParams } from '@tanstack/react-router';
 import { GithubLogoIcon, ListIcon, XIcon } from '@phosphor-icons/react';
-import ThemeModeToggle from '@/components/theme-mode-toggle';
-import LanguageSelect from '@/components/language-select';
+import ThemeModeToggle from '@/components/ui/theme-mode-toggle';
+import LanguageSelect from '@/components/ui/language-select';
 import VersionSelect from '@/components/version-select';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';

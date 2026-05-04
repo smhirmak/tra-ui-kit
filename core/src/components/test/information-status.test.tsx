@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import InformationStatus from '../information-status';
+import InformationStatus from '../ui/information-status';
 
 describe('InformationStatus Component', () => {
   describe('Basic Rendering', () => {

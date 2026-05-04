@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import Button from '@/components/button';
-import Tooltip from '@/components/tooltip';
+import Button from '@/components/ui/button';
+import Tooltip from '@/components/ui/tooltip';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { useTranslation } from 'react-i18next';
 

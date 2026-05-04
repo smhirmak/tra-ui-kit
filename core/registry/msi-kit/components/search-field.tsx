@@ -1,8 +1,8 @@
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import React from 'react';
-import type { ITextField } from '@/components/text-field';
-import TextField from '@/components/text-field';
+import type { ITextField } from '@/components/ui/text-field';
+import TextField from '@/components/ui/text-field';
 import { cn } from '@/lib/utils';
 
 const iconVariants = cva('', {

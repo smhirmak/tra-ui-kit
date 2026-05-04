@@ -1,14 +1,14 @@
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover';
-import Button from '@/components/button';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import Button from '@/components/ui/button';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTOC } from '@/contexts/toc/TOCContext';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/dialog';
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },

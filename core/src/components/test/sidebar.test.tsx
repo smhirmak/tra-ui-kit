@@ -1,4 +1,4 @@
-﻿import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import {
   createMemoryHistory,
@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from '@tanstack/react-router';
 import userEvent from '@testing-library/user-event';
-import Sidebar, { SidebarItem } from '../sidebar';
+import Sidebar, { SidebarItem } from '../ui/sidebar';
 
 const createTestRouter = (ui: React.ReactNode) => {
   const rootRoute = createRootRoute({ component: () => <>{ui}</> });

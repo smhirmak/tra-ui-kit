@@ -1,6 +1,6 @@
-﻿import { Link } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { motion } from 'framer-motion';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 import {
   SparkleIcon,
   MoonIcon,
@@ -14,12 +14,12 @@ import Constants from '@/constants/Constants';
 import { useTranslation } from 'react-i18next';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useVersion } from '@/contexts/version';
-import Badge from '@/components/badge';
-import Chip from '@/components/chip';
-import Checkbox from '@/components/checkbox';
-import Switch from '@/components/switch';
-import { Avatar } from '@/components/avatar';
-import Tooltip from '@/components/tooltip';
+import Badge from '@/components/ui/badge';
+import Chip from '@/components/ui/chip';
+import Checkbox from '@/components/ui/checkbox';
+import Switch from '@/components/ui/switch';
+import { Avatar } from '@/components/ui/avatar';
+import Tooltip from '@/components/ui/tooltip';
 
 const prefersReducedMotion =
   typeof window !== 'undefined'
@@ -94,7 +94,7 @@ const Home = () => {
               size={13}
               weight="fill"
             />
-            <span>{t('v1.0 ï¿½ React Component Library')}</span>
+            <span>{t('v1.0 � React Component Library')}</span>
           </motion.div>
 
           {/* Title */}
@@ -123,7 +123,7 @@ const Home = () => {
             className="mb-10 text-base text-neutral-grey/75 md:text-lg"
           >
             {t(
-              'Beautifully crafted components ï¿½ TypeScript ï¿½ Dark Mode ï¿½ Fully customizable',
+              'Beautifully crafted components � TypeScript � Dark Mode � Fully customizable',
             )}
           </motion.p>
 
@@ -188,7 +188,7 @@ const Home = () => {
           </motion.div>
         </motion.div>
 
-        {/* Background blobs ï¿½ hidden on mobile */}
+        {/* Background blobs � hidden on mobile */}
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <motion.div
             animate={
@@ -207,7 +207,7 @@ const Home = () => {
             className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-secondary/10 blur-3xl hidden md:block"
           />
 
-          {/* Floating decorations ï¿½ hidden on mobile */}
+          {/* Floating decorations � hidden on mobile */}
           <div className="hidden md:block">
             <motion.div
               animate={prefersReducedMotion ? {} : { y: [0, -20, 0], opacity: [0.15, 0.28, 0.15] }}

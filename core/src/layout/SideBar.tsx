@@ -1,8 +1,8 @@
 import { CaretRightIcon } from '@phosphor-icons/react';
 import React, { useState } from 'react';
 import { Link, useRouterState } from '@tanstack/react-router';
-import { Accordion, AccordionItem } from '@/components/accordion';
-import Button from '@/components/button';
+import { Accordion, AccordionItem } from '@/components/ui/accordion';
+import Button from '@/components/ui/button';
 import Constants from '@/constants/Constants';
 
 const SideBar = () => {

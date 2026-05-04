@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import Pagination from '@/components/pagination';
+import Pagination from '@/components/ui/pagination';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTranslation } from 'react-i18next';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 
 const tocItems: TOCItem[] = [

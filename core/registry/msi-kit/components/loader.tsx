@@ -1,6 +1,6 @@
 import { createRef, useEffect, useImperativeHandle, useState } from 'react';
-import LoadingSpinner from '@/components/loading-spinner';
-import LoadingLinear from '@/components/loading-linear';
+import LoadingSpinner from '@/components/ui/loading-spinner';
+import LoadingLinear from '@/components/ui/loading-linear';
 import { preventScrollShift } from '@/lib/utils';
 
 export type LoaderRefType = {

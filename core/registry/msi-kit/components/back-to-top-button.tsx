@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CaretUpIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import Button from '@/components/button';
+import Button from '@/components/ui/button';
 
 const buttonVariants = cva(
   `size-10 min-h-10 min-w-10 rounded-full border border-neutral-grey

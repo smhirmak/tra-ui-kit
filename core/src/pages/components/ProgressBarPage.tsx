@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { MinusIcon, PlusIcon } from '@phosphor-icons/react';
-import ProgressBar from '@/components/progress-bar';
-import Button from '@/components/button';
+import ProgressBar from '@/components/ui/progress-bar';
+import Button from '@/components/ui/button';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTranslation } from 'react-i18next';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 
 const tocItems: TOCItem[] = [

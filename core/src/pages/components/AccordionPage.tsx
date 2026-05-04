@@ -1,12 +1,12 @@
 import { PlusIcon } from '@phosphor-icons/react';
-import { Accordion, AccordionItem } from '@/components/accordion';
+import { Accordion, AccordionItem } from '@/components/ui/accordion';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { useEffect } from 'react';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import { useTranslation } from 'react-i18next';
 
 const tocItems: TOCItem[] = [

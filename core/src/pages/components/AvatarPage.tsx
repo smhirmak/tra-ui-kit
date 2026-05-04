@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { Avatar, MultipleAvatarContainer } from '@/components/avatar';
-import Badge from '@/components/badge';
+import { Avatar, MultipleAvatarContainer } from '@/components/ui/avatar';
+import Badge from '@/components/ui/badge';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTOC } from '@/contexts/toc/TOCContext';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { useTranslation } from 'react-i18next';
 

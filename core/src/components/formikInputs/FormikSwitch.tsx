@@ -2,7 +2,7 @@ import FormikErrorText from '@/components/formikInputs/FormikErrorText';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { cn } from '@/lib/utils';
 import Object from '@/utilities/Object';
-import Switch from '../switch';
+import Switch from '../ui/switch';
 
 interface IFormikSwitch {
   id: string;

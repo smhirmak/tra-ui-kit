@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import Select from '../select';
+import Select from '../ui/select';
 
 describe('Select Component', () => {
   const mockOptions = [

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import ThemeModeToggle from '@/components/theme-mode-toggle';
+import ThemeModeToggle from '@/components/ui/theme-mode-toggle';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { useTranslation } from 'react-i18next';
 

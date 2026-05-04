@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { getComponentSource } from '@/utilities/getComponentSource';
-import Skeleton from './skeleton';
+import Skeleton from './ui/skeleton';
 
 interface ComponentSourceViewerProps {
   componentName: string;

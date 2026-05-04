@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { RadioGroup, RadioGroupItem } from '../radio-buttons';
+import { RadioGroup, RadioGroupItem } from '../ui/radio-buttons';
 
 describe('Radio Button Components', () => {
   describe('RadioGroup', () => {

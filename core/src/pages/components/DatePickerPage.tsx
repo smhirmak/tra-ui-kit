@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { enUS, tr } from 'date-fns/locale';
-import DatePicker from '@/components/date-picker';
+import DatePicker from '@/components/ui/date-picker';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import ComponentSourceViewer from '@/components/component-source-viewer';
 import { useTranslation } from 'react-i18next';
 

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { Table, THead, TBody, TR, TH, TD } from '../table';
+import { Table, THead, TBody, TR, TH, TD } from '../ui/table';
 
 describe('Table Components', () => {
   describe('Table', () => {

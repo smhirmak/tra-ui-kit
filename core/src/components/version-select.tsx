@@ -1,8 +1,8 @@
 import React from 'react';
 import { useVersion } from '@/contexts/version';
 import { cn } from '@/lib/utils';
-import Dropdown from '@/components/dropdown';
-import Badge from '@/components/badge';
+import Dropdown from '@/components/ui/dropdown';
+import Badge from '@/components/ui/badge';
 
 interface VersionSelectProps {
   className?: string;

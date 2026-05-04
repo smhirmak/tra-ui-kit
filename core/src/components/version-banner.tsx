@@ -1,5 +1,5 @@
 import React from 'react';
-import InformationStatus from '@/components/information-status';
+import InformationStatus from '@/components/ui/information-status';
 import { useVersion } from '@/contexts/version';
 
 const VersionBanner: React.FC = () => {

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import DatePicker from '../date-picker';
+import DatePicker from '../ui/date-picker';
 
 describe('DatePicker Component', () => {
   const mockOnChange = vi.fn();

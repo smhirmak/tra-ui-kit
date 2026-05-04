@@ -3,7 +3,7 @@ import ComponentSourceViewer from '@/components/component-source-viewer';
 import { TOCItem } from '@/components/table-of-contents';
 import ApiTable from '@/components/api-table';
 import { useTOC } from '@/contexts/toc/TOCContext';
-import { Tab, Tabs } from '@/components/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -105,7 +105,7 @@ const BackToTopButtonPage = () => {
             </div>
           </div>
           <CustomSyntaxHighlighter
-            content={`import BackToTopButton from '@/components/back-to-top-button';
+            content={`import BackToTopButton from '@/components/ui/back-to-top-button';
 
 function App() {
   return (
@@ -126,7 +126,7 @@ function App() {
           <p className="text-neutral-grey">You can customize the icon displayed in the button.</p>
           <CustomSyntaxHighlighter
             content={`import { ArrowUpIcon } from '@phosphor-icons/react';
-import BackToTopButton from '@/components/back-to-top-button';
+import BackToTopButton from '@/components/ui/back-to-top-button';
 
 <BackToTopButton 
   icon={<ArrowUpIcon className="w-6 h-6" />}

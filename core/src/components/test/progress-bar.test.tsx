@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
-import ProgressBar from '../progress-bar';
+import ProgressBar from '../ui/progress-bar';
 
 describe('ProgressBar', () => {
   describe('Rendering', () => {

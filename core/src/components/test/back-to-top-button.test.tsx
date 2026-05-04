@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import BackToTopButton from '../back-to-top-button';
+import BackToTopButton from '../ui/back-to-top-button';
 
 describe('BackToTopButton Component', () => {
   beforeEach(() => {
