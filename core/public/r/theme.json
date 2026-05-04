@@ -4,9 +4,7 @@
   "type": "registry:style",
   "title": "MSI UI Theme",
   "description": "Complete theme configuration for MSI UI Kit including colors and design tokens",
-  "dependencies": [
-    "@phosphor-icons/react"
-  ],
+  "dependencies": ["@phosphor-icons/react"],
   "cssVars": {
     "theme": {
       "font-sans": "Inter, sans-serif",

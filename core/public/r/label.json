@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Label",
   "description": "A label component that can be used to describe form elements.",
-  "registryDependencies": [
-    "@msi/tooltip"
-  ],
+  "registryDependencies": ["@msi/tooltip"],
   "files": [
     {
       "path": "registry/msi-kit/components/label.tsx",

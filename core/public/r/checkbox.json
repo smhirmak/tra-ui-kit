@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Checkbox",
   "description": "A checkbox component that can be used to select options.",
-  "registryDependencies": [
-    "@msi/label"
-  ],
+  "registryDependencies": ["@msi/label"],
   "files": [
     {
       "path": "registry/msi-kit/components/checkbox.tsx",

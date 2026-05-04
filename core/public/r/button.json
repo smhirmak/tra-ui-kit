@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Button",
   "description": "A button component that can be used to trigger an action.",
-  "dependencies": [
-    "tailwindcss"
-  ],
-  "registryDependencies": [
-    "@msi/loading-spinner"
-  ],
+  "dependencies": ["tailwindcss"],
+  "registryDependencies": ["@msi/loading-spinner"],
   "files": [
     {
       "path": "registry/msi-kit/components/button.tsx",

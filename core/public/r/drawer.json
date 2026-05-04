@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Drawer",
   "description": "A drawer component that can be used to display a modal window.",
-  "registryDependencies": [
-    "@msi/button"
-  ],
+  "registryDependencies": ["@msi/button"],
   "files": [
     {
       "path": "registry/msi-kit/components/drawer.tsx",

@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Search Field",
   "description": "A search field component that can be used to enter search queries.",
-  "registryDependencies": [
-    "@msi/text-field"
-  ],
+  "registryDependencies": ["@msi/text-field"],
   "files": [
     {
       "path": "registry/msi-kit/components/search-field.tsx",

@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Language Select",
   "description": "A language select component that can be used to select a language.",
-  "registryDependencies": [
-    "@msi/select"
-  ],
+  "registryDependencies": ["@msi/select"],
   "files": [
     {
       "path": "registry/msi-kit/components/language-select.tsx",

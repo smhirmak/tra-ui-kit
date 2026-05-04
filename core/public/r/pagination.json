@@ -4,10 +4,7 @@
   "type": "registry:ui",
   "title": "Pagination",
   "description": "A pagination component that can be used to navigate through pages.",
-  "registryDependencies": [
-    "@msi/button",
-    "@msi/label"
-  ],
+  "registryDependencies": ["@msi/button", "@msi/label"],
   "files": [
     {
       "path": "registry/msi-kit/components/pagination.tsx",

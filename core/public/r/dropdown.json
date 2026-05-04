@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Dropdown",
   "description": "A dropdown component that can be used to display a list of options.",
-  "registryDependencies": [
-    "@msi/popover"
-  ],
+  "registryDependencies": ["@msi/popover"],
   "files": [
     {
       "path": "registry/msi-kit/components/dropdown.tsx",

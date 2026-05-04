@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Back to Top Button",
   "description": "A back to top button component that can be used to quickly scroll to the top of the page.",
-  "registryDependencies": [
-    "@msi/button"
-  ],
+  "registryDependencies": ["@msi/button"],
   "files": [
     {
       "path": "registry/msi-kit/components/back-to-top-button.tsx",

@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Input",
   "description": "An input component that can be used to enter text.",
-  "registryDependencies": [
-    "@msi/button"
-  ],
+  "registryDependencies": ["@msi/button"],
   "files": [
     {
       "path": "registry/msi-kit/components/input.tsx",

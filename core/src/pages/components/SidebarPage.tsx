@@ -21,6 +21,12 @@ const tocItems: TOCItem[] = [
 const apiTableData = [
   { prop: 'children', type: 'ReactNode', default: '-', description: 'Sidebar items content' },
   { prop: 'headerLogo', type: 'string', default: '-', description: 'Logo image URL for header' },
+  {
+    prop: 'expandable',
+    type: 'boolean',
+    default: 'true',
+    description: 'Whether the sidebar is expandable',
+  },
 ];
 
 const sidebarItemApiData = [

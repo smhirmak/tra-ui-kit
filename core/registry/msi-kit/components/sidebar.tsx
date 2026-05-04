@@ -1,9 +1,11 @@
-import React, { createContext, useContext, useState, ReactNode, useMemo } from 'react';
+import { createContext, useContext, useState, ReactNode, useMemo, useEffect } from 'react';
 import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
+import Button from './button';
 
 interface ISidebar {
   children: ReactNode;
   headerLogo?: string;
+  expandable?: boolean;
 }
 
 interface ISidebarItem {
@@ -17,11 +19,18 @@ interface ISidebarItem {
 
 const SidebarContext = createContext<{ expanded: boolean } | undefined>(undefined);
 
-const Sidebar: React.FC<ISidebar> = ({ children, headerLogo }) => {
+const Sidebar = ({ children, headerLogo, expandable = true }: ISidebar) => {
   const [expanded, setExpanded] = useState(true);
   const contextValue = useMemo(() => ({ expanded }), [expanded]);
+
+  useEffect(() => {
+    if (!expandable) {
+      setExpanded(true);
+    }
+  }, [expandable]);
+
   return (
-    <aside className="z-2 sticky top-0 max-h-screen overflow-y-auto overflow-x-hidden">
+    <aside className="z-2 sticky top-0 max-h-screen w-fit overflow-y-auto overflow-x-hidden">
       <nav className="bg-background flex h-full flex-col shadow-xs">
         <div
           className={`flex items-center ${expanded && headerLogo ? 'justify-between' : 'justify-end'} p-4 pb-2`}
@@ -33,13 +42,16 @@ const Sidebar: React.FC<ISidebar> = ({ children, headerLogo }) => {
               className={`overflow-hidden transition-all ease-out ${expanded ? 'w-16' : 'w-0'}`}
             />
           )}
-          <button
-            type="button"
-            onClick={() => setExpanded((curr) => !curr)}
-            className="bg-background self-end p-1.5 hover:bg-neutral dark:hover:bg-primary-15"
-          >
-            {expanded ? <CaretLeftIcon /> : <CaretRightIcon />}
-          </button>
+          {expandable && (
+            <Button
+              type="button"
+              onClick={() => setExpanded((curr) => !curr)}
+              className="bg-background self-end p-1.5 size-fit hover:bg-neutral dark:hover:bg-primary-15"
+              title={expanded ? 'Collapse Sidebar' : 'Expand Sidebar'}
+            >
+              {expanded ? <CaretLeftIcon /> : <CaretRightIcon />}
+            </Button>
+          )}
         </div>
 
         <SidebarContext.Provider value={contextValue}>

@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Tooltip",
   "description": "A tooltip component that can be used to display additional information.",
-  "dependencies": [
-    "class-variance-authority"
-  ],
+  "dependencies": ["class-variance-authority"],
   "files": [
     {
       "path": "registry/msi-kit/components/tooltip.tsx",

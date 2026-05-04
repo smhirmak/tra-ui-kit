@@ -4,10 +4,7 @@
   "type": "registry:ui",
   "title": "Loader",
   "description": "A loader component that can be used to indicate loading state.",
-  "registryDependencies": [
-    "@msi/loading-spinner",
-    "@msi/loading-linear"
-  ],
+  "registryDependencies": ["@msi/loading-spinner", "@msi/loading-linear"],
   "files": [
     {
       "path": "registry/msi-kit/components/loader.tsx",

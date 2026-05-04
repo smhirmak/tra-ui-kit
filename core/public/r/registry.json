@@ -561,6 +561,7 @@
       "type": "registry:ui",
       "title": "Sidebar",
       "description": "A sidebar component that can be used to display a navigation menu.",
+      "registryDependencies": ["@msi/button"],
       "files": [
         {
           "path": "registry/msi-kit/components/sidebar.tsx",

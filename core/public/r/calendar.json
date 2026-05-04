@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Calendar",
   "description": "A calendar component that can be used to select dates.",
-  "registryDependencies": [
-    "@msi/button"
-  ],
+  "registryDependencies": ["@msi/button"],
   "files": [
     {
       "path": "registry/msi-kit/components/calendar.tsx",

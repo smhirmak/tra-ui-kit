@@ -1,17 +1,17 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
 function updateIndexCSS() {
   const currentDir = process.cwd();
 
-  const cssPath = path.join(currentDir, "src", "index.css");
+  const cssPath = path.join(currentDir, 'src', 'index.css');
 
   let cssContent;
 
   try {
-    cssContent = fs.readFileSync(cssPath, "utf8");
+    cssContent = fs.readFileSync(cssPath, 'utf8');
   } catch (error) {
-    console.error("src/index.css dosyası bulunamadı.");
+    console.error('src/index.css dosyası bulunamadı.');
     process.exit(1);
   }
 
@@ -32,7 +32,7 @@ function updateIndexCSS() {
   cssContent = newColors + cssContent;
 
   fs.writeFileSync(cssPath, cssContent);
-  console.log("index.css güncellendi.");
+  console.log('index.css güncellendi.');
 }
 
 module.exports = updateIndexCSS;

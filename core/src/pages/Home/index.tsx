@@ -122,9 +122,7 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-10 text-base text-neutral-grey/75 md:text-lg"
           >
-            {t(
-              'Beautifully crafted components � TypeScript � Dark Mode � Fully customizable',
-            )}
+            {t('Beautifully crafted components � TypeScript � Dark Mode � Fully customizable')}
           </motion.p>
 
           {/* CTA Buttons */}

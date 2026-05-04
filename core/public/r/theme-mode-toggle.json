@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "title": "Theme Mode Toggle",
   "description": "A theme mode toggle component that can be used to switch between light and dark modes.",
-  "registryDependencies": [
-    "@msi/button"
-  ],
+  "registryDependencies": ["@msi/button"],
   "files": [
     {
       "path": "registry/msi-kit/components/theme-mode-toggle.tsx",

@@ -4,10 +4,7 @@
   "type": "registry:ui",
   "title": "Text Field",
   "description": "A text field component that can be used to enter text.",
-  "registryDependencies": [
-    "@msi/input",
-    "@msi/label"
-  ],
+  "registryDependencies": ["@msi/input", "@msi/label"],
   "files": [
     {
       "path": "registry/msi-kit/components/text-field.tsx",

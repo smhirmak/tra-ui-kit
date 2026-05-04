@@ -4,16 +4,8 @@
   "type": "registry:ui",
   "title": "Date Picker",
   "description": "A date picker component that can be used to select dates.",
-  "dependencies": [
-    "date-fns",
-    "react-day-picker"
-  ],
-  "registryDependencies": [
-    "@msi/button",
-    "@msi/calendar",
-    "@msi/label",
-    "@msi/popover"
-  ],
+  "dependencies": ["date-fns", "react-day-picker"],
+  "registryDependencies": ["@msi/button", "@msi/calendar", "@msi/label", "@msi/popover"],
   "files": [
     {
       "path": "registry/msi-kit/components/date-picker.tsx",
