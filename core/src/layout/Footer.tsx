@@ -121,9 +121,16 @@ const Footer = () => {
         {/* Bottom */}
         <div className="mt-12 border-t border-border pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-sm text-neutral-grey">
-              · {new Date().getFullYear()} TRA UI Kit. All rights reserved.
-            </p>
+            <div className="flex items-center gap-2">
+              <img
+                src="/assets/logos/tra-ui-kit.png"
+                alt="TRA UI Kit Logo"
+                className="h-8 w-auto"
+              />
+              <p className="text-sm text-neutral-grey">
+                · {new Date().getFullYear()} TRA UI Kit. All rights reserved.
+              </p>
+            </div>
             <div className="flex space-x-6 text-sm">
               <a
                 href="/privacy"

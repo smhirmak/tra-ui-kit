@@ -98,14 +98,21 @@ const Home = () => {
           </motion.div>
 
           {/* Title */}
-          <motion.h1
+          {/* <motion.h1
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-6 bg-linear-to-r from-primary via-primary-focused to-secondary bg-clip-text text-6xl font-bold text-transparent sm:text-7xl md:text-8xl lg:text-9xl"
           >
             TRA UI Kit
-          </motion.h1>
+          </motion.h1> */}
+          <motion.img
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            src="/assets/logos/tra-ui-kit.png"
+            className="h-52 w-auto mb-6 place-self-center"
+          />
 
           <motion.p
             initial={{ opacity: 0 }}
