@@ -2,8 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "typhography",
   "type": "registry:style",
-  "title": "MSI UI Typography",
-  "description": "Typography design tokens for MSI UI Kit",
+  "title": "TRA UI Typography",
+  "description": "Typography design tokens for TRA UI Kit",
   "cssVars": {
     "theme": {
       "font-sans": "Inter, sans-serif",

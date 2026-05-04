@@ -125,7 +125,7 @@ const PopoverPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add popover" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add popover" />
           </Tab>
           <Tab
             value="manual"

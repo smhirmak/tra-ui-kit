@@ -63,7 +63,7 @@ const LoadingLinearPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add loading-linear" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add loading-linear" />
           </Tab>
           <Tab
             value="manual"

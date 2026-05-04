@@ -91,7 +91,7 @@ const ProgressBarPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add progress-bar" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add progress-bar" />
           </Tab>
           <Tab
             value="manual"

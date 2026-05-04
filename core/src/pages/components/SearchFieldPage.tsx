@@ -79,7 +79,7 @@ const SearchFieldPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add search-field" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add search-field" />
           </Tab>
           <Tab
             value="manual"

@@ -15,7 +15,7 @@ describe('Pagination', () => {
           onPageChange={mockOnPageChange}
         />,
       );
-      expect(container.querySelector('.MsiPagination-container')).toBeInTheDocument();
+      expect(container.querySelector('.TraPagination-container')).toBeInTheDocument();
     });
 
     it('should render page numbers correctly', () => {
@@ -26,7 +26,7 @@ describe('Pagination', () => {
           onPageChange={mockOnPageChange}
         />,
       );
-      const pageButtons = container.querySelectorAll('.MsiPagination-pageButton');
+      const pageButtons = container.querySelectorAll('.TraPagination-pageButton');
       expect(pageButtons).toHaveLength(5);
     });
 
@@ -52,7 +52,7 @@ describe('Pagination', () => {
           onPageChange={mockOnPageChange}
         />,
       );
-      const selectedButton = container.querySelector('.MsiPagination-selectedPageButton');
+      const selectedButton = container.querySelector('.TraPagination-selectedPageButton');
       expect(selectedButton).toHaveTextContent('5');
       expect(selectedButton).toHaveAttribute('aria-current', 'page');
     });
@@ -68,7 +68,7 @@ describe('Pagination', () => {
           onPageChange={mockOnPageChange}
         />,
       );
-      expect(container.querySelector('.MsiPagination-simpleWithInput')).toBeInTheDocument();
+      expect(container.querySelector('.TraPagination-simpleWithInput')).toBeInTheDocument();
       expect(container.querySelector('input')).toHaveValue(5);
     });
 
@@ -82,7 +82,7 @@ describe('Pagination', () => {
           onPageChange={mockOnPageChange}
         />,
       );
-      expect(container.querySelector('.MsiPagination-simpleWithoutInput')).toHaveTextContent(
+      expect(container.querySelector('.TraPagination-simpleWithoutInput')).toHaveTextContent(
         '5 / 10',
       );
     });
@@ -97,7 +97,7 @@ describe('Pagination', () => {
           onPageChange={mockOnPageChange}
         />,
       );
-      expect(container.querySelector('.MsiPagination-doubleLeft')).toBeInTheDocument();
+      expect(container.querySelector('.TraPagination-doubleLeft')).toBeInTheDocument();
     });
 
     it('should render last page button by default', () => {
@@ -124,7 +124,7 @@ describe('Pagination', () => {
           hideFirstLastArrows
         />,
       );
-      expect(container.querySelector('.MsiPagination-doubleLeft')).not.toBeInTheDocument();
+      expect(container.querySelector('.TraPagination-doubleLeft')).not.toBeInTheDocument();
     });
 
     it('should render previous page button by default', () => {
@@ -135,7 +135,7 @@ describe('Pagination', () => {
           onPageChange={mockOnPageChange}
         />,
       );
-      expect(container.querySelector('.MsiPagination-left')).toBeInTheDocument();
+      expect(container.querySelector('.TraPagination-left')).toBeInTheDocument();
     });
 
     it('should hide navigation arrows when hideNavigationArrows is true', () => {
@@ -147,7 +147,7 @@ describe('Pagination', () => {
           hideNavigationArrows
         />,
       );
-      expect(container.querySelector('.MsiPagination-left')).not.toBeInTheDocument();
+      expect(container.querySelector('.TraPagination-left')).not.toBeInTheDocument();
     });
   });
 
@@ -162,7 +162,7 @@ describe('Pagination', () => {
         />,
       );
 
-      const pageButtons = container.querySelectorAll('.MsiPagination-pageButton');
+      const pageButtons = container.querySelectorAll('.TraPagination-pageButton');
       const page5Button = Array.from(pageButtons).find(
         (btn) => btn.textContent === '5',
       ) as HTMLElement;
@@ -181,7 +181,7 @@ describe('Pagination', () => {
         />,
       );
 
-      const firstPageButton = container.querySelector('.MsiPagination-doubleLeft') as HTMLElement;
+      const firstPageButton = container.querySelector('.TraPagination-doubleLeft') as HTMLElement;
       await user.click(firstPageButton);
       expect(mockOnPageChange).toHaveBeenCalledWith(1);
     });
@@ -196,7 +196,7 @@ describe('Pagination', () => {
         />,
       );
 
-      const prevButton = container.querySelector('.MsiPagination-left') as HTMLElement;
+      const prevButton = container.querySelector('.TraPagination-left') as HTMLElement;
       await user.click(prevButton);
       expect(mockOnPageChange).toHaveBeenCalledWith(4);
     });
@@ -248,8 +248,8 @@ describe('Pagination', () => {
         />,
       );
 
-      const firstButton = container.querySelector('.MsiPagination-doubleLeft') as HTMLElement;
-      const prevButton = container.querySelector('.MsiPagination-left') as HTMLElement;
+      const firstButton = container.querySelector('.TraPagination-doubleLeft') as HTMLElement;
+      const prevButton = container.querySelector('.TraPagination-left') as HTMLElement;
 
       // Buttons have disabled styling (cursor-not-allowed, disabled colors)
       expect(firstButton).toHaveClass('cursor-not-allowed');
@@ -356,7 +356,7 @@ describe('Pagination', () => {
         />,
       );
 
-      const firstButton = container.querySelector('.MsiPagination-doubleLeft');
+      const firstButton = container.querySelector('.TraPagination-doubleLeft');
       expect(firstButton).toHaveClass('custom-arrows');
     });
 
@@ -415,7 +415,7 @@ describe('Pagination', () => {
         />,
       );
 
-      const pageButtons = container.querySelectorAll('.MsiPagination-pageButton');
+      const pageButtons = container.querySelectorAll('.TraPagination-pageButton');
       expect(pageButtons).toHaveLength(1);
     });
 
@@ -429,7 +429,7 @@ describe('Pagination', () => {
         />,
       );
 
-      const prevButton = container.querySelector('.MsiPagination-left') as HTMLElement;
+      const prevButton = container.querySelector('.TraPagination-left') as HTMLElement;
       await user.click(prevButton);
       // Should have disabled styling on first page
       expect(prevButton).toHaveClass('cursor-not-allowed');

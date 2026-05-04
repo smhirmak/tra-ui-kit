@@ -7,7 +7,7 @@
 ```
 src/components/button.tsx          (güncelle)
 src/versions/v1/components/button.tsx  (güncelle)
-registry/msi-kit/components/button.tsx (güncelle)
+registry/tra-kit/components/button.tsx (güncelle)
 ```
 
 → 3 farklı yerde aynı değişiklik = KÖTÜ
@@ -17,7 +17,7 @@ registry/msi-kit/components/button.tsx (güncelle)
 ## Seçenek 1: Registry-First (ÖNERİLEN)
 
 ```
-registry/msi-kit/components/
+registry/tra-kit/components/
   └── button.tsx          ← TEK KAYNAK (CLI + Latest)
 
 src/components/
@@ -34,7 +34,7 @@ src/versions/
 
 ```bash
 # Sadece registry'yi güncelle
-edit registry/msi-kit/components/button.tsx
+edit registry/tra-kit/components/button.tsx
 
 # Otomatik:
 # - src/components/button.tsx registry'den import ediyor
@@ -46,10 +46,10 @@ edit registry/msi-kit/components/button.tsx
 
 ```bash
 # Adım 1: Eski versiyonu sakla
-cp registry/msi-kit/components/button.tsx src/versions/v0/components/button.tsx
+cp registry/tra-kit/components/button.tsx src/versions/v0/components/button.tsx
 
 # Adım 2: Registry'de yeni versiyonu yaz
-edit registry/msi-kit/components/button.tsx
+edit registry/tra-kit/components/button.tsx
 
 # Adım 3: versions.json güncelle
 {
@@ -64,7 +64,7 @@ edit registry/msi-kit/components/button.tsx
 
 ```
 core/
-├── registry/msi-kit/
+├── registry/tra-kit/
 │   ├── components/
 │   │   ├── button.tsx        ← SOURCE OF TRUTH
 │   │   ├── input.tsx
@@ -91,7 +91,7 @@ core/
 
 ```bash
 # 1. Sadece registry'yi düzenle
-vim registry/msi-kit/components/button.tsx
+vim registry/tra-kit/components/button.tsx
 
 # 2. Hepsi otomatik güncellenir:
 # - Docs site (src/components re-export)
@@ -105,11 +105,11 @@ vim registry/msi-kit/components/button.tsx
 # Scenario: color prop kaldırıyorsun, variant kullanıyorsun
 
 # 1. Eski versiyonu kaydet
-cp registry/msi-kit/components/button.tsx \
+cp registry/tra-kit/components/button.tsx \
    src/versions/v0/components/button.tsx
 
 # 2. Registry'de breaking change yap
-vim registry/msi-kit/components/button.tsx
+vim registry/tra-kit/components/button.tsx
 # color prop'u kaldır, variant ekle
 
 # 3. versions.json güncelle
@@ -124,10 +124,10 @@ cp src/pages/components/ButtonPage.tsx \
 
 ```bash
 # 1. Sadece registry'ye ekle
-touch registry/msi-kit/components/tooltip.tsx
+touch registry/tra-kit/components/tooltip.tsx
 
 # 2. Re-export oluştur
-echo "export { default } from '@/registry/msi-kit/components/tooltip';" \
+echo "export { default } from '@/registry/tra-kit/components/tooltip';" \
   > src/components/tooltip.tsx
 
 # 3. Component sayfası oluştur
@@ -140,9 +140,9 @@ touch src/pages/components/TooltipPage.tsx
 
 ```tsx
 // Simple re-export from registry
-export { default } from '@/registry/msi-kit/components/button';
-export * from '@/registry/msi-kit/components/button';
-export type { IButton } from '@/registry/msi-kit/components/button';
+export { default } from '@/registry/tra-kit/components/button';
+export * from '@/registry/tra-kit/components/button';
+export type { IButton } from '@/registry/tra-kit/components/button';
 ```
 
 ### 2. src/lib/version-loader.ts (Updated)
@@ -157,7 +157,7 @@ export const getVersionedComponent = (version: string, componentName: string) =>
   }
 
   // Latest (v1+) için registry'den al
-  return lazy(() => import(`@/registry/msi-kit/components/${componentName.toLowerCase()}.tsx`));
+  return lazy(() => import(`@/registry/tra-kit/components/${componentName.toLowerCase()}.tsx`));
 };
 ```
 
@@ -173,7 +173,7 @@ const getButtonComponent = (version: string) => {
     return lazy(() => import('@/versions/v0/components/button'));
   }
   // Latest from registry
-  return lazy(() => import('@/registry/msi-kit/components/button'));
+  return lazy(() => import('@/registry/tra-kit/components/button'));
 };
 ```
 
@@ -211,15 +211,15 @@ const getButtonComponent = (version: string) => {
 cp src/components/button.tsx src/components/button.tsx.backup
 
 # Re-export yap
-echo "export { default } from '@/registry/msi-kit/components/button';" > src/components/button.tsx
-echo "export * from '@/registry/msi-kit/components/button';" >> src/components/button.tsx
+echo "export { default } from '@/registry/tra-kit/components/button';" > src/components/button.tsx
+echo "export * from '@/registry/tra-kit/components/button';" >> src/components/button.tsx
 ```
 
 ### 2. Registry'nin Güncel Olduğunu Doğrula
 
 ```bash
 # Registry ve src/components'in aynı olduğunu kontrol et
-diff src/components/button.tsx.backup registry/msi-kit/components/button.tsx
+diff src/components/button.tsx.backup registry/tra-kit/components/button.tsx
 ```
 
 ### 3. Versions Klasörünü Temizle
@@ -241,6 +241,6 @@ export const getVersionedComponent = (version: string, componentName: string) =>
   }
 
   // Latest always from registry
-  return lazy(() => import(`@/registry/msi-kit/components/${componentName}`));
+  return lazy(() => import(`@/registry/tra-kit/components/${componentName}`));
 };
 ```

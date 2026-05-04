@@ -70,7 +70,7 @@ const BadgePage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add badge" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add badge" />
           </Tab>
           <Tab
             value="manual"

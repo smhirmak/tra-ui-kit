@@ -83,7 +83,7 @@ const LoaderPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add loader" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add loader" />
           </Tab>
           <Tab
             value="manual"

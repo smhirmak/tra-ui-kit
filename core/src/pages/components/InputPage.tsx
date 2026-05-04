@@ -90,7 +90,7 @@ const InputPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add input" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add input" />
           </Tab>
           <Tab
             value="manual"

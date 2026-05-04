@@ -9,26 +9,6 @@ import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
-const MsiLogo = () => (
-  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-linear-to-br from-primary to-secondary shadow-soft-primary">
-    <svg
-      width="22"
-      height="20"
-      viewBox="0 0 22 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M2 17L6.8 3L11 10.5L15.2 3L20 17"
-        stroke="white"
-        strokeWidth="2.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </div>
-);
-
 const Header = () => {
   const { t } = useTranslation();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -73,8 +53,12 @@ const Header = () => {
           to={versionPrefix}
           className="relative flex items-center gap-2.5"
         >
-          <MsiLogo />
-          <span className="text-xl font-bold tracking-tight">MSI UI Kit</span>
+          <img
+            src="/assets/logos/tra-ui-kit.png"
+            alt="TRA UI KIT"
+            className="h-12 w-auto"
+          />
+          <span className="text-xl font-bold tracking-tight">TRA UI Kit</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -106,7 +90,7 @@ const Header = () => {
         <div className="flex items-center space-x-2 justify-end">
           <VersionSelect className="hidden md:block" />
           <a
-            href="https://github.com/smhirmak/msi-ui-kit"
+            href="https://github.com/smhirmak/tra-ui-kit"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:flex cursor-pointer! px-3 py-1.5 text-neutral-grey hover:text-primary transition-colors rounded-md hover:bg-neutral-light"
@@ -167,7 +151,7 @@ const Header = () => {
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
                 <VersionSelect />
                 <a
-                  href="https://github.com/smhirmak/msi-ui-kit"
+                  href="https://github.com/smhirmak/tra-ui-kit"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}

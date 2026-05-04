@@ -121,7 +121,7 @@ const Pagination: React.FC<IPagination> = ({
 
   return (
     <nav
-      className="MsiPagination-container flex items-center space-x-2"
+      className="TraPagination-container flex items-center space-x-2"
       aria-label="Pagination"
     >
       {!hideFirstLastArrows && (
@@ -133,7 +133,7 @@ const Pagination: React.FC<IPagination> = ({
           disabled={disabled ?? currentPage === 1}
           className={cn(
             paginationVariants({ size, status: currentPage === 1 ? 'disabled' : 'default' }),
-            'MsiPagination-doubleLeft bg-transparent',
+            'TraPagination-doubleLeft bg-transparent',
             arrowsClassName,
           )}
           color={color}
@@ -154,7 +154,7 @@ const Pagination: React.FC<IPagination> = ({
           disabled={disabled ?? currentPage === 1}
           className={cn(
             paginationVariants({ size, status: currentPage === 1 ? 'disabled' : 'default' }),
-            'MsiPagination-left bg-transparent hover:bg-primary/90',
+            'TraPagination-left bg-transparent hover:bg-primary/90',
             arrowsClassName,
           )}
           color={color}
@@ -167,9 +167,9 @@ const Pagination: React.FC<IPagination> = ({
         </Button>
       )}
       {mode === 'simple' && simpleWithoutInput ? (
-        <div className="MsiPagination-simpleWithoutInput text-lg">{`${currentPage} / ${totalPages}`}</div>
+        <div className="TraPagination-simpleWithoutInput text-lg">{`${currentPage} / ${totalPages}`}</div>
       ) : mode === 'simple' && !simpleWithoutInput ? (
-        <div className="MsiPagination-simpleWithInput flex items-center gap-2">
+        <div className="TraPagination-simpleWithInput flex items-center gap-2">
           <Input
             className="w-13 h-8 text-center"
             type="number"
@@ -202,8 +202,8 @@ const Pagination: React.FC<IPagination> = ({
                       size,
                       status: page === currentPage ? 'active' : 'default',
                     }),
-                    { 'MsiPagination-selectedPageButton': page === currentPage },
-                    'MsiPagination-pageButton',
+                    { 'TraPagination-selectedPageButton': page === currentPage },
+                    'TraPagination-pageButton',
                   )}
                   color={color}
                   aria-label={`Page ${page}`}

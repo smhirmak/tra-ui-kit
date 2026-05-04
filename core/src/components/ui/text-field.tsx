@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/text-field';
-export { default } from '../../../registry/msi-kit/components/text-field';
+export * from '../../../registry/tra-kit/components/text-field';
+export { default } from '../../../registry/tra-kit/components/text-field';

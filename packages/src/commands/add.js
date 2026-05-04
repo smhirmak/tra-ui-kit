@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 
 async function add(componentName, language) {
   const currentDir = process.cwd();
-  const componentDir = path.join(currentDir, 'src/components/msi-kit');
+  const componentDir = path.join(currentDir, 'src/components/tra-kit');
   const templateDir = path.join(__dirname, '..', 'components');
 
   // Determine the correct file extension based on user preference
@@ -23,7 +23,7 @@ async function add(componentName, language) {
   const componentContent = fs.readFileSync(templateFilePath, 'utf8');
   const componentFilePath = path.join(componentDir, `${componentName}.${fileExtension}`);
   fs.writeFileSync(componentFilePath, componentContent.trim());
-  console.log(`${componentName} component added successfully at src/components/msi-kit`);
+  console.log(`${componentName} component added successfully at src/components/tra-kit`);
 }
 
 module.exports = add;

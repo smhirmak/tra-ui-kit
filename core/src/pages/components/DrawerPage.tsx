@@ -90,7 +90,7 @@ const DrawerPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add drawer" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add drawer" />
           </Tab>
           <Tab
             value="manual"
@@ -110,7 +110,7 @@ const DrawerPage = () => {
               <DrawerTrigger>Open Drawer</DrawerTrigger>
               <DrawerContent>
                 <DrawerHeader>
-                  <DrawerTitle>MSI Drawer</DrawerTitle>
+                  <DrawerTitle>TRA Drawer</DrawerTitle>
                   <DrawerDescription>This is a drawer component</DrawerDescription>
                 </DrawerHeader>
                 <DrawerBody>
@@ -129,7 +129,7 @@ const DrawerPage = () => {
   <DrawerTrigger>Open Drawer</DrawerTrigger>
   <DrawerContent>
     <DrawerHeader>
-      <DrawerTitle>MSI Drawer</DrawerTitle>
+      <DrawerTitle>TRA Drawer</DrawerTitle>
       <DrawerDescription>This is a drawer component</DrawerDescription>
     </DrawerHeader>
     <DrawerBody>

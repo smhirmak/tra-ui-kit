@@ -123,7 +123,7 @@ const Dropdown: React.FC<IDropdownProps> = ({
       forceTriggerWidth={forceTriggerWidth}
     >
       <div
-        className={cn('MsiDropdown relative', className)}
+        className={cn('TraDropdown relative', className)}
         id={id}
       >
         {label && <div className="text-neutral mb-2 text-sm font-medium">{label}</div>}

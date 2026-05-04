@@ -1,1 +1,1 @@
-export * from '../../../registry/msi-kit/components/accordion';
+export * from '../../../registry/tra-kit/components/accordion';

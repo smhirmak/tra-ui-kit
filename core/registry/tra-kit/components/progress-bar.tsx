@@ -17,11 +17,11 @@ interface IProgressBar {
 }
 
 const linearContainerVariants = cva(
-  'MsiProgressBar-linearContainer bg-primary-15 relative h-1 w-full overflow-hidden rounded-2xl',
+  'TraProgressBar-linearContainer bg-primary-15 relative h-1 w-full overflow-hidden rounded-2xl',
 );
 
 const linearVariants = cva(
-  'MsiProgressBar-linearProgress bg-primary absolute left-0 top-0 size-full transition-transform duration-300',
+  'TraProgressBar-linearProgress bg-primary absolute left-0 top-0 size-full transition-transform duration-300',
 );
 
 interface StepTextProps {
@@ -30,7 +30,7 @@ interface StepTextProps {
 }
 
 const StepText = ({ className, children }: StepTextProps) => (
-  <p className={cn('MsiProgressBar-stepText self-end text-sm text-neutral-light-black', className)}>
+  <p className={cn('TraProgressBar-stepText self-end text-sm text-neutral-light-black', className)}>
     {children}
   </p>
 );
@@ -59,18 +59,18 @@ const ProgressBar = memo(
       valueType === 'number' ? `${currentStep}/${totalStepSize}` : `${Math.round(progress)}%`;
 
     return (
-      <div className={cn(containerClassName, 'MsiProgressBar-container flex flex-col gap-1')}>
+      <div className={cn(containerClassName, 'TraProgressBar-container flex flex-col gap-1')}>
         <div
           className={cn(
             headerContainerClassName,
-            `MsiProgressBar-headerContainer flex ${progressTitle ? 'justify-between' : 'justify-end'}`,
+            `TraProgressBar-headerContainer flex ${progressTitle ? 'justify-between' : 'justify-end'}`,
           )}
         >
           {progressTitle && (
             <p
               className={cn(
                 progressTitleClassName,
-                'MsiProgressBar-title text-neutral-light-black',
+                'TraProgressBar-title text-neutral-light-black',
               )}
             >
               {progressTitle}

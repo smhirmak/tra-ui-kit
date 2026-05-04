@@ -89,7 +89,7 @@ const AvatarPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add avatar" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add avatar" />
           </Tab>
           <Tab
             value="manual"

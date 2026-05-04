@@ -1,13 +1,13 @@
 {
-  "name": "msi-ui-kit",
+  "name": "tra-ui-kit",
   "version": "0.2.1",
   "description": "A CLI tool for initializing and managing UI components with Tailwind CSS.",
-  "main": "bin/msi-ui-kit.js",
+  "main": "bin/tra-ui-kit.js",
   "bin": {
-    "msi-ui-kit": "bin/msi-ui-kit.js"
+    "tra-ui-kit": "bin/tra-ui-kit.js"
   },
   "scripts": {
-    "start": "node bin/msi-ui-kit.js"
+    "start": "node bin/tra-ui-kit.js"
   },
   "dependencies": {
     "commander": "^9.0.0",
@@ -24,10 +24,10 @@
     "src/commands/"
   ],
   "keywords": [
-    "msi",
+    "tra",
     "react",
     "react-ui-kit",
-    "msi-ui-kit",
+    "tra-ui-kit",
     "typescript",
     "ui-kit",
     "cli",

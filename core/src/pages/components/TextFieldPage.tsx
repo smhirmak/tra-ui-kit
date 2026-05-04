@@ -99,7 +99,7 @@ const TextFieldPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add text-field" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add text-field" />
           </Tab>
           <Tab
             value="manual"

@@ -113,7 +113,7 @@ const AccordionPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add accordion" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add accordion" />
           </Tab>
           <Tab
             value="manual"

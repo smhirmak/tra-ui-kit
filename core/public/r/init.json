@@ -2,8 +2,8 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "init",
   "type": "registry:file",
-  "title": "MSI UI Kit Setup",
-  "description": "Complete setup for MSI UI Kit including utils, config, CSS variables, TypeScript config and theme",
+  "title": "TRA UI Kit Setup",
+  "description": "Complete setup for TRA UI Kit including utils, config, CSS variables, TypeScript config and theme",
   "dependencies": [
     "@tailwindcss/typography",
     "tw-animate-css",
@@ -14,19 +14,19 @@
   ],
   "files": [
     {
-      "path": "registry/msi-kit/utils.ts",
+      "path": "registry/tra-kit/utils.ts",
       "content": "import { type ClassValue, clsx } from 'clsx';\r\nimport { twMerge } from 'tailwind-merge';\r\n\r\nexport function cn(...inputs: ClassValue[]) {\r\n  return twMerge(clsx(inputs));\r\n}\r\n",
       "type": "registry:file",
       "target": "lib/utils.ts"
     },
     {
-      "path": "registry/msi-kit/components.json",
-      "content": "{\r\n  \"$schema\": \"https://ui.shadcn.com/schema.json\",\r\n  \"style\": \"default\",\r\n  \"rsc\": false,\r\n  \"tsx\": true,\r\n  \"tailwind\": {\r\n    \"config\": \"tailwind.config.js\",\r\n    \"css\": \"src/index.css\",\r\n    \"baseColor\": \"neutral\",\r\n    \"cssVariables\": true,\r\n    \"prefix\": \"\"\r\n  },\r\n  \"aliases\": {\r\n    \"components\": \"@/components\",\r\n    \"utils\": \"@/lib/utils\",\r\n    \"ui\": \"@/components/ui\",\r\n    \"lib\": \"@/lib\",\r\n    \"hooks\": \"@/hooks\"\r\n  },\r\n  \"registries\": {\r\n    \"@msi\": \"https://msi-ui-kit.vercel.app/r/{name}.json\"\r\n  }\r\n}",
+      "path": "registry/tra-kit/components.json",
+      "content": "{\r\n  \"$schema\": \"https://ui.shadcn.com/schema.json\",\r\n  \"style\": \"default\",\r\n  \"rsc\": false,\r\n  \"tsx\": true,\r\n  \"tailwind\": {\r\n    \"config\": \"tailwind.config.js\",\r\n    \"css\": \"src/index.css\",\r\n    \"baseColor\": \"neutral\",\r\n    \"cssVariables\": true,\r\n    \"prefix\": \"\"\r\n  },\r\n  \"aliases\": {\r\n    \"components\": \"@/components\",\r\n    \"utils\": \"@/lib/utils\",\r\n    \"ui\": \"@/components/ui\",\r\n    \"lib\": \"@/lib\",\r\n    \"hooks\": \"@/hooks\"\r\n  },\r\n  \"registries\": {\r\n    \"@tra\": \"https://ui.trabilisim.tech//r/{name}.json\"\r\n  }\r\n}",
       "type": "registry:file",
       "target": "components.json"
     },
     {
-      "path": "registry/msi-kit/tsconfig.json",
+      "path": "registry/tra-kit/tsconfig.json",
       "content": "{\r\n  \"compilerOptions\": {\r\n    \"baseUrl\": \".\",\r\n    \"paths\": {\r\n      \"@/*\": [\"./*\"]\r\n    }\r\n  }\r\n}",
       "type": "registry:file",
       "target": "tsconfig.json"

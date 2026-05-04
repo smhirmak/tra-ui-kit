@@ -52,7 +52,7 @@ const LoadingSpinnerPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add loading-spinner" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add loading-spinner" />
           </Tab>
           <Tab
             value="manual"

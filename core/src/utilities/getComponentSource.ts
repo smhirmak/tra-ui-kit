@@ -6,7 +6,7 @@
 export const getComponentSource = async (componentName: string): Promise<string> => {
   try {
     // Import the raw source using Vite's ?raw suffix
-    const source = await import(`../../registry/msi-kit/components/${componentName}.tsx?raw`);
+    const source = await import(`../../registry/tra-kit/components/${componentName}.tsx?raw`);
     return source.default;
   } catch (error) {
     console.error(`Failed to load source for component: ${componentName}`, error);

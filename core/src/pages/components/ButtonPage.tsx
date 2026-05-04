@@ -119,7 +119,7 @@ const ButtonPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add button" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add button" />
           </Tab>
           <Tab
             value="manual"

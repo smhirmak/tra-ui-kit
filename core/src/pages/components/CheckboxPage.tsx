@@ -71,7 +71,7 @@ const CheckboxPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add checkbox" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add checkbox" />
           </Tab>
           <Tab
             value="manual"

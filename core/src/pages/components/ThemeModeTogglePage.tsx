@@ -58,7 +58,7 @@ const ThemeModeTogglePage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add theme-mode-toggle" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add theme-mode-toggle" />
           </Tab>
           <Tab
             value="manual"

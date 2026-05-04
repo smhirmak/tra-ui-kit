@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/loader';
-export { default } from '../../../registry/msi-kit/components/loader';
+export * from '../../../registry/tra-kit/components/loader';
+export { default } from '../../../registry/tra-kit/components/loader';

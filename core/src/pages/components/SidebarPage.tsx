@@ -75,7 +75,7 @@ const SidebarPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add sidebar" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add sidebar" />
           </Tab>
           <Tab
             value="manual"

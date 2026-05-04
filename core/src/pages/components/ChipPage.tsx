@@ -81,7 +81,7 @@ const ChipPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add chip" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add chip" />
           </Tab>
           <Tab
             value="manual"

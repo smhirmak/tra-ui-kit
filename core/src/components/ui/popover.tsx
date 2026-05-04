@@ -1,1 +1,1 @@
-export * from '../../../registry/msi-kit/components/popover';
+export * from '../../../registry/tra-kit/components/popover';

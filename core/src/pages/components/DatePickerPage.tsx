@@ -122,7 +122,7 @@ const DatePickerPage = () => {
             value="cli"
             label="CLI"
           >
-            <CustomSyntaxHighlighter content="npx msi-ui-cli add date-picker" />
+            <CustomSyntaxHighlighter content="npx tra-ui-cli add date-picker" />
           </Tab>
           <Tab
             value="manual"

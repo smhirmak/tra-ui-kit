@@ -1,1 +1,1 @@
-export * from '../../../registry/msi-kit/components/tabs';
+export * from '../../../registry/tra-kit/components/tabs';

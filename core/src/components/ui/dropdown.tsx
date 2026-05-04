@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/dropdown';
-export { default } from '../../../registry/msi-kit/components/dropdown';
+export * from '../../../registry/tra-kit/components/dropdown';
+export { default } from '../../../registry/tra-kit/components/dropdown';

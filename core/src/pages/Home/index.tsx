@@ -104,7 +104,7 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-6 bg-linear-to-r from-primary via-primary-focused to-secondary bg-clip-text text-6xl font-bold text-transparent sm:text-7xl md:text-8xl lg:text-9xl"
           >
-            MSI UI Kit
+            TRA UI Kit
           </motion.h1>
 
           <motion.p
@@ -148,7 +148,7 @@ const Home = () => {
               </Button>
             </Link>
             <a
-              href="https://github.com/smhirmak/msi-ui-kit"
+              href="https://github.com/smhirmak/tra-ui-kit"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -240,7 +240,7 @@ const Home = () => {
               style={{ willChange: 'transform, opacity' }}
               className="absolute left-[15%] bottom-[25%] blur-[1px]"
             >
-              <Avatar title="MSI" />
+              <Avatar title="TRA" />
             </motion.div>
 
             <motion.div
@@ -368,7 +368,7 @@ const Home = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="mb-4 text-center text-4xl font-bold md:text-5xl">
-              {t('Why MSI UI Kit?')}
+              {t('Why TRA UI Kit?')}
             </h2>
             <p className="mb-16 text-center text-lg text-neutral-grey">
               {t('Everything you need to build beautiful React applications')}
@@ -491,11 +491,11 @@ const Home = () => {
 
             <div className="space-y-5">
               {[
-                { step: 1, label: t('Initialize MSI UI Kit'), code: 'npx msi-ui-cli init' },
+                { step: 1, label: t('Initialize TRA UI Kit'), code: 'npx tra-ui-cli init' },
                 {
                   step: 2,
                   label: t('Add components'),
-                  code: 'npx msi-ui-cli add button input select',
+                  code: 'npx tra-ui-cli add button input select',
                 },
               ].map(({ step, label, code }) => (
                 <motion.div
@@ -548,7 +548,7 @@ const Home = () => {
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">{t('Ready to get started?')}</h2>
             <p className="mb-8 text-lg text-neutral-grey">
               {t(
-                'Start building with MSI UI Kit today and deliver beautiful, accessible React applications faster.',
+                'Start building with TRA UI Kit today and deliver beautiful, accessible React applications faster.',
               )}
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

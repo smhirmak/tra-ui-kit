@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/badge';
-export { default } from '../../../registry/msi-kit/components/badge';
+export * from '../../../registry/tra-kit/components/badge';
+export { default } from '../../../registry/tra-kit/components/badge';

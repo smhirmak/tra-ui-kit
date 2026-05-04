@@ -1,8 +1,8 @@
-# GitHub Copilot Instructions – MSI UI Kit
+# GitHub Copilot Instructions – TRA UI Kit
 
 ## Proje Genel Bakış
 
-MSI UI Kit, **shadcn/ui mimarisi** üzerine inşa edilmiş, React tabanlı bir bileşen kütüphanesi ve dokümantasyon sitesidir.
+TRA UI Kit, **shadcn/ui mimarisi** üzerine inşa edilmiş, React tabanlı bir bileşen kütüphanesi ve dokümantasyon sitesidir.
 
 - **Framework**: React 19 + TypeScript + Vite
 - **Styling**: TailwindCSS v4 (`@theme` direktifi ile CSS değişkenleri)
@@ -18,14 +18,14 @@ MSI UI Kit, **shadcn/ui mimarisi** üzerine inşa edilmiş, React tabanlı bir b
 
 ```
 core/
-├── registry/msi-kit/
+├── registry/tra-kit/
 │   ├── components/      ← ✅ GERÇEK bileşen implementasyonları burada
 │   └── utils/
 │       └── utils.ts     ← cn() ve preventScrollShift yardımcı fonksiyonları
 │
 ├── src/
 │   ├── components/      ← ⚠️ SADECE registry'den re-export dosyaları
-│   │   ├── button.tsx   ← export * from '../../registry/msi-kit/components/button'
+│   │   ├── button.tsx   ← export * from '../../registry/tra-kit/components/button'
 │   │   ├── formikInputs/  ← Formik entegrasyonlu sarmalayıcılar
 │   │   └── test/        ← Her bileşen için test dosyaları (*.test.tsx)
 │   │
@@ -78,14 +78,14 @@ core/
 
 ### Kural 1: Tek Kayıt Noktası
 
-**Gerçek implementasyon daima `registry/msi-kit/components/<bileşen-adı>.tsx` içinde olmalıdır.**
+**Gerçek implementasyon daima `registry/tra-kit/components/<bileşen-adı>.tsx` içinde olmalıdır.**
 
 `src/components/<bileşen-adı>.tsx` dosyası yalnızca re-export içerir:
 
 ```tsx
 // src/components/button.tsx — SADECE BU KADAR
-export * from '../../registry/msi-kit/components/button';
-export { default } from '../../registry/msi-kit/components/button';
+export * from '../../registry/tra-kit/components/button';
+export { default } from '../../registry/tra-kit/components/button';
 ```
 
 ### Kural 2: CVA (class-variance-authority) Kullanımı
@@ -204,7 +204,7 @@ Yeni bir bileşen eklerken sırasıyla şu adımlar izlenir:
 ### Adım 1 — Registry bileşeni oluştur
 
 ```
-registry/msi-kit/components/<bileşen-adı>.tsx
+registry/tra-kit/components/<bileşen-adı>.tsx
 ```
 
 CVA pattern, `I` prefixli interface, `React.forwardRef`, `export default` kurallarına uy.
@@ -213,8 +213,8 @@ CVA pattern, `I` prefixli interface, `React.forwardRef`, `export default` kurall
 
 ```tsx
 // src/components/<bileşen-adı>.tsx
-export * from '../../registry/msi-kit/components/<bileşen-adı>';
-export { default } from '../../registry/msi-kit/components/<bileşen-adı>';
+export * from '../../registry/tra-kit/components/<bileşen-adı>';
+export { default } from '../../registry/tra-kit/components/<bileşen-adı>';
 ```
 
 ### Adım 3 — Constants.ts componentList'e ekle
@@ -311,7 +311,7 @@ const ComponentPage = () => {
       <section id="installation">
         <h2 className="mb-4 text-2xl font-bold">Installation</h2>
         <CustomSyntaxHighlighter
-          content={`npx shadcn@latest add https://msi-ui-kit.vercel.app/r/<bileşen>.json`}
+          content={`npx shadcn@latest add https://ui.trabilisim.tech//r/<bileşen>.json`}
         />
       </section>
 
@@ -547,10 +547,10 @@ import Constants from '@/constants/Constants';
 ## Sık Yapılan Hatalar ve Dikkat Edilecekler
 
 1. **"tertiary" değil "tertiary"** — Proje genelinde bu yazım kullanılıyor, değiştirme.
-2. **Gerçek implementasyon `registry/msi-kit/components/` içinde** — `src/components/` sadece re-export.
+2. **Gerçek implementasyon `registry/tra-kit/components/` içinde** — `src/components/` sadece re-export.
 3. **Yeni bileşen eklenince `Constants.ts` componentList güncellenmelidir** — Aksi takdirde sidebar ve overview'da görünmez.
 4. **Route eklemeyi unutma** — `src/App.tsx` içindeki ComponentLayout children'ına eklenmeli.
 5. **`preventScrollShift.lock()/unlock()`** — Modal/Dialog/Drawer açılırken scrollbar shift'ini önlemek için kullanılır.
 6. **Dark mode class'ı `.dark`** — `data-theme` değil, doğrudan `html` elementine `.dark` class eklenir.
-7. **`@/lib/utils`** `cn()` için kullanılır; orijinal implementasyon `registry/msi-kit/utils/utils.ts` içindedir.
-8. **Bileşen kaynak kodu Vite `?raw` import ile** yüklenir — `getComponentSource('button')` çağrısı `registry/msi-kit/components/button.tsx?raw` ile çalışır.
+7. **`@/lib/utils`** `cn()` için kullanılır; orijinal implementasyon `registry/tra-kit/utils/utils.ts` içindedir.
+8. **Bileşen kaynak kodu Vite `?raw` import ile** yüklenir — `getComponentSource('button')` çağrısı `registry/tra-kit/components/button.tsx?raw` ile çalışır.

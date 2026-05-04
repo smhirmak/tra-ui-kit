@@ -2,9 +2,11 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "theme",
   "type": "registry:style",
-  "title": "MSI UI Theme",
-  "description": "Complete theme configuration for MSI UI Kit including colors and design tokens",
-  "dependencies": ["@phosphor-icons/react"],
+  "title": "TRA UI Theme",
+  "description": "Complete theme configuration for TRA UI Kit including colors and design tokens",
+  "dependencies": [
+    "@phosphor-icons/react"
+  ],
   "cssVars": {
     "theme": {
       "font-sans": "Inter, sans-serif",
@@ -133,18 +135,18 @@
       ".custom--dropdown-container .dropdown-menu::-webkit-scrollbar": {
         "width": "8px"
       },
-      ".MsiDatePicker-root input::-webkit-outer-spin-button, .MsiDatePicker-root input::-webkit-inner-spin-button": {
+      ".TraDatePicker-root input::-webkit-outer-spin-button, .TraDatePicker-root input::-webkit-inner-spin-button": {
         "-webkit-appearance": "none",
         "margin": "0"
       },
-      ".MsiDatePicker-root input[type=\"number\"]": {
+      ".TraDatePicker-root input[type=\"number\"]": {
         "-moz-appearance": "textfield"
       },
-      ".MsiPagination-container input::-webkit-outer-spin-button, .MsiPagination-container input::-webkit-inner-spin-button": {
+      ".TraPagination-container input::-webkit-outer-spin-button, .TraPagination-container input::-webkit-inner-spin-button": {
         "-webkit-appearance": "none",
         "margin": "0"
       },
-      ".MsiPagination-container input[type=\"number\"]": {
+      ".TraPagination-container input[type=\"number\"]": {
         "-moz-appearance": "textfield"
       }
     },

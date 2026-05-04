@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/tooltip';
-export { default } from '../../../registry/msi-kit/components/tooltip';
+export * from '../../../registry/tra-kit/components/tooltip';
+export { default } from '../../../registry/tra-kit/components/tooltip';

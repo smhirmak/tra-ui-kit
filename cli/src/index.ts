@@ -11,8 +11,8 @@ import inquirer from 'inquirer';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const websiteUrl = 'https://msi-ui-kit.vercel.app';
-const githubUrl = 'https://github.com/smhirmak/msi-ui-kit';
+const websiteUrl = 'https://ui.trabilisim.tech/';
+const githubUrl = 'https://github.com/smhirmak/tra-ui-kit';
 
 // ComponentJson tipini tanÄ±mla
 interface ComponentJson {
@@ -48,14 +48,14 @@ interface RegistryResponse {
 const program = new Command();
 
 program
-  .name('msi-ui-cli')
-  .description('MSI UI Kit CLI - Complete UI solution with single init command')
+  .name('tra-ui-cli')
+  .description('TRA UI Kit CLI - Complete UI solution with single init command')
   .version('0.0.49');
 
 // INIT komutu
 program
   .command('init')
-  .description('Initialize MSI UI Kit - Complete configuration in one command')
+  .description('Initialize TRA UI Kit - Complete configuration in one command')
   .option('-y, --yes', 'Answer yes to all prompts')
   .action(async (options: { yes?: boolean }) => {
     await initCompleteSetup(options);
@@ -123,7 +123,7 @@ async function fetchComponentsFromRegistry(): Promise<RegistryItem[]> {
 async function initCompleteSetup(options: { yes?: boolean } = {}) {
   const cwd = process.cwd();
 
-  console.log('\nInitializing MSI UI Kit...\n');
+  console.log('\nInitializing TRA UI Kit...\n');
 
   const spinner = ora();
 
@@ -131,7 +131,7 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
     // 1. First run shadcn init (if needed)
     const componentJsonPath = path.join(cwd, 'components.json');
     if (!(await fs.pathExists(componentJsonPath))) {
-      console.log('Setting up MSI UI Kit base...');
+      console.log('Setting up TRA UI Kit base...');
 
       const initArgs = ['shadcn@latest', 'init', '-b', 'radix', '-s'];
       if (options.yes) initArgs.push('-y');
@@ -141,30 +141,30 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
         cwd,
       });
 
-      console.log('✔ MSI UI Kit base setup completed');
+      console.log('✔ TRA UI Kit base setup completed');
     }
 
-    // 2. Add MSI registry
-    console.log('Adding MSI registry...');
+    // 2. Add TRA registry
+    console.log('Adding TRA registry...');
     spinner.stop();
-    const registrySuccess = await ensureMsiRegistry();
+    const registrySuccess = await ensureTraRegistry();
     if (registrySuccess) {
-      console.log('✔ MSI registry added');
+      console.log('✔ TRA registry added');
     } else {
-      console.log('✗ Failed to add MSI registry');
+      console.log('✗ Failed to add TRA registry');
       return;
     }
 
-    // 3. Add MSI Theme - Ã–ZEL HANDLING
-    console.log('\nAdding MSI UI Kit theme...');
+    // 3. Add TRA Theme - ÖZEL HANDLING
+    console.log('\nAdding TRA UI Kit theme...');
 
     // Spinner kullanmadan direkt execa Ã§alÄ±ÅŸtÄ±r
     const themeArgs = [
       'shadcn@latest',
       'add',
-      '@msi/theme',
-      '@msi/typhography',
-      '@msi/utils',
+      '@tra/theme',
+      '@tra/typhography',
+      '@tra/utils',
       '-s',
     ];
 
@@ -220,7 +220,7 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
     console.log('\nTroubleshooting:');
     if (error.message.includes('init')) {
       console.log('  Try manual setup:');
-      console.log(chalk.yellowBright('  npx shadcn add @msi/theme'));
+      console.log(chalk.yellowBright('  npx shadcn add @tra/theme'));
     } else {
       console.log('  Error details:', error.message);
     }
@@ -228,7 +228,7 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
   }
 }
 
-async function ensureMsiRegistry(): Promise<boolean> {
+async function ensureTraRegistry(): Promise<boolean> {
   const cwd = process.cwd();
   const componentJsonPath = path.join(cwd, 'components.json');
 
@@ -243,12 +243,11 @@ async function ensureMsiRegistry(): Promise<boolean> {
     componentJson.registries = {};
   }
 
-  // Add MSI registry if not exists
-  const msiRegistryUrl = `${websiteUrl}/r/{name}.json`;
+  // Add TRA registry if not exists
+  const traRegistryUrl = `${websiteUrl}/r/{name}.json`;
 
-  if (!componentJson.registries['@msi']) {
-    componentJson.registries['@msi'] = msiRegistryUrl;
-
+  if (!componentJson.registries['@tra']) {
+    componentJson.registries['@tra'] = traRegistryUrl;
     // Ensure tailwind section exists and enable cssVariables
     if (!componentJson.tailwind || typeof componentJson.tailwind !== 'object') {
       componentJson.tailwind = {};
@@ -274,10 +273,10 @@ async function addComponents(components: string[]) {
   const spinner = ora();
 
   // First check registry
-  const registryReady = await ensureMsiRegistry();
+  const registryReady = await ensureTraRegistry();
   if (!registryReady) {
     console.log('Please run init first:');
-    console.log(chalk.yellowBright('  npx msi-ui-cli init\n'));
+    console.log(chalk.yellowBright('  npx tra-ui-cli init\n'));
     return;
   }
 
@@ -289,7 +288,7 @@ async function addComponents(components: string[]) {
     console.log(`Adding ${component}...`);
 
     try {
-      const addArgs = ['shadcn@latest', 'add', `@msi/${component}`];
+      const addArgs = ['shadcn@latest', 'add', `@tra/${component}`];
 
       await execa('npx', addArgs, {
         stdio: 'inherit',
@@ -301,7 +300,7 @@ async function addComponents(components: string[]) {
     } catch (error: any) {
       console.log(chalk.red(`âœ— Failed to add ${component}`));
       console.log('  Try manually:');
-      console.log(chalk.yellowBright(`  npx shadcn add @msi/${component}`));
+      console.log(chalk.yellowBright(`  npx shadcn add @tra/${component}`));
       errorCount++;
     }
   }
@@ -314,9 +313,9 @@ async function addComponents(components: string[]) {
   console.log(`  Total: ${components.length}\n`);
 }
 
-// Interaktif component seÃ§ici
+// Interaktif component seçici
 async function showInteractiveComponentSelector() {
-  console.log('\nðŸŒ¿ MSI UI Kit - Component Selector\n');
+  console.log('\nðŸŒ¿ TRA UI Kit - Component Selector\n');
 
   try {
     const components = await fetchComponentsFromRegistry();
@@ -371,7 +370,7 @@ async function showInteractiveComponentSelector() {
 }
 
 async function listComponents() {
-  console.log('\nAvailable MSI UI Kit Components:\n');
+  console.log('\nAvailable TRA UI Kit Components:\n');
 
   try {
     const components = await fetchComponentsFromRegistry();
@@ -382,9 +381,9 @@ async function listComponents() {
 
     console.log('\nUsage:');
     console.log('  Add components:');
-    console.log(chalk.yellowBright('  npx msi-ui-cli add') + ' (interactive selection)');
+    console.log(chalk.yellowBright('  npx tra-ui-cli add') + ' (interactive selection)');
     console.log(
-      chalk.yellowBright('  npx msi-ui-cli add button loading-spinner') + ' (specific components)',
+      chalk.yellowBright('  npx tra-ui-cli add button loading-spinner') + ' (specific components)',
     );
   } catch (error) {
     console.log(chalk.red('Failed to load components list'));
@@ -393,16 +392,16 @@ async function listComponents() {
 }
 
 function showSuccessMessage() {
-  console.log(`\n\n${chalk.green('Success!')} MSI UI Kit has been initialized.\n`);
+  console.log(`\n\n${chalk.green('Success!')} TRA UI Kit has been initialized.\n`);
 
   console.log('Next steps:');
   console.log('  Add components:');
-  console.log(chalk.yellowBright('  npx msi-ui-cli add') + ' (interactive selection)');
-  console.log(chalk.yellowBright('  npx msi-ui-cli add button') + ' (specific component)');
+  console.log(chalk.yellowBright('  npx tra-ui-cli add') + ' (interactive selection)');
+  console.log(chalk.yellowBright('  npx tra-ui-cli add button') + ' (specific component)');
 
   console.log('\n  See all components:');
   console.log(
-    chalk.yellowBright('  npx msi-ui-cli list') + ' or ' + chalk.yellowBright('msi list\n'),
+    chalk.yellowBright('  npx tra-ui-cli list') + ' or ' + chalk.yellowBright('tra list\n'),
   );
 
   console.log('Documentation:');

@@ -1,2 +1,2 @@
-export * from '../../../registry/msi-kit/components/sidebar';
-export { default } from '../../../registry/msi-kit/components/sidebar';
+export * from '../../../registry/tra-kit/components/sidebar';
+export { default } from '../../../registry/tra-kit/components/sidebar';

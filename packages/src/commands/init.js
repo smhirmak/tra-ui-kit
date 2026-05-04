@@ -3,7 +3,7 @@ const path = require('path');
 
 async function add(componentName) {
   const currentDir = process.cwd();
-  const componentDir = path.join(currentDir, 'src/components/msi-kit');
+  const componentDir = path.join(currentDir, 'src/components/tra-kit');
   const typesDir = path.join(currentDir, 'src/types');
   const templateDir = path.join(__dirname, '..', 'components');
   const typeTemplateDir = path.join(__dirname, '..', 'types');
@@ -43,7 +43,7 @@ async function add(componentName) {
     `${componentName}${path.extname(templateFilePath)}`,
   );
   fs.writeFileSync(componentFilePath, componentContent.trim());
-  console.log(`${componentName} component added successfully at src/components/msi-kit`);
+  console.log(`${componentName} component added successfully at src/components/tra-kit`);
 
   // Copy type definition if exists
   if (fs.existsSync(typeFilePath)) {

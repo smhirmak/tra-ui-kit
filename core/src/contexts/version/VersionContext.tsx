@@ -43,7 +43,7 @@ interface VersionProviderProps {
 
 export const VersionProvider = ({
   children,
-  storageKey = 'msi-ui-version',
+  storageKey = 'tra-ui-version',
 }: VersionProviderProps) => {
   const { version: urlVersionRaw } = useParams({ strict: false });
   const navigate = useNavigate();
