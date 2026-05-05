@@ -5,7 +5,7 @@
   "title": "Dropdown",
   "description": "A dropdown component that can be used to display a list of options.",
   "registryDependencies": [
-    "@tra/popover"
+    "@tra-kit/popover"
   ],
   "files": [
     {

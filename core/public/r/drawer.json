@@ -5,7 +5,7 @@
   "title": "Drawer",
   "description": "A drawer component that can be used to display a modal window.",
   "registryDependencies": [
-    "@tra/button"
+    "@tra-kit/button"
   ],
   "files": [
     {

@@ -5,7 +5,7 @@
   "title": "Calendar",
   "description": "A calendar component that can be used to select dates.",
   "registryDependencies": [
-    "@tra/button"
+    "@tra-kit/button"
   ],
   "files": [
     {

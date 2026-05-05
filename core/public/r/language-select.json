@@ -5,7 +5,7 @@
   "title": "Language Select",
   "description": "A language select component that can be used to select a language.",
   "registryDependencies": [
-    "@tra/select"
+    "@tra-kit/select"
   ],
   "files": [
     {

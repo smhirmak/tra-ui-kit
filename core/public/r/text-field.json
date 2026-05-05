@@ -5,8 +5,8 @@
   "title": "Text Field",
   "description": "A text field component that can be used to enter text.",
   "registryDependencies": [
-    "@tra/input",
-    "@tra/label"
+    "@tra-kit/input",
+    "@tra-kit/label"
   ],
   "files": [
     {

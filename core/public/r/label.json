@@ -5,7 +5,7 @@
   "title": "Label",
   "description": "A label component that can be used to describe form elements.",
   "registryDependencies": [
-    "@tra/tooltip"
+    "@tra-kit/tooltip"
   ],
   "files": [
     {

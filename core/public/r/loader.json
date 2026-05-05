@@ -5,8 +5,8 @@
   "title": "Loader",
   "description": "A loader component that can be used to indicate loading state.",
   "registryDependencies": [
-    "@tra/loading-spinner",
-    "@tra/loading-linear"
+    "@tra-kit/loading-spinner",
+    "@tra-kit/loading-linear"
   ],
   "files": [
     {

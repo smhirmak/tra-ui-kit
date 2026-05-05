@@ -156,12 +156,10 @@ const Installation = () => {
               addedHighlightLines={[4, 5, 6, 7]}
               content={`{
   "compilerOptions": {
-    ...
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
-    ...
   }
 }`}
             />

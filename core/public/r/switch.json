@@ -5,7 +5,7 @@
   "title": "Switch",
   "description": "A switch component that can be used to toggle between two states.",
   "registryDependencies": [
-    "@tra/label"
+    "@tra-kit/label"
   ],
   "files": [
     {

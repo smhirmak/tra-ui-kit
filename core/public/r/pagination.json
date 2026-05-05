@@ -5,8 +5,8 @@
   "title": "Pagination",
   "description": "A pagination component that can be used to navigate through pages.",
   "registryDependencies": [
-    "@tra/button",
-    "@tra/label"
+    "@tra-kit/button",
+    "@tra-kit/label"
   ],
   "files": [
     {

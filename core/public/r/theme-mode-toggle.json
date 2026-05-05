@@ -5,7 +5,7 @@
   "title": "Theme Mode Toggle",
   "description": "A theme mode toggle component that can be used to switch between light and dark modes.",
   "registryDependencies": [
-    "@tra/button"
+    "@tra-kit/button"
   ],
   "files": [
     {

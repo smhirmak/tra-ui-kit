@@ -5,7 +5,7 @@
   "title": "Checkbox",
   "description": "A checkbox component that can be used to select options.",
   "registryDependencies": [
-    "@tra/label"
+    "@tra-kit/label"
   ],
   "files": [
     {

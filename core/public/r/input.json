@@ -5,7 +5,7 @@
   "title": "Input",
   "description": "An input component that can be used to enter text.",
   "registryDependencies": [
-    "@tra/button"
+    "@tra-kit/button"
   ],
   "files": [
     {

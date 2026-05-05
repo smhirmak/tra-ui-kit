@@ -5,7 +5,7 @@
   "title": "Back to Top Button",
   "description": "A back to top button component that can be used to quickly scroll to the top of the page.",
   "registryDependencies": [
-    "@tra/button"
+    "@tra-kit/button"
   ],
   "files": [
     {

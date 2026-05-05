@@ -162,9 +162,9 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
     const themeArgs = [
       'shadcn@latest',
       'add',
-      '@tra/theme',
-      '@tra/typhography',
-      '@tra/utils',
+      '@tra-kit/theme',
+      '@tra-kit/typhography',
+      '@tra-kit/utils',
       '-s',
     ];
 
@@ -220,7 +220,7 @@ async function initCompleteSetup(options: { yes?: boolean } = {}) {
     console.log('\nTroubleshooting:');
     if (error.message.includes('init')) {
       console.log('  Try manual setup:');
-      console.log(chalk.yellowBright('  npx shadcn add @tra/theme'));
+      console.log(chalk.yellowBright('  npx shadcn add @tra-kit/theme'));
     } else {
       console.log('  Error details:', error.message);
     }
@@ -246,8 +246,8 @@ async function ensureTraRegistry(): Promise<boolean> {
   // Add TRA registry if not exists
   const traRegistryUrl = `${websiteUrl}/r/{name}.json`;
 
-  if (!componentJson.registries['@tra']) {
-    componentJson.registries['@tra'] = traRegistryUrl;
+  if (!componentJson.registries['@tra-kit']) {
+    componentJson.registries['@tra-kit'] = traRegistryUrl;
     // Ensure tailwind section exists and enable cssVariables
     if (!componentJson.tailwind || typeof componentJson.tailwind !== 'object') {
       componentJson.tailwind = {};
@@ -288,7 +288,7 @@ async function addComponents(components: string[]) {
     console.log(`Adding ${component}...`);
 
     try {
-      const addArgs = ['shadcn@latest', 'add', `@tra/${component}`];
+      const addArgs = ['shadcn@latest', 'add', `@tra-kit/${component}`];
 
       await execa('npx', addArgs, {
         stdio: 'inherit',
@@ -300,7 +300,7 @@ async function addComponents(components: string[]) {
     } catch (error: any) {
       console.log(chalk.red(`âœ— Failed to add ${component}`));
       console.log('  Try manually:');
-      console.log(chalk.yellowBright(`  npx shadcn add @tra/${component}`));
+      console.log(chalk.yellowBright(`  npx shadcn add @tra-kit/${component}`));
       errorCount++;
     }
   }

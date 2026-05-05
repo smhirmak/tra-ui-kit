@@ -263,7 +263,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/button"]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "badge",
@@ -289,7 +289,7 @@
         }
       ],
       "dependencies": ["tailwindcss"],
-      "registryDependencies": ["@tra/loading-spinner"]
+      "registryDependencies": ["@tra-kit/loading-spinner"]
     },
     {
       "name": "calendar",
@@ -302,7 +302,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/button"]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "checkbox",
@@ -315,7 +315,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/label"]
+      "registryDependencies": ["@tra-kit/label"]
     },
     {
       "name": "chip",
@@ -353,7 +353,12 @@
         }
       ],
       "dependencies": ["date-fns", "react-day-picker"],
-      "registryDependencies": ["@tra/button", "@tra/calendar", "@tra/label", "@tra/popover"]
+      "registryDependencies": [
+        "@tra-kit/button",
+        "@tra-kit/calendar",
+        "@tra-kit/label",
+        "@tra-kit/popover"
+      ]
     },
     {
       "name": "dialog",
@@ -378,7 +383,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/button"]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "dropdown",
@@ -391,7 +396,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/popover"]
+      "registryDependencies": ["@tra-kit/popover"]
     },
     {
       "name": "information-status",
@@ -416,7 +421,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/button"]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "label",
@@ -429,7 +434,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/tooltip"]
+      "registryDependencies": ["@tra-kit/tooltip"]
     },
     {
       "name": "language-select",
@@ -442,7 +447,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/select"]
+      "registryDependencies": ["@tra-kit/select"]
     },
     {
       "name": "loader",
@@ -455,7 +460,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/loading-spinner", "@tra/loading-linear"]
+      "registryDependencies": ["@tra-kit/loading-spinner", "@tra-kit/loading-linear"]
     },
     {
       "name": "loading-linear",
@@ -492,7 +497,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/button", "@tra/label"]
+      "registryDependencies": ["@tra-kit/button", "@tra-kit/label"]
     },
     {
       "name": "popover",
@@ -541,14 +546,14 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/text-field"]
+      "registryDependencies": ["@tra-kit/text-field"]
     },
     {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
       "description": "A select component that can be used to display a dropdown list of options.",
-      "registryDependencies": ["@tra/popover", "@tra/label", "@tra/button"],
+      "registryDependencies": ["@tra-kit/popover", "@tra-kit/label", "@tra-kit/button"],
       "files": [
         {
           "path": "registry/tra-kit/components/select.tsx",
@@ -561,7 +566,7 @@
       "type": "registry:ui",
       "title": "Sidebar",
       "description": "A sidebar component that can be used to display a navigation menu.",
-      "registryDependencies": ["@tra/button"],
+      "registryDependencies": ["@tra-kit/button"],
       "files": [
         {
           "path": "registry/tra-kit/components/sidebar.tsx",
@@ -592,7 +597,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/label"]
+      "registryDependencies": ["@tra-kit/label"]
     },
     {
       "name": "table",
@@ -629,7 +634,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/input", "@tra/label"]
+      "registryDependencies": ["@tra-kit/input", "@tra-kit/label"]
     },
     {
       "name": "theme-mode-toggle",
@@ -642,7 +647,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": ["@tra/button"]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "tooltip",

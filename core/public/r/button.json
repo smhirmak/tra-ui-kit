@@ -8,7 +8,7 @@
     "tailwindcss"
   ],
   "registryDependencies": [
-    "@tra/loading-spinner"
+    "@tra-kit/loading-spinner"
   ],
   "files": [
     {

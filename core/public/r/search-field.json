@@ -5,7 +5,7 @@
   "title": "Search Field",
   "description": "A search field component that can be used to enter search queries.",
   "registryDependencies": [
-    "@tra/text-field"
+    "@tra-kit/text-field"
   ],
   "files": [
     {

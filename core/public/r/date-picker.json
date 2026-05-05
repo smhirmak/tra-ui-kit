@@ -9,10 +9,10 @@
     "react-day-picker"
   ],
   "registryDependencies": [
-    "@tra/button",
-    "@tra/calendar",
-    "@tra/label",
-    "@tra/popover"
+    "@tra-kit/button",
+    "@tra-kit/calendar",
+    "@tra-kit/label",
+    "@tra-kit/popover"
   ],
   "files": [
     {

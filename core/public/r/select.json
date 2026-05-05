@@ -5,9 +5,9 @@
   "title": "Select",
   "description": "A select component that can be used to display a dropdown list of options.",
   "registryDependencies": [
-    "@tra/popover",
-    "@tra/label",
-    "@tra/button"
+    "@tra-kit/popover",
+    "@tra-kit/label",
+    "@tra-kit/button"
   ],
   "files": [
     {
