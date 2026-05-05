@@ -166,7 +166,7 @@ const ButtonPage = () => {
                   variant="solid"
                   color="tertiary"
                 >
-                  tertiary
+                  Tertiary
                 </Button>
               </div>
             </div>
@@ -193,7 +193,7 @@ const ButtonPage = () => {
                   variant="outlined"
                   color="tertiary"
                 >
-                  tertiary
+                  Tertiary
                 </Button>
               </div>
             </div>
@@ -220,7 +220,7 @@ const ButtonPage = () => {
                   variant="ghost"
                   color="tertiary"
                 >
-                  tertiary
+                  Tertiary
                 </Button>
               </div>
             </div>
@@ -265,7 +265,7 @@ const ButtonPage = () => {
             <div className="flex flex-wrap gap-4">
               <Button color="primary">Primary</Button>
               <Button color="secondary">Secondary</Button>
-              <Button color="tertiary">tertiary</Button>
+              <Button color="tertiary">Tertiary</Button>
             </div>
           </div>
         </section>

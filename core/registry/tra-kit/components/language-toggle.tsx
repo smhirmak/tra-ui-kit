@@ -6,7 +6,7 @@ const countries = [
     content: (
       <img
         src="/assets/icons/flagOfTurkey.svg"
-        className="overflow-hidden"
+        className="size-[1.3rem] rotate-0 scale-100 transition-all duration-300 group-data-[lang=tr]:-rotate-90 group-data-[lang=tr]:scale-0"
         alt="TR"
         width="30px"
         height="20px"
@@ -19,7 +19,7 @@ const countries = [
     content: (
       <img
         src="/assets/icons/flagOfUK.svg"
-        className="overflow-hidden"
+        className="absolute top-1/2 size-[1.2rem] -translate-y-1/2 rotate-90 scale-0 transition-all duration-300 group-data-[lang=tr]:rotate-0 group-data-[lang=tr]:scale-100"
         alt="EN"
         width="30px"
         height="20px"
@@ -51,11 +51,29 @@ const LanguageToggle: React.FC<ILanguageToggle> = ({
 
   return (
     <Button
-      className={cn('size-fit p-1', className)}
+      className={cn('relative group size-fit p-1', className)}
       onClick={handleChange}
       variant="ghost"
+      disableEffect
+      size="icon"
+      data-lang={locale}
     >
-      {countries.find((f) => f.value !== locale)?.content}
+      <img
+        src="/assets/icons/flagOfTurkey.svg"
+        className="rotate-0 scale-100 transition-all duration-300 group-data-[lang=tr]:-rotate-90 group-data-[lang=tr]:scale-0"
+        alt="TR"
+        width="30px"
+        height="20px"
+        title="TR"
+      />
+      <img
+        src="/assets/icons/flagOfUK.svg"
+        className="absolute top-1/2 -translate-y-1/2 rotate-90 scale-0 transition-all duration-300 group-data-[lang=tr]:rotate-0 group-data-[lang=tr]:scale-100"
+        alt="EN"
+        width="30px"
+        height="20px"
+        title="EN"
+      />
     </Button>
   );
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useRouterState, useParams } from '@tanstack/react-router';
 import { GithubLogoIcon, ListIcon, XIcon } from '@phosphor-icons/react';
 import ThemeModeToggle from '@/components/ui/theme-mode-toggle';
-import LanguageSelect from '@/components/ui/language-select';
+import LanguageToggle from '@/components/ui/language-toggle';
 import VersionSelect from '@/components/version-select';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
@@ -101,10 +101,9 @@ const Header = () => {
             />
           </a>
           <ThemeModeToggle />
-          <LanguageSelect
+          <LanguageToggle
             locale={locale}
             setLocale={setLocale}
-            defaultValue="en"
           />
           {/* Hamburger — mobile only */}
           <button

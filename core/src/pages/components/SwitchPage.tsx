@@ -89,17 +89,25 @@ const SwitchPage = () => {
       {/* Usage */}
       <section id="usage">
         <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <h2 className="mb-4 text-lg font-bold text-neutral-grey">Uncontrolled</h2>
+        <div className="space-y-4">
+          <div className="rounded-lg border border-border bg-background p-6">
+            <Switch id="switch-uncontrolled" />
+          </div>
+          <CustomSyntaxHighlighter content={`<Switch />`} />
+        </div>
+        <h2 className="mb-4 mt-8 text-lg font-bold text-neutral-grey">Controlled</h2>
         <div className="space-y-4">
           <div className="rounded-lg border border-border bg-background p-6">
             <Switch
-              id="switch-1"
+              id="switch-controlled"
               checked={appleChecked}
               onChange={setAppleChecked}
             />
           </div>
           <CustomSyntaxHighlighter
             content={`<Switch
-  id="switch-1"
+  id="switch-controlled"
   checked={checked}
   onChange={setChecked}
 />`}
