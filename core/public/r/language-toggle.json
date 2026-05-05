@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "language-toggle",
+  "type": "registry:ui",
+  "title": "Language Toggle",
+  "description": "A language toggle component that can be used to switch languages.",
+  "registryDependencies": [
+    "@tra-kit/button"
+  ],
+  "files": [
+    {
+      "path": "registry/tra-kit/components/language-toggle.tsx",
+      "content": "import { cn } from '@/lib/utils';\r\nimport Button from './button';\r\n\r\nconst countries = [\r\n  {\r\n    content: (\r\n      <img\r\n        src=\"/assets/icons/flagOfTurkey.svg\"\r\n        className=\"overflow-hidden\"\r\n        alt=\"TR\"\r\n        width=\"30px\"\r\n        height=\"20px\"\r\n        title=\"TR\"\r\n      />\r\n    ),\r\n    value: 'tr',\r\n  },\r\n  {\r\n    content: (\r\n      <img\r\n        src=\"/assets/icons/flagOfUK.svg\"\r\n        className=\"overflow-hidden\"\r\n        alt=\"EN\"\r\n        width=\"30px\"\r\n        height=\"20px\"\r\n        title=\"EN\"\r\n      />\r\n    ),\r\n    value: 'en',\r\n  },\r\n];\r\n\r\ninterface ILanguageToggle {\r\n  className?: string;\r\n  locale: string;\r\n  setLocale: (locale: string) => void;\r\n  defaultValue?: string;\r\n}\r\n\r\nconst LanguageToggle: React.FC<ILanguageToggle> = ({\r\n  className,\r\n  locale,\r\n  setLocale,\r\n  defaultValue,\r\n}) => {\r\n  const handleChange = () => {\r\n    const found = countries.find((f) => f.value !== locale);\r\n    const localeLang = found?.value ?? defaultValue ?? 'en';\r\n    setLocale?.(localeLang);\r\n  };\r\n\r\n  return (\r\n    <Button\r\n      className={cn('size-fit p-1', className)}\r\n      onClick={handleChange}\r\n      variant=\"ghost\"\r\n    >\r\n      {countries.find((f) => f.value !== locale)?.content}\r\n    </Button>\r\n  );\r\n};\r\n\r\nexport default LanguageToggle;\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

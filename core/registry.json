@@ -450,6 +450,19 @@
       "registryDependencies": ["@tra-kit/select"]
     },
     {
+      "name": "language-toggle",
+      "type": "registry:ui",
+      "title": "Language Toggle",
+      "description": "A language toggle component that can be used to switch languages.",
+      "files": [
+        {
+          "path": "registry/tra-kit/components/language-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@tra-kit/button"]
+    },
+    {
       "name": "loader",
       "type": "registry:ui",
       "title": "Loader",

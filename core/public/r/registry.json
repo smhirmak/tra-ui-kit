@@ -8,9 +8,7 @@
       "type": "registry:style",
       "title": "TRA UI Theme",
       "description": "Complete theme configuration for TRA UI Kit including colors and design tokens",
-      "dependencies": [
-        "@phosphor-icons/react"
-      ],
+      "dependencies": ["@phosphor-icons/react"],
       "cssVars": {
         "theme": {
           "font-sans": "Inter, sans-serif",
@@ -228,10 +226,7 @@
           "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n \nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}"
         }
       ],
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ]
+      "dependencies": ["clsx", "tailwind-merge"]
     },
     {
       "name": "accordion",
@@ -268,9 +263,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/button"
-      ]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "badge",
@@ -295,12 +288,8 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "tailwindcss"
-      ],
-      "registryDependencies": [
-        "@tra-kit/loading-spinner"
-      ]
+      "dependencies": ["tailwindcss"],
+      "registryDependencies": ["@tra-kit/loading-spinner"]
     },
     {
       "name": "calendar",
@@ -313,9 +302,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/button"
-      ]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "checkbox",
@@ -328,9 +315,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/label"
-      ]
+      "registryDependencies": ["@tra-kit/label"]
     },
     {
       "name": "chip",
@@ -367,10 +352,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "date-fns",
-        "react-day-picker"
-      ],
+      "dependencies": ["date-fns", "react-day-picker"],
       "registryDependencies": [
         "@tra-kit/button",
         "@tra-kit/calendar",
@@ -401,9 +383,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/button"
-      ]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "dropdown",
@@ -416,9 +396,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/popover"
-      ]
+      "registryDependencies": ["@tra-kit/popover"]
     },
     {
       "name": "information-status",
@@ -443,9 +421,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/button"
-      ]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "label",
@@ -458,9 +434,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/tooltip"
-      ]
+      "registryDependencies": ["@tra-kit/tooltip"]
     },
     {
       "name": "language-select",
@@ -473,9 +447,20 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/select"
-      ]
+      "registryDependencies": ["@tra-kit/select"]
+    },
+    {
+      "name": "language-toggle",
+      "type": "registry:ui",
+      "title": "Language Toggle",
+      "description": "A language toggle component that can be used to switch languages.",
+      "files": [
+        {
+          "path": "registry/tra-kit/components/language-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "loader",
@@ -488,10 +473,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/loading-spinner",
-        "@tra-kit/loading-linear"
-      ]
+      "registryDependencies": ["@tra-kit/loading-spinner", "@tra-kit/loading-linear"]
     },
     {
       "name": "loading-linear",
@@ -528,10 +510,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/button",
-        "@tra-kit/label"
-      ]
+      "registryDependencies": ["@tra-kit/button", "@tra-kit/label"]
     },
     {
       "name": "popover",
@@ -580,20 +559,14 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/text-field"
-      ]
+      "registryDependencies": ["@tra-kit/text-field"]
     },
     {
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
       "description": "A select component that can be used to display a dropdown list of options.",
-      "registryDependencies": [
-        "@tra-kit/popover",
-        "@tra-kit/label",
-        "@tra-kit/button"
-      ],
+      "registryDependencies": ["@tra-kit/popover", "@tra-kit/label", "@tra-kit/button"],
       "files": [
         {
           "path": "registry/tra-kit/components/select.tsx",
@@ -606,9 +579,7 @@
       "type": "registry:ui",
       "title": "Sidebar",
       "description": "A sidebar component that can be used to display a navigation menu.",
-      "registryDependencies": [
-        "@tra-kit/button"
-      ],
+      "registryDependencies": ["@tra-kit/button"],
       "files": [
         {
           "path": "registry/tra-kit/components/sidebar.tsx",
@@ -639,9 +610,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/label"
-      ]
+      "registryDependencies": ["@tra-kit/label"]
     },
     {
       "name": "table",
@@ -678,10 +647,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/input",
-        "@tra-kit/label"
-      ]
+      "registryDependencies": ["@tra-kit/input", "@tra-kit/label"]
     },
     {
       "name": "theme-mode-toggle",
@@ -694,9 +660,7 @@
           "type": "registry:ui"
         }
       ],
-      "registryDependencies": [
-        "@tra-kit/button"
-      ]
+      "registryDependencies": ["@tra-kit/button"]
     },
     {
       "name": "tooltip",
@@ -709,9 +673,7 @@
           "type": "registry:ui"
         }
       ],
-      "dependencies": [
-        "class-variance-authority"
-      ]
+      "dependencies": ["class-variance-authority"]
     }
   ]
 }

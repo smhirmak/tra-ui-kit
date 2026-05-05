@@ -298,6 +298,14 @@ const Constants = {
       category: 'Navigation',
       isNew: true,
     },
+    {
+      name: 'Language Toggle',
+      description: 'Toggle for switching application language / locale',
+      Icon: GlobeIcon,
+      path: '/components/language-toggle',
+      category: 'Navigation',
+      isNew: true,
+    },
   ],
 };
 
