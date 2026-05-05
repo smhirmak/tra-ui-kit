@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useRouterState, useParams } from '@tanstack/react-router';
-import { GithubLogoIcon, ListIcon, XIcon } from '@phosphor-icons/react';
+import { GithubLogoIcon, ListIcon, XIcon, BugIcon } from '@phosphor-icons/react';
 import ThemeModeToggle from '@/components/ui/theme-mode-toggle';
 import LanguageToggle from '@/components/ui/language-toggle';
 import VersionSelect from '@/components/version-select';
@@ -93,12 +93,26 @@ const Header = () => {
             href="https://github.com/smhirmak/tra-ui-kit"
             target="_blank"
             rel="noopener noreferrer"
+            title={t('View on GitHub')}
             className="hidden md:flex cursor-pointer! px-3 py-1.5 text-neutral-grey hover:text-primary transition-colors rounded-md hover:bg-neutral-light"
           >
             <GithubLogoIcon
               size={20}
               weight="fill"
             />
+          </a>
+          <a
+            href="https://github.com/smhirmak/tra-ui-kit/issues/new"
+            target="_blank"
+            rel="noopener noreferrer"
+            title={t('Report an issue')}
+            className="hidden md:flex cursor-pointer! items-center gap-1.5 rounded-md border border-border/60 px-2.5 py-1.5 text-xs font-medium text-neutral-grey transition-colors hover:border-error/40 hover:bg-error/6 hover:text-error"
+          >
+            <BugIcon
+              size={14}
+              weight="duotone"
+            />
+            <span>{t('Issue')}</span>
           </a>
           <ThemeModeToggle />
           <LanguageToggle
@@ -149,19 +163,34 @@ const Header = () => {
 
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
                 <VersionSelect />
-                <a
-                  href="https://github.com/smhirmak/tra-ui-kit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={closeMenu}
-                  className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-neutral-grey transition-colors hover:text-primary"
-                >
-                  <GithubLogoIcon
-                    size={18}
-                    weight="fill"
-                  />
-                  GitHub
-                </a>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://github.com/smhirmak/tra-ui-kit/issues/new"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMenu}
+                    className="flex items-center gap-1.5 rounded-md border border-border/60 px-2.5 py-1.5 text-xs font-medium text-neutral-grey transition-colors hover:border-error/40 hover:bg-error/6 hover:text-error"
+                  >
+                    <BugIcon
+                      size={13}
+                      weight="duotone"
+                    />
+                    {t('Report Issue')}
+                  </a>
+                  <a
+                    href="https://github.com/smhirmak/tra-ui-kit"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMenu}
+                    className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-neutral-grey transition-colors hover:text-primary"
+                  >
+                    <GithubLogoIcon
+                      size={18}
+                      weight="fill"
+                    />
+                    GitHub
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>

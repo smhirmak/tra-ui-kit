@@ -1,7 +1,7 @@
 import { useTheme } from '@/contexts/theme/theme-provider';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import Button from './ui/button';
-import { ClipboardIcon, CheckIcon } from '@phosphor-icons/react';
+import { CheckIcon, CopyIcon } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import { githubGist, hybrid } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { useState } from 'react';
@@ -58,7 +58,7 @@ const CustomSyntaxHighlighter = ({
               }
             }}
             className={cn(
-              'group bg-transparent hover:bg-transparent brightness-80 hover:brightness-100 cursor-pointer',
+              'group bg-transparent hover:bg-transparent brightness-80 hover:brightness-100 cursor-pointer w-14',
               // lineCount > 3 ? 'top-6' : 'top-1/2',
               copyButtonClassName,
             )}
@@ -71,13 +71,10 @@ const CustomSyntaxHighlighter = ({
                 'transition-all duration-150 ease-out delay-150',
               )}
             />
-            <ClipboardIcon
-              className={cn(
-                'size-5 absolute transition-all',
-                'group-data-[copied=true]:opacity-0 group-data-[copied=false]:delay-150 group-data-[copied=false]:opacity-100',
-                'transition-all duration-150 ease-out',
-              )}
-            />
+            <div className="absolute flex items-center gap-2 w-fit text-xs group-data-[copied=true]:opacity-0 group-data-[copied=false]:delay-150 group-data-[copied=false]:opacity-100 transition-all duration-150 ease-out">
+              <CopyIcon className={cn('size-4 ', '', '')} />
+              Copy
+            </div>
           </Button>
         )}
       </div>

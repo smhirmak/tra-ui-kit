@@ -30,6 +30,12 @@ const apiTableData = [
     description: 'Change handler',
   },
   {
+    prop: 'size',
+    type: '"default" | "sm" | "lg"',
+    default: '"default"',
+    description: 'Size variant',
+  },
+  {
     prop: 'variant',
     type: '"apple" | "android"',
     default: '"apple"',
@@ -170,6 +176,67 @@ const SwitchPage = () => {
 />`}
           />
         </div>
+      </section>
+
+      {/* Sizes */}
+      <section id="sizes">
+        <h2 className="mb-4 text-2xl font-bold">Sizes</h2>
+        <p className="mb-4 text-neutral-grey">
+          Available in three sizes: default, small, and large.
+        </p>
+        <div className="rounded-lg border border-border bg-background p-6">
+          <div className="grid grid-cols-2">
+            <div className="flex flex-col gap-4">
+              <Switch
+                id="size-sm"
+                size="sm"
+                variant="android"
+                label="Android Small Size"
+              />
+              <Switch
+                id="size-default"
+                size="default"
+                variant="android"
+                label="Android Default Size"
+              />
+              <Switch
+                id="size-lg"
+                size="lg"
+                variant="android"
+                label="Android Large Size"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <Switch
+                id="size-sm"
+                size="sm"
+                variant="apple"
+                label="Apple Small Size"
+              />
+              <Switch
+                id="size-default"
+                size="default"
+                variant="apple"
+                label="Apple Default Size"
+              />
+              <Switch
+                id="size-lg"
+                size="lg"
+                variant="apple"
+                label="Apple Large Size"
+              />
+            </div>
+          </div>
+        </div>
+        <CustomSyntaxHighlighter
+          content={`<Switch
+  size="sm"
+  variant="android"
+  checked={checked}
+  onChange={setChecked}
+  label="Small Size"
+/>`}
+        />
       </section>
 
       {/* With Label */}
