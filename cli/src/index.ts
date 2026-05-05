@@ -14,7 +14,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const websiteUrl = 'https://ui.trabilisim.tech/';
 const githubUrl = 'https://github.com/smhirmak/tra-ui-kit';
 
-// ComponentJson tipini tanÄ±mla
+// ComponentJson tipini tanımla
 interface ComponentJson {
   $schema?: string;
   style?: string;
@@ -119,7 +119,7 @@ async function fetchComponentsFromRegistry(): Promise<RegistryItem[]> {
   }
 }
 
-// INIT FONKSÄ°YONU
+// INIT FONKSİYONU
 async function initCompleteSetup(options: { yes?: boolean } = {}) {
   const cwd = process.cwd();
 
@@ -262,7 +262,7 @@ async function ensureTraRegistry(): Promise<boolean> {
 }
 
 async function addComponents(components: string[]) {
-  // EÄŸer component belirtilmemiÅŸse, interaktif seÃ§im gÃ¶ster
+  // Eğer component belirtilmemişse, interaktif seçim göster
   if (components.length === 0) {
     await showInteractiveComponentSelector();
     return;
@@ -295,10 +295,10 @@ async function addComponents(components: string[]) {
         cwd: process.cwd(),
       });
 
-      console.log(chalk.green(`âœ“ Added ${component}`));
+      console.log(chalk.green(`✔ Added ${component}`));
       successCount++;
     } catch (error: any) {
-      console.log(chalk.red(`âœ— Failed to add ${component}`));
+      console.log(chalk.red(`✖ Failed to add ${component}`));
       console.log('  Try manually:');
       console.log(chalk.yellowBright(`  npx shadcn add @tra-kit/${component}`));
       errorCount++;
@@ -315,7 +315,7 @@ async function addComponents(components: string[]) {
 
 // Interaktif component seçici
 async function showInteractiveComponentSelector() {
-  console.log('\nðŸŒ¿ TRA UI Kit - Component Selector\n');
+  console.log('\n🌐 TRA UI Kit - Component Selector\n');
 
   try {
     const components = await fetchComponentsFromRegistry();
@@ -346,7 +346,7 @@ async function showInteractiveComponentSelector() {
 
     console.log(`\nSelected ${selectedComponents.length} component(s):`);
     selectedComponents.forEach((comp: string) => {
-      console.log(`  â€¢ ${chalk.cyan(comp)}`);
+      console.log(`  • ${chalk.cyan(comp)}`);
     });
 
     const { confirm } = await inquirer.prompt([
@@ -376,7 +376,7 @@ async function listComponents() {
     const components = await fetchComponentsFromRegistry();
 
     components.forEach((comp) => {
-      console.log(`  â€¢ ${chalk.cyan(comp.name.padEnd(18))} - ${comp.description}`);
+      console.log(`  • ${chalk.cyan(comp.name.padEnd(18))} - ${comp.description}`);
     });
 
     console.log('\nUsage:');
@@ -418,7 +418,7 @@ async function removeOnlyShadcnApplyRules() {
     // components.json'dan CSS dosya yolunu al
     const componentJsonPath = path.join(cwd, 'components.json');
     if (!(await fs.pathExists(componentJsonPath))) {
-      console.log(chalk.yellow('âš ï¸  components.json bulunamadÄ±, CSS temizleme atlanÄ±yor'));
+      console.log(chalk.yellow('⚠️  components.json bulunamadı, CSS temizleme atlanıyor'));
       return;
     }
 
@@ -426,13 +426,13 @@ async function removeOnlyShadcnApplyRules() {
     const cssFilePath = componentJson.tailwind?.css;
 
     if (!cssFilePath) {
-      console.log(chalk.yellow('âš ï¸  CSS dosya yolu bulunamadÄ±, iÅŸlem atlanÄ±yor'));
+      console.log(chalk.yellow('⚠️  CSS dosya yolu bulunamadı, işlem atlanıyor'));
       return;
     }
 
     const fullCssPath = path.join(cwd, cssFilePath);
     if (!(await fs.pathExists(fullCssPath))) {
-      console.log(chalk.yellow(`âš ï¸  CSS dosyasÄ± bulunamadÄ±: ${cssFilePath}`));
+      console.log(chalk.yellow(`⚠️  CSS dosyası bulunamadı: ${cssFilePath}`));
       return;
     }
 
@@ -442,14 +442,14 @@ async function removeOnlyShadcnApplyRules() {
 
     await fs.writeFile(fullCssPath, cssContent);
   } catch (error) {
-    console.log(chalk.yellow('âš ï¸  CSS temizleme sÄ±rasÄ±nda hata oluÅŸtu:'), error);
+    console.log(chalk.yellow('⚠️  CSS temizleme sırasında hata oluştu:'), error);
   }
 }
 
 function removeSpecificApplyRules(cssContent: string): string {
   let cleanedContent = cssContent;
 
-  // SADECE bu iki spesifik @apply kuralÄ±nÄ± temizle
+  // SADECE bu iki spesifik @apply kuralını temizle
   const unwantedApplyRules = [
     // @apply border-border outline-ring/50;
     /@apply border-border outline-ring\/50;/g,
@@ -462,7 +462,7 @@ function removeSpecificApplyRules(cssContent: string): string {
     cleanedContent = cleanedContent.replace(pattern, '');
   });
 
-  // BoÅŸ kalan selector'larÄ± temizle (sadece {} kalan)
+  // Boş kalan selector'ları temizle (sadece {} kalan)
   cleanedContent = cleanedContent.replace(/\*\s*\{\s*\}/g, '');
   cleanedContent = cleanedContent.replace(/body\s*\{\s*\}/g, '');
 
