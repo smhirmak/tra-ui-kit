@@ -19,7 +19,7 @@ const countries = [
     content: (
       <img
         src="/assets/icons/flagOfUK.svg"
-        className="absolute  top-1/2 -translate-y-1/2 rotate-90 scale-0 transition-all duration-300 group-data-[lang=tr]:rotate-0 group-data-[lang=tr]:scale-100"
+        className="absolute top-1/2 -translate-y-1/2 rotate-90 scale-0 transition-all duration-300 group-data-[lang=tr]:rotate-0 group-data-[lang=tr]:scale-100"
         alt="EN"
         width="30px"
         height="20px"
