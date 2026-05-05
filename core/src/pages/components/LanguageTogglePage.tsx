@@ -18,6 +18,12 @@ const tocItems: TOCItem[] = [
 
 const apiTableData = [
   {
+    prop: 'locale',
+    type: 'string',
+    default: 'undefined',
+    description: 'Current locale value',
+  },
+  {
     prop: 'setLocale',
     type: '(locale: string) => void',
     default: 'undefined',
