@@ -131,6 +131,25 @@ const tr = {
   Navigation: 'Navigasyon',
   Overlay: 'Katman',
   Layout: 'Düzen',
+  // Header nav
+  'Getting Started': 'Başlangıç',
+  'UI Base': 'UI Base',
+  Plugins: 'Pluginler',
+  'Report an issue': 'Sorun Bildir',
+  'Report Issue': 'Sorun Bildir',
+  Issue: 'Sorun',
+  'Close menu': 'Menüyü Kapat',
+  'Open menu': 'Menüyü Aç',
+
+  // Home page – hero & sections
+  'React Component Library': 'React Bileşen Kütüphanesi',
+  'Component infrastructure': 'Bileşen altyapısı',
+  'for modern React.': 'modern React için.',
+  'Why choose us': 'Neden bizi seçmelisiniz',
+  'Component Library': 'Bileşen Kütüphanesi',
+  'Developer Experience': 'Geliştirici Deneyimi',
+  'Open Source': 'Açık Kaynak',
+
   // Installation
   Installation: 'Kurulum',
   'Create a Vite Project': 'Vite Projesi Oluştur',
@@ -140,6 +159,25 @@ const tr = {
   'Update tsconfig.app.json': 'tsconfig.app.json Güncelle',
   'Update vite.config.ts': 'vite.config.ts Güncelle',
   'Add Components': 'Bileşen Ekle',
+
+  '35+ accessible, TypeScript-first components. Dark mode, RTL support, and CSS variables included. Copy, customize, and ship — zero configuration needed.':
+    '35+ erişilebilir, TypeScript-öncelikli bileşenler. Koyu mod, RTL desteği ve CSS değişkenleri dahil. Kopyalayın, özelleştirin ve gönderin — sıfır yapılandırma gerektirir.',
+  'A TypeScript-first React component library for modern web applications. Open source, MIT licensed, and free to use.':
+    'Modern web uygulamaları için TypeScript-öncelikli bir React bileşen kütüphanesi. Açık kaynak, MIT lisanslı ve kullanımı ücretsiz.',
+  Resources: 'Kaynaklar',
+  Community: 'Topluluk',
+  Contribute: 'Katkıda Bulunun',
+  'Get TRA UI Kit integrated into your project and start building beautiful interfaces right away.':
+    "TRA UI Kit'i projenize entegre edin ve hemen güzel arayüzler oluşturmaya başlayın.",
+  Selected: 'Seçildi',
+  'Create a New Vite Project': 'Yeni Bir Vite Projesi Oluşturun',
+  'Start by creating a new Vite project with the React TypeScript template:':
+    'React TypeScript şablonu ile yeni bir Vite projesi oluşturarak başlayın:',
+  'Then navigate into the project directory:': 'Ardından proje dizinine gidin:',
+  'TRA UI Kit requires Tailwind CSS v4. Install the Tailwind Vite plugin:':
+    'TRA UI Kit, Tailwind CSS v4 gerektirir. Tailwind Vite eklentisini kurun:',
+  'Add the Tailwind CSS import to your': 'Tailwind CSS importunu şuraya ekleyin',
+  'Add path aliases to your': "Yol alias'larını şuraya ekleyin",
 };
 
 export default tr;

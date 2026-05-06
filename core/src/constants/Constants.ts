@@ -32,6 +32,11 @@ import {
   SquareIcon,
   LayoutIcon,
   GlobeIcon,
+  WifiHighIcon,
+  TranslateIcon,
+  FlaskIcon,
+  TableIcon as PluginTableIcon,
+  CloudIcon,
 } from '@phosphor-icons/react';
 
 const Constants = {
@@ -305,6 +310,48 @@ const Constants = {
       path: '/components/language-toggle',
       category: 'Navigation',
       isNew: true,
+    },
+  ],
+  pluginList: [
+    {
+      name: 'Axios',
+      description:
+        'Axios instance, interceptors, token yönetimi, AuthContext/AuthProvider ve createService kalıbı',
+      Icon: CloudIcon,
+      path: '/plugins/axios',
+      registryKey: 'plugin-axios',
+    },
+    {
+      name: 'Forms',
+      description:
+        "Formik + Yup entegrasyonu, TRA UI Kit'e bağlı form bileşenleri ve Validations sabitleri",
+      Icon: FlaskIcon,
+      path: '/plugins/forms',
+      registryKey: 'plugin-forms',
+    },
+    {
+      name: 'i18n',
+      description:
+        'inlang/paraglide ile compile-time tip-güvenli çeviriler, LocaleContext ve dil değiştirici',
+      Icon: TranslateIcon,
+      path: '/plugins/i18n',
+      registryKey: 'plugin-i18n',
+    },
+    {
+      name: 'SignalR',
+      description:
+        "Microsoft SignalR HubConnection, otomatik yeniden bağlantı, MessageHubContext ve hook'lar",
+      Icon: WifiHighIcon,
+      path: '/plugins/signalr',
+      registryKey: 'plugin-signalr',
+    },
+    {
+      name: 'Table',
+      description:
+        'TanStack Table v8 wrapper – sıralama, filtreleme, sayfalama, dışa aktarma ve skeleton desteği',
+      Icon: PluginTableIcon,
+      path: '/plugins/table',
+      registryKey: 'plugin-table',
     },
   ],
 };

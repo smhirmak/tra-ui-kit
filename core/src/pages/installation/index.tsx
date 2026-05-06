@@ -5,6 +5,7 @@ import { AtomIcon, ArrowRightIcon, CheckCircleIcon } from '@phosphor-icons/react
 import { cn } from '@/lib/utils';
 import { Link } from '@tanstack/react-router';
 import { useVersion } from '@/contexts/version';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 interface StepProps {
   number: number;
@@ -30,16 +31,18 @@ const Step = ({ number, title, children, isLast = false }: StepProps) => (
 
 const Installation = () => {
   const { currentVersion } = useVersion();
+  const { t } = useLocalizeContext();
 
   return (
     <Container className="my-10">
       <div className="space-y-6">
         {/* Header */}
         <div className="mb-10">
-          <h1 className="mb-3 text-4xl font-bold">Installation</h1>
+          <h1 className="mb-3 text-4xl font-bold">{t('Installation')}</h1>
           <p className="text-lg text-neutral-grey">
-            Get TRA UI Kit integrated into your project and start building beautiful interfaces
-            right away.
+            {t(
+              'Get TRA UI Kit integrated into your project and start building beautiful interfaces right away.',
+            )}
           </p>
         </div>
 
@@ -57,7 +60,7 @@ const Installation = () => {
             <p className="text-sm text-neutral-grey">Vite + TypeScript + Tailwind CSS v4</p>
           </div>
           <span className="ml-auto rounded-full bg-primary px-3 py-1 text-xs font-semibold text-white">
-            Selected
+            {t('Selected')}
           </span>
         </div>
 
@@ -66,14 +69,14 @@ const Installation = () => {
           {/* Step 1 */}
           <Step
             number={1}
-            title="Create a New Vite Project"
+            title={t('Create a New Vite Project')}
           >
             <p className="mb-3 text-neutral-grey">
-              Start by creating a new Vite project with the React TypeScript template:
+              {t('Start by creating a new Vite project with the React TypeScript template:')}
             </p>
             <CustomSyntaxHighlighter content="npm create vite@latest my-app -- --template react-ts" />
             <p className="mt-3 text-sm text-neutral-grey">
-              Then navigate into the project directory:
+              {t('Then navigate into the project directory:')}
             </p>
             <CustomSyntaxHighlighter content={`cd my-app\nnpm install`} />
           </Step>
@@ -81,10 +84,10 @@ const Installation = () => {
           {/* Step 2 */}
           <Step
             number={2}
-            title="Install Tailwind CSS"
+            title={t('Install Tailwind CSS')}
           >
             <p className="mb-3 text-neutral-grey">
-              TRA UI Kit requires Tailwind CSS v4. Install the Tailwind Vite plugin:
+              {t('TRA UI Kit requires Tailwind CSS v4. Install the Tailwind Vite plugin:')}
             </p>
             <CustomSyntaxHighlighter content="npm install tailwindcss @tailwindcss/vite" />
           </Step>
@@ -92,14 +95,14 @@ const Installation = () => {
           {/* Step 3 */}
           <Step
             number={3}
-            title="Configure Tailwind CSS"
+            title={t('Configure Tailwind CSS')}
           >
             <p className="mb-3 text-neutral-grey">
-              Add the Tailwind CSS import to your{' '}
+              {t('Add the Tailwind CSS import to your')}{' '}
               <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
                 src/index.css
               </code>{' '}
-              file:
+              {t('file:')}
             </p>
             <CustomSyntaxHighlighter
               title="src/index.css"
@@ -111,10 +114,10 @@ const Installation = () => {
           {/* Step 4 */}
           <Step
             number={4}
-            title="Update tsconfig.json"
+            title={t('Update tsconfig.json')}
           >
             <p className="mb-3 text-neutral-grey">
-              Add path aliases to your{' '}
+              {t('Add path aliases to your')}{' '}
               <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
                 tsconfig.json
               </code>
@@ -145,7 +148,7 @@ const Installation = () => {
             title="Update tsconfig.app.json"
           >
             <p className="mb-3 text-neutral-grey">
-              Add the same path aliases to{' '}
+              {t('Add the same path aliases to')}{' '}
               <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
                 tsconfig.app.json
               </code>
@@ -171,7 +174,9 @@ const Installation = () => {
             title="Update vite.config.ts"
           >
             <p className="mb-3 text-neutral-grey">
-              Install the Node types and configure the Vite config with Tailwind and the path alias:
+              {t(
+                'Install the Node types and configure the Vite config with Tailwind and the path alias:',
+              )}
             </p>
             <CustomSyntaxHighlighter content="npm install -D @types/node" />
             <div className="mt-3">
@@ -202,11 +207,12 @@ export default defineConfig({
           {/* Step 7 */}
           <Step
             number={7}
-            title="Initialize TRA UI Kit"
+            title={t('Initialize TRA UI Kit')}
           >
             <p className="mb-3 text-neutral-grey">
-              Run the TRA UI Kit CLI to install all required dependencies and configuration
-              automatically:
+              {t(
+                'Run the TRA UI Kit CLI to install all required dependencies and configuration automatically:',
+              )}
             </p>
             <CustomSyntaxHighlighter content="npx tra-ui-cli init" />
           </Step>
@@ -214,35 +220,37 @@ export default defineConfig({
           {/* Step 8 */}
           <Step
             number={8}
-            title="Add Components"
+            title={t('Add Components')}
             isLast
           >
             <p className="mb-3 text-neutral-grey">
-              Now you're ready to add components to your project. Choose one of the following
-              methods:
+              {t(
+                "Now you're ready to add components to your project. Choose one of the following methods:",
+              )}
             </p>
 
             <div className="space-y-4">
               <div>
                 <p className="mb-2 text-sm font-medium">
-                  <span className="text-primary">�</span> Add a single component:
+                  <span className="text-primary">�</span> {t('Add a single component:')}
                 </p>
                 <CustomSyntaxHighlighter content="npx tra-ui-cli add button" />
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">
-                  <span className="text-primary">�</span> Add multiple components at once:
+                  <span className="text-primary">�</span> {t('Add multiple components at once:')}
                 </p>
                 <CustomSyntaxHighlighter content="npx tra-ui-cli add button input dialog" />
               </div>
               <div>
                 <p className="mb-2 text-sm font-medium">
-                  <span className="text-primary">�</span> Interactive selection mode:
+                  <span className="text-primary">�</span> {t('Interactive selection mode:')}
                 </p>
                 <CustomSyntaxHighlighter content="npx tra-ui-cli add" />
                 <p className="mt-2 text-sm text-neutral-grey">
-                  This lists all available components and lets you pick one or multiple
-                  interactively.
+                  {t(
+                    'This lists all available components and lets you pick one or multiple interactively.',
+                  )}
                 </p>
               </div>
             </div>
@@ -258,11 +266,12 @@ export default defineConfig({
                       weight="fill"
                       className="text-success"
                     />
-                    <h3 className="font-semibold">You're all set!</h3>
+                    <h3 className="font-semibold">{t("You're all set!")}</h3>
                   </div>
                   <p className="text-sm text-neutral-grey">
-                    TRA UI Kit is installed. You can now use modern, accessible React components in
-                    your project.
+                    {t(
+                      'TRA UI Kit is installed. You can now use modern, accessible React components in your project.',
+                    )}
                   </p>
                 </div>
               }
@@ -273,7 +282,7 @@ export default defineConfig({
                 to={`/v${currentVersion}/components` as any}
                 className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90"
               >
-                Browse Components
+                {t('Browse Components')}
                 <ArrowRightIcon
                   size={16}
                   weight="bold"

@@ -37,6 +37,8 @@ const Header = () => {
     { to: versionPrefix, label: t('Home') },
     { to: `${versionPrefix}/installation`, label: t('Documentation') },
     { to: `${versionPrefix}/components`, label: t('Components') },
+    { to: `${versionPrefix}/ui-base`, label: t('UI Base') },
+    { to: `${versionPrefix}/plugins`, label: t('Plugins') },
   ];
 
   return (
@@ -44,7 +46,7 @@ const Header = () => {
       <header
         className={cn(
           pathname?.includes('/components') ? 'max-w-screen' : 'container mx-auto',
-          'isolate grid grid-cols-2 md:grid-cols-4 transition-all h-16 items-center px-4 duration-300 sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60',
+          'isolate grid grid-cols-2 md:grid-cols-4 transition-all h-24 items-center px-4 duration-300 sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60',
           scrolled && 'shadow-soft-grey',
         )}
       >
@@ -56,9 +58,9 @@ const Header = () => {
           <img
             src="/assets/logos/tra-ui-kit.png"
             alt="TRA UI KIT"
-            className="h-12 w-auto"
+            className="h-18 w-auto"
           />
-          <span className="text-xl font-bold tracking-tight">TRA UI Kit</span>
+          {/* <span className="text-xl font-bold tracking-tight">TRA UI Kit</span> */}
         </Link>
 
         {/* Desktop Nav */}

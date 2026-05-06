@@ -320,7 +320,7 @@ const Home = () => {
               <motion.div variants={fadeUp}>
                 <img
                   src="/assets/logos/tra-ui-kit.png"
-                  className="mb-6 h-16 w-auto"
+                  className="mb-4 h-24 w-auto"
                   alt="TRA UI Kit"
                 />
               </motion.div>
@@ -595,7 +595,7 @@ const Home = () => {
                     <div className="min-w-0">
                       <h3 className="mb-0.5 text-sm font-semibold">{component.name}</h3>
                       <p className="line-clamp-2 text-xs leading-relaxed text-neutral-grey">
-                        {component.description}
+                        {t(component.description)}
                       </p>
                     </div>
                   </Link>

@@ -7,9 +7,11 @@ import {
   ChatCircleDotsIcon,
 } from '@phosphor-icons/react';
 import { useVersion } from '@/contexts/version';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const Footer = () => {
   const { currentVersion } = useVersion();
+  const { t } = useLocalizeContext();
   return (
     <footer className="border-t border-border/60 bg-neutral-dark-white/40 dark:bg-neutral-light/3">
       <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 lg:px-16">
@@ -27,8 +29,9 @@ const Footer = () => {
               </span>
             </div>
             <p className="mb-5 max-w-xs text-sm leading-relaxed text-neutral-grey">
-              A TypeScript-first React component library for modern web applications. Open source,
-              MIT licensed, and free to use.
+              {t(
+                'A TypeScript-first React component library for modern web applications. Open source, MIT licensed, and free to use.',
+              )}
             </p>
             <a
               href="https://github.com/smhirmak/tra-ui-kit"
@@ -47,7 +50,7 @@ const Footer = () => {
           {/* Resources */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-foreground">
-              Resources
+              {t('Resources')}
             </h3>
             <ul className="space-y-3">
               {[
@@ -81,7 +84,7 @@ const Footer = () => {
                         weight="duotone"
                         className="shrink-0 opacity-60"
                       />
-                      {label}
+                      {t(label)}
                     </Link>
                   ) : (
                     <a
@@ -95,7 +98,7 @@ const Footer = () => {
                         weight="duotone"
                         className="shrink-0 opacity-60"
                       />
-                      {label}
+                      {t(label)}
                     </a>
                   )}
                 </li>
@@ -106,7 +109,7 @@ const Footer = () => {
           {/* Community */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-foreground">
-              Community
+              {t('Community')}
             </h3>
             <ul className="space-y-3">
               {[
@@ -138,7 +141,7 @@ const Footer = () => {
                       weight="duotone"
                       className="shrink-0 opacity-60"
                     />
-                    {label}
+                    {t(label)}
                   </a>
                 </li>
               ))}
@@ -148,10 +151,10 @@ const Footer = () => {
           {/* Report Issue CTA */}
           <div>
             <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-foreground">
-              Contribute
+              {t('Contribute')}
             </h3>
             <p className="mb-4 text-sm leading-relaxed text-neutral-grey">
-              Found a bug or have a feature request? We'd love to hear from you.
+              {t("Found a bug or have a feature request? We'd love to hear from you.")}
             </p>
             <a
               href="https://github.com/smhirmak/tra-ui-kit/issues/new"
@@ -163,7 +166,7 @@ const Footer = () => {
                 size={14}
                 weight="duotone"
               />
-              Report an Issue
+              {t('Report an Issue')}
             </a>
           </div>
         </div>
@@ -190,7 +193,7 @@ const Footer = () => {
                 key={badge.label}
                 className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${badge.color}`}
               >
-                {badge.label}
+                {t(badge.label)}
               </span>
             ))}
           </div>
