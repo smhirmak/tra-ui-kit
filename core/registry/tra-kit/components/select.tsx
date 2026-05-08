@@ -597,7 +597,7 @@ const Select: React.FC<ISelect> = ({
             </div>
             {hasSelection && !disabled && !hideClearButton && (
               <Button
-                className="group absolute right-8 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent"
+                className="group absolute right-8 top-1/2 -translate-y-1/2 bg-transparent hover:bg-transparent cursor-pointer"
                 size="icon"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -623,6 +623,7 @@ const Select: React.FC<ISelect> = ({
               <CaretDownIcon
                 className={cn(
                   'TraSelect-icon stroke-neutral-light-black transition-all',
+                  showMenu && 'rotate-180',
                   iconClassName,
                 )}
               />
