@@ -5,6 +5,7 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import InformationStatus from '@/components/ui/information-status';
 import ApiTable from '@/components/api-table';
 import { InfoIcon } from '@phosphor-icons/react';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -71,6 +72,7 @@ const apiTableData = [
 
 const TablePluginPage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useLocalizeContext();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -81,8 +83,9 @@ const TablePluginPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Table</h1>
         <p className="text-lg text-neutral-grey">
-          TanStack Table v8 wrapper – siralama, filtreleme, sayfalama, genisletilebilir satirlar,
-          disa aktarma ve skeleton yukleme destegi ile birlikte gelen hazir tablo bilesen sistemi.
+          {t(
+            'TanStack Table v8 wrapper — a ready-made table component system with sorting, filtering, pagination, expandable rows, export, and skeleton loading support.',
+          )}
         </p>
         <InformationStatus
           className="mt-6 w-full"
@@ -95,12 +98,9 @@ const TablePluginPage = () => {
                 className="text-info mt-0.5 shrink-0"
               />
               <p className="text-sm text-neutral-grey">
-                Plugin, TRA UI Kit'in <strong>skeleton</strong>, <strong>input</strong> ve{' '}
-                <strong>pagination</strong> bilesenleri ile birlikte calisir. Bu bilesenleri{' '}
-                <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                  registryDependencies
-                </code>{' '}
-                araciligiyla otomatik ekler.
+                {t(
+                  'The plugin works with the skeleton, input and pagination components of TRA UI Kit and automatically adds them via registryDependencies.',
+                )}
               </p>
             </div>
           }
@@ -108,26 +108,26 @@ const TablePluginPage = () => {
       </section>
 
       <section id="installation">
-        <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <p className="mb-3 text-neutral-grey">CLI ile projenize ekleyin:</p>
+        <h2 className="mb-4 text-2xl font-bold">{t('Installation')}</h2>
+        <p className="mb-3 text-neutral-grey">{t('Add to your project with CLI:')}</p>
         <CustomSyntaxHighlighter content="npx @tra-bilisim/tra-ui add table" />
         <p className="mt-3 text-sm text-neutral-grey">
-          CLI,{' '}
-          <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-            @tanstack/react-table
-          </code>{' '}
-          npm paketini otomatik kurar.
+          {t('The CLI automatically installs the npm package.')}
         </p>
       </section>
 
       <section id="what-it-includes">
-        <h2 className="mb-4 text-2xl font-bold">What It Includes</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('What It Includes')}</h2>
         <div className="overflow-x-auto rounded-xl border border-border">
           <table className="w-full border-collapse">
             <thead>
               <tr className="border-b border-border bg-neutral-light/40 dark:bg-neutral-light/5">
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Dosya</th>
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Aciklama</th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('File')}
+                </th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('Description')}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -165,7 +165,7 @@ const TablePluginPage = () => {
       </section>
 
       <section id="usage">
-        <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('Usage')}</h2>
 
         <div
           id="custom-table"
@@ -173,13 +173,7 @@ const TablePluginPage = () => {
         >
           <h3 className="text-xl font-semibold">CustomTable</h3>
           <p className="text-neutral-grey">
-            En basit kullanim – sadece{' '}
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">data</code>{' '}
-            ve{' '}
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              columns
-            </code>{' '}
-            gereklidir:
+            {t('Simplest usage — only data and columns are required:')}
           </p>
           <CustomSyntaxHighlighter
             content={`import { useMemo } from 'react';
@@ -210,13 +204,9 @@ const UserTable = () => {
           id="sorting"
           className="mb-8 space-y-4"
         >
-          <h3 className="text-xl font-semibold">Siralama</h3>
+          <h3 className="text-xl font-semibold">{t('Sorting')}</h3>
           <p className="text-neutral-grey">
-            Dis kontrollu siralama icin{' '}
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              useTableState
-            </code>{' '}
-            kullanin:
+            {t('Use useTableState for externally-controlled sorting:')}
           </p>
           <CustomSyntaxHighlighter
             content={`import { useTableState } from '@/hooks/useTableState';
@@ -237,9 +227,9 @@ const { sorting, setSorting } = useTableState();
           id="filtering"
           className="mb-8 space-y-4"
         >
-          <h3 className="text-xl font-semibold">Filtreleme</h3>
+          <h3 className="text-xl font-semibold">{t('Filtering')}</h3>
           <p className="text-neutral-grey">
-            Hem global arama hem de sutun bazli filtre desteklenir:
+            {t('Both global search and column-based filtering are supported:')}
           </p>
           <CustomSyntaxHighlighter
             content={`const { globalFilter, setGlobalFilter } = useTableState();
@@ -258,9 +248,9 @@ const { sorting, setSorting } = useTableState();
           id="pagination"
           className="mb-8 space-y-4"
         >
-          <h3 className="text-xl font-semibold">Sayfalama</h3>
+          <h3 className="text-xl font-semibold">{t('Pagination')}</h3>
           <p className="text-neutral-grey">
-            Sayfalama varsayilan olarak etkindir. Masaustu icin 10, mobil icin 8 kayit gosterilir:
+            {t('Pagination is enabled by default. 10 records for desktop, 8 for mobile:')}
           </p>
           <CustomSyntaxHighlighter
             content={`<CustomTable
@@ -278,10 +268,8 @@ const { sorting, setSorting } = useTableState();
           id="expanded-rows"
           className="mb-8 space-y-4"
         >
-          <h3 className="text-xl font-semibold">Expanded Rows</h3>
-          <p className="text-neutral-grey">
-            Satirlara tiklanarak acilabilen detay icerigi ekleyin:
-          </p>
+          <h3 className="text-xl font-semibold">{t('Expanded Rows')}</h3>
+          <p className="text-neutral-grey">{t('Add expandable detail content to rows:')}</p>
           <CustomSyntaxHighlighter
             content={`<CustomTable
   columns={columns}
@@ -301,7 +289,7 @@ const { sorting, setSorting } = useTableState();
           className="mb-8 space-y-4"
         >
           <h3 className="text-xl font-semibold">useTableState</h3>
-          <p className="text-neutral-grey">Birden fazla tablo state'ini bir arada yonetmek icin:</p>
+          <p className="text-neutral-grey">{t('To manage multiple table states together:')}</p>
           <CustomSyntaxHighlighter
             content={`import { useTableState } from '@/hooks/useTableState';
 

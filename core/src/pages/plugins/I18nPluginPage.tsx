@@ -4,8 +4,7 @@ import { TOCItem } from '@/components/table-of-contents';
 import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import InformationStatus from '@/components/ui/information-status';
 import { InfoIcon } from '@phosphor-icons/react';
-import { useVersion } from '@/contexts/version';
-import { Link } from '@tanstack/react-router';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -23,7 +22,7 @@ const tocItems: TOCItem[] = [
 
 const I18nPluginPage = () => {
   const { setTocItems } = useTOC();
-  const { currentVersion } = useVersion();
+  const { t } = useLocalizeContext();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -34,9 +33,9 @@ const I18nPluginPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">i18n</h1>
         <p className="text-lg text-neutral-grey">
-          inlang Paraglide tabanlı derleme zamanı çeviri sistemi. TR/EN mesaj katalogları ve dil
-          değiştirici hook ile birlikte gelir. Tip güvenli, sıfır maliyetli runtime ve tree-shaking
-          ile üretim build'inde kullanılmayan çeviri kodları paketten çıkarılır.
+          {t(
+            'Compile-time translation system based on inlang Paraglide. Comes with TR/EN message catalogs and language switcher hook. Type-safe, zero-cost runtime — unused translations are removed from the production build with tree-shaking.',
+          )}
         </p>
         <InformationStatus
           className="mt-6 w-full"
@@ -49,21 +48,9 @@ const I18nPluginPage = () => {
                 className="text-info mt-0.5 shrink-0"
               />
               <p className="text-sm text-neutral-grey">
-                Plugin, TRA UI Kit'in{' '}
-                <Link
-                  to={`/v${currentVersion}/components/language-select` as any}
-                  className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono hover:text-neutral-black transition-all"
-                >
-                  language-select
-                </Link>{' '}
-                ve{' '}
-                <Link
-                  to={`/v${currentVersion}/components/language-toggle` as any}
-                  className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono hover:text-neutral-black transition-all"
-                >
-                  language-toggle
-                </Link>{' '}
-                bileşenleri ile entegre çalışır; bu bileşenler otomatik eklenir.
+                {t(
+                  'The plugin integrates with the language-select and language-toggle components of TRA UI Kit; these components are added automatically.',
+                )}
               </p>
             </div>
           }
@@ -71,21 +58,25 @@ const I18nPluginPage = () => {
       </section>
 
       <section id="installation">
-        <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <p className="mb-3 text-neutral-grey">CLI ile projenize ekleyin:</p>
+        <h2 className="mb-4 text-2xl font-bold">{t('Installation')}</h2>
+        <p className="mb-3 text-neutral-grey">{t('Add to your project with CLI:')}</p>
         <CustomSyntaxHighlighter content="npx @tra-bilisim/tra-ui add i18n" />
-        <p className="mt-3 text-sm text-neutral-grey">CLI şunları otomatik kurar:</p>
+        <p className="mt-3 text-sm text-neutral-grey">{t('The CLI automatically installs:')}</p>
         <CustomSyntaxHighlighter content="@inlang/paraglide-js  @inlang/paraglide-vite" />
       </section>
 
       <section id="what-it-includes">
-        <h2 className="mb-4 text-2xl font-bold">What It Includes</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('What It Includes')}</h2>
         <div className="overflow-x-auto rounded-xl border border-border">
           <table className="w-full border-collapse">
             <thead>
               <tr className="border-b border-border bg-neutral-light/40 dark:bg-neutral-light/5">
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Dosya</th>
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Açıklama</th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('File')}
+                </th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('Description')}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -114,7 +105,7 @@ const I18nPluginPage = () => {
       </section>
 
       <section id="configuration">
-        <h2 className="mb-4 text-2xl font-bold">Configuration</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('Configuration')}</h2>
 
         <div
           id="vite-plugin"
@@ -122,10 +113,7 @@ const I18nPluginPage = () => {
         >
           <h3 className="text-xl font-semibold">Vite Plugin</h3>
           <p className="text-neutral-grey">
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              vite.config.ts
-            </code>{' '}
-            dosyanıza Paraglide eklentisini ekleyin:
+            {t('Add the Paraglide plugin to your vite.config.ts:')}
           </p>
           <CustomSyntaxHighlighter
             title="vite.config.ts"
@@ -155,18 +143,9 @@ export default defineConfig({
                   className="text-info mt-0.5 shrink-0"
                 />
                 <p className="text-sm text-neutral-grey">
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    npm run dev
-                  </code>{' '}
-                  komutunu çalıştırdığınızda{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    src/paraglide/
-                  </code>{' '}
-                  klasörü otomatik oluşturulur. Bu klasörü{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    .gitignore
-                  </code>
-                  'a eklemeniz önerilir.
+                  {t(
+                    'When you run npm run dev, the src/paraglide/ folder is automatically created. It is recommended to add this folder to .gitignore.',
+                  )}
                 </p>
               </div>
             }
@@ -175,14 +154,14 @@ export default defineConfig({
       </section>
 
       <section id="usage">
-        <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('Usage')}</h2>
 
         <div
           id="translating"
           className="mb-8 space-y-4"
         >
-          <h3 className="text-xl font-semibold">Çeviri Kullanımı</h3>
-          <p className="text-neutral-grey">Mesaj dosyalarınıza çeviri anahtarlarını ekleyin:</p>
+          <h3 className="text-xl font-semibold">{t('Usage')}</h3>
+          <p className="text-neutral-grey">{t('Add translation keys to your message files:')}</p>
           <CustomSyntaxHighlighter
             title="src/messages/tr.json"
             content={`{
@@ -200,8 +179,7 @@ export default defineConfig({
         >
           <h3 className="text-xl font-semibold">useM Hook</h3>
           <p className="text-neutral-grey">
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">useM()</code>{' '}
-            hook'u aktif locale'e göre çeviri fonksiyonlarını döndürür:
+            {t('The useM() hook returns translation functions according to the active locale:')}
           </p>
           <CustomSyntaxHighlighter
             addedHighlightLines={[1, 4, 5]}
@@ -220,11 +198,7 @@ const Greeting = ({ name }: { name: string }) => {
         >
           <h3 className="text-xl font-semibold">Locale Context</h3>
           <p className="text-neutral-grey">
-            Aktif dili değiştirmek ve okumak için{' '}
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              useLocale
-            </code>{' '}
-            kullanın:
+            {t('Use useLocale to change and read the active language:')}
           </p>
           <CustomSyntaxHighlighter
             content={`import { useLocale } from '@/lib/locale';
@@ -244,43 +218,14 @@ const LanguageSwitcher = () => {
           id="adding-language"
           className="mb-8 space-y-4"
         >
-          <h3 className="text-xl font-semibold">Yeni Dil Ekleme</h3>
+          <h3 className="text-xl font-semibold">{t('Adding a New Language')}</h3>
           <ol className="list-decimal space-y-2 pl-5 text-neutral-grey text-sm">
+            <li>{t('Add a new JSON file to the src/messages/ folder (e.g. de.json)')}</li>
             <li>
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                src/messages/
-              </code>{' '}
-              klasörüne yeni JSON dosyası ekleyin (örn.{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                de.json
-              </code>
-              )
+              {t('Add the new language to the Locale type and locales array in src/lib/locales.ts')}
             </li>
-            <li>
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                src/lib/locales.ts
-              </code>{' '}
-              dosyasındaki{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">Locale</code>{' '}
-              tipine ve{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                locales
-              </code>{' '}
-              dizisine yeni dili ekleyin
-            </li>
-            <li>
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                src/project.inlang/settings.json
-              </code>{' '}
-              dosyasına dil kodunu ekleyin
-            </li>
-            <li>
-              Projeyi yeniden çalıştırın:{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                npm run dev
-              </code>{' '}
-              – paraglide klasörü güncellenir
-            </li>
+            <li>{t('Add the language code to src/project.inlang/settings.json')}</li>
+            <li>{t('Restart the project: npm run dev — the paraglide folder will be updated')}</li>
           </ol>
         </div>
       </section>

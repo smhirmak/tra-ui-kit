@@ -5,6 +5,7 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import InformationStatus from '@/components/ui/information-status';
 import ApiTable from '@/components/api-table';
 import { InfoIcon } from '@phosphor-icons/react';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -48,6 +49,7 @@ const apiTableData = [
 
 const SignalRPluginPage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useLocalizeContext();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -58,32 +60,33 @@ const SignalRPluginPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">SignalR</h1>
         <p className="text-lg text-neutral-grey">
-          Microsoft SignalR HubConnection yonetimi, otomatik yeniden baglanti, MessageHubContext ve
-          useMessageHub hook'u ile birlikte gelen gercek zamanli iletisim altyapisi.
+          {t(
+            'Microsoft SignalR HubConnection management, automatic reconnection, MessageHubContext and useMessageHub hook for a ready real-time communication infrastructure.',
+          )}
         </p>
       </section>
 
       <section id="installation">
-        <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <p className="mb-3 text-neutral-grey">CLI ile projenize ekleyin:</p>
+        <h2 className="mb-4 text-2xl font-bold">{t('Installation')}</h2>
+        <p className="mb-3 text-neutral-grey">{t('Add to your project with CLI:')}</p>
         <CustomSyntaxHighlighter content="npx @tra-bilisim/tra-ui add signalr" />
         <p className="mt-3 text-sm text-neutral-grey">
-          CLI,{' '}
-          <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-            @microsoft/signalr
-          </code>{' '}
-          npm paketini otomatik kurar.
+          {t('The CLI automatically installs the npm package.')}
         </p>
       </section>
 
       <section id="what-it-includes">
-        <h2 className="mb-4 text-2xl font-bold">What It Includes</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('What It Includes')}</h2>
         <div className="overflow-x-auto rounded-xl border border-border">
           <table className="w-full border-collapse">
             <thead>
               <tr className="border-b border-border bg-neutral-light/40 dark:bg-neutral-light/5">
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Dosya</th>
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Aciklama</th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('File')}
+                </th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('Description')}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -121,17 +124,11 @@ const SignalRPluginPage = () => {
       </section>
 
       <section id="configuration">
-        <h2 className="mb-4 text-2xl font-bold">Configuration</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('Configuration')}</h2>
         <p className="text-neutral-grey">
-          Hub URL'nizi ve opsiyonel token factory'yi{' '}
-          <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-            lib/signalr.ts
-          </code>
-          'deki{' '}
-          <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-            createHubConnection
-          </code>{' '}
-          ile kullannin:
+          {t(
+            'Configure your hub URL and optional token factory with createHubConnection in lib/signalr.ts:',
+          )}
         </p>
         <CustomSyntaxHighlighter
           title="src/lib/signalr.ts"
@@ -157,11 +154,7 @@ export const messageHubConnection = createHubConnection({
                 className="text-info mt-0.5 shrink-0"
               />
               <p className="text-sm text-neutral-grey">
-                Axios Plugin kullaniyorsaniz{' '}
-                <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                  StorageKeys
-                </code>{' '}
-                sabiti zaten mevcuttur.
+                {t('If you are using the Axios Plugin, the StorageKeys constant already exists.')}
               </p>
             </div>
           }
@@ -169,7 +162,7 @@ export const messageHubConnection = createHubConnection({
       </section>
 
       <section id="usage">
-        <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('Usage')}</h2>
 
         <div
           id="message-hub-provider"
@@ -177,10 +170,7 @@ export const messageHubConnection = createHubConnection({
         >
           <h3 className="text-xl font-semibold">MessageHubProvider</h3>
           <p className="text-neutral-grey">
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              MessageHubProvider
-            </code>
-            'i uygulamanin kok bilesenine ekleyin:
+            {t('Add MessageHubProvider to your application root component:')}
           </p>
           <CustomSyntaxHighlighter
             title="src/main.tsx"
@@ -203,7 +193,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         >
           <h3 className="text-xl font-semibold">useMessageHub</h3>
           <p className="text-neutral-grey">
-            Baglanti durumunu ve invoke metodunu hook araciligiyla kullannin:
+            {t('Use connection status and the invoke method via the hook:')}
           </p>
           <CustomSyntaxHighlighter
             content={`import { useMessageHub } from '@/hooks/useMessageHub';
@@ -224,9 +214,9 @@ const StatusBar = () => {
           id="listening"
           className="mb-8 space-y-4"
         >
-          <h3 className="text-xl font-semibold">Mesaj Dinleme</h3>
+          <h3 className="text-xl font-semibold">{t('Listening to Messages')}</h3>
           <p className="text-neutral-grey">
-            Ham connection nesnesini kullanarak hub olaylarini dinleyin:
+            {t('Listen to hub events using the raw connection object:')}
           </p>
           <CustomSyntaxHighlighter
             content={`import { useSignalR } from '@/hooks/useSignalR';
@@ -252,7 +242,7 @@ const NotificationListener = () => {
           id="invoking"
           className="mb-8 space-y-4"
         >
-          <h3 className="text-xl font-semibold">Mesaj Gonderme</h3>
+          <h3 className="text-xl font-semibold">{t('Sending Messages')}</h3>
           <CustomSyntaxHighlighter
             content={`const { invoke } = useMessageHub();
 

@@ -89,6 +89,7 @@ interface IInput
   variant?: 'filled' | 'outlined' | 'underlined' | 'filledUnderlined';
   textarea?: boolean;
   noWrapper?: boolean;
+  containerClassName?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>((props, ref) => {
@@ -106,6 +107,7 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>((
     autoComplete,
     textarea = false,
     noWrapper = false,
+    containerClassName,
     ...restProps
   } = props;
   const [passwordVisible, setPasswordVisible] = React.useState(false);
@@ -135,7 +137,7 @@ const Input = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, IInput>((
   }
 
   return (
-    <div className="relative flex w-full items-center">
+    <div className={cn('relative flex w-full items-center', containerClassName)}>
       {startIcon && <span className="absolute left-3 text-current">{startIcon}</span>}
       <Comp
         type={passwordVisible ? 'text' : type}

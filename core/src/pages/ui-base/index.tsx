@@ -14,6 +14,8 @@ import {
 import { Link } from '@tanstack/react-router';
 import { useVersion } from '@/contexts/version';
 import { cn } from '@/lib/utils';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
+import { Trans } from 'react-i18next';
 
 interface StepProps {
   number: number;
@@ -76,22 +78,24 @@ const Card = ({
 
 const GettingStarted = () => {
   const { currentVersion } = useVersion();
+  const { t } = useLocalizeContext();
   const v = `/v${currentVersion}`;
 
   return (
     <Container className="my-10 max-w-4xl">
       {/* Hero */}
       <div className="mb-12">
-        <h1 className="mb-3 text-4xl font-bold">Getting Started</h1>
+        <h1 className="mb-3 text-4xl font-bold">{t('Getting Started')}</h1>
         <p className="text-lg text-neutral-grey">
-          TRA UI Base template ile saniyeler içinde kurumsal standartlara uygun bir React uygulaması
-          başlatın. Tüm temel kurulumlar hazır; sadece geliştirmeye odaklanın.
+          {t(
+            'Start a React application meeting corporate standards in seconds with the TRA UI Base template. All basic setups are ready; just focus on development.',
+          )}
         </p>
       </div>
 
       {/* What's included banner */}
       <div className="mb-12 rounded-xl border border-primary/20 bg-primary/5 p-6">
-        <p className="mb-4 font-semibold text-foreground">Template içinde neler var?</p>
+        <p className="mb-4 font-semibold text-foreground">{t("What's in the template?")}</p>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
           {[
             'React 19 + TypeScript',
@@ -120,18 +124,18 @@ const GettingStarted = () => {
 
       {/* Steps */}
       <div className="mb-16">
-        <h2 className="mb-8 text-2xl font-bold">Hızlı Başlangıç</h2>
+        <h2 className="mb-8 text-2xl font-bold">{t('Quick Start')}</h2>
 
         <Step
           number={1}
-          title="Template'i İndir"
+          title={t('Download the Template')}
         >
           <p className="mb-3 text-neutral-grey">
-            CLI ile TRA UI Base template'ini yerel makinenize çekin:
+            {t('Pull the TRA UI Base template to your local machine with CLI:')}
           </p>
           <CustomSyntaxHighlighter content="npx @tra-bilisim/tra-ui create my-app" />
           <p className="mt-3 text-sm text-neutral-grey">
-            Proje adı vermeden de çalıştırabilirsiniz, CLI size sorar:
+            {t('You can also run without a project name — the CLI will ask:')}
           </p>
           <CustomSyntaxHighlighter content="npx @tra-bilisim/tra-ui create" />
           <InformationStatus
@@ -145,12 +149,9 @@ const GettingStarted = () => {
                   className="text-info mt-0.5 shrink-0"
                 />
                 <p className="text-sm text-neutral-grey">
-                  Komut çalıştığında bağımlılıklar otomatik kurulur. Başarısız olursa proje
-                  klasörüne girip{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    npm install
-                  </code>{' '}
-                  çalıştırın.
+                  {t(
+                    'Dependencies are automatically installed when the command runs. If it fails, navigate to the project folder and run npm install.',
+                  )}
                 </p>
               </div>
             }
@@ -159,28 +160,24 @@ const GettingStarted = () => {
 
         <Step
           number={2}
-          title="Geliştirme Sunucusunu Başlat"
+          title={t('Start the Development Server')}
         >
           <CustomSyntaxHighlighter
             content={`cd my-app
 npm run dev`}
           />
           <p className="mt-3 text-sm text-neutral-grey">
-            Uygulama varsayılan olarak{' '}
-            <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-              http://localhost:3000
-            </code>{' '}
-            adresinde çalışır.
+            {t('The application runs at http://localhost:3000 by default.')}
           </p>
         </Step>
 
         <Step
           number={3}
-          title="Projenizi Genişletin"
+          title={t('Expand Your Project')}
           isLast
         >
           <p className="mb-4 text-neutral-grey">
-            Template hazır! Bundan sonra iki yönde ilerleyebilirsiniz:
+            {t('Template is ready! You can now proceed in two directions:')}
           </p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Link
@@ -194,12 +191,12 @@ npm run dev`}
                 />
               </div>
               <div>
-                <p className="font-semibold text-foreground">TRA UI Kit Entegrasyonu</p>
+                <p className="font-semibold text-foreground">{t('TRA UI Kit Integration')}</p>
                 <p className="mt-0.5 text-sm text-neutral-grey">
-                  Hazır UI bileşenlerini projeye ekleyin
+                  {t('Add ready-made UI components to the project')}
                 </p>
                 <span className="mt-2 flex items-center gap-1 text-xs font-medium text-primary">
-                  Kurulum sayfasına git{' '}
+                  {t('Go to installation page')}{' '}
                   <ArrowRightIcon
                     size={12}
                     className="transition-transform group-hover:translate-x-1"
@@ -218,12 +215,12 @@ npm run dev`}
                 />
               </div>
               <div>
-                <p className="font-semibold text-foreground">Plugin Ekle</p>
+                <p className="font-semibold text-foreground">{t('Add Plugin')}</p>
                 <p className="mt-0.5 text-sm text-neutral-grey">
-                  Axios, i18n, SignalR ve diğer altyapılar
+                  {t('Axios, i18n, SignalR and other infrastructures')}
                 </p>
                 <span className="mt-2 flex items-center gap-1 text-xs font-medium text-primary">
-                  Plugin sayfasına git{' '}
+                  {t('Go to plugins page')}{' '}
                   <ArrowRightIcon
                     size={12}
                     className="transition-transform group-hover:translate-x-1"
@@ -243,9 +240,11 @@ npm run dev`}
             weight="duotone"
             className="text-primary"
           />
-          <h2 className="text-2xl font-bold">Proje Yapısı</h2>
+          <h2 className="text-2xl font-bold">{t('Project Structure')}</h2>
         </div>
-        <p className="mb-4 text-neutral-grey">Template aşağıdaki dosya yapısıyla gelir:</p>
+        <p className="mb-4 text-neutral-grey">
+          {t('The template comes with the following file structure:')}
+        </p>
         <CustomSyntaxHighlighter
           content={`my-app/
 ├── src/
@@ -373,103 +372,103 @@ npm run dev`}
             weight="duotone"
             className="text-primary"
           />
-          <h2 className="text-2xl font-bold">Kurumsal Standartlar</h2>
+          <h2 className="text-2xl font-bold">{t('Corporate Standards')}</h2>
         </div>
         <p className="mb-6 text-neutral-grey">
-          TRA UI Base, şirket içi tüm UI projelerinin aynı yapıda kurulmasını sağlamak için
-          tasarlanmıştır. Aşağıdaki kurallara uyulması beklenmektedir.
+          {t(
+            'TRA UI Base is designed to ensure all in-house UI projects are set up with the same structure. The following rules are expected to be followed.',
+          )}
         </p>
 
         <div className="grid grid-cols-2 gap-4">
           {[
             {
-              title: '1. Her proje TRA UI Base template üzerinden başlar',
+              title: t('1. Every project starts from the TRA UI Base template'),
               body: (
                 <p className="text-sm text-neutral-grey">
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    npx @tra-bilisim/tra-ui create
-                  </code>{' '}
-                  ile oluşturulan template temel başlangıç noktasıdır. Boş Vite projesi açılmaz. Bu
-                  sayede tüm projelerde aynı klasör yapısı, aynı tooling ve aynı provider
-                  hiyerarşisi korunur.
+                  <Trans
+                    i18nKey="CorporateStandardsCard1"
+                    components={{
+                      code: (
+                        <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono" />
+                      ),
+                    }}
+                  />
                 </p>
               ),
             },
             {
-              title: '2. Stil sistemi: Tailwind CSS v4 + TRA Tema',
+              title: t('2. Style system: Tailwind CSS v4 + TRA Theme'),
               body: (
                 <p className="text-sm text-neutral-grey">
-                  Bileşen stillemesi için yalnızca Tailwind CSS v4 utility sınıfları kullanılır.
-                  Tema renkleri ve tasarım token'ları{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    npx @tra-bilisim/tra-ui init
-                  </code>{' '}
-                  ile kurulan TRA tema konfigürasyonundan alınır; hardcoded renk değerleri
-                  kullanılmaz.
+                  <Trans
+                    i18nKey="CorporateStandardsCard2"
+                    components={{
+                      code: (
+                        <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono" />
+                      ),
+                    }}
+                  />
                 </p>
               ),
             },
             {
-              title: '3. Routing: TanStack Router (file-based)',
+              title: t('3. Routing: TanStack Router (file-based)'),
               body: (
                 <p className="text-sm text-neutral-grey">
-                  Tüm sayfalar{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    src/routes/
-                  </code>{' '}
-                  klasörü altında dosya tabanlı route olarak tanımlanır.{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    routeTree.gen.ts
-                  </code>{' '}
-                  otomatik üretilir, elle düzenlenmez. Loader ve context için TanStack Query ile
-                  birlikte kullanılır.
+                  <Trans
+                    i18nKey="CorporateStandardsCard3"
+                    components={{
+                      code: (
+                        <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono" />
+                      ),
+                    }}
+                  />
                 </p>
               ),
             },
             {
-              title: '4. HTTP istekleri: Axios Plugin',
+              title: t('4. HTTP requests: Axios Plugin'),
               body: (
                 <p className="text-sm text-neutral-grey">
-                  Tüm API çağrıları{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    createService
-                  </code>{' '}
-                  factory'si üzerinden yapılır. Doğrudan{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    fetch
-                  </code>{' '}
-                  veya ham{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    axios
-                  </code>{' '}
-                  çağrısı yapılmaz; interceptor ve token yönetimi merkezi konfigürasyondan
-                  yönetilir.
+                  <Trans
+                    i18nKey="CorporateStandardsCard4"
+                    components={{
+                      code: (
+                        <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono" />
+                      ),
+                    }}
+                  />
                 </p>
               ),
             },
             {
-              title: '5. Çoklu Dil: i18n Plugin',
+              title: t('5. Multiple Languages: i18n Plugin'),
               body: (
                 <p className="text-sm text-neutral-grey">
-                  Uygulamalar Türkçe / İngilizce desteğiyle başlar.{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    useM()
-                  </code>{' '}
-                  hook'u ile tip güvenli mesaj katalogları kullanılır. Hardcoded Türkçe/İngilizce
-                  metin bırakılmaz; tüm UI metinleri mesaj katalogunda tanımlanır.
+                  <Trans
+                    i18nKey="CorporateStandardsCard5"
+                    components={{
+                      code: (
+                        <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono" />
+                      ),
+                    }}
+                  />
                 </p>
               ),
             },
             {
-              title: '6. UI Bileşenleri: TRA UI Kit',
+              title: t('6. UI Components: TRA UI Kit'),
               body: (
                 <p className="text-sm text-neutral-grey">
-                  Yeni bileşen yazmadan önce TRA UI Kit'te aynı amaca hizmet eden bir bileşen olup
-                  olmadığı kontrol edilir. Var olan bileşenler{' '}
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    npx @tra-bilisim/tra-ui add
-                  </code>{' '}
-                  ile projeye eklenerek kullanılır, kopyala-yapıştır yapılmaz.
+                  <Trans
+                    i18nKey="CorporateStandardsCard6"
+                    components={{
+                      code: (
+                        <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono" />
+                      ),
+                    }}
+                  />
                 </p>
               ),
             },
@@ -493,29 +492,29 @@ npm run dev`}
             weight="duotone"
             className="text-primary"
           />
-          <h2 className="text-2xl font-bold">Sonraki Adımlar</h2>
+          <h2 className="text-2xl font-bold">{t('Next Steps')}</h2>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <Card
             icon={PuzzlePieceIcon}
-            title="Bileşenler"
-            description="Kullanıma hazır UI bileşenlerini keşfedin"
+            title={t('Components')}
+            description={t('Explore ready-made UI components')}
             href={`${v}/components` as any}
-            label="Bileşenlere Git"
+            label={t('Go to Components')}
           />
           <Card
             icon={PlugIcon}
-            title="Pluginler"
-            description="Axios, i18n, SignalR ve diğer pluginler"
+            title={t('Plugins')}
+            description={t('Axios, i18n, SignalR and other plugins')}
             href={`${v}/plugins` as any}
-            label="Pluginlere Git"
+            label={t('Go to Plugins')}
           />
           <Card
             icon={RocketLaunchIcon}
-            title="Kurulum"
-            description="Mevcut projeye TRA UI Kit ekleme"
+            title={t('Installation')}
+            description={t('Adding TRA UI Kit to an existing project')}
             href={`${v}/installation` as any}
-            label="Kuruluma Git"
+            label={t('Go to Setup')}
           />
         </div>
       </section>

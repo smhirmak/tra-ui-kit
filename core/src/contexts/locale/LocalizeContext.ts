@@ -25,7 +25,7 @@ i18n.use(initReactI18next).init({
 interface LocalizeContextType {
   i18n: typeof i18n;
   toggleLanguage: (lang: string) => void;
-  t: (key: any) => string;
+  t: (key: any, options?: any) => string;
   setLocale: (lang: string) => void;
   locale: string;
 }
@@ -33,7 +33,7 @@ interface LocalizeContextType {
 const LocalizeContext = createContext<LocalizeContextType>({
   i18n,
   toggleLanguage: () => {},
-  t: (key: any) => i18n.t(key, { defaultValue: key }),
+  t: (key: any, options?: any) => i18n.t(key, { ...options, defaultValue: key }) as string,
   setLocale: () => {},
   locale: savedLang,
 });

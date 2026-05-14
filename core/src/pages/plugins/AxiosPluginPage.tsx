@@ -5,6 +5,7 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import InformationStatus from '@/components/ui/information-status';
 import ApiTable from '@/components/api-table';
 import { WarningIcon } from '@phosphor-icons/react';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -49,6 +50,7 @@ const apiTableData = [
 
 const AxiosPluginPage = () => {
   const { setTocItems } = useTOC();
+  const { t } = useLocalizeContext();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -60,7 +62,9 @@ const AxiosPluginPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Axios</h1>
         <p className="text-lg text-neutral-grey">
-          Yapılandırılmış Axios instance, istek/yanıt interceptor'ları, otomatik token yönetimi,{' '}
+          {t(
+            'Structured Axios instance with request/response interceptors, automatic token management, AuthContext/AuthProvider and createService pattern for a ready HTTP client infrastructure.',
+          )}
           <code className="rounded bg-neutral-light px-1.5 py-0.5 text-base font-mono">
             AuthContext
           </code>
@@ -78,25 +82,27 @@ const AxiosPluginPage = () => {
 
       {/* Installation */}
       <section id="installation">
-        <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <p className="mb-3 text-neutral-grey">CLI ile projenize ekleyin:</p>
+        <h2 className="mb-4 text-2xl font-bold">{t('Installation')}</h2>
+        <p className="mb-3 text-neutral-grey">{t('Add to your project with CLI:')}</p>
         <CustomSyntaxHighlighter content="npx @tra-bilisim/tra-ui add axios" />
         <p className="mt-3 text-sm text-neutral-grey">
-          CLI,{' '}
-          <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">axios</code>{' '}
-          npm paketini otomatik kurar.
+          {t('The CLI automatically installs the npm package.')}
         </p>
       </section>
 
       {/* What it includes */}
       <section id="what-it-includes">
-        <h2 className="mb-4 text-2xl font-bold">What It Includes</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('What It Includes')}</h2>
         <div className="overflow-x-auto rounded-xl border border-border">
           <table className="w-full border-collapse">
             <thead>
               <tr className="border-b border-border bg-neutral-light/40 dark:bg-neutral-light/5">
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Dosya</th>
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Açıklama</th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('File')}
+                </th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('Description')}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -134,7 +140,7 @@ const AxiosPluginPage = () => {
 
       {/* Configuration */}
       <section id="configuration">
-        <h2 className="mb-4 text-2xl font-bold">Configuration</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('Configuration')}</h2>
 
         <div
           id="api-environment"
@@ -142,11 +148,7 @@ const AxiosPluginPage = () => {
         >
           <h3 className="text-xl font-semibold">ApiEnvironment</h3>
           <p className="text-neutral-grey">
-            API URL'lerinizi{' '}
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              src/constants/ApiEnvironment.ts
-            </code>{' '}
-            dosyasında tanımlayın:
+            {t('Define your API URLs in src/constants/ApiEnvironment.ts:')}
           </p>
           <CustomSyntaxHighlighter
             title="src/constants/ApiEnvironment.ts"
@@ -159,13 +161,7 @@ const AxiosPluginPage = () => {
 export default ApiEnvironment;`}
           />
           <p className="text-sm text-neutral-grey">
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              Environment.ts
-            </code>{' '}
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              import.meta.env.MODE
-            </code>
-            'e göre doğru URL'yi döndürür.
+            {t('Environment.ts returns the correct URL according to import.meta.env.MODE.')}
           </p>
         </div>
 
@@ -175,10 +171,7 @@ export default ApiEnvironment;`}
         >
           <h3 className="text-xl font-semibold">AuthProvider</h3>
           <p className="text-neutral-grey">
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              AuthProvider
-            </code>
-            'ı uygulama kök bileşenine ekleyin:
+            {t('Add AuthProvider to your application root component:')}
           </p>
           <CustomSyntaxHighlighter
             title="src/main.tsx"
@@ -201,12 +194,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   className="text-warning mt-0.5 shrink-0"
                 />
                 <p className="text-sm text-neutral-grey">
-                  <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                    AuthContext.tsx
-                  </code>{' '}
-                  içindeki <strong>login</strong>, <strong>logout</strong> ve{' '}
-                  <strong>getUserDetail</strong> metodlarındaki endpoint path'lerini kendi API'nize
-                  göre güncelleyin.
+                  {t(
+                    'Update the endpoint paths for login, logout and getUserDetail methods in AuthContext.tsx according to your own API.',
+                  )}
                 </p>
               </div>
             }
@@ -216,7 +206,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
       {/* Usage */}
       <section id="usage">
-        <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('Usage')}</h2>
 
         <div
           id="create-service"
@@ -224,11 +214,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         >
           <h3 className="text-xl font-semibold">createService</h3>
           <p className="text-neutral-grey">
-            Her backend controller'ı için{' '}
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              createService
-            </code>{' '}
-            ile servis nesnesi oluşturun:
+            {t('Create a service object with createService for each backend controller:')}
           </p>
           <CustomSyntaxHighlighter
             title="src/services/UserService.ts"
@@ -248,7 +234,7 @@ const UserService = createService('User/', (s) => ({
 
 export default UserService;`}
           />
-          <p className="text-neutral-grey">Bileşenlerde kullanımı:</p>
+          <p className="text-neutral-grey">{t('Usage in components:')}</p>
           <CustomSyntaxHighlighter
             content={`import UserService from '@/services/UserService';
 import { isResponseSuccessful } from '@/services/BaseService';
@@ -266,10 +252,7 @@ if (isResponseSuccessful(users)) {
         >
           <h3 className="text-xl font-semibold">useAuth</h3>
           <p className="text-neutral-grey">
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              useAuth
-            </code>{' '}
-            hook'u ile kimlik doğrulama durumuna ve metodlara erişin:
+            {t('Access authentication state and methods with the useAuth hook:')}
           </p>
           <CustomSyntaxHighlighter
             content={`import { useAuth } from '@/contexts/auth/AuthContext';
@@ -295,44 +278,14 @@ const ProfilePage = () => {
           className="mb-8 space-y-4"
         >
           <h3 className="text-xl font-semibold">Interceptors</h3>
-          <p className="text-neutral-grey">Axios instance otomatik olarak şunları yapar:</p>
+          <p className="text-neutral-grey">
+            {t('The Axios instance automatically does the following:')}
+          </p>
           <ul className="list-disc space-y-1.5 pl-5 text-neutral-grey text-sm">
-            <li>
-              Her istekte{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                Authorization: Bearer &lt;token&gt;
-              </code>{' '}
-              header'ı ekler
-            </li>
-            <li>
-              HTTP{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">401</code>{' '}
-              yanıtlarında{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                AuthProvider
-              </code>
-              'ın logout callback'ini tetikler
-            </li>
-            <li>
-              Response'daki{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                data.data
-              </code>{' '}
-              veya{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                data.Result
-              </code>{' '}
-              alanını{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">
-                response.data
-              </code>
-              'ya çıkarır
-            </li>
-            <li>
-              HTTP{' '}
-              <code className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono">500+</code>{' '}
-              dışındaki tüm status kodlarını başarılı sayar
-            </li>
+            <li>{t('Adds Authorization: Bearer <token> header to every request')}</li>
+            <li>{t('Triggers the logout callback of AuthProvider on HTTP 401 responses')}</li>
+            <li>{t('Extracts data.data or data.Result field from response to response.data')}</li>
+            <li>{t('Considers all status codes except HTTP 500+ as successful')}</li>
           </ul>
         </div>
       </section>

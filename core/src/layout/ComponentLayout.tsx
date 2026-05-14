@@ -2,6 +2,7 @@ import { Link, Outlet, useNavigate, useRouterState } from '@tanstack/react-route
 import ScrollRestoration from '@/components/scroll-restoration';
 import { motion } from 'framer-motion';
 import TableOfContents from '@/components/table-of-contents';
+import Input from '@/components/ui/input';
 import { useTOC } from '@/contexts/toc/TOCContext';
 import Constants from '@/constants/Constants';
 import { useVersion } from '@/contexts/version';
@@ -13,6 +14,7 @@ import {
   CaretDownIcon,
   GithubLogoIcon,
   MagnifyingGlassIcon,
+  XIcon,
 } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
@@ -79,16 +81,30 @@ const ComponentLayout = () => {
       <div className="flex min-h-screen w-full">
         {/* ── Left Sidebar ─────────────────────────────────── */}
         <aside className="hidden w-64 shrink-0 border-r border-border lg:block">
-          <div className="sticky top-16 max-h-[calc(100vh-4rem)] overflow-auto p-4">
+          <div className="sticky top-16 max-h-[calc(100vh-4rem)] overflow-auto p-4 pt-0">
             {/* Search */}
-            <div className="relative mb-4">
-              <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-neutral-grey" />
-              <input
+            <div className="mb-4 sticky left-0 top-0 bg-background z-10 pt-4">
+              <Input
                 type="text"
                 placeholder={t('Filter components...')}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full rounded-lg border border-border bg-background py-2 pl-9 pr-3 text-sm outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
+                className="border-border"
+                containerClassName=""
+                size="sm"
+                startIcon={<MagnifyingGlassIcon className="size-4 text-neutral-grey" />}
+                endIcon={
+                  search && (
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="group size-7 max-w-7 max-h-7 min-h-7 min-w-7"
+                      onClick={() => setSearch('')}
+                    >
+                      <XIcon className="size-4 text-neutral-grey group-hover:text-neutral-black group-hover:scale-110 transition-all" />
+                    </Button>
+                  )
+                }
               />
             </div>
 

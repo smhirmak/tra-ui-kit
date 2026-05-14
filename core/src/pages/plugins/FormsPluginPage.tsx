@@ -5,8 +5,7 @@ import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import InformationStatus from '@/components/ui/information-status';
 import ApiTable from '@/components/api-table';
 import { InfoIcon } from '@phosphor-icons/react';
-import { Link } from '@tanstack/react-router';
-import { useVersion } from '@/contexts/version';
+import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 
 const tocItems: TOCItem[] = [
   { id: 'overview', title: 'Overview', level: 1 },
@@ -48,7 +47,7 @@ const apiTableData = [
 
 const FormsPluginPage = () => {
   const { setTocItems } = useTOC();
-  const { currentVersion } = useVersion();
+  const { t } = useLocalizeContext();
 
   useEffect(() => {
     setTocItems(tocItems);
@@ -60,15 +59,9 @@ const FormsPluginPage = () => {
       <section id="overview">
         <h1 className="mb-4 text-4xl font-bold">Forms</h1>
         <p className="text-lg text-neutral-grey">
-          Formik + Yup entegrasyonu. TRA UI Kit bileşenlerine bağlı hazır form alanı bileşenleri (
-          <code className="rounded bg-neutral-light px-1.5 py-0.5 text-base font-mono">
-            FormikTextField
-          </code>
-          ,{' '}
-          <code className="rounded bg-neutral-light px-1.5 py-0.5 text-base font-mono">
-            FormikSelect
-          </code>{' '}
-          vb.) ve paylaşımlı doğrulama sabitleri içerir.
+          {t(
+            'Formik + Yup integration. Contains ready-made form field components bound to TRA UI Kit components (FormikTextField, FormikSelect, etc.) and shared validation constants.',
+          )}
         </p>
         <InformationStatus
           className="mt-6 w-full"
@@ -81,49 +74,9 @@ const FormsPluginPage = () => {
                 className="text-info mt-0.5 shrink-0"
               />
               <p className="text-sm text-neutral-grey">
-                Plugin, TRA UI Kit'in
-                <Link
-                  to={`/v${currentVersion}/components/text-field` as any}
-                  className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono hover:text-neutral-black transition-all"
-                >
-                  text-field
-                </Link>
-                ,{' '}
-                <Link
-                  to={`/v${currentVersion}/components/select` as any}
-                  className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono hover:text-neutral-black transition-all"
-                >
-                  select
-                </Link>
-                ,{' '}
-                <Link
-                  to={`/v${currentVersion}/components/checkbox` as any}
-                  className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono hover:text-neutral-black transition-all"
-                >
-                  checkbox
-                </Link>
-                ,{' '}
-                <Link
-                  to={`/v${currentVersion}/components/date-picker` as any}
-                  className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono hover:text-neutral-black transition-all"
-                >
-                  date-picker
-                </Link>
-                ,{' '}
-                <Link
-                  to={`/v${currentVersion}/components/radio-buttons` as any}
-                  className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono hover:text-neutral-black transition-all"
-                >
-                  radio-buttons
-                </Link>{' '}
-                ve{' '}
-                <Link
-                  to={`/v${currentVersion}/components/label` as any}
-                  className="rounded bg-neutral-light px-1 py-0.5 text-xs font-mono hover:text-neutral-black transition-all"
-                >
-                  label
-                </Link>{' '}
-                bileşenleri otomatik olarak projeye eklenir.
+                {t(
+                  'The plugin automatically adds the text-field, select, checkbox, date-picker, radio-buttons and label components of TRA UI Kit to the project.',
+                )}
               </p>
             </div>
           }
@@ -132,26 +85,27 @@ const FormsPluginPage = () => {
 
       {/* Installation */}
       <section id="installation">
-        <h2 className="mb-4 text-2xl font-bold">Installation</h2>
-        <p className="mb-3 text-neutral-grey">CLI ile projenize ekleyin:</p>
+        <h2 className="mb-4 text-2xl font-bold">{t('Installation')}</h2>
+        <p className="mb-3 text-neutral-grey">{t('Add to your project with CLI:')}</p>
         <CustomSyntaxHighlighter content="npx @tra-bilisim/tra-ui add forms" />
         <p className="mt-3 text-sm text-neutral-grey">
-          CLI,{' '}
-          <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">formik</code>{' '}
-          ve <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">yup</code>{' '}
-          bağımlılıklarını otomatik kurar.
+          {t('The CLI automatically installs the npm package.')}
         </p>
       </section>
 
       {/* What it includes */}
       <section id="what-it-includes">
-        <h2 className="mb-4 text-2xl font-bold">What It Includes</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('What It Includes')}</h2>
         <div className="overflow-x-auto rounded-xl border border-border">
           <table className="w-full border-collapse">
             <thead>
               <tr className="border-b border-border bg-neutral-light/40 dark:bg-neutral-light/5">
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Dosya</th>
-                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">Açıklama</th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('File')}
+                </th>
+                <th className="p-3 text-left text-sm font-semibold text-neutral-grey">
+                  {t('Description')}
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -189,7 +143,7 @@ const FormsPluginPage = () => {
 
       {/* Usage */}
       <section id="usage">
-        <h2 className="mb-4 text-2xl font-bold">Usage</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('Usage')}</h2>
 
         <div
           id="formik-text-field"
@@ -197,11 +151,9 @@ const FormsPluginPage = () => {
         >
           <h3 className="text-xl font-semibold">FormikTextField</h3>
           <p className="text-neutral-grey">
-            Hata mesajlarını Formik'ten otomatik okuyan, TRA UI Kit{' '}
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              TextField
-            </code>{' '}
-            bileşeni üzerine kurulu alan:
+            {t(
+              'Input field built on TRA UI Kit TextField component that automatically reads error messages from Formik:',
+            )}
           </p>
           <CustomSyntaxHighlighter
             content={`import { FormikTextField } from '@/components/formik';
@@ -229,7 +181,7 @@ const FormsPluginPage = () => {
         >
           <h3 className="text-xl font-semibold">FormikSelect</h3>
           <p className="text-neutral-grey">
-            Seçilen değeri Formik state'ine bağlayan açılır liste:
+            {t('Dropdown list that binds the selected value to Formik state:')}
           </p>
           <CustomSyntaxHighlighter
             content={`import { FormikSelect } from '@/components/formik';
@@ -305,10 +257,7 @@ const FormsPluginPage = () => {
         >
           <h3 className="text-xl font-semibold">Validations</h3>
           <p className="text-neutral-grey">
-            <code className="rounded bg-neutral-light px-1.5 py-0.5 text-sm font-mono">
-              src/constants/Validations.ts
-            </code>{' '}
-            dosyasında hazır Yup şemaları tanımlıdır:
+            {t('Ready Yup schemas are defined in src/constants/Validations.ts:')}
           </p>
           <CustomSyntaxHighlighter
             title="src/constants/Validations.ts"
@@ -337,9 +286,9 @@ export const exampleSchema = Yup.object().shape({
 
       {/* Full Example */}
       <section id="full-example">
-        <h2 className="mb-4 text-2xl font-bold">Full Example</h2>
+        <h2 className="mb-4 text-2xl font-bold">{t('Full Example')}</h2>
         <p className="mb-4 text-neutral-grey">
-          Tüm parçaları bir araya getiren tam bir login formu örneği:
+          {t('A complete login form example combining all pieces:')}
         </p>
         <CustomSyntaxHighlighter
           content={`import { useState } from 'react';

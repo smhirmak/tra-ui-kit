@@ -178,6 +178,217 @@ const tr = {
     'TRA UI Kit, Tailwind CSS v4 gerektirir. Tailwind Vite eklentisini kurun:',
   'Add the Tailwind CSS import to your': 'Tailwind CSS importunu şuraya ekleyin',
   'Add path aliases to your': "Yol alias'larını şuraya ekleyin",
+
+  // Installation page – missing keys
+  'file:': 'dosyasına:',
+  'Add the same path aliases to': "Aynı yol alias'larını şuraya da ekleyin",
+  'Install the Node types and configure the Vite config with Tailwind and the path alias:':
+    "Node tiplerini kurun ve Vite yapılandırmasını Tailwind ve yol alias'ı ile yapılandırın:",
+  'Run the TRA UI Kit CLI to install all required dependencies and configuration automatically:':
+    "TRA UI Kit CLI'yı çalıştırarak tüm gerekli bağımlılıkları ve yapılandırmayı otomatik olarak kurun:",
+  "Now you're ready to add components to your project. Choose one of the following methods:":
+    'Artık projenize bileşen eklemeye hazırsınız. Aşağıdaki yöntemlerden birini seçin:',
+  'Add a single component:': 'Tek bir bileşen ekle:',
+  'Add multiple components at once:': 'Birden fazla bileşeni aynı anda ekle:',
+  'Interactive selection mode:': 'Etkileşimli seçim modu:',
+  'This lists all available components and lets you pick one or multiple interactively.':
+    'Bu, tüm mevcut bileşenleri listeler ve etkileşimli olarak bir veya birden fazla seçmenizi sağlar.',
+  "You're all set!": 'Hazırsınız!',
+  'TRA UI Kit is installed. You can now use modern, accessible React components in your project.':
+    'TRA UI Kit kuruldu. Artık projenizde modern, erişilebilir React bileşenlerini kullanabilirsiniz.',
+  'Browse Components': 'Bileşenlere Göz At',
+
+  // Home page – pill & tag labels
+  '34+ Components': '34+ Bileşen',
+  'TypeScript First': 'TypeScript Öncelikli',
+  'Tailwind v4': 'Tailwind v4',
+  'Dark Mode Ready': 'Koyu Mod Hazır',
+  'MIT License': 'MIT Lisansı',
+  'Zero Config': 'Sıfır Yapılandırma',
+  'CSS variables': 'CSS değişkenleri',
+  'Design tokens': "Tasarım token'ları",
+  'RTL support': 'RTL desteği',
+  'Dark mode': 'Koyu mod',
+  // Common plugin page section headings
+  Overview: 'Genel Bakış',
+  'What It Includes': 'İçeriği',
+  Configuration: 'Yapılandırma',
+  'Full Example': 'Tam Örnek',
+  'API Reference': 'API Referansı',
+  File: 'Dosya',
+  'Add to your project with CLI:': 'CLI ile projenize ekleyin:',
+  Sorting: 'Sıralama',
+  Filtering: 'Filtreleme',
+  'Expanded Rows': 'Genişletilmiş Satırlar',
+  'Listening to Messages': 'Mesaj Dinleme',
+  'Sending Messages': 'Mesaj Gönderme',
+  'Adding a New Language': 'Yeni Dil Ekleme',
+  'Column Definition': 'Kolon Tanımı',
+
+  // PluginsOverview
+  'TRA UI Base plugins provide ready-made infrastructure setups for Axios, i18n, SignalR and more. Each plugin can be independently added to your project.':
+    'TRA UI Base pluginleri; Axios, i18n, SignalR ve daha fazlası için hazır altyapı kurulumları sağlar. Her plugin bağımsız olarak projenize eklenebilir.',
+  'Quick installation with tra-ui-cli': 'tra-ui-cli ile hızlı kurulum',
+  'You can add any plugin to your project with a single command:':
+    "Herhangi bir plugin'i tek komutla projenize ekleyebilirsiniz:",
+  'Go to documentation': 'Dokümantasyona git',
+
+  // AxiosPluginPage
+  'Structured Axios instance with request/response interceptors, automatic token management, AuthContext/AuthProvider and createService pattern for a ready HTTP client infrastructure.':
+    "Yapılandırılmış Axios instance, istek/yanıt interceptor'ları, otomatik token yönetimi, AuthContext/AuthProvider ve createService kalıbı ile hazır HTTP istemci altyapısı.",
+  'The CLI automatically installs the npm package.': 'CLI, npm paketini otomatik kurar.',
+  'Define your API URLs in src/constants/ApiEnvironment.ts:':
+    "API URL'lerinizi src/constants/ApiEnvironment.ts dosyasında tanımlayın:",
+  'Environment.ts returns the correct URL according to import.meta.env.MODE.':
+    "Environment.ts, import.meta.env.MODE'e göre doğru URL'yi döndürür.",
+  'Add AuthProvider to your application root component:':
+    "AuthProvider'ı uygulama kök bileşenine ekleyin:",
+  'Update the endpoint paths for login, logout and getUserDetail methods in AuthContext.tsx according to your own API.':
+    "AuthContext.tsx içindeki login, logout ve getUserDetail metodlarındaki endpoint path'lerini kendi API'nize göre güncelleyin.",
+  'Create a service object with createService for each backend controller:':
+    "Her backend controller'ı için createService ile servis nesnesi oluşturun:",
+  'Usage in components:': 'Bileşenlerde kullanımı:',
+  'Access authentication state and methods with the useAuth hook:':
+    "useAuth hook'u ile kimlik doğrulama durumuna ve metodlara erişin:",
+  'The Axios instance automatically does the following:':
+    'Axios instance otomatik olarak şunları yapar:',
+  'Adds Authorization: Bearer <token> header to every request':
+    "Her istekte Authorization: Bearer <token> header'ı ekler",
+  'Triggers the logout callback of AuthProvider on HTTP 401 responses':
+    "HTTP 401 yanıtlarında AuthProvider'ın logout callback'ini tetikler",
+  'Extracts data.data or data.Result field from response to response.data':
+    "Response'daki data.data veya data.Result alanını response.data'ya çıkarır",
+  'Considers all status codes except HTTP 500+ as successful':
+    'HTTP 500+ dışındaki tüm status kodlarını başarılı sayar',
+
+  // I18nPluginPage
+  'Compile-time translation system based on inlang Paraglide. Comes with TR/EN message catalogs and language switcher hook. Type-safe, zero-cost runtime — unused translations are removed from the production build with tree-shaking.':
+    "inlang Paraglide tabanlı derleme zamanı çeviri sistemi. TR/EN mesaj katalogları ve dil değiştirici hook ile birlikte gelir. Tip güvenli, sıfır maliyetli runtime ve tree-shaking ile üretim build'inde kullanılmayan çeviri kodları paketten çıkarılır.",
+  'The plugin integrates with the language-select and language-toggle components of TRA UI Kit; these components are added automatically.':
+    "Plugin, TRA UI Kit'in language-select ve language-toggle bileşenleri ile entegre çalışır; bu bileşenler otomatik eklenir.",
+  'The CLI automatically installs:': 'CLI şunları otomatik kurar:',
+  'Add the Paraglide plugin to your vite.config.ts:':
+    'vite.config.ts dosyanıza Paraglide eklentisini ekleyin:',
+  'When you run npm run dev, the src/paraglide/ folder is automatically created. It is recommended to add this folder to .gitignore.':
+    "npm run dev komutunu çalıştırdığınızda src/paraglide/ klasörü otomatik oluşturulur. Bu klasörü .gitignore'a eklemeniz önerilir.",
+  'Add translation keys to your message files:':
+    'Mesaj dosyalarınıza çeviri anahtarlarını ekleyin:',
+  'The useM() hook returns translation functions according to the active locale:':
+    "useM() hook'u aktif locale'e göre çeviri fonksiyonlarını döndürür:",
+  'Use useLocale to change and read the active language:':
+    'Aktif dili değiştirmek ve okumak için useLocale kullanın:',
+  'Add a new JSON file to the src/messages/ folder (e.g. de.json)':
+    'src/messages/ klasörüne yeni JSON dosyası ekleyin (örn. de.json)',
+  'Add the new language to the Locale type and locales array in src/lib/locales.ts':
+    'src/lib/locales.ts dosyasındaki Locale tipine ve locales dizisine yeni dili ekleyin',
+  'Add the language code to src/project.inlang/settings.json':
+    'src/project.inlang/settings.json dosyasına dil kodunu ekleyin',
+  'Restart the project: npm run dev — the paraglide folder will be updated':
+    'Projeyi yeniden çalıştırın: npm run dev – paraglide klasörü güncellenir',
+
+  // FormsPluginPage
+  'Formik + Yup integration. Contains ready-made form field components bound to TRA UI Kit components (FormikTextField, FormikSelect, etc.) and shared validation constants.':
+    'Formik + Yup entegrasyonu. TRA UI Kit bileşenlerine bağlı hazır form alanı bileşenleri (FormikTextField, FormikSelect vb.) ve paylaşımlı doğrulama sabitleri içerir.',
+  'The plugin automatically adds the text-field, select, checkbox, date-picker, radio-buttons and label components of TRA UI Kit to the project.':
+    "Plugin, TRA UI Kit'in text-field, select, checkbox, date-picker, radio-buttons ve label bileşenleri otomatik olarak projeye eklenir.",
+  'Input field built on TRA UI Kit TextField component that automatically reads error messages from Formik:':
+    "Hata mesajlarını Formik'ten otomatik okuyan, TRA UI Kit TextField bileşeni üzerine kurulu alan:",
+  'Dropdown list that binds the selected value to Formik state:':
+    "Seçilen değeri Formik state'ine bağlayan açılır liste:",
+  'Ready Yup schemas are defined in src/constants/Validations.ts:':
+    'src/constants/Validations.ts dosyasında hazır Yup şemaları tanımlıdır:',
+  'A complete login form example combining all pieces:':
+    'Tüm parçaları bir araya getiren tam bir login formu örneği:',
+
+  // SignalRPluginPage
+  'Microsoft SignalR HubConnection management, automatic reconnection, MessageHubContext and useMessageHub hook for a ready real-time communication infrastructure.':
+    "Microsoft SignalR HubConnection yönetimi, otomatik yeniden bağlantı, MessageHubContext ve useMessageHub hook'u ile birlikte gelen gerçek zamanlı iletişim altyapısı.",
+  'Configure your hub URL and optional token factory with createHubConnection in lib/signalr.ts:':
+    "Hub URL'nizi ve opsiyonel token factory'yi lib/signalr.ts'deki createHubConnection ile kullanın:",
+  'If you are using the Axios Plugin, the StorageKeys constant already exists.':
+    'Axios Plugin kullanıyorsanız StorageKeys sabiti zaten mevcuttur.',
+  'Add MessageHubProvider to your application root component:':
+    "MessageHubProvider'ı uygulamanın kök bileşenine ekleyin:",
+  'Use connection status and the invoke method via the hook:':
+    'Bağlantı durumunu ve invoke metodunu hook aracılığıyla kullanın:',
+  'Listen to hub events using the raw connection object:':
+    'Ham connection nesnesini kullanarak hub olaylarını dinleyin:',
+
+  // TablePluginPage
+  'TanStack Table v8 wrapper — a ready-made table component system with sorting, filtering, pagination, expandable rows, export, and skeleton loading support.':
+    'TanStack Table v8 wrapper – sıralama, filtreleme, sayfalama, genişletilebilir satırlar, dışa aktarma ve skeleton yükleme desteği ile birlikte gelen hazır tablo bileşen sistemi.',
+  'The plugin works with the skeleton, input and pagination components of TRA UI Kit and automatically adds them via registryDependencies.':
+    "Plugin, TRA UI Kit'in skeleton, input ve pagination bileşenleri ile birlikte çalışır. Bu bileşenleri registryDependencies aracılığıyla otomatik ekler.",
+  'Simplest usage — only data and columns are required:':
+    'En basit kullanım – sadece data ve columns gereklidir:',
+  'Use useTableState for externally-controlled sorting:':
+    'Dış kontrollu sıralama için useTableState kullanın:',
+  'Both global search and column-based filtering are supported:':
+    'Hem global arama hem de sütun bazlı filtre desteklenir:',
+  'Pagination is enabled by default. 10 records for desktop, 8 for mobile:':
+    'Sayfalama varsayılan olarak etkindir. Masaüstü için 10, mobil için 8 kayıt gösterilir:',
+  'Add expandable detail content to rows:':
+    'Satırlara tıklanarak açılabilen detay içeriği ekleyin:',
+  'To manage multiple table states together:':
+    "Birden fazla tablo state'ini bir arada yönetmek için:",
+
+  // ui-base page
+  'Start a React application meeting corporate standards in seconds with the TRA UI Base template. All basic setups are ready; just focus on development.':
+    'TRA UI Base template ile saniyeler içinde kurumsal standartlara uygun bir React uygulaması başlatın. Tüm temel kurulumlar hazır; sadece geliştirmeye odaklanın.',
+  "What's in the template?": 'Template içinde neler var?',
+  'Download the Template': "Template'i İndir",
+  'Pull the TRA UI Base template to your local machine with CLI:':
+    "CLI ile TRA UI Base template'ini yerel makinenize çekin:",
+  'You can also run without a project name — the CLI will ask:':
+    'Proje adı vermeden de çalıştırabilirsiniz, CLI size sorar:',
+  'Dependencies are automatically installed when the command runs. If it fails, navigate to the project folder and run npm install.':
+    'Komut çalıştığında bağımlılıklar otomatik kurulur. Başarısız olursa proje klasörüne girip npm install çalıştırın.',
+  'Start the Development Server': 'Geliştirme Sunucusunu Başlat',
+  'The application runs at http://localhost:3000 by default.':
+    'Uygulama varsayılan olarak http://localhost:3000 adresinde çalışır.',
+  'Expand Your Project': 'Projenizi Genişletin',
+  'Template is ready! You can now proceed in two directions:':
+    'Template hazır! Bundan sonra iki yönde ilerleyebilirsiniz:',
+  'TRA UI Kit Integration': 'TRA UI Kit Entegrasyonu',
+  'Add ready-made UI components to the project': 'Hazır UI bileşenlerini projeye ekleyin',
+  'Go to installation page': 'Kurulum sayfasına git',
+  'Add Plugin': 'Plugin Ekle',
+  'Axios, i18n, SignalR and other infrastructures': 'Axios, i18n, SignalR ve diğer altyapılar',
+  'Go to plugins page': 'Plugin sayfasına git',
+  'Project Structure': 'Proje Yapısı',
+  'The template comes with the following file structure:':
+    'Template aşağıdaki dosya yapısıyla gelir:',
+  'Corporate Standards': 'Kurumsal Standartlar',
+  'TRA UI Base is designed to ensure all in-house UI projects are set up with the same structure. The following rules are expected to be followed.':
+    'TRA UI Base, şirket içi tüm UI projelerinin aynı yapıda kurulmasını sağlamak için tasarlanmıştır. Aşağıdaki kurallara uyulması beklenmektedir.',
+  'Next Steps': 'Sonraki Adımlar',
+  'Explore ready-made UI components': 'Kullanıma hazır UI bileşenlerini keşfedin',
+  'Go to Components': 'Bileşenlere Git',
+  'Axios, i18n, SignalR and other plugins': 'Axios, i18n, SignalR ve diğer pluginler',
+  'Go to Plugins': 'Pluginlere Git',
+  'Adding TRA UI Kit to an existing project': 'Mevcut projeye TRA UI Kit ekleme',
+  'Go to Setup': 'Kuruluma Git',
+  '1. Every project starts from the TRA UI Base template':
+    '1. Her proje TRA UI Base template üzerinden başlar',
+  '2. Style system: Tailwind CSS v4 + TRA Theme': '2. Stil sistemi: Tailwind CSS v4 + TRA Tema',
+  '3. Routing: TanStack Router (file-based)': '3. Routing: TanStack Router (file-based)',
+  '4. HTTP requests: Axios Plugin': '4. HTTP istekleri: Axios Plugin',
+  '5. Multiple Languages: i18n Plugin': '5. Çoklu Dil: i18n Plugin',
+  '6. UI Components: TRA UI Kit': '6. UI Bileşenleri: TRA UI Kit',
+
+  // Corporate Standards card bodies (Trans component – <code> = components.code)
+  CorporateStandardsCard1:
+    '<code>npx @tra-bilisim/tra-ui create</code> ile oluşturulan template temel başlangıç noktasıdır. Boş Vite projesi açılmaz. Bu sayede tüm projelerde aynı klasör yapısı, aynı tooling ve aynı provider hiyerarşisi korunur.',
+  CorporateStandardsCard2:
+    'Bileşen stillemesi için yalnızca Tailwind CSS v4 utility sınıfları kullanılır. Tema renkleri ve tasarım token\u2019ları <code>npx @tra-bilisim/tra-ui init</code> ile kurulan TRA tema konfigürasyonundan alınır; hardcoded renk değerleri kullanılmaz.',
+  CorporateStandardsCard3:
+    'Tüm sayfalar <code>src/routes/</code> klasörü altında dosya tabanlı route olarak tanımlanır. <code>routeTree.gen.ts</code> otomatik üretilir, elle düzenlenmez. Loader ve context için TanStack Query ile birlikte kullanılır.',
+  CorporateStandardsCard4:
+    'Tüm API çağrıları <code>createService</code> factory\u2019si üzerinden yapılır. Doğrudan <code>fetch</code> veya ham <code>axios</code> çağrısı yapılmaz; interceptor ve token yönetimi merkezi konfigürasyondan yönetilir.',
+  CorporateStandardsCard5:
+    'Uygulamalar Türkçe / İngilizce desteğiyle başlar. <code>useM()</code> hook\u2019u ile tip güvenli mesaj katalogları kullanılır. Hardcoded Türkçe/İngilizce metin bırakılmaz; tüm UI metinleri mesaj katalogunda tanımlanır.',
+  CorporateStandardsCard6:
+    'Yeni bileşen yazmadan önce TRA UI Kit\u2019te aynı amaca hizmet eden bir bileşen olup olmadığı kontrol edilir. Var olan bileşenler <code>npx @tra-bilisim/tra-ui add</code> ile projeye eklenerek kullanılır, kopyala-yapıştır yapılmaz.',
 };
 
 export default tr;
