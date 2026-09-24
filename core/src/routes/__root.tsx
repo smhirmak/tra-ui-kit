@@ -4,6 +4,7 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import { TOCProvider } from '@/contexts/toc/TOCContext';
 import { NotificationProvider } from '@/contexts/notification/NotificationProvider';
 import BackToTopButton from '@/components/ui/back-to-top-button';
+import DynamicPageTitle from '@/components/DynamicPageTitle';
 import { useLocalizeContext } from '@/contexts/locale/LocalizeContext';
 import { useAppContext } from '@/contexts/app/AppProvider';
 
@@ -14,6 +15,7 @@ const RootComponent = () => {
 
   return (
     <TOCProvider>
+      <DynamicPageTitle />
       <NotificationProvider
         newestTop
         closeIcon

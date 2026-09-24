@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { LocalizeContext } from './LocalizeContext';
 
 const LocalizeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [locale, setLocale] = useState(localStorage.getItem('lang') || 'tr');
+  const [locale, setLocale] = useState(localStorage.getItem('lang') || 'en');
   const { t: Translate } = useTranslation();
 
   useEffect(() => {
