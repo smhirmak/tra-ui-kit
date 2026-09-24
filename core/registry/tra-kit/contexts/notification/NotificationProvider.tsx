@@ -1,4 +1,12 @@
-import React, { createContext, useContext, useState, ReactNode, useRef, useMemo } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useRef,
+  useMemo,
+  useCallback,
+} from 'react';
 import NotificationContainer from './NotificationContainer';
 
 const defaultNotificationContext: INotificationContext = {
@@ -70,44 +78,47 @@ export const NotificationProvider: React.FC<INotification> = ({
   }>();
   const notificationIdRef = useRef(0);
 
-  const invoke = (
-    type: string,
-    message: string,
-    options: { autoClose?: boolean; autoCloseTime?: number; icon?: ReactNode },
-  ) => {
-    setLocalAutoClose({ state: options.autoClose, time: options.autoCloseTime });
-    const id = notificationIdRef.current++;
-    const newNotification = {
-      id,
-      type,
-      message,
-      icon: options.icon,
-      closeIcon,
-      autoClose: options.autoClose,
-      autoCloseTime: options.autoCloseTime,
-    };
+  const invoke = useCallback(
+    (
+      type: string,
+      message: string,
+      options: { autoClose?: boolean; autoCloseTime?: number; icon?: ReactNode },
+    ) => {
+      setLocalAutoClose({ state: options.autoClose, time: options.autoCloseTime });
+      const id = notificationIdRef.current++;
+      const newNotification = {
+        id,
+        type,
+        message,
+        icon: options.icon,
+        closeIcon,
+        autoClose: options.autoClose,
+        autoCloseTime: options.autoCloseTime,
+      };
 
-    setNotifications((prev) => [...prev, newNotification]);
+      setNotifications((prev) => [...prev, newNotification]);
 
-    if (options.autoClose) {
-      const timeoutId = setTimeout(() => {
+      if (options.autoClose) {
+        const timeoutId = setTimeout(() => {
+          setNotifications((prev) =>
+            prev.map((notification) =>
+              notification.id === id ? { ...notification, exiting: true } : notification,
+            ),
+          );
+          setTimeout(() => {
+            setNotifications((prev) => prev.filter((notification) => notification.id !== id));
+          }, 200); // Animasyon için bekleme süresi
+        }, options.autoCloseTime ?? 3000);
+
         setNotifications((prev) =>
           prev.map((notification) =>
-            notification.id === id ? { ...notification, exiting: true } : notification,
+            notification.id === id ? { ...notification, timeoutId } : notification,
           ),
         );
-        setTimeout(() => {
-          setNotifications((prev) => prev.filter((notification) => notification.id !== id));
-        }, 200); // Animasyon için bekleme süresi
-      }, options.autoCloseTime ?? 3000);
-
-      setNotifications((prev) =>
-        prev.map((notification) =>
-          notification.id === id ? { ...notification, timeoutId } : notification,
-        ),
-      );
-    }
-  };
+      }
+    },
+    [closeIcon],
+  );
 
   const clearNotification = (id: number) => {
     setNotifications((prev) => {
@@ -131,7 +142,7 @@ export const NotificationProvider: React.FC<INotification> = ({
       invoke,
       translateFunction,
     }),
-    [invoke],
+    [invoke, translateFunction],
   );
 
   return (

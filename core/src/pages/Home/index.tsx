@@ -18,12 +18,12 @@ import {
 } from '@phosphor-icons/react';
 import Constants from '@/constants/Constants';
 import { useTranslation } from 'react-i18next';
-import CustomSyntaxHighlighter from '@/components/custom-syntax-highlighter';
 import { useVersion } from '@/contexts/version';
 import Badge from '@/components/ui/badge';
 import Chip from '@/components/ui/chip';
 import Switch from '@/components/ui/switch';
 import { Avatar } from '@/components/ui/avatar';
+import { Terminal } from '@/components/ui/terminal';
 
 const prefersReducedMotion =
   typeof window !== 'undefined'
@@ -545,6 +545,65 @@ const Home = () => {
         </div>
       </section>
 
+      <section className="px-6 py-28 md:px-10 lg:px-16">
+        <div className="mx-auto max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.55 }}
+            className="mb-16 text-center"
+          >
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
+              {t('Developer Experience')}
+            </p>
+            <h2 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
+              {t('Quick Start')}
+            </h2>
+            <p className="text-lg text-neutral-grey">
+              {t('Get up and running in less than a minute')}
+            </p>
+          </motion.div>
+
+          <Terminal
+            commands={['npx tra-ui-cli init', 'npx tra-ui-cli add button input dialog']}
+            outputs={{
+              0: [
+                'Initializing TRA UI Kit...',
+                '✔ TRA UI Kit base setup completed',
+                '✔ TRA registry added',
+                'Success! TRA UI Kit has been initialized.',
+              ],
+              1: [
+                'Adding 3 component(s)...',
+                '✔ Added button',
+                '✔ Added input',
+                '✔ Added dialog',
+                'Summary: Success: 3 · Total: 3',
+              ],
+            }}
+            className="max-w-3xl px-0"
+            typingSpeed={45}
+            delayBetweenCommands={1000}
+          />
+
+          <motion.div
+            className="mt-10 text-center"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+          >
+            <Link
+              to="/$version/installation"
+              params={{ version: `v${currentVersion}` }}
+            >
+              <Button size="lg">{t('View Full Documentation')}</Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="bg-neutral-dark-white/40 px-6 py-28 dark:bg-neutral-light/4 md:px-10 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
@@ -620,81 +679,6 @@ const Home = () => {
               >
                 {t('Show All Components')}
               </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="px-6 py-28 md:px-10 lg:px-16">
-        <div className="mx-auto max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.55 }}
-            className="mb-16 text-center"
-          >
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
-              {t('Developer Experience')}
-            </p>
-            <h2 className="mb-4 text-4xl font-bold tracking-tight md:text-5xl">
-              {t('Quick Start')}
-            </h2>
-            <p className="text-lg text-neutral-grey">
-              {t('Get up and running in less than a minute')}
-            </p>
-          </motion.div>
-
-          <div className="space-y-4">
-            {[
-              { step: 1, label: t('Initialize TRA UI Kit'), code: 'npx tra-ui-cli init' },
-              {
-                step: 2,
-                label: t('Add components'),
-                code: 'npx tra-ui-cli add button input select',
-              },
-            ].map(({ step, label, code }) => (
-              <motion.div
-                key={step}
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: step * 0.1 }}
-                className="flex gap-4"
-              >
-                <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">
-                  {step}
-                </div>
-                <div className="flex-1 overflow-hidden rounded-xl border border-border bg-neutral-dark-white/50 dark:bg-neutral-light/5">
-                  <div className="flex items-center justify-between border-b border-border/60 px-4 py-2">
-                    <div className="flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-full bg-border" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-border" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-border" />
-                    </div>
-                    <p className="text-xs font-medium text-neutral-grey">{label}</p>
-                    {/* <CopyButton text={code} /> */}
-                  </div>
-                  <div className="px-4 py-3">
-                    <CustomSyntaxHighlighter content={code} />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            className="mt-10 text-center"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-          >
-            <Link
-              to="/$version/installation"
-              params={{ version: `v${currentVersion}` }}
-            >
-              <Button size="lg">{t('View Full Documentation')}</Button>
             </Link>
           </motion.div>
         </div>

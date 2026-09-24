@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { XIcon } from '@phosphor-icons/react';
 import { cva } from 'class-variance-authority';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import Button from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -309,19 +309,21 @@ const NotificationContainer: React.FC<{
   animationMode = 'bounce',
   position = 'top-right',
 }) => {
-  const [visibleNotifications, setVisibleNotifications] = useState(notifications);
-
-  useEffect(() => {
-    setVisibleNotifications(newestTop ? [...notifications].reverse() : notifications);
-  }, [notifications, newestTop]);
+  const [manualExitIds, setManualExitIds] = useState<Set<number>>(new Set());
+  const ordered = newestTop ? [...notifications].reverse() : notifications;
+  const visibleNotifications = ordered.map((n) =>
+    manualExitIds.has(n.id) ? { ...n, exiting: true } : n,
+  );
 
   const handleRemove = (id: number) => {
-    const updatedNotifications = visibleNotifications.map((n) =>
-      n.id === id ? { ...n, exiting: true } : n,
-    );
-    setVisibleNotifications(updatedNotifications);
+    setManualExitIds((prev) => new Set(prev).add(id));
     setTimeout(() => {
       onRemove(id);
+      setManualExitIds((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
     }, 100); // Animasyon için bekleme süresi
   };
 
